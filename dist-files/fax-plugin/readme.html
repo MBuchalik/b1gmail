@@ -1,0 +1,257 @@
+<html>
+<head>
+	<title>Fax-Plugin - Readme</title>
+
+	<style type="text/css">
+	<!--
+		BODY
+		{
+			background-color: #666666;
+			margin: 0px;
+		}
+
+		BODY,DIV,SPAN,P,TD
+		{
+			color: #333333;
+			font-family: verdana, arial;
+			font-size: 12px;
+		}
+
+		H1
+		{
+			color: #FFFFFF;
+			background-color: #F2911D;
+			text-align: left;
+			padding: 15px;
+			margin-top: 0px;
+		}
+
+		H2
+		{
+			margin-top: 20px;
+			font-size: 14px;
+			border-bottom: 1px solid #333333;
+		}
+
+		LI
+		{
+			margin-top: 5px;
+		}
+
+		A
+		{
+			color: #0000FF;
+			text-decoration: none;
+		}
+
+		A:hover
+		{
+			text-decoration: underline;
+		}
+
+		.footer
+		{
+			color: #FFFFFF;
+			background-color: #F2911D;
+			text-align: center;
+			padding: 5px;
+		}
+
+		.important
+		{
+			color: red;
+		}
+
+		.tabActive
+		{
+			background-color: #F2911D;
+			color: #FFFFFF;
+			padding: 10px;
+			line-height: 24px;
+		}
+
+		.tabInactive
+		{
+			color: #EFEFEF;
+			padding: 10px;
+			line-height: 24px;
+			font-size: 11px;
+		}
+
+		.license
+		{
+			margin-left: 22px;
+		}
+
+		.license P
+		{
+			text-indent: -22px;
+		}
+
+		.noteBox
+		{
+			border: 1px solid #666666;
+        	background-color: #FFFFCC;
+			padding: 8px;
+		}
+
+		#tabBar
+		{
+			background-color: #666666;
+		}
+
+		#main
+		{
+			width: 80%;
+			background-color: #FFFFFF;
+			text-align: left;
+		}
+
+		#content
+		{
+			padding-left: 15px;
+			padding-right: 15px;
+			padding-bottom: 5px;
+			text-align: justify;
+		}
+	//-->
+	</style>
+</head>
+
+<body>
+
+<center>
+	<div id="main">
+		<div id="tabBar">
+			<a class="tabInactive" href="liesmich.html">Liesmich (Deutsch)</a>
+			<a class="tabActive" href="readme.html">Readme (English)</a>
+			<a class="tabInactive" href="changelog.html">Changelog</a>
+		</div>
+
+		<h1>Fax-Plugin Readme</h1>
+
+		<div id="content">
+			<p>
+				Thank you very much for purchasing the Fax plugin for b1gMail! In this package,
+				you can find all files you need to install the plugin.<br />
+				This file contains summarized instructions how to set up the fax plugin and how to update it
+				from further versions to the current version. More detailed instructions are contained in
+				the plugin's manual - this readme file serves as a quick start introduction only.
+			</p>
+
+			<p>
+				<h2>Installation</h2>
+
+				Please follow the the following instructions to perform a fresh installation.
+
+				<ol>
+					<li>Upload all files and folders contained in the folder &quot;upload&quot; in the download archive
+						to the root folder of your b1gMail installation (e.g. using FTP).</li>
+					<li>Log-in to the ACP of your b1gMail installation.</li>
+					<li>Navigate to the page &quot;Plugins&quot; in the homonymous section.</li>
+					<li>Choose the tab &quot;Install&quot;.</li>
+					<li>As &quot;Plugin package&quot;, choose the file &quot;Fax_(license-number).bmplugin&quot;,
+						contained in this download archive and click at the button
+						&quot;Install&quot;.</li>
+					<li>Check the plugin origin information displayed on the following page
+						and click at the button &quot;Install&quot;.</li>
+					<li>Bring up the administration control panel of the Fax plugin by clicking at &quot;Fax&quot;
+						in the menu on the left handside.</li>
+					<li>Open the tab &quot;Gateways&quot; and enter the login information for the gateway you wish
+						to use. Then click at &quot;Save&quot;.<br />
+						<em>Note:</em> If you would like to use the SMSKaufen gateway, we recommend to chose the
+							Gateway entry &quot;SMSKaufen (HTTP)&quot;.</li>
+					<li>Open the tab &quot;Preferences&quot; and chose the gateway you would like to use at
+						&quot;Default gateway&quot;.</li>
+					<li>Activate the option &quot;Fax&quot; in the user group settings for all groups
+						you would like to allow to send faxes.</li>
+				</ol>
+
+				If you use the <strong>SMSKaufen</strong> gateway, please follow the following additional steps:
+				<ol>
+					<li>Log-in to the customers area of SMSKaufen.</li>
+					<li>Open the menu entry &quot;Fax-Dienste&quot; &raquo; &quot;Preise und Einrichtung&quot;.</li>
+					<li>Enter the fax push address
+						<blockquote><code>(URL to your b1gMail installation)index.php/faxPluginStatusPush/</code></blockquote>
+						For example:
+						<blockquote><code>http://www.domain.xy/mail/index.php/faxPluginStatusPush/</code></blockquote>
+						Then click at &quot;Push &auml;ndern&quot;.</li>
+				</ol>
+
+				If you use the <strong>Computron GNetX</strong> gateway, please follow the following additional steps:
+				<ol>
+					<li>Log-in to the customers area (&quot;Email-to-Fax&quot;) of Computron GNetX.</li>
+					<li>Open the menu entry &quot;Email Sendeberichte&quot;.</li>
+					<li>As e-mail address (field &quot;Email&quot;), enter <code>mailfrom</code>
+						and as &quot;Art&quot;, chose <code>Automatisch auswertbar</code>.
+						Then click at &quot;Einstellungen &uuml;bernehmen&quot;.</li>
+				</ol>
+			</p>
+
+			<p>
+				<h2>Updating from a prior Fax plugin release</h2>
+
+				If you already use a release of the Fax plugin,
+				please follow these instructions to update to the current version. No data
+				will be lost during the update.
+
+				<ol>
+					<li><font color="red"><b>Do not</b> deactivate or uninstall the old version of the plugin
+						during the whole process. It will be overwritten automatically.</font></li>
+					<li>Upload all files and folders contained in the folder &quot;upload&quot; in the download archive
+						to the root folder of your b1gMail installation (e.g. using FTP).</li>
+					<li>Log-in to the ACP of your b1gMail installation.</li>
+					<li>Navigate to the page &quot;Plugins&quot; in the homonymous section.</li>
+					<li>Choose the tab &quot;Install&quot;.</li>
+					<li>As &quot;Plugin package&quot;, choose the file &quot;FaxPlugin_(license-number).bmplugin&quot;,
+						contained in this download archive and click at the button
+						&quot;Install&quot;.</li>
+					<li>Check the plugin origin information displayed on the following page
+						and click at the button &quot;Install&quot;.</li>
+				</ol>
+			</p>
+
+			<p>
+				<h2>Licensing agreement</h2>
+
+				<div class="license">
+					<p>§1 Using this product is subject to the following licensing terms. Violation of one or more of these terms is forbidden and will be persecuted by the vendor. The vendor may revoke the license in case of violations without refunding any purchase price or licensing fees.</p>
+					<p>§2 In case you do not own a license without copyright remark, you may not remove or alter the copyright remark displayed at the bottom of every generated page. The copyright remark must remain clearly visible.</p>
+					<p>§3 A license is valid for one parallel installation of this product; namely for the installation which is accessible at the domain entered in the customer center (if applicable). If you would like to install b1gMail again, you have to remove any prior installations associated witht his license first. You need a seperate license for each concurrent installation. If you own a license without copyright remark, the remark may only be removed or altered for this license - other licenses are not affected.</p>
+					<p>§4 You are not allowed to create or distribute illegal copies of this product, neither in unmodified nor in modified form, in any case.</p>
+					<p>§5 As the owner of a license of this product you are authorized to modify this product at your own risk. Nevertheless distributon of the modified product is forbidden (see §4). If you would like to distribute modifications, you are only authorized to do so if you do not distribute parts of this product, neither texts, pictures, code nor other parts along with it.</p>
+					<p>§6 Use of this product occurs exclusively at the license owner's risk. The vendor is not liable for claims resulting from the use of this product, except in case of intent or gross negligence. The vendor does not guarantee for the usability of this product for a certain intended use. Any receivables in case of dispute are limited to the purchase price of the license.</p>
+					<p>§7 The vendor is in no way liable or responsible for any data generated, composed, acquired, distributed, exchanged (etc.) using this product. The vendor is not liable for the operation of accounts created or managed using this product and cannot access these.</p>
+					<p>§8 This product contains an automated updating mechanism, which is able to download and install updates and patches for this product by contacting an internet update server. While querying the server, the license is verified by transfering the license and serial number to the server. In no case istallation of updates occurs entirely automatically but only after confirmation by the user.</p>
+					<p>§9 This software contains PDF processing components licensed from Setasign (FPDI PDF Parser). Usage of these components is only allowed in conjunction with this product. Components developed by Setasign may neither be extracted from the product nor used independently from it.</p>
+					<p>§10 If any term of this license agreement proves to be effectless or void by law, the validity of the remaining terms is not affected. The fully or partly effectless or void term should be replaced by a term which approaches the effectless or void term as close as possible.</p>
+				</div>
+			</p>
+
+			<p>
+				<h2>Help</h2>
+
+				If you encouter problems or questions while installing or using the plugin, please have a look
+				at the manual, which is available at the
+				<a href="http://customers.b1gmail.com/" target="_blank">customer center</a> and by clicking
+				at the &quot;?&quot; icon in the administrator control panel. It contains valuable instructions
+				and hints. You can find further resources at our
+				<a href="http://kb.b1gmail.com/" target="_blank">knowledge base</a> and at our
+				<a href="http://board.b1gmail.com/" target="_blank">forums</a> (intended for exchange with other
+				customers only). You can report bugs at our
+				<a href="http://bugs.b1gmail.com/" target="_blank">bug tracking system</a>.<br />
+				If you cannot solve your problem our answer your question these ways, do not hesitate to
+				submit a support ticket using the
+				<a href="http://customers.b1gmail.com/" target="_blank">customer center</a>.
+			</p>
+		</div>
+
+		<div class="footer">
+			&copy; 2002-2018 B1G Software
+		</div>
+	</div>
+</center>
+
+</body>
+
+</html>

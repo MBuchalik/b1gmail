@@ -1,0 +1,3245 @@
+<html>
+<head>
+	<title>b1gMail - Changelog</title>
+
+	<style type="text/css">
+	<!--
+		BODY
+		{
+			background-color: #666666;
+			margin: 0px;
+		}
+
+		BODY,DIV,SPAN,P,TD
+		{
+			color: #333333;
+			font-family: verdana, arial;
+			font-size: 12px;
+		}
+
+		H1
+		{
+			color: #FFFFFF;
+			background-color: #F2911D;
+			text-align: left;
+			padding: 15px;
+			margin-top: 0px;
+		}
+
+		H2
+		{
+			margin-top: 20px;
+			font-size: 14px;
+			border-bottom: 1px solid #333333;
+		}
+
+		LI
+		{
+			margin-top: 5px;
+		}
+
+		A
+		{
+			color: #0000FF;
+			text-decoration: none;
+		}
+
+		A:hover
+		{
+			text-decoration: underline;
+		}
+
+		.footer
+		{
+			color: #FFFFFF;
+			background-color: #F2911D;
+			text-align: center;
+			padding: 5px;
+		}
+
+		.important
+		{
+			color: red;
+		}
+
+		.tabActive
+		{
+			background-color: #F2911D;
+			color: #FFFFFF;
+			padding: 10px;
+			line-height: 24px;
+		}
+
+		.tabInactive
+		{
+			color: #EFEFEF;
+			padding: 10px;
+			line-height: 24px;
+			font-size: 11px;
+		}
+
+		.license
+		{
+			margin-left: 22px;
+		}
+
+		.license P
+		{
+			text-indent: -22px;
+		}
+
+		.noteBox
+		{
+			border: 1px solid #666666;
+        	background-color: #FFFFCC;
+			padding: 8px;
+		}
+
+		#tabBar
+		{
+			background-color: #666666;
+		}
+
+		#main
+		{
+			width: 80%;
+			background-color: #FFFFFF;
+			text-align: left;
+		}
+
+		#content
+		{
+			padding-left: 15px;
+			padding-right: 15px;
+			padding-bottom: 5px;
+			text-align: justify;
+		}
+	//-->
+	</style>
+</head>
+
+<body>
+
+<center>
+	<div id="main">
+		<div id="tabBar">
+			<a class="tabInactive" href="liesmich.html">Liesmich (Deutsch)</a>
+			<a class="tabInactive" href="readme.html">Readme (English)</a>
+			<a class="tabActive" href="changelog.html">Changelog</a>
+		</div>
+
+		<h1>b1gMail Changelog</h1>
+
+		<div id="content">
+			<p>
+				<h2>b1gMail 7.4.0-Beta4 &raquo; b1gMail 7.4.0</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<ul>
+							<li>Fix issue where SMS could not be sent</li>
+							<li>Fix issue where email attachments could not be viewed from compose form</li>
+							<li>Fix folder refresh setting</li>
+							<li>Fix problem where sender line in folder is empty</li>
+							<li>Fix problem where folder list is not refreshed when emptying the trash folder</li>
+							<li>Support IDN user names for POP3/SMTP</li>
+							<li>Improve robustness of space updates</li>
+							<li>Fix AJAX request problems when output compression is enabled</li>
+							<li>Fix help link in ACP</li>
+							<li>Fix z-order in widget settings in ACP</li>
+							<li>Fix MySQL charset not being set after connection has been dropped</li>
+						</ul>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Retain mail selection when auto-refreshing folder</li>
+							<li>Add fallback for HTML email formatting when required extensions are missing</li>
+							<li>Common improvements</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.4.0-Beta3 &raquo; b1gMail 7.4.0-Beta4</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<ul>
+							<li>Fix issue when session.use_trans_sid is enabled in php.ini</li>
+							<li>Disable mobile redirect for certified mails</li>
+							<li>Support mails consisting of VCal/VCard only</li>
+							<li>Fix PHP 7.1 compatibility issues</li>
+							<li>Fix issue where plugins were not updated properly when an opcode cache is used</li>
+							<li>Fix wrong SMS truncation when using UTF-8 multibyte chars</li>
+							<li>Improve whitelist in HTML email formatter</li>
+							<li>External POP3 accounts do not influence receive stats anymore</li>
+							<li>Fix GetPhraseForLanguage returning wrong language (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1769">#1769</a>)</li>
+							<li>Fix out of range issues in space update queries</li>
+							<li>Filter 4-byte UTF-8 chars not being stored properly by MySQL</li>
+							<li>Fix membership cancellation not working properly</li>
+							<li>Fix transparency issues in built-in captcha</li>
+							<li>Fix payment method title not being saved on edit (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1406">#1406</a>)</li>
+							<li>Properly handle arrays in CN and OU certificate fields</li>
+							<li>Add missing phrases to language files</li>
+							<li>Fix statistics being stored inefficiently</li>
+							<li>Fix domain order not being saved when pressing enter key in domain list in ACP</li>
+						</ul>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Add support for internationalized domain names (IDN)</li>
+							<li>Add hooks for signup page to support new PremiumAccount plugin features</li>
+							<li>Multi upload for attachments</li>
+							<li>Minor re-styling of left menu in UCP</li>
+							<li>Disallow signing of certified mails</li>
+							<li>Show admin menus permanently when clicking title to improve usability with screen readers</li>
+							<li>Add transaction code to payment notification</li>
+							<li>Support mail flags set by b1gMailServer milters</li>
+							<li>Show chmod commands in setup</li>
+							<li>Add top bar icon for search page, search page navigation using dropdown</li>
+							<li>Common improvements</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.4.0-Beta2 &raquo; b1gMail 7.4.0-Beta3</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<ul>
+							<li>Automatically adjust MySQL strict mode</li>
+							<li>Fixed a problem in the mail parser when mails do not end with a new line</li>
+							<li>Fix encoding issue in source viewer</li>
+							<li>Don't suggest invalid email addresses at signup</li>
+							<li>Get rid of various PHP 7 compatibility issues</li>
+							<li>Resolve possible race condition when adding statistics entries</li>
+							<li>Fix mass actions in abuse view</li>
+							<li>Fix issue with disappearing Logout/Prefs/Search/Help icons on small screens</li>
+						</ul>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Rename &quot;Outbox&quot; to &quot;Sent&quot;</li>
+							<li>Warning in ACP when group limit exceeds mail hard limit</li>
+							<li>POP3 self-fetch check now configurable in group settings</li>
+							<li>Update to new SabreDAV version</li>
+							<li>CalDAV and CardDAV support</li>
+							<li>High DPI icons in UCP</li>
+							<li>Common improvements</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.4.0-Beta1 &raquo; b1gMail 7.4.0-Beta2</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<ul>
+							<li>Fix compatibility problems with PHP 7</li>
+							<li>Fix problem when SQLite extension is not available</li>
+							<li>Fix problem where groups cannot be created</li>
+							<li>Fix permission problems with database files</li>
+							<li>Add missing maintenance page style sheet</li>
+						</ul>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Print style sheet in ACP</li>
+							<li>Auto focus email field on start page</li>
+							<li>Clear password field when login failed</li>
+							<li>Show notification count in window title when new notifications are received</li>
+							<li>Always show abuse view link in user view in ACP</li>
+							<li>Add receive stats to abuse view</li>
+							<li>Add checkbox to delete previously auto-saved draft</li>
+							<li>Common improvements</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.3.0 &raquo; b1gMail 7.4.0-Beta1</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=720">#720</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=954">#954</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1081">#1081</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1478">#1478</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1496">#1496</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1513">#1513</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1515">#1515</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1536">#1536</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1537">#1537</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1566">#1566</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1569">#1569</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1575">#1575</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1583">#1583</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1588">#1588</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1602">#1602</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1616">#1616</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1686">#1686</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1687">#1687</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1688">#1688</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Save drafts automatically (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1099">#1099</a>)</li>
+							<li>Abuse detection and management system (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1181">#1181</a>)</li>
+							<li>Contact form (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1153">#1153</a>)</li>
+							<li>Automatic deletion of accounts which have never been logged in to (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1166">#1166</a>)</li>
+							<li>CalDAV and CardDAV server (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1277">#1277</a>)</li>
+							<li>Language detection (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1295">#1295</a>)</li>
+							<li>Credit statement / journal (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1358">#1358</a>)</li>
+							<li>FAQ feature entry for synchronization (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1359">#1359</a>)</li>
+							<li>Language setting in user preferences (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1466">#1466</a>)</li>
+							<li>Support for reCAPTCHA (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1480">#1480</a>)</li>
+							<li>List inactive users in ACP (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1493">#1493</a>)</li>
+							<li>Full text email search (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1535">#1535</a>)</li>
+							<li>Context menu for multiple emails  (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1558">#1558</a>)</li>
+							<li>New email/webdisk storage format (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1560">#1560</a>)</li>
+							<li>Email address suggestions when trying to sign up for an address which is already taken (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1561">#1561</a>)</li>
+							<li>Switch to mysqli extension (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1609">#1609</a>)</li>
+							<li>New email content filter (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1611">#1611</a>)</li>
+							<li>Search results are now sortable (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1612">#1612</a>)</li>
+							<li>Search details setting (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1613">#1613</a>)</li>
+							<li>ACP setting for X-Sender-IP field (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1617">#1617</a>)</li>
+							<li>Deprecated storage method for emails in DB has been removed (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1621">#1621</a>)</li>
+							<li>Improved, common email send limit for web interface and b1gMailServer (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1624">#1624</a>)</li>
+							<li>Merge webdisk and webdisk icons page in ACP (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1629">#1629</a>)</li>
+							<li>Forward mails in mobile interface (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1654">#1654</a>)</li>
+							<li>Assign multiple contacts to group (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1682">#1682</a>)</li>
+							<li>Create group when creating contact (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1683">#1683</a>)</li>
+							<li>Captcha for email/SMS moved to group settings (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1736">#736</a>)</li>
+							<li>Mail delivery status tracking in outbox (when using b1gMailServer for email delivery)</li>
+							<li>Notification system in UCP including email, appointment and birthday notifications</li>
+							<li>Additional email and webdisk space per user</li>
+							<li>Setting for minimum password length in ACP</li>
+							<li>Email send statistics in ACP abuse view with 1 hour resolution for last 7 days</li>
+							<li>Now using CKeditor as WYSIWYG editor</li>
+							<li>New layout for logged in area</li>
+							<li>New layout for not logged in area</li>
+							<li>New layout for ACP</li>
+							<li>High DPI support in user area</li>
+							<li>Common improvements and bug fixes</li>
+						</ul>
+					</li>
+
+					<li>Updated / added files: all source files were changed</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.3.0-Beta6 &raquo; b1gMail 7.3.0</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1311">#1311</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1316">#1316</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1319">#1319</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1331">#1331</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1335">#1335</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1347">#1347</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Feature to check IP against DNSBL during signup (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1326">#1326</a>)</li>
+							<li>SMS type selection for calendar SMS and mail-to-SMS (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1327">#1327</a>)</li>
+							<li>Improved session error messages for mobile interface (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1336">#1336</a>)</li>
+							<li>Reset mobile cookie when manually accessing mobile interface (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1345">#1345</a>)</li>
+							<li>Feature to automatically send reading confirmations</li>
+							<li>Feature to enable/disable 78-characters line when composing text mails</li>
+							<li>Mail preview improvements (show attached ZIP files and messages instead of downloading, note preview, close mail when marking as spam)</li>
+							<li>More template preferences</li>
+							<li>Improved mobile interface menu</li>
+							<li>Logout link for mobile interface</li>
+							<li>Several minor bug/usability fixes</li>
+							<li>Common improvements and bug fixes</li>
+						</ul>
+					</li>
+
+					<li>Updated / added files:
+						<ul>
+							<li>admin/prefs.common.php</li>
+							<li>admin/prefs.sms.php</li>
+							<li>admin/templates/prefs.signup.tpl</li>
+							<li>admin/templates/prefs.sms.common.tpl</li>
+							<li>admin/templates/prefs.widgetlayouts.layout.tpl</li>
+							<li>admin/templates/style/common.css</li>
+							<li>clientlib/jquery/images/ajax-loader.gif</li>
+							<li>clientlib/jquery/images/ajax-loader.gif</li>
+							<li>clientlib/jquery/images/icons-18-black.png</li>
+							<li>clientlib/jquery/images/icons-18-black.png</li>
+							<li>clientlib/jquery/images/icons-18-white.png</li>
+							<li>clientlib/jquery/images/icons-18-white.png</li>
+							<li>clientlib/jquery/images/icons-36-black.png</li>
+							<li>clientlib/jquery/images/icons-36-black.png</li>
+							<li>clientlib/jquery/images/icons-36-white.png</li>
+							<li>clientlib/jquery/images/icons-36-white.png</li>
+							<li>clientlib/jquery/jquery-1.8.2.min.js</li>
+							<li>clientlib/jquery/jquery.mobile-1.3.0.css</li>
+							<li>clientlib/jquery/jquery.mobile-1.3.0.js</li>
+							<li>clientlib/jquery/jquery.mobile-1.3.0.min.css</li>
+							<li>clientlib/jquery/jquery.mobile-1.3.0.min.js</li>
+							<li>clientlib/jquery/jquery.mobile.structure-1.3.0.css</li>
+							<li>clientlib/jquery/jquery.mobile.structure-1.3.0.min.css</li>
+							<li>clientlib/jquery/jquery.mobile.theme-1.3.0.css</li>
+							<li>clientlib/jquery/jquery.mobile.theme-1.3.0.min.css</li>
+							<li>clientlib/selectable.js</li>
+							<li>email.compose.php</li>
+							<li>email.php</li>
+							<li>email.read.php</li>
+							<li>index.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>m/index.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>organizer.calendar.php</li>
+							<li>organizer.notes.php</li>
+							<li>organizer.php</li>
+							<li>organizer.todo.php</li>
+							<li>plugins/search.plugin.php</li>
+							<li>plugins/templates/widget.webdiskdnd.tpl</li>
+							<li>plugins/widget.base.php</li>
+							<li>prefs.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.html_select_date.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.html_select_time.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.date_format.php</li>
+							<li>serverlib/calendar.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/email.top.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mail.class.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailthreader.class.php</li>
+							<li>serverlib/string.inc.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/todo.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>templates/modern/images/li/logo.png</li>
+							<li>templates/modern/info.php</li>
+							<li>templates/modern/js/common.js</li>
+							<li>templates/modern/js/email.js</li>
+							<li>templates/modern/js/m.js</li>
+							<li>templates/modern/js/organizer.js</li>
+							<li>templates/modern/js/webdisk.js</li>
+							<li>templates/modern/li/dialog.zipbrowser.tpl</li>
+							<li>templates/modern/li/email.compose.tpl</li>
+							<li>templates/modern/li/email.folder.contents.narrow.tpl</li>
+							<li>templates/modern/li/email.preview.tpl</li>
+							<li>templates/modern/li/email.read.tpl</li>
+							<li>templates/modern/li/index.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.edit.tpl</li>
+							<li>templates/modern/li/organizer.sidebar.tpl</li>
+							<li>templates/modern/li/prefs.aliases.add.tpl</li>
+							<li>templates/modern/li/prefs.common.tpl</li>
+							<li>templates/modern/li/webdisk.folder.tpl</li>
+							<li>templates/modern/m/calendar.list.tpl</li>
+							<li>templates/modern/m/calendar.show.tpl</li>
+							<li>templates/modern/m/compose.tpl</li>
+							<li>templates/modern/m/contacts.list.tpl</li>
+							<li>templates/modern/m/contacts.show.tpl</li>
+							<li>templates/modern/m/error.tpl</li>
+							<li>templates/modern/m/folder.tpl</li>
+							<li>templates/modern/m/folders.tpl</li>
+							<li>templates/modern/m/index.tpl</li>
+							<li>templates/modern/m/login.tpl</li>
+							<li>templates/modern/m/message.tpl</li>
+							<li>templates/modern/m/read.tpl</li>
+							<li>templates/modern/m/tasks.edit.tpl</li>
+							<li>templates/modern/m/tasks.list.tpl</li>
+							<li>templates/modern/m/tasks.lists.tpl</li>
+							<li>templates/modern/m/webdisk.details.tpl</li>
+							<li>templates/modern/m/webdisk.folder.tpl</li>
+							<li>templates/modern/nli/index.tpl</li>
+							<li>templates/modern/nli/login.tpl</li>
+							<li>templates/modern/nli/signup.tpl</li>
+							<li>templates/modern/style/loggedin.css</li>
+							<li>templates/modern/style/m.css</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.3.0-Beta5 &raquo; b1gMail 7.3.0-Beta6</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1236">#1236</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1241">#1241</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1246">#1246</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1255">#1255</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1265">#1265</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1267">#1267</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1289">#1289</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1293">#1293</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1297">#1297</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1305">#1305</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Avoid PHP timeout when deleting multiple users (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1087">#1087</a>)</li>
+							<li>Avoid PHP timeout when cleaning up trash folders (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1294">#1294</a>)</li>
+							<li>Support for custom manual payment methods (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1120">#1120</a>)</li>
+							<li>Improved mobile interface with webdisk and tasks and read-only access to addressbook  and calendar (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1210">#1210</a>)</li>
+							<li>Newsletter setting in user editor in ACP (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1228">#1228</a>)</li>
+							<li>ACP logging improvements (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1232">#1232</a>, <a target="_blank" href="http://board.b1g.de/project.php?issueid=1233">#1233</a>, <a target="_blank" href="http://board.b1g.de/project.php?issueid=1263">#1263</a>, <a target="_blank" href="http://board.b1g.de/project.php?issueid=1270">#1270</a>)</li>
+							<li>Ad management improvements (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1247">#1247</a>)</li>
+							<li>Newsletter subject check (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1268">#1268</a>)</li>
+							<li>Generate meaningful filename when download multiple webdisk files (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1274">#1274</a>)</li>
+							<li>Recipient black list is now wildcard-capable (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1287">#1287</a>)</li>
+							<li>Validity context for vouchers (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1303">#1303</a>)</li>
+							<li>Revamped address book user interface with contact preview</li>
+							<li>New payment method: Skrill (Moneybookers)</li>
+							<li>&quot;Compress pages&quot; setting in ACP</li>
+							<li>Improved performance in user area</li>
+							<li>Status info and active/inactive setting for external POP3 accounts</li>
+							<li>Several minor bug/usability fixes</li>
+							<li>Common improvements and bug fixes</li>
+						</ul>
+					</li>
+
+					<li>Updated / added files:
+						<ul>
+							<li>admin/groups.php</li>
+							<li>admin/logs.php</li>
+							<li>admin/maintenance.php</li>
+							<li>admin/newsletter.php</li>
+							<li>admin/payments.php</li>
+							<li>admin/prefs.ads.php</li>
+							<li>admin/prefs.common.php</li>
+							<li>admin/prefs.coupons.php</li>
+							<li>admin/prefs.email.php</li>
+							<li>admin/prefs.payments.php</li>
+							<li>admin/templates/images/abuse.png</li>
+							<li>admin/templates/images/ico_pay_skrill.png</li>
+							<li>admin/templates/images/reset_stats.png</li>
+							<li>admin/templates/js/common.js</li>
+							<li>admin/templates/maintenance.trash.tpl</li>
+							<li>admin/templates/newsletter.tpl</li>
+							<li>admin/templates/payments.details.tpl</li>
+							<li>admin/templates/payments.export.tpl</li>
+							<li>admin/templates/payments.list.tpl</li>
+							<li>admin/templates/prefs.ads.edit.tpl</li>
+							<li>admin/templates/prefs.ads.tpl</li>
+							<li>admin/templates/prefs.common.tpl</li>
+							<li>admin/templates/prefs.coupons.edit.tpl</li>
+							<li>admin/templates/prefs.coupons.tpl</li>
+							<li>admin/templates/prefs.email.send.tpl</li>
+							<li>admin/templates/prefs.payments.common.tpl</li>
+							<li>admin/templates/prefs.payments.methods.edit.tpl</li>
+							<li>admin/templates/prefs.payments.methods.tpl</li>
+							<li>admin/templates/style/common.css</li>
+							<li>admin/templates/users.edit.tpl</li>
+							<li>admin/templates/users.list.tpl</li>
+							<li>admin/users.php</li>
+							<li>admin/welcome.php</li>
+							<li>clientlang.php</li>
+							<li>clientlib/dndupload.js</li>
+							<li>clientlib/jquery/images/ajax-loader.gif</li>
+							<li>clientlib/jquery/images/ajax-loader.gif</li>
+							<li>clientlib/jquery/images/icons-18-black.png</li>
+							<li>clientlib/jquery/images/icons-18-black.png</li>
+							<li>clientlib/jquery/images/icons-18-white.png</li>
+							<li>clientlib/jquery/images/icons-18-white.png</li>
+							<li>clientlib/jquery/images/icons-36-black.png</li>
+							<li>clientlib/jquery/images/icons-36-black.png</li>
+							<li>clientlib/jquery/images/icons-36-white.png</li>
+							<li>clientlib/jquery/images/icons-36-white.png</li>
+							<li>clientlib/jquery/jquery-1.8.2.min.js</li>
+							<li>clientlib/jquery/jquery.mobile-1.2.0.css</li>
+							<li>clientlib/jquery/jquery.mobile-1.2.0.js</li>
+							<li>clientlib/jquery/jquery.mobile-1.2.0.min.css</li>
+							<li>clientlib/jquery/jquery.mobile-1.2.0.min.js</li>
+							<li>clientlib/jquery/jquery.mobile.structure-1.2.0.css</li>
+							<li>clientlib/jquery/jquery.mobile.structure-1.2.0.min.css</li>
+							<li>clientlib/jquery/jquery.mobile.theme-1.2.0.css</li>
+							<li>clientlib/jquery/jquery.mobile.theme-1.2.0.min.css</li>
+							<li>clientlib/selectable.js</li>
+							<li>clientlib/wysiwyg.js</li>
+							<li>cron.php</li>
+							<li>cron.userpop3.php</li>
+							<li>email.compose.php</li>
+							<li>email.php</li>
+							<li>email.read.php</li>
+							<li>index.php</li>
+							<li>interface/httpmail.php</li>
+							<li>interface/skrill.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>m/calendar.php</li>
+							<li>m/contacts.php</li>
+							<li>m/deref.php</li>
+							<li>m/email.php</li>
+							<li>m/index.php</li>
+							<li>m/tasks.php</li>
+							<li>m/webdisk.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>organizer.calendar.php</li>
+							<li>plugins/templates/widget.calendar.tpl</li>
+							<li>plugins/templates/widget.notes.tpl</li>
+							<li>prefs.php</li>
+							<li>serverlib/addressbook.class.php</li>
+							<li>serverlib/calendar.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/httpmail_server.class.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailparser.inc.php</li>
+							<li>serverlib/payment.class.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/pop3.class.php</li>
+							<li>serverlib/sendmail.class.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/toolinterface.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/userpop3gateway.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>serverlib/webdav_server.class.php</li>
+							<li>serverlib/webdisk.class.php</li>
+							<li>templates/modern/images/m/checkbox.png</li>
+							<li>templates/modern/images/m/dot.png</li>
+							<li>templates/modern/images/m/nav-calendar.png</li>
+							<li>templates/modern/images/m/nav-contacts.png</li>
+							<li>templates/modern/images/m/nav-mail.png</li>
+							<li>templates/modern/images/m/nav-tasks.png</li>
+							<li>templates/modern/images/m/nav-webdisk.png</li>
+							<li>templates/modern/js/common.js</li>
+							<li>templates/modern/js/email.js</li>
+							<li>templates/modern/js/loggedin.js</li>
+							<li>templates/modern/js/m.js</li>
+							<li>templates/modern/js/organizer.js</li>
+							<li>templates/modern/js/webdisk.js</li>
+							<li>templates/modern/li/email.preview.tpl</li>
+							<li>templates/modern/li/email.read.tpl</li>
+							<li>templates/modern/li/index.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.edit.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.show.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.tpl</li>
+							<li>templates/modern/li/organizer.calendar.edit.tpl</li>
+							<li>templates/modern/li/organizer.calendar.showdate.tpl</li>
+							<li>templates/modern/li/organizer.notes.edit.tpl</li>
+							<li>templates/modern/li/payment.form.tpl</li>
+							<li>templates/modern/li/payment.pay.tpl</li>
+							<li>templates/modern/li/prefs.extpop3.edit.tpl</li>
+							<li>templates/modern/li/prefs.extpop3.tpl</li>
+							<li>templates/modern/li/webdisk.folder.tpl</li>
+							<li>templates/modern/m/calendar.list.tpl</li>
+							<li>templates/modern/m/calendar.show.tpl</li>
+							<li>templates/modern/m/compose.tpl</li>
+							<li>templates/modern/m/contacts.list.tpl</li>
+							<li>templates/modern/m/contacts.show.tpl</li>
+							<li>templates/modern/m/folder.tpl</li>
+							<li>templates/modern/m/folders.tpl</li>
+							<li>templates/modern/m/index.tpl</li>
+							<li>templates/modern/m/login.tpl</li>
+							<li>templates/modern/m/message.tpl</li>
+							<li>templates/modern/m/read.tpl</li>
+							<li>templates/modern/m/tasks.add.tpl</li>
+							<li>templates/modern/m/tasks.edit.tpl</li>
+							<li>templates/modern/m/tasks.list.tpl</li>
+							<li>templates/modern/m/tasks.lists.tpl</li>
+							<li>templates/modern/m/webdisk.createfolder.tpl</li>
+							<li>templates/modern/m/webdisk.details.tpl</li>
+							<li>templates/modern/m/webdisk.folder.tpl</li>
+							<li>templates/modern/m/webdisk.uploadfiles.tpl</li>
+							<li>templates/modern/style/loggedin.css</li>
+							<li>templates/modern/style/m.css</li>
+							<li>templates/modern/style/notloggedin.css</li>
+							<li>webdisk.php</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.3.0-Beta4 &raquo; b1gMail 7.3.0-Beta5</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1185">#1185</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1187">#1187</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1199">#1199</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1204">#1204</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1206">#1206</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1207">#1207</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1214">#1214</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1222">#1222</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Log auto archiving (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1004">#1004</a>)</li>
+							<li>Log alias recipient address (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1077">#1077</a>)</li>
+							<li>Calendar week view (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1082">#1082</a>)</li>
+							<li>Revamped task list with quick add feature, multiple task lists and task Drag&amp;Drop(<a target="_blank" href="http://board.b1g.de/project.php?issueid=1167">#1167</a>, <a target="_blank" href="http://board.b1g.de/project.php?issueid=1198">#1198</a>)</li>
+							<li>Default values when adding a new appointment now make more sense (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1191">#1191</a>)</li>
+							<li>Hotkey default setting in ACP (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1196">#1196</a>)</a></li>
+							<li>Progress bar for Drag&amp;Drop uploads (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1216">#1216</a>)</li>
+							<li>Drag&amp;Drop notice in Webdisk (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1218">#1218</a>)</li>
+							<li>Row/item selection logic moved to separate JavaScript</li>
+							<li>Improvements for mail receiving using cPanel pipe feature (pipe-x.php)</li>
+							<li>Preparation for synchronization addons (object changelog, group setting)</li>
+							<li>New style for mini calendar</li>
+							<li>Improved calendar widget</li>
+							<li>Common improvements and bug fixes</li>
+						</ul>
+					</li>
+
+					<li>Updated / added files:
+						<ul>
+							<li>admin/groups.php</li>
+							<li>admin/logs.php</li>
+							<li>admin/prefs.common.php</li>
+							<li>admin/templates/about.tpl</li>
+							<li>admin/templates/groups.edit.tpl</li>
+							<li>admin/templates/prefs.common.tpl</li>
+							<li>clientlib/dndupload.js</li>
+							<li>clientlib/selectable.js</li>
+							<li>clientlib/wysiwyg.js</li>
+							<li>cron.php</li>
+							<li>email.compose.php</li>
+							<li>email.php</li>
+							<li>index.php</li>
+							<li>interface/pipe-x.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>organizer.calendar.php</li>
+							<li>organizer.todo.php</li>
+							<li>plugins/templates/widget.calendar.tpl</li>
+							<li>plugins/templates/widget.tasks.tpl</li>
+							<li>plugins/widget.base.php</li>
+							<li>serverlib/calendar.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailprocessor.class.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/todo.class.php</li>
+							<li>serverlib/toolinterface.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>templates/modern/images/li/btn_next.png</li>
+							<li>templates/modern/images/li/btn_prev.png</li>
+							<li>templates/modern/images/li/delcross.png</li>
+							<li>templates/modern/images/li/drag_indicator.png</li>
+							<li>templates/modern/images/li/drag_task.png</li>
+							<li>templates/modern/images/li/drag_tasks.png</li>
+							<li>templates/modern/images/li/tasklist_bg.png</li>
+							<li>templates/modern/js/email.js</li>
+							<li>templates/modern/js/loggedin.js</li>
+							<li>templates/modern/js/organizer.js</li>
+							<li>templates/modern/js/webdisk.js</li>
+							<li>templates/modern/li/email.compose.tpl</li>
+							<li>templates/modern/li/email.folder.contents.narrow.tpl</li>
+							<li>templates/modern/li/email.folder.contents.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.edit.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.import.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.tpl</li>
+							<li>templates/modern/li/organizer.calendar.dayview.view.tpl</li>
+							<li>templates/modern/li/organizer.calendar.edit.tpl</li>
+							<li>templates/modern/li/organizer.calendar.toolbar.tpl</li>
+							<li>templates/modern/li/organizer.calendar.weekview.tpl</li>
+							<li>templates/modern/li/organizer.sidebar.tpl</li>
+							<li>templates/modern/li/organizer.todo.edit.tpl</li>
+							<li>templates/modern/li/organizer.todo.list.tpl</li>
+							<li>templates/modern/li/organizer.todo.tpl</li>
+							<li>templates/modern/li/webdisk.folder.tpl</li>
+							<li>templates/modern/li/webdisk.sidebar.tpl</li>
+							<li>templates/modern/style/loggedin.css</li>
+							<li>webdisk.php</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.3.0-Beta3 &raquo; b1gMail 7.3.0-Beta4</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1151">#1151</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1154">#1154</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1182">#1182</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1183">#1183</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Enforce double altmail/cellphone check in user profile settings (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1179">#1179</a>)</li>
+							<li>User area JavaScripts splitted and compressed (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1184">#1184</a>)</li>
+							<li>Preparation for new user software package (b1gMail Toolbox, implements/resolves <a target="_blank" href="http://board.b1g.de/project.php?issueid=1100">#1100</a> and <a target="_blank" href="http://board.b1g.de/project.php?issueid=1138">#1138</a>)</li>
+							<li>Improved user area performance</li>
+							<li>Selection of multiple Webdisk items</li>
+							<li>Drag&amp;Drop of Webdisk items into left folder list</li>
+							<li>Preparation for user ID transfer to b1gMailServer when sending emails</li>
+							<li>Default calendar view mode setting in ACP</li>
+							<li>Sort mails by date in search results</li>
+							<li>Common improvements and bug fixes</li>
+						</ul>
+					</li>
+
+					<li>Updated / added files:
+						<ul>
+							<li>admin/groups.php</li>
+							<li>admin/newsletter.php</li>
+							<li>admin/prefs.common.php</li>
+							<li>admin/templates/frames/menu.tpl</li>
+							<li>admin/templates/groups.edit.tpl</li>
+							<li>admin/templates/images/add32.png</li>
+							<li>admin/templates/images/branding32.png</li>
+							<li>admin/templates/images/release.png</li>
+							<li>admin/templates/images/release32.png</li>
+							<li>admin/templates/images/software32.png</li>
+							<li>admin/templates/images/test32.png</li>
+							<li>admin/templates/images/toolbox.png</li>
+							<li>admin/templates/images/toolbox32.png</li>
+							<li>admin/templates/js/common.js</li>
+							<li>admin/templates/prefs.common.tpl</li>
+							<li>admin/templates/prefs.languages.texts.tpl</li>
+							<li>admin/templates/toolbox.versions.edit.tpl</li>
+							<li>admin/templates/toolbox.versions.error.tpl</li>
+							<li>admin/templates/toolbox.versions.release.tpl</li>
+							<li>admin/templates/toolbox.versions.tpl</li>
+							<li>admin/toolbox.php</li>
+							<li>clientlang.php</li>
+							<li>clientlib/autocomplete.js</li>
+							<li>clientlib/dndupload.js</li>
+							<li>clientlib/dragcontainer.js</li>
+							<li>clientlib/overlay.js</li>
+							<li>clientlib/share.js</li>
+							<li>clientlib/wysiwyg.js</li>
+							<li>email.compose.php</li>
+							<li>email.folders.php</li>
+							<li>email.php</li>
+							<li>email.read.php</li>
+							<li>index.php</li>
+							<li>interface/clientapi.php</li>
+							<li>interface/httpmail.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>m/main.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>organizer.calendar.php</li>
+							<li>organizer.notes.php</li>
+							<li>organizer.php</li>
+							<li>organizer.todo.php</li>
+							<li>plugins/search.plugin.php</li>
+							<li>prefs.php</li>
+							<li>res/toolbox/applogo.png</li>
+							<li>res/toolbox/wizard-head.png</li>
+							<li>res/toolbox/wizard-left.png</li>
+							<li>serverlib/admin.inc.php</li>
+							<li>serverlib/calendar.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/http.class.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mail.class.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailbuilder.class.php</li>
+							<li>serverlib/mailprocessor.class.php</li>
+							<li>serverlib/mailthreader.class.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/sendmail.class.php</li>
+							<li>serverlib/smtp.class.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/toolbox.config.php</li>
+							<li>serverlib/toolinterface.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/webdisk.class.php</li>
+							<li>sms.php</li>
+							<li>templates/modern/images/li/drag_wdfile.png</li>
+							<li>templates/modern/images/li/drag_wdfolder.png</li>
+							<li>templates/modern/images/li/drag_wditems.png</li>
+							<li>templates/modern/images/li/os_mac.png</li>
+							<li>templates/modern/images/li/os_win.png</li>
+							<li>templates/modern/js/common.js</li>
+							<li>templates/modern/js/dialog.js</li>
+							<li>templates/modern/js/email.js</li>
+							<li>templates/modern/js/loggedin.js</li>
+							<li>templates/modern/js/notloggedin.js</li>
+							<li>templates/modern/js/organizer.js</li>
+							<li>templates/modern/js/prefs.js</li>
+							<li>templates/modern/js/sms.js</li>
+							<li>templates/modern/js/webdisk.js</li>
+							<li>templates/modern/li/email.compose.tpl</li>
+							<li>templates/modern/li/email.folder.contents.narrow.tpl</li>
+							<li>templates/modern/li/email.folder.viewoptions.tpl</li>
+							<li>templates/modern/li/email.folders.conditions.tpl</li>
+							<li>templates/modern/li/index.tpl</li>
+							<li>templates/modern/li/organizer.calendar.dayview.view.tpl</li>
+							<li>templates/modern/li/prefs.filters.actions.tpl</li>
+							<li>templates/modern/li/prefs.filters.conditions.tpl</li>
+							<li>templates/modern/li/prefs.software.tpl</li>
+							<li>templates/modern/li/webdisk.folder.tpl</li>
+							<li>templates/modern/li/webdisk.folderbar.tpl</li>
+							<li>templates/modern/li/webdisk.sidebar.tpl</li>
+							<li>templates/modern/style/loggedin.css</li>
+							<li>webdisk.php</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.3.0-Beta2 &raquo; b1gMail 7.3.0-Beta3</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1131">#1131</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1134">#1134</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1135">#1135</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1144">#1144</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Newsletter: Country selection (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1080">#1080</a>)</li>
+							<li>Visibility of profile fields (signup / logged in) configurable (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1089">#1089</a>)</li>
+							<li>User can request re-sending of activation code by email/SMS (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1101">#1101</a>)</li>
+							<li>Better error message when alternative email address entered at signup is blocked (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1132">#1132</a>)</li>
+							<li>New profile field type: date (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1139">#1139</a>)</li>
+							<li>Run cron.php using AJAX and not using &lt;img&gt;-Tag (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1143">#1143</a>)</li>
+							<li>Email Drag&amp;Drop in Webkit browsers</li>
+							<li>Started webdisk enhancement (work in progress, some features still missing)</li>
+						</ul>
+					</li>
+
+					<li>Updated / added files:
+						<ul>
+							<li>admin/newsletter.php</li>
+							<li>admin/prefs.common.php</li>
+							<li>admin/prefs.languages.php</li>
+							<li>admin/prefs.profilefields.php</li>
+							<li>admin/templates/js/common.js</li>
+							<li>admin/templates/newsletter.tpl</li>
+							<li>admin/templates/prefs.profilefields.edit.tpl</li>
+							<li>admin/templates/prefs.profilefields.tpl</li>
+							<li>admin/templates/prefs.signup.tpl</li>
+							<li>admin/templates/users.create.tpl</li>
+							<li>admin/users.php</li>
+							<li>clientlib/wysiwyg.js</li>
+							<li>index.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>m/deref.php</li>
+							<li>prefs.php</li>
+							<li>serverlib/admin.inc.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/sms.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>serverlib/webdisk.class.php</li>
+							<li>templates/modern/images/li/webdisk_folder_shared.png</li>
+							<li>templates/modern/js/common.js</li>
+							<li>templates/modern/js/loggedin.js</li>
+							<li>templates/modern/li/email.folder.contents.narrow.tpl</li>
+							<li>templates/modern/li/email.folder.contents.tpl</li>
+							<li>templates/modern/li/email.preview.tpl</li>
+							<li>templates/modern/li/index.tpl</li>
+							<li>templates/modern/li/prefs.contact.tpl</li>
+							<li>templates/modern/li/webdisk.folder.tpl</li>
+							<li>templates/modern/li/webdisk.folderbar.tpl</li>
+							<li>templates/modern/li/webdisk.folderlist.tpl</li>
+							<li>templates/modern/li/webdisk.sidebar.tpl</li>
+							<li>templates/modern/li/webdisk.toolbar.tpl</li>
+							<li>templates/modern/nli/index.tpl</li>
+							<li>templates/modern/nli/login.smsvalidation.tpl</li>
+							<li>templates/modern/nli/signup.tpl</li>
+							<li>templates/modern/style/dtree.css</li>
+							<li>templates/modern/style/loggedin.css</li>
+							<li>webdisk.php</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.3.0-Beta1 &raquo; b1gMail 7.3.0-Beta2</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1109">#1109</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1117">#1117</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1121">#1121</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1122">#1122</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=1127">#1127</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Enhanced newsletter function (<a target="_blank" href="http://board.b1g.de/project.php?issueid=483">#483</a>)</li>
+							<li>Newsletter opt-out permission is now group-wise (<a target="_blank" href="http://board.b1g.de/project.php?issueid=822">#822</a>)</li>
+							<li>Send Webdisk share link via email (<a target="_blank" href="http://board.b1g.de/project.php?issueid=995">#995</a>)</li>
+							<li>Do not block system mails by user filter (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1045">#1045</a>)</li>
+							<li>Re-send signup validation code by email / SMS (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1101">#1101</a>, <a target="_blank" href="http://board.b1g.de/project.php?issueid=1076">#1076</a>)</li>
+							<li>Plugin pause function (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1085">#1085</a>)</li>
+							<li>Mobile URL to b1gMail configurable (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1123">#1123</a>)</li>
+							<li>Move emails using Drag&amp;Drop (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1125">#1125</a>)</li>
+							<li>Upload attachments using Drag&amp;Drop (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1126">#1126</a>)</li>
+							<li>Delete single mail without folder refresh (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1128">#1128</a>)</li>
+							<li>Remember sizer positions (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1129">#1129</a>)</li>
+							<li>Quick action buttons in email preview (<a target="_blank" href="http://board.b1g.de/project.php?issueid=1130">#1130</a>)</li>
+						</ul>
+					</li>
+
+					<li>Updated / added files:
+						<ul>
+							<li>admin/groups.php</li>
+							<li>admin/newsletter.php</li>
+							<li>admin/plugins.php</li>
+							<li>admin/prefs.common.php</li>
+							<li>admin/templates/groups.edit.tpl</li>
+							<li>admin/templates/js/common.js</li>
+							<li>admin/templates/newsletter.templates.edit.tpl</li>
+							<li>admin/templates/newsletter.templates.tpl</li>
+							<li>admin/templates/newsletter.tpl</li>
+							<li>admin/templates/plugins.list.tpl</li>
+							<li>admin/templates/prefs.common.tpl</li>
+							<li>admin/templates/users.edit.tpl</li>
+							<li>admin/users.php</li>
+							<li>admin/welcome.php</li>
+							<li>clientlib/dndupload.js</li>
+							<li>email.compose.php</li>
+							<li>email.php</li>
+							<li>index.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>m/index.php</li>
+							<li>prefs.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/sms.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>templates/modern/images/li/drag_email.png</li>
+							<li>templates/modern/images/li/drag_emails.png</li>
+							<li>templates/modern/js/common.js</li>
+							<li>templates/modern/js/loggedin.js</li>
+							<li>templates/modern/li/email.compose.tpl</li>
+							<li>templates/modern/li/email.folder.contents.narrow.tpl</li>
+							<li>templates/modern/li/email.folder.contents.tpl</li>
+							<li>templates/modern/li/email.folder.tpl</li>
+							<li>templates/modern/li/email.folderlist.tpl</li>
+							<li>templates/modern/li/email.preview.tpl</li>
+							<li>templates/modern/li/email.sidebar.tpl</li>
+							<li>templates/modern/li/email.toolbar.tpl</li>
+							<li>templates/modern/li/webdisk.folder.tpl</li>
+							<li>templates/modern/m/folders.tpl</li>
+							<li>templates/modern/nli/index.tpl</li>
+							<li>templates/modern/nli/signup.tpl</li>
+							<li>templates/modern/style/loggedin.css</li>
+							<li>webdisk.php</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.2.0 &raquo; b1gMail 7.3.0-Beta1</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=838">#838</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=874">#874</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=904">#904</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=908">#908</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=927">#927</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=935">#935</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=951">#951</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=964">#964</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Modernized user GUI</li>
+							<li>Modernized administrator GUI</li>
+							<li>Multiple administrator accounts</li>
+							<li>Salted user and administrator passwords</li>
+							<li>Advanced domains administration</li>
+							<li>Advanced template administration</li>
+							<li>Addressbook groups are now selectable from the addressbook overlay</li>
+							<li>Attachment reminder</li>
+							<li>Redirection to mobile interface when using mobile devices</li>
+							<li>Widgets/preferences sorting</li>
+							<li>Email notes</li>
+							<li>b1gMailStore and SyncML preparations</li>
+							<li>Common improvements</li>
+						</ul>
+					</li>
+
+
+					<li>Updated / added files:
+						<ul>
+							<li>admin/activity.php</li>
+							<li>admin/admins.php</li>
+							<li>admin/backup.php</li>
+							<li>admin/groups.php</li>
+							<li>admin/index.php</li>
+							<li>admin/logs.php</li>
+							<li>admin/main.php</li>
+							<li>admin/maintenance.php</li>
+							<li>admin/newsletter.php</li>
+							<li>admin/optimize.php</li>
+							<li>admin/payments.php</li>
+							<li>admin/plugin.page.php</li>
+							<li>admin/plugins.php</li>
+							<li>admin/prefs.ads.php</li>
+							<li>admin/prefs.common.php</li>
+							<li>admin/prefs.countries.php</li>
+							<li>admin/prefs.coupons.php</li>
+							<li>admin/prefs.email.php</li>
+							<li>admin/prefs.extensions.php</li>
+							<li>admin/prefs.faq.php</li>
+							<li>admin/prefs.languages.php</li>
+							<li>admin/prefs.payments.php</li>
+							<li>admin/prefs.profilefields.php</li>
+							<li>admin/prefs.recvrules.php</li>
+							<li>admin/prefs.sms.php</li>
+							<li>admin/prefs.templates.php</li>
+							<li>admin/prefs.webdisk.php</li>
+							<li>admin/prefs.widgetlayouts.php</li>
+							<li>admin/stats.php</li>
+							<li>admin/templates/about.tpl</li>
+							<li>admin/templates/activity.list.tpl</li>
+							<li>admin/templates/admins.account.tpl</li>
+							<li>admin/templates/admins.admins.tpl</li>
+							<li>admin/templates/admins.edit.tpl</li>
+							<li>admin/templates/backup.create.tpl</li>
+							<li>admin/templates/backup.tpl</li>
+							<li>admin/templates/cache/dummy</li>
+							<li>admin/templates/frames/header.tpl</li>
+							<li>admin/templates/frames/menu.tpl</li>
+							<li>admin/templates/frames/title.tpl</li>
+							<li>admin/templates/groups.delete.tpl</li>
+							<li>admin/templates/groups.edit.tpl</li>
+							<li>admin/templates/groups.list.tpl</li>
+							<li>admin/templates/images/about_logo.gif</li>
+							<li>admin/templates/images/about_logo.png</li>
+							<li>admin/templates/images/activity.png</li>
+							<li>admin/templates/images/activity32.png</li>
+							<li>admin/templates/images/ad.png</li>
+							<li>admin/templates/images/ad32.png</li>
+							<li>admin/templates/images/admin_logo.png</li>
+							<li>admin/templates/images/alias.png</li>
+							<li>admin/templates/images/antispam.png</li>
+							<li>admin/templates/images/antispam_bayes.png</li>
+							<li>admin/templates/images/antispam_dnsbl.png</li>
+							<li>admin/templates/images/antivirus.png</li>
+							<li>admin/templates/images/archiving.png</li>
+							<li>admin/templates/images/b1gsoftware.png</li>
+							<li>admin/templates/images/backup32.png</li>
+							<li>admin/templates/images/cache.png</li>
+							<li>admin/templates/images/calendar.png</li>
+							<li>admin/templates/images/cert32.png</li>
+							<li>admin/templates/images/cert_expired.png</li>
+							<li>admin/templates/images/cert_export.png</li>
+							<li>admin/templates/images/cert_ok.png</li>
+							<li>admin/templates/images/certadd32.png</li>
+							<li>admin/templates/images/checkbox.png</li>
+							<li>admin/templates/images/contract.gif</li>
+							<li>admin/templates/images/country.png</li>
+							<li>admin/templates/images/country32.png</li>
+							<li>admin/templates/images/country_add.png</li>
+							<li>admin/templates/images/coupon.png</li>
+							<li>admin/templates/images/coupon32.png</li>
+							<li>admin/templates/images/crypt.gif</li>
+							<li>admin/templates/images/db_optimize.png</li>
+							<li>admin/templates/images/db_repair.png</li>
+							<li>admin/templates/images/db_struct.png</li>
+							<li>admin/templates/images/db_table.png</li>
+							<li>admin/templates/images/debug.png</li>
+							<li>admin/templates/images/delete.png</li>
+							<li>admin/templates/images/domain.png</li>
+							<li>admin/templates/images/domain32.png</li>
+							<li>admin/templates/images/dot.png</li>
+							<li>admin/templates/images/edit.png</li>
+							<li>admin/templates/images/error.png</li>
+							<li>admin/templates/images/error32.png</li>
+							<li>admin/templates/images/expand.gif</li>
+							<li>admin/templates/images/extension.png</li>
+							<li>admin/templates/images/extension_add.png</li>
+							<li>admin/templates/images/faq.png</li>
+							<li>admin/templates/images/faq32.png</li>
+							<li>admin/templates/images/fetch.png</li>
+							<li>admin/templates/images/field.png</li>
+							<li>admin/templates/images/field32.png</li>
+							<li>admin/templates/images/file.png</li>
+							<li>admin/templates/images/filetype.png</li>
+							<li>admin/templates/images/filter.png</li>
+							<li>admin/templates/images/foot_bg.png</li>
+							<li>admin/templates/images/gateway.png</li>
+							<li>admin/templates/images/gateway32.png</li>
+							<li>admin/templates/images/go.png</li>
+							<li>admin/templates/images/group32.png</li>
+							<li>admin/templates/images/group_add32.png</li>
+							<li>admin/templates/images/head_bg.png</li>
+							<li>admin/templates/images/header_bg.png</li>
+							<li>admin/templates/images/help.png</li>
+							<li>admin/templates/images/ico_accentries.png</li>
+							<li>admin/templates/images/ico_b1gmail.png</li>
+							<li>admin/templates/images/ico_data.png</li>
+							<li>admin/templates/images/ico_disk.png</li>
+							<li>admin/templates/images/ico_download.png</li>
+							<li>admin/templates/images/ico_email.png</li>
+							<li>admin/templates/images/ico_group.png</li>
+							<li>admin/templates/images/ico_group_default.png</li>
+							<li>admin/templates/images/ico_license.png</li>
+							<li>admin/templates/images/ico_pay_banktransfer.png</li>
+							<li>admin/templates/images/ico_pay_paypal.png</li>
+							<li>admin/templates/images/ico_pay_su.png</li>
+							<li>admin/templates/images/ico_prefs_acp.png</li>
+							<li>admin/templates/images/ico_prefs_cache.png</li>
+							<li>admin/templates/images/ico_prefs_cmd.png</li>
+							<li>admin/templates/images/ico_prefs_common.png</li>
+							<li>admin/templates/images/ico_prefs_defaults.png</li>
+							<li>admin/templates/images/ico_prefs_email.png</li>
+							<li>admin/templates/images/ico_prefs_invoices.png</li>
+							<li>admin/templates/images/ico_prefs_login.png</li>
+							<li>admin/templates/images/ico_prefs_misc.png</li>
+							<li>admin/templates/images/ico_prefs_payments.png</li>
+							<li>admin/templates/images/ico_prefs_receiving.png</li>
+							<li>admin/templates/images/ico_prefs_sending.png</li>
+							<li>admin/templates/images/ico_prefs_signup.png</li>
+							<li>admin/templates/images/ico_prefs_ssl.png</li>
+							<li>admin/templates/images/ico_prefs_storage.png</li>
+							<li>admin/templates/images/ico_prefs_users.png</li>
+							<li>admin/templates/images/ico_prefs_validation.png</li>
+							<li>admin/templates/images/ico_sendmail.png</li>
+							<li>admin/templates/images/ico_system.png</li>
+							<li>admin/templates/images/ico_users.png</li>
+							<li>admin/templates/images/ico_workgroup.png</li>
+							<li>admin/templates/images/info.png</li>
+							<li>admin/templates/images/info32.png</li>
+							<li>admin/templates/images/lang32.png</li>
+							<li>admin/templates/images/language.png</li>
+							<li>admin/templates/images/license.png</li>
+							<li>admin/templates/images/load_16.gif</li>
+							<li>admin/templates/images/load_32.gif</li>
+							<li>admin/templates/images/lock.png</li>
+							<li>admin/templates/images/lockedusername.png</li>
+							<li>admin/templates/images/lockedusername32.png</li>
+							<li>admin/templates/images/login.png</li>
+							<li>admin/templates/images/login_shade_bottom.png</li>
+							<li>admin/templates/images/login_shade_left.png</li>
+							<li>admin/templates/images/login_shade_right.png</li>
+							<li>admin/templates/images/login_shade_top.png</li>
+							<li>admin/templates/images/login_table_head.png</li>
+							<li>admin/templates/images/logo_letter.gif</li>
+							<li>admin/templates/images/logo_letter.png</li>
+							<li>admin/templates/images/logo_text.gif</li>
+							<li>admin/templates/images/logo_text.png</li>
+							<li>admin/templates/images/logo_text_en.png</li>
+							<li>admin/templates/images/logout.png</li>
+							<li>admin/templates/images/menu_bg.png</li>
+							<li>admin/templates/images/menu_bg_active.png</li>
+							<li>admin/templates/images/menu_body_bg.png</li>
+							<li>admin/templates/images/mini_arrow_bottom.gif</li>
+							<li>admin/templates/images/mini_arrow_right.gif</li>
+							<li>admin/templates/images/mini_arrow_top.gif</li>
+							<li>admin/templates/images/newsletter.png</li>
+							<li>admin/templates/images/newsletter_prefs.png</li>
+							<li>admin/templates/images/no.png</li>
+							<li>admin/templates/images/ok.png</li>
+							<li>admin/templates/images/organizer32.png</li>
+							<li>admin/templates/images/orphans32.png</li>
+							<li>admin/templates/images/patchlevel.png</li>
+							<li>admin/templates/images/pb_bg.png</li>
+							<li>admin/templates/images/pb_value_bg.png</li>
+							<li>admin/templates/images/phpinfo.png</li>
+							<li>admin/templates/images/phpinfo32.png</li>
+							<li>admin/templates/images/phrases.png</li>
+							<li>admin/templates/images/phrases32.png</li>
+							<li>admin/templates/images/pixel.gif</li>
+							<li>admin/templates/images/plugin.png</li>
+							<li>admin/templates/images/plugin32.png</li>
+							<li>admin/templates/images/plugin_active.png</li>
+							<li>admin/templates/images/plugin_add.png</li>
+							<li>admin/templates/images/plugin_inactive.png</li>
+							<li>admin/templates/images/plugin_switch.png</li>
+							<li>admin/templates/images/prefs.png</li>
+							<li>admin/templates/images/recover.png</li>
+							<li>admin/templates/images/rule.png</li>
+							<li>admin/templates/images/rule32.png</li>
+							<li>admin/templates/images/rules_import.png</li>
+							<li>admin/templates/images/sig.png</li>
+							<li>admin/templates/images/sig_mal.png</li>
+							<li>admin/templates/images/sig_ok.png</li>
+							<li>admin/templates/images/sig_unknown.png</li>
+							<li>admin/templates/images/sort_asc.png</li>
+							<li>admin/templates/images/sort_desc.png</li>
+							<li>admin/templates/images/start32.png</li>
+							<li>admin/templates/images/stats.png</li>
+							<li>admin/templates/images/stats32.png</li>
+							<li>admin/templates/images/stats_bar.png</li>
+							<li>admin/templates/images/stats_grid.gif</li>
+							<li>admin/templates/images/tab_active_bg.png</li>
+							<li>admin/templates/images/tab_bg.png</li>
+							<li>admin/templates/images/tab_inactive_bg.png</li>
+							<li>admin/templates/images/tab_order32.png</li>
+							<li>admin/templates/images/tempfiles.png</li>
+							<li>admin/templates/images/template.png</li>
+							<li>admin/templates/images/template32.png</li>
+							<li>admin/templates/images/th_bg.png</li>
+							<li>admin/templates/images/trash.png</li>
+							<li>admin/templates/images/trash32.png</li>
+							<li>admin/templates/images/type.png</li>
+							<li>admin/templates/images/type32.png</li>
+							<li>admin/templates/images/type_std.png</li>
+							<li>admin/templates/images/unlock.png</li>
+							<li>admin/templates/images/update.png</li>
+							<li>admin/templates/images/updates.png</li>
+							<li>admin/templates/images/updates_pl.png</li>
+							<li>admin/templates/images/user_action.png</li>
+							<li>admin/templates/images/user_active.png</li>
+							<li>admin/templates/images/user_active32.png</li>
+							<li>admin/templates/images/user_deleted.png</li>
+							<li>admin/templates/images/user_inactive32.png</li>
+							<li>admin/templates/images/user_locked.png</li>
+							<li>admin/templates/images/user_notactivated.png</li>
+							<li>admin/templates/images/user_search.png</li>
+							<li>admin/templates/images/user_searchingfor.png</li>
+							<li>admin/templates/images/warning.png</li>
+							<li>admin/templates/images/warning32.png</li>
+							<li>admin/templates/images/wlayout_add.png</li>
+							<li>admin/templates/images/wlayout_add32.png</li>
+							<li>admin/templates/images/wlayout_reset32.png</li>
+							<li>admin/templates/images/workgroup32.png</li>
+							<li>admin/templates/images/workgroup_add32.png</li>
+							<li>admin/templates/images/yes.png</li>
+							<li>admin/templates/js/common.js</li>
+							<li>admin/templates/login.tpl</li>
+							<li>admin/templates/logs.archiving.tpl</li>
+							<li>admin/templates/logs.tpl</li>
+							<li>admin/templates/main.tpl</li>
+							<li>admin/templates/maintenance.inactive.tpl</li>
+							<li>admin/templates/maintenance.orphans.tpl</li>
+							<li>admin/templates/maintenance.pop3gateway.tpl</li>
+							<li>admin/templates/maintenance.trash.tpl</li>
+							<li>admin/templates/msg.tpl</li>
+							<li>admin/templates/newsletter.send.tpl</li>
+							<li>admin/templates/newsletter.tpl</li>
+							<li>admin/templates/optimize.cache.tpl</li>
+							<li>admin/templates/optimize.db.tpl</li>
+							<li>admin/templates/optimize.filesystem.tpl</li>
+							<li>admin/templates/page.tpl</li>
+							<li>admin/templates/payments.export.tpl</li>
+							<li>admin/templates/payments.list.tpl</li>
+							<li>admin/templates/plugin.install.info.tpl</li>
+							<li>admin/templates/plugin.install.signature.tpl</li>
+							<li>admin/templates/plugins.install.tpl</li>
+							<li>admin/templates/plugins.list.tpl</li>
+							<li>admin/templates/plugins.updates.tpl</li>
+							<li>admin/templates/prefs.ads.edit.tpl</li>
+							<li>admin/templates/prefs.ads.tpl</li>
+							<li>admin/templates/prefs.caching.tpl</li>
+							<li>admin/templates/prefs.common.tpl</li>
+							<li>admin/templates/prefs.countries.edit.tpl</li>
+							<li>admin/templates/prefs.countries.tpl</li>
+							<li>admin/templates/prefs.coupons.edit.tpl</li>
+							<li>admin/templates/prefs.coupons.tpl</li>
+							<li>admin/templates/prefs.domains.tpl</li>
+							<li>admin/templates/prefs.email.antispam.tpl</li>
+							<li>admin/templates/prefs.email.antivirus.tpl</li>
+							<li>admin/templates/prefs.email.common.tpl</li>
+							<li>admin/templates/prefs.email.receive.tpl</li>
+							<li>admin/templates/prefs.email.send.tpl</li>
+							<li>admin/templates/prefs.email.smime.ca.tpl</li>
+							<li>admin/templates/prefs.email.smime.tpl</li>
+							<li>admin/templates/prefs.extensions.edit.tpl</li>
+							<li>admin/templates/prefs.extensions.tpl</li>
+							<li>admin/templates/prefs.faq.edit.tpl</li>
+							<li>admin/templates/prefs.faq.tpl</li>
+							<li>admin/templates/prefs.languages.texts.tpl</li>
+							<li>admin/templates/prefs.languages.tpl</li>
+							<li>admin/templates/prefs.license.tpl</li>
+							<li>admin/templates/prefs.lockedusernames.tpl</li>
+							<li>admin/templates/prefs.payments.common.tpl</li>
+							<li>admin/templates/prefs.payments.invoices.tpl</li>
+							<li>admin/templates/prefs.profilefields.edit.tpl</li>
+							<li>admin/templates/prefs.profilefields.tpl</li>
+							<li>admin/templates/prefs.recvrules.edit.tpl</li>
+							<li>admin/templates/prefs.recvrules.tpl</li>
+							<li>admin/templates/prefs.signup.tpl</li>
+							<li>admin/templates/prefs.sms.common.tpl</li>
+							<li>admin/templates/prefs.sms.gateways.edit.tpl</li>
+							<li>admin/templates/prefs.sms.gateways.tpl</li>
+							<li>admin/templates/prefs.sms.types.edit.tpl</li>
+							<li>admin/templates/prefs.sms.types.tpl</li>
+							<li>admin/templates/prefs.taborder.tpl</li>
+							<li>admin/templates/prefs.templates.prefs.tpl</li>
+							<li>admin/templates/prefs.templates.tpl</li>
+							<li>admin/templates/prefs.webdisk.common.tpl</li>
+							<li>admin/templates/prefs.widgetlayouts.addremove.tpl</li>
+							<li>admin/templates/prefs.widgetlayouts.layout.tpl</li>
+							<li>admin/templates/stats.usage.tpl</li>
+							<li>admin/templates/stats.view.tpl</li>
+							<li>admin/templates/style/common.css</li>
+							<li>admin/templates/updates.prefs.tpl</li>
+							<li>admin/templates/updates.tpl</li>
+							<li>admin/templates/users.contacthistory.tpl</li>
+							<li>admin/templates/users.create.tpl</li>
+							<li>admin/templates/users.edit.tpl</li>
+							<li>admin/templates/users.list.tpl</li>
+							<li>admin/templates/users.search.tpl</li>
+							<li>admin/templates/welcome.phpinfo.tpl</li>
+							<li>admin/templates/welcome.tpl</li>
+							<li>admin/templates/workgroups.edit.tpl</li>
+							<li>admin/templates/workgroups.list.tpl</li>
+							<li>admin/updates.php</li>
+							<li>admin/users.php</li>
+							<li>admin/welcome.php</li>
+							<li>admin/workgroups.php</li>
+							<li>clientlang.php</li>
+							<li>clientlib/IE9.js</li>
+							<li>clientlib/blank.gif</li>
+							<li>clientlib/dndupload.js</li>
+							<li>clientlib/dragcontainer.js</li>
+							<li>clientlib/overlay.js</li>
+							<li>clientlib/wysiwyg.js</li>
+							<li>email.compose.php</li>
+							<li>email.folders.php</li>
+							<li>email.php</li>
+							<li>email.read.php</li>
+							<li>index.php</li>
+							<li>interface/httpmail.php</li>
+							<li>interface/ipn.php</li>
+							<li>interface/pipe-x.php</li>
+							<li>interface/pipe.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>m/index.php</li>
+							<li>m/main.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>organizer.calendar.php</li>
+							<li>plugins/search.plugin.php</li>
+							<li>plugins/templates/images/widget_dnd_inactive.gif</li>
+							<li>plugins/templates/widget.email.tpl</li>
+							<li>plugins/widget.base.php</li>
+							<li>prefs.php</li>
+							<li>serverlib/3rdparty/smarty/Config_File.class.php</li>
+							<li>serverlib/3rdparty/smarty/Smarty.class.php</li>
+							<li>serverlib/3rdparty/smarty/Smarty_Compiler.class.php</li>
+							<li>serverlib/3rdparty/smarty/debug.tpl</li>
+							<li>serverlib/3rdparty/smarty/internals/core.assemble_plugin_filepath.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.assign_smarty_interface.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.create_dir_structure.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.display_debug_console.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.get_include_path.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.get_microtime.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.get_php_resource.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.is_secure.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.is_trusted.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.load_plugins.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.load_resource_plugin.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.process_cached_inserts.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.process_compiled_include.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.read_cache_file.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.rm_auto.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.rmdir.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.run_insert_handler.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.smarty_include_php.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.write_cache_file.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.write_compiled_include.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.write_compiled_resource.php</li>
+							<li>serverlib/3rdparty/smarty/internals/core.write_file.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/block.textformat.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/compiler.assign.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.assign_debug_info.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.config_load.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.counter.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.cycle.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.debug.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.eval.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.fetch.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.html_checkboxes.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.html_image.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.html_options.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.html_radios.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.html_select_date.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.html_select_time.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.html_table.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.mailto.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.math.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.popup.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/function.popup_init.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.capitalize.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.cat.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.count_characters.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.count_paragraphs.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.count_sentences.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.count_words.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.date_format.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.debug_print_var.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.default.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.escape.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.indent.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.lower.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.nl2br.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.regex_replace.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.replace.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.spacify.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.string_format.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.strip.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.strip_tags.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.truncate.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.upper.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/modifier.wordwrap.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/outputfilter.trimwhitespace.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/shared.escape_special_chars.php</li>
+							<li>serverlib/3rdparty/smarty/plugins/shared.make_timestamp.php</li>
+							<li>serverlib/addressbook.class.php</li>
+							<li>serverlib/admin.inc.php</li>
+							<li>serverlib/bmstoreclient.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/dashboard.class.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/email.top.php</li>
+							<li>serverlib/filtereval.class.php</li>
+							<li>serverlib/filters.inc.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mail.class.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailbuilder.class.php</li>
+							<li>serverlib/mailthreader.class.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/pop3gateway.class.php</li>
+							<li>serverlib/safecode.class.php</li>
+							<li>serverlib/smime.class.php</li>
+							<li>serverlib/sms.class.php</li>
+							<li>serverlib/string.inc.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/toolinterface.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/userpop3gateway.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>sms.php</li>
+							<li>start.php</li>
+							<li>templates/default/li/email.folderlist.tpl</li>
+							<li>templates/modern/cache/dummy</li>
+							<li>templates/modern/images/contract.gif</li>
+							<li>templates/modern/images/editor/bold.gif</li>
+							<li>templates/modern/images/editor/color.gif</li>
+							<li>templates/modern/images/editor/hr.gif</li>
+							<li>templates/modern/images/editor/indent.gif</li>
+							<li>templates/modern/images/editor/italic.gif</li>
+							<li>templates/modern/images/editor/justifyblock.gif</li>
+							<li>templates/modern/images/editor/justifycenter.gif</li>
+							<li>templates/modern/images/editor/justifyleft.gif</li>
+							<li>templates/modern/images/editor/justifyright.gif</li>
+							<li>templates/modern/images/editor/ol.gif</li>
+							<li>templates/modern/images/editor/outdent.gif</li>
+							<li>templates/modern/images/editor/pixel.gif</li>
+							<li>templates/modern/images/editor/redo.gif</li>
+							<li>templates/modern/images/editor/smiley.gif</li>
+							<li>templates/modern/images/editor/strikethrough.gif</li>
+							<li>templates/modern/images/editor/ul.gif</li>
+							<li>templates/modern/images/editor/underlined.gif</li>
+							<li>templates/modern/images/editor/undo.gif</li>
+							<li>templates/modern/images/expand.gif</li>
+							<li>templates/modern/images/li/addr48.png</li>
+							<li>templates/modern/images/li/addr_common.png</li>
+							<li>templates/modern/images/li/addr_misc.png</li>
+							<li>templates/modern/images/li/addr_priv.png</li>
+							<li>templates/modern/images/li/addr_work.png</li>
+							<li>templates/modern/images/li/asc.gif</li>
+							<li>templates/modern/images/li/bar.png</li>
+							<li>templates/modern/images/li/bayesborder_bg.png</li>
+							<li>templates/modern/images/li/box_bg.gif</li>
+							<li>templates/modern/images/li/btn_minus.gif</li>
+							<li>templates/modern/images/li/btn_next.png</li>
+							<li>templates/modern/images/li/btn_plus.gif</li>
+							<li>templates/modern/images/li/btn_prev.png</li>
+							<li>templates/modern/images/li/btn_raquo.gif</li>
+							<li>templates/modern/images/li/btn_search.gif</li>
+							<li>templates/modern/images/li/buttonbox_bg.gif</li>
+							<li>templates/modern/images/li/complete_contact.png</li>
+							<li>templates/modern/images/li/compose_bg.png</li>
+							<li>templates/modern/images/li/desc.gif</li>
+							<li>templates/modern/images/li/dotdotdot.png</li>
+							<li>templates/modern/images/li/dragbar_bg.png</li>
+							<li>templates/modern/images/li/dragbar_prefs.png</li>
+							<li>templates/modern/images/li/error.png</li>
+							<li>templates/modern/images/li/export_vcf.png</li>
+							<li>templates/modern/images/li/folder_actions.png</li>
+							<li>templates/modern/images/li/folder_empty.png</li>
+							<li>templates/modern/images/li/grey_bg.png</li>
+							<li>templates/modern/images/li/head_bg.png</li>
+							<li>templates/modern/images/li/ico_add.png</li>
+							<li>templates/modern/images/li/ico_addressbook.png</li>
+							<li>templates/modern/images/li/ico_aliases.png</li>
+							<li>templates/modern/images/li/ico_antispam.png</li>
+							<li>templates/modern/images/li/ico_antivirus.png</li>
+							<li>templates/modern/images/li/ico_attachment.png</li>
+							<li>templates/modern/images/li/ico_autoresponder.png</li>
+							<li>templates/modern/images/li/ico_btn_dropdown.png</li>
+							<li>templates/modern/images/li/ico_calendar.png</li>
+							<li>templates/modern/images/li/ico_calendar_day.png</li>
+							<li>templates/modern/images/li/ico_calendar_groups.png</li>
+							<li>templates/modern/images/li/ico_calendar_repeating.png</li>
+							<li>templates/modern/images/li/ico_cert_import.png</li>
+							<li>templates/modern/images/li/ico_cert_issue.png</li>
+							<li>templates/modern/images/li/ico_certificate.png</li>
+							<li>templates/modern/images/li/ico_certificate32.png</li>
+							<li>templates/modern/images/li/ico_common.png</li>
+							<li>templates/modern/images/li/ico_composesms.gif</li>
+							<li>templates/modern/images/li/ico_composesms.png</li>
+							<li>templates/modern/images/li/ico_contact.png</li>
+							<li>templates/modern/images/li/ico_contact_groups.png</li>
+							<li>templates/modern/images/li/ico_copy.png</li>
+							<li>templates/modern/images/li/ico_coupons.png</li>
+							<li>templates/modern/images/li/ico_cut.png</li>
+							<li>templates/modern/images/li/ico_delete.png</li>
+							<li>templates/modern/images/li/ico_download.png</li>
+							<li>templates/modern/images/li/ico_edit.png</li>
+							<li>templates/modern/images/li/ico_email.png</li>
+							<li>templates/modern/images/li/ico_error.png</li>
+							<li>templates/modern/images/li/ico_export.png</li>
+							<li>templates/modern/images/li/ico_extpop3.png</li>
+							<li>templates/modern/images/li/ico_faq.png</li>
+							<li>templates/modern/images/li/ico_filters.png</li>
+							<li>templates/modern/images/li/ico_import.png</li>
+							<li>templates/modern/images/li/ico_keyring.png</li>
+							<li>templates/modern/images/li/ico_logout.png</li>
+							<li>templates/modern/images/li/ico_membership.png</li>
+							<li>templates/modern/images/li/ico_menu.png</li>
+							<li>templates/modern/images/li/ico_move.png</li>
+							<li>templates/modern/images/li/ico_notes.png</li>
+							<li>templates/modern/images/li/ico_ok.png</li>
+							<li>templates/modern/images/li/ico_orders.png</li>
+							<li>templates/modern/images/li/ico_overview.png</li>
+							<li>templates/modern/images/li/ico_paste.png</li>
+							<li>templates/modern/images/li/ico_pay.png</li>
+							<li>templates/modern/images/li/ico_rename.png</li>
+							<li>templates/modern/images/li/ico_search.png</li>
+							<li>templates/modern/images/li/ico_share.png</li>
+							<li>templates/modern/images/li/ico_signatures.png</li>
+							<li>templates/modern/images/li/ico_smsoutbox.gif</li>
+							<li>templates/modern/images/li/ico_smsoutbox.png</li>
+							<li>templates/modern/images/li/ico_software.png</li>
+							<li>templates/modern/images/li/ico_todo.png</li>
+							<li>templates/modern/images/li/ico_view.png</li>
+							<li>templates/modern/images/li/ico_zip.png</li>
+							<li>templates/modern/images/li/import_vcf.png</li>
+							<li>templates/modern/images/li/infected.png</li>
+							<li>templates/modern/images/li/list_bg.png</li>
+							<li>templates/modern/images/li/logo.png</li>
+							<li>templates/modern/images/li/mail_cert.png</li>
+							<li>templates/modern/images/li/mail_confirm.png</li>
+							<li>templates/modern/images/li/mail_delete.png</li>
+							<li>templates/modern/images/li/mail_forward.png</li>
+							<li>templates/modern/images/li/mail_markread.png</li>
+							<li>templates/modern/images/li/mail_markunread.png</li>
+							<li>templates/modern/images/li/mail_print.png</li>
+							<li>templates/modern/images/li/mail_read.png</li>
+							<li>templates/modern/images/li/mail_redirect.png</li>
+							<li>templates/modern/images/li/mail_reply.gif</li>
+							<li>templates/modern/images/li/mail_reply.png</li>
+							<li>templates/modern/images/li/mail_replyall.gif</li>
+							<li>templates/modern/images/li/mail_replyall.png</li>
+							<li>templates/modern/images/li/mail_source.png</li>
+							<li>templates/modern/images/li/mailarrow_down.gif</li>
+							<li>templates/modern/images/li/mailcolors.png</li>
+							<li>templates/modern/images/li/mailico_answered.gif</li>
+							<li>templates/modern/images/li/mailico_attachment.gif</li>
+							<li>templates/modern/images/li/mailico_done.gif</li>
+							<li>templates/modern/images/li/mailico_empty.gif</li>
+							<li>templates/modern/images/li/mailico_encrypted.png</li>
+							<li>templates/modern/images/li/mailico_encrypted_error.png</li>
+							<li>templates/modern/images/li/mailico_flagged.gif</li>
+							<li>templates/modern/images/li/mailico_forwarded.gif</li>
+							<li>templates/modern/images/li/mailico_high.gif</li>
+							<li>templates/modern/images/li/mailico_low.gif</li>
+							<li>templates/modern/images/li/mailico_signed_bad.png</li>
+							<li>templates/modern/images/li/mailico_signed_noverify.png</li>
+							<li>templates/modern/images/li/mailico_signed_ok.png</li>
+							<li>templates/modern/images/li/menu_ico_customize.png</li>
+							<li>templates/modern/images/li/menu_ico_drafts.png</li>
+							<li>templates/modern/images/li/menu_ico_folder.png</li>
+							<li>templates/modern/images/li/menu_ico_inbox.png</li>
+							<li>templates/modern/images/li/menu_ico_intellifolder.png</li>
+							<li>templates/modern/images/li/menu_ico_outbox.png</li>
+							<li>templates/modern/images/li/menu_ico_spam.png</li>
+							<li>templates/modern/images/li/menu_ico_start.png</li>
+							<li>templates/modern/images/li/menu_ico_trash.png</li>
+							<li>templates/modern/images/li/mini_arrow_bottom.gif</li>
+							<li>templates/modern/images/li/mini_arrow_right.gif</li>
+							<li>templates/modern/images/li/mini_arrow_top.gif</li>
+							<li>templates/modern/images/li/msg.png</li>
+							<li>templates/modern/images/li/msg_small.png</li>
+							<li>templates/modern/images/li/n_head_bg.png</li>
+							<li>templates/modern/images/li/n_head_bg_left.png</li>
+							<li>templates/modern/images/li/n_logo.png</li>
+							<li>templates/modern/images/li/n_menu_shade.png</li>
+							<li>templates/modern/images/li/n_shade.png</li>
+							<li>templates/modern/images/li/n_tab_bg.png</li>
+							<li>templates/modern/images/li/n_tab_bg_active.png</li>
+							<li>templates/modern/images/li/next.gif</li>
+							<li>templates/modern/images/li/no.png</li>
+							<li>templates/modern/images/li/no_picture.png</li>
+							<li>templates/modern/images/li/note.png</li>
+							<li>templates/modern/images/li/page_bg.png</li>
+							<li>templates/modern/images/li/page_bg_2.png</li>
+							<li>templates/modern/images/li/payments.png</li>
+							<li>templates/modern/images/li/pb_bg.png</li>
+							<li>templates/modern/images/li/pb_value_bg.png</li>
+							<li>templates/modern/images/li/pic_frame.gif</li>
+							<li>templates/modern/images/li/prefs_aliases.png</li>
+							<li>templates/modern/images/li/prefs_antispam.png</li>
+							<li>templates/modern/images/li/prefs_antivirus.png</li>
+							<li>templates/modern/images/li/prefs_autoresponder.png</li>
+							<li>templates/modern/images/li/prefs_common.png</li>
+							<li>templates/modern/images/li/prefs_contact.png</li>
+							<li>templates/modern/images/li/prefs_coupons.png</li>
+							<li>templates/modern/images/li/prefs_extpop3.png</li>
+							<li>templates/modern/images/li/prefs_faq.png</li>
+							<li>templates/modern/images/li/prefs_filters.png</li>
+							<li>templates/modern/images/li/prefs_keyring.png</li>
+							<li>templates/modern/images/li/prefs_membership.png</li>
+							<li>templates/modern/images/li/prefs_orders.png</li>
+							<li>templates/modern/images/li/prefs_signatures.png</li>
+							<li>templates/modern/images/li/prefs_software.png</li>
+							<li>templates/modern/images/li/prev.gif</li>
+							<li>templates/modern/images/li/prio_high.gif</li>
+							<li>templates/modern/images/li/prio_low.gif</li>
+							<li>templates/modern/images/li/prio_normal.gif</li>
+							<li>templates/modern/images/li/progressbar.gif</li>
+							<li>templates/modern/images/li/refresh.png</li>
+							<li>templates/modern/images/li/send_mail.png</li>
+							<li>templates/modern/images/li/spam.png</li>
+							<li>templates/modern/images/li/spam_question.png</li>
+							<li>templates/modern/images/li/status_bg.png</li>
+							<li>templates/modern/images/li/tab_active_bg.png</li>
+							<li>templates/modern/images/li/tab_ico_email.png</li>
+							<li>templates/modern/images/li/tab_ico_organizer.png</li>
+							<li>templates/modern/images/li/tab_ico_prefs.png</li>
+							<li>templates/modern/images/li/tab_ico_sms.gif</li>
+							<li>templates/modern/images/li/tab_ico_sms.png</li>
+							<li>templates/modern/images/li/tab_ico_start.png</li>
+							<li>templates/modern/images/li/tab_ico_webdisk.png</li>
+							<li>templates/modern/images/li/tb_sep.gif</li>
+							<li>templates/modern/images/li/tdcycle.png</li>
+							<li>templates/modern/images/li/toolbar_bg.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_active_email.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_active_organizer.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_active_prefs.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_active_sms.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_active_start.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_active_webdisk.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_email.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_organizer.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_prefs.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_sms.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_start.png</li>
+							<li>templates/modern/images/li/v2_tab_ico_webdisk.png</li>
+							<li>templates/modern/images/li/vcf.png</li>
+							<li>templates/modern/images/li/webdisk_file.png</li>
+							<li>templates/modern/images/li/webdisk_folder.png</li>
+							<li>templates/modern/images/li/wg_member.png</li>
+							<li>templates/modern/images/li/workgroup.png</li>
+							<li>templates/modern/images/li/yes.png</li>
+							<li>templates/modern/images/load_16.gif</li>
+							<li>templates/modern/images/load_32.gif</li>
+							<li>templates/modern/images/m/arrow.png</li>
+							<li>templates/modern/images/m/back_bg.png</li>
+							<li>templates/modern/images/m/back_bg2.png</li>
+							<li>templates/modern/images/m/button_bg.png</li>
+							<li>templates/modern/images/m/button_red_bg.png</li>
+							<li>templates/modern/images/m/checkmail.gif</li>
+							<li>templates/modern/images/m/dot.png</li>
+							<li>templates/modern/images/m/head_bg.png</li>
+							<li>templates/modern/images/m/ico_compose.png</li>
+							<li>templates/modern/images/m/ico_delete.png</li>
+							<li>templates/modern/images/m/ico_logout.png</li>
+							<li>templates/modern/images/m/ico_move.png</li>
+							<li>templates/modern/images/m/ico_reply.png</li>
+							<li>templates/modern/images/m/logo.gif</li>
+							<li>templates/modern/images/m/normal_bg.png</li>
+							<li>templates/modern/images/m/page_bg.png</li>
+							<li>templates/modern/images/m/sep_bg.png</li>
+							<li>templates/modern/images/main/address.gif</li>
+							<li>templates/modern/images/main/attachment.gif</li>
+							<li>templates/modern/images/main/available.gif</li>
+							<li>templates/modern/images/main/bg.png</li>
+							<li>templates/modern/images/main/code.gif</li>
+							<li>templates/modern/images/main/contact.gif</li>
+							<li>templates/modern/images/main/contact_common.gif</li>
+							<li>templates/modern/images/main/contact_misc.gif</li>
+							<li>templates/modern/images/main/contact_priv.gif</li>
+							<li>templates/modern/images/main/contact_work.gif</li>
+							<li>templates/modern/images/main/crypt.gif</li>
+							<li>templates/modern/images/main/faq.gif</li>
+							<li>templates/modern/images/main/imprint.gif</li>
+							<li>templates/modern/images/main/info.gif</li>
+							<li>templates/modern/images/main/ip.gif</li>
+							<li>templates/modern/images/main/js.gif</li>
+							<li>templates/modern/images/main/login.gif</li>
+							<li>templates/modern/images/main/logo.gif</li>
+							<li>templates/modern/images/main/lostpw.gif</li>
+							<li>templates/modern/images/main/mail.gif</li>
+							<li>templates/modern/images/main/maintenance.png</li>
+							<li>templates/modern/images/main/misc.gif</li>
+							<li>templates/modern/images/main/password.gif</li>
+							<li>templates/modern/images/main/safecode.gif</li>
+							<li>templates/modern/images/main/securebar.jpg</li>
+							<li>templates/modern/images/main/signup.gif</li>
+							<li>templates/modern/images/main/taken.gif</li>
+							<li>templates/modern/images/main/tos.gif</li>
+							<li>templates/modern/images/overlay.png</li>
+							<li>templates/modern/images/pixel.gif</li>
+							<li>templates/modern/images/share/arrow.png</li>
+							<li>templates/modern/images/share/share.png</li>
+							<li>templates/modern/images/share/th_bg.png</li>
+							<li>templates/modern/images/share/toolbar.png</li>
+							<li>templates/modern/info.php</li>
+							<li>templates/modern/js/common.js</li>
+							<li>templates/modern/js/dialog.js</li>
+							<li>templates/modern/js/loggedin.js</li>
+							<li>templates/modern/js/notloggedin.js</li>
+							<li>templates/modern/li/dialog.openfile.tpl</li>
+							<li>templates/modern/li/dialog.zipbrowser.tpl</li>
+							<li>templates/modern/li/email.addressmenu.tpl</li>
+							<li>templates/modern/li/email.compose.tpl</li>
+							<li>templates/modern/li/email.folder.contents.narrow.tpl</li>
+							<li>templates/modern/li/email.folder.contents.tpl</li>
+							<li>templates/modern/li/email.folder.tpl</li>
+							<li>templates/modern/li/email.folder.viewoptions.tpl</li>
+							<li>templates/modern/li/email.folderlist.tpl</li>
+							<li>templates/modern/li/email.folders.conditions.tpl</li>
+							<li>templates/modern/li/email.folders.edit.tpl</li>
+							<li>templates/modern/li/email.folders.editsys.tpl</li>
+							<li>templates/modern/li/email.folders.tpl</li>
+							<li>templates/modern/li/email.preview.tpl</li>
+							<li>templates/modern/li/email.print.tpl</li>
+							<li>templates/modern/li/email.read.inline.tpl</li>
+							<li>templates/modern/li/email.read.move.tpl</li>
+							<li>templates/modern/li/email.read.source.tpl</li>
+							<li>templates/modern/li/email.read.thread.tpl</li>
+							<li>templates/modern/li/email.read.tpl</li>
+							<li>templates/modern/li/email.sent.tpl</li>
+							<li>templates/modern/li/email.sidebar.tpl</li>
+							<li>templates/modern/li/email.toolbar.tpl</li>
+							<li>templates/modern/li/error.tpl</li>
+							<li>templates/modern/li/index.tpl</li>
+							<li>templates/modern/li/msg.tiny.tpl</li>
+							<li>templates/modern/li/msg.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.edit.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.editgroup.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.export.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.groups.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.import.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.importcsv.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.old.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.popup.attendees.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.popup.numbers.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.popup.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.selfcomplete.tpl</li>
+							<li>templates/modern/li/organizer.addressbook.tpl</li>
+							<li>templates/modern/li/organizer.calendar.dayview.tpl</li>
+							<li>templates/modern/li/organizer.calendar.dayview.view.tpl</li>
+							<li>templates/modern/li/organizer.calendar.edit.tpl</li>
+							<li>templates/modern/li/organizer.calendar.groups.edit.tpl</li>
+							<li>templates/modern/li/organizer.calendar.groups.tpl</li>
+							<li>templates/modern/li/organizer.calendar.monthview.tpl</li>
+							<li>templates/modern/li/organizer.calendar.showdate.tpl</li>
+							<li>templates/modern/li/organizer.calendar.toolbar.tpl</li>
+							<li>templates/modern/li/organizer.customize.tpl</li>
+							<li>templates/modern/li/organizer.notes.edit.tpl</li>
+							<li>templates/modern/li/organizer.notes.tpl</li>
+							<li>templates/modern/li/organizer.sidebar.tpl</li>
+							<li>templates/modern/li/organizer.start.tpl</li>
+							<li>templates/modern/li/organizer.todo.edit.tpl</li>
+							<li>templates/modern/li/organizer.todo.tpl</li>
+							<li>templates/modern/li/payment.form.tpl</li>
+							<li>templates/modern/li/payment.pay.tpl</li>
+							<li>templates/modern/li/prefs.aliases.add.tpl</li>
+							<li>templates/modern/li/prefs.aliases.tpl</li>
+							<li>templates/modern/li/prefs.antispam.tpl</li>
+							<li>templates/modern/li/prefs.antivirus.tpl</li>
+							<li>templates/modern/li/prefs.autoresponder.tpl</li>
+							<li>templates/modern/li/prefs.common.tpl</li>
+							<li>templates/modern/li/prefs.contact.tpl</li>
+							<li>templates/modern/li/prefs.coupons.tpl</li>
+							<li>templates/modern/li/prefs.extpop3.edit.tpl</li>
+							<li>templates/modern/li/prefs.extpop3.tpl</li>
+							<li>templates/modern/li/prefs.faq.tpl</li>
+							<li>templates/modern/li/prefs.filters.actions.tpl</li>
+							<li>templates/modern/li/prefs.filters.add.tpl</li>
+							<li>templates/modern/li/prefs.filters.conditions.tpl</li>
+							<li>templates/modern/li/prefs.filters.edit.tpl</li>
+							<li>templates/modern/li/prefs.filters.tpl</li>
+							<li>templates/modern/li/prefs.keyring.exportprivate.tpl</li>
+							<li>templates/modern/li/prefs.keyring.importprivate.tpl</li>
+							<li>templates/modern/li/prefs.keyring.issuecert.step1.tpl</li>
+							<li>templates/modern/li/prefs.keyring.issuecert.step2.tpl</li>
+							<li>templates/modern/li/prefs.keyring.showcert.tpl</li>
+							<li>templates/modern/li/prefs.keyring.tpl</li>
+							<li>templates/modern/li/prefs.membership.cancelaccount.tpl</li>
+							<li>templates/modern/li/prefs.membership.charge.tpl</li>
+							<li>templates/modern/li/prefs.membership.tpl</li>
+							<li>templates/modern/li/prefs.orders.invoice.tpl</li>
+							<li>templates/modern/li/prefs.orders.tpl</li>
+							<li>templates/modern/li/prefs.sidebar.tpl</li>
+							<li>templates/modern/li/prefs.signatures.edit.tpl</li>
+							<li>templates/modern/li/prefs.signatures.tpl</li>
+							<li>templates/modern/li/prefs.software.tpl</li>
+							<li>templates/modern/li/prefs.start.tpl</li>
+							<li>templates/modern/li/search.details.tpl</li>
+							<li>templates/modern/li/search.results.tpl</li>
+							<li>templates/modern/li/search.sidebar.tpl</li>
+							<li>templates/modern/li/sms.compose.tpl</li>
+							<li>templates/modern/li/sms.outbox.tpl</li>
+							<li>templates/modern/li/sms.sidebar.tpl</li>
+							<li>templates/modern/li/sms.toolbar.tpl</li>
+							<li>templates/modern/li/sms.validate.tpl</li>
+							<li>templates/modern/li/start.customize.tpl</li>
+							<li>templates/modern/li/start.page.tpl</li>
+							<li>templates/modern/li/start.sidebar.tpl</li>
+							<li>templates/modern/li/webdisk.dialog.content.tpl</li>
+							<li>templates/modern/li/webdisk.dialog.tpl</li>
+							<li>templates/modern/li/webdisk.extract.tpl</li>
+							<li>templates/modern/li/webdisk.folder.tpl</li>
+							<li>templates/modern/li/webdisk.share.tpl</li>
+							<li>templates/modern/li/webdisk.sidebar.tpl</li>
+							<li>templates/modern/li/webdisk.toolbar.tpl</li>
+							<li>templates/modern/li/webdisk.uploadresult.tpl</li>
+							<li>templates/modern/m/compose.tpl</li>
+							<li>templates/modern/m/folder.tpl</li>
+							<li>templates/modern/m/folders.tpl</li>
+							<li>templates/modern/m/index.tpl</li>
+							<li>templates/modern/m/login.tpl</li>
+							<li>templates/modern/m/message.tpl</li>
+							<li>templates/modern/m/movemail.tpl</li>
+							<li>templates/modern/m/read.tpl</li>
+							<li>templates/modern/nli/certmail.read.tpl</li>
+							<li>templates/modern/nli/contact.complete.tpl</li>
+							<li>templates/modern/nli/deref.tpl</li>
+							<li>templates/modern/nli/error.tpl</li>
+							<li>templates/modern/nli/faq.tpl</li>
+							<li>templates/modern/nli/imprint.tpl</li>
+							<li>templates/modern/nli/index.tpl</li>
+							<li>templates/modern/nli/login.smsvalidation.tpl</li>
+							<li>templates/modern/nli/login.tpl</li>
+							<li>templates/modern/nli/loginresult.tpl</li>
+							<li>templates/modern/nli/maintenance.tpl</li>
+							<li>templates/modern/nli/msg.tpl</li>
+							<li>templates/modern/nli/regdone.tpl</li>
+							<li>templates/modern/nli/signup.tpl</li>
+							<li>templates/modern/nli/tos.tpl</li>
+							<li>templates/modern/share/dialog.password.tpl</li>
+							<li>templates/modern/share/index.tpl</li>
+							<li>templates/modern/style/dialog.css</li>
+							<li>templates/modern/style/dtree.css</li>
+							<li>templates/modern/style/loggedin.css</li>
+							<li>templates/modern/style/m.css</li>
+							<li>templates/modern/style/notloggedin.css</li>
+							<li>templates/modern/style/print.css</li>
+							<li>templates/modern/style/share.css</li>
+							<li>webdisk.php</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.2.0-Beta3 &raquo; b1gMail 7.2.0</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=699">#699</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=856">#856</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=860">#860</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=862">#862</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=863">#863</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=865">#865</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=871">#871</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=873">#873</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Sender aliases can now be disabled</li>
+							<li>Date of last SMTP login (<a target="_blank" href="http://board.b1g.de/project.php?issueid=797">#797</a>)</li>
+							<li>Improved statistics (including <a target="_blank" href="http://board.b1g.de/project.php?issueid=815">#815</a>)</li>
+							<li>Email editor preferences (<a target="_blank" href="http://board.b1g.de/project.php?issueid=846">#846</a>)</li>
+							<li>Improves MAIL FROM setting</li>
+							<li>Common improvements</li>
+						</ul></li>
+
+					<li>Updated / added files:
+						<ul><li>admin/groups.php</li>
+							<li>admin/plugins.php</li>
+							<li>admin/stats.php</li>
+							<li>admin/templates/groups.edit.tpl</li>
+							<li>admin/templates/images/stats_bar.png</li>
+							<li>admin/templates/images/stats_grid.gif</li>
+							<li>admin/templates/prefs.payments.invoices.tpl</li>
+							<li>admin/templates/stats.view.tpl</li>
+							<li>admin/templates/style/common.css</li>
+							<li>admin/templates/users.edit.tpl</li>
+							<li>admin/templates/welcome.tpl</li>
+							<li>clientlib/wysiwyg.js</li>
+							<li>email.compose.php</li>
+							<li>email.php</li>
+							<li>interface/pipe.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>plugins/search.plugin.php</li>
+							<li>plugins/templates/search.plugin.prefs.tpl</li>
+							<li>prefs.php</li>
+							<li>search.php</li>
+							<li>serverlib/admin.inc.php</li>
+							<li>serverlib/barchart.class.php</li>
+							<li>serverlib/calendar.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/csv.class.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailbuilder.class.php</li>
+							<li>serverlib/mailparser.inc.php</li>
+							<li>serverlib/mailprocessor.class.php</li>
+							<li>serverlib/payment.class.php</li>
+							<li>serverlib/sendmail.class.php</li>
+							<li>serverlib/smtp.class.php</li>
+							<li>serverlib/toolinterface.class.php</li>
+							<li>serverlib/zip.class.php</li>
+							<li>templates/default/js/loggedin.js</li>
+							<li>templates/default/li/email.compose.tpl</li>
+							<li>templates/default/li/email.folder.tpl</li>
+							<li>templates/default/li/organizer.addressbook.importcsv.tpl</li>
+							<li>templates/default/li/organizer.addressbook.tpl</li>
+							<li>templates/default/li/organizer.calendar.edit.tpl</li>
+							<li>templates/default/li/prefs.aliases.add.tpl</li>
+							<li>templates/default/li/prefs.common.tpl</li>
+							<li>templates/default/li/search.details.tpl</li>
+							<li>templates/default/style/dialog.css</li>
+						</ul></li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.2.0-Beta2 &raquo; b1gMail 7.2.0-Beta3</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=825">#825</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=826">#826</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=835">#835</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=836">#836</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>MIME type guessing (<a target="_blank" href="http://board.b1g.de/project.php?issueid=765">#765</a>)</li>
+							<li>New plugin event handler (<a target="_blank" href="http://board.b1g.de/project.php?issueid=848">#848</a>)</li>
+							<li>Performance improvements in UTF-8 text handling</li>
+							<li>ZIP attachment viewer</li>
+							<li>Webdisk ZIP extraction</li>
+							<li>Flexible subject spans</li>
+							<li>Common UTF-8 improvements</li>
+							<li>Common improvements</li>
+						</ul></li>
+
+					<li>Updated / added files:
+						<ul><li>admin/prefs.common.php</li>
+							<li>admin/templates/prefs.common.tpl</li>
+							<li>admin/templates/users.create.tpl</li>
+							<li>admin/users.php</li>
+							<li>admin/welcome.php</li>
+							<li>email.php</li>
+							<li>email.read.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mail.class.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailparser.inc.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/pop3.class.php</li>
+							<li>serverlib/string.inc.php</li>
+							<li>serverlib/unzip.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>templates/default/images/li/dotdotdot.png</li>
+							<li>templates/default/images/li/ico_zip.png</li>
+							<li>templates/default/images/li/tdcycle.png</li>
+							<li>templates/default/js/common.js</li>
+							<li>templates/default/js/loggedin.js</li>
+							<li>templates/default/li/dialog.zipbrowser.tpl</li>
+							<li>templates/default/li/email.folder.tpl</li>
+							<li>templates/default/li/email.read.tpl</li>
+							<li>templates/default/li/sms.compose.tpl</li>
+							<li>templates/default/li/webdisk.extract.tpl</li>
+							<li>templates/default/li/webdisk.sidebar.tpl</li>
+							<li>templates/default/nli/index.tpl</li>
+							<li>templates/default/nli/login.tpl</li>
+							<li>templates/default/style/dialog.css</li>
+							<li>webdisk.php</li>
+						</ul></li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.2.0-Beta1 &raquo; b1gMail 7.2.0-Beta2</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=458">#458</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=540">#540</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=606">#606</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=619">#619</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=637">#637</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=642">#642</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=749">#749</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=754">#754</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=759">#759</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=761">#761</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=774">#774</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=779">#779</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=785">#785</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=798">#798</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=799">#799</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=801">#801</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Advanced SMS logging (<a target="_blank" href="http://board.b1g.de/project.php?issueid=755">#755</a>)</li>
+							<li>Salutation field (<a target="_blank" href="http://board.b1g.de/project.php?issueid=467">#467</a>)</li>
+							<li>Send button relabeled (<a target="_blank" href="http://board.b1g.de/project.php?issueid=602">#602</a>)</li>
+							<li>Payment / invoice interface (<a target="_blank" href="http://board.b1g.de/project.php?issueid=622">#622</a>)</li>
+							<li>Hide webdisk items starting with a '.' (<a target="_blank" href="http://board.b1g.de/project.php?issueid=645">#645</a>)</li>
+							<li>Check for duplicate cellphone numbers (<a target="_blank" href="http://board.b1g.de/project.php?issueid=688">#688</a>)</li>
+							<li>Max recipients count moved to group settings (<a target="_blank" href="http://board.b1g.de/project.php?issueid=695">#695</a>)</li>
+							<li>Improved search function with search details page and attachment search</li>
+							<li>Template hooks</li>
+							<li>Improved folder list</li>
+							<li>Text color selector in WYSIWYG editor</li>
+							<li>New session error page</li>
+							<li>JS/CSS folders for plugins</li>
+							<li>Mail colorizing</li>
+							<li>Zipped attachment download</li>
+							<li>Improved dashboard</li>
+							<li>Filter action: Auto-answer with draft</li>
+							<li>Filter action: Forward</li>
+							<li>Function that cleans up orphaned emails</li>
+							<li>Common improvements</li>
+						</ul></li>
+
+					<li>Updated / added files:
+						<ul><li>clientlang.php</li>
+							<li>cron.php</li>
+							<li>email.compose.php</li>
+							<li>email.folders.php</li>
+							<li>email.php</li>
+							<li>email.read.php</li>
+							<li>index.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>organizer.calendar.php</li>
+							<li>organizer.notes.php</li>
+							<li>organizer.todo.php</li>
+							<li>prefs.php</li>
+							<li>search.php</li>
+							<li>sms.php</li>
+							<li>start.php</li>
+							<li>webdisk.php</li>
+							<li>admin/groups.php</li>
+							<li>admin/index.php</li>
+							<li>admin/main.php</li>
+							<li>admin/maintenance.php</li>
+							<li>admin/newsletter.php</li>
+							<li>admin/optimize.php</li>
+							<li>admin/payments.php</li>
+							<li>admin/plugins.php</li>
+							<li>admin/prefs.common.php</li>
+							<li>admin/prefs.email.php</li>
+							<li>admin/prefs.payments.php</li>
+							<li>admin/prefs.sms.php</li>
+							<li>admin/prefs.widgetlayouts.php</li>
+							<li>admin/updates.php</li>
+							<li>admin/users.php</li>
+							<li>admin/welcome.php</li>
+							<li>admin/templates/about.tpl</li>
+							<li>admin/templates/backup.tpl</li>
+							<li>admin/templates/groups.delete.tpl</li>
+							<li>admin/templates/groups.edit.tpl</li>
+							<li>admin/templates/login.tpl</li>
+							<li>admin/templates/logs.archiving.tpl</li>
+							<li>admin/templates/logs.tpl</li>
+							<li>admin/templates/maintenance.inactive.tpl</li>
+							<li>admin/templates/maintenance.orphans.tpl</li>
+							<li>admin/templates/maintenance.pop3gateway.tpl</li>
+							<li>admin/templates/maintenance.trash.tpl</li>
+							<li>admin/templates/msg.tpl</li>
+							<li>admin/templates/newsletter.tpl</li>
+							<li>admin/templates/optimize.cache.tpl</li>
+							<li>admin/templates/optimize.db.tpl</li>
+							<li>admin/templates/optimize.filesystem.tpl</li>
+							<li>admin/templates/page.tpl</li>
+							<li>admin/templates/payments.export.tpl</li>
+							<li>admin/templates/payments.list.tpl</li>
+							<li>admin/templates/plugin.install.info.tpl</li>
+							<li>admin/templates/plugins.install.tpl</li>
+							<li>admin/templates/prefs.ads.edit.tpl</li>
+							<li>admin/templates/prefs.ads.tpl</li>
+							<li>admin/templates/prefs.caching.tpl</li>
+							<li>admin/templates/prefs.common.tpl</li>
+							<li>admin/templates/prefs.countries.edit.tpl</li>
+							<li>admin/templates/prefs.countries.tpl</li>
+							<li>admin/templates/prefs.coupons.edit.tpl</li>
+							<li>admin/templates/prefs.coupons.tpl</li>
+							<li>admin/templates/prefs.email.antispam.tpl</li>
+							<li>admin/templates/prefs.email.antivirus.tpl</li>
+							<li>admin/templates/prefs.email.common.tpl</li>
+							<li>admin/templates/prefs.email.receive.tpl</li>
+							<li>admin/templates/prefs.email.send.tpl</li>
+							<li>admin/templates/prefs.email.smime.ca.tpl</li>
+							<li>admin/templates/prefs.email.smime.tpl</li>
+							<li>admin/templates/prefs.extensions.edit.tpl</li>
+							<li>admin/templates/prefs.extensions.tpl</li>
+							<li>admin/templates/prefs.faq.edit.tpl</li>
+							<li>admin/templates/prefs.faq.tpl</li>
+							<li>admin/templates/prefs.languages.texts.tpl</li>
+							<li>admin/templates/prefs.languages.tpl</li>
+							<li>admin/templates/prefs.license.tpl</li>
+							<li>admin/templates/prefs.lockedusernames.tpl</li>
+							<li>admin/templates/prefs.payments.common.tpl</li>
+							<li>admin/templates/prefs.payments.invoices.tpl</li>
+							<li>admin/templates/prefs.profilefields.edit.tpl</li>
+							<li>admin/templates/prefs.profilefields.tpl</li>
+							<li>admin/templates/prefs.recvrules.edit.tpl</li>
+							<li>admin/templates/prefs.recvrules.tpl</li>
+							<li>admin/templates/prefs.signup.tpl</li>
+							<li>admin/templates/prefs.sms.common.tpl</li>
+							<li>admin/templates/prefs.sms.gateways.edit.tpl</li>
+							<li>admin/templates/prefs.sms.gateways.tpl</li>
+							<li>admin/templates/prefs.sms.types.edit.tpl</li>
+							<li>admin/templates/prefs.sms.types.tpl</li>
+							<li>admin/templates/prefs.taborder.tpl</li>
+							<li>admin/templates/prefs.webdisk.common.tpl</li>
+							<li>admin/templates/prefs.widgetlayouts.addremove.tpl</li>
+							<li>admin/templates/prefs.widgetlayouts.layout.tpl</li>
+							<li>admin/templates/stats.view.tpl</li>
+							<li>admin/templates/updates.prefs.tpl</li>
+							<li>admin/templates/updates.tpl</li>
+							<li>admin/templates/users.contacthistory.tpl</li>
+							<li>admin/templates/users.create.tpl</li>
+							<li>admin/templates/users.edit.tpl</li>
+							<li>admin/templates/users.list.tpl</li>
+							<li>admin/templates/users.search.tpl</li>
+							<li>admin/templates/welcome.tpl</li>
+							<li>admin/templates/workgroups.edit.tpl</li>
+							<li>admin/templates/frames/menu.tpl</li>
+							<li>admin/templates/frames/title.tpl</li>
+							<li>admin/templates/images/b1gsoftware.png</li>
+							<li>admin/templates/images/header_bg.png</li>
+							<li>admin/templates/images/ico_accentries.png</li>
+							<li>admin/templates/images/ico_b1gmail.png</li>
+							<li>admin/templates/images/ico_pay_banktransfer.png</li>
+							<li>admin/templates/images/ico_pay_paypal.png</li>
+							<li>admin/templates/images/ico_pay_su.png</li>
+							<li>admin/templates/images/ico_prefs_acp.png</li>
+							<li>admin/templates/images/ico_prefs_cache.png</li>
+							<li>admin/templates/images/ico_prefs_cmd.png</li>
+							<li>admin/templates/images/ico_prefs_common.png</li>
+							<li>admin/templates/images/ico_prefs_defaults.png</li>
+							<li>admin/templates/images/ico_prefs_email.png</li>
+							<li>admin/templates/images/ico_prefs_invoices.png</li>
+							<li>admin/templates/images/ico_prefs_login.png</li>
+							<li>admin/templates/images/ico_prefs_misc.png</li>
+							<li>admin/templates/images/ico_prefs_payments.png</li>
+							<li>admin/templates/images/ico_prefs_receiving.png</li>
+							<li>admin/templates/images/ico_prefs_sending.png</li>
+							<li>admin/templates/images/ico_prefs_signup.png</li>
+							<li>admin/templates/images/ico_prefs_ssl.png</li>
+							<li>admin/templates/images/ico_prefs_storage.png</li>
+							<li>admin/templates/images/ico_prefs_users.png</li>
+							<li>admin/templates/images/ico_prefs_validation.png</li>
+							<li>admin/templates/images/license.png</li>
+							<li>admin/templates/images/no.png</li>
+							<li>admin/templates/images/orphans32.png</li>
+							<li>admin/templates/images/tab_active_bg.png</li>
+							<li>admin/templates/images/tab_inactive_bg.png</li>
+							<li>admin/templates/images/wlayout_add.png</li>
+							<li>admin/templates/images/wlayout_add32.png</li>
+							<li>admin/templates/images/wlayout_reset32.png</li>
+							<li>admin/templates/images/yes.png</li>
+							<li>admin/templates/js/common.js</li>
+							<li>admin/templates/style/common.css</li>
+							<li>clientlib/autocomplete.js</li>
+							<li>clientlib/dragcontainer.js</li>
+							<li>clientlib/share.js</li>
+							<li>clientlib/wysiwyg.js</li>
+							<li>clientlib/dnd/Webdisk_DnDTarget.jar</li>
+							<li>interface/httpmail.php</li>
+							<li>interface/index.html</li>
+							<li>interface/ipn.php</li>
+							<li>interface/pipe.php</li>
+							<li>interface/su_callback.php</li>
+							<li>interface/webdav.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>m/main.php</li>
+							<li>plugins/search.plugin.php</li>
+							<li>plugins/widget.base.php</li>
+							<li>plugins/css/index.html</li>
+							<li>plugins/js/index.html</li>
+							<li>plugins/templates/index.html</li>
+							<li>plugins/templates/search.plugin.prefs.tpl</li>
+							<li>plugins/templates/widget.email.prefs.tpl</li>
+							<li>plugins/templates/widget.search.tpl</li>
+							<li>plugins/templates/images/widget_calendar.png</li>
+							<li>plugins/templates/images/widget_email.png</li>
+							<li>plugins/templates/images/widget_mailspace.png</li>
+							<li>plugins/templates/images/widget_notes.png</li>
+							<li>plugins/templates/images/widget_quicklinks.png</li>
+							<li>plugins/templates/images/widget_tasks.png</li>
+							<li>plugins/templates/images/widget_webdiskdnd.png</li>
+							<li>plugins/templates/images/widget_webdiskspace.png</li>
+							<li>plugins/templates/images/widget_websearch.png</li>
+							<li>plugins/templates/images/widget_welcome.png</li>
+							<li>serverlib/addressbook.class.php</li>
+							<li>serverlib/admin.inc.php</li>
+							<li>serverlib/calendar.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/dashboard.class.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/db.class.php</li>
+							<li>serverlib/email.top.php</li>
+							<li>serverlib/filtereval.class.php</li>
+							<li>serverlib/filters.inc.php</li>
+							<li>serverlib/httpmail_server.class.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mail.class.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailbuilder.class.php</li>
+							<li>serverlib/mailparser.inc.php</li>
+							<li>serverlib/mailprocessor.class.php</li>
+							<li>serverlib/payment.class.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/pop3.class.php</li>
+							<li>serverlib/sms.class.php</li>
+							<li>serverlib/smtp.class.php</li>
+							<li>serverlib/string.inc.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/toolinterface.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/userpop3gateway.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>serverlib/webdav_server.class.php</li>
+							<li>serverlib/webdisk.class.php</li>
+							<li>serverlib/zip.class.php</li>
+							<li>share/index.php</li>
+							<li>templates/default/images/editor/color.gif</li>
+							<li>templates/default/images/li/bar.png</li>
+							<li>templates/default/images/li/dragbar_bg.png</li>
+							<li>templates/default/images/li/dragbar_prefs.png</li>
+							<li>templates/default/images/li/ico_attachment.png</li>
+							<li>templates/default/images/li/ico_orders.png</li>
+							<li>templates/default/images/li/ico_pay.png</li>
+							<li>templates/default/images/li/mailcolors.png</li>
+							<li>templates/default/images/li/payments.png</li>
+							<li>templates/default/images/li/prefs_orders.png</li>
+							<li>templates/default/js/common.js</li>
+							<li>templates/default/js/dialog.js</li>
+							<li>templates/default/js/loggedin.js</li>
+							<li>templates/default/li/email.compose.tpl</li>
+							<li>templates/default/li/email.folder.tpl</li>
+							<li>templates/default/li/email.folderlist.tpl</li>
+							<li>templates/default/li/email.folders.conditions.tpl</li>
+							<li>templates/default/li/email.preview.tpl</li>
+							<li>templates/default/li/email.print.tpl</li>
+							<li>templates/default/li/email.read.inline.tpl</li>
+							<li>templates/default/li/email.read.thread.tpl</li>
+							<li>templates/default/li/email.read.tpl</li>
+							<li>templates/default/li/email.sidebar.tpl</li>
+							<li>templates/default/li/email.toolbar.tpl</li>
+							<li>templates/default/li/index.tpl</li>
+							<li>templates/default/li/organizer.addressbook.popup.tpl</li>
+							<li>templates/default/li/organizer.addressbook.tpl</li>
+							<li>templates/default/li/organizer.calendar.dayview.view.tpl</li>
+							<li>templates/default/li/organizer.customize.tpl</li>
+							<li>templates/default/li/organizer.start.tpl</li>
+							<li>templates/default/li/payment.form.tpl</li>
+							<li>templates/default/li/payment.pay.tpl</li>
+							<li>templates/default/li/prefs.common.tpl</li>
+							<li>templates/default/li/prefs.contact.tpl</li>
+							<li>templates/default/li/prefs.extpop3.edit.tpl</li>
+							<li>templates/default/li/prefs.filters.actions.tpl</li>
+							<li>templates/default/li/prefs.filters.edit.tpl</li>
+							<li>templates/default/li/prefs.keyring.tpl</li>
+							<li>templates/default/li/prefs.membership.charge.tpl</li>
+							<li>templates/default/li/prefs.orders.invoice.tpl</li>
+							<li>templates/default/li/prefs.orders.tpl</li>
+							<li>templates/default/li/search.details.tpl</li>
+							<li>templates/default/li/search.results.tpl</li>
+							<li>templates/default/li/search.sidebar.tpl</li>
+							<li>templates/default/li/sms.compose.tpl</li>
+							<li>templates/default/li/start.customize.tpl</li>
+							<li>templates/default/li/start.page.tpl</li>
+							<li>templates/default/li/start.sidebar.tpl</li>
+							<li>templates/default/li/webdisk.dialog.tpl</li>
+							<li>templates/default/li/webdisk.folder.tpl</li>
+							<li>templates/default/li/webdisk.sidebar.tpl</li>
+							<li>templates/default/li/webdisk.toolbar.tpl</li>
+							<li>templates/default/nli/error.tpl</li>
+							<li>templates/default/nli/index.tpl</li>
+							<li>templates/default/nli/login.tpl</li>
+							<li>templates/default/nli/signup.tpl</li>
+							<li>templates/default/style/dialog.css</li>
+							<li>templates/default/style/loggedin.css</li>
+							<li>templates/default/style/notloggedin.css</li>
+						</ul></li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 7.1.0 &raquo; b1gMail 7.2.0-Beta1</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=466">#466</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=560">#560</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=564">#564</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=568">#568</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=569">#569</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=572">#572</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=579">#579</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=582">#582</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=583">#583</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=585">#585</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=586">#586</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=591">#591</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=627">#627</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=630">#630</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=658">#658</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=664">#664</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=675">#675</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=676">#676</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=687">#687</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=694">#694</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=697">#697</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=698">#698</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=708">#708</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=709">#709</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=711">#711</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=726">#726</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=728">#728</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=729">#729</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=731">#731</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=736">#736</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Language selector in not logged in area (<a target="_blank" href="http://board.b1g.de/project.php?issueid=466">#466</a>)</li>
+							<li>New BeforeDisplayTemplate event handler (<a target="_blank" href="http://board.b1g.de/project.php?issueid=687">#687</a>)</li>
+							<li>User object parameter in OnSendSMS event handler (<a target="_blank" href="http://board.b1g.de/project.php?issueid=694">#694</a>)</li>
+							<li>Plugin sorting (<a target="_blank" href="http://board.b1g.de/project.php?issueid=697">#697</a>)</li>
+							<li>%%userid%% SMS gateway string variable (<a target="_blank" href="http://board.b1g.de/project.php?issueid=698">#698</a>)</li>
+							<li>SSL support for external POP3 accounts (<a target="_blank" href="http://board.b1g.de/project.php?issueid=728">#728</a>)</li>
+							<li>UTF-8 support</li>
+							<li>Common improvements</li>
+						</ul></li>
+
+					<li>Updated / added files:
+						<ul><li>admin/newsletter.php</li>
+							<li>admin/plugins.php</li>
+							<li>admin/prefs.common.php</li>
+							<li>admin/templates/groups.edit.tpl</li>
+							<li>admin/templates/js/common.js</li>
+							<li>admin/templates/optimize.cache.tpl</li>
+							<li>admin/templates/optimize.filesystem.tpl</li>
+							<li>admin/templates/plugin.install.info.tpl</li>
+							<li>admin/templates/plugins.install.tpl</li>
+							<li>admin/templates/prefs.languages.tpl</li>
+							<li>admin/templates/prefs.sms.common.tpl</li>
+							<li>admin/templates/users.edit.tpl</li>
+							<li>admin/templates/workgroups.edit.tpl</li>
+							<li>admin/updates.php</li>
+							<li>clientlang.php</li>
+							<li>clientlib/autocomplete.js</li>
+							<li>clientlib/dnd/Webdisk_DnDTarget.jar</li>
+							<li>clientlib/share.js</li>
+							<li>clientlib/wysiwyg.js</li>
+							<li>cron.php</li>
+							<li>email.compose.php</li>
+							<li>email.folders.php</li>
+							<li>email.php</li>
+							<li>email.read.php</li>
+							<li>index.php</li>
+							<li>interface/httpmail.php</li>
+							<li>interface/index.html</li>
+							<li>interface/ipn.php</li>
+							<li>interface/webdav.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>m/main.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>organizer.calendar.php</li>
+							<li>organizer.notes.php</li>
+							<li>organizer.todo.php</li>
+							<li>plugins/templates/widget.search.tpl</li>
+							<li>prefs.php</li>
+							<li>serverlib/addressbook.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/dashboard.class.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/email.top.php</li>
+							<li>serverlib/filters.inc.php</li>
+							<li>serverlib/httpmail_server.class.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mail.class.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailparser.inc.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/pop3.class.php</li>
+							<li>serverlib/sms.class.php</li>
+							<li>serverlib/string.inc.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/toolinterface.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/userpop3gateway.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>serverlib/webdav_server.class.php</li>
+							<li>serverlib/webdisk.class.php</li>
+							<li>serverlib/zip.class.php</li>
+							<li>share/index.php</li>
+							<li>sms.php</li>
+							<li>start.php</li>
+							<li>templates/default/li/prefs.keyring.tpl</li>
+							<li>templates/default/js/dialog.js</li>
+							<li>templates/default/js/loggedin.js</li>
+							<li>templates/default/li/email.compose.tpl</li>
+							<li>templates/default/li/email.sidebar.tpl</li>
+							<li>templates/default/li/organizer.todo.tpl</li>
+							<li>templates/default/li/prefs.extpop3.tpl</li>
+							<li>templates/default/li/prefs.keyring.tpl</li>
+							<li>templates/default/li/prefs.membership.charge.tpl</li>
+							<li>templates/default/li/webdisk.dialog.tpl</li>
+							<li>templates/default/nli/index.tpl</li>
+							<li>templates/default/nli/login.tpl</li>
+							<li>templates/default/style/notloggedin.css</li>
+							<li>webdisk.php</li>
+						</ul></li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail b1gMail 7.0.0 &raquo; b1gMail 7.1.0</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=456">#456</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=468">#468</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=476">#476</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=477">#477</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=478">#478</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=479">#479</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=487">#487</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=499">#499</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=503">#503</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Log filtering (<a target="_blank" href="http://board.b1g.de/project.php?issueid=63">#63</a>)</li>
+							<li>Signature insertion at cursor position (<a target="_blank" href="http://board.b1g.de/project.php?issueid=106">#106</a>)</li>
+							<li>Delete sent SMS (<a target="_blank" href="http://board.b1g.de/project.php?issueid=129">#129</a>)</li>
+							<li>SSL options at login (<a target="_blank" href="http://board.b1g.de/project.php?issueid=171">#171</a>)</li>
+							<li>User count limit (<a target="_blank" href="http://board.b1g.de/project.php?issueid=177">#177</a>)</li>
+							<li>Filter actions extended (<a target="_blank" href="http://board.b1g.de/project.php?issueid=240">#240</a>)</li>
+							<li>Addressbook actions menu extended (<a target="_blank" href="http://board.b1g.de/project.php?issueid=303">#303</a>)</li>
+							<li>Conversation folder creation (<a target="_blank" href="http://board.b1g.de/project.php?issueid=311">#311</a>)</li>
+							<li>Newsletter opt-out (<a target="_blank" href="http://board.b1g.de/project.php?issueid=321">#321</a>)</li>
+							<li>Improved error reporting for big e-mails (<a target="_blank" href="http://board.b1g.de/project.php?issueid=330">#330</a>)</li>
+							<li>sofort&uuml;berweisung.de payment method (<a target="_blank" href="http://board.b1g.de/project.php?issueid=338">#338</a>)</li>
+							<li>Configurable spam filter policy (<a target="_blank" href="http://board.b1g.de/project.php?issueid=345">#345</a>)</li>
+							<li>Drag&amp;Drop applet SSL support (<a target="_blank" href="http://board.b1g.de/project.php?issueid=371">#371</a>)</li>
+							<li>Smilie menu for WYSIWYG editor (<a target="_blank" href="http://board.b1g.de/project.php?issueid=380">#380</a>)</li>
+							<li>Plugin interface improvements (<a target="_blank" href="http://board.b1g.de/project.php?issueid=401">#401</a>)</li>
+							<li>Logging of IP addresses when sending e-mails (<a target="_blank" href="http://board.b1g.de/project.php?issueid=457">#457</a>)</li>
+							<li>Dialog for moving e-mails (<a target="_blank" href="http://board.b1g.de/project.php?issueid=496">#496</a>)</li>
+							<li>S/MIME support (<a target="_blank" href="http://board.b1g.de/project.php?issueid=497">#497</a>)</li>
+							<li>Fixed width font for plaintext mails (<a target="_blank" href="http://board.b1g.de/project.php?issueid=500">#500</a>)</li>
+							<li>Webdisk extensions (<a target="_blank" href="http://board.b1g.de/project.php?issueid=502">#502</a>)</li>
+							<li>User-configurable folder-wise storage time (<a target="_blank" href="http://board.b1g.de/project.php?issueid=504">#504</a>)</li>
+							<li>Improved folder drop down menu (<a target="_blank" href="http://board.b1g.de/project.php?issueid=535">#535</a>)</li>
+							<li>Improved IIS support</li>
+							<li>SMS signup validation</li>
+							<li>SMS sender validation</li>
+							<li>Update check for plugins</li>
+							<li>Improved plugin installation strategy</li>
+							<li>Improved page titles</li>
+							<li>Reduced memory usage when creating ZIP archives</li>
+							<li>Improved display of deleted IMAP messages</li>
+							<li>Common improvements</li>
+						</ul></li>
+
+					<li>Updated / added files:
+						<ul><li>admin/groups.php</li>
+							<li>admin/logs.php</li>
+							<li>admin/newsletter.php</li>
+							<li>admin/plugins.php</li>
+							<li>admin/prefs.common.php</li>
+							<li>admin/prefs.countries.php</li>
+
+							<li>admin/prefs.email.php</li>
+							<li>admin/prefs.faq.php</li>
+							<li>admin/prefs.recvrules.php</li>
+							<li>admin/prefs.sms.php</li>
+							<li>admin/templates/about.tpl</li>
+							<li>admin/templates/prefs.email.receive.tpl</li>
+							<li>admin/templates/prefs.email.send.tpl</li>
+							<li>admin/templates/prefs.sms.gateways.edit.tpl</li>
+							<li>admin/templates/prefs.sms.gateways.tpl</li>
+							<li>admin/templates/groups.edit.tpl</li>
+
+							<li>admin/templates/images/cert32.png</li>
+							<li>admin/templates/images/cert_expired.png</li>
+							<li>admin/templates/images/cert_export.png</li>
+							<li>admin/templates/images/cert_ok.png</li>
+							<li>admin/templates/images/certadd32.png</li>
+							<li>admin/templates/js/common.js</li>
+
+							<li>admin/templates/logs.tpl</li>
+							<li>admin/templates/plugins.updates.tpl</li>
+							<li>admin/templates/prefs.common.tpl</li>
+							<li>admin/templates/prefs.email.receive.tpl</li>
+							<li>admin/templates/prefs.email.smime.ca.tpl</li>
+							<li>admin/templates/prefs.email.smime.tpl</li>
+
+							<li>admin/templates/prefs.signup.tpl</li>
+							<li>admin/templates/prefs.sms.common.tpl</li>
+							<li>admin/templates/style/common.css</li>
+							<li>admin/templates/welcome.tpl</li>
+							<li>admin/welcome.php</li>
+							<li>clientlang.php</li>
+
+							<li>clientlib/dnd/Webdisk_DnDTarget.jar</li>
+							<li>clientlib/wysiwyg.js</li>
+							<li>cron.php</li>
+							<li>deref.php</li>
+							<li>email.compose.php</li>
+							<li>email.folders.php</li>
+
+							<li>email.php</li>
+							<li>email.read.php</li>
+							<li>index.php</li>
+							<li>interface/httpmail.php</li>
+							<li>interface/su_callback.php</li>
+							<li>interface/webdav.php</li>
+
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>m/index.php</li>
+							<li>m/main.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>organizer.calendar.php</li>
+
+							<li>organizer.notes.php</li>
+							<li>organizer.php</li>
+							<li>organizer.todo.php</li>
+							<li>plugins/search.plugin.php</li>
+							<li>prefs.php</li>
+							<li>res/dummy.pem</li>
+
+							<li>res/openssl.cnf</li>
+							<li>res/smilies/*</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/email.top.php</li>
+							<li>serverlib/filtereval.class.php</li>
+
+							<li>serverlib/filters.inc.php</li>
+							<li>serverlib/httpmail_server.class.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mail.class.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailbuilder.class.php</li>
+
+							<li>serverlib/mailparser.inc.php</li>
+							<li>serverlib/mailprocessor.class.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/pop3.class.php</li>
+							<li>serverlib/pop3gateway.class.php</li>
+
+							<li>serverlib/smime.class.php</li>
+							<li>serverlib/sms.class.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/webdav_server.class.php</li>
+							<li>serverlib/webdisk.class.php</li>
+
+							<li>serverlib/workgroup.class.php</li>
+							<li>serverlib/zip.class.php</li>
+							<li>sms.php</li>
+							<li>start.php</li>
+							<li>templates/default/images/li/bayesborder_bg.png</li>
+							<li>templates/default/images/li/ico_cert_import.png</li>
+
+							<li>templates/default/images/li/ico_cert_issue.png</li>
+							<li>templates/default/images/li/ico_certificate.png</li>
+							<li>templates/default/images/li/ico_certificate32.png</li>
+							<li>templates/default/images/li/ico_keyring.png</li>
+							<li>templates/default/images/li/mailico_encrypted.png</li>
+							<li>templates/default/images/li/mailico_encrypted_error.png</li>
+
+							<li>templates/default/images/li/mailico_signed_bad.png</li>
+							<li>templates/default/images/li/mailico_signed_noverify.png</li>
+							<li>templates/default/images/li/mailico_signed_ok.png</li>
+							<li>templates/default/images/li/prefs_keyring.png</li>
+							<li>templates/default/js/loggedin.js</li>
+							<li>templates/default/js/notloggedin.js</li>
+
+							<li>templates/default/li/email.compose.tpl</li>
+							<li>templates/default/li/email.folder.tpl</li>
+							<li>templates/default/li/email.folders.conditions.tpl</li>
+							<li>templates/default/li/email.folders.edit.tpl</li>
+							<li>templates/default/li/email.folders.editsys.tpl</li>
+							<li>templates/default/li/email.folders.tpl</li>
+
+							<li>templates/default/li/email.read.move.tpl</li>
+							<li>templates/default/li/email.read.tpl</li>
+							<li>templates/default/li/index.tpl</li>
+							<li>templates/default/li/organizer.addressbook.edit.tpl</li>
+							<li>templates/default/li/organizer.addressbook.tpl</li>
+							<li>templates/default/li/prefs.antispam.tpl</li>
+
+							<li>templates/default/li/prefs.antivirus.tpl</li>
+							<li>templates/default/li/prefs.common.tpl</li>
+							<li>templates/default/li/prefs.extpop3.edit.tpl</li>
+							<li>templates/default/li/prefs.filters.actions.tpl</li>
+
+							<li>templates/default/li/prefs.keyring.exportprivate.tpl</li>
+							<li>templates/default/li/prefs.keyring.importprivate.tpl</li>
+							<li>templates/default/li/prefs.keyring.issuecert.step1.tpl</li>
+							<li>templates/default/li/prefs.keyring.issuecert.step2.tpl</li>
+							<li>templates/default/li/prefs.keyring.showcert.tpl</li>
+							<li>templates/default/li/prefs.keyring.tpl</li>
+
+							<li>templates/default/li/prefs.membership.charge.tpl</li>
+							<li>templates/default/li/sms.outbox.tpl</li>
+							<li>templates/default/li/sms.validate.tpl</li>
+							<li>templates/default/li/webdisk.folder.tpl</li>
+
+							<li>templates/default/m/index.tpl</li>
+							<li>templates/default/nli/index.tpl</li>
+							<li>templates/default/nli/login.smsvalidation.tpl</li>
+							<li>templates/default/nli/login.tpl</li>
+							<li>templates/default/style/dialog.css</li>
+							<li>templates/default/style/loggedin.css</li>
+
+							<li>webdisk.php</li>
+						</ul></li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail b1gMail 7.0.0 RC1 &raquo; b1gMail 7.0.0</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=74">#74</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=283">#283</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=334">#334</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=393">#393</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=422">#422</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=423">#423</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=424">#424</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=425">#425</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=426">#426</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=431">#431</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=433">#433</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=444">#444</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=446">#446</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=448">#448</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=450">#450</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>English language file</li>
+							<li>Common improvements</li>
+						</ul></li>
+
+					<li>Updated / added files:
+						<ul><li>admin/index.php</li>
+							<li>admin/newsletter.php</li>
+							<li>admin/templates/prefs.caching.tpl</li>
+							<li>clientlib/share.js</li>
+							<li>email.read.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>languages/english.lang.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/csv.class.php</li>
+							<li>serverlib/mail.class.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailbuilder.class.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/toolinterface.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/userpop3gateway.class.php</li>
+							<li>templates/default/li/email.print.tpl</li>
+							<li>templates/default/m/folder.tpl</li>
+							<li>templates/default/m/folders.tpl</li>
+							<li>templates/default/m/index.tpl</li>
+							<li>templates/default/m/login.tpl</li>
+							<li>templates/default/m/read.tpl</li>
+							<li>templates/default/share/index.tpl</li>
+						</ul></li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail b1gMail 7.0.0 Beta 3 &raquo; b1gMail 7.0.0 RC1</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=350">#350</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=351">#351</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=355">#355</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=357">#357</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=358">#358</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=367">#367</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=374">#374</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=375">#375</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=377">#377</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=381">#381</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=384">#384</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Plugin interface improvements</li>
+							<li>b1gMail tool interface (Mailchecker, SMSManager, SimpleMAPI)</li>
+							<li>Common improvements</li>
+						</ul></li>
+
+					<li>Updated / added files:
+						<ul><li>admin/activity.php</li>
+							<li>admin/prefs.languages.php</li>
+							<li>admin/templates/js/common.js</li>
+							<li>admin/templates/optimize.db.tpl</li>
+							<li>admin/users.php</li>
+							<li>clientlib/autocomplete.js</li>
+							<li>clientlib/dnd/Webdisk_DnDTarget.jar</li>
+							<li>cron.php</li>
+							<li>deref.php</li>
+							<li>email.compose.php</li>
+							<li>index.php</li>
+							<li>interface/clientapi.php</li>
+							<li>interface/ipn.php</li>
+							<li>interface/webdav.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>plugins/templates/widget.webdiskdnd.tpl</li>
+							<li>plugins/widget.base.php</li>
+							<li>prefs.php</li>
+							<li>serverlib/calendar.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/sendmail.class.php</li>
+							<li>serverlib/sms.class.php</li>
+							<li>serverlib/toolinterface.class.php</li>
+							<li>serverlib/webdisk.class.php</li>
+							<li>sms.php</li>
+							<li>templates/default/images/li/ico_autoresponder.png</li>
+							<li>templates/default/images/li/ico_contact.png</li>
+							<li>templates/default/images/main/bg.png</li>
+							<li>templates/default/images/main/logo.gif</li>
+							<li>templates/default/js/dialog.js</li>
+							<li>templates/default/li/prefs.sidebar.tpl</li>
+							<li>templates/default/li/prefs.start.tpl</li>
+							<li>templates/default/nli/login.tpl</li>
+							<li>templates/default/style/notloggedin.css</li>
+						</ul></li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail b1gMail 7.0.0 Beta 2 &raquo; b1gMail 7.0.0 Beta 3</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=135">#135</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=141">#141</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=203">#203</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=255">#255</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=266">#266</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=268">#268</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=270">#270</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=278">#278</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=284">#284</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=291">#291</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=292">#292</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=294">#294</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=301">#301</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=312">#312</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=314">#314</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=316">#316</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=317">#317</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=320">#320</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=324">#324</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=327">#327</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=331">#331</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=342">#342</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=343">#343</a>
+					</li>
+
+					<li>Added features:
+						<ul>
+							<li>Experimental WebDAV server</li>
+							<li>Log search function</li>
+						</ul></li>
+
+					<li>Updated / added files:
+						<ul><li>admin/groups.php</li>
+							<li>admin/logs.php</li>
+							<li>admin/templates/groups.edit.tpl</li>
+							<li>admin/templates/logs.tpl</li>
+							<li>admin/templates/users.edit.tpl</li>
+							<li>admin/users.php</li>
+							<li>clientlib/dnd/Webdisk_DnDTarget.jar</li>
+							<li>clientlib/overlay.js</li>
+							<li>cron.php</li>
+							<li>deref.php</li>
+							<li>email.compose.php</li>
+							<li>index.php</li>
+							<li>interface/httpmail.php</li>
+							<li>interface/pipe.php</li>
+							<li>interface/webdav.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>m/main.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>organizer.calendar.php</li>
+							<li>serverlib/addressbook.class.php</li>
+							<li>serverlib/admin.inc.php</li>
+							<li>serverlib/cache.class.php</li>
+							<li>serverlib/calendar.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailprocessor.class.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/sendmail.class.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/userpop3gateway.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>serverlib/webdav_server.class.php</li>
+							<li>setup/common.inc.php</li>
+							<li>setup/deutsch.lang.php</li>
+							<li>setup/english.lang.php</li>
+							<li>setup/index.php</li>
+							<li>setup/res/update2.js</li>
+							<li>setup/update.php</li>
+							<li>templates/default/js/loggedin.js</li>
+							<li>templates/default/li/email.addressmenu.tpl</li>
+							<li>templates/default/li/email.preview.tpl</li>
+							<li>templates/default/li/email.read.tpl</li>
+							<li>templates/default/li/error.tpl</li>
+							<li>templates/default/li/organizer.addressbook.edit.tpl</li>
+							<li>templates/default/li/organizer.calendar.toolbar.tpl</li>
+							<li>templates/default/li/search.results.tpl</li>
+							<li>templates/default/li/sms.compose.tpl</li>
+							<li>templates/default/li/start.sidebar.tpl</li>
+							<li>templates/default/li/webdisk.sidebar.tpl</li>
+							<li>templates/default/style/loggedin.css</li>
+							<li>webdisk.php</li>
+						</ul></li>
+
+					<li>Altered / added database tables:
+						<ul>
+							<li>bm60_disklocks</li>
+							<li>bm60_diskprops</li>
+							<li>bm60_gruppen</li>
+							<li>bm60_users</li>
+						</ul></li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail b1gMail 7.0.0 Beta 1 &raquo; b1gMail 7.0.0 Beta 2</h2>
+
+				<ul>
+					<li>Resolved issues:
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=20">#20</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=21">#21</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=22">#22</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=23">#23</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=24">#24</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=29">#29</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=31">#31</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=32">#32</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=33">#33</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=34">#34</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=35">#35</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=36">#36</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=37">#37</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=38">#38</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=39">#39</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=41">#41</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=42">#42</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=43">#43</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=44">#44</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=45">#45</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=46">#46</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=47">#47</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=48">#48</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=49">#49</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=51">#51</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=53">#53</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=58">#58</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=61">#61</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=64">#64</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=69">#69</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=70">#70</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=71">#71</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=76">#76</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=78">#78</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=81">#81</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=82">#82</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=83">#83</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=86">#86</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=87">#87</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=89">#89</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=90">#90</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=92">#92</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=93">#93</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=96">#96</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=108">#108</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=109">#109</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=110">#110</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=115">#115</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=116">#116</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=122">#122</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=123">#123</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=128">#128</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=130">#130</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=132">#132</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=134">#134</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=135">#135</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=138">#138</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=139">#139</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=142">#142</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=145">#145</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=146">#146</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=151">#151</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=152">#152</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=155">#155</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=156">#156</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=157">#157</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=160">#160</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=162">#162</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=165">#165</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=168">#168</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=170">#170</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=176">#176</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=178">#178</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=187">#187</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=188">#188</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=189">#189</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=195">#195</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=198">#198</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=201">#201</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=202">#202</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=208">#208</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=211">#211</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=213">#213</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=214">#214</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=216">#216</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=218">#218</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=220">#220</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=224">#224</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=225">#225</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=232">#232</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=233">#233</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=234">#234</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=236">#236</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=238">#238</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=244">#244</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=246">#246</a>,
+						<a target="_blank" href="http://board.b1g.de/project.php?issueid=249">#249</a>
+					</li>
+
+					<li>Updated / added files:
+						<ul>
+							<li>admin/index.php</li>
+							<li>admin/optimize.php</li>
+							<li>admin/prefs.ads.php</li>
+							<li>admin/prefs.common.php</li>
+							<li>admin/prefs.countries.php</li>
+							<li>admin/prefs.coupons.php</li>
+							<li>admin/prefs.email.php</li>
+							<li>admin/prefs.extensions.php</li>
+							<li>admin/prefs.faq.php</li>
+							<li>admin/prefs.profilefields.php</li>
+							<li>admin/prefs.recvrules.php</li>
+							<li>admin/prefs.sms.php</li>
+							<li>admin/templates/prefs.ads.edit.tpl</li>
+							<li>admin/templates/prefs.ads.tpl</li>
+							<li>admin/templates/prefs.common.tpl</li>
+							<li>admin/templates/prefs.countries.edit.tpl</li>
+							<li>admin/templates/prefs.countries.tpl</li>
+							<li>admin/templates/prefs.signup.tpl</li>
+							<li>admin/templates/prefs.sms.common.tpl</li>
+							<li>admin/templates/prefs.sms.gateways.edit.tpl</li>
+							<li>admin/templates/prefs.sms.gateways.tpl</li>
+							<li>admin/templates/prefs.sms.types.edit.tpl</li>
+							<li>admin/templates/prefs.sms.types.tpl</li>
+							<li>admin/templates/users.create.tpl</li>
+							<li>admin/templates/welcome.tpl</li>
+							<li>admin/users.php</li>
+							<li>admin/welcome.php</li>
+							<li>clientlang.php</li>
+							<li>clientlib/autocomplete.js</li>
+							<li>clientlib/dragcontainer.js</li>
+							<li>clientlib/wysiwyg.js</li>
+							<li>cron.php</li>
+							<li>cron.userpop3.php</li>
+							<li>deref.php</li>
+							<li>email.compose.php</li>
+							<li>email.folders.php</li>
+							<li>email.read.php</li>
+							<li>index.php</li>
+							<li>interface/ipn.php</li>
+							<li>languages/deutsch.lang.php</li>
+							<li>organizer.addressbook.php</li>
+							<li>organizer.calendar.php</li>
+							<li>plugins/vbulletin.auth.php</li>
+							<li>prefs.php</li>
+							<li>robots.txt</li>
+							<li>res/dummy.gif</li>
+							<li>res/fonts/tuffy_bold.ttf</li>
+							<li>res/fonts/verasebd.ttf</li>
+							<li>serverlib/addressbook.class.php</li>
+							<li>serverlib/admin.inc.php</li>
+							<li>serverlib/cache.class.php</li>
+							<li>serverlib/calendar.class.php</li>
+							<li>serverlib/common.inc.php</li>
+							<li>serverlib/database.struct.php</li>
+							<li>serverlib/filtereval.class.php</li>
+							<li>serverlib/filters.inc.php</li>
+							<li>serverlib/init.inc.php</li>
+							<li>serverlib/mail.class.php</li>
+							<li>serverlib/mailbox.class.php</li>
+							<li>serverlib/mailbuilder.class.php</li>
+							<li>serverlib/mailparser.inc.php</li>
+							<li>serverlib/mailprocessor.class.php</li>
+							<li>serverlib/mailthreader.class.php</li>
+							<li>serverlib/plugin.class.php</li>
+							<li>serverlib/safecode.class.php</li>
+							<li>serverlib/sendmail.class.php</li>
+							<li>serverlib/sms.class.php</li>
+							<li>serverlib/smtp.class.php</li>
+							<li>serverlib/template.class.php</li>
+							<li>serverlib/user.class.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>serverlib/webdisk.class.php</li>
+							<li>setup/common.inc.php</li>
+							<li>setup/deutsch.lang.php</li>
+							<li>setup/english.lang.php</li>
+							<li>setup/index.php</li>
+							<li>setup/res/update2.js</li>
+							<li>setup/update.php</li>
+							<li>share/index.php</li>
+							<li>sms.php</li>
+							<li>temp/cache/.htaccess</li>
+							<li>temp/cache/dummy</li>
+							<li>temp/session/.htaccess</li>
+							<li>temp/session/dummy</li>
+							<li>templates/default/images/li/mail_source.png</li>
+							<li>templates/default/js/common.js</li>
+							<li>templates/default/js/loggedin.js</li>
+							<li>templates/default/li/email.addressmenu.tpl</li>
+							<li>templates/default/li/email.compose.tpl</li>
+							<li>templates/default/li/email.folder.tpl</li>
+							<li>templates/default/li/email.folders.conditions.tpl</li>
+							<li>templates/default/li/email.folders.tpl</li>
+							<li>templates/default/li/email.read.source.tpl</li>
+							<li>templates/default/li/email.read.thread.tpl</li>
+							<li>templates/default/li/email.read.tpl</li>
+							<li>templates/default/li/email.sidebar.tpl</li>
+							<li>templates/default/li/index.tpl</li>
+							<li>templates/default/li/organizer.addressbook.edit.tpl</li>
+							<li>templates/default/li/organizer.calendar.edit.tpl</li>
+							<li>templates/default/li/organizer.calendar.groups.tpl</li>
+							<li>templates/default/li/organizer.calendar.toolbar.tpl</li>
+							<li>templates/default/li/organizer.notes.tpl</li>
+							<li>templates/default/li/organizer.todo.tpl</li>
+							<li>templates/default/li/prefs.aliases.tpl</li>
+							<li>templates/default/li/prefs.common.tpl</li>
+							<li>templates/default/li/prefs.contact.tpl</li>
+							<li>templates/default/li/prefs.extpop3.tpl</li>
+							<li>templates/default/li/prefs.filters.tpl</li>
+							<li>templates/default/li/prefs.membership.charge.tpl</li>
+							<li>templates/default/li/prefs.signatures.tpl</li>
+							<li>templates/default/li/search.results.tpl</li>
+							<li>templates/default/li/sms.compose.tpl</li>
+							<li>templates/default/m/index.tpl</li>
+							<li>templates/default/nli/deref.tpl</li>
+							<li>templates/default/nli/index.tpl</li>
+							<li>templates/default/nli/signup.tpl</li>
+							<li>templates/default/style/dialog.css</li>
+							<li>templates/default/style/loggedin.css</li>
+						</ul></li>
+
+					<li>Altered database tables:
+						<ul>
+							<li>bm60_ads</li>
+							<li>bm60_prefs</li>
+							<li>bm60_smsgateways</li>
+							<li>bm60_smstypen</li>
+							<li>bm60_userprefs</li>
+							<li>bm60_users</li>
+						</ul></li>
+				</ul>
+			</p>
+
+			<p>
+				<h2>b1gMail 6.3.1 &raquo; b1gMail 7.0.0 Beta 1</h2>
+
+				<ul>
+					<li>Entire re-development.</li>
+				</ul>
+			</p>
+		</div>
+
+		<div class="footer">
+			&copy; 2002-2018 B1G Software
+		</div>
+	</div>
+</center>
+
+</body>
+
+</html>

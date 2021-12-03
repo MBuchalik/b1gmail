@@ -1,0 +1,297 @@
+<html>
+<head>
+	<title>b1gMail - Liesmich</title>
+
+	<style type="text/css">
+	<!--
+		BODY
+		{
+			background-color: #666666;
+			margin: 0px;
+		}
+
+		BODY,DIV,SPAN,P,TD
+		{
+			color: #333333;
+			font-family: verdana, arial;
+			font-size: 12px;
+		}
+
+		H1
+		{
+			color: #FFFFFF;
+			background-color: #F2911D;
+			text-align: left;
+			padding: 15px;
+			margin-top: 0px;
+		}
+
+		H2
+		{
+			margin-top: 20px;
+			font-size: 14px;
+			border-bottom: 1px solid #333333;
+		}
+
+		LI
+		{
+			margin-top: 5px;
+		}
+
+		A
+		{
+			color: #0000FF;
+			text-decoration: none;
+		}
+
+		A:hover
+		{
+			text-decoration: underline;
+		}
+
+		.footer
+		{
+			color: #FFFFFF;
+			background-color: #F2911D;
+			text-align: center;
+			padding: 5px;
+		}
+
+		.important
+		{
+			color: red;
+		}
+
+		.tabActive
+		{
+			background-color: #F2911D;
+			color: #FFFFFF;
+			padding: 10px;
+			line-height: 24px;
+		}
+
+		.tabInactive
+		{
+			color: #EFEFEF;
+			padding: 10px;
+			line-height: 24px;
+			font-size: 11px;
+		}
+
+		.license
+		{
+			margin-left: 22px;
+		}
+
+		.license P
+		{
+			text-indent: -22px;
+		}
+
+		.noteBox
+		{
+			border: 1px solid #666666;
+        	background-color: #FFFFCC;
+			padding: 8px;
+		}
+
+		#tabBar
+		{
+			background-color: #666666;
+		}
+
+		#main
+		{
+			width: 80%;
+			background-color: #FFFFFF;
+			text-align: left;
+		}
+
+		#content
+		{
+			padding-left: 15px;
+			padding-right: 15px;
+			padding-bottom: 5px;
+			text-align: justify;
+		}
+	//-->
+	</style>
+</head>
+
+<body>
+
+<center>
+	<div id="main">
+		<div id="tabBar">
+			<a class="tabActive" href="liesmich.html">Liesmich (Deutsch)</a>
+			<a class="tabInactive" href="readme.html">Readme (English)</a>
+			<a class="tabInactive" href="changelog.html">Changelog</a>
+		</div>
+
+		<h1>b1gMail Liesmich</h1>
+
+		<div id="content">
+			<p>
+				Vielen Dank f&uuml;r den Erwerb von b1gMail! In diesem Paket finden Sie alle Dateien
+				von b1gMail, die Sie zur Installation auf Ihrem Webspace ben&ouml;tigen.<br />
+				Im Folgenden finden Sie eine Kurzanleitung zur Installation und zum Update von fr&uuml;heren
+				Versionen sowie wichtige allgemeine Hinweise. Eine ausf&uuml;hrliche Installationsanleitung
+				ist in der Dokumentation zu b1gMail enthalten. Diese Liesmich-Datei dient nur als Anleitung
+				zum Schnell-Einstieg.
+			</p>
+
+			<p>
+				<h2>Neu-/Erst-Installation</h2>
+
+				Wenn Sie eine Neu-/Erst-Installation von b1gMail durchf&uuml;hren m&ouml;chten, gehen Sie
+				bitte wie folgt vor.
+
+				<ol>
+					<li>Richten Sie ein POP3-Postfach ein und konfigurieren Sie die CatchAll-Funktion aller
+						Domains, die Sie mit b1gMail verwenden m&ouml;chten, so, dass die E-Mails an diese
+						Domains dieses POP3-Postfach erreichen. (Dieser Schritt ist nicht n&ouml;tig, wenn
+						Sie den Einsatz von b1gMailServer zum Mail-Empfang planen.)</li>
+					<li>Laden Sie alle Dateien und Ordner aus dem Ordner &quot;upload&quot; dieses Paketes auf
+						Ihren Webspace hoch (z.B. mittels eines FTP-Programms).</li>
+					<li>Versehen Sie die folgenden Dateien und Ordner auf Ihrem Webspace mit Schreibrechten
+						(i.d.R. <code>chmod 666</code> f&uuml;r Dateien und <code>chmod 777</code> f&uuml;r
+						Ordner):
+						<ul>
+							<li>serverlib/config.inc.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>admin/templates/cache/</li>
+							<li>languages/</li>
+							<li>logs/</li>
+							<li>plugins/</li>
+							<li>plugins/templates/</li>
+							<li>plugins/templates/images/</li>
+							<li>temp/</li>
+							<li>temp/session/</li>
+							<li>temp/cache/</li>
+							<li>templates/modern/cache/</li>
+							<li>data/</li>
+						</ul></li>
+					<li>Rufen Sie die Installationsroutine von b1gMail durch Aufruf des Ordners <code>/setup/</code>
+						in Ihrem Browser auf (z.B. <code>http://www.ihre-domain.xy/b1gmail/setup/</code>) und
+						folgen Sie den Anweisungen des Installations-Assistenten.</li>
+					<li>L&ouml;schen Sie nach erfolgter Installation den Ordner &quot;setup&quot; <em>unbedingt</em>
+						vollst&auml;ndig von Ihrem Webspace.</li>
+				</ol>
+			</p>
+
+			<p>
+				<h2>Update von vorheriger b1gMail7-Version</h2>
+
+				Wenn Sie bereits eine &auml;ltere b1gMail7-Version einsetzen, verwenden Sie unbedingt statt des
+				Komplett-Pakets das jeweilige <b>Update-Paket</b> und gehen Sie nach der folgenden Anleitung vor.
+				<br />
+				<font color="red">Legen Sie vor Updates immer eine komplette Datensicherung (Datenbank und Dateien)
+				an!</font>
+
+				<ol>
+					<li>Wenn Sie von b1gMail in einer &auml;lteren Version als 7.4.0-Beta1 aktualisieren, loggen Sie sich in
+						den Adminbereich ein, gehen Sie zu &quot;Einstellungen&quot; &raquo; &quot;E-Mail&quot; und stellen
+						Sie sicher, dass die Mail-Speicherung auf &quot;Dateisystem&quot; eingestellt ist.
+						Gehen Sie, auch wenn dies bereits der Fall war, dann zu &quot;Tools&quot; &raquo; &quot;Optimierung&quot;
+						&raquo; &quot;Dateisystem&quot; und f&uuml;hren Sie die Funktion &quot;Mail-Speicherung&quot;
+						(Datenbank -&gt; Dateien) aus. Dies ist n&ouml;tig, um sicherzustellen, dass sich keine E-Mails mehr
+						in der Datenbank befinden, da diese Speichermethode ab Version 7.4.0-Beta1 entfernt wurde.
+						<font color="red">Sollte dieser Schritt nicht wie beschrieben durchgef&uuml;hrt werden, wird der Updater
+						das Update u.U. verweigern!</font>
+					<li>Aktivieren Sie den Wartungsmodus (im Admin-Bereich unter &quot;Einstellungen&quot; &raquo;
+						&quot;Allgemein&quot;).</li>
+					<li>Laden Sie alle Dateien und Ordner aus dem Ordner &quot;upload&quot; des passenden Update-Pakets auf
+						Ihren Webspace hoch (z.B. mittels eines FTP-Programms). Lassen Sie dabei bereits existierende
+						Dateien &uuml;berschreiben.</li>
+					<li>Versehen Sie die folgenden Dateien und Ordner auf Ihrem Webspace mit Schreibrechten
+						(i.d.R. <code>chmod 666</code> f&uuml;r Dateien und <code>chmod 777</code> f&uuml;r
+						Ordner):
+						<ul>
+							<li>serverlib/config.inc.php</li>
+							<li>serverlib/version.inc.php</li>
+							<li>admin/templates/cache/</li>
+							<li>languages/</li>
+							<li>logs/</li>
+							<li>plugins/</li>
+							<li>plugins/css/</li>
+							<li>plugins/js/</li>
+							<li>plugins/templates/</li>
+							<li>plugins/templates/images/</li>
+							<li>temp/</li>
+							<li>temp/session/</li>
+							<li>temp/cache/</li>
+							<li>templates/modern/cache/</li>
+							<li>data/</li>
+						</ul></li>
+					<li>Rufen Sie die Updateroutine von b1gMail durch Aufruf der Datei <code>/setup/update.php</code>
+						in Ihrem Browser auf (z.B. <code>http://www.ihre-domain.xy/b1gmail/setup/update.php</code>) und
+						folgen Sie den Anweisungen des Update-Assistenten.</li>
+					<li>Optional: Wenn Sie b1gMail derzeit nicht im UTF-8-Modus einsetzen und in den UTF-8-Modus wechseln
+						m&ouml;chten, rufen Sie die Datei <code>/setup/utf8convert.php</code> in Ihrem Browser auf
+						und folgen Sie den Anweisungen des Konvertierungs-Assistenten.</li>
+					<li>L&ouml;schen Sie nach erfolgtem Update den Ordner &quot;setup&quot; <em>unbedingt</em>
+						vollst&auml;ndig von Ihrem Webspace.</li>
+					<li>Falls Sie b1gMailServer verwenden, starten Sie nun bitte den Warteschleifendienst (bms-queue)
+						neu.</li>
+				</ol>
+
+				<div class="noteBox">
+					<ul>
+						<li>Ab b1gMail 7.3.0-Beta1 ist f&uuml;r den Login in den Adminbereich ein Benutzername erforderlich.
+							Nach dem Update von einer vorherigen Version ist der Standard-Administrator-Benutzername &quot;admin&quot;.</li>
+					</ul>
+				</div>
+			</p>
+
+			<p>
+				<h2>Update von b1gMail6</h2>
+
+				Wenn Sie bereits b1gMail6 einsetzen, aktualisieren Sie bitte zuerst auf b1gMail 7.2.0
+				und dann auf diese Version.
+			</p>
+
+			<p>
+				<h2>Lizenzbedingungen</h2>
+
+				<div class="license">
+					<p>§1 Die Nutzung dieser Software unterliegt den folgenden Lizenzbedingungen. Ein Versto&szlig; gegen die Lizenz ist verboten und wird vom Hersteller verfolgt. Bei Versto&szlig; gegen die Lizenzbedingungen kann der Hersteller die Lizenz jederzeit zur&uuml;cknehmen, ohne Kaufpreis oder sonstiges zu erstatten.</p>
+					<p>§2 Sofern nicht eine copyrightverweisfreie Version der Software erworben wurde, ist es verboten, den Copyrightverweis zu modifizieren oder zu entfernen. Der Verweis muss gut sichtbar am Ende jeder Seite vorhanden sein.</p>
+					<p>§3 Eine Lizenz ist immer nur f&uuml;r eine parallele Installation der Software g&uuml;ltig; und zwar f&uuml;r die Installation, die unter der im Kundencenter hinterlegten Domain erreichbar ist (sofern zutreffend). Bei erneuter Installation der Lizenz werden alle vorherigen Installationen dieser Lizenz ung&uuml;ltig und m&uuml;ssen entfernt werden. F&uuml;r mehrere Installationen sind auch entsprechend viele Lizenzen notwendig. Liegt eine copyrightverweisfreie Lizenz vor, darf nur bei der Installation dieser Lizenz der Verweis entfernt werden, f&uuml;r eventuell andere vorhandene Lizenzen mit Copyrightverweis gilt dies nicht.</p>
+					<p>§4 Sie sind in keinem Fall befugt, unrechtm&auml;&szlig;ige Kopien der Software, ob in Originalform oder in modifizierter Form, zu erstellen bzw. diese zu verteilen und/oder weiterzugeben.</p>
+					<p>§5 Als Inhaber einer Lizenz der Software sind Sie dazu befugt, auf eigenes Risiko die Software anzupassen und zu modifizieren. Eine Weitergabe der Software ist jedoch in keinem Falle, siehe §4, gestattet. Wenn Sie eigene &Auml;nderungen weitergeben wollen ist dies nur gestattet, wenn keine Teile der Software, weder Text, Bilder, Code noch sonstige Teile, mitverteilt werden.</p>
+					<p>§6 Die Verwendung der Software geschieht auf Risiko des Lizenzinhabers. Der Hersteller &uuml;bernimmt keinerlei Haftung f&uuml;r Folgeanspr&uuml;che, die aus dem Betrieb der Software begr&uuml;ndet werden, mit Ausnahme von Vorsatz und grober Fahrl&auml;ssigkeit. Der Hersteller garantiert nicht f&uuml;r die Nutzbarkeit der Software f&uuml;r einen bestimmten Einsatzzweck. Jegliche Forderungen im Streitfall gehen maximal bis zum Kaufpreis der Lizenz.</p>
+					<p>§7 Der Hersteller kann in keiner Weise f&uuml;r Daten, die mittels der Software verfasst, erfasst, erstellt, vertrieben, ausgetauscht (usw.) werden, haftbar gemacht werden. Der Hersteller ist nicht haftbar f&uuml;r den Betrieb der Accounts, die mit der Software verwaltet werden und kann auf diese nicht zugreifen.</p>
+					<p>§8 Die Software enth&auml;lt einen Update-Mechanismus, der &uuml;ber das Internet durch Kontaktierung eines Servers des Herstellers Aktualisierungen f&uuml;r das Produkt herunterladen und installieren kann. Beim Update-Prozess wird die Lizenz durch &Uuml;bertragen der Lizenz- und Seriennummer verifiziert. Eine Installation von Updates erfolgt niemals vollautomatisch sondern nur nach Best&auml;tigung durch den Benutzer.</p>
+					<p>§9 Erweist sich eine Bedingung dieser Lizenzbedingungen als unwirksam oder nichtig, so bleibt die Wirksamkeit der &uuml;brigen Bedingungen unber&uuml;hrt. Die ganz oder teilweise unwirksame oder nichtige Bedingung soll durch eine Bedingung ersetzt werden, die der unwirksamen oder nichtigen Bedingung m&ouml;glichst nahe kommt.</p>
+				</div>
+				<p>Hinweis: Bei der Installation wird eine E-Mail an B1G Software gesendet, welche die Installations-URL, die Lizenznummer und die Seriennummer enth&auml;lt.</p>
+			</p>
+
+			<p>
+				<h2>Hilfe</h2>
+
+				Sollten Probleme oder Fragen bei der Installation oder w&auml;hren des Betriebes von b1gMail
+				auftauchen, finden Sie in der b1gMail-Dokumentation, die Sie im
+				<a href="http://customers.b1gmail.com/" target="_blank">Kundencenter</a> erhalten oder per Klick auf
+				das &quot;?&quot;-Symbol im Admin-Bereich kontextbezogen aufrufen k&ouml;nnen, wertvolle
+				Informationen und Tipps. Weitere Anlaufstellen sind unsere
+				<a href="http://kb.b1gmail.com/" target="_blank">Hilfe-/Support-Datenbank</a> und
+				unser <a href="http://board.b1gmail.com/" target="_blank">Forum</a> (ausschlie&szlig;lich zum
+				Austauch unter Kunden). Programm-Fehler k&ouml;nnen Sie im
+				<a href="http://bugs.b1gmail.com/" target="_blank">Bug-Tracker</a> melden.<br />
+				Sollte sich Ihre Frage auf diesen Wegen nicht beantworten bzw. Ihr Problem nicht l&ouml;sen
+				lassen, z&ouml;gern Sie nicht, &uuml;ber das
+				<a href="http://customers.b1gmail.com/" target="_blank">Kundencenter</a> unseren Support zu
+				kontaktieren.
+			</p>
+		</div>
+
+		<div class="footer">
+			&copy; 2002-2018 B1G Software
+		</div>
+	</div>
+</center>
+
+</body>
+
+</html>
