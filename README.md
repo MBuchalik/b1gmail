@@ -1,28 +1,24 @@
-# b1gMail developer repository
+# b1gMail
 
-## Getting started
-It is recommended to install the b1gMail developer copy on a local web server,
-e.g. standard Apache/PHP/MySQL on Linux or Wamp on Windows. Even better results
-on Windows can be achieved with a WSL setup.
+## Local development installation
 
-In order to install a development environment, proceed as follows:
+To run a local development version, you first need a local web server. The recommended way is to use our Docker setup. Simply perform the following steps to start your local, Docker-powered development instance:
 1. Clone the repository
-2. Go to `src/serverlib/` and copy `config.default.inc.php` to `config.inc.php`
-3. Open the folder `src` in your web browser, e.g. `http://localhost/b1gMail/src/`
-4. Follow the setup instructs, use the normal serial number of your b1gMail license
+2. Go to `/src/serverlib/` and copy `config.default.inc.php` to `config.inc.php`
+3. Go to `/dev/` and follow the instructions on how to run the Docker development server.
+4. Open `localhost:5000` in your web browser. The UI will guide you through the rest of the setup process.
+
+If you want to see detailed debug information like php errors and similar, open `/src/serverlib/config.inc.php` and add the following to it:
+
+``` php
+define('DEBUG', true);
+```
 
 ## Staying up to date
 When pulling new changes from the server, you will need to update your database
 structure in case it changed. In order to do so, log in to the ACP of your b1gMail
 development copy, go to "Tools" -> "Optimize" and chose "Check structure". Let
 the ACP fix any issues it found.
-
-## Contributing
-You want to contribute to the b1gMail code? Great! In order to do so, it's
-probably the best idea to fork the b1gMail repository in your GitLab account
-here and start creating your own commits. As soon as you feel the commit is mature
-and you would like to integrate it into the b1gMail code base, create a merge
-request to the master repository (b1gmail-dev/b1gMail) and we will review it.
 
 ### Basic guidelines for commits
 * Adhere to the b1gMail coding style
