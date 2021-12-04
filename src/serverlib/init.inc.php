@@ -19,10 +19,28 @@
  *
  */
 
-/**
- * show all PHP errors until config file with debug setting is included
- */
-error_reporting(E_ALL);
+error_reporting(0);
+
+define('B1GMAIL_DIR',	substr(dirname(__FILE__), 0, -strlen(strrchr(str_replace('\\', '/', dirname(__FILE__)), '/'))) . '/');
+define('B1GMAIL_REL', file_exists('admin/') ? './' : '../');
+define('B1GMAIL_INIT', true);
+
+include(B1GMAIL_DIR . 'serverlib/config.inc.php');
+
+if(!defined('DEBUG'))
+	define('DEBUG',	false);
+
+if(DEBUG)
+	error_reporting(E_ALL);
+else
+	error_reporting(0);
+
+assert_options(ASSERT_WARNING, DEBUG ? 1 : 0);
+
+if (!defined('DEV_MOCK_MAIL_SENDING')) {
+	// A setting used for development purposes that replaces actual email submission by a mock.
+	define('DEV_MOCK_MAIL_SENDING', false);
+}
 
 /**
  * initialize php config
@@ -42,9 +60,6 @@ if(!defined('INTERFACE_MODE'))
 	define('INTERFACE_MODE',				false);
 if(!defined('EXTENDED_WORKGROUPS'))
 	define('EXTENDED_WORKGROUPS',			false);
-define('B1GMAIL_DIR',						substr(dirname(__FILE__), 0, -strlen(strrchr(str_replace('\\', '/', dirname(__FILE__)), '/'))) . '/');
-define('B1GMAIL_REL',						file_exists('admin/') ? './' : '../');
-define('B1GMAIL_INIT',						true);
 define('TOOLBOX_SERVER',					'https://service.b1gmail.org/toolbox/');
 define('UPDATE_SERVER',						'https://service.b1gmail.org/patches/');
 define('SIGNATURE_SERVER',					'https://service.b1gmail.org/signatures/');
@@ -280,21 +295,6 @@ define('BM_IS_SPAM', 						8192);
 define('BM_UPDATE_UNKNOWN',					0);
 define('BM_UPDATE_NOT_AVAILABLE',			1);
 define('BM_UPDATE_AVAILABLE',				2);
-
-/**
- * include config and set error reporting based on debug setting
- */
-include(B1GMAIL_DIR . 'serverlib/config.inc.php');
-
-if(!defined('DEBUG'))
-	define('DEBUG',							false);
-
-if(DEBUG)
-	error_reporting(E_ALL);
-else
-	error_reporting(0);
-
-assert_options(ASSERT_WARNING, DEBUG ? 1 : 0);
 
 /**
  * required files

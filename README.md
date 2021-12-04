@@ -14,6 +14,12 @@ If you want to see detailed debug information like php errors and similar, open 
 define('DEBUG', true);
 ```
 
+Often, when developing locally, you don't want to actually send emails (and even deal with properly configuring email sending). Simply add the following to your `config.inc.php` to replace the actual email sending with a mock that won't actually send the email:
+
+``` php
+define('DEV_MOCK_MAIL_SENDING', true);
+```
+
 ## Staying up to date
 When pulling new changes from the server, you will need to update your database
 structure in case it changed. In order to do so, log in to the ACP of your b1gMail
