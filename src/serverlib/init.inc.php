@@ -290,11 +290,10 @@ if(!defined('DEBUG'))
 	define('DEBUG',							false);
 
 if(DEBUG)
-	error_reporting(E_ALL & ~E_STRICT);
-else if(defined('INTERFACE_MODE') && INTERFACE_MODE)
-	error_reporting(0);
+	error_reporting(E_ALL);
 else
-	error_reporting(E_ERROR | E_WARNING | E_PARSE);
+	error_reporting(0);
+
 assert_options(ASSERT_WARNING, DEBUG ? 1 : 0);
 
 /**
