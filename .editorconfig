@@ -1,0 +1,2 @@
+# For code formatting, we use Prettier. Prettier is able to read .editorconfig files. To avoid Prettier from recursively looking for .editorconfig files (that might be placed by coincidence in an ancestor folder of this project) and applying these settings, we set "root = true".
+root = true

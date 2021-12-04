@@ -1,0 +1,10 @@
+{
+  "name": "b1gmail",
+  "version": "0.0.1",
+  "private": true,
+  "license": "GPL-2.0",
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.17.6",
+    "prettier": "^2.5.1"
+  }
+}
