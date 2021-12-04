@@ -1,7 +1,7 @@
 <?php
 /*
- * b1gMail wbb3 auth plugin
- * (c) 2021 Patrick Schlangen et al
+ * b1gMail
+ * Copyright (c) 2021 Patrick Schlangen et al
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
