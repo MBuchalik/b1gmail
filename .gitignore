@@ -1,3 +1,5 @@
+/.php-cs-fixer.cache
+
 /src/admin/templates/cache/*
 !/src/admin/templates/cache/.htaccess
 !/src/admin/templates/cache/index.html
@@ -15,6 +17,8 @@
 /src/templates/*/cache/*
 !/src/templates/*/cache/.htaccess
 !/src/templates/*/cache/index.html
+
+/vendor/
 
 Thumbs.db
 ehthumbs.db

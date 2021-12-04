@@ -1,0 +1,8 @@
+{
+    "require": {
+        "friendsofphp/php-cs-fixer": "^3.3"
+    },
+    "scripts": {
+        "lint": "php-cs-fixer fix --dry-run --diff"
+    }
+}
