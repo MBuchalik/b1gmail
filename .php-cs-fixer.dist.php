@@ -86,7 +86,18 @@ final class PrettierPHPFixer implements FixerInterface {
     }
 
     private function applyFix(SplFileInfo $file, Tokens $tokens): void {
-        exec("npx prettier $file", $prettierOutput);
+        exec("npx prettier $file", $prettierOutput, $prettierResultCode);
+
+        if ($prettierResultCode !== 0) {
+            /*
+                It is very important to throw an Exception if something goes wrong while running Prettier.
+                Otherwise, the error will just be ignored.
+                Which is particularly bad when running an automated code fixer, because it will then just delete the content of the affected file.
+            */
+
+            throw new Exception('Something went wrong while running Prettier.');
+        }
+
         // For some reason, the output would not contain an empty newline at the end.
         array_push($prettierOutput, '');
 
