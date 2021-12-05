@@ -19,85 +19,97 @@
  *
  */
 
-include('../serverlib/init.inc.php');
-if(!class_exists('BMCalendar'))
-	include('../serverlib/calendar.class.php');
-if(!class_exists('BMAddressbook'))
-	include('../serverlib/addressbook.class.php');
+include '../serverlib/init.inc.php';
+if (!class_exists('BMCalendar')) {
+    include '../serverlib/calendar.class.php';
+}
+if (!class_exists('BMAddressbook')) {
+    include '../serverlib/addressbook.class.php';
+}
 RequestPrivileges(PRIVILEGES_USER | PRIVILEGES_MOBILE);
 
 /**
  * calendar interface
  */
-$calendar = _new('BMCalendar', array($userRow['id']));
+$calendar = _new('BMCalendar', [$userRow['id']]);
 
 /**
  * assign
  */
-$tpl->assign('activeTab', 	'calendar');
+$tpl->assign('activeTab', 'calendar');
 
 /**
  * default action
  */
-if(!isset($_REQUEST['action']))
-	$_REQUEST['action'] = 'list';
+if (!isset($_REQUEST['action'])) {
+    $_REQUEST['action'] = 'list';
+}
 
 /**
  * date list
  */
-if($_REQUEST['action'] == 'list')
-{
-	$dates = $calendar->GetDatesForTimeframe(time(), time() + 6*TIME_ONE_MONTH);
-	$dates = array_slice($dates, 0, 50);
+if ($_REQUEST['action'] == 'list') {
+    $dates = $calendar->GetDatesForTimeframe(
+        time(),
+        time() + 6 * TIME_ONE_MONTH,
+    );
+    $dates = array_slice($dates, 0, 50);
 
-	$tpl->assign('dates', $dates);
-	$tpl->assign('pageTitle', $lang_user['calendar']);
-	$tpl->assign('page', 'm/calendar.list.tpl');
-	$tpl->display('m/index.tpl');
+    $tpl->assign('dates', $dates);
+    $tpl->assign('pageTitle', $lang_user['calendar']);
+    $tpl->assign('page', 'm/calendar.list.tpl');
+    $tpl->display('m/index.tpl');
 }
-
 /**
  * date details
- */
-else if($_REQUEST['action'] == 'show' && isset($_REQUEST['id']))
-{
-	$date = $calendar->GetDate((int)$_REQUEST['id']);
-	if($date !== false)
-	{
-		// override start/enddates, if given (neccessary for repeating dates)
-		if(isset($_REQUEST['start']) && $_REQUEST['start'] != $date['startdate'])
-		{
-			$date['orig_startdate'] = $date['startdate'];
-			$date['startdate'] = (int)$_REQUEST['start'];
-		}
-		if(isset($_REQUEST['end']) && $_REQUEST['end'] != $date['enddate'])
-		{
-			$date['orig_enddate'] = $date['enddate'];
-			$date['enddate'] = (int)$_REQUEST['end'];
-		}
+ */ elseif ($_REQUEST['action'] == 'show' && isset($_REQUEST['id'])) {
+    $date = $calendar->GetDate((int) $_REQUEST['id']);
+    if ($date !== false) {
+        // override start/enddates, if given (neccessary for repeating dates)
+        if (
+            isset($_REQUEST['start']) &&
+            $_REQUEST['start'] != $date['startdate']
+        ) {
+            $date['orig_startdate'] = $date['startdate'];
+            $date['startdate'] = (int) $_REQUEST['start'];
+        }
+        if (isset($_REQUEST['end']) && $_REQUEST['end'] != $date['enddate']) {
+            $date['orig_enddate'] = $date['enddate'];
+            $date['enddate'] = (int) $_REQUEST['end'];
+        }
 
-		// attendee + mail stuff
-		$attendees = $calendar->GetDateAttendees((int)$_REQUEST['id']);
-		$attendeeMail = array();
-		foreach($attendees as $person)
-			$attendeeMail[] = sprintf('"%s, %s" <%s>',
-				$person['nachname'],
-				$person['vorname'],
-				$person['default_address'] == ADDRESS_PRIVATE
-					? $person['email']
-					: $person['work_email']);
-		$mailTo = urlencode(implode('; ', $attendeeMail));
-		$mailSubject = urlencode($lang_user['btr'] . ' "' . $date['title'] . '" (' . date($userRow['datumsformat'], $date['startdate']) . ')');
+        // attendee + mail stuff
+        $attendees = $calendar->GetDateAttendees((int) $_REQUEST['id']);
+        $attendeeMail = [];
+        foreach ($attendees as $person) {
+            $attendeeMail[] = sprintf(
+                '"%s, %s" <%s>',
+                $person['nachname'],
+                $person['vorname'],
+                $person['default_address'] == ADDRESS_PRIVATE
+                    ? $person['email']
+                    : $person['work_email'],
+            );
+        }
+        $mailTo = urlencode(implode('; ', $attendeeMail));
+        $mailSubject = urlencode(
+            $lang_user['btr'] .
+                ' "' .
+                $date['title'] .
+                '" (' .
+                date($userRow['datumsformat'], $date['startdate']) .
+                ')',
+        );
 
-		// page output
-		$tpl->assign('notes', nl2br(HTMLFormat($date['text'])));
-		$tpl->assign('date', $date);
-		$tpl->assign('attendees', $attendees);
-		$tpl->assign('mailTo', $mailTo);
-		$tpl->assign('mailSubject', $mailSubject);
-		$tpl->assign('pageTitle', HTMLFormat($date['title']));
-		$tpl->assign('page', 'm/calendar.show.tpl');
-		$tpl->display('m/index.tpl');
-	}
+        // page output
+        $tpl->assign('notes', nl2br(HTMLFormat($date['text'])));
+        $tpl->assign('date', $date);
+        $tpl->assign('attendees', $attendees);
+        $tpl->assign('mailTo', $mailTo);
+        $tpl->assign('mailSubject', $mailSubject);
+        $tpl->assign('pageTitle', HTMLFormat($date['title']));
+        $tpl->assign('page', 'm/calendar.show.tpl');
+        $tpl->display('m/index.tpl');
+    }
 }
 ?>

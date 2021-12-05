@@ -19,138 +19,153 @@
  *
  */
 
-if(!defined('B1GMAIL_INIT'))
-	die('Directly calling this file is not supported');
+if (!defined('B1GMAIL_INIT')) {
+    die('Directly calling this file is not supported');
+}
 
-class BMBlobStorage_SeparateFiles extends BMAbstractBlobStorage
-{
-	private $extMap = array(
-		BMBLOB_TYPE_MAIL	=> 'msg',
-		BMBLOB_TYPE_WEBDISK	=> 'dsk'
-	);
+class BMBlobStorage_SeparateFiles extends BMAbstractBlobStorage {
+    private $extMap = [
+        BMBLOB_TYPE_MAIL => 'msg',
+        BMBLOB_TYPE_WEBDISK => 'dsk',
+    ];
 
-	public function storeBlob($type, $id, $data, $limit = -1)
-	{
-		$ext = $this->extMap[$type];
-		$fileName = DataFilename($id, $ext);
+    public function storeBlob($type, $id, $data, $limit = -1) {
+        $ext = $this->extMap[$type];
+        $fileName = DataFilename($id, $ext);
 
-		$fp = fopen($fileName, 'wb');
-		if(!is_resource($fp))
-		{
-			PutLog(sprintf('Failed to open blob file <%s> for writing (type: %d, id: %d)',
-					$fileName, $type, $id),
-				PRIO_WARNING,
-				__FILE__,
-				__LINE__);
-			return(false);
-		}
-		if(is_resource($data))
-		{
-			$byteCount = 0;
-			while(!feof($data))
-			{
-				$chunk = fread($data, 4096);
-				if($limit != -1 && $byteCount+strlen($chunk) > $limit)
-					break;
-				fwrite($fp, $chunk);
-				$byteCount += strlen($chunk);
-			}
-		}
-		else
-		{
-			if($limit > -1 && strlen($data) > $limit)
-				$data = substr($data, 0, $limit);
-			fwrite($fp, $data);
-		}
-		fclose($fp);
+        $fp = fopen($fileName, 'wb');
+        if (!is_resource($fp)) {
+            PutLog(
+                sprintf(
+                    'Failed to open blob file <%s> for writing (type: %d, id: %d)',
+                    $fileName,
+                    $type,
+                    $id,
+                ),
+                PRIO_WARNING,
+                __FILE__,
+                __LINE__,
+            );
+            return false;
+        }
+        if (is_resource($data)) {
+            $byteCount = 0;
+            while (!feof($data)) {
+                $chunk = fread($data, 4096);
+                if ($limit != -1 && $byteCount + strlen($chunk) > $limit) {
+                    break;
+                }
+                fwrite($fp, $chunk);
+                $byteCount += strlen($chunk);
+            }
+        } else {
+            if ($limit > -1 && strlen($data) > $limit) {
+                $data = substr($data, 0, $limit);
+            }
+            fwrite($fp, $data);
+        }
+        fclose($fp);
 
-		@chmod($fileName, 0666);
+        @chmod($fileName, 0666);
 
-		return(true);
-	}
+        return true;
+    }
 
-	public function loadBlob($type, $id)
-	{
-		$ext = $this->extMap[$type];
-		$fileName = DataFilename($id, $ext, true);
+    public function loadBlob($type, $id) {
+        $ext = $this->extMap[$type];
+        $fileName = DataFilename($id, $ext, true);
 
-		if(!file_exists($fileName))
-		{
-			PutLog(sprintf('Blob file <%s> does not exist (type: %d, id: %d)',
-					$fileName, $type, $id),
-				PRIO_WARNING,
-				__FILE__,
-				__LINE__);
-			return(false);
-		}
+        if (!file_exists($fileName)) {
+            PutLog(
+                sprintf(
+                    'Blob file <%s> does not exist (type: %d, id: %d)',
+                    $fileName,
+                    $type,
+                    $id,
+                ),
+                PRIO_WARNING,
+                __FILE__,
+                __LINE__,
+            );
+            return false;
+        }
 
-		$fp = fopen($fileName, 'rb');
-		if(!is_resource($fp))
-		{
-			PutLog(sprintf('Failed to open blob file <%s> for reading (type: %d, id: %d)',
-					$fileName, $type, $id),
-				PRIO_WARNING,
-				__FILE__,
-				__LINE__);
-		}
+        $fp = fopen($fileName, 'rb');
+        if (!is_resource($fp)) {
+            PutLog(
+                sprintf(
+                    'Failed to open blob file <%s> for reading (type: %d, id: %d)',
+                    $fileName,
+                    $type,
+                    $id,
+                ),
+                PRIO_WARNING,
+                __FILE__,
+                __LINE__,
+            );
+        }
 
-		return($fp);
-	}
+        return $fp;
+    }
 
-	public function deleteBlob($type, $id)
-	{
-		$ext = $this->extMap[$type];
-		$fileName = DataFilename($id, $ext, true);
+    public function deleteBlob($type, $id) {
+        $ext = $this->extMap[$type];
+        $fileName = DataFilename($id, $ext, true);
 
-		if(file_exists($fileName))
-			return(@unlink($fileName));
+        if (file_exists($fileName)) {
+            return @unlink($fileName);
+        }
 
-		return(true);
-	}
+        return true;
+    }
 
-	public function getBlobSize($type, $id)
-	{
-		$ext = $this->extMap[$type];
-		$fileName = DataFilename($id, $ext, true);
+    public function getBlobSize($type, $id) {
+        $ext = $this->extMap[$type];
+        $fileName = DataFilename($id, $ext, true);
 
-		$result = @filesize($fileName);
-		if($result === false)
-		{
-			PutLog(sprintf('Failed to get file size of blob file <%s> (type: %d, id: %d)',
-					$fileName, $type, $id),
-				PRIO_WARNING,
-				__FILE__,
-				__LINE__);
-		}
+        $result = @filesize($fileName);
+        if ($result === false) {
+            PutLog(
+                sprintf(
+                    'Failed to get file size of blob file <%s> (type: %d, id: %d)',
+                    $fileName,
+                    $type,
+                    $id,
+                ),
+                PRIO_WARNING,
+                __FILE__,
+                __LINE__,
+            );
+        }
 
-		return($result);
-	}
+        return $result;
+    }
 
-	public function deleteUser()
-	{
-		global $db;
+    public function deleteUser() {
+        global $db;
 
-		$res = $db->Query('SELECT `id` FROM {pre}mails WHERE `userid`=? AND `blobstorage`=?',
-			$this->userID,
-			BMBLOBSTORAGE_SEPARATEFILES);
-		while($row = $res->FetchArray(MYSQLI_ASSOC))
-		{
-			$this->deleteBlob(BMBLOB_TYPE_MAIL, $row['id']);
-		}
-		$res->Free();
+        $res = $db->Query(
+            'SELECT `id` FROM {pre}mails WHERE `userid`=? AND `blobstorage`=?',
+            $this->userID,
+            BMBLOBSTORAGE_SEPARATEFILES,
+        );
+        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
+            $this->deleteBlob(BMBLOB_TYPE_MAIL, $row['id']);
+        }
+        $res->Free();
 
-		$res = $db->Query('SELECT `id` FROM {pre}diskfiles WHERE `user`=? AND `blobstorage`=?',
-			$this->userID,
-			BMBLOBSTORAGE_SEPARATEFILES);
-		while($row = $res->FetchArray(MYSQLI_ASSOC))
-		{
-			$this->deleteBlob(BMBLOB_TYPE_WEBDISK, $row['id']);
-		}
-		$res->Free();
-	}
+        $res = $db->Query(
+            'SELECT `id` FROM {pre}diskfiles WHERE `user`=? AND `blobstorage`=?',
+            $this->userID,
+            BMBLOBSTORAGE_SEPARATEFILES,
+        );
+        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
+            $this->deleteBlob(BMBLOB_TYPE_WEBDISK, $row['id']);
+        }
+        $res->Free();
+    }
 
-	public function isAvailable()
-	{
-		return(true);
-	}
+    public function isAvailable() {
+        return true;
+    }
 }

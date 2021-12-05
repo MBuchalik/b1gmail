@@ -19,28 +19,34 @@
  *
  */
 
-if(!defined('B1GMAIL_INIT'))
-	die('Directly calling this file is not supported');
+if (!defined('B1GMAIL_INIT')) {
+    die('Directly calling this file is not supported');
+}
 
 /**
  * open mailbox
  */
-$mailbox = _new('BMMailbox', array($userRow['id'], $userRow['email'], $thisUser));
-if(EXTENDED_WORKGROUPS)
-	$avoidFrameTasks = false;
-else
-	$avoidFrameTasks = strpos($_SERVER['PHP_SELF'], 'email.read.php') !== false && isset($_REQUEST['preview']);
+$mailbox = _new('BMMailbox', [$userRow['id'], $userRow['email'], $thisUser]);
+if (EXTENDED_WORKGROUPS) {
+    $avoidFrameTasks = false;
+} else {
+    $avoidFrameTasks =
+        strpos($_SERVER['PHP_SELF'], 'email.read.php') !== false &&
+        isset($_REQUEST['preview']);
+}
 
 /**
  * template stuff
  */
 $tpl->assign('activeTab', 'email');
-if(!$avoidFrameTasks)
-{
-	$tpl->assign('spaceUsed', $mailbox->GetUsedSpace());
-	$tpl->assign('spaceLimit', $mailbox->GetSpaceLimit());
-	$tpl->assign('dropdownFolderList', $mailbox->GetDropdownFolderList(-1, $null));
-	$tpl->assign('narrow', $thisUser->GetPref('previewPosition') == 'right');
+if (!$avoidFrameTasks) {
+    $tpl->assign('spaceUsed', $mailbox->GetUsedSpace());
+    $tpl->assign('spaceLimit', $mailbox->GetSpaceLimit());
+    $tpl->assign(
+        'dropdownFolderList',
+        $mailbox->GetDropdownFolderList(-1, $null),
+    );
+    $tpl->assign('narrow', $thisUser->GetPref('previewPosition') == 'right');
 }
 $tpl->assign('pageToolbarFile', 'li/email.toolbar.tpl');
 $tpl->assign('pageTitle', $lang_user['email']);
@@ -50,6 +56,6 @@ $null = null;
 /**
  * page menu (folders)
  */
-list($folderList, $pageMenu) = $mailbox->GetPageFolderList();
+[$folderList, $pageMenu] = $mailbox->GetPageFolderList();
 $tpl->assign('folderList', $pageMenu);
 $tpl->assign('pageMenuFile', 'li/email.sidebar.tpl');

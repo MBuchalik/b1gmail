@@ -22,30 +22,41 @@
 // if the language cookie is set and the client indicated that is has cached the file before,
 // check if the cached version is up to date *before* including init.inc.php to decrease
 // clientlang.php latency
-if(isset($_COOKIE['bm_language'])
-	&& (isset($_SERVER['HTTP_IF_NONE_MATCH']) || isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])))
-{
-	$sanitizedLang = preg_replace('/[^a-zA-Z0-9\-\_]/', '', $_COOKIE['bm_language']);
-	$langFn = 'languages/' . $sanitizedLang . '.lang.php';
-	if(file_exists($langFn))
-	{
-		$lastModified = filemtime($langFn);
-		$eTag = md5_file($langFn);
+if (
+    isset($_COOKIE['bm_language']) &&
+    (isset($_SERVER['HTTP_IF_NONE_MATCH']) ||
+        isset($_SERVER['HTTP_IF_MODIFIED_SINCE']))
+) {
+    $sanitizedLang = preg_replace(
+        '/[^a-zA-Z0-9\-\_]/',
+        '',
+        $_COOKIE['bm_language'],
+    );
+    $langFn = 'languages/' . $sanitizedLang . '.lang.php';
+    if (file_exists($langFn)) {
+        $lastModified = filemtime($langFn);
+        $eTag = md5_file($langFn);
 
-		if(@strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) == $lastModified
-			|| (isset($_SERVER['HTTP_IF_NONE_MATCH']) && trim($_SERVER['HTTP_IF_NONE_MATCH']) == $eTag))
-		{
-			header('HTTP/1.1 304 Not Modified');
-			exit();
-		}
-	}
+        if (
+            @strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) == $lastModified ||
+            (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
+                trim($_SERVER['HTTP_IF_NONE_MATCH']) == $eTag)
+        ) {
+            header('HTTP/1.1 304 Not Modified');
+            exit();
+        }
+    }
 }
 
-include('./serverlib/init.inc.php');
-if(isset($_REQUEST['sid']) && trim($_REQUEST['sid']) != '')
-	RequestPrivileges(PRIVILEGES_USER, true) || RequestPrivileges(PRIVILEGES_ADMIN, true);
+include './serverlib/init.inc.php';
+if (isset($_REQUEST['sid']) && trim($_REQUEST['sid']) != '') {
+    RequestPrivileges(PRIVILEGES_USER, true) ||
+        RequestPrivileges(PRIVILEGES_ADMIN, true);
+}
 
-$lastModified = filemtime(B1GMAIL_DIR . 'languages/' . $currentLanguage . '.lang.php');
+$lastModified = filemtime(
+    B1GMAIL_DIR . 'languages/' . $currentLanguage . '.lang.php',
+);
 $eTag = md5_file(B1GMAIL_DIR . 'languages/' . $currentLanguage . '.lang.php');
 
 header('Content-Type: text/javascript; charset=' . $currentCharset);
@@ -53,21 +64,24 @@ header('Cache-Control: private');
 header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $lastModified) . ' GMT');
 header('ETag: ' . $eTag);
 
-if(@strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) == $lastModified
-	|| (isset($_SERVER['HTTP_IF_NONE_MATCH']) && trim($_SERVER['HTTP_IF_NONE_MATCH']) === $eTag))
-{
-	header('HTTP/1.1 304 Not Modified');
-	exit();
+if (
+    @strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) == $lastModified ||
+    (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
+        trim($_SERVER['HTTP_IF_NONE_MATCH']) === $eTag)
+) {
+    header('HTTP/1.1 304 Not Modified');
+    exit();
 }
 
 echo '<!--' . "\n";
 echo 'var lang = new Array();' . "\n";
 
-foreach($lang_client as $key=>$value)
-{
-	printf('lang[\'%s\'] = "%s";' . "\n",
-		$key,
-		str_replace("\n", '\n', str_replace("\r", '', addslashes($value))));
+foreach ($lang_client as $key => $value) {
+    printf(
+        'lang[\'%s\'] = "%s";' . "\n",
+        $key,
+        str_replace("\n", '\n', str_replace("\r", '', addslashes($value))),
+    );
 }
 
 echo '//-->';

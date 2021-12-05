@@ -19,66 +19,74 @@
  *
  */
 
-include('../serverlib/admin.inc.php');
+include '../serverlib/admin.inc.php';
 RequestPrivileges(PRIVILEGES_ADMIN);
 AdminRequirePrivilege('backup');
 
-if(!isset($_REQUEST['action']))
-	$_REQUEST['action'] = 'backup';
+if (!isset($_REQUEST['action'])) {
+    $_REQUEST['action'] = 'backup';
+}
 
-$tabs = array(
-	0 => array(
-		'title'		=> $lang_admin['backup'],
-		'link'		=> 'backup.php?',
-		'active'	=> $_REQUEST['action'] == 'backup'
-	)
-);
+$tabs = [
+    0 => [
+        'title' => $lang_admin['backup'],
+        'link' => 'backup.php?',
+        'active' => $_REQUEST['action'] == 'backup',
+    ],
+];
 
 /**
  * backup
  */
-if($_REQUEST['action'] == 'backup')
-{
-	if(!isset($_REQUEST['do']))
-		$_REQUEST['do'] = 'page';
+if ($_REQUEST['action'] == 'backup') {
+    if (!isset($_REQUEST['do'])) {
+        $_REQUEST['do'] = 'page';
+    }
 
-	//
-	// default page
-	//
-	if($_REQUEST['do'] == 'page')
-	{
-		// assign
-		$tpl->assign('sizes', GetCategorizedSpaceUsage());
-		$tpl->assign('page', 'backup.tpl');
-	}
+    //
+    // default page
+    //
+    if ($_REQUEST['do'] == 'page') {
+        // assign
+        $tpl->assign('sizes', GetCategorizedSpaceUsage());
+        $tpl->assign('page', 'backup.tpl');
+    }
 
-	//
-	// create backup page
-	//
-	else if($_REQUEST['do'] == 'createBackup')
-	{
-		// backup sequence
-		$sequence = $fileSequence = array();
-		if(isset($_REQUEST['backup_prefs']))
-			$sequence = array_merge($sequence, $backupTables['prefs']);
-		if(isset($_REQUEST['backup_stats']))
-			$sequence = array_merge($sequence, $backupTables['stats']);
-		if(isset($_REQUEST['backup_users']))
-			$sequence = array_merge($sequence, $backupTables['users']);
-		if(isset($_REQUEST['backup_organizer']))
-			$sequence = array_merge($sequence, $backupTables['organizer']);
-		if(isset($_REQUEST['backup_mails']))
-			$sequence = array_merge($sequence, $backupTables['mails']);
-		if(isset($_REQUEST['backup_webdisk']))
-			$sequence = array_merge($sequence, $backupTables['webdisk']);
+    //
+    // create backup page
+    //
+    elseif ($_REQUEST['do'] == 'createBackup') {
+        // backup sequence
+        $sequence = $fileSequence = [];
+        if (isset($_REQUEST['backup_prefs'])) {
+            $sequence = array_merge($sequence, $backupTables['prefs']);
+        }
+        if (isset($_REQUEST['backup_stats'])) {
+            $sequence = array_merge($sequence, $backupTables['stats']);
+        }
+        if (isset($_REQUEST['backup_users'])) {
+            $sequence = array_merge($sequence, $backupTables['users']);
+        }
+        if (isset($_REQUEST['backup_organizer'])) {
+            $sequence = array_merge($sequence, $backupTables['organizer']);
+        }
+        if (isset($_REQUEST['backup_mails'])) {
+            $sequence = array_merge($sequence, $backupTables['mails']);
+        }
+        if (isset($_REQUEST['backup_webdisk'])) {
+            $sequence = array_merge($sequence, $backupTables['webdisk']);
+        }
 
-		// assign
-		$tpl->assign('sequence', $sequence);
-		$tpl->assign('page', 'backup.create.tpl');
-	}
+        // assign
+        $tpl->assign('sequence', $sequence);
+        $tpl->assign('page', 'backup.create.tpl');
+    }
 }
 
 $tpl->assign('tabs', $tabs);
-$tpl->assign('title', $lang_admin['tools'] . ' &raquo; ' . $lang_admin['backup']);
+$tpl->assign(
+    'title',
+    $lang_admin['tools'] . ' &raquo; ' . $lang_admin['backup'],
+);
 $tpl->display('page.tpl');
 ?>

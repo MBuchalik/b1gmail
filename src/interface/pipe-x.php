@@ -20,11 +20,11 @@
  *
  */
 
-if(isset($_SERVER['SENDER']) && isset($_SERVER['RECIPIENT']))
-{
-	$_SERVER['argv'] = array();
-	$_SERVER['argv'][] = $_SERVER['SENDER'];
-	$_SERVER['argv'][] = '--';
-	$_SERVER['argv'][] = $_SERVER['RECIPIENT'];
+if (isset($_SERVER['SENDER']) && isset($_SERVER['RECIPIENT'])) {
+    $_SERVER['argv'] = [];
+    $_SERVER['argv'][] = $_SERVER['SENDER'];
+    $_SERVER['argv'][] = '--';
+    $_SERVER['argv'][] = $_SERVER['RECIPIENT'];
 }
-include("pipe.php");
+include 'pipe.php';
+

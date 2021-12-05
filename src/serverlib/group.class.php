@@ -19,96 +19,95 @@
  *
  */
 
-if(!defined('B1GMAIL_INIT'))
-	die('Directly calling this file is not supported');
+if (!defined('B1GMAIL_INIT')) {
+    die('Directly calling this file is not supported');
+}
 
 /**
  * group class
  */
-class BMGroup
-{
-	var $_id;
-	var $_row;
+class BMGroup {
+    var $_id;
+    var $_row;
 
-	function __construct($id)
-	{
-		$this->_id = $id;
-		$this->_row = $this->Fetch();
-	}
+    function __construct($id) {
+        $this->_id = $id;
+        $this->_row = $this->Fetch();
+    }
 
-	/**
-	 * fetch a group row (assoc)
-	 *
-	 * @param int $id
-	 * @return $array
-	 */
-	function Fetch($id = -1)
-	{
-		global $db, $cacheManager;
+    /**
+     * fetch a group row (assoc)
+     *
+     * @param int $id
+     * @return $array
+     */
+    function Fetch($id = -1) {
+        global $db, $cacheManager;
 
-		if($id == -1)
-		{
-			$id = $this->_id;
-			if(is_array($this->_row))
-				return($this->_row);
-		}
+        if ($id == -1) {
+            $id = $this->_id;
+            if (is_array($this->_row)) {
+                return $this->_row;
+            }
+        }
 
-		if(!($row = $cacheManager->Get('group:' . $id)))
-		{
-			$res = $db->Query('SELECT * FROM {pre}gruppen WHERE id=?',
-				$id);
-			if($res->RowCount() == 0)
-				return(false);
-			$row = $res->FetchArray(MYSQLI_ASSOC);
-			$res->Free();
+        if (!($row = $cacheManager->Get('group:' . $id))) {
+            $res = $db->Query('SELECT * FROM {pre}gruppen WHERE id=?', $id);
+            if ($res->RowCount() == 0) {
+                return false;
+            }
+            $row = $res->FetchArray(MYSQLI_ASSOC);
+            $res->Free();
 
-			$cacheManager->Set('group:' . $id, $row);
-		}
+            $cacheManager->Set('group:' . $id, $row);
+        }
 
-		return($row);
-	}
+        return $row;
+    }
 
-	/**
-	 * retrieve a simple id/title group list
-	 *
-	 * @return array
-	 */
-	static function GetSimpleGroupList()
-	{
-		global $db;
+    /**
+     * retrieve a simple id/title group list
+     *
+     * @return array
+     */
+    static function GetSimpleGroupList() {
+        global $db;
 
-		$groups = array();
-		$res = $db->Query('SELECT id,titel FROM {pre}gruppen ORDER BY titel ASC');
-		while($row = $res->FetchArray(MYSQLI_ASSOC))
-			$groups[$row['id']] = array(
-				'id'		=> $row['id'],
-				'title'		=> $row['titel']
-			);
-		$res->Free();
+        $groups = [];
+        $res = $db->Query(
+            'SELECT id,titel FROM {pre}gruppen ORDER BY titel ASC',
+        );
+        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
+            $groups[$row['id']] = [
+                'id' => $row['id'],
+                'title' => $row['titel'],
+            ];
+        }
+        $res->Free();
 
-		return($groups);
-	}
+        return $groups;
+    }
 
-	/**
-	 * get all group domains
-	 *
-	 * @return array
-	 */
-	static function GetGroupDomains()
-	{
-		global $db;
+    /**
+     * get all group domains
+     *
+     * @return array
+     */
+    static function GetGroupDomains() {
+        global $db;
 
-		$domains = array();
-		$res = $db->Query('SELECT saliase FROM {pre}gruppen');
-		while($row = $res->FetchArray(MYSQLI_ASSOC))
-		{
-			$groupDomains = explode(':', strtolower($row['saliase']));
-			foreach($groupDomains as $domain)
-				if(!in_array($domain, $domains))
-					$domains[] = $domain;
-		}
-		$res->Free();
+        $domains = [];
+        $res = $db->Query('SELECT saliase FROM {pre}gruppen');
+        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
+            $groupDomains = explode(':', strtolower($row['saliase']));
+            foreach ($groupDomains as $domain) {
+                if (!in_array($domain, $domains)) {
+                    $domains[] = $domain;
+                }
+            }
+        }
+        $res->Free();
 
-		return($domains);
-	}
+        return $domains;
+    }
 }

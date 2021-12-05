@@ -19,238 +19,238 @@
  *
  */
 
-if(!defined('B1GMAIL_INIT'))
-	die('Directly calling this file is not supported');
+if (!defined('B1GMAIL_INIT')) {
+    die('Directly calling this file is not supported');
+}
 
-define('BMBLOB_TYPE_MAIL',					0);
-define('BMBLOB_TYPE_WEBDISK',				1);
+define('BMBLOB_TYPE_MAIL', 0);
+define('BMBLOB_TYPE_WEBDISK', 1);
 
-define('BMBLOBSTORAGE_SEPARATEFILES',		0);
-define('BMBLOBSTORAGE_USERDB',				1);
+define('BMBLOBSTORAGE_SEPARATEFILES', 0);
+define('BMBLOBSTORAGE_USERDB', 1);
 
 /**
  * blob storage provider interface
  */
-interface BMBlobStorageInterface
-{
-	/**
-	 * store a blob
-	 *
-	 * @param int $type
-	 * @param int $id
-	 * @param mixed $data Either string or resource (stream)
-	 * @param int $limit Max no. of bytes to copy from stream
-	 * @return bool
-	 */
-	public function storeBlob($type, $id, $data, $limit = -1);
+interface BMBlobStorageInterface {
+    /**
+     * store a blob
+     *
+     * @param int $type
+     * @param int $id
+     * @param mixed $data Either string or resource (stream)
+     * @param int $limit Max no. of bytes to copy from stream
+     * @return bool
+     */
+    public function storeBlob($type, $id, $data, $limit = -1);
 
-	/**
-	 * load a blob
-	 *
-	 * @param int $type
-	 * @param int $id
-	 * @return resource stream
-	 */
-	public function loadBlob($type, $id);
+    /**
+     * load a blob
+     *
+     * @param int $type
+     * @param int $id
+     * @return resource stream
+     */
+    public function loadBlob($type, $id);
 
-	/**
-	 * delete a blob
-	 *
-	 * @param int $type
-	 * @param int $id
-	 * @return bool
-	 */
-	public function deleteBlob($type, $id);
+    /**
+     * delete a blob
+     *
+     * @param int $type
+     * @param int $id
+     * @return bool
+     */
+    public function deleteBlob($type, $id);
 
-	/**
-	 * get size of a blob in bytes
-	 *
-	 * @param int $type
-	 * @param int $id
-	 * @return int
-	 */
-	public function getBlobSize($type, $id);
+    /**
+     * get size of a blob in bytes
+     *
+     * @param int $type
+     * @param int $id
+     * @return int
+     */
+    public function getBlobSize($type, $id);
 
-	/**
-	 * delete all the user's blobs
-	 *
-	 * @return void
-	 */
-	public function deleteUser();
+    /**
+     * delete all the user's blobs
+     *
+     * @return void
+     */
+    public function deleteUser();
 
-	/**
-	 * check if blob provider is available, i.e. system requirements are met
-	 *
-	 * @return bool
-	 */
-	public function isAvailable();
+    /**
+     * check if blob provider is available, i.e. system requirements are met
+     *
+     * @return bool
+     */
+    public function isAvailable();
 
-	/**
-	 * set provider ID (called by factory)
-	 *
-	 * @param int $id
-	 */
-	public function setProviderID($id);
+    /**
+     * set provider ID (called by factory)
+     *
+     * @param int $id
+     */
+    public function setProviderID($id);
 
-	/**
-	 * open provider for a certain user (called by factory)
-	 *
-	 * @param int $userID
-	 */
-	public function open($userID);
+    /**
+     * open provider for a certain user (called by factory)
+     *
+     * @param int $userID
+     */
+    public function open($userID);
 
-	/**
-	 * hint that a transaction of many loads/stores/deletes might follow
-	 *
-	 * @return void
-	 */
-	public function beginTx();
+    /**
+     * hint that a transaction of many loads/stores/deletes might follow
+     *
+     * @return void
+     */
+    public function beginTx();
 
-	/**
-	 * hint that a transaction of many loads/stores/deletes is finished
-	 *
-	 * @return void
-	 */
-	public function endTx();
+    /**
+     * hint that a transaction of many loads/stores/deletes is finished
+     *
+     * @return void
+     */
+    public function endTx();
 }
 
-abstract class BMAbstractBlobStorage implements BMBlobStorageInterface
-{
-	/**
-	 * user ID
-	 */
-	protected $userID;
+abstract class BMAbstractBlobStorage implements BMBlobStorageInterface {
+    /**
+     * user ID
+     */
+    protected $userID;
 
-	/**
-	 * provider ID as set by setProviderID
-	 */
-	public $providerID;
+    /**
+     * provider ID as set by setProviderID
+     */
+    public $providerID;
 
-	/**
-	 * set provider ID
-	 *
-	 * @param int $id
-	 */
-	public function setProviderID($id)
-	{
-		$this->providerID = $id;
-	}
+    /**
+     * set provider ID
+     *
+     * @param int $id
+     */
+    public function setProviderID($id) {
+        $this->providerID = $id;
+    }
 
-	/**
-	 * open provider for a certain user (called by factory)
-	 *
-	 * @param int $userID
-	 */
-	public function open($userID)
-	{
-		$this->userID = $userID;
-	}
+    /**
+     * open provider for a certain user (called by factory)
+     *
+     * @param int $userID
+     */
+    public function open($userID) {
+        $this->userID = $userID;
+    }
 
-	/**
-	 * hint that a transaction of many loads/stores/deletes might follow
-	 *
-	 * @return void
-	 */
-	public function beginTx()
-	{
-	}
+    /**
+     * hint that a transaction of many loads/stores/deletes might follow
+     *
+     * @return void
+     */
+    public function beginTx() {
+    }
 
-	/**
-	 * hint that a transaction of many loads/stores/deletes is finished
-	 *
-	 * @return void
-	 */
-	public function endTx()
-	{
-	}
+    /**
+     * hint that a transaction of many loads/stores/deletes is finished
+     *
+     * @return void
+     */
+    public function endTx() {
+    }
 }
 
 /**
  * blob storage provider factory
  */
-class BMBlobStorage
-{
-	/**
-	 * list of available providers
-	 *	id => array(file, class name)
-	 */
-	public static $providers = array(
-		BMBLOBSTORAGE_SEPARATEFILES		=> array('separatefiles.php', 	'BMBlobStorage_SeparateFiles'),
-		BMBLOBSTORAGE_USERDB			=> array('userdb.php', 			'BMBlobStorage_UserDB')
-	);
+class BMBlobStorage {
+    /**
+     * list of available providers
+     *	id => array(file, class name)
+     */
+    public static $providers = [
+        BMBLOBSTORAGE_SEPARATEFILES => [
+            'separatefiles.php',
+            'BMBlobStorage_SeparateFiles',
+        ],
+        BMBLOBSTORAGE_USERDB => ['userdb.php', 'BMBlobStorage_UserDB'],
+    ];
 
-	/**
-	 * returns ID of default provider
-	 *
-	 * @return int
-	 */
-	public static function getDefaultProvider()
-	{
-		global $bm_prefs;
-		return($bm_prefs['blobstorage_provider']);
-	}
+    /**
+     * returns ID of default provider
+     *
+     * @return int
+     */
+    public static function getDefaultProvider() {
+        global $bm_prefs;
+        return $bm_prefs['blobstorage_provider'];
+    }
 
-	/**
-	 * returns ID of default webdisk provider
-	 *
-	 * @return int
-	 */
-	public static function getDefaultWebdiskProvider()
-	{
-		global $bm_prefs;
-		return($bm_prefs['blobstorage_provider_webdisk']);
-	}
+    /**
+     * returns ID of default webdisk provider
+     *
+     * @return int
+     */
+    public static function getDefaultWebdiskProvider() {
+        global $bm_prefs;
+        return $bm_prefs['blobstorage_provider_webdisk'];
+    }
 
-	/**
-	 * returns an instance of the default provider for a specific user
-	 *
-	 * @param int $userID
-	 * @return BMBlobStorageInterface
-	 */
-	public static function createDefaultProvider($userID)
-	{
-		return(BMBlobStorage::createProvider(BMBlobStorage::getDefaultProvider(), $userID));
-	}
+    /**
+     * returns an instance of the default provider for a specific user
+     *
+     * @param int $userID
+     * @return BMBlobStorageInterface
+     */
+    public static function createDefaultProvider($userID) {
+        return BMBlobStorage::createProvider(
+            BMBlobStorage::getDefaultProvider(),
+            $userID,
+        );
+    }
 
-	/**
-	 * returns an instance of the default webdisk provider for a specific user
-	 *
-	 * @param int $userID
-	 * @return BMBlobStorageInterface
-	 */
-	public static function createDefaultWebdiskProvider($userID)
-	{
-		return(BMBlobStorage::createProvider(BMBlobStorage::getDefaultWebdiskProvider(), $userID));
-	}
+    /**
+     * returns an instance of the default webdisk provider for a specific user
+     *
+     * @param int $userID
+     * @return BMBlobStorageInterface
+     */
+    public static function createDefaultWebdiskProvider($userID) {
+        return BMBlobStorage::createProvider(
+            BMBlobStorage::getDefaultWebdiskProvider(),
+            $userID,
+        );
+    }
 
-	/**
-	 * create an instance of a specific provider
-	 *
-	 * @param int $id provider ID
-	 * @param int $userID
-	 * @return BMBlobStorageInterface
-	 */
-	public static function createProvider($id, $userID = 0)
-	{
-		if(!isset(BMBlobStorage::$providers[$id]))
-			return(false);
+    /**
+     * create an instance of a specific provider
+     *
+     * @param int $id provider ID
+     * @param int $userID
+     * @return BMBlobStorageInterface
+     */
+    public static function createProvider($id, $userID = 0) {
+        if (!isset(BMBlobStorage::$providers[$id])) {
+            return false;
+        }
 
-		include_once(BMBlobStorage::getBlobStorageDir() . BMBlobStorage::$providers[$id][0]);
-		$theClass = BMBlobStorage::$providers[$id][1];
+        include_once BMBlobStorage::getBlobStorageDir() .
+            BMBlobStorage::$providers[$id][0];
+        $theClass = BMBlobStorage::$providers[$id][1];
         $p = new $theClass();
-		$p->setProviderID($id);
-		if($userID > 0)
-			$p->open($userID);
-		return($p);
-	}
+        $p->setProviderID($id);
+        if ($userID > 0) {
+            $p->open($userID);
+        }
+        return $p;
+    }
 
-	/**
-	 * get blob storage provider directory
-	 *
-	 * @return string
-	 */
-	private static function getBlobStorageDir()
-	{
-		return(B1GMAIL_DIR . 'serverlib/blobstorage/');
-	}
+    /**
+     * get blob storage provider directory
+     *
+     * @return string
+     */
+    private static function getBlobStorageDir() {
+        return B1GMAIL_DIR . 'serverlib/blobstorage/';
+    }
 }

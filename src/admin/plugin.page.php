@@ -19,34 +19,52 @@
  *
  */
 
-include('../serverlib/admin.inc.php');
+include '../serverlib/admin.inc.php';
 RequestPrivileges(PRIVILEGES_ADMIN);
 
-if(!isset($_REQUEST['plugin']) || !isset($plugins->_plugins[$_REQUEST['plugin']])
-	|| !$plugins->getParam('admin_pages', $_REQUEST['plugin']))
-{
-	DisplayError(0x14, 'Invalid plugin page call',
-		'The requested plugin cannot be found or does not support plugin pages.',
-		isset($_REQUEST['plugin']) ? sprintf("Plugin:\n%s", $_REQUEST['plugin']) : '',
-		__FILE__,
-		__LINE__);
-	die();
+if (
+    !isset($_REQUEST['plugin']) ||
+    !isset($plugins->_plugins[$_REQUEST['plugin']]) ||
+    !$plugins->getParam('admin_pages', $_REQUEST['plugin'])
+) {
+    DisplayError(
+        0x14,
+        'Invalid plugin page call',
+        'The requested plugin cannot be found or does not support plugin pages.',
+        isset($_REQUEST['plugin'])
+            ? sprintf("Plugin:\n%s", $_REQUEST['plugin'])
+            : '',
+        __FILE__,
+        __LINE__,
+    );
+    die();
 }
 
-if(!($adminRow['type']==0 || (isset($adminRow['privileges']['plugins']) && isset($adminRow['privileges']['plugins'][$_REQUEST['plugin']]))))
-{
-	DisplayError(0x02, 'Unauthorized', 'You are not authrized to view or change this dataset or page. Possible reasons are too few permissions or an expired session.',
-			sprintf("Requested privileges:\n%s",
-			$priv),
-		__FILE__,
-		__LINE__);
-	exit();
+if (
+    !(
+        $adminRow['type'] == 0 ||
+        (isset($adminRow['privileges']['plugins']) &&
+            isset($adminRow['privileges']['plugins'][$_REQUEST['plugin']]))
+    )
+) {
+    DisplayError(
+        0x02,
+        'Unauthorized',
+        'You are not authrized to view or change this dataset or page. Possible reasons are too few permissions or an expired session.',
+        sprintf("Requested privileges:\n%s", $priv),
+        __FILE__,
+        __LINE__,
+    );
+    exit();
 }
 
 $plugins->callFunction('AdminHandler', $_REQUEST['plugin']);
 
-$tpl->assign('title', $lang_admin['plugins']
-						. ' &raquo; '
-						. $plugins->getParam('admin_page_title', $_REQUEST['plugin']));
+$tpl->assign(
+    'title',
+    $lang_admin['plugins'] .
+        ' &raquo; ' .
+        $plugins->getParam('admin_page_title', $_REQUEST['plugin']),
+);
 $tpl->display('page.tpl');
 ?>

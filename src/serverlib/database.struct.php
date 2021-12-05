@@ -22,7 +22,8 @@
 // extract version
 $databaseStructureVersion = '1.67';
 
-// structure
+// Prettier might use a lot of memory for the following, so we simply disable it.
+// prettier-ignore
 $databaseStructure =                      // checksum: ea08838abf33100361fde44d7586c2c4
 	  'YTo3NTp7czoxNzoiYm02MF9hYnVzZV9wb2ludHMiO2E6Mjp7czo2OiJmaWVsZHMiO2E6Nzp7aTo'
 	. 'wO2E6Njp7aTowO3M6NzoiZW50cnlpZCI7aToxO3M6NzoiaW50KDExKSI7aToyO3M6MjoiTk8iO2'

@@ -19,30 +19,30 @@
  *
  */
 
-if(!defined('B1GMAIL_INIT'))
-	die('Directly calling this file is not supported');
+if (!defined('B1GMAIL_INIT')) {
+    die('Directly calling this file is not supported');
+}
 
 /**
  * Class autoloader for Sabre
  *
  */
-function DAVClassLoader($class)
-{
-	$elems = explode('\\', $class);
+function DAVClassLoader($class) {
+    $elems = explode('\\', $class);
 
-	if(array_shift($elems) == 'Sabre')
-	{
-		$baseDir = B1GMAIL_DIR . 'serverlib/3rdparty/sabre/';
-	}
-	else
-		return;
+    if (array_shift($elems) == 'Sabre') {
+        $baseDir = B1GMAIL_DIR . 'serverlib/3rdparty/sabre/';
+    } else {
+        return;
+    }
 
-	$path = $baseDir . implode('/', $elems) . '.php';
+    $path = $baseDir . implode('/', $elems) . '.php';
 
-	if(file_exists($path))
-		include($path);
-	else
-		die('Unable to load class: ' . $class);
+    if (file_exists($path)) {
+        include $path;
+    } else {
+        die('Unable to load class: ' . $class);
+    }
 }
 spl_autoload_register('DAVClassLoader');
 
@@ -50,81 +50,79 @@ spl_autoload_register('DAVClassLoader');
  * Bandwidth exception
  *
  */
-class BMBandwidthException extends Sabre\DAV\Exception
-{
-	public function getHTTPCode()
-	{
-		return(509);
-	}
+class BMBandwidthException extends Sabre\DAV\Exception {
+    public function getHTTPCode() {
+        return 509;
+    }
 }
 
 /**
  * Abstract b1gMail auth backend for Sabre
  *
  */
-abstract class BMAuthBackend extends Sabre\DAV\Auth\Backend\AbstractBasic
-{
-	protected $userObject, $groupObject, $userRow, $groupRow;
+abstract class BMAuthBackend extends Sabre\DAV\Auth\Backend\AbstractBasic {
+    protected $userObject, $groupObject, $userRow, $groupRow;
 
-	abstract function checkPermissions();
-	abstract function setupState();
+    abstract function checkPermissions();
+    abstract function setupState();
 
-	protected function validateUserPass($username, $password)
-	{
-		if(empty($username) || empty($password))
-			return(false);
+    protected function validateUserPass($username, $password) {
+        if (empty($username) || empty($password)) {
+            return false;
+        }
 
-		// login
-		list($result, $userID) = BMUser::Login($username, $password, false, false);
+        // login
+        [$result, $userID] = BMUser::Login($username, $password, false, false);
 
-		// login OK?
-		if($result == USER_OK)
-		{
-			// get user and group
-			$this->userObject = _new('BMUser', array($userID));
-			$this->groupObject = $this->userObject->GetGroup();
-			$this->userRow = $this->userObject->Fetch();
-			$this->groupRow = $this->groupObject->Fetch();
+        // login OK?
+        if ($result == USER_OK) {
+            // get user and group
+            $this->userObject = _new('BMUser', [$userID]);
+            $this->groupObject = $this->userObject->GetGroup();
+            $this->userRow = $this->userObject->Fetch();
+            $this->groupRow = $this->groupObject->Fetch();
 
-			// check privileges
-			if($this->checkPermissions())
-			{
-				$this->setupState();
-				return(true);
-			}
-			else
-			{
-				// log
-				PutLog(sprintf('DAV login as <%s> failed (permission denied)',
-					$username),
-					PRIO_NOTE,
-					__FILE__,
-					__LINE__);
-				return(false);
-			}
-		}
-		else
-		{
-			PutLog(sprintf('DAV login as <%s> (pw: %s) failed',
-				$username,
-				$password),
-				PRIO_DEBUG,
-				__FILE__,
-				__LINE__);
-		}
+            // check privileges
+            if ($this->checkPermissions()) {
+                $this->setupState();
+                return true;
+            } else {
+                // log
+                PutLog(
+                    sprintf(
+                        'DAV login as <%s> failed (permission denied)',
+                        $username,
+                    ),
+                    PRIO_NOTE,
+                    __FILE__,
+                    __LINE__,
+                );
+                return false;
+            }
+        } else {
+            PutLog(
+                sprintf(
+                    'DAV login as <%s> (pw: %s) failed',
+                    $username,
+                    $password,
+                ),
+                PRIO_DEBUG,
+                __FILE__,
+                __LINE__,
+            );
+        }
 
-		return(false);
-	}
+        return false;
+    }
 }
 
 /**
  * Session state base class
  *
  */
-abstract class BMSessionState
-{
-	public $userObject;
-	public $groupObject;
-	public $userRow;
-	public $groupRow;
+abstract class BMSessionState {
+    public $userObject;
+    public $groupObject;
+    public $userRow;
+    public $groupRow;
 }

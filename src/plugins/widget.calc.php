@@ -23,36 +23,34 @@
  * calculator widget
  *
  */
-class Widget_Calculator extends BMPlugin
-{
-	function __construct()
-	{
-		global $currentLanguage;
+class Widget_Calculator extends BMPlugin {
+    function __construct() {
+        global $currentLanguage;
 
-		$this->type				= BMPLUGIN_WIDGET;
-		$this->name				= 'Calculator widget';
-		$this->author			= 'b1gMail Project';
-		$this->web				= 'https://www.b1gmail.org/';
-		$this->mail				= 'info@b1gmail.org';
-		$this->version			= '1.2';
-		$this->website			= 'https://www.b1gmail.org/';
-		$this->update_url		= 'https://service.b1gmail.org/plugin_updates/';
+        $this->type = BMPLUGIN_WIDGET;
+        $this->name = 'Calculator widget';
+        $this->author = 'b1gMail Project';
+        $this->web = 'https://www.b1gmail.org/';
+        $this->mail = 'info@b1gmail.org';
+        $this->version = '1.2';
+        $this->website = 'https://www.b1gmail.org/';
+        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
 
-		$this->widgetTemplate	= 'widget.calculator.tpl';
-		$this->widgetTitle		= strpos($currentLanguage, 'deutsch') !== false ? 'Rechner' : 'Calculator';
-		$this->widgetIcon		= 'widget_calculator.png';
-	}
+        $this->widgetTemplate = 'widget.calculator.tpl';
+        $this->widgetTitle =
+            strpos($currentLanguage, 'deutsch') !== false
+                ? 'Rechner'
+                : 'Calculator';
+        $this->widgetIcon = 'widget_calculator.png';
+    }
 
-	function isWidgetSuitable($for)
-	{
-		return($for == BMWIDGET_START
-				|| $for == BMWIDGET_ORGANIZER);
-	}
+    function isWidgetSuitable($for) {
+        return $for == BMWIDGET_START || $for == BMWIDGET_ORGANIZER;
+    }
 
-	function renderWidget()
-	{
-		return(true);
-	}
+    function renderWidget() {
+        return true;
+    }
 }
 
 $plugins->registerPlugin('Widget_Calculator');

@@ -19,84 +19,92 @@
  *
  */
 
-if(!defined('B1GMAIL_INIT'))
-	die('Directly calling this file is not supported');
+if (!defined('B1GMAIL_INIT')) {
+    die('Directly calling this file is not supported');
+}
 
-class BMCaptchaProvider_Default extends BMAbstractCaptchaProvider
-{
-	public function __construct()
-	{
-		if(!class_exists('Safecode'))
-			include(B1GMAIL_DIR . 'serverlib/safecode.class.php');
-	}
+class BMCaptchaProvider_Default extends BMAbstractCaptchaProvider {
+    public function __construct() {
+        if (!class_exists('Safecode')) {
+            include B1GMAIL_DIR . 'serverlib/safecode.class.php';
+        }
+    }
 
-	public function isAvailable()
-	{
-		return(function_exists('imagepng'));
-	}
+    public function isAvailable() {
+        return function_exists('imagepng');
+    }
 
-	public function generate()
-	{
-		if(!isset($_REQUEST['id']))
-			return(false);
-		$codeID = (int)$_REQUEST['id'];
-		$config = $this->getConfig();
+    public function generate() {
+        if (!isset($_REQUEST['id'])) {
+            return false;
+        }
+        $codeID = (int) $_REQUEST['id'];
+        $config = $this->getConfig();
 
-		Safecode::DumpCode($codeID, max(1, min(10, $config['scsf'])));
-	}
+        Safecode::DumpCode($codeID, max(1, min(10, $config['scsf'])));
+    }
 
-	public function getHTML()
-	{
-		global $lang_user;
+    public function getHTML() {
+        global $lang_user;
 
-		$codeID = Safecode::RequestCode();
-		return '<input type="hidden" name="codeID" value="' . $codeID . '" />'
-			. '<img src="index.php?action=codegen&id=' . $codeID . '" style="cursor:pointer;" '
-			. 'onclick="this.src=\'index.php?action=codegen&id=' . $codeID . '&rand=\'+parseInt(Math.random()*10000);" '
-			. 'data-toggle="tooltip" data-placement="bottom" title="' . $lang_user['notreadable'] . '" />';
-	}
+        $codeID = Safecode::RequestCode();
+        return '<input type="hidden" name="codeID" value="' .
+            $codeID .
+            '" />' .
+            '<img src="index.php?action=codegen&id=' .
+            $codeID .
+            '" style="cursor:pointer;" ' .
+            'onclick="this.src=\'index.php?action=codegen&id=' .
+            $codeID .
+            '&rand=\'+parseInt(Math.random()*10000);" ' .
+            'data-toggle="tooltip" data-placement="bottom" title="' .
+            $lang_user['notreadable'] .
+            '" />';
+    }
 
-	public function check($release = true)
-	{
-		if(!isset($_REQUEST['codeID']) || !isset($_REQUEST['safecode']))
-			return(false);
-		$codeID = (int)$_REQUEST['codeID'];
+    public function check($release = true) {
+        if (!isset($_REQUEST['codeID']) || !isset($_REQUEST['safecode'])) {
+            return false;
+        }
+        $codeID = (int) $_REQUEST['codeID'];
 
-		$code = Safecode::GetCode($codeID);
-		if(strlen($code) < 4)
-			return(false);
+        $code = Safecode::GetCode($codeID);
+        if (strlen($code) < 4) {
+            return false;
+        }
 
-		if($release)
-			Safecode::ReleaseCode($codeID);
+        if ($release) {
+            Safecode::ReleaseCode($codeID);
+        }
 
-		$input = trim($_REQUEST['safecode']);
-		if(strlen($input) < 4)
-			return(false);
+        $input = trim($_REQUEST['safecode']);
+        if (strlen($input) < 4) {
+            return false;
+        }
 
-		return(strcasecmp($code, $input) == 0);
-	}
+        return strcasecmp($code, $input) == 0;
+    }
 
-	public function getInfo()
-	{
-		global $lang_admin;
+    public function getInfo() {
+        global $lang_admin;
 
-		return(array(
-			'title'				=> $lang_admin['default'],
-			'author'			=> 'b1gMail Project',
-			'website'			=> 'https://www.b1gmail.org/',
-			'showNotReadable'	=> true,
-			'hasOwnInput'		=> false,
-			'hasOwnAJAXCheck'	=> false,
-			'failAction'		=> '',
-			'configFields'		=> array(
-				'scsf'				=> array(
-					'title'			=> $lang_admin['scsf'].' (1-10):',
-					'type'			=> FIELD_TEXT,
-					'default'		=> '6'
-				)
-			)
-		));
-	}
+        return [
+            'title' => $lang_admin['default'],
+            'author' => 'b1gMail Project',
+            'website' => 'https://www.b1gmail.org/',
+            'showNotReadable' => true,
+            'hasOwnInput' => false,
+            'hasOwnAJAXCheck' => false,
+            'failAction' => '',
+            'configFields' => [
+                'scsf' => [
+                    'title' => $lang_admin['scsf'] . ' (1-10):',
+                    'type' => FIELD_TEXT,
+                    'default' => '6',
+                ],
+            ],
+        ];
+    }
 }
 
 BMCaptcha::registerProvider(basename(__FILE__), 'BMCaptchaProvider_Default');

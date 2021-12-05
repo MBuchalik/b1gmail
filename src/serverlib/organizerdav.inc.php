@@ -19,143 +19,139 @@
  *
  */
 
-if(!defined('B1GMAIL_INIT'))
-	die('Directly calling this file is not supported');
-
-class BMOrganizerState extends BMSessionState
-{
-	public $addressbook;
-	public $calendar;
-	public $todo;
-
-	public function toUTC($date)
-	{
-		return $date + $this->userRow['last_timezone'];
-	}
-
-	public function fromUTC($date)
-	{
-		return $date;
-	}
-
-	public function getDisplayName()
-	{
-		return($this->userRow['vorname'] . ' ' . $this->userRow['nachname']);
-	}
-
-	public function getPrincipalURI()
-	{
-		return('principals/' . $this->userRow['email']);
-	}
-
-	public function genUID($davUID, $str)
-	{
-		if(!empty($davUID))
-			return $davUID;
-		$uid = md5($str);
-		return(substr($uid, 0, 8)
-			. '-' . substr($uid, 8, 4)
-			. '-' . substr($uid, 12, 4)
-			. '-' . substr($uid, 16, 4)
-			. '-' . substr($uid, 20, 12));
-	}
-
-	function getLastModified($itemIDs, $itemType)
-	{
-		global $db;
-
-		$result = array();
-		$noArray = false;
-
-		if(!is_array($itemIDs))
-		{
-			$noArray = true;
-			$itemIDs = array($itemIDs);
-		}
-
-		$res = $db->Query('SELECT `itemid`,`created`,`updated` FROM {pre}changelog WHERE `itemtype`=? AND `itemid` IN ?',
-			$itemType,
-			$itemIDs);
-		while($row = $res->FetchArray())
-		{
-			$result[ $row['itemid'] ] = max($row['updated'], $row['created']);
-		}
-		$res->Free();
-
-		return($noArray ? array_pop($result) : $result);
-	}
-
-	public function getProdID()
-	{
-		return('-//b1gMail Project//b1gMail ' . B1GMAIL_VERSION . '//EN');
-	}
+if (!defined('B1GMAIL_INIT')) {
+    die('Directly calling this file is not supported');
 }
 
-class BMPrincipalBackend extends Sabre\DAVACL\PrincipalBackend\AbstractBackend
-{
-	function getPrincipalsByPrefix($prefixPath)
-	{
-		global $os;
+class BMOrganizerState extends BMSessionState {
+    public $addressbook;
+    public $calendar;
+    public $todo;
 
-		$result = array();
+    public function toUTC($date) {
+        return $date + $this->userRow['last_timezone'];
+    }
 
-		if($prefixPath == 'principals')
-		{
-			$result[] = array('uri' => $os->getPrincipalURI(),
-				'{DAV:}displayname' => $os->getDisplayName());
-		}
+    public function fromUTC($date) {
+        return $date;
+    }
 
-		return($result);
-	}
+    public function getDisplayName() {
+        return $this->userRow['vorname'] . ' ' . $this->userRow['nachname'];
+    }
 
-	function getPrincipalByPath($path)
-	{
-		global $os;
+    public function getPrincipalURI() {
+        return 'principals/' . $this->userRow['email'];
+    }
 
-		if($path != 'principals/' . $os->userRow['email'])
-			return;
+    public function genUID($davUID, $str) {
+        if (!empty($davUID)) {
+            return $davUID;
+        }
+        $uid = md5($str);
+        return substr($uid, 0, 8) .
+            '-' .
+            substr($uid, 8, 4) .
+            '-' .
+            substr($uid, 12, 4) .
+            '-' .
+            substr($uid, 16, 4) .
+            '-' .
+            substr($uid, 20, 12);
+    }
 
-		return(array('id' => $os->userRow['id'],
-			'uri' => $os->getPrincipalURI(),
-			'{DAV:}displayname' => $os->getDisplayName()));
-	}
+    function getLastModified($itemIDs, $itemType) {
+        global $db;
 
-	function updatePrincipal($path, \Sabre\DAV\PropPatch $propPatch)
-	{
-	}
+        $result = [];
+        $noArray = false;
 
-	function searchPrincipals($prefixPath, array $searchProperties, $test = 'allof')
-	{
-		$result = array();
+        if (!is_array($itemIDs)) {
+            $noArray = true;
+            $itemIDs = [$itemIDs];
+        }
 
-		if($prefixPath == 'principals')
-		{
-			foreach($searchProperties as $property=>$value)
-			{
-				if($property == '{DAV:}displayname')
-				{
-					if(stripos($os->getDisplayName(), $value) !== false)
-						$result[] = 'principals/' .  $os->userRow['email'];
-				}
-				else
-					return($result);
-			}
-		}
+        $res = $db->Query(
+            'SELECT `itemid`,`created`,`updated` FROM {pre}changelog WHERE `itemtype`=? AND `itemid` IN ?',
+            $itemType,
+            $itemIDs,
+        );
+        while ($row = $res->FetchArray()) {
+            $result[$row['itemid']] = max($row['updated'], $row['created']);
+        }
+        $res->Free();
 
-		return($result);
-	}
+        return $noArray ? array_pop($result) : $result;
+    }
 
-	function getGroupMemberSet($principal)
-	{
-		return(array());
-	}
+    public function getProdID() {
+        return '-//b1gMail Project//b1gMail ' . B1GMAIL_VERSION . '//EN';
+    }
+}
 
-	function getGroupMembership($principal)
-	{
-		return(array());
-	}
+class BMPrincipalBackend extends Sabre\DAVACL\PrincipalBackend\AbstractBackend {
+    function getPrincipalsByPrefix($prefixPath) {
+        global $os;
 
-	function setGroupMemberSet($principal, array $members)
-	{
-	}
+        $result = [];
+
+        if ($prefixPath == 'principals') {
+            $result[] = [
+                'uri' => $os->getPrincipalURI(),
+                '{DAV:}displayname' => $os->getDisplayName(),
+            ];
+        }
+
+        return $result;
+    }
+
+    function getPrincipalByPath($path) {
+        global $os;
+
+        if ($path != 'principals/' . $os->userRow['email']) {
+            return;
+        }
+
+        return [
+            'id' => $os->userRow['id'],
+            'uri' => $os->getPrincipalURI(),
+            '{DAV:}displayname' => $os->getDisplayName(),
+        ];
+    }
+
+    function updatePrincipal($path, \Sabre\DAV\PropPatch $propPatch) {
+    }
+
+    function searchPrincipals(
+        $prefixPath,
+        array $searchProperties,
+        $test = 'allof'
+    ) {
+        $result = [];
+
+        if ($prefixPath == 'principals') {
+            foreach ($searchProperties as $property => $value) {
+                if ($property == '{DAV:}displayname') {
+                    if (stripos($os->getDisplayName(), $value) !== false) {
+                        $result[] = 'principals/' . $os->userRow['email'];
+                    }
+                } else {
+                    return $result;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    function getGroupMemberSet($principal) {
+        return [];
+    }
+
+    function getGroupMembership($principal) {
+        return [];
+    }
+
+    function setGroupMemberSet($principal, array $members) {
+    }
 }

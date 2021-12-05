@@ -23,69 +23,78 @@
  * whitelist plugin
  *
  */
-class WhitelistPlugin extends BMPlugin
-{
-	function __construct()
-	{
-		global $lang_admin;
+class WhitelistPlugin extends BMPlugin {
+    function __construct() {
+        global $lang_admin;
 
-		// plugin info
-		$this->type					= BMPLUGIN_DEFAULT;
-		$this->name					= 'Whitelist';
-		$this->author				= 'b1gMail Project';
-		$this->web					= 'https://www.b1gmail.org/';
-		$this->mail					= 'info@b1gmail.org';
-		$this->version				= '1.1';
+        // plugin info
+        $this->type = BMPLUGIN_DEFAULT;
+        $this->name = 'Whitelist';
+        $this->author = 'b1gMail Project';
+        $this->web = 'https://www.b1gmail.org/';
+        $this->mail = 'info@b1gmail.org';
+        $this->version = '1.1';
 
-		// group option
-		$this->RegisterGroupOption('whitelist',
-			FIELD_CHECKBOX,
-			'Whitelist?');
-	}
+        // group option
+        $this->RegisterGroupOption('whitelist', FIELD_CHECKBOX, 'Whitelist?');
+    }
 
-	function OnReceiveMail(&$mail, &$mailbox, &$user)
-	{
-		global $db;
+    function OnReceiveMail(&$mail, &$mailbox, &$user) {
+        global $db;
 
-		// check input data
-		if(!is_object($mail) || !is_object($user))
-		{
-			PutLog('WhitelistPlugin: $mail or $user invalid', PRIO_DEBUG, __FILE__, __LINE__);
-			return(BM_OK);
-		}
+        // check input data
+        if (!is_object($mail) || !is_object($user)) {
+            PutLog(
+                'WhitelistPlugin: $mail or $user invalid',
+                PRIO_DEBUG,
+                __FILE__,
+                __LINE__,
+            );
+            return BM_OK;
+        }
 
-		// check if whitelist is enabled for user's group
-		$userGroupID = $user->_row['gruppe'];
-		if(!$this->GetGroupOptionValue('whitelist', $userGroupID))
-			return(BM_OK);
+        // check if whitelist is enabled for user's group
+        $userGroupID = $user->_row['gruppe'];
+        if (!$this->GetGroupOptionValue('whitelist', $userGroupID)) {
+            return BM_OK;
+        }
 
-		// lookup sender addresses in addressbook
-		$from = ExtractMailAddresses($mail->GetHeaderValue('from'));
-		$res = $db->Query('SELECT COUNT(*) FROM {pre}adressen WHERE `user`=? AND (`email` IN ? OR `work_email` IN ?)',
-			$user->_id,
-			$from,
-			$from);
-		list($addressBookEntryCount) = $res->FetchArray(MYSQLI_NUM);
-		$res->Free();
+        // lookup sender addresses in addressbook
+        $from = ExtractMailAddresses($mail->GetHeaderValue('from'));
+        $res = $db->Query(
+            'SELECT COUNT(*) FROM {pre}adressen WHERE `user`=? AND (`email` IN ? OR `work_email` IN ?)',
+            $user->_id,
+            $from,
+            $from,
+        );
+        [$addressBookEntryCount] = $res->FetchArray(MYSQLI_NUM);
+        $res->Free();
 
-		// return
-		if($addressBookEntryCount > 0)
-		{
-			PutLog(sprintf('WhitelistPlugin: Accepted email for user #%d', $user->_id),
-				PRIO_DEBUG,
-				__FILE__,
-				__LINE__);
-			return(BM_OK);
-		}
-		else
-		{
-			PutLog(sprintf('WhitelistPlugin: Rejected email for user #%d', $user->_id),
-				PRIO_DEBUG,
-				__FILE__,
-				__LINE__);
-			return(BM_BLOCK);
-		}
-	}
+        // return
+        if ($addressBookEntryCount > 0) {
+            PutLog(
+                sprintf(
+                    'WhitelistPlugin: Accepted email for user #%d',
+                    $user->_id,
+                ),
+                PRIO_DEBUG,
+                __FILE__,
+                __LINE__,
+            );
+            return BM_OK;
+        } else {
+            PutLog(
+                sprintf(
+                    'WhitelistPlugin: Rejected email for user #%d',
+                    $user->_id,
+                ),
+                PRIO_DEBUG,
+                __FILE__,
+                __LINE__,
+            );
+            return BM_BLOCK;
+        }
+    }
 }
 
 /**

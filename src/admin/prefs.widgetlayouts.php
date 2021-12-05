@@ -19,128 +19,137 @@
  *
  */
 
-include('../serverlib/admin.inc.php');
+include '../serverlib/admin.inc.php';
 RequestPrivileges(PRIVILEGES_ADMIN);
 AdminRequirePrivilege('prefs.widgetlayouts');
 
-if(!class_exists('BMDashboard'))
-	include(B1GMAIL_DIR . 'serverlib/dashboard.class.php');
-
-function getWidgetArray($type, $widgetOrder)
-{
-	global $plugins;
-
-	$widgetList = explode(',', str_replace(';', ',', $widgetOrder));
-	$tplWidgets = array();
-	$widgets = $plugins->getWidgetsSuitableFor($type);
-	foreach($widgets as $widget)
-	{
-		if(in_array($widget, $widgetList))
-		{
-			$tplWidgets[$widget] = array(
-				'title'			=> $plugins->getParam('widgetTitle', $widget)
-			);
-		}
-	}
-
-	return($tplWidgets);
+if (!class_exists('BMDashboard')) {
+    include B1GMAIL_DIR . 'serverlib/dashboard.class.php';
 }
 
-if(!isset($_REQUEST['action']))
-	$_REQUEST['action'] = 'start';
+function getWidgetArray($type, $widgetOrder) {
+    global $plugins;
 
-$tabs = array(
-	0 => array(
-		'title'		=> $lang_admin['startwidgets'],
-		'relIcon'	=> 'start32.png',
-		'link'		=> 'prefs.widgetlayouts.php?',
-		'active'	=> $_REQUEST['action'] == 'start'
-	),
-	1 => array(
-		'title'		=> $lang_admin['organizerwidgets'],
-		'relIcon'	=> 'organizer32.png',
-		'link'		=> 'prefs.widgetlayouts.php?action=organizer&',
-		'active'	=> $_REQUEST['action'] == 'organizer'
-	)
-);
+    $widgetList = explode(',', str_replace(';', ',', $widgetOrder));
+    $tplWidgets = [];
+    $widgets = $plugins->getWidgetsSuitableFor($type);
+    foreach ($widgets as $widget) {
+        if (in_array($widget, $widgetList)) {
+            $tplWidgets[$widget] = [
+                'title' => $plugins->getParam('widgetTitle', $widget),
+            ];
+        }
+    }
 
-if($_REQUEST['action'] == 'start')
-{
-	$widgetType = BMWIDGET_START;
-	$orderKey = 'widget_order_start';
+    return $tplWidgets;
 }
-else if($_REQUEST['action'] == 'organizer')
-{
-	$widgetType = BMWIDGET_ORGANIZER;
-	$orderKey = 'widget_order_organizer';
-}
-else
-	die('Invalid action');
 
-$dashboard = _new('BMDashboard', array($widgetType));
+if (!isset($_REQUEST['action'])) {
+    $_REQUEST['action'] = 'start';
+}
+
+$tabs = [
+    0 => [
+        'title' => $lang_admin['startwidgets'],
+        'relIcon' => 'start32.png',
+        'link' => 'prefs.widgetlayouts.php?',
+        'active' => $_REQUEST['action'] == 'start',
+    ],
+    1 => [
+        'title' => $lang_admin['organizerwidgets'],
+        'relIcon' => 'organizer32.png',
+        'link' => 'prefs.widgetlayouts.php?action=organizer&',
+        'active' => $_REQUEST['action'] == 'organizer',
+    ],
+];
+
+if ($_REQUEST['action'] == 'start') {
+    $widgetType = BMWIDGET_START;
+    $orderKey = 'widget_order_start';
+} elseif ($_REQUEST['action'] == 'organizer') {
+    $widgetType = BMWIDGET_ORGANIZER;
+    $orderKey = 'widget_order_organizer';
+} else {
+    die('Invalid action');
+}
+
+$dashboard = _new('BMDashboard', [$widgetType]);
 
 //
 // overview
 //
-if(!isset($_REQUEST['do']))
-{
-	// save order?
-	if(isset($_REQUEST['saveOrder'])
-		&& isset($_REQUEST['order']))
-	{
-		$widgetOrder = trim($_REQUEST['order']);
+if (!isset($_REQUEST['do'])) {
+    // save order?
+    if (isset($_REQUEST['saveOrder']) && isset($_REQUEST['order'])) {
+        $widgetOrder = trim($_REQUEST['order']);
 
-		if($dashboard->checkWidgetOrder($widgetOrder))
-		{
-			$db->Query('UPDATE {pre}prefs SET ' . $orderKey . '=?',
-				$widgetOrder);
-			$bm_prefs[$orderKey] = $widgetOrder;
-		}
-	}
+        if ($dashboard->checkWidgetOrder($widgetOrder)) {
+            $db->Query(
+                'UPDATE {pre}prefs SET ' . $orderKey . '=?',
+                $widgetOrder,
+            );
+            $bm_prefs[$orderKey] = $widgetOrder;
+        }
+    }
 
-	// reset order?
-	if(isset($_REQUEST['resetOrder'])
-		&& isset($_REQUEST['groups'])
-		&& is_array($_REQUEST['groups']))
-	{
-		$db->Query('UPDATE {pre}userprefs SET `value`=? WHERE `key`=? AND `userid` IN (SELECT `id` FROM {pre}users WHERE `gruppe` IN ?)',
-			$bm_prefs[$orderKey],
-			$orderKey == 'widget_order_start' ? 'widgetOrderStart' : 'widgetOrderOrganizer',
-			$_REQUEST['groups']);
-	}
+    // reset order?
+    if (
+        isset($_REQUEST['resetOrder']) &&
+        isset($_REQUEST['groups']) &&
+        is_array($_REQUEST['groups'])
+    ) {
+        $db->Query(
+            'UPDATE {pre}userprefs SET `value`=? WHERE `key`=? AND `userid` IN (SELECT `id` FROM {pre}users WHERE `gruppe` IN ?)',
+            $bm_prefs[$orderKey],
+            $orderKey == 'widget_order_start'
+                ? 'widgetOrderStart'
+                : 'widgetOrderOrganizer',
+            $_REQUEST['groups'],
+        );
+    }
 
-	$widgetOrder = $bm_prefs[$orderKey];
-	$widgets = getWidgetArray($widgetType, $widgetOrder);
+    $widgetOrder = $bm_prefs[$orderKey];
+    $widgets = getWidgetArray($widgetType, $widgetOrder);
 
-	$tpl->assign('groups', BMGroup::GetSimpleGroupList());
-	$tpl->assign('widgetOrder', $widgetOrder);
-	$tpl->assign('widgets', $widgets);
-	$tpl->assign('page', 'prefs.widgetlayouts.layout.tpl');
+    $tpl->assign('groups', BMGroup::GetSimpleGroupList());
+    $tpl->assign('widgetOrder', $widgetOrder);
+    $tpl->assign('widgets', $widgets);
+    $tpl->assign('page', 'prefs.widgetlayouts.layout.tpl');
 }
 
 //
 // add/remove
 //
-else if($_REQUEST['do'] == 'addremove')
-{
-	$widgetOrder = $bm_prefs[$orderKey];
+elseif ($_REQUEST['do'] == 'addremove') {
+    $widgetOrder = $bm_prefs[$orderKey];
 
-	// save?
-	if(isset($_REQUEST['save']))
-	{
-		$widgetOrder = $dashboard->generateOrderStringFromPostForm($widgetOrder);
-		$db->Query('UPDATE {pre}prefs SET ' . $orderKey . '=?',
-			$widgetOrder);
-		header('Location: prefs.widgetlayouts.php?action=' . $_REQUEST['action'] . '&sid=' . session_id());
-		exit();
-	}
+    // save?
+    if (isset($_REQUEST['save'])) {
+        $widgetOrder = $dashboard->generateOrderStringFromPostForm(
+            $widgetOrder,
+        );
+        $db->Query('UPDATE {pre}prefs SET ' . $orderKey . '=?', $widgetOrder);
+        header(
+            'Location: prefs.widgetlayouts.php?action=' .
+                $_REQUEST['action'] .
+                '&sid=' .
+                session_id(),
+        );
+        exit();
+    }
 
-	$tpl->assign('possibleWidgets', $dashboard->getPossibleWidgets($widgetOrder));
-	$tpl->assign('page', 'prefs.widgetlayouts.addremove.tpl');
+    $tpl->assign(
+        'possibleWidgets',
+        $dashboard->getPossibleWidgets($widgetOrder),
+    );
+    $tpl->assign('page', 'prefs.widgetlayouts.addremove.tpl');
 }
 
 $tpl->assign('action', $_REQUEST['action']);
 $tpl->assign('tabs', $tabs);
-$tpl->assign('title', $lang_admin['prefs'] . ' &raquo; ' . $lang_admin['widgetlayouts']);
+$tpl->assign(
+    'title',
+    $lang_admin['prefs'] . ' &raquo; ' . $lang_admin['widgetlayouts'],
+);
 $tpl->display('page.tpl');
 ?>

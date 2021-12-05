@@ -19,16 +19,20 @@
  *
  */
 
-if(!defined('B1GMAIL_INIT'))
-	die('Directly calling this file is not supported');
-
-if(PHPNumVersion() < 540)
-{
-	DisplayError(0x18, 'PHP version too old', 'b1gMail DAV features require PHP 5.4 or newer.',
-		sprintf("Installed PHP version:\n%s", phpversion()),
-		__FILE__,
-		__LINE__);
-	exit();
+if (!defined('B1GMAIL_INIT')) {
+    die('Directly calling this file is not supported');
 }
 
-include(B1GMAIL_DIR . 'serverlib/dav-real.inc.php');
+if (PHPNumVersion() < 540) {
+    DisplayError(
+        0x18,
+        'PHP version too old',
+        'b1gMail DAV features require PHP 5.4 or newer.',
+        sprintf("Installed PHP version:\n%s", phpversion()),
+        __FILE__,
+        __LINE__,
+    );
+    exit();
+}
+
+include B1GMAIL_DIR . 'serverlib/dav-real.inc.php';
