@@ -85,8 +85,7 @@ if ($_REQUEST['action'] == 'tos') {
     $tpl->assign('pageTitle', $lang_user['tos']);
     $tpl->assign('tos', nl2br(HTMLFormat($lang_custom['tos'])));
     $tpl->assign('page', 'nli/tos.tpl');
-}
-/**
+} /**
  * imprint
  */ elseif ($_REQUEST['action'] == 'imprint') {
     if ($bm_prefs['contactform'] == 'yes') {
@@ -191,8 +190,7 @@ if ($_REQUEST['action'] == 'tos') {
     $tpl->assign('pageTitle', $lang_user['contact']);
     $tpl->assign('imprint', $lang_custom['imprint']);
     $tpl->assign('page', 'nli/imprint.tpl');
-}
-/**
+} /**
  * faq
  */ elseif ($_REQUEST['action'] == 'faq') {
     // faq
@@ -219,8 +217,7 @@ if ($_REQUEST['action'] == 'tos') {
     $tpl->assign('pageTitle', $lang_user['faq']);
     $tpl->assign('faq', $faq);
     $tpl->assign('page', 'nli/faq.tpl');
-}
-/**
+} /**
  * sign up
  */ elseif ($_REQUEST['action'] == 'signup') {
     $tpl->assign('pageTitle', $lang_user['signup']);
@@ -821,8 +818,7 @@ if ($_REQUEST['action'] == 'tos') {
         $tpl->assign('msg', $lang_user['regdisabled']);
         $tpl->assign('page', 'nli/regdone.tpl');
     }
-}
-/**
+} /**
  * safe code image dump
  */ elseif ($_REQUEST['action'] == 'codegen') {
     if (!class_exists('BMCaptcha')) {
@@ -831,8 +827,7 @@ if ($_REQUEST['action'] == 'tos') {
     $captcha = BMCaptcha::createDefaultProvider();
     $captcha->generate();
     exit();
-}
-/**
+} /**
  * address availability check (RPC)
  */ elseif ($_REQUEST['action'] == 'checkAddressAvailability') {
     if (!isset($_GET['address'])) {
@@ -865,14 +860,12 @@ if ($_REQUEST['action'] == 'tos') {
 
     Array2XML($response);
     exit();
-}
-/**
+} /**
  * custom page
  */ elseif ($_REQUEST['action'] == 'page' && isset($_GET['page'])) {
     $page = preg_replace('/([^a-zA-Z0-9]*)/', '', $_GET['page']);
     $tpl->assign('page', 'custompages/' . $page . '.tpl');
-}
-/**
+} /**
  * forget cookies
  */ elseif ($_REQUEST['action'] == 'forgetCookie') {
     // delete cookies
@@ -883,8 +876,7 @@ if ($_REQUEST['action'] == 'tos') {
     // reload
     header('Location: index.php');
     exit();
-}
-/**
+} /**
  * forgot password
  */ elseif (
     $_REQUEST['action'] == 'lostPassword' &&
@@ -911,8 +903,7 @@ if ($_REQUEST['action'] == 'tos') {
 
     $tpl->assign('title', $lang_user['lostpw']);
     $tpl->assign('page', 'nli/msg.tpl');
-}
-/**
+} /**
  * reset password
  */ elseif (
     $_REQUEST['action'] == 'resetPassword' &&
@@ -944,8 +935,7 @@ if ($_REQUEST['action'] == 'tos') {
 
     $tpl->assign('title', $lang_user['lostpw']);
     $tpl->assign('page', 'nli/msg.tpl');
-}
-/**
+} /**
  * confirm alias
  */ elseif (
     $_REQUEST['action'] == 'confirmAlias' &&
@@ -967,8 +957,7 @@ if ($_REQUEST['action'] == 'tos') {
 
     $tpl->assign('title', $lang_user['confirmaliastitle']);
     $tpl->assign('page', 'nli/msg.tpl');
-}
-/**
+} /**
  * read cert mail
  */ elseif (
     $_REQUEST['action'] == 'readCertMail' &&
@@ -1094,8 +1083,7 @@ if ($_REQUEST['action'] == 'tos') {
         $tpl->assign('title', $lang_user['certmail']);
         $tpl->assign('page', 'nli/msg.tpl');
     }
-}
-/**
+} /**
  * address book completion
  */ elseif (
     $_REQUEST['action'] == 'completeAddressBookEntry' &&
@@ -1195,8 +1183,7 @@ if ($_REQUEST['action'] == 'tos') {
         $tpl->assign('title', $lang_user['addrselfcomplete']);
         $tpl->assign('page', 'nli/msg.tpl');
     }
-}
-/**
+} /**
  * switch language
  */ elseif (
     $_REQUEST['action'] == 'switchLanguage' &&
@@ -1212,8 +1199,7 @@ if ($_REQUEST['action'] == 'tos') {
                 : ''),
     );
     exit();
-}
-/**
+} /**
  * activate account
  */ elseif (
     $_REQUEST['action'] == 'activateAccount' &&
@@ -1233,8 +1219,7 @@ if ($_REQUEST['action'] == 'tos') {
 
     $tpl->assign('title', $lang_user['smsvalidation']);
     $tpl->assign('page', 'nli/msg.tpl');
-}
-/**
+} /**
  * show address suggestions
  */ elseif (
     $_REQUEST['action'] == 'showAddressSugestions' &&
@@ -1327,8 +1312,7 @@ if ($_REQUEST['action'] == 'tos') {
     }
 
     exit();
-}
-/**
+} /**
  * initiate web session from tool interface
  */ elseif (
     $_REQUEST['action'] == 'initiateSession' &&
@@ -1361,8 +1345,7 @@ if ($_REQUEST['action'] == 'tos') {
     }
 
     exit();
-}
-/**
+} /**
  * login
  */ else {
     if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'login') {

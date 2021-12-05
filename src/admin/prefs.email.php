@@ -87,8 +87,7 @@ if ($_REQUEST['action'] == 'common') {
         BMBlobStorage::createProvider(BMBLOBSTORAGE_USERDB)->isAvailable(),
     );
     $tpl->assign('page', 'prefs.email.common.tpl');
-}
-/**
+} /**
  * receive
  */ elseif ($_REQUEST['action'] == 'receive') {
     if (isset($_REQUEST['save'])) {
@@ -112,8 +111,7 @@ if ($_REQUEST['action'] == 'common') {
 
     // assign
     $tpl->assign('page', 'prefs.email.receive.tpl');
-}
-/**
+} /**
  * send
  */ elseif ($_REQUEST['action'] == 'send') {
     if (isset($_REQUEST['save'])) {
@@ -148,8 +146,7 @@ if ($_REQUEST['action'] == 'common') {
     // assign
     $bm_prefs['blocked'] = str_replace(':', "\n", $bm_prefs['blocked']);
     $tpl->assign('page', 'prefs.email.send.tpl');
-}
-/**
+} /**
  * antispam
  */ elseif ($_REQUEST['action'] == 'antispam') {
     if (isset($_REQUEST['save'])) {
@@ -189,8 +186,7 @@ if ($_REQUEST['action'] == 'common') {
     $bm_prefs['dnsbl'] = str_replace(':', "\n", $bm_prefs['dnsbl']);
     $tpl->assign('bayesWordCount', $bayesWordCount);
     $tpl->assign('page', 'prefs.email.antispam.tpl');
-}
-/**
+} /**
  * antivirus
  */ elseif ($_REQUEST['action'] == 'antivirus') {
     if (isset($_REQUEST['save'])) {
@@ -205,8 +201,7 @@ if ($_REQUEST['action'] == 'common') {
 
     // assign
     $tpl->assign('page', 'prefs.email.antivirus.tpl');
-}
-/**
+} /**
  * s/mime
  */ elseif ($_REQUEST['action'] == 'smime') {
     // check for OpenSSL extension

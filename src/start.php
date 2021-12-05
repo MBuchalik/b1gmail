@@ -65,8 +65,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('widgets', $dashboard->getWidgetArray($widgetOrder));
     $tpl->assign('pageContent', 'li/start.page.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * save widget order
  */ elseif (
     $_REQUEST['action'] == 'saveWidgetOrder' &&
@@ -80,8 +79,7 @@ if ($_REQUEST['action'] == 'start') {
     } else {
         die('Invalid order');
     }
-}
-/**
+} /**
  * customize widgets
  */ elseif ($_REQUEST['action'] == 'customize') {
     $widgetOrder = $thisUser->GetPref('widgetOrderStart');
@@ -96,8 +94,7 @@ if ($_REQUEST['action'] == 'start') {
     );
     $tpl->assign('pageContent', 'li/start.customize.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * save cutomization
  */ elseif ($_REQUEST['action'] == 'saveCustomize') {
     $widgetOrder = $thisUser->GetPref('widgetOrderStart');
@@ -110,23 +107,20 @@ if ($_REQUEST['action'] == 'start') {
 
     header('Location: start.php?sid=' . session_id());
     exit();
-}
-/**
+} /**
  * search
  */ elseif ($_REQUEST['action'] == 'search' && isset($_REQUEST['q'])) {
     $url = sprintf($bm_prefs['search_engine'], urlencode($_REQUEST['q']));
     header('Location: ' . $url);
     exit();
-}
-/**
+} /**
  * widget preferences
  */ elseif (
     $_REQUEST['action'] == 'showWidgetPrefs' &&
     isset($_REQUEST['name'])
 ) {
     $dashboard->showWidgetPrefs($_REQUEST['name']);
-}
-/**
+} /**
  * safe code validation RPC
  */ elseif ($_REQUEST['action'] == 'checkSafeCode') {
     if (!class_exists('BMCaptcha')) {
@@ -139,20 +133,17 @@ if ($_REQUEST['action'] == 'start') {
         echo '0';
     }
     exit();
-}
-/**
+} /**
  * notifications
  */ elseif ($_REQUEST['action'] == 'getNotifications') {
     $tpl->assign('bmNotifications', $thisUser->GetNotifications());
     $tpl->display('li/notifications.tpl');
-}
-/**
+} /**
  * notification count
  */ elseif ($_REQUEST['action'] == 'getNotificationCount') {
     echo $thisUser->GetUnreadNotifications();
     exit();
-}
-/**
+} /**
  * logout
  */ elseif ($_REQUEST['action'] == 'logout') {
     BMUser::Logout();

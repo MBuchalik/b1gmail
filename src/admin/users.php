@@ -1034,8 +1034,7 @@ if ($_REQUEST['action'] == 'users') {
         );
         exit();
     }
-}
-/**
+} /**
  * search
  */ elseif ($_REQUEST['action'] == 'search') {
     // display form
@@ -1094,8 +1093,7 @@ if ($_REQUEST['action'] == 'users') {
         );
         exit();
     }
-}
-/**
+} /**
  * create user
  */ elseif ($_REQUEST['action'] == 'create') {
     // create user

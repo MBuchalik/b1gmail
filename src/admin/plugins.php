@@ -176,8 +176,7 @@ if ($_REQUEST['action'] == 'plugins' || $_REQUEST['action'] == 'widgets') {
     $tpl->assign('action', $_REQUEST['action']);
     $tpl->assign('plugins', $pluginList);
     $tpl->assign('page', 'plugins.list.tpl');
-}
-/**
+} /**
  * update check page
  */ elseif ($_REQUEST['action'] == 'updates') {
     $pluginList = [];
@@ -203,8 +202,7 @@ if ($_REQUEST['action'] == 'plugins' || $_REQUEST['action'] == 'widgets') {
 
     $tpl->assign('plugins', $pluginList);
     $tpl->assign('page', 'plugins.updates.tpl');
-}
-/**
+} /**
  * perform update check
  */ elseif (
     $_REQUEST['action'] == 'updateCheck' &&
@@ -226,8 +224,7 @@ if ($_REQUEST['action'] == 'plugins' || $_REQUEST['action'] == 'widgets') {
         $plugins->getParam('website', $_REQUEST['plugin']),
     );
     exit();
-}
-/**
+} /**
  * install
  */ elseif ($_REQUEST['action'] == 'install') {
     //

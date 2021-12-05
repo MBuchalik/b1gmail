@@ -221,8 +221,7 @@ if ($_REQUEST['action'] == 'db') {
         $tpl->assign('tables', $tables);
         $tpl->assign('page', 'optimize.db.tpl');
     }
-}
-/**
+} /**
  * optimize filesystem
  */ elseif ($_REQUEST['action'] == 'filesystem') {
     if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'cleanupTempFiles') {
@@ -489,8 +488,7 @@ if ($_REQUEST['action'] == 'db') {
             : $lang_admin['db2file_desc'],
     );
     $tpl->assign('page', 'optimize.filesystem.tpl');
-}
-/**
+} /**
  * optimize caches
  */ elseif ($_REQUEST['action'] == 'cache') {
     //

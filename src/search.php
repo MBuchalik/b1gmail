@@ -207,7 +207,7 @@ if ($_REQUEST['action'] == 'search') {
                 } else {
                     foreach ($subPiece['results'] as $result) {
                         $resultCount++;
-                    };
+                    }
                 }
             }
             $results = array_merge($results, $resultPiece);
@@ -262,8 +262,7 @@ if ($_REQUEST['action'] == 'search') {
     $tpl->assign('pageTitle', $lang_user['search']);
     $tpl->assign('pageContent', 'li/search.details.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * quick search
  */ elseif (
     $_REQUEST['action'] == 'quickSearch' &&
@@ -306,8 +305,7 @@ if ($_REQUEST['action'] == 'search') {
     $tpl->assign('q', _urlencode($q));
     $tpl->assign('results', $results);
     $tpl->display('li/search.results.tpl');
-}
-/**
+} /**
  * fts background indexing
  */ elseif (
     $_REQUEST['action'] == 'ftsBGIndexing' &&

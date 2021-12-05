@@ -467,8 +467,7 @@ if ($_REQUEST['action'] == 'folder') {
         $tpl->assign('pageContent', 'li/email.folder.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * rpc move mails
  */ elseif (
     $_REQUEST['action'] == 'moveMails' &&
@@ -491,8 +490,7 @@ if ($_REQUEST['action'] == 'folder') {
     }
 
     exit();
-}
-/**
+} /**
  * rpc flag
  */ elseif (
     $_REQUEST['action'] == 'flagMessage' &&
@@ -533,8 +531,7 @@ if ($_REQUEST['action'] == 'folder') {
     }
 
     exit();
-}
-/**
+} /**
  * rpc color
  */ elseif (
     $_REQUEST['action'] == 'colorMessage' &&
@@ -543,8 +540,7 @@ if ($_REQUEST['action'] == 'folder') {
 ) {
     $mailbox->ColorMail((int) $_REQUEST['id'], (int) $_REQUEST['color']);
     die((int) $_REQUEST['id'] . ',' . (int) $_REQUEST['color']);
-}
-/**
+} /**
  * rpc recent mail count
  */ elseif ($_REQUEST['action'] == 'getRecentMailCount') {
     die(
@@ -554,13 +550,11 @@ if ($_REQUEST['action'] == 'folder') {
                 : FOLDER_ROOT,
         )
     );
-}
-/**
+} /**
  * rpc get folder list
  */ elseif ($_REQUEST['action'] == 'getFolderList') {
     $tpl->display('li/email.folderlist.tpl');
-}
-/**
+} /**
  * rpc set preview position
  */ elseif (
     $_REQUEST['action'] == 'setPreviewPosition' &&

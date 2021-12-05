@@ -2226,7 +2226,7 @@ class FaxPlugin extends BMPlugin {
                 if (isset($_REQUEST['style']) && is_array($_REQUEST['style'])) {
                     foreach ($_REQUEST['style'] as $val) {
                         $style |= $val;
-                    };
+                    }
                 }
 
                 if (
@@ -2235,7 +2235,7 @@ class FaxPlugin extends BMPlugin {
                 ) {
                     foreach ($_REQUEST['showon'] as $val) {
                         $showon |= $val;
-                    };
+                    }
                 }
 
                 $db->Query(
@@ -2333,7 +2333,7 @@ class FaxPlugin extends BMPlugin {
                 if (isset($_REQUEST['style']) && is_array($_REQUEST['style'])) {
                     foreach ($_REQUEST['style'] as $val) {
                         $style |= $val;
-                    };
+                    }
                 }
 
                 if (
@@ -2342,7 +2342,7 @@ class FaxPlugin extends BMPlugin {
                 ) {
                     foreach ($_REQUEST['showon'] as $val) {
                         $showon |= $val;
-                    };
+                    }
                 }
 
                 $db->Query(

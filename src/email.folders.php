@@ -95,8 +95,7 @@ if ($_REQUEST['action'] == 'folders') {
     $tpl->assign('sharedFolderList', $sharedFolderList);
     $tpl->assign('pageContent', 'li/email.folders.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * action
  */ elseif ($_REQUEST['action'] == 'action' && isset($_REQUEST['do'])) {
     foreach ($_POST as $key => $val) {
@@ -108,8 +107,7 @@ if ($_REQUEST['action'] == 'folders') {
         }
     }
     header('Location: email.folders.php?sid=' . session_id());
-}
-/**
+} /**
  * set folder subscription
  */ elseif (
     $_REQUEST['action'] == 'setFolderSubscription' &&
@@ -119,8 +117,7 @@ if ($_REQUEST['action'] == 'folders') {
     $subscribe = $_REQUEST['subscribe'] == 1;
     $id = (int) $_REQUEST['id'];
     die($mailbox->SubscribeFolder($id, $subscribe) ? 'OK' : 'FAILED');
-}
-/**
+} /**
  * edit folder
  */ elseif ($_REQUEST['action'] == 'editFolder' && isset($_REQUEST['id'])) {
     $folderID = (int) $_REQUEST['id'];
@@ -152,8 +149,7 @@ if ($_REQUEST['action'] == 'folders') {
             $tpl->display('li/index.tpl');
         }
     }
-}
-/**
+} /**
  * edit conditions
  */ elseif ($_REQUEST['action'] == 'editConditions' && isset($_REQUEST['id'])) {
     $folder = $mailbox->GetFolder((int) $_REQUEST['id']);
@@ -207,7 +203,7 @@ if ($_REQUEST['action'] == 'folders') {
                             );
                         }
                     }
-                };
+                }
             }
 
             // add a condition?
@@ -226,8 +222,7 @@ if ($_REQUEST['action'] == 'folders') {
         $tpl->assign('conditionCount', count($conditions));
         $tpl->display('li/email.folders.conditions.tpl');
     }
-}
-/**
+} /**
  * save folder
  */ elseif (
     $_REQUEST['action'] == 'saveFolder' &&
@@ -257,8 +252,7 @@ if ($_REQUEST['action'] == 'folders') {
     }
 
     header('Location: email.folders.php?sid=' . session_id());
-}
-/**
+} /**
  * add folder
  */ elseif ($_REQUEST['action'] == 'addFolder') {
     $tpl->assign('pageTitle', $lang_user['addfolder']);
@@ -272,8 +266,7 @@ if ($_REQUEST['action'] == 'folders') {
     );
     $tpl->assign('pageContent', 'li/email.folders.edit.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * create folder
  */ elseif ($_REQUEST['action'] == 'createFolder' && IsPOSTRequest()) {
     $id = $mailbox->AddFolder(
@@ -294,8 +287,7 @@ if ($_REQUEST['action'] == 'folders') {
     } else {
         header('Location: email.folders.php?sid=' . session_id());
     }
-}
-/**
+} /**
  * delete folder
  */ elseif ($_REQUEST['action'] == 'deleteFolder' && isset($_REQUEST['id'])) {
     $mailbox->DeleteFolder((int) $_REQUEST['id']);

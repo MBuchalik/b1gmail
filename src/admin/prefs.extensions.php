@@ -183,8 +183,7 @@ if ($_REQUEST['action'] == 'extensions') {
         $tpl->assign('extension', $extension);
         $tpl->assign('page', 'prefs.extensions.edit.tpl');
     }
-}
-/**
+} /**
  * display extension
  */ elseif ($_REQUEST['action'] == 'display' && isset($_REQUEST['id'])) {
     $res = $db->Query(

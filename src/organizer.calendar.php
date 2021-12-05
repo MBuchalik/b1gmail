@@ -251,16 +251,14 @@ if ($_REQUEST['action'] == 'start') {
     }
 
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * day view (iframe)
  */ elseif ($_REQUEST['action'] == 'dayView') {
     $dates = $calendar->GetDatesForTimeframe($dateStart, $dateEnd, $group);
     $tpl->assign('dateStart', $dateStart);
     $tpl->assign('dates', $dates);
     $tpl->display('li/organizer.calendar.dayview.view.tpl');
-}
-/**
+} /**
  * show date
  */ elseif ($_REQUEST['action'] == 'showDate' && isset($_REQUEST['id'])) {
     $date = $calendar->GetDate((int) $_REQUEST['id']);
@@ -308,8 +306,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('mailSubject', $mailSubject);
         $tpl->display('li/organizer.calendar.showdate.tpl');
     }
-}
-/**
+} /**
  * groups
  */ elseif ($_REQUEST['action'] == 'groups') {
     //
@@ -419,8 +416,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('pageContent', 'li/organizer.calendar.groups.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * add form
  */ elseif ($_REQUEST['action'] == 'addDate') {
     $startDate = isset($_REQUEST['date']) ? (int) $_REQUEST['date'] : time();
@@ -433,8 +429,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('startTime', $startTime);
     $tpl->assign('pageContent', 'li/organizer.calendar.edit.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * create date
  */ elseif ($_REQUEST['action'] == 'createDate' && IsPOSTRequest()) {
     $attendees = [];
@@ -455,15 +450,13 @@ if ($_REQUEST['action'] == 'start') {
             $row['startdate'],
     );
     exit();
-}
-/**
+} /**
  * delete date
  */ elseif ($_REQUEST['action'] == 'deleteDate' && isset($_REQUEST['id'])) {
     $calendar->DeleteDate((int) $_REQUEST['id']);
     header('Location: organizer.calendar.php?sid=' . session_id());
     exit();
-}
-/**
+} /**
  * edit date
  */ elseif ($_REQUEST['action'] == 'editDate' && isset($_REQUEST['id'])) {
     $date = $calendar->GetDate((int) $_REQUEST['id']);
@@ -516,8 +509,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('pageContent', 'li/organizer.calendar.edit.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * save date
  */ elseif (
     $_REQUEST['action'] == 'saveDate' &&

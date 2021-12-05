@@ -309,8 +309,7 @@ if ($_REQUEST['action'] == 'groups') {
         header('Location: groups.php?sid=' . session_id());
         exit();
     }
-}
-/**
+} /**
  * create group
  */ elseif ($_REQUEST['action'] == 'create') {
     // create group

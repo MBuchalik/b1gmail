@@ -373,7 +373,7 @@ class Template extends Smarty {
                             $pageTabs[$orderKey]['order'] = $orderVal;
                         }
                     }
-                };
+                }
             }
 
             ModuleFunction('BeforePageTabsAssign', [&$pageTabs]);

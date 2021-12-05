@@ -528,8 +528,7 @@ if ($_REQUEST['action'] == 'overview') {
         $tpl->assign('points', $points);
         $tpl->assign('page', 'abuse.show.tpl');
     }
-}
-/**
+} /**
  * prefs
  */ elseif ($_REQUEST['action'] == 'prefs') {
     $tpl->assign('page', 'abuse.prefs.tpl');

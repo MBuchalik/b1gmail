@@ -59,8 +59,7 @@ if ($_REQUEST['action'] == 'list') {
     $tpl->assign('pageTitle', $lang_user['calendar']);
     $tpl->assign('page', 'm/calendar.list.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * date details
  */ elseif ($_REQUEST['action'] == 'show' && isset($_REQUEST['id'])) {
     $date = $calendar->GetDate((int) $_REQUEST['id']);

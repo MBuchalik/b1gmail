@@ -67,8 +67,7 @@ if ($_REQUEST['action'] == 'common') {
         BMBlobStorage::createProvider(BMBLOBSTORAGE_USERDB)->isAvailable(),
     );
     $tpl->assign('page', 'prefs.webdisk.common.tpl');
-}
-/**
+} /**
  * webdisk
  */ elseif ($_REQUEST['action'] == 'limits') {
     if (isset($_REQUEST['save'])) {
@@ -118,8 +117,7 @@ if ($_REQUEST['action'] == 'common') {
         $bm_prefs['forbidden_mimetypes'],
     );
     $tpl->assign('page', 'prefs.webdisk.limits.tpl');
-}
-/**
+} /**
  * extensions
  */ elseif ($_REQUEST['action'] == 'extensions') {
     if (!isset($_REQUEST['do'])) {
@@ -268,8 +266,7 @@ if ($_REQUEST['action'] == 'common') {
         $tpl->assign('extension', $extension);
         $tpl->assign('page', 'prefs.webdisk.extensions.edit.tpl');
     }
-}
-/**
+} /**
  * display extension
  */ elseif ($_REQUEST['action'] == 'displayExt' && isset($_REQUEST['id'])) {
     $res = $db->Query(

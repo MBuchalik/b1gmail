@@ -103,8 +103,7 @@ if ($_REQUEST['action'] == 'languages') {
     // assign
     $tpl->assign('languages', $languages);
     $tpl->assign('page', 'prefs.languages.tpl');
-}
-/**
+} /**
  * texts
  */ elseif ($_REQUEST['action'] == 'texts') {
     // language given?

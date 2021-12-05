@@ -188,8 +188,7 @@ if ($_REQUEST['action'] == 'common' || $_REQUEST['action'] == 'email') {
     $tpl->assign('statTypes', $statTypes);
     $tpl->assign('mode', $mode);
     $tpl->assign('page', 'stats.view.tpl');
-}
-/**
+} /**
  * space usage
  */ elseif ($_REQUEST['action'] == 'usage') {
     // get data

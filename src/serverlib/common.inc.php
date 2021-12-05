@@ -1787,7 +1787,7 @@ function _new($class, $args = []) {
                 $class = $replacement;
                 break;
             }
-        };
+        }
     }
 
     // check if class exists
@@ -3232,7 +3232,7 @@ function Array2XML(
                         $paramKey,
                         addslashes(XMLEncode($paramVal)),
                     );
-                };
+                }
             }
 
             $result .= '>';

@@ -138,8 +138,7 @@ if (
       $target_version,
   ); ?>
 		<?php }
-}
-/**
+} /**
  * system check
  */ elseif ($step == STEP_SYSTEMCHECK) {
     $nextStep = STEP_UPDATE; ?>
@@ -237,8 +236,7 @@ if (
      ? $lang_setup['checkok_text']
      : $lang_setup['checkfail_text']; ?>
 	<?php
-}
-/**
+} /**
  * update
  */ elseif ($step == STEP_UPDATE) { ?>
 	<h1><?php echo $lang_setup['updating']; ?></h1>
@@ -320,8 +318,7 @@ if (
 	//-->
 	</script>
 
-	<?php }
-/**
+	<?php } /**
  * update step
  */ elseif ($step == STEP_UPDATE_STEP) {
     $do = $_REQUEST['do'];

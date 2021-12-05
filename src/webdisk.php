@@ -311,8 +311,7 @@ if ($_REQUEST['action'] == 'folder') {
         $tpl->assign('pageContent', 'li/webdisk.folder.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * get file info
  */ elseif (
     $_REQUEST['action'] == 'itemInfo' &&
@@ -368,8 +367,7 @@ if ($_REQUEST['action'] == 'folder') {
 
     NormalArray2XML($info, $type);
     exit();
-}
-/**
+} /**
  * download file
  */ elseif ($_REQUEST['action'] == 'downloadFile' && isset($_REQUEST['id'])) {
     $fileInfo = $webdisk->GetFileInfo((int) $_REQUEST['id']);
@@ -420,8 +418,7 @@ if ($_REQUEST['action'] == 'folder') {
 
     $tpl->assign('pageContent', 'li/error.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * create folder
  */ elseif (
     $_REQUEST['action'] == 'createFolder' &&
@@ -450,8 +447,7 @@ if ($_REQUEST['action'] == 'folder') {
             );
         }
     }
-}
-/**
+} /**
  * folder share settings
  */ elseif (
     $_REQUEST['action'] == 'shareFolder' &&
@@ -468,8 +464,7 @@ if ($_REQUEST['action'] == 'folder') {
         $tpl->assign('pageContent', 'li/webdisk.share.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * save share settings
  */ elseif (
     $_REQUEST['action'] == 'saveShareSettings' &&
@@ -488,8 +483,7 @@ if ($_REQUEST['action'] == 'folder') {
             '&sid=' .
             session_id(),
     );
-}
-/**
+} /**
  * extract
  */ elseif ($_REQUEST['action'] == 'extractFile' && isset($_REQUEST['id'])) {
     $folder = isset($_REQUEST['folder']) ? (int) $_REQUEST['folder'] : 0;
@@ -514,8 +508,7 @@ if ($_REQUEST['action'] == 'folder') {
     $tpl->assign('fileName', $file['dateiname']);
     $tpl->assign('pageContent', 'li/webdisk.extract.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * extract action
  */ elseif (
     $_REQUEST['action'] == 'doExtractFile' &&
@@ -630,8 +623,7 @@ if ($_REQUEST['action'] == 'folder') {
         );
         exit();
     }
-}
-/**
+} /**
  * rename file/folder
  */ elseif (
     $_REQUEST['action'] == 'renameItem' &&
@@ -674,8 +666,7 @@ if ($_REQUEST['action'] == 'folder') {
             );
         }
     }
-}
-/**
+} /**
  * delete file
  */ elseif (
     $_REQUEST['action'] == 'deleteItem' &&
@@ -690,8 +681,7 @@ if ($_REQUEST['action'] == 'folder') {
     header(
         'Location: webdisk.php?folder=' . $folderID . '&sid=' . session_id(),
     );
-}
-/**
+} /**
  * clipboard copy/cut
  */ elseif (
     $_REQUEST['action'] == 'clipboardAction' &&
@@ -719,8 +709,7 @@ if ($_REQUEST['action'] == 'folder') {
     $_SESSION['clipboard'] = $clipboard;
 
     die('Ok');
-}
-/**
+} /**
  * DnD move
  */ elseif (
     $_REQUEST['action'] == 'moveItems' &&
@@ -753,8 +742,7 @@ if ($_REQUEST['action'] == 'folder') {
         echo ',ReloadFolderList';
     }
     exit();
-}
-/**
+} /**
  * clipboard paste
  */ elseif ($_REQUEST['action'] == 'pasteHere') {
     $ok = false;
@@ -862,8 +850,7 @@ if ($_REQUEST['action'] == 'folder') {
         $tpl->assign('pageContent', 'li/error.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * dnd upload from new JS uploader
  */ elseif (
     $_REQUEST['action'] == 'dndUpload' &&
@@ -976,8 +963,7 @@ if ($_REQUEST['action'] == 'folder') {
     }
 
     echo $msg;
-}
-/**
+} /**
  * upload files
  */ elseif ($_REQUEST['action'] == 'uploadFiles' && IsPOSTRequest()) {
     $error = $success = [];
@@ -1094,8 +1080,7 @@ if ($_REQUEST['action'] == 'folder') {
                 session_id(),
         );
     }
-}
-/**
+} /**
  * extension image
  */ elseif ($_REQUEST['action'] == 'displayExtension') {
     if (isset($_REQUEST['ext'])) {
@@ -1104,8 +1089,7 @@ if ($_REQUEST['action'] == 'folder') {
         $ext = '.?';
     }
     $webdisk->DisplayExtension($ext);
-}
-/**
+} /**
  * dialog
  */ elseif ($_REQUEST['action'] == 'webdiskDialog') {
     // type
@@ -1117,8 +1101,7 @@ if ($_REQUEST['action'] == 'folder') {
 
     $tpl->assign('type', $type);
     $tpl->display('li/webdisk.dialog.tpl');
-}
-/**
+} /**
  * dialog content
  */ elseif ($_REQUEST['action'] == 'webdiskDialogContent') {
     // path
@@ -1164,8 +1147,7 @@ if ($_REQUEST['action'] == 'folder') {
     $tpl->assign('pathID', $path);
     $tpl->assign('history', array_reverse($pathArray));
     $tpl->display('li/webdisk.dialog.content.tpl');
-}
-/**
+} /**
  * import from mail dialog
  */ elseif ($_REQUEST['action'] == 'importFromMail') {
     $tpl->assign(
@@ -1180,8 +1162,7 @@ if ($_REQUEST['action'] == 'folder') {
     $tpl->assign('filename', _unescape($_REQUEST['filename']));
     $tpl->assign('type', 'save');
     $tpl->display('li/webdisk.dialog.tpl');
-}
-/**
+} /**
  * import attachment
  */ elseif (
     $_REQUEST['action'] == 'doImportFromMail' &&
@@ -1263,8 +1244,7 @@ if ($_REQUEST['action'] == 'folder') {
     echo 'parent.hideOverlay();' . "\n";
     echo '//-->' . "\n";
     echo '</script>' . "\n";
-}
-/**
+} /**
  * create folder RPC
  */ elseif (
     $_REQUEST['action'] == 'webdiskDialogCreateFolder' &&
@@ -1283,8 +1263,7 @@ if ($_REQUEST['action'] == 'folder') {
     }
 
     die('0');
-}
-/**
+} /**
  * rpc get folder list
  */ elseif ($_REQUEST['action'] == 'getFolderList') {
     $tpl->display('li/webdisk.folderlist.tpl');

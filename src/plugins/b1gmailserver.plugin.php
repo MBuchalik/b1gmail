@@ -1981,7 +1981,7 @@ class B1GMailServerAdmin extends BMPlugin {
                 ) {
                     foreach ($_REQUEST['loglevel'] as $key => $val) {
                         $logLevel |= $key;
-                    };
+                    }
                 }
 
                 if (
@@ -1990,7 +1990,7 @@ class B1GMailServerAdmin extends BMPlugin {
                 ) {
                     foreach ($_REQUEST['failban_types'] as $key => $val) {
                         $failbanTypes |= $key;
-                    };
+                    }
                 }
 
                 $sslMinVersion = (int) $_REQUEST['ssl_min_version'];
@@ -3373,7 +3373,7 @@ class B1GMailServerAdmin extends BMPlugin {
                     if (isset($val['flags']) && is_array($val['flags'])) {
                         foreach ($val['flags'] as $flag) {
                             $flags |= $flag;
-                        };
+                        }
                     }
 
                     if ($key == 0 && strlen(trim($val['hostname'])) > 1) {
@@ -3677,7 +3677,7 @@ class B1GMailServerAdmin extends BMPlugin {
                     if (isset($val['flags']) && is_array($val['flags'])) {
                         foreach ($val['flags'] as $flag) {
                             $flags |= $flag;
-                        };
+                        }
                     }
 
                     if ($key == 0 && strlen(trim($val['rule'])) > 1) {

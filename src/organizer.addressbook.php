@@ -284,8 +284,7 @@ if ($_REQUEST['action'] == 'start') {
         urlencode(isset($_REQUEST['letter']) ? $_REQUEST['letter'] : '*'),
     );
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * add contact
  */ elseif ($_REQUEST['action'] == 'addContact') {
     if (
@@ -330,8 +329,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('pageContent', 'li/organizer.addressbook.edit.tpl');
     $tpl->assign('groups', $book->GetGroupList());
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * quick create
  */ elseif ($_REQUEST['action'] == 'quickAdd' && IsPOSTRequest()) {
     if (is_array($_POST['addr'])) {
@@ -380,8 +378,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('msg', $lang_user['addradddone']);
     $tpl->display('li/msg.tiny.tpl');
     exit();
-}
-/**
+} /**
  * create contact
  */ elseif (
     $_REQUEST['action'] == 'createContact' &&
@@ -472,8 +469,7 @@ if ($_REQUEST['action'] == 'start') {
         // back to list
         header('Location: organizer.addressbook.php?sid=' . session_id());
     }
-}
-/**
+} /**
  * show contact
  */ elseif ($_REQUEST['action'] == 'showContact' && isset($_REQUEST['id'])) {
     $contact = $book->GetContact((int) $_REQUEST['id']);
@@ -512,8 +508,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('contact', $contact);
         $tpl->display('li/organizer.addressbook.show.tpl');
     }
-}
-/**
+} /**
  * edit contact
  */ elseif ($_REQUEST['action'] == 'editContact' && isset($_REQUEST['id'])) {
     $contact = $book->GetContact((int) $_REQUEST['id']);
@@ -525,8 +520,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('contact', $contact);
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * save contact
  */ elseif (
     $_REQUEST['action'] == 'saveContact' &&
@@ -715,8 +709,7 @@ if ($_REQUEST['action'] == 'start') {
         // back to list
         header('Location: organizer.addressbook.php?sid=' . session_id());
     }
-}
-/**
+} /**
  * send self complete link
  */ elseif (
     $_REQUEST['action'] == 'sendSelfComplete' &&
@@ -746,8 +739,7 @@ if ($_REQUEST['action'] == 'start') {
             session_id(),
     );
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * self complete
  */ elseif ($_REQUEST['action'] == 'selfComplete' && isset($_REQUEST['id'])) {
     $tpl->assign('pageTitle', $lang_user['complete']);
@@ -810,8 +802,7 @@ if ($_REQUEST['action'] == 'start') {
 
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * picture
  */ elseif (
     $_REQUEST['action'] == 'addressbookPicture' &&
@@ -839,8 +830,7 @@ if ($_REQUEST['action'] == 'start') {
             }
         }
     }
-}
-/**
+} /**
  * vcf import dialog
  */ elseif ($_REQUEST['action'] == 'vcfImportDialog') {
     $tpl->assign('title', $lang_user['importvcf']);
@@ -852,8 +842,7 @@ if ($_REQUEST['action'] == 'start') {
     );
     $tpl->assign('fieldName', 'vcfFile');
     $tpl->display('li/dialog.openfile.tpl');
-}
-/**
+} /**
  * vcf import dialog submit
  */ elseif ($_REQUEST['action'] == 'vcfImportDialogSubmit' && IsPOSTRequest()) {
     $tempID = RequestTempFile($userRow['id'], time() + TIME_ONE_HOUR);
@@ -890,14 +879,12 @@ if ($_REQUEST['action'] == 'start') {
     echo '</script>' . "\n";
 
     ReleaseTempFile($userRow['id'], $tempID);
-}
-/**
+} /**
  * delete a contact
  */ elseif ($_REQUEST['action'] == 'deleteContact' && isset($_REQUEST['id'])) {
     $book->Delete((int) $_REQUEST['id']);
     header('Location: organizer.addressbook.php?sid=' . session_id());
-}
-/**
+} /**
  * contact action
  */ elseif ($_REQUEST['action'] == 'action') {
     if (!empty($_POST['addrIDs'])) {
@@ -982,8 +969,7 @@ if ($_REQUEST['action'] == 'start') {
         }
     }
     header('Location: organizer.addressbook.php?sid=' . session_id());
-}
-/**
+} /**
  * groups
  */ elseif ($_REQUEST['action'] == 'groups') {
     if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'add') {
@@ -1003,18 +989,15 @@ if ($_REQUEST['action'] == 'start') {
 
     $tpl->assign('groupList', $book->GetGroupList());
     $tpl->display('li/organizer.addressbook.groups.tpl');
-}
-/**
+} /**
  * export dialog
  */ elseif ($_REQUEST['action'] == 'exportDialog') {
     $tpl->display('li/organizer.addressbook.export.tpl');
-}
-/**
+} /**
  * import dialog
  */ elseif ($_REQUEST['action'] == 'importDialogStart') {
     $tpl->display('li/organizer.addressbook.import.tpl');
-}
-/**
+} /**
  * group action
  */ elseif ($_REQUEST['action'] == 'groupAction') {
     // add group
@@ -1109,14 +1092,12 @@ if ($_REQUEST['action'] == 'start') {
         header('Location: organizer.addressbook.php?sid=' . session_id());
         exit();
     }
-}
-/**
+} /**
  * delete single group
  */ elseif ($_REQUEST['action'] == 'deleteGroup' && isset($_REQUEST['id'])) {
     $book->DeleteGroup((int) $_REQUEST['id']);
     header('Location: organizer.addressbook.php?sid=' . session_id());
-}
-/**
+} /**
  * edit group
  */ elseif ($_REQUEST['action'] == 'editGroup' && isset($_REQUEST['id'])) {
     $group = $book->GetGroup((int) $_REQUEST['id']);
@@ -1125,8 +1106,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('pageContent', 'li/organizer.addressbook.editgroup.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * save group
  */ elseif (
     $_REQUEST['action'] == 'saveGroup' &&
@@ -1148,8 +1128,7 @@ if ($_REQUEST['action'] == 'start') {
         $book->ChangeGroup((int) $_REQUEST['id'], $_REQUEST['title']);
         header('Location: organizer.addressbook.php?sid=' . session_id());
     }
-}
-/**
+} /**
  * user picture dialog
  */ elseif (
     $_REQUEST['action'] == 'userPictureDialog' &&
@@ -1166,8 +1145,7 @@ if ($_REQUEST['action'] == 'start') {
     );
     $tpl->assign('fieldName', 'pictureFile');
     $tpl->display('li/dialog.openfile.tpl');
-}
-/**
+} /**
  * user picture dialog submit
  */ elseif (
     $_REQUEST['action'] == 'userPictureDialogSubmit' &&
@@ -1249,8 +1227,7 @@ if ($_REQUEST['action'] == 'start') {
     echo 'parent.hideOverlay();' . "\n";
     echo '//-->' . "\n";
     echo '</script>' . "\n";
-}
-/**
+} /**
  * whole addressbook export
  */ elseif (
     $_REQUEST['action'] == 'exportAddressbook' &&
@@ -1289,8 +1266,7 @@ if ($_REQUEST['action'] == 'start') {
     header('Content-Disposition: attachment; filename="export.csv"');
     $book->ExportAddressbook($lineBreakChar, $quoteChar, $sepChar);
     exit();
-}
-/**
+} /**
  * import dialog
  */ elseif (
     $_REQUEST['action'] == 'importDialog' &&
@@ -1310,8 +1286,7 @@ if ($_REQUEST['action'] == 'start') {
     );
     $tpl->assign('fieldName', 'importFile');
     $tpl->display('li/dialog.openfile.tpl');
-}
-/**
+} /**
  * import dialog submit
  */ elseif (
     $_REQUEST['action'] == 'importDialogSubmit' &&
@@ -1391,8 +1366,7 @@ if ($_REQUEST['action'] == 'start') {
     echo 'parent.hideOverlay();' . "\n";
     echo '//-->' . "\n";
     echo '</script>' . "\n";
-}
-/**
+} /**
  * file import
  */ elseif (
     $_REQUEST['action'] == 'importFile' &&
@@ -1442,8 +1416,7 @@ if ($_REQUEST['action'] == 'start') {
             fclose($fp);
         }
     }
-}
-/**
+} /**
  * csv import
  */ elseif (
     $_REQUEST['action'] == 'importCSV' &&
@@ -1590,8 +1563,7 @@ if ($_REQUEST['action'] == 'start') {
 
     // release temp file
     ReleaseTempFile($userRow['id'], $tempID);
-}
-/**
+} /**
  * address popup
  */ elseif ($_REQUEST['action'] == 'addressPopup') {
     $mode = isset($_REQUEST['mode']) ? $_REQUEST['mode'] : 'email';
@@ -1649,15 +1621,14 @@ if ($_REQUEST['action'] == 'start') {
                     'email1' => $address['mail'],
                     'type' => $type,
                 ];
-            };
+            }
         }
     }
 
     $tpl->assign('mode', $mode);
     $tpl->assign('addresses', $addresses);
     $tpl->display('li/organizer.addressbook.popup.tpl');
-}
-/**
+} /**
  * attendee popup
  */ elseif ($_REQUEST['action'] == 'attendeePopup') {
     $addresses = [];
@@ -1695,8 +1666,7 @@ if ($_REQUEST['action'] == 'start') {
 
     $tpl->assign('addresses', $addresses);
     $tpl->display('li/organizer.addressbook.popup.attendees.tpl');
-}
-/**
+} /**
  * number popup
  */ elseif ($_REQUEST['action'] == 'numberPopup') {
     $addresses = [];
@@ -1717,8 +1687,7 @@ if ($_REQUEST['action'] == 'start') {
 
     $tpl->assign('addresses', $addresses);
     $tpl->display('li/organizer.addressbook.popup.numbers.tpl');
-}
-/**
+} /**
  * address lookup RPC
  */ elseif (
     $_REQUEST['action'] == 'lookupAddresses' &&

@@ -230,7 +230,7 @@ if ($_REQUEST['action'] == 'compose') {
                                 unset($recpList[$key]);
                                 break;
                             }
-                        };
+                        }
                     }
                 }
                 $mail['cc'] = DecodeEMail(implode('; ', $recpList));
@@ -494,8 +494,7 @@ if ($_REQUEST['action'] == 'compose') {
     );
     $tpl->assign('pageContent', 'li/email.compose.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * add attachment
  */ elseif ($_REQUEST['action'] == 'addAttachment') {
     // compute max size
@@ -533,8 +532,7 @@ if ($_REQUEST['action'] == 'compose') {
     );
     $tpl->assign('fieldName', 'attachFile');
     $tpl->display('li/dialog.openfile.tpl');
-}
-/**
+} /**
  * get attachment
  */ elseif (
     $_REQUEST['action'] == 'getAttachment' &&
@@ -569,15 +567,13 @@ if ($_REQUEST['action'] == 'compose') {
         readfile($tempFileName);
         exit();
     }
-}
-/**
+} /**
  * set no draft notify flag
  */ elseif ($_REQUEST['action'] == 'setNoDraftNotify') {
     $mailbox->SetNoDraftNotify();
     echo '1';
     exit();
-}
-/**
+} /**
  * delete draft
  */ elseif ($_REQUEST['action'] == 'deleteDraft' && isset($_REQUEST['id'])) {
     $draftMail = $mailbox->GetMail((int) $_REQUEST['id']);
@@ -593,8 +589,7 @@ if ($_REQUEST['action'] == 'compose') {
     $mailbox->DeleteMail($draftMail->id, true);
     echo '1';
     exit();
-}
-/**
+} /**
  * upload attachment
  */ elseif (
     $_REQUEST['action'] == 'uploadAttachment' &&
@@ -640,8 +635,7 @@ if ($_REQUEST['action'] == 'compose') {
     echo 'parent.hideOverlay();' . "\n";
     echo '//-->' . "\n";
     echo '</script>' . "\n";
-}
-/**
+} /**
  * upload attachment from DnD
  */ elseif (
     $_REQUEST['action'] == 'uploadDnDAttachment' &&
@@ -738,8 +732,7 @@ if ($_REQUEST['action'] == 'compose') {
             "\n";
         echo 'parent.generateAttachmentList();' . "\n";
     }
-}
-/**
+} /**
  * delete attachment
  */ elseif (
     $_REQUEST['action'] == 'deleteAttachment' &&
@@ -747,8 +740,7 @@ if ($_REQUEST['action'] == 'compose') {
 ) {
     $id = (int) $_REQUEST['id'];
     die(ReleaseTempFile($userRow['id'], $id) ? '1' : '0');
-}
-/**
+} /**
  * send mail
  */ elseif (
     $_REQUEST['action'] == 'sendMail' &&
@@ -1429,8 +1421,7 @@ if ($_REQUEST['action'] == 'compose') {
 
     $tpl->assign('pageTitle', $lang_user['sendmail']);
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * get signature RPC
  */ elseif (
     $_REQUEST['action'] == 'getSignature' &&
@@ -1455,8 +1446,7 @@ if ($_REQUEST['action'] == 'compose') {
         }
     }
     exit();
-}
-/**
+} /**
  * check S/MIME params RPC
  */ elseif (
     $_REQUEST['action'] == 'checkSMIMEParams' &&

@@ -52,8 +52,7 @@ if ($_REQUEST['action'] == 'list') {
     $tpl->assign('pageTitle', $lang_user['contacts']);
     $tpl->assign('page', 'm/contacts.list.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * contact details
  */ elseif ($_REQUEST['action'] == 'show' && isset($_REQUEST['id'])) {
     $contact = $book->GetContact((int) $_REQUEST['id']);
@@ -100,8 +99,7 @@ if ($_REQUEST['action'] == 'list') {
         $tpl->assign('page', 'm/contacts.show.tpl');
         $tpl->display('m/index.tpl');
     }
-}
-/**
+} /**
  * contact picture
  */ elseif (
     $_REQUEST['action'] == 'addressbookPicture' &&

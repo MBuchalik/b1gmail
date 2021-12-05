@@ -380,8 +380,7 @@ if ($_REQUEST['action'] == 'read' && isset($_REQUEST['id'])) {
             $tpl->display('li/index.tpl');
         }
     }
-}
-/**
+} /**
  * delivery status
  */ elseif (
     $_REQUEST['action'] == 'deliveryStatus' &&
@@ -394,8 +393,7 @@ if ($_REQUEST['action'] == 'read' && isset($_REQUEST['id'])) {
         $tpl->assign('deliveryStatus', $mail->GetDeliveryStatus());
         $tpl->display('li/dialog.deliverystatus.tpl');
     }
-}
-/**
+} /**
  * attached ZIP
  */ elseif (
     $_REQUEST['action'] == 'attachedZIP' &&
@@ -466,8 +464,7 @@ if ($_REQUEST['action'] == 'read' && isset($_REQUEST['id'])) {
             ReleaseTempFile($userRow['id'], $tempFileID);
         }
     }
-}
-/**
+} /**
  * attached mail
  */ elseif (
     $_REQUEST['action'] == 'attachedMail' &&
@@ -572,8 +569,7 @@ if ($_REQUEST['action'] == 'read' && isset($_REQUEST['id'])) {
             ReleaseTempFile($userRow['id'], $tempFileID);
         }
     }
-}
-/**
+} /**
  * html mail
  */ elseif (
     $_REQUEST['action'] == 'inlineHTML' &&
@@ -624,8 +620,7 @@ if ($_REQUEST['action'] == 'read' && isset($_REQUEST['id'])) {
 
         echo $text;
     }
-}
-/**
+} /**
  * show thread
  */ elseif ($_REQUEST['action'] == 'showThread' && isset($_REQUEST['id'])) {
     $mail = $mailbox->GetMail((int) $_REQUEST['id']);
@@ -659,8 +654,7 @@ if ($_REQUEST['action'] == 'move' && isset($_REQUEST['id'])) {
             $tpl->display('li/email.read.move.tpl');
         }
     }
-}
-/**
+} /**
  * download e-mail
  */ elseif ($_REQUEST['action'] == 'download' && isset($_REQUEST['id'])) {
     $mail = $mailbox->GetMail((int) $_REQUEST['id']);
@@ -693,8 +687,7 @@ if ($_REQUEST['action'] == 'move' && isset($_REQUEST['id'])) {
             exit();
         }
     }
-}
-/**
+} /**
  * download an attachment
  */ elseif (
     $_REQUEST['action'] == 'downloadAttachment' &&
@@ -735,8 +728,7 @@ if ($_REQUEST['action'] == 'move' && isset($_REQUEST['id'])) {
             $attData->Finish();
         }
     }
-}
-/**
+} /**
  * import a VCF attachment
  */ elseif (
     $_REQUEST['action'] == 'importVCF' &&
@@ -763,8 +755,7 @@ if ($_REQUEST['action'] == 'move' && isset($_REQUEST['id'])) {
             ReleaseTempFile($userRow['id'], $tempID);
         }
     }
-}
-/**
+} /**
  * send confirmation
  */ elseif (
     $_REQUEST['action'] == 'sendConfirmation' &&
@@ -780,8 +771,7 @@ if ($_REQUEST['action'] == 'move' && isset($_REQUEST['id'])) {
     }
 
     die('0');
-}
-/**
+} /**
  * set spam status for one mail
  */ elseif (
     $_REQUEST['action'] == 'setSpamStatus' &&
@@ -790,8 +780,7 @@ if ($_REQUEST['action'] == 'move' && isset($_REQUEST['id'])) {
 ) {
     $mailbox->SetSpamStatus((int) $_REQUEST['id'], $_REQUEST['spam'] == 'true');
     die('1');
-}
-/**
+} /**
  * set spam status for multiple mails
  */ elseif (
     $_REQUEST['action'] == 'setSpamStatus' &&
@@ -803,8 +792,7 @@ if ($_REQUEST['action'] == 'move' && isset($_REQUEST['id'])) {
         $mailbox->SetSpamStatus((int) $id, $_REQUEST['spam'] == 'true');
     }
     die('1');
-}
-/**
+} /**
  * show source
  */ elseif ($_REQUEST['action'] == 'showSource' && isset($_REQUEST['id'])) {
     $mail = $mailbox->GetMail((int) $_REQUEST['id']);

@@ -131,8 +131,7 @@ $tpl->assign('pageMenuFile', 'li/prefs.sidebar.tpl');
 if ($_REQUEST['action'] == 'start') {
     $tpl->assign('pageContent', 'li/prefs.start.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * common
  */ elseif ($_REQUEST['action'] == 'common') {
     $defaultName = $userRow['vorname'] . ' ' . $userRow['nachname'];
@@ -277,8 +276,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('pageContent', 'li/prefs.common.tpl');
     $tpl->assign('activeItem', 'common');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * contact
  */ elseif ($_REQUEST['action'] == 'contact') {
     // save?
@@ -673,8 +671,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('pageContent', 'li/prefs.contact.tpl');
     $tpl->assign('activeItem', 'contact');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * coupons
  */ elseif ($_REQUEST['action'] == 'coupons' && isset($prefsItems['coupons'])) {
     $tpl->assign('activeItem', 'coupons');
@@ -706,8 +703,7 @@ if ($_REQUEST['action'] == 'start') {
 
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * filters
  */ elseif ($_REQUEST['action'] == 'filters' && isset($prefsItems['filters'])) {
     $tpl->assign('activeItem', 'filters');
@@ -822,7 +818,7 @@ if ($_REQUEST['action'] == 'start') {
                                 );
                             }
                         }
-                    };
+                    }
                 }
 
                 // add a condition?
@@ -895,7 +891,7 @@ if ($_REQUEST['action'] == 'start') {
                                 );
                             }
                         }
-                    };
+                    }
                 }
 
                 // add a action?
@@ -1008,8 +1004,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('pageContent', 'li/prefs.filters.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * antivirus
  */ elseif (
     $_REQUEST['action'] == 'antivirus' &&
@@ -1037,8 +1032,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('pageContent', 'li/prefs.antivirus.tpl');
     $tpl->assign('activeItem', 'antivirus');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * antispam
  */ elseif (
     $_REQUEST['action'] == 'antispam' &&
@@ -1086,8 +1080,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('pageContent', 'li/prefs.antispam.tpl');
     $tpl->assign('activeItem', 'antispam');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * autoresponder
  */ elseif (
     $_REQUEST['action'] == 'autoresponder' &&
@@ -1116,8 +1109,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('pageContent', 'li/prefs.autoresponder.tpl');
     $tpl->assign('activeItem', 'autoresponder');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * signatures
  */ elseif ($_REQUEST['action'] == 'signatures') {
     $tpl->assign('activeItem', 'signatures');
@@ -1217,8 +1209,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('pageContent', 'li/prefs.signatures.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * aliases
  */ elseif ($_REQUEST['action'] == 'aliases' && isset($prefsItems['aliases'])) {
     $domainList = GetDomainList('aliases');
@@ -1413,8 +1404,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('pageContent', 'li/prefs.aliases.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * pop3 accounts
  */ elseif ($_REQUEST['action'] == 'extpop3') {
     //
@@ -1659,8 +1649,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('pageContent', 'li/prefs.extpop3.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * software
  */ elseif ($_REQUEST['action'] == 'software' && $tbxRelease) {
     // download?
@@ -1716,8 +1705,7 @@ if ($_REQUEST['action'] == 'start') {
     );
     $tpl->assign('pageContent', 'li/prefs.software.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * faq
  */ elseif ($_REQUEST['action'] == 'faq') {
     // get faq
@@ -1765,8 +1753,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('faq', $faq);
     $tpl->assign('pageContent', 'li/prefs.faq.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * membership
  */ elseif ($_REQUEST['action'] == 'membership') {
     $tpl->assign('activeItem', 'membership');
@@ -2050,8 +2037,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('page', 'nli/msg.tpl');
         $tpl->display('nli/index.tpl');
     }
-}
-/**
+} /**
  * orders
  */ elseif ($_REQUEST['action'] == 'orders' && BMPayment::Available()) {
     if (!isset($_REQUEST['do'])) {
@@ -2067,7 +2053,7 @@ if ($_REQUEST['action'] == 'start') {
                     '%.02f',
                     $pos['total'] / 100,
                 );
-            };
+            }
         }
 
         $tpl->assign('currency', $bm_prefs['currency']);
@@ -2100,8 +2086,7 @@ if ($_REQUEST['action'] == 'start') {
         header('Location: prefs.php?action=orders&sid=' . session_id());
         exit();
     }
-}
-/**
+} /**
  * payment return page
  */ elseif ($_REQUEST['action'] == 'paymentReturn') {
     $tpl->assign('title', $lang_user['thankyou']);
@@ -2109,8 +2094,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('backLink', 'prefs.php?action=orders&sid=' . session_id());
     $tpl->assign('pageContent', 'li/msg.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * keyring
  */ elseif ($_REQUEST['action'] == 'keyring' && $groupRow['smime'] == 'yes') {
     $tpl->assign('pkcs12Support', PKCS12_SUPPORT);
@@ -2788,8 +2772,7 @@ if ($_REQUEST['action'] == 'start') {
             exit();
         }
     }
-}
-/**
+} /**
  * Try out modules
  */ else {
     ModuleFunction('UserPrefsPageHandler', [$_REQUEST['action']]);

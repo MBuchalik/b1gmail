@@ -166,8 +166,7 @@ if ($_REQUEST['action'] == 'common') {
     $tpl->assign('languages', $languages);
     $tpl->assign('countries', CountryList());
     $tpl->assign('page', 'prefs.common.tpl');
-}
-/**
+} /**
  * caching
  */ elseif ($_REQUEST['action'] == 'caching') {
     if (isset($_REQUEST['save'])) {
@@ -203,8 +202,7 @@ if ($_REQUEST['action'] == 'common') {
         class_exists('Memcache') || class_exists('Memcached'),
     );
     $tpl->assign('page', 'prefs.caching.tpl');
-}
-/**
+} /**
  * captcha
  */ elseif ($_REQUEST['action'] == 'captcha') {
     if (!class_exists('BMCaptcha')) {
@@ -270,8 +268,7 @@ if ($_REQUEST['action'] == 'common') {
     $tpl->assign('defaultProvider', $bm_prefs['captcha_provider']);
     $tpl->assign('providers', $providers);
     $tpl->assign('page', 'prefs.captcha.tpl');
-}
-/**
+} /**
  * signup
  */ elseif ($_REQUEST['action'] == 'signup') {
     if (isset($_REQUEST['save'])) {
@@ -347,8 +344,7 @@ if ($_REQUEST['action'] == 'common') {
     );
     $tpl->assign('groups', BMGroup::GetSimpleGroupList());
     $tpl->assign('page', 'prefs.signup.tpl');
-}
-/**
+} /**
  * locked usernames
  */ elseif ($_REQUEST['action'] == 'lockedusernames') {
     // delete?
@@ -408,8 +404,7 @@ if ($_REQUEST['action'] == 'common') {
     $tpl->assign('lockedUsernames', $lockedUsernames);
     $tpl->assign('lockedTypeTable', $lockedTypeTable);
     $tpl->assign('page', 'prefs.lockedusernames.tpl');
-}
-/**
+} /**
  * domains
  */ elseif ($_REQUEST['action'] == 'domains') {
     // mass save?
@@ -486,8 +481,7 @@ if ($_REQUEST['action'] == 'common') {
     // assign
     $tpl->assign('domains', $domains);
     $tpl->assign('page', 'prefs.domains.tpl');
-}
-/**
+} /**
  * tab order
  */ elseif ($_REQUEST['action'] == 'taborder') {
     $pageTabs = [

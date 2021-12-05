@@ -148,8 +148,7 @@ if ($_REQUEST['action'] == 'logs') {
     $tpl->assign('end', $end);
     $tpl->assign('entries', $entries);
     $tpl->assign('page', 'logs.tpl');
-}
-/**
+} /**
  * archiving
  */ elseif ($_REQUEST['action'] == 'archiving') {
     /**

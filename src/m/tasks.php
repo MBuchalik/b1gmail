@@ -117,8 +117,7 @@ if ($_REQUEST['action'] == 'list') {
     $tpl->assign('pageTitle', $taskListTitle);
     $tpl->assign('page', 'm/tasks.list.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * lists
  */ elseif ($_REQUEST['action'] == 'lists') {
     $lists = $todo->GetTaskLists();
@@ -127,8 +126,7 @@ if ($_REQUEST['action'] == 'list') {
     $tpl->assign('pageTitle', $lang_user['tasklists']);
     $tpl->assign('page', 'm/tasks.lists.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * edit
  */ elseif ($_REQUEST['action'] == 'edit' && isset($_REQUEST['id'])) {
     $taskID = (int) $_REQUEST['id'];
@@ -152,16 +150,14 @@ if ($_REQUEST['action'] == 'list') {
     );
     $tpl->assign('page', 'm/tasks.edit.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * add
  */ elseif ($_REQUEST['action'] == 'add' && isset($_REQUEST['list'])) {
     $tpl->assign('taskListID', (int) $_REQUEST['list']);
     $tpl->assign('isDialog', true);
     $tpl->assign('page', 'm/tasks.add.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * set done RPC
  */ elseif ($_REQUEST['action'] == 'setTaskDone' && isset($_REQUEST['id'])) {
     $result = $todo->SetStatus(

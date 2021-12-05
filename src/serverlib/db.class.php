@@ -129,7 +129,7 @@ class DB {
                         $szUsername,
                     );
                 }
-            };
+            }
         }
 
         $ok = $result = mysqli_query($handle, $query);

@@ -572,7 +572,7 @@ class BMAddressbook {
             if (count($groups) > 0) {
                 foreach ($groups as $group) {
                     $this->ContactGroup($contactID, (int) $group);
-                };
+                }
             }
         }
 
@@ -787,7 +787,7 @@ class BMAddressbook {
         if ($contactID > 0 && count($groups) > 0) {
             foreach ($groups as $group) {
                 $this->ContactGroup($contactID, (int) $group);
-            };
+            }
         }
 
         // picture

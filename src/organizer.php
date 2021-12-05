@@ -72,8 +72,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('widgets', $dashboard->getWidgetArray($widgetOrder));
     $tpl->assign('pageContent', 'li/organizer.start.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * save widget order
  */ elseif (
     $_REQUEST['action'] == 'saveWidgetOrder' &&
@@ -87,8 +86,7 @@ if ($_REQUEST['action'] == 'start') {
     } else {
         die('Invalid order');
     }
-}
-/**
+} /**
  * customize widgets
  */ elseif ($_REQUEST['action'] == 'customize') {
     $widgetOrder = $thisUser->GetPref('widgetOrderOrganizer');
@@ -103,8 +101,7 @@ if ($_REQUEST['action'] == 'start') {
     );
     $tpl->assign('pageContent', 'li/organizer.customize.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * save cutomization
  */ elseif ($_REQUEST['action'] == 'saveCustomize') {
     $widgetOrder = $thisUser->GetPref('widgetOrderOrganizer');

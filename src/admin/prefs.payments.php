@@ -152,8 +152,7 @@ if ($_REQUEST['action'] == 'common') {
         'title',
         $lang_admin['payments'] . ' &raquo; ' . $lang_admin['common'],
     );
-}
-/**
+} /**
  * custom payment methods
  */ elseif ($_REQUEST['action'] == 'paymethods') {
     //
@@ -311,8 +310,7 @@ if ($_REQUEST['action'] == 'common') {
                 HTMLFormat($row['title']),
         );
     }
-}
-/**
+} /**
  * invoices
  */ elseif ($_REQUEST['action'] == 'invoices') {
     if (isset($_REQUEST['save'])) {

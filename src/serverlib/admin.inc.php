@@ -309,7 +309,7 @@ function GetCategorizedSpaceUsage() {
             } else {
                 $sizes[$key] = $tableSizes[$table];
             }
-        };
+        }
     }
 
     // data size for mails + webdisk

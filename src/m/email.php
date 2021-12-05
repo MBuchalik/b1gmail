@@ -85,8 +85,7 @@ if ($_REQUEST['action'] == 'inbox') {
         $tpl->assign('page', 'm/folder.tpl');
         $tpl->display('m/index.tpl');
     }
-}
-/**
+} /**
  * folders
  */ elseif ($_REQUEST['action'] == 'folders') {
     // assign
@@ -94,8 +93,7 @@ if ($_REQUEST['action'] == 'inbox') {
     $tpl->assign('pageTitle', $lang_user['folders']);
     $tpl->assign('page', 'm/folders.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * read
  */ elseif ($_REQUEST['action'] == 'read' && isset($_REQUEST['id'])) {
     $mail = $mailbox->GetMail((int) $_REQUEST['id']);
@@ -180,8 +178,7 @@ if ($_REQUEST['action'] == 'inbox') {
         $tpl->assign('page', 'm/read.tpl');
         $tpl->display('m/index.tpl');
     }
-}
-/**
+} /**
  * attachment
  */ elseif (
     $_REQUEST['action'] == 'attachment' &&
@@ -222,8 +219,7 @@ if ($_REQUEST['action'] == 'inbox') {
             $attData->Finish();
         }
     }
-}
-/**
+} /**
  * compose
  */ elseif ($_REQUEST['action'] == 'compose') {
     $possibleSenders = $thisUser->GetPossibleSenders();
@@ -357,8 +353,7 @@ if ($_REQUEST['action'] == 'inbox') {
     );
     $tpl->assign('page', 'm/compose.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * delete mail
  */ elseif ($_REQUEST['action'] == 'deleteMail' && isset($_REQUEST['id'])) {
     $mail = $mailbox->GetMail((int) $_REQUEST['id']);
@@ -370,8 +365,7 @@ if ($_REQUEST['action'] == 'inbox') {
             'Location: email.php?folder=' . $folderID . '&sid=' . session_id(),
         );
     }
-}
-/**
+} /**
  * move mail
  */ elseif ($_REQUEST['action'] == 'moveMail' && isset($_REQUEST['id'])) {
     $mail = $mailbox->GetMail((int) $_REQUEST['id']);
@@ -396,8 +390,7 @@ if ($_REQUEST['action'] == 'inbox') {
             $tpl->display('m/index.tpl');
         }
     }
-}
-/**
+} /**
  * send mail
  */ elseif ($_REQUEST['action'] == 'sendMail') {
     $tpl->assign('backLink', 'email.php?action=compose&sid=' . session_id());
@@ -626,8 +619,7 @@ if ($_REQUEST['action'] == 'inbox') {
     $tpl->assign('pageTitle', $lang_user['sendmail']);
     $tpl->assign('backLink', 'email.php?sid=' . session_id());
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * logout
  */ elseif ($_REQUEST['action'] == 'logout') {
     BMUser::Logout();

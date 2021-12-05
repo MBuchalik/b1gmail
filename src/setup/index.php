@@ -148,8 +148,7 @@ if ($step == STEP_SELECT_LANGUAGE) {
 			<label for="lang_english">English</label>
 	</blockquote>
 	<?php
-}
-/**
+} /**
  * welcome / license
  */ elseif ($step == STEP_WELCOME) {
     $nextStep = STEP_SYSTEMCHECK; ?>
@@ -157,8 +156,7 @@ if ($step == STEP_SELECT_LANGUAGE) {
 
 	<?php echo $lang_setup['welcome_text']; ?>
 	<?php
-}
-/**
+} /**
  * system check
  */ elseif ($step == STEP_SYSTEMCHECK) {
     $nextStep = STEP_MYSQL; ?>
@@ -256,8 +254,7 @@ if ($step == STEP_SELECT_LANGUAGE) {
      ? $lang_setup['checkok_text']
      : $lang_setup['checkfail_text']; ?>
 	<?php
-}
-//
+} //
 //
 //				FRESH INSTALL
 //
@@ -284,8 +281,7 @@ if ($step == STEP_SELECT_LANGUAGE) {
 			<input id="mysql_db" name="mysql_db" type="text" value="" size="32" />
 	</blockquote>
 	<?php
-}
-/**
+} /**
  * check mysql login
  */ elseif ($step == STEP_CHECK_MYSQL) {
     if (
@@ -413,8 +409,7 @@ if ($step == STEP_SELECT_LANGUAGE) {
 		<?php echo $lang_setup['dbfail_text']; ?>
 		<?php
     }
-}
-/**
+} /**
  * check email config
  */ elseif ($step == STEP_CHECK_EMAIL) {
     if (
@@ -507,8 +502,7 @@ example.org</textarea>
      $_REQUEST['mysql_db'],
  ); ?>" />
 	<?php
-}
-/**
+} /**
  * install!
  */ elseif ($step == STEP_INSTALL) {
 

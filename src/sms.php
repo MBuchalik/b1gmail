@@ -120,8 +120,7 @@ if ($validationRequired && $_REQUEST['action'] != 'outbox') {
     $tpl->assign('smsTo', isset($_REQUEST['to']) ? $_REQUEST['to'] : '');
     $tpl->assign('pageContent', 'li/sms.compose.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * send SMS
  */ elseif ($_REQUEST['action'] == 'sendSMS' && IsPOSTRequest()) {
     $captcha = false;
@@ -181,8 +180,7 @@ if ($validationRequired && $_REQUEST['action'] != 'outbox') {
 
     $tpl->assign('pageTitle', $lang_user['sendsms']);
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * outbox
  */ elseif ($_REQUEST['action'] == 'outbox') {
     // delete?

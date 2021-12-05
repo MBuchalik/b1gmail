@@ -89,8 +89,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('sortOrderInv', $sortOrder == 'asc' ? 'desc' : 'asc');
     $tpl->assign('pageContent', 'li/organizer.notes.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * get note text for AJAX preview
  */ elseif ($_REQUEST['action'] == 'getNoteText' && isset($_REQUEST['id'])) {
     $noteInfo = $notes->GetNote((int) $_REQUEST['id']);
@@ -98,8 +97,7 @@ if ($_REQUEST['action'] == 'start') {
         die($noteInfo['text']);
     }
     die('Unknown note');
-}
-/**
+} /**
  * action
  */ elseif ($_REQUEST['action'] == 'action' && isset($_REQUEST['do'])) {
     if ($_REQUEST['do'] == 'delete') {
@@ -111,21 +109,18 @@ if ($_REQUEST['action'] == 'start') {
         }
     }
     header('Location: organizer.notes.php?sid=' . session_id());
-}
-/**
+} /**
  * delete note
  */ elseif ($_REQUEST['action'] == 'deleteNote' && isset($_REQUEST['id'])) {
     $notes->Delete((int) $_REQUEST['id']);
     header('Location: organizer.notes.php?sid=' . session_id());
-}
-/**
+} /**
  * add note
  */ elseif ($_REQUEST['action'] == 'addNote') {
     $tpl->assign('pageTitle', $lang_user['addnote']);
     $tpl->assign('pageContent', 'li/organizer.notes.edit.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * create note
  */ elseif (
     $_REQUEST['action'] == 'createNote' &&
@@ -135,8 +130,7 @@ if ($_REQUEST['action'] == 'start') {
 ) {
     $notes->Add((int) $_REQUEST['priority'], $_REQUEST['text']);
     header('Location: organizer.notes.php?sid=' . session_id());
-}
-/**
+} /**
  * edit note
  */ elseif ($_REQUEST['action'] == 'editNote' && isset($_REQUEST['id'])) {
     $noteInfo = $notes->GetNote((int) $_REQUEST['id']);
@@ -146,8 +140,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('note', $noteInfo);
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * save note
  */ elseif (
     $_REQUEST['action'] == 'saveNote' &&

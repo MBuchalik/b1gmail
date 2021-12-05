@@ -489,7 +489,7 @@ class BMMail {
                         'inbook' => 0,
                     ],
                 ];
-            };
+            }
         }
 
         $result['parts'] = [];

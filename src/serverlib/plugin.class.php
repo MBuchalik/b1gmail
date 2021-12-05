@@ -989,7 +989,7 @@ class BMPluginPackage {
         if (is_array($packageFiles)) {
             foreach ($packageFiles as $file) {
                 @unlink(B1GMAIL_DIR . str_replace('..', '', $file));
-            };
+            }
         }
 
         // delete database entries

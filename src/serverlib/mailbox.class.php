@@ -1165,12 +1165,12 @@ class BMMailbox {
             if ($withUnreadCount) {
                 foreach ($result as $key => $val) {
                     $result[$key]['unread'] = $this->GetMailCount($key, true);
-                };
+                }
             }
             if ($withAllCount) {
                 foreach ($result as $key => $val) {
                     $result[$key]['all'] = $this->GetMailCount($key);
-                };
+                }
             }
 
             $cacheManager->Set($cacheKey, $result, TIME_ONE_DAY);
@@ -1227,7 +1227,7 @@ class BMMailbox {
                 if ($key > 0) {
                     $result[$key]['title'] = HTMLFormat($result[$key]['title']);
                 }
-            };
+            }
         }
 
         return $result;

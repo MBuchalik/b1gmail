@@ -371,8 +371,7 @@ if ($_REQUEST['action'] == 'payments') {
         $tpl->assign('payment', $row);
         $tpl->assign('page', 'payments.details.tpl');
     }
-}
-/**
+} /**
  * export
  */ elseif ($_REQUEST['action'] == 'export') {
     if (!isset($_REQUEST['do'])) {
@@ -524,8 +523,7 @@ if ($_REQUEST['action'] == 'payments') {
         ReleaseTempFile(0, $invTempID);
         exit();
     }
-}
-/**
+} /**
  * show invoice
  */ elseif (
     $_REQUEST['action'] == 'showInvoice' &&
@@ -544,8 +542,7 @@ if ($_REQUEST['action'] == 'payments') {
     printf('<title>%s</title>', BMPayment::InvoiceNo($_REQUEST['orderID']));
     echo $invoice;
     exit();
-}
-/**
+} /**
  * activate payment RPC
  */ elseif (
     $_REQUEST['action'] == 'activatePayment' &&

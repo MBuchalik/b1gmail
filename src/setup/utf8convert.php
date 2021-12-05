@@ -75,8 +75,7 @@ if (isset($bm_prefs['db_is_utf8']) && $bm_prefs['db_is_utf8'] == 1) { ?>
 	<h1><?php echo $lang_setup['error']; ?></h1>
 
 	<?php echo $lang_setup['convert_alreadyutf8']; ?>
-	<?php }
-/**
+	<?php } /**
  * welcome
  */ elseif ($step == STEP_WELCOME) {
     $nextStep = STEP_SYSTEMCHECK; ?>
@@ -90,8 +89,7 @@ if (isset($bm_prefs['db_is_utf8']) && $bm_prefs['db_is_utf8'] == 1) { ?>
 		<?php echo $lang_setup['update_note3']; ?>
 	</div>
 	<?php
-}
-/**
+} /**
  * system check
  */ elseif ($step == STEP_SYSTEMCHECK) {
 
@@ -196,8 +194,7 @@ if (isset($bm_prefs['db_is_utf8']) && $bm_prefs['db_is_utf8'] == 1) { ?>
      ? $lang_setup['checkok_text']
      : $lang_setup['checkfail_text']; ?>
 	<?php
-}
-/**
+} /**
  * convert
  */ elseif ($step == STEP_CONVERT) { ?>
 	<h1><?php echo $lang_setup['converting']; ?></h1>
@@ -286,8 +283,7 @@ if (isset($bm_prefs['db_is_utf8']) && $bm_prefs['db_is_utf8'] == 1) { ?>
 	//-->
 	</script>
 
-	<?php }
-/**
+	<?php } /**
  * convert step
  */ elseif ($step == STEP_CONVERT_STEP) {
     $do = $_REQUEST['do'];

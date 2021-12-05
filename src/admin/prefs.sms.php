@@ -101,8 +101,7 @@ if ($_REQUEST['action'] == 'common') {
     $tpl->assign('gateways', $gateways);
     $tpl->assign('types', $types);
     $tpl->assign('page', 'prefs.sms.common.tpl');
-}
-/**
+} /**
  * gateways
  */ elseif ($_REQUEST['action'] == 'gateways') {
     if (!isset($_REQUEST['do'])) {
@@ -205,8 +204,7 @@ if ($_REQUEST['action'] == 'common') {
         $tpl->assign('gateway', $gateway);
         $tpl->assign('page', 'prefs.sms.gateways.edit.tpl');
     }
-}
-/**
+} /**
  * types
  */ elseif ($_REQUEST['action'] == 'types') {
     if (!isset($_REQUEST['do'])) {

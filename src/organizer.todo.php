@@ -144,15 +144,13 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('pageContent', 'li/organizer.todo.tpl');
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * add task list RPC
  */ elseif ($_REQUEST['action'] == 'addList' && !empty($_REQUEST['title'])) {
     $todo->AddTaskList($_REQUEST['title']);
     NormalArray2XML($todo->GetTaskLists(), 'taskLists');
     exit();
-}
-/**
+} /**
  * delete task list RPC
  */ elseif (
     $_REQUEST['action'] == 'deleteList' &&
@@ -161,8 +159,7 @@ if ($_REQUEST['action'] == 'start') {
     $todo->DeleteTaskList($_REQUEST['tasklistid']);
     NormalArray2XML($todo->GetTaskLists(), 'taskLists');
     exit();
-}
-/**
+} /**
  * action
  */ elseif (
     $_REQUEST['action'] == 'action' &&
@@ -190,8 +187,7 @@ if ($_REQUEST['action'] == 'start') {
             '&sid=' .
             session_id(),
     );
-}
-/**
+} /**
  * delete task
  */ elseif ($_REQUEST['action'] == 'deleteTask' && isset($_REQUEST['id'])) {
     $taskListID = isset($_REQUEST['taskListID'])
@@ -204,8 +200,7 @@ if ($_REQUEST['action'] == 'start') {
             '&sid=' .
             session_id(),
     );
-}
-/**
+} /**
  * add task
  */ elseif ($_REQUEST['action'] == 'addTask') {
     $taskListID = isset($_REQUEST['taskListID'])
@@ -216,8 +211,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('pageTitle', $lang_user['addtask']);
     $tpl->assign('pageContent', 'li/organizer.todo.edit.tpl');
     $tpl->display('li/index.tpl');
-}
-/**
+} /**
  * create task
  */ elseif (
     $_REQUEST['action'] == 'createTask' &&
@@ -248,8 +242,7 @@ if ($_REQUEST['action'] == 'start') {
             '&sid=' .
             session_id(),
     );
-}
-/**
+} /**
  * edit task
  */ elseif ($_REQUEST['action'] == 'editTask' && isset($_REQUEST['id'])) {
     $taskInfo = $todo->GetTask((int) $_REQUEST['id']);
@@ -260,8 +253,7 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('task', $taskInfo);
         $tpl->display('li/index.tpl');
     }
-}
-/**
+} /**
  * save task
  */ elseif (
     $_REQUEST['action'] == 'saveTask' &&

@@ -89,8 +89,7 @@ if ($_REQUEST['action'] == 'folder') {
         } else {
             $webdisk->CreateFolder($folderID, $folderName);
         }
-    }
-    /**
+    } /**
      * delete item
      */ elseif (
         isset($_REQUEST['do']) &&
@@ -103,8 +102,7 @@ if ($_REQUEST['action'] == 'folder') {
         } elseif ($_REQUEST['type'] == WEBDISK_ITEM_FILE) {
             $webdisk->DeleteFile($_REQUEST['id']);
         }
-    }
-    /**
+    } /**
      * upload files
      */ elseif (
         isset($_REQUEST['do']) &&
@@ -245,8 +243,7 @@ if ($_REQUEST['action'] == 'folder') {
     $tpl->assign('pageTitle', HTMLFormat($folderName));
     $tpl->assign('page', 'm/webdisk.folder.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * download folder
  */ elseif ($_REQUEST['action'] == 'downloadFolder' && isset($_REQUEST['id'])) {
     $folderID = (int) $_REQUEST['id'];
@@ -314,8 +311,7 @@ if ($_REQUEST['action'] == 'folder') {
         );
         $tpl->display('m/index.tpl');
     }
-}
-/**
+} /**
  * download file
  */ elseif ($_REQUEST['action'] == 'downloadFile' && isset($_REQUEST['id'])) {
     $fileInfo = $webdisk->GetFileInfo((int) $_REQUEST['id']);
@@ -370,8 +366,7 @@ if ($_REQUEST['action'] == 'folder') {
             $tpl->display('m/index.tpl');
         }
     }
-}
-/**
+} /**
  * item details
  */ elseif (
     $_REQUEST['action'] == 'itemDetails' &&
@@ -418,22 +413,19 @@ if ($_REQUEST['action'] == 'folder') {
         $tpl->assign('page', 'm/webdisk.details.tpl');
         $tpl->display('m/index.tpl');
     }
-}
-/**
+} /**
  * create folder
  */ elseif ($_REQUEST['action'] == 'createFolder') {
     $tpl->assign('isDialog', true);
     $tpl->assign('page', 'm/webdisk.createfolder.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * upload files
  */ elseif ($_REQUEST['action'] == 'uploadFiles') {
     $tpl->assign('isDialog', true);
     $tpl->assign('page', 'm/webdisk.uploadfiles.tpl');
     $tpl->display('m/index.tpl');
-}
-/**
+} /**
  * extension image
  */ elseif ($_REQUEST['action'] == 'displayExtension') {
     if (isset($_REQUEST['ext'])) {

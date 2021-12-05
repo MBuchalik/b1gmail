@@ -79,7 +79,7 @@ if ($_REQUEST['action'] == 'overview') {
                 $versionConfig[$groupName]['options'][$itemKey][
                     'value'
                 ] = $itemValue;
-            };
+            }
         }
 
         // show image?
@@ -376,7 +376,7 @@ if ($_REQUEST['action'] == 'overview') {
             foreach ($dbConfig as $groupName => $group) {
                 foreach ($group as $itemKey => $itemValue) {
                     $versionConfig[$groupName][$itemKey] = $itemValue;
-                };
+                }
             }
         }
         $res->Free();

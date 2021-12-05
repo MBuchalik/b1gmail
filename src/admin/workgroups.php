@@ -200,8 +200,7 @@ if ($_REQUEST['action'] == 'workgroups') {
         $tpl->assign('members', $members);
         $tpl->assign('page', 'workgroups.edit.tpl');
     }
-}
-/**
+} /**
  * email folders
  */ elseif (EXTENDED_WORKGROUPS && $_REQUEST['action'] == 'folders') {
     if (!isset($_REQUEST['do'])) {

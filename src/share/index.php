@@ -57,8 +57,7 @@ if (!isset($userMail) || ($userID = BMUser::GetID($userMail)) == 0) {
     $tpl->assign('error', true);
     $tpl->display('share/index.tpl');
     exit();
-}
-/**
+} /**
  * open webdisk
  */ else {
     $thisUser = _new('BMUser', [$userID]);
@@ -90,8 +89,7 @@ if (!isset($_REQUEST['action'])) {
 if ($_REQUEST['action'] == 'start') {
     $tpl->assign('user', $userMail);
     $tpl->display('share/index.tpl');
-}
-/**
+} /**
  * get folder contents
  */ elseif ($_REQUEST['action'] == 'getFolder' && isset($_REQUEST['id'])) {
     $id = (int) $_REQUEST['id'];
@@ -124,8 +122,7 @@ if ($_REQUEST['action'] == 'start') {
     }
 
     NormalArray2XML(['path' => $path, 'contents' => $contents]);
-}
-/**
+} /**
  * password dialog
  */ elseif (
     $_REQUEST['action'] == 'passwordInput' &&
@@ -134,8 +131,7 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('user', $userMail);
     $tpl->assign('folder', (int) $_REQUEST['folder']);
     $tpl->display('share/dialog.password.tpl');
-}
-/**
+} /**
  * password dialog submit
  */ elseif (
     $_REQUEST['action'] == 'passwordSubmit' &&
@@ -171,8 +167,7 @@ if ($_REQUEST['action'] == 'start') {
     echo 'parent.hideOverlay();' . "\n";
     echo '//-->' . "\n";
     echo '</script>' . "\n";
-}
-/**
+} /**
  * download file
  */ elseif ($_REQUEST['action'] == 'getFile' && isset($_REQUEST['id'])) {
     $fileInfo = $webdisk->GetFileInfo((int) $_REQUEST['id']);

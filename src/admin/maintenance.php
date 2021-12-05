@@ -350,8 +350,7 @@ if ($_REQUEST['action'] == 'inactive') {
             $tpl->assign('page', 'msg.tpl');
         }
     }
-}
-/**
+} /**
  * trash
  */ elseif ($_REQUEST['action'] == 'trash') {
     //
@@ -456,8 +455,7 @@ if ($_REQUEST['action'] == 'inactive') {
         $tpl->assign('backLink', 'maintenance.php?action=trash&');
         $tpl->assign('page', 'msg.tpl');
     }
-}
-/**
+} /**
  * full-text search index
  */ elseif ($_REQUEST['action'] == 'fts' && FTS_SUPPORT) {
     if (!class_exists('BMSearchIndex')) {
@@ -619,8 +617,7 @@ if ($_REQUEST['action'] == 'inactive') {
         }
         exit();
     }
-}
-/**
+} /**
  * orphaned emails
  */ elseif ($_REQUEST['action'] == 'orphans') {
     //
@@ -707,8 +704,7 @@ if ($_REQUEST['action'] == 'inactive') {
         $tpl->assign('backLink', 'maintenance.php?action=orphans&');
         $tpl->assign('page', 'msg.tpl');
     }
-}
-/**
+} /**
  * pop3 gateway
  */ elseif ($_REQUEST['action'] == 'pop3gateway') {
     // fetch
