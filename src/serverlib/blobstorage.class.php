@@ -236,7 +236,8 @@ class BMBlobStorage
 			return(false);
 
 		include_once(BMBlobStorage::getBlobStorageDir() . BMBlobStorage::$providers[$id][0]);
-		$p = new BMBlobStorage::$providers[$id][1];
+		$theClass = BMBlobStorage::$providers[$id][1];
+        $p = new $theClass();
 		$p->setProviderID($id);
 		if($userID > 0)
 			$p->open($userID);
