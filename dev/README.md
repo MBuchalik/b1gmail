@@ -5,16 +5,19 @@
 In order to start a development server, simply run `docker compose up`. This will start an apache server with php (on `localhost:5000`), a mysql database, and phpmyadmin (on `localhost:3100`).
 
 The credentials for the database that you will later also need when installing b1gmail:
+
 - Host: `db` (Yes, you don't need to use any IP address or similar. Just `db` is sufficient.)
 - Database name: `b1gmail`
 - Username: `user`
 - Password: `password`
 
 In order to log in to phpmyadmin, use the following credentials:
+
 - Username: `root`
 - Password: `root`
 
 Important when recreating the containers: We don't only store data in the database, but also in `/src/temp/` and `/src/data/`. You might need to delete files and folders in these directories. You can delete everything from `/src/data/` and `/src/temp/` except for the following files:
+
 - `/src/data/.htaccess`
 - `/src/data/index.html`
 - `/src/temp/.htaccess`

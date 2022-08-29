@@ -1,9 +1,12 @@
 {
-    "require": {
-        "friendsofphp/php-cs-fixer": "^3.10"
-    },
-    "scripts": {
-        "lint": "php-cs-fixer fix --dry-run --diff --stop-on-violation",
-        "lint-fix": ["Composer\\Config::disableProcessTimeout", "php-cs-fixer fix"]
-    }
+  "require": {
+    "friendsofphp/php-cs-fixer": "^3.10"
+  },
+  "scripts": {
+    "lint": "php-cs-fixer fix --dry-run --diff --stop-on-violation",
+    "lint-fix": [
+      "Composer\\Config::disableProcessTimeout",
+      "php-cs-fixer fix"
+    ]
+  }
 }
