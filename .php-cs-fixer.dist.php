@@ -101,7 +101,7 @@ final class PrettierPHPFixer implements FixerInterface {
         // For some reason, the output would not contain an empty newline at the end.
         array_push($prettierOutput, '');
 
-        $code = implode(PHP_EOL, $prettierOutput);
+        $code = implode("\n", $prettierOutput);
         $tokens->setCode($code);
     }
 }
