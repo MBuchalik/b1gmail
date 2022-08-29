@@ -32,7 +32,7 @@ class BMPayment {
      *
      * @return bool
      */
-    function Available() {
+    static function Available() {
         global $bm_prefs, $db;
 
         if (

@@ -51,16 +51,28 @@ class BMGroup {
             }
         }
 
-        if (!($row = $cacheManager->Get('group:' . $id))) {
-            $res = $db->Query('SELECT * FROM {pre}gruppen WHERE id=?', $id);
-            if ($res->RowCount() == 0) {
-                return false;
-            }
-            $row = $res->FetchArray(MYSQLI_ASSOC);
-            $res->Free();
+        return BMGroup::FetchGroupById($id);
+    }
 
-            $cacheManager->Set('group:' . $id, $row);
+    /**
+     * This method is similar to `Fetch()`, but with the difference that it is static.
+     */
+    static function FetchGroupById($id) {
+        global $db, $cacheManager;
+
+        $row = $cacheManager->Get('group:' . $id);
+        if ($row) {
+            return $row;
         }
+
+        $res = $db->Query('SELECT * FROM {pre}gruppen WHERE id=?', $id);
+        if ($res->RowCount() == 0) {
+            return false;
+        }
+        $row = $res->FetchArray(MYSQLI_ASSOC);
+        $res->Free();
+
+        $cacheManager->Set('group:' . $id, $row);
 
         return $row;
     }

@@ -517,7 +517,7 @@ class BMUser {
      * @param string $address
      * @return bool
      */
-    function AddressAvailable($address) {
+    static function AddressAvailable($address) {
         global $db;
 
         if (BMUser::GetID($address) != 0) {
@@ -540,7 +540,7 @@ class BMUser {
      * @param string $address
      * @return bool
      */
-    function AddressValid($address, $forRegistration = true) {
+    static function AddressValid($address, $forRegistration = true) {
         @[$preAt, $afterAt] = explode('@', $address);
         if (
             preg_match(
@@ -775,7 +775,7 @@ class BMUser {
      * @param bool $allowNotification
      * @return int User ID
      */
-    function CreateAccount(
+    static function CreateAccount(
         $email,
         $firstname,
         $surname,
@@ -805,7 +805,7 @@ class BMUser {
 
         // check if user already exists and if address is valid
         if (BMUser::AddressAvailable($email) && BMUser::AddressValid($email)) {
-            $defaultGroupRow = BMGroup::Fetch($bm_prefs['std_gruppe']);
+            $defaultGroupRow = BMGroup::FetchGroupById($bm_prefs['std_gruppe']);
             $instantHTML = $defaultGroupRow['soforthtml'];
 
             // status?
