@@ -1,5 +1,8 @@
 # b1gMail
 
+> **Warning**
+> **This project is work-in-progress. You should not use it in a production environment. There will be breaking changes.**
+
 ## Local development installation
 
 To run a local development version, you first need a local web server. The recommended way is to use our Docker setup. Simply perform the following steps to start your local, Docker-powered development instance:
