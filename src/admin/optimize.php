@@ -24,23 +24,17 @@ RequestPrivileges(PRIVILEGES_ADMIN);
 AdminRequirePrivilege('optimize');
 
 if (!isset($_REQUEST['action'])) {
-    $_REQUEST['action'] = 'db';
+    $_REQUEST['action'] = 'filesystem';
 }
 
 $tabs = [
     0 => [
-        'title' => $lang_admin['db'],
-        'relIcon' => 'db_optimize.png',
-        'link' => 'optimize.php?',
-        'active' => $_REQUEST['action'] == 'db',
-    ],
-    1 => [
         'title' => $lang_admin['filesystem'],
         'relIcon' => 'tempfiles.png',
         'link' => 'optimize.php?action=filesystem&',
         'active' => $_REQUEST['action'] == 'filesystem',
     ],
-    2 => [
+    1 => [
         'title' => $lang_admin['cache'],
         'relIcon' => 'cache.png',
         'link' => 'optimize.php?action=cache&',
@@ -49,181 +43,8 @@ $tabs = [
 ];
 
 /**
- * optimize DB
- */
-if ($_REQUEST['action'] == 'db') {
-    if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'execute') {
-        if ($_REQUEST['operation'] == 'struct') {
-            // read default structure
-            include '../serverlib/database.struct.php';
-            $databaseStructure = unserialize(base64_decode($databaseStructure));
-
-            // get tables
-            $defaultTables = [];
-            $res = $db->Query('SHOW TABLES');
-            while ($row = $res->FetchArray(MYSQLI_NUM)) {
-                $myTables[] = $row[0];
-            }
-            $res->Free();
-
-            // compare tables
-            $result = [];
-            $repair = false;
-            foreach ($databaseStructure as $tableName => $tableInfo) {
-                $tableFields = $tableInfo['fields'];
-                $tableIndexes = $tableInfo['indexes'];
-
-                $tableResult = [];
-                $tableResult['table'] = $tableName;
-                $tableResult['exists'] = false;
-                $tableResult['missing'] = 0;
-                $tableResult['invalid'] = 0;
-
-                if (in_array($tableName, $myTables)) {
-                    $tableResult['exists'] = true;
-
-                    // get my fields
-                    $myFields = [];
-                    $res = $db->Query('SHOW FIELDS FROM ' . $tableName);
-                    while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                        if ($row['Null'] == '') {
-                            $row['Null'] = 'NO';
-                        }
-                        $myFields[$row['Field']] = [
-                            $row['Field'],
-                            $row['Type'],
-                            $row['Null'],
-                            $row['Key'],
-                            $row['Default'],
-                            $row['Extra'],
-                        ];
-                    }
-                    $res->Free();
-
-                    // get my indexes
-                    $myIndexes = [];
-                    $res = $db->Query('SHOW INDEX FROM ' . $tableName);
-                    while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                        if (isset($myIndexes[$row['Key_name']])) {
-                            $myIndexes[$row['Key_name']][] =
-                                $row['Column_name'];
-                        } else {
-                            $myIndexes[$row['Key_name']] = [
-                                $row['Column_name'],
-                            ];
-                        }
-                    }
-                    $res->Free();
-
-                    // compare fields
-                    foreach ($tableFields as $field) {
-                        if (!isset($myFields[$field[0]])) {
-                            $tableResult['missing']++;
-                        } else {
-                            $myField = $myFields[$field[0]];
-                            if (
-                                $myField[1] != $field[1] ||
-                                $myField[2] != $field[2] ||
-                                ($myField[4] != $field[4] &&
-                                    !(
-                                        ($myField[4] == 0 && $field[4] == '') ||
-                                        ($myField[4] == '' && $field[4] == 0)
-                                    )) ||
-                                $myField[5] != $field[5]
-                            ) {
-                                $tableResult['invalid']++;
-                            }
-                        }
-                    }
-
-                    // compare indexes
-                    foreach ($tableIndexes as $indexName => $indexFields) {
-                        if (!isset($myIndexes[$indexName])) {
-                            $tableResult['missing']++;
-                        } elseif ($myIndexes[$indexName] != $indexFields) {
-                            $tableResult['invalid']++;
-                        }
-                    }
-                }
-
-                if (
-                    !$tableResult['exists'] ||
-                    $tableResult['missing'] > 0 ||
-                    $tableResult['invalid'] > 0
-                ) {
-                    $repair = true;
-                }
-
-                $result[] = $tableResult;
-            }
-
-            $tpl->assign('repair', $repair);
-            $tpl->assign('result', $result);
-            $tpl->assign('executeStruct', true);
-        } else {
-            $op =
-                $_REQUEST['operation'] == 'optimize'
-                    ? 'OPTIMIZE TABLE '
-                    : 'REPAIR TABLE ';
-            $result = [];
-
-            foreach ($_POST['tables'] as $table) {
-                $res = $db->Query($op . $table);
-                if ($res) {
-                    $row = $res->FetchArray();
-                    $res->Free();
-
-                    $result[] = [
-                        'table' => $table,
-                        'type' => $row['Msg_type'],
-                        'status' => $row['Msg_text'],
-                        'query' => $op . $table,
-                    ];
-                } else {
-                    $result[] = [
-                        'table' => $table,
-                        'type' => 'error',
-                        'query' => $op . $table,
-                    ];
-                }
-            }
-
-            $tpl->assign('result', $result);
-            $tpl->assign('execute', true);
-        }
-
-        // assign
-        $tpl->assign('page', 'optimize.db.tpl');
-    } elseif (isset($_REQUEST['do']) && $_REQUEST['do'] == 'repairStruct') {
-        // read default structure
-        include '../serverlib/database.struct.php';
-        $databaseStructure = unserialize(base64_decode($databaseStructure));
-        $executedQueries = SyncDBStruct($databaseStructure);
-
-        // assign
-        $tpl->assign('backLink', 'optimize.php?');
-        $tpl->assign('msgIcon', 'info32');
-        $tpl->assign('msgTitle', $lang_admin['repairstruct']);
-        $tpl->assign('msgText', $lang_admin['repairdone']);
-        $tpl->assign('page', 'msg.tpl');
-    } else {
-        $tables = [];
-        $res = $db->Query('SHOW TABLES');
-        while ($row = $res->FetchArray(MYSQLI_NUM)) {
-            if (
-                substr($row[0], 0, strlen($mysql['prefix'])) == $mysql['prefix']
-            ) {
-                $tables[] = $row[0];
-            }
-        }
-
-        // assign
-        $tpl->assign('tables', $tables);
-        $tpl->assign('page', 'optimize.db.tpl');
-    }
-} /**
  * optimize filesystem
- */ elseif ($_REQUEST['action'] == 'filesystem') {
+ */ if ($_REQUEST['action'] == 'filesystem') {
     if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'cleanupTempFiles') {
         CleanupTempFiles();
     } elseif (isset($_REQUEST['do']) && $_REQUEST['do'] == 'vacuumBlobStor') {

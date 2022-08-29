@@ -182,7 +182,7 @@ $lang_setup['update_step4'] =
 
 $lang_setup['error'] = 'Fehler';
 $lang_setup['update_welcome_text'] =
-    'Herzlich Willkommen! Dieser Assistent aktualisiert Ihre b1gMail-Version <b>%s</b> auf die aktuelle Version <b>%s</b>. Klicken Sie auf &quot;Weiter &raquo;&quot;, um fortzufahren.';
+    'Herzlich Willkommen! Dieser Assistent aktualisiert Ihre b1gMail-Version. Klicken Sie auf &quot;Weiter &raquo;&quot;, um fortzufahren.';
 $lang_setup['uptodate'] =
     'Ihre b1gMail-Version befindet sich bereits auf dem aktuellsten Stand (<b>%s</b>).';
 $lang_setup['unknownversion'] =

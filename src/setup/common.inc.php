@@ -25,6 +25,8 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // example data
 include './data/example.data.php';
 
+include './initial-db-struct.php';
+
 // files and folders that should have write permissions
 $writeableFiles = [
     'serverlib/config.inc.php',
@@ -323,256 +325,11 @@ function GeneratePW() {
 }
 
 /**
- * synchronize DB structure against an DB structure array
- *
- * @param resource $connection
- * @param array $databaseStructure (New/correct) DB structure
- * @param bool $return Return queries?
- * @param bool $return Return queries?
- * @return array
+ * Create the initial database structure.
  */
-function SyncDBStruct(
-    $connection,
-    $databaseStructure,
-    $return = true,
-    $utf8Mode = false
-) {
-    // queries to execute
-    $syncQueries = [];
+function CreateDatabaseStructure($connection, $dbName = ''): array {
+    global $initialDbStruct;
 
-    // get tables
-    $defaultTables = [];
-    $res = mysqli_query($connection, 'SHOW TABLES');
-    while ($row = mysqli_fetch_array($res, MYSQLI_NUM)) {
-        $myTables[] = $row[0];
-    }
-    mysqli_free_result($res);
-
-    // compare tables
-    foreach ($databaseStructure as $tableName => $tableInfo) {
-        $tableFields = $tableInfo['fields'];
-        $tableIndexes = $tableInfo['indexes'];
-
-        //
-        // table exists => compare fields and indexes
-        //
-        if (in_array($tableName, $myTables)) {
-            // get my fields
-            $myFields = [];
-            $res = mysqli_query($connection, 'SHOW FIELDS FROM ' . $tableName);
-            while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
-                if ($row['Null'] == '') {
-                    $row['Null'] = 'NO';
-                }
-                $myFields[$row['Field']] = [
-                    $row['Field'],
-                    stripslashes($row['Type']),
-                    $row['Null'],
-                    $row['Key'],
-                    $row['Default'],
-                    $row['Extra'],
-                ];
-            }
-            mysqli_free_result($res);
-
-            // get my indexes
-            $myIndexes = [];
-            $res = mysqli_query($connection, 'SHOW INDEX FROM ' . $tableName);
-            while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
-                if (isset($myIndexes[$row['Key_name']])) {
-                    $myIndexes[$row['Key_name']][] = $row['Column_name'];
-                } else {
-                    $myIndexes[$row['Key_name']] = [$row['Column_name']];
-                }
-            }
-            mysqli_free_result($res);
-
-            // compare fields
-            foreach ($tableFields as $field) {
-                $op = false;
-
-                if (!isset($myFields[$field[0]])) {
-                    $op = 'ADD';
-                } else {
-                    $myField = $myFields[$field[0]];
-                    if (
-                        $myField[1] != $field[1] ||
-                        $myField[2] != $field[2] ||
-                        ($myField[4] != $field[4] &&
-                            !(
-                                ($myField[4] == 0 && $field[4] == '') ||
-                                ($myField[4] == '' && $field[4] == 0)
-                            )) ||
-                        $myField[5] != $field[5]
-                    ) {
-                        $op = 'MODIFY';
-                    }
-                }
-
-                if ($op !== false) {
-                    $syncQueries[] = sprintf(
-                        'ALTER TABLE %s %s `%s` %s%s%s%s%s',
-                        $tableName,
-                        $op,
-                        $field[0],
-                        $field[1],
-                        $utf8Mode
-                            ? (strpos($field[1], 'char') !== false ||
-                            strpos($field[2], 'text') !== false
-                                ? ' CHARACTER SET utf8 COLLATE utf8_general_ci'
-                                : '')
-                            : '',
-                        $field[2] == 'NO' ? ' NOT NULL' : '',
-                        $field[4] == 'NULL'
-                            ? ' DEFAULT NULL'
-                            : ($field[4] != ''
-                                ? (is_numeric($field[4])
-                                    ? ' DEFAULT ' . $field[4]
-                                    : ' DEFAULT \'' .
-                                        SQLEscape($field[4], $connection) .
-                                        '\'')
-                                : ''),
-                        $field[5] != '' ? ' ' . $field[5] : '',
-                    );
-                }
-            }
-
-            // compare indexes
-            foreach ($tableIndexes as $indexName => $indexFields) {
-                // keys
-                if ($indexName != 'PRIMARY') {
-                    $op = false;
-
-                    if (!isset($myIndexes[$indexName])) {
-                        $op = true;
-                    } elseif ($myIndexes[$indexName] != $indexFields) {
-                        $op = true;
-                        $syncQueries[] = sprintf(
-                            'ALTER TABLE %s DROP KEY `%s`',
-                            $tableName,
-                            $indexName,
-                        );
-                    }
-
-                    if ($op) {
-                        $syncQueries[] = sprintf(
-                            'ALTER TABLE %s ADD KEY `%s`(%s)',
-                            $tableName,
-                            $indexName,
-                            '`' . implode('`,`', $indexFields) . '`',
-                        );
-                    }
-                }
-
-                // primary keys
-                else {
-                    if (!isset($myIndexes[$indexName])) {
-                        // add
-                        $syncQueries[] = sprintf(
-                            'ALTER TABLE %s ADD PRIMARY KEY(%s)',
-                            $tableName,
-                            '`' . implode('`,`', $indexFields) . '`',
-                        );
-                    } elseif ($myIndexes[$indexName] != $indexFields) {
-                        // drop, add
-                        $syncQueries[] = sprintf(
-                            'ALTER TABLE %s DROP PRIMARY KEY, ADD PRIMARY KEY(%s)',
-                            $tableName,
-                            '`' . implode('`,`', $indexFields) . '`',
-                        );
-                    }
-                }
-            }
-        }
-
-        //
-        // table does not exist => create
-        //
-        else {
-            $stmt = sprintf('CREATE TABLE %s(' . "\n", $tableName);
-
-            // fields
-            foreach ($tableFields as $field) {
-                $stmt .= sprintf(
-                    ' `%s` %s%s%s%s%s,' . "\n",
-                    $field[0],
-                    $field[1],
-                    $utf8Mode
-                        ? (strpos($field[1], 'char') !== false ||
-                        strpos($field[2], 'text') !== false
-                            ? ' CHARACTER SET utf8 COLLATE utf8_general_ci'
-                            : '')
-                        : '',
-                    $field[2] == 'NO' ? ' NOT NULL' : '',
-                    $field[4] == 'NULL'
-                        ? ' DEFAULT NULL'
-                        : ($field[4] != ''
-                            ? (is_numeric($field[4])
-                                ? ' DEFAULT ' . $field[4]
-                                : ' DEFAULT \'' .
-                                    SQLEscape($field[4], $connection) .
-                                    '\'')
-                            : ''),
-                    $field[5] != '' ? ' ' . $field[5] : '',
-                );
-            }
-
-            // indexes
-            foreach ($tableIndexes as $indexName => $indexFields) {
-                if ($indexName == 'PRIMARY') {
-                    $stmt .= sprintf(
-                        ' PRIMARY KEY (%s),' . "\n",
-                        '`' . implode('`,`', $indexFields) . '`',
-                    );
-                } else {
-                    $stmt .= sprintf(
-                        ' KEY `%s`(%s),' . "\n",
-                        $indexName,
-                        '`' . implode('`,`', $indexFields) . '`',
-                    );
-                }
-            }
-
-            $stmt = substr($stmt, 0, -2) . "\n" . ')';
-
-            $syncQueries[] = $stmt;
-        }
-    }
-
-    // return
-    if ($return) {
-        return $syncQueries;
-    }
-
-    // execute queries
-    $result = [];
-    foreach ($syncQueries as $query) {
-        if (mysqli_query($connection, $query)) {
-            $result[$query] = true;
-        } else {
-            $result[$query] = false;
-        }
-    }
-
-    // return
-    return $result;
-}
-
-/**
- * create datbase structure
- *
- * @param resource $connection
- * @param array $databaseStructure
- * @param bool $utf8Mode
- * @return array
- */
-function CreateDatabaseStructure(
-    $connection,
-    $databaseStructure,
-    $utf8Mode = false,
-    $dbName = ''
-) {
-    // queries to execute
     $syncQueries = [];
 
     if ($utf8Mode && $dbName != '') {
@@ -582,61 +339,8 @@ function CreateDatabaseStructure(
             '` CHARACTER SET utf8 COLLATE utf8_general_ci';
     }
 
-    // create tables
-    foreach ($databaseStructure as $tableName => $tableInfo) {
-        $tableFields = $tableInfo['fields'];
-        $tableIndexes = $tableInfo['indexes'];
+    $syncQueries = array_merge($syncQueries, $initialDbStruct);
 
-        $stmt = sprintf('CREATE TABLE %s(' . "\n", $tableName);
-
-        // fields
-        foreach ($tableFields as $field) {
-            $stmt .= sprintf(
-                ' `%s` %s%s%s%s%s,' . "\n",
-                $field[0],
-                $field[1],
-                $utf8Mode
-                    ? (strpos($field[1], 'char') !== false ||
-                    strpos($field[2], 'text') !== false
-                        ? ' CHARACTER SET utf8 COLLATE utf8_general_ci'
-                        : '')
-                    : '',
-                $field[2] == 'NO' ? ' NOT NULL' : '',
-                $field[4] == 'NULL'
-                    ? ' DEFAULT NULL'
-                    : ($field[4] != ''
-                        ? (is_numeric($field[4])
-                            ? ' DEFAULT ' . $field[4]
-                            : ' DEFAULT \'' .
-                                SQLEscape($field[4], $connection) .
-                                '\'')
-                        : ''),
-                $field[5] != '' ? ' ' . $field[5] : '',
-            );
-        }
-
-        // indexes
-        foreach ($tableIndexes as $indexName => $indexFields) {
-            if ($indexName == 'PRIMARY') {
-                $stmt .= sprintf(
-                    ' PRIMARY KEY (%s),' . "\n",
-                    '`' . implode('`,`', $indexFields) . '`',
-                );
-            } else {
-                $stmt .= sprintf(
-                    ' KEY `%s`(%s),' . "\n",
-                    $indexName,
-                    '`' . implode('`,`', $indexFields) . '`',
-                );
-            }
-        }
-
-        $stmt = substr($stmt, 0, -2) . "\n" . ')';
-
-        $syncQueries[] = $stmt;
-    }
-
-    // execute queries
     $result = [];
     foreach ($syncQueries as $query) {
         if (mysqli_query($connection, $query)) {
@@ -646,7 +350,6 @@ function CreateDatabaseStructure(
         }
     }
 
-    // return
     return $result;
 }
 

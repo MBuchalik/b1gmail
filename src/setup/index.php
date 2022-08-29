@@ -19,6 +19,23 @@
  *
  */
 
+/*
+    Check if "config.inc.php" already exists and if there is content in the file.
+    If so, do not allow to run the setup.
+    If not, allow to run the setup (and create an empty config file because we later need it.)
+*/
+$configFilePath = '../serverlib/config.inc.php';
+if (
+    file_exists($configFilePath) &&
+    strlen(file_get_contents($configFilePath)) > 10
+) {
+    echo 'Cannot run the setup because config.inc.php already exists.';
+    exit();
+}
+if (!file_exists($configFilePath)) {
+    file_put_contents($configFilePath, '');
+}
+
 // init
 include './common.inc.php';
 
@@ -105,8 +122,7 @@ define('STEP_UPDATE_STEP', 108);
 define('STEP_UPDATE_DONE', 109);
 
 // invoice
-$defaultInvoice =
-    '<table width=\"100%\">\n    <tbody>\n        <tr>\n            <td style=\"font-family: Arial;\" align=\"left\">\n            	<h2>{$service_title}</h2>\n            </td>\n            <td style=\"font-family: Arial;\" align=\"right\">\n		{$service_title}<br>Bitte passen<br>Sie die Absender-Adresse<br>in der Rechnungsvorlage an.<br>\n	   </td>\n        </tr>\n        <tr style=\"font-family: Arial;\">\n            <td colspan=\"2\"><hr style=\"height: 1px;\" color=\"#666666\" noshade=\"noshade\" width=\"100%\"><br></td>\n        </tr>\n        <tr>\n            <td style=\"font-family: Arial;\" align=\"left\">\n            <table style=\"border: 1px solid rgb(0, 0, 0);\" bgcolor=\"#666666\" cellpadding=\"10\" cellspacing=\"0\" width=\"100%\">\n                <tbody>\n                    <tr>\n\n                        <td bgcolor=\"#ffffff\">{$vorname} {$nachname}<br>{$strasse} {$nr}<br>{$plz} {$ort}<br>{$land}</td>\n                    </tr>\n                </tbody>\n            </table>\n            </td>\n            <td style=\"font-family: Arial;\" align=\"right\">\n 			<b style=\"font-family: Arial;\">{lng p=\"date\"}: </b><span style=\"font-family: Arial;\">{$datum}</span><br style=\"font-family: Arial;\">\n 			<b style=\"font-family: Arial;\">{lng p=\"invoiceno\"}: </b><span style=\"font-family: Arial;\">{$rgnr}</span><br style=\"font-family: Arial;\">\n			<b style=\"font-family: Arial;\">{lng p=\"customerno\"}: </b><span style=\"font-family: Arial;\">{$kdnr}</span><br>\n	   </td>\n        </tr>\n        <tr style=\"font-family: Arial;\">\n            <td colspan=\"2\">\n            <p>&nbsp;</p>\n            <b><br>{lng p=\"yourinvoice\"}</b>\n            <p>{lng p=\"dearsirormadam\"},</p>\n            <p>{lng p=\"invtext\"}:</p>\n\n            <p>\n            <table cellpadding=\"4\" cellspacing=\"0\" width=\"100%\">\n                <tbody>\n                    <tr>\n                        <td width=\"10%\">{lng p=\"pos\"}</td>\n                        <td width=\"10%\">{lng p=\"count\"}</td>\n                        <td width=\"50%\">{lng p=\"descr\"}</td>\n                        <td width=\"15%\">{lng p=\"ep\"} ({$currency})</td>\n                        <td width=\"15%\">{lng p=\"gp\"} ({$currency})</td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"5\"><hr style=\"height: 1px;\" color=\"#666666\" noshade=\"noshade\" width=\"100%\"></td>\n                    </tr>\n{foreach from=$cart item=pos}\n                    <tr>\n                        <td>{$pos.pos}</td>\n                        <td>{$pos.count}</td>\n                        <td>{text value=$pos.text}</td>\n                        <td>{$pos.amount}</td>\n                        <td>{$pos.total}</td>\n                    </tr>\n{/foreach}\n                    <tr>\n                        <td colspan=\"5\"><hr style=\"height: 1px;\" color=\"#666666\" noshade=\"noshade\" width=\"100%\"></td>\n\n                    </tr>\n                    <tr>\n                        <td colspan=\"4\" align=\"right\">{lng p=\"gb\"} ({lng p=\"net\"}):</td>\n                        <td>{$netto}</td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"4\" align=\"right\">{lng p=\"vat\"} {$mwstsatz}%:</td>\n\n                        <td>{$mwst}</td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"4\" align=\"right\">{lng p=\"gb\"} ({lng p=\"gross\"}):</td>\n                        <td>{$brutto}</td>\n                    </tr>\n                </tbody>\n\n            </table>\n            </p>\n            <p>{$zahlungshinweis}<br></p>\n            <p>{lng p=\"kindregards\"}</p>\n            <p>{$service_title}</p>\n            <p>&nbsp;</p>\n            </td>\n\n        </tr>\n        <tr style=\"font-family: Arial;\">\n            <td colspan=\"2\"><hr style=\"height: 1px;\" color=\"#666666\" noshade=\"noshade\" width=\"100%\"></td>\n        </tr>\n        <tr style=\"font-family: Arial;\">\n            <td colspan=\"2\"><small>{lng p=\"invfooter\"}<br><br>{if $ktonr}<b>{lng p=\"bankacc\"}: </b>{lng p=\"kto_nr\"} {$ktonr} ({lng p=\"kto_inh\"} {$ktoinhaber}), {lng p=\"kto_blz\"} {$ktoblz} ({$ktoinstitut}){if $ktoiban}, {lng p=\"kto_iban\"} {$ktoiban}, {lng p=\"kto_bic\"} {$ktobic}{/if}{/if}<br></small></td>\n        </tr>\n\n    </tbody>\n</table>\n\n';
+require_once './data/default-invoice.php';
 
 // step?
 if (!isset($_REQUEST['step'])) {
@@ -506,11 +522,7 @@ example.org</textarea>
  * install!
  */ elseif ($step == STEP_INSTALL) {
 
-    include '../serverlib/database.struct.php';
     include './data/rootcerts.data.php';
-
-    // prepare structure
-    $databaseStructure = unserialize(base64_decode($databaseStructure));
 
     // sanitize input
     if (substr($_REQUEST['url'], -1) != '/') {
@@ -569,21 +581,10 @@ example.org</textarea>
                 $setupMode = 'public';
             }
 
-            // install in utf-8 mode?
-            $utf8Mode =
-                (function_exists('mb_convert_encoding') ||
-                    function_exists('iconv')) &&
-                in_array(CompareVersions($mysqlVersion, '4.1.1'), [
-                    VERSION_IS_NEWER,
-                    VERSION_IS_EQUAL,
-                ]);
-
             // create db structure
             $dbStructResult = 'ok';
             $result = CreateDatabaseStructure(
                 $connection,
-                $databaseStructure,
-                $utf8Mode,
                 $_REQUEST['mysql_db'],
             );
             foreach ($result as $query => $queryResult) {
@@ -659,7 +660,8 @@ example.org</textarea>
                     'a:8:{s:5:"mails";s:2:"on";s:11:"attachments";s:2:"on";s:3:"sms";s:2:"on";s:8:"calendar";s:2:"on";s:5:"tasks";s:2:"on";s:11:"addressbook";s:2:"on";s:5:"notes";s:2:"on";s:7:"webdisk";s:2:"on";}',
                     $connection,
                 ),
-                $utf8Mode ? 1 : 0,
+                // UTF8 Mode --> We always set this to true.
+                1,
                 $defaultInvoice,
                 SQLEscape($lang_setup['accounting'], $connection),
                 SQLEscape(
@@ -809,80 +811,6 @@ example.org</textarea>
                 );
             }
 
-            // convert language files?
-            if ($utf8Mode) {
-                $langFiles = [];
-                $d = dir('../languages/');
-                while ($entry = $d->read()) {
-                    if ($entry == '.' || $entry == '..') {
-                        continue;
-                    }
-
-                    if (substr($entry, -9) == '.lang.php') {
-                        $langFiles[] = '../languages/' . $entry;
-                    }
-                }
-
-                foreach ($langFiles as $file) {
-                    $info = GetLanguageInfo($file);
-                    if (!isset($info['charset'])) {
-                        continue;
-                    }
-
-                    $charset = strtolower($info['charset']);
-                    if ($charset == 'utf8' || $charset == 'utf-8') {
-                        continue;
-                    }
-
-                    // read file contents
-                    $fp = @fopen($file, 'rb+');
-                    if (!$fp || !is_resource($fp)) {
-                        echo 'Failed to convert language file to UTF-8: ' .
-                            $file .
-                            "\n";
-                        continue;
-                    }
-                    $contents = fread($fp, filesize($file));
-
-                    // convert contents to utf-8
-                    $contents = ConvertEncoding($contents, $charset, 'UTF-8');
-
-                    // manipulate locales
-                    $locales = [];
-                    $oldLocales = explode('|', $info['locale']);
-                    foreach ($oldLocales as $locale) {
-                        $locale = preg_replace('/\..*/i', '.UTF-8', $locale);
-                        if (!in_array($locale, $locales)) {
-                            $locales[] = $locale;
-                        }
-                    }
-
-                    // manipulate lang def line
-                    $newLangDef = sprintf(
-                        '// b1gMailLang::%s::%s::%s::%s::UTF-8::%s',
-                        $info['title'],
-                        $info['author'],
-                        $info['authorMail'],
-                        $info['authorWeb'],
-                        implode('|', $locales),
-                    );
-                    $contents = str_replace(
-                        $info['langDefLine'],
-                        $newLangDef .
-                            "\n" .
-                            '// Converted to UTF-8 by setup/index.php at ' .
-                            date('r'),
-                        $contents,
-                    );
-
-                    // save
-                    fseek($fp, 0, SEEK_SET);
-                    ftruncate($fp, 0);
-                    fwrite($fp, $contents);
-                    fclose($fp);
-                }
-            }
-
             // create sign key
             if (function_exists('random_bytes')) {
                 $signKey = str_pad(
@@ -902,9 +830,24 @@ example.org</textarea>
                 $signKey = md5(microtime() . mt_rand(0, PHP_INT_MAX));
             }
 
+            // Apply migrations
+            include './migration.php';
+
+            $migrationRunner = new MigrationRunner();
+
+            $migrationSuccess = $migrationRunner->performMigrations(
+                $connection,
+            );
+            if ($migrationSuccess) {
+            } else {
+                echo 'ERROR: Failed to perform database migrations';
+
+                // We still try to perform the next steps.
+            }
+
             // create config file
             $configFile = sprintf(
-                "<?php\n// Generated %s\n\$mysql = array(\n\t'host'\t\t=> '%s',\n\t'user'\t\t=> '%s',\n\t'pass'\t\t=> '%s',\n\t'db'\t\t=> '%s',\n\t'prefix'\t=> '%s'\n);\ndefine('B1GMAIL_SIGNKEY', '%s');\n?>",
+                "<?php\n// Generated %s\n\$mysql = array(\n\t'host'\t\t=> '%s',\n\t'user'\t\t=> '%s',\n\t'pass'\t\t=> '%s',\n\t'db'\t\t=> '%s',\n\t'prefix'\t=> '%s'\n);\ndefine('B1GMAIL_SIGNKEY', '%s');\n",
                 date('r'),
                 addslashes($_REQUEST['mysql_host']),
                 addslashes($_REQUEST['mysql_user']),
@@ -940,10 +883,7 @@ example.org</textarea>
 	<br /><br />
 	<table class="list">
 		<tr>
-			<th><?php echo sprintf(
-       $lang_setup['inst_dbstruct'],
-       $databaseStructureVersion,
-   ); ?></th>
+			<th><?php echo $lang_setup['inst_dbstruct']; ?></th>
 			<td><img src="../admin/templates/images/<?php echo $dbStructResult; ?>.png" border="0" alt="" width="16" height="16" /></td>
 		</tr>
 		<tr>

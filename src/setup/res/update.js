@@ -1,4 +1,5 @@
-<!--
+'use strict';
+
 /*
  * b1gMail update client scripts
  * (c) 2021 Patrick Schlangen et al
@@ -19,176 +20,131 @@
  *
  */
 
-var steps = [
-	'prepare',
-	'struct1',
-	'mails',
-	'folders',
-	'autoresponders',
-	'filters',
-	'calendar',
-	'struct2',
-	'config',
-	'struct3',
-	'optimize'
+const steps = [
+  'prepare',
+  'struct2',
+  'config',
+  'struct3',
+  'resetcache',
+  'optimize',
+  'complete',
 ];
-var step = -1,
-	args = '',
-	pos = 0,
-	allQ = -1;
+let step = -1;
+let args = '';
+let pos = 0;
+let allQ = -1;
 
-function EBID(f)
-{
-	return(document.getElementById(f));
+function EBID(f) {
+  return document.getElementById(f);
 }
 
-function Log(txt)
-{
-	var log = EBID('log');
+function Log(txt) {
+  const log = EBID('log');
 
-	if(log.style.display == 'none')
-		log.style.display = '';
+  if (log.style.display == 'none') {
+    log.style.display = '';
+  }
 
-	log.value = txt + "\n" + log.value;
+  log.value = txt + '\n' + log.value;
 }
 
-function MakeXMLRequest(url, callback, param)
-{
-	var xmlHTTP = false;
+function MakeXMLRequest(url, callback) {
+  const xmlHTTP = new XMLHttpRequest();
 
-	if(typeof(XMLHttpRequest) != "undefined")
-	{
-		xmlHTTP = new XMLHttpRequest();
-	}
-	else
-	{
-		try
-		{
-			xmlHTTP = new ActiveXObject("Msxml2.XMLHTTP");
-		}
-		catch(e)
-		{
-			try
-			{
-				xmlHTTP = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			catch(e)
-			{
-			}
-		}
-	}
-
-	if(!xmlHTTP)
-	{
-		return(false);
-	}
-	else
-	{
-		xmlHTTP.open("GET", url, true);
-		if(typeof(callback) == "string")
-		{
-			xmlHTTP.onreadystatechange = function xh_readyChange()
-				{
-					eval(callback + "(xmlHTTP)");
-				}
-		}
-		else if(callback != null)
-		{
-			xmlHTTP.onreadystatechange = function xh_readyChangeCallback()
-				{
-					callback(xmlHTTP, param);
-				}
-		}
-		xmlHTTP.send(null);
-		return(true);
-	}
+  xmlHTTP.open('GET', url, true);
+  xmlHTTP.onreadystatechange = function () {
+    callback(xmlHTTP);
+  };
+  xmlHTTP.send(null);
 }
 
-function _stepStep(e)
-{
-	if(e.readyState == 4)
-	{
-		var response = e.responseText;
+function _stepStep(e) {
+  if (e.readyState < 0 || e.readyState > 4) {
+    Log('Error in HTTP-Request: ' + e.readyState + ' - Trying again in 10s');
+    window.setTimeout(stepStep, 10000);
+    return;
+  }
 
-		if(response.substr(0, 3) == 'OK:')
-		{
-			response = response.substr(3);
+  if (e.readyState !== 4) {
+    return;
+  }
 
-			if(response == 'DONE')
-			{
-				stepInit(step+1);
-			}
-			else
-			{
-				var numbers = response.split('/');
-				if(numbers.length == 2)
-				{
-					if(steps[step] == 'struct2' && allQ == -1)
-						allQ = parseInt(numbers[1]);
+  if (e.responseText.startsWith('ERROR:')) {
+    Log(`An error has occurred: "${e.responseText}"`);
+    return;
+  }
 
-					if(steps[step] == 'struct2')
-						numbers[1] = '' + allQ;
+  if (!e.responseText.startsWith('OK:')) {
+    Log('An unknown error has occurred');
+    return;
+  }
 
-					pos = parseInt(numbers[0]);
-					EBID('step_' + steps[step] + '_progress').innerHTML = '<b>' + Math.round(pos / parseInt(numbers[1]) * 100) + '%</b> <small>('
-						+ pos + ' / ' + parseInt(numbers[1]) + ')</small>';
-					stepStep();
-				}
-				else
-				{
-					Log('Unexpected response - skipping position ' + pos + ': ' + response);
-					pos++;
-					stepStep();
-				}
-			}
-		}
-		else
-		{
-			Log('Unexpected response - skipping position ' + pos + ': ' + response);
-			pos++;
-			stepStep();
-		}
-	}
-	else if(e.readyState < 0 || e.readyState > 4)
-	{
-		Log('Error in HTTP-Request: ' + e.readyState + ' - Trying again in 10s');
-		window.setTimeout('stepStep()', 10000);
-	}
+  const response = e.responseText.substr(3);
+
+  if (response == 'DONE') {
+    stepInit(step + 1);
+    return;
+  }
+  const numbers = response.split('/');
+  if (numbers.length == 2) {
+    if (steps[step] == 'struct2' && allQ == -1) {
+      allQ = parseInt(numbers[1]);
+    }
+
+    if (steps[step] == 'struct2') {
+      numbers[1] = '' + allQ;
+    }
+
+    pos = parseInt(numbers[0]);
+    EBID('step_' + steps[step] + '_progress').innerHTML =
+      '<b>' +
+      Math.round((pos / parseInt(numbers[1])) * 100) +
+      '%</b> <small>(' +
+      pos +
+      ' / ' +
+      parseInt(numbers[1]) +
+      ')</small>';
+    stepStep();
+  } else {
+    Log('Unexpected response - skipping position ' + pos);
+    pos++;
+    stepStep();
+  }
 }
 
-function stepStep()
-{
-	MakeXMLRequest('index.php?' + args + '&step=108&do=' + steps[step] + '&pos=' + pos,
-					_stepStep);
+function stepStep() {
+  MakeXMLRequest(
+    'update.php?' + args + '&step=4&do=' + steps[step] + '&pos=' + pos,
+    _stepStep,
+  );
 }
 
-function stepInit(theStep)
-{
-	if(step != -1)
-	{
-		EBID('step_' + steps[step] + '_status').innerHTML = '<img src="../admin/templates/images/ok.png" border="0" alt="" width="16" height="16" />';
-		EBID('step_' + steps[step] + '_progress').innerHTML = '<b>100%</b>';
-	}
+function stepInit(theStep) {
+  if (step != -1) {
+    EBID('step_' + steps[step] + '_status').innerHTML =
+      '<img src="../admin/templates/images/ok.png" border="0" alt="" width="16" height="16" />';
+    EBID('step_' + steps[step] + '_progress').innerHTML = '<b>100%</b>';
+  }
 
-	if(theStep < steps.length)
-	{
-		step = theStep;
-		EBID('step_' + steps[step] + '_text').innerHTML = '<b>' + EBID('step_' + steps[step] + '_text').innerHTML + '</b>';
-		EBID('step_' + steps[step] + '_status').innerHTML = '<img src="../admin/templates/images/load_16.gif" border="0" alt="" width="16" height="16" />';
+  if (theStep < steps.length) {
+    step = theStep;
+    EBID('step_' + steps[step] + '_text').innerHTML =
+      '<b>' + EBID('step_' + steps[step] + '_text').innerHTML + '</b>';
+    EBID('step_' + steps[step] + '_status').innerHTML =
+      '<img src="../admin/templates/images/load_16.gif" border="0" alt="" width="16" height="16" />';
 
-		pos = 0;
-		stepStep();
-	}
-	else
-	{
-		EBID('done').style.display = '';
-		EBID('next_button').disabled = false;
-	}
+    pos = 0;
+    stepStep();
+  } else {
+    if (EBID('done')) {
+      EBID('done').style.display = '';
+    }
+    if (EBID('next_button')) {
+      EBID('next_button').disabled = false;
+    }
+  }
 }
 
-function beginUpdate()
-{
-	stepInit(0);
+function beginUpdate() {
+  stepInit(0);
 }
-
-//-->

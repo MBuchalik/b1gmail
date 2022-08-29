@@ -181,7 +181,7 @@ $lang_setup['update_step4'] =
 
 $lang_setup['error'] = 'Error';
 $lang_setup['update_welcome_text'] =
-    'Welcome! This wizard will update your b1gMail copy from version <b>%s</b> to the current version <b>%s</b>. Click at &quot;Next &raquo;&quot; to continue.';
+    'Welcome! This wizard will update your b1gMail installation. Click &quot;Next &raquo;&quot; to continue.';
 $lang_setup['uptodate'] =
     'Your b1gMail copy is already up to date (<b>%s</b>).';
 $lang_setup['unknownversion'] =
