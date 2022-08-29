@@ -30,8 +30,8 @@ jobs:
           echo "It seems like your package-lock.json file is not up-to-date. Try running 'npm install' and commit the changes."
           exit 1
 
-  lint-php:
-    name: Lint php files
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     steps:
@@ -51,6 +51,6 @@ jobs:
 
       - name: Install php dependencies using Composer
         run: composer install
-      
-      - name: Run the php linter
-        run: composer run-script lint
+
+      - name: Run the linter
+        run: npm run lint
