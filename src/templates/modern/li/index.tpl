@@ -64,10 +64,10 @@
 			</div>
 
 			<div class="toolbar">
-				{if $pageToolbarFile}
+				{if isset($pageToolbarFile)}
 				{comment text="including $pageToolbarFile"}
 				{include file="$pageToolbarFile"}
-				{elseif $pageToolbar}
+				{elseif isset($pageToolbar)}
 				{$pageToolbar}
 				{else}
 				&nbsp;
@@ -166,7 +166,7 @@
 			<div class="arrow"></div>
 			<div class="inner">
 			{foreach from=$newMenu item=item}
-				{if $item.sep}
+				{if isset($item.sep) && $item.sep}
 				<div class="mailMenuSep"></div>
 				{else}
 				<a class="mailMenuItem" href="{$item.link}{$sid}"><i class="fa {$item.faIcon}" aria-hidden="true"></i> {$item.text}...</a>

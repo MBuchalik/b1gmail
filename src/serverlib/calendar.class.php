@@ -928,7 +928,7 @@ class BMCalendar {
                 "\n",
             mktime(0, 0, 0, $month, 1, $year),
             session_id(),
-            _strftime('%B %Y', mktime(0, 0, 0, $month, 1, $year)),
+            date('F Y', mktime(0, 0, 0, $month, 1, $year)),
         );
         $html .= '	</tr>' . "\n";
 
@@ -968,7 +968,8 @@ class BMCalendar {
             $c++;
             if ($c == 7) {
                 $html .= '	</tr>' . "\n";
-                if ($arrayKey != array_pop(array_keys($days))) {
+                $daysKeys = array_keys($days);
+                if ($arrayKey != array_pop($daysKeys)) {
                     $html .= '	<tr>' . "\n";
                 }
                 $c = 0;

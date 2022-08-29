@@ -170,7 +170,7 @@ $tpl->assign(
 );
 $tpl->assign(
     'thisMonthText',
-    _strftime('%B %Y', mktime(0, 0, 0, date('m', $date), 15, date('Y', $date))),
+    date('F Y', mktime(0, 0, 0, date('m', $date), 15, date('Y', $date))),
 );
 $tpl->assign('smsEnabled', $thisUser->SMSEnabled());
 
@@ -192,7 +192,7 @@ $tpl->assign('pageMenuFile', 'li/organizer.sidebar.tpl');
 if ($_REQUEST['action'] == 'start') {
     if ($viewMode == 'day') {
         $dates = $calendar->GetDatesForTimeframe($dateStart, $dateEnd, $group);
-        $tpl->assign('weekDay', _strftime('%A', $dateStart));
+        $tpl->assign('weekDay', date('l', $dateStart));
         $tpl->assign(
             'calWeek',
             date(date('o') == 'o' ? 'W/Y' : 'W/o', $dateStart),
@@ -219,7 +219,7 @@ if ($_REQUEST['action'] == 'start') {
                 date('d', $ts),
                 date('Y', $ts),
             );
-            $dates[_strftime('%A, %d.', $ts)] = $calendar->GetDatesForTimeframe(
+            $dates[date('l, d.', $ts)] = $calendar->GetDatesForTimeframe(
                 $dDateStart,
                 $dDateEnd,
                 $group,

@@ -25,7 +25,7 @@
 	<input type="hidden" name="selectedWebdiskItems" id="selectedWebdiskItems" value="" />
 	
 	<div class="scrollContainer withBottomBar noSelect" id="wdDnDArea">
-	{if $upload}
+	{if isset($upload)}
 		<fieldset style="margin-top:1em;">
 			<legend>{lng p="uploadfiles"}</legend>
 			<table width="100%">

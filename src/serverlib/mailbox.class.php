@@ -1000,7 +1000,7 @@ class BMMailbox {
      */
     function GetDropdownFolderList(
         $parent = -1,
-        &$result,
+        &$result = null,
         $level = 0,
         $more = 0,
         $includeShared = true

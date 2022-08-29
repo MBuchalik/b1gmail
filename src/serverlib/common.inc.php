@@ -1860,7 +1860,7 @@ function categorizeDate($date) {
         $ts[$a] = [
             'from' => $last,
             'to' => $last + 86400,
-            'text' => _strftime('%A', $last),
+            'text' => date('l', $last),
             'date' => $last,
         ];
     }
@@ -3900,8 +3900,8 @@ function DisplayError(
     $title,
     $description,
     $text = false,
-    $file,
-    $line
+    $file = '',
+    $line = ''
 ) {
     if (INTERFACE_MODE) {
         if (isset($_SERVER['HTTP_USER_AGENT'])) {

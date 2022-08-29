@@ -125,8 +125,8 @@ return $config
     ->setFinder($finder)
     ->registerCustomFixers([new PrettierPHPFixer()])
     ->setRules([
+        '@PHP81Migration' => true,
         'Prettier/php' => true,
-
         'header_comment' => [
             'header' => $fileHeader,
             'separate' => 'bottom',

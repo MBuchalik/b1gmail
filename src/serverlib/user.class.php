@@ -2750,7 +2750,7 @@ class BMUser {
         $action,
         $unspamMe,
         $bayesBorder = false,
-        $addressbookNoSpam
+        $addressbookNoSpam = false
     ) {
         global $db;
         $db->Query(

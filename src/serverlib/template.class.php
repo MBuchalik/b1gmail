@@ -604,13 +604,9 @@ function TemplateDate($params, &$smarty) {
 
     if (isset($params['dayonly'])) {
         return date('d.m.Y', $ts) . $elapsed;
-    } elseif (isset($params['format'])) {
-        return _strftime($params['format'], $ts);
     } elseif (isset($params['short'])) {
         if (date('d.m.Y', $ts) == date('d.m.Y')) {
             return date('H:i', $ts);
-        } elseif ($ts > time() - 6 * TIME_ONE_DAY) {
-            return _strftime('%A', $ts);
         } else {
             return date('d.m.y', $ts);
         }

@@ -46,7 +46,7 @@
 	<tr>
 		<td class="{$class}" nowrap="nowrap"><input type="checkbox" disabled="disabled" /></td>
 		<td class="{$class}" nowrap="nowrap">&nbsp;<a href="email.php?sid={$sid}&folder={$folderID}"><i class="fa {if $folder.type == 'inbox'}fa-inbox{elseif $folder.type == 'outbox'}fa-inbox{elseif $folder.type == 'drafts'}fa-envelope{elseif $folder.type == 'spam'}fa-ban{elseif $folder.type == 'trash'}fa-trash-o{elseif $folder.type == 'intellifolder'}fa-folder{else}fa-folder-o{/if}" aria-hidden="true"></i> {text value=$folder.titel cut=25}</a></td>
-		<td class="{$class}" nowrap="nowrap">&nbsp;{text value=$folder.parent cut=15}</td>
+		<td class="{$class}" nowrap="nowrap">&nbsp;{if isset($folder.parent)}{text value=$folder.parent cut=15}{/if}</td>
 		<td class="{$class}" nowrap="nowrap" style="text-align:center;">
 			{size bytes=$folder.size}
 		</td>

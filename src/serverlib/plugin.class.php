@@ -519,7 +519,7 @@ class BMPlugin {
     function RegisterGroupOption(
         $key,
         $type = FIELD_TEXT,
-        $desc,
+        $desc = '',
         $options = '',
         $default = ''
     ) {

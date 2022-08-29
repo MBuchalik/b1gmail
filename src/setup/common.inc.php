@@ -332,7 +332,7 @@ function CreateDatabaseStructure($connection, $dbName = ''): array {
 
     $syncQueries = [];
 
-    if ($utf8Mode && $dbName != '') {
+    if ($dbName !== '') {
         $syncQueries[] =
             'ALTER DATABASE `' .
             $dbName .

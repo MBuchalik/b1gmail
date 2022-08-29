@@ -1,4 +1,4 @@
-{if !$smarty.get.tableOnly}<form name="f1" action="email.php?do=action&{$folderString}&sid={$sid}" onsubmit="transferSelectedMailIDs()" method="post">
+{if !isset($smarty.get.tableOnly)}<form name="f1" action="email.php?do=action&{$folderString}&sid={$sid}" onsubmit="transferSelectedMailIDs()" method="post">
 <input type="hidden" name="selectedMailIDs" id="selectedMailIDs" value="" />
 
 <div id="contentHeader">
@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="right">
-		{if $folderInfo.type!='intellifolder'&&!$folderInfo.readonly}
+		{if $folderInfo.type!='intellifolder'}
 		<button onclick="showFolderMenu(event);" type="button">
 			<i class="fa fa-gears fa-lg"></i>
 		</button>
@@ -18,9 +18,9 @@
 			<i class="fa fa-refresh fa-lg"></i>
 		</button>
 
-		{if !$folderInfo.readonly}<button onclick="folderViewOptions({$folderID});" type="button">
+		<button onclick="folderViewOptions({$folderID});" type="button">
 			<i class="fa fa-desktop fa-lg"></i>
-		</button>{/if}
+		</button>
 	</div>
 </div>
 
@@ -90,7 +90,7 @@
 	{/if}
 
 </table>
-{if !$smarty.get.tableOnly}
+{if !isset($smarty.get.tableOnly)}
 
 </div>
 
@@ -100,13 +100,13 @@
 			<option value="-">------ {lng p="selaction"} ------</option>
 
 			<optgroup label="{lng p="actions"}">
-			{if !$folderInfo.readonly}<option value="delete">{lng p="delete"}</option>{/if}
+				<option value="delete">{lng p="delete"}</option>
 				<option value="forward">{lng p="forward"}</option>
 				<option value="download">{lng p="download"}</option>
 				{hook id="email.folder.tpl:mailSelect.actions"}
 			</optgroup>
 
-			{if !$folderInfo.readonly}<optgroup label="{lng p="flags"}">
+			<optgroup label="{lng p="flags"}">
 				<option value="markread">{lng p="markread"}</option>
 				<option value="markunread">{lng p="markunread"}</option>
 				<option value="mark">{lng p="mark"}</option>
@@ -132,7 +132,7 @@
 			{foreach from=$dropdownFolderList key=dFolderID item=dFolderTitle}
 			<option value="moveto_{$dFolderID}" style="font-family:courier;">{$dFolderTitle}</option>
 			{/foreach}
-			</optgroup>{/if}
+			</optgroup>
 
 			{hook id="email.folder.tpl:mailSelect"}
 		</select>

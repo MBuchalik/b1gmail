@@ -41,29 +41,6 @@ function Strip4ByteChars($in) {
 }
 
 /**
- * strftime version with charset conversion
- *
- * @param string $format Format
- * @param int $timestamp Timestamp
- * @return string
- */
-function _strftime($format, $timestamp = -1) {
-    global $currentCharset;
-
-    if ($timestamp == -1) {
-        $timestamp = time();
-    }
-
-    $result = strftime($format, $timestamp);
-
-    if (SERVER_WINDOWS) {
-        $result = CharsetDecode($result, 'windows-1252');
-    }
-
-    return $result;
-}
-
-/**
  * multi byte compliant strlen() implementation
  * (return number of characters)
  *
