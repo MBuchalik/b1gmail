@@ -148,8 +148,6 @@ INPUT:focus {
   border-right: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
 }
-.__olContent {
-}
 .__olCaption {
   background-image: url(../images/li/list_bg.png);
   font-weight: normal;

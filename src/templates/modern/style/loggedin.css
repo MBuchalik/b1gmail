@@ -120,8 +120,6 @@
   margin: 0;
   padding: 0;
 }
-#notifyBox UL LI {
-}
 #notifyBox UL LI A {
   display: block;
   background-color: #fff;
@@ -188,8 +186,6 @@ SELECT {
 
 .wgTableMemberTD {
   padding-left: 3em;
-}
-.wgTableTD {
 }
 .wgTableTB {
   border-top: 1px solid #ddd;
@@ -400,9 +396,6 @@ SELECT {
   position: absolute;
   right: 1.5em;
   top: 2em;
-}
-
-.previewMailHeader .left {
 }
 
 .previewMailHeader .mailAddressLink {
@@ -924,6 +917,7 @@ BODY {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   -webkit-transform: translateZ(0px);
+  transform: translateZ(0px);
 }
 
 .withBanner {
@@ -990,9 +984,6 @@ BODY {
 
 .contentMenuIcons A IMG {
   filter: grayscale(100%);
-}
-
-.contentMenuIcons BR {
 }
 
 .contentMenuIcons SELECT {
@@ -1183,8 +1174,6 @@ FIELDSET {
   color: #444444;
 }
 
-#searchPopup {
-}
 #searchResults {
   border-top: 1px solid #aaa;
   background-color: #ffffff;
@@ -1250,8 +1239,6 @@ FIELDSET {
   font-size: 14px;
   background-color: #eee;
 }
-.__olShadow {
-}
 
 H1 {
   font-size: 14px;
@@ -1279,8 +1266,6 @@ FORM {
 }
 .invalidField {
   background-color: #ff9999;
-}
-.pageNav {
 }
 
 .btnImg {
@@ -1790,8 +1775,6 @@ A:hover {
   padding-left: 5px;
   padding-right: 5px;
 }
-.listTBody {
-}
 .listTableTabCell {
   border-bottom: 1px solid #dddddd;
   vertical-align: bottom;
@@ -1856,10 +1839,6 @@ A:hover {
 }
 .wdMassAction {
   margin-top: 15px;
-}
-.wdIconTable {
-}
-.webdiskRow {
 }
 .webdiskRowSelected {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFDA8A', endColorstr='#FFB205');
@@ -2137,8 +2116,6 @@ A:hover {
   cursor: hand;
   cursor: pointer;
 }
-.dragTargetInactive {
-}
 .dragTargetActive {
   border: 2px dashed #999999;
 }
@@ -2241,8 +2218,6 @@ A:hover {
 .htmlEditorToolbarDiv {
   background-color: #f3f3f3;
   border-bottom: 1px solid #dddddd;
-}
-.htmlEditorToolbarButton {
 }
 .htmlEditorToolbarLink {
   background-color: #f3f3f3;

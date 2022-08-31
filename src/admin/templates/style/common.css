@@ -386,9 +386,6 @@ SELECT {
   padding: 2px;
 }
 
-TEXTAREA {
-}
-
 INPUT:focus,
 SELECT:focus,
 TEXTAREA:focus {
@@ -450,8 +447,6 @@ TEXTAREA:focus {
   height: 11px;
   margin: 3px 0px;
 }
-.progressBarFree {
-}
 
 FIELDSET P:first-child {
   margin-top: 0;
@@ -495,13 +490,10 @@ CODE {
   vertical-align: middle;
   border-bottom: 1px solid #dddddd;
   cursor: default;
-  border-radius-topleft: 5px;
 }
 .dragBar A {
   cursor: hand;
   cursor: pointer;
-}
-.dragTargetInactive {
 }
 .dragTargetActive {
   border: 2px dashed #999999;
