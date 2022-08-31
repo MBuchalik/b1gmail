@@ -19,7 +19,7 @@
  *
  */
 
-class Migration_7_5_0__0 extends SingleMigrationStep {
+class Migration_8_0_0__0 extends SingleMigrationStep {
     function applyMigration($dbConnection): bool {
         // Add column "migration_level". We want this column to be not-null and there is already content, so we first create a nullable column, insert data, and then make the column not-null.
 
@@ -35,7 +35,7 @@ class Migration_7_5_0__0 extends SingleMigrationStep {
         if (
             !mysqli_query(
                 $dbConnection,
-                "UPDATE bm60_prefs SET migration_level = '7-5-0--0'",
+                "UPDATE bm60_prefs SET migration_level = '8-0-0--0'",
             )
         ) {
             return false;
