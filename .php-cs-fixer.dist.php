@@ -115,9 +115,7 @@ $finder = PhpCsFixer\Finder::create()
     ->exclude('temp/')
     ->exclude('templates/')
 
-    ->notPath('serverlib/config.default.inc.php')
-    ->notPath('serverlib/config.inc.php')
-    ->notPath('serverlib/version.inc.php');
+    ->notPath('config/config.php');
 
 $config = new PhpCsFixer\Config();
 

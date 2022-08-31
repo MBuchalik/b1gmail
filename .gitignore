@@ -8,7 +8,7 @@
 !/src/data/.htaccess
 !/src/data/index.html
 
-/src/serverlib/config.inc.php
+/src/config/config.php
 
 /src/temp/*
 !/src/temp/cache/dummy

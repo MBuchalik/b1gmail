@@ -21,7 +21,7 @@
 
 // init
 require './common.inc.php';
-require '../serverlib/config.inc.php';
+require '../config/config.php';
 require '../serverlib/version.inc.php';
 
 error_reporting(E_ALL);

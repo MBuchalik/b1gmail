@@ -20,16 +20,16 @@
  */
 
 /*
-    Check if "config.inc.php" already exists and if there is content in the file.
+    Check if "config.php" already exists and if there is content in the file.
     If so, do not allow to run the setup.
     If not, allow to run the setup (and create an empty config file because we later need it.)
 */
-$configFilePath = '../serverlib/config.inc.php';
+$configFilePath = '../config/config.php';
 if (
     file_exists($configFilePath) &&
     strlen(file_get_contents($configFilePath)) > 10
 ) {
-    echo 'Cannot run the setup because config.inc.php already exists.';
+    echo 'Cannot run the setup because config.php already exists.';
     exit();
 }
 if (!file_exists($configFilePath)) {
@@ -856,14 +856,14 @@ example.org</textarea>
                 'bm60_',
                 $signKey,
             );
-            $fp = fopen('../serverlib/config.inc.php', 'w');
+            $fp = fopen('../config/config.php', 'w');
             if ($fp) {
                 fwrite($fp, $configFile);
                 fclose($fp);
 
                 $configResult = 'ok';
             } else {
-                echo 'Failed to open config.inc.php for writing' . "\n";
+                echo 'Failed to open config.php for writing' . "\n";
             }
         } else {
             echo 'MySQL database selection failed' . "\n";

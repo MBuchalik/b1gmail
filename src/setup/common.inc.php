@@ -29,7 +29,7 @@ include './initial-db-struct.php';
 
 // files and folders that should have write permissions
 $writeableFiles = [
-    'serverlib/config.inc.php',
+    'config/config.php',
     'serverlib/version.inc.php',
     'admin/templates/cache/',
     'languages/',

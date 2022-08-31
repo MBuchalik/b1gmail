@@ -32,7 +32,7 @@ define(
 define('B1GMAIL_REL', file_exists('admin/') ? './' : '../');
 define('B1GMAIL_INIT', true);
 
-include B1GMAIL_DIR . 'serverlib/config.inc.php';
+include B1GMAIL_DIR . 'config/config.php';
 
 if (!defined('DEBUG')) {
     define('DEBUG', false);
