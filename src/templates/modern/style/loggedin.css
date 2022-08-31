@@ -1007,8 +1007,8 @@ BODY
 {
 	position: absolute;
 	top: 86px;
-	left: 0px;
-	bottom: 31px;
+	left: 0;
+	bottom: 0;
 	width: 200px;
 	overflow-x: auto;
 	overflow-y: auto;
@@ -1030,8 +1030,8 @@ BODY
 	position: absolute;
 	top: 86px;
 	left: 201px;
-	right: 0px;
-	bottom: 31px;
+	right: 0;
+	bottom: 0;
 	background-color: #FFFFFF;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
@@ -1077,20 +1077,6 @@ BODY
 	overflow-y: auto;
 	background-color: #EEEEEE;
 	border-left: 1px solid #DDD;
-}
-
-#mainStatusBar
-{
-	border-top: 1px solid #DDD;
-	position: absolute;
-	height: 30px;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-	text-align: center;
-	line-height: 30px;
-
-	background-color: #EEE;
 }
 
 .sidebarHeading

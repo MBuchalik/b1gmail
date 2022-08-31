@@ -206,9 +206,6 @@
 				|	<a href="{$item.link}">{$item.text}</a>
 				{/if}{/foreach}
 			</div>
-			<div class="col-xs-4" style="text-align:right;">
-				powered by <a target="_blank" href="https://www.b1gmail.org/">b1gMail</a>
-			</div>
 		</footer>
 
 		<br />

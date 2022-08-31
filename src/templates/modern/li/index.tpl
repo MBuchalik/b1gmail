@@ -129,12 +129,8 @@
 			{include file="$pageContent"}
 		</div>
 
-		<div id="mainStatusBar">
-			powered by <a target="_blank" href="https://www.b1gmail.org/">b1gMail</a>
-		</div>
-
-	    {comment text="search popup"}
-	    <div class="headerBox" id="searchPopup" style="display:none">
+	  {comment text="search popup"}
+	  <div class="headerBox" id="searchPopup" style="display:none">
 			<div class="arrow"></div>
 			<div class="inner">
 				<table width="100%" cellspacing="0" cellpadding="0" class="up" onmouseover="disableHide=true;" onmouseout="disableHide=false;">
@@ -161,7 +157,7 @@
 			</div>
 		</div>
 
-	    {comment text="new menu"}
+	  {comment text="new menu"}
 		<div class="headerBox" id="newMenu" style="display:none;">
 			<div class="arrow"></div>
 			<div class="inner">
