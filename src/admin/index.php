@@ -82,18 +82,9 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'login') {
                         __LINE__,
                     );
 
-                    // redirect
-                    $jump = 'welcome.php?';
-                    if (
-                        isset($_REQUEST['jump']) &&
-                        strpos($_REQUEST['jump'], '://') === false
-                    ) {
-                        $jump = trim($_REQUEST['jump']);
-                        if (substr($jump, -1) != '&') {
-                            $jump .= '&';
-                        }
-                    }
-                    header(sprintf('Location: %ssid=%s', $jump, session_id()));
+                    header(
+                        sprintf('Location: welcome.php?sid=%s', session_id()),
+                    );
                     exit();
                 } else {
                     // log
@@ -158,9 +149,6 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'login') {
     exit();
 }
 
-if (isset($_REQUEST['jump'])) {
-    $tpl->assign('jump', $_REQUEST['jump']);
-}
 $tpl->assign('timezone', date('Z'));
 $tpl->display('login.tpl');
 ?>
