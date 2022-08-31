@@ -115,8 +115,7 @@ $lang_setup['url'] = 'URL zu b1gMail';
 $lang_setup['installing'] = 'Installieren...';
 $lang_setup['installing_text'] =
     'b1gMail wird nun installiert. Im Folgenden finden Sie alle durchgef&uuml;hrten Schritte mit Status-Meldung.';
-$lang_setup['inst_dbstruct'] =
-    'Datenbank-Struktur (Version %s) installieren...';
+$lang_setup['inst_dbstruct'] = 'Datenbank-Struktur installieren...';
 $lang_setup['inst_defaultcfg'] = 'Standard-Konfiguration erstellen...';
 $lang_setup['inst_admin'] = 'Administrator-Benutzer erstellen...';
 $lang_setup['inst_defaultgroup'] = 'Standard-Gruppe erstellen...';
