@@ -178,8 +178,9 @@ $writeableFiles = [
 // htaccess files that should exist
 $htaccessFiles = [
     B1GMAIL_DATA_DIR . '.htaccess',
-    B1GMAIL_REL . 'logs/.htaccess',
-    B1GMAIL_REL . 'temp/.htaccess',
+    B1GMAIL_DIR . 'config/.htaccess',
+    B1GMAIL_DIR . 'logs/.htaccess',
+    B1GMAIL_DIR . 'temp/.htaccess',
 ];
 
 /**
