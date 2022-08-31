@@ -5,7 +5,7 @@
   "license": "GPL-2.0",
   "scripts": {
     "lint": "composer run-script lint && npm run lint-additional-files",
-    "lint-additional-files": "prettier --check **/*.{md,json,yml}"
+    "lint-additional-files": "prettier --check **/*.{css,md,json,yml}"
   },
   "devDependencies": {
     "@prettier/plugin-php": "^0.18.9",

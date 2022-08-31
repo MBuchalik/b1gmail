@@ -1,3 +1,6 @@
 src/clientlib/ckeditor/
-src/serverlib/3rdparty/fpdf/
+src/clientlib/fontawesome/
+src/clientlib/jquery/
+src/serverlib/3rdparty/
+src/templates/modern/bootstrap/
 vendor/
