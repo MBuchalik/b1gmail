@@ -1,7 +1,6 @@
 # b1gMail
 
-> **Warning**
-> **This project is work-in-progress. You should not use it in a production environment. There will be breaking changes.**
+> **Warning** **This project is work-in-progress. You should not use it in a production environment. There will be breaking changes.**
 
 ## Local development installation
 
