@@ -23,7 +23,7 @@
 	{/if}
 </fieldset>
 
-{if $reloadMenu}
+{if isset($reloadMenu) && $reloadMenu}
 <script>
 <!--
 	parent.frames['menu'].location.href = 'main.php?action=menu&item=4&sid={$sid}';

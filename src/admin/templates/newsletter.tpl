@@ -17,7 +17,7 @@
 			<td class="td1" width="120">{lng p="groups"}:</td>
 			<td class="td2">
 				{foreach from=$groups item=group key=groupID}
-					<input type="checkbox" name="group_{$groupID}" id="group_{$groupID}"{if !$smarty.get.toGroup||$smarty.get.toGroup==$groupID} checked="checked"{/if} onclick="determineNewsletterRecipients()" />
+					<input type="checkbox" name="group_{$groupID}" id="group_{$groupID}"{if !isset($smarty.get.toGroup) || !$smarty.get.toGroup || $smarty.get.toGroup==$groupID} checked="checked"{/if} onclick="determineNewsletterRecipients()" />
 						<label for="group_{$groupID}"><b>{text value=$group.title}</b></label><br />
 				{/foreach}
 			</td>

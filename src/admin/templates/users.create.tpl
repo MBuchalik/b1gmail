@@ -8,12 +8,13 @@
 					<table width="100%">
 						<tr>
 							<td class="td1" width="115">{lng p="email"}:</td>
-							<td class="td2"><input type="text" name="email" value="{text value=$user.email allowEmpty=true}" style="width:40%;" />
-											<select name="emailDomain">
-											{foreach from=$domainList item=domain}
-												<option value="{$domain}">@{domain value=$domain}</option>
-											{/foreach}
-											</select></td>
+							<td class="td2"><input type="text" name="email" style="width:40%;" />
+								<select name="emailDomain">
+									{foreach from=$domainList item=domain}
+										<option value="{$domain}">@{domain value=$domain}</option>
+									{/foreach}
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="salutation"}:</td>
@@ -25,45 +26,57 @@
 						</tr>
 						<tr>
 							<td class="td1">{lng p="firstname"}:</td>
-							<td class="td2"><input type="text" name="vorname" value="{text value=$user.vorname allowEmpty=true}" style="width:85%;" /></td>
+							<td class="td2"><input type="text" name="vorname" style="width:85%;" /></td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="lastname"}:</td>
-							<td class="td2"><input type="text" name="nachname" value="{text value=$user.nachname allowEmpty=true}" style="width:85%;" /></td>
+							<td class="td2"><input type="text" name="nachname" style="width:85%;" /></td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="streetno"}:</td>
-							<td class="td2"><input type="text" name="strasse" value="{text value=$user.strasse allowEmpty=true}" style="width:55%;" />
-											<input type="text" name="hnr" value="{text value=$user.hnr allowEmpty=true}" style="width:15%;" /></td>
+							<td class="td2"><input type="text" name="strasse" style="width:55%;" />
+								<input type="text" name="hnr" style="width:15%;" />
+							</td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="zipcity"}:</td>
-							<td class="td2"><input type="text" name="plz" value="{text value=$user.plz allowEmpty=true}" style="width:20%;" />
-											<input type="text" name="ort" value="{text value=$user.ort allowEmpty=true}" style="width:50%;" /></td>
+							<td class="td2"><input type="text" name="plz" style="width:20%;" />
+								<input type="text" name="ort" style="width:50%;" />
+							</td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="country"}:</td>
-							<td class="td2"><select name="land">
-							{foreach from=$countries item=countryName key=countryID}
-								<option value="{$countryID}"{if $countryID==$defaultCountry} selected="selected"{/if}>{text value=$countryName}</option>
-							{/foreach}
-							</select></td>
+							<td class="td2">
+								<select name="land">
+									{foreach from=$countries item=countryName key=countryID}
+										<option value="{$countryID}"{if $countryID==$defaultCountry} selected="selected"{/if}>{text value=$countryName}</option>
+									{/foreach}
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="tel"}:</td>
-							<td class="td2"><input type="text" name="tel" value="{text value=$user.tel allowEmpty=true}" style="width:85%;" /></td>
+							<td class="td2">
+								<input type="text" name="tel" style="width:85%;" />
+							</td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="fax"}:</td>
-							<td class="td2"><input type="text" name="fax" value="{text value=$user.fax allowEmpty=true}" style="width:85%;" /></td>
+							<td class="td2">
+								<input type="text" name="fax" style="width:85%;" />
+							</td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="cellphone"}:</td>
-							<td class="td2"><input type="text" name="mail2sms_nummer" value="{text value=$user.mail2sms_nummer allowEmpty=true}" style="width:85%;" /></td>
+							<td class="td2">
+								<input type="text" name="mail2sms_nummer" style="width:85%;" />
+							</td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="altmail"}:</td>
-							<td class="td2"><input type="text" name="altmail" value="{text value=$user.altmail allowEmpty=true}" style="width:85%;" /></td>
+							<td class="td2">
+								<input type="text" name="altmail" style="width:85%;" />
+							</td>
 						</tr>
 						
 						{foreach from=$profileFields item=profileField}
@@ -111,23 +124,25 @@
 						</tr>
 						<tr>
 							<td class="td1">{lng p="status"}:</td>
-							<td class="td2"><select name="gesperrt">
-								<option value="no"{if $user.gesperrt=='no'} selected="selected"{/if}>{lng p="active"}</option>
-								<option value="yes"{if $user.gesperrt=='yes'} selected="selected"{/if}>{lng p="locked"}</option>
-								<option value="locked"{if $user.gesperrt=='locked'} selected="selected"{/if}>{lng p="notactivated"}</option>
-								<option value="delete"{if $user.gesperrt=='delete'} selected="selected"{/if}>{lng p="deleted"}</option>
-							</select></td>
+							<td class="td2">
+								<select name="gesperrt">
+									<option value="no" selected="selected">{lng p="active"}</option>
+									<option value="yes">{lng p="locked"}</option>
+									<option value="locked">{lng p="notactivated"}</option>
+									<option value="delete">{lng p="deleted"}</option>
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="password"}:</td>
-							<td class="td2"><input type="text" name="passwort" value="" style="width:85%;" /></td>
+							<td class="td2"><input type="password" name="passwort" autocomplete="new-password" style="width:85%;" /></td>
 						</tr>
 					</table>
 				</fieldset>
 				
 				<fieldset>
 					<legend>{lng p="notes"}</legend>
-					<textarea style="width:100%;height:80px;" name="notes">{text value=$user.notes allowEmpty=true}</textarea>
+					<textarea style="width:100%;height:80px;" name="notes"></textarea>
 				</fieldset>
 			</td>
 		</tr>

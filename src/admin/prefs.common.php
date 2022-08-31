@@ -488,6 +488,7 @@ if ($_REQUEST['action'] == 'common') {
         'start' => [
             'icon' => 'start',
             'faIcon' => 'fa-home',
+            'text' => $lang_user['start'],
             'order' => 100,
         ],
         'email' => [

@@ -1,6 +1,6 @@
 <form method="post" action="users.php?do=edit&id={$user.id}&save=true&sid={$sid}" onsubmit="spin(this)">
 
-{if $msg}
+{if isset($msg)}
 <center style="margin:1em;">
 	<div class="note">
 		{$msg}
@@ -310,7 +310,7 @@
 				</div>
 			</fieldset>
 
-			<fieldset class="{if $showAliases}un{/if}collapsed">
+			<fieldset class="{if isset($showAliases) && $showAliases}un{/if}collapsed">
 				<legend><a href="javascript:;" onclick="toggleFieldset(this)">{lng p="aliases"}</a></legend>
 				<div class="content">
 					<table class="list">
@@ -334,7 +334,7 @@
 				</div>
 			</fieldset>
 
-			<fieldset class="{if $showPayments}un{/if}collapsed">
+			<fieldset class="{if isset($showPayments) && $showPayments}un{/if}collapsed">
 				<legend><a href="javascript:;" onclick="toggleFieldset(this)">{lng p="payments"}</a> ({lng p="max"} 15)</legend>
 				<div class="content">
 					<table class="list">
