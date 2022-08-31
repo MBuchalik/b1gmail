@@ -19,47 +19,44 @@
  *
  */
 
-$templateInfo = array(
-	'title'			=> 'b1gMail ' . $lang_admin['default'],
-	'author'		=> 'b1gMail Project',
-	'website'		=> 'https://www.b1gmail.org/',
-	'for_b1gmail'	=> B1GMAIL_VERSION,
+$templateInfo = [
+    'title' => 'b1gMail ' . $lang_admin['default'],
+    'author' => 'b1gMail Project',
+    'for_b1gmail' => B1GMAIL_VERSION,
 
-	'prefs'	=> array(
-		'splashImage'	=> array(
-			'title'		=> $lang_admin['splashimage'] . ':',
-			'type'		=> FIELD_DROPDOWN,
-			'options'	=> array(	'login_bg_1.jpg'	=> $lang_admin['login_bg_1']),
-			'default'	=> 'login_bg_1.jpg'
-		),
-		'hideSignup'	=> array(
-			'title'		=> $lang_admin['hidesignup'] . '?',
-			'type'		=> FIELD_CHECKBOX,
-			'default'	=> false
-		),
-		'navPos'		=> array(
-			'title'		=> $lang_admin['navpos'] . ':',
-			'type'		=> FIELD_DROPDOWN,
-			'options'	=> array(	'top'			=> $lang_admin['top'],
-									'left'			=> $lang_admin['left']),
-			'default'	=> 'top'
-		),
-		'prefsLayout'	=> array(
-			'title'		=> $lang_admin['prefslayout'] . ':',
-			'type'		=> FIELD_DROPDOWN,
-			'options'	=> array('onecolumn'		=> $lang_admin['onecolumn'],
-									'twocolumns'	=> $lang_admin['twocolumns']),
-			'default'	=> 'onecolumn'
-		),
-		'showUserEmail'	=> array(
-			'title'		=> $lang_admin['showuseremail'] . '?',
-			'type'		=> FIELD_CHECKBOX,
-			'default'	=> false
-		),
-		'showCheckboxes'=> array(
-			'title'		=> $lang_admin['showcheckboxes'] . '?',
-			'type'		=> FIELD_CHECKBOX,
-			'default'	=> false
-		)
-	)
-);
+    'prefs' => [
+        'hideSignup' => [
+            'title' => $lang_admin['hidesignup'] . '?',
+            'type' => FIELD_CHECKBOX,
+            'default' => false,
+        ],
+        'navPos' => [
+            'title' => $lang_admin['navpos'] . ':',
+            'type' => FIELD_DROPDOWN,
+            'options' => [
+                'top' => $lang_admin['top'],
+                'left' => $lang_admin['left'],
+            ],
+            'default' => 'top',
+        ],
+        'prefsLayout' => [
+            'title' => $lang_admin['prefslayout'] . ':',
+            'type' => FIELD_DROPDOWN,
+            'options' => [
+                'onecolumn' => $lang_admin['onecolumn'],
+                'twocolumns' => $lang_admin['twocolumns'],
+            ],
+            'default' => 'onecolumn',
+        ],
+        'showUserEmail' => [
+            'title' => $lang_admin['showuseremail'] . '?',
+            'type' => FIELD_CHECKBOX,
+            'default' => false,
+        ],
+        'showCheckboxes' => [
+            'title' => $lang_admin['showcheckboxes'] . '?',
+            'type' => FIELD_CHECKBOX,
+            'default' => false,
+        ],
+    ],
+];

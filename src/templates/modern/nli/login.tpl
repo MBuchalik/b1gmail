@@ -1,11 +1,8 @@
-<div class="jumbotron splash"	style="background-image: url({$tpldir}images/nli/{$templatePrefs.splashImage});">
+<div class="jumbotron splash">
 	<div class="container">
 		<div class="panel panel-primary login">
 			<div class="panel-heading">
 				{lng p="welcome"}
-				<div class="lost-pw">
-					<a href="#" data-toggle="modal" data-target="#lostPW">{lng p="lostpw"}?</a>
-				</div>
 			</div>
 			<div class="panel-body">
 				<form action="{if $ssl_login_enable}{$ssl_url}{/if}index.php?action=login" method="post" id="loginFormMain">
@@ -40,6 +37,9 @@
 							<input type="password" name="password" id="password" class="form-control" placeholder="{lng p="password"}" required="true" />
 						</div>
 					</div>
+					<div class="lost-pw">
+						<a href="#" data-toggle="modal" data-target="#lostPW">{lng p="lostpw"}?</a>
+					</div>
 					<div class="checkbox">
 						<label>
 							<input type="checkbox" name="savelogin" id="savelogin" />
@@ -53,27 +53,10 @@
 						</label>
 					</div>{/if}
 					<div class="form-group">
-						<button type="submit" class="btn btn-success">{lng p="login"}</button>
+						<button type="submit" class="btn btn-success btn-block">{lng p="login"}</button>
 					</div>
 				</form>
-			</div>
-			{if $_regEnabled||(!$templatePrefs.hideSignup)}<div class="panel-footer">
-				{lng p="notmember"}?
-				<a href="{if $ssl_signup_enable}{$ssl_url}{/if}index.php?action=signup">{lng p="signup"}</a>
-			</div>{/if}
-		</div>
-		<div class="bottom">
-			<footer class="row">
-				<div class="col-xs-4">
-					&copy; {$year} {$service_title}
-				</div>
-				<div class="col-xs-4" style="text-align:center;">
-					<a href="{$mobileURL}">{lng p="mobilepda"}</a>
-				{foreach from=$pluginUserPages item=item}{if !$item.top}
-				|	<a href="{$item.link}">{$item.text}</a>
-				{/if}{/foreach}
-				</div>
-			</footer>
-		</div>
+			</div>			
+		</div>		
 	</div>
 </div>

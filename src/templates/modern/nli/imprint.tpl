@@ -61,7 +61,7 @@
 								<select class="form-control" id="subject" name="subject">
 									<option value="">--- {lng p="pleasechose"} ---</option>
 									{foreach from=$contactform_subjects item=subject}
-									<option value="{text value=$subject}"{if $smarty.post.subject==$subject} selected="selected"{/if}>{text value=$subject}</option>
+									<option value="{text value=$subject}"{if isset($smarty.post.subject) && $smarty.post.subject==$subject} selected="selected"{/if}>{text value=$subject}</option>
 									{/foreach}
 								</select>
 							</div>

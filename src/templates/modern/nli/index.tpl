@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	{if isset($robotsNoIndex) && $robotsNoIndex}<meta name="robots" content="noindex" />{/if}
 
-	<title>{$service_title}{if $pageTitle} - {text value=$pageTitle}{/if}</title>
+	<title>{$service_title}{if isset($pageTitle)} - {text value=$pageTitle}{/if}</title>
 
 	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
 
@@ -29,7 +29,7 @@
 <body>
 	{hook id="nli:index.tpl:beforeContent"}
 
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="navbar {if $page!='nli/login.tpl'}navbar-inverse{/if} navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,7 +38,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.php"><img src="{$tpldir}images/logo.png" border="0" alt="" style="height:24px;" /> {$service_title}</a>
+				<a class="navbar-brand" href="index.php">{$service_title}</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -95,7 +95,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{foreach from=$languageList key=langKey item=langInfo}{if $langInfo.active}{$langInfo.title}{/if}{/foreach} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								{foreach from=$languageList key=langKey item=langInfo}
-								<li{if $langInfo.active} class="active"{/if}><a href="index.php?action=switchLanguage&amp;lang={$langKey}{if $smarty.get.action}&amp;target={text value=$smarty.get.action}{/if}">{$langInfo.title}</a></li>
+								<li{if $langInfo.active} class="active"{/if}><a href="index.php?action=switchLanguage&amp;lang={$langKey}{if isset($smarty.get.action)}&amp;target={text value=$smarty.get.action}{/if}">{$langInfo.title}</a></li>
 								{/foreach}
 							</ul>
 						</li>
@@ -191,25 +191,7 @@
 		</div>
 	</div>
 
-	{include file="$page"}
-
-	{if $page!='nli/login.tpl'}<div class="container">
-		<hr />
-
-		<footer class="row">
-			<div class="col-xs-4">
-				&copy; {$year} {$service_title}
-			</div>
-			<div class="col-xs-4" style="text-align:center;">
-				<a href="{$mobileURL}">{lng p="mobilepda"}</a>
-				{foreach from=$pluginUserPages item=item}{if !$item.top}
-				|	<a href="{$item.link}">{$item.text}</a>
-				{/if}{/foreach}
-			</div>
-		</footer>
-
-		<br />
-	</div>{/if}
+	{include file="$page"}	
 
 	{hook id="nli:index.tpl:afterContent"}
 </body>
