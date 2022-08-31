@@ -19,7 +19,9 @@
  *
  */
 
-require_once '../serverlib/migration.php';
+abstract class SingleMigrationStep {
+    abstract function applyMigration($dbConnection): bool;
+}
 
 class MigrationRunner {
     function performMigrations($dbConnection): bool {
