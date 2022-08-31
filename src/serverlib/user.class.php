@@ -1603,7 +1603,7 @@ class BMUser {
      * log out
      *
      */
-    function Logout() {
+    static function Logout() {
         ModuleFunction('OnLogout', [$_SESSION['bm_userID']]);
 
         $_SESSION['bm_userLoggedIn'] = false;

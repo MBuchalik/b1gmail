@@ -3,29 +3,23 @@
 
 <head>
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	{if $robotsNoIndex}<meta name="robots" content="noindex" />{/if}
+	{if isset($robotsNoIndex) && $robotsNoIndex}<meta name="robots" content="noindex" />{/if}
 
 	<title>{$service_title}{if $pageTitle} - {text value=$pageTitle}{/if}</title>
 
 	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
 
-	<link href="{$tpldir}bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{$tpldir}style/notloggedin.css?{fileDateSig file="style/notloggedin.css"}" />
+	<link rel="stylesheet" href="{$tpldir}bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{$tpldir}style/notloggedin.css?{fileDateSig file="style/notloggedin.css"}" />
 
-	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
-	<script type="text/javascript">
-	<!--
-		var tplDir = '{$tpldir}', sslURL = '{$ssl_url}', serverTZ = {$serverTZ};
-	//-->
+	<script>
+		const tplDir = '{$tpldir}';
+		const sslURL = '{$ssl_url}';
+		const serverTZ = {$serverTZ};
 	</script>
 
-	<script src="clientlang.php" type="text/javascript"></script>
+	<script src="clientlang.php"></script>
 	<script src="clientlib/jquery/jquery-1.8.2.min.js"></script>
 	<script src="{$tpldir}bootstrap/js/bootstrap.min.js"></script>
 	<script src="{$tpldir}js/nli.main.js?{fileDateSig file="js/nli.main.js"}"></script>
@@ -66,13 +60,13 @@
 				{/if}{/foreach}
 					<li{if $smarty.request.action=='imprint'} class="active"{/if}><a href="index.php?action=imprint">{lng p="contact"}</a></li>
 				</ul>
-				<form action="{if $ssl_login_enable||($welcomeBack&&$smarty.cookies.bm_savedSSL)}{$ssl_url}{/if}index.php?action=login" method="post" id="loginFormPopover">
+				<form action="{if $ssl_login_enable || (isset($welcomeBack) && $welcomeBack && $smarty.cookies.bm_savedSSL)}{$ssl_url}{/if}index.php?action=login" method="post" id="loginFormPopover">
 					<input type="hidden" name="do" value="login" />
 					<input type="hidden" name="timezone" value="{$timezone}" />
 
 					<ul class="nav navbar-nav navbar-right">
-						{if $smarty.request.action!='login'||$welcomeBack}<li class="login-li{if !$welcomeBack} hidden-xs{/if}">
-							{if $welcomeBack}
+						{if $smarty.request.action!='login'|| (isset($welcomeBack) && $welcomeBack)}<li class="login-li{if !isset($welcomeBack) || !$welcomeBack} hidden-xs{/if}">
+							{if isset($welcomeBack) && $welcomeBack}
 							<input type="hidden" name="email_full" value="{$smarty.cookies.bm_savedUser}" />
 							<input type="hidden" name="password" value="" />
 							<input type="hidden" name="savelogin" value="true" />

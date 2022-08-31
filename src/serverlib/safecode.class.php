@@ -158,8 +158,8 @@ class BMCaptchaGenerator {
             $w = imagesx($letterImg);
             $h = imagesy($letterImg);
 
-            $xArea = $this->letterW - $w;
-            $yArea = $this->letterH - $h;
+            $xArea = max($this->letterW - $w, 0);
+            $yArea = max($this->letterH - $h, 0);
 
             $x = max(
                 $this->borderSpacing,
@@ -172,7 +172,16 @@ class BMCaptchaGenerator {
                 $h / 2 +
                 @mt_rand(($yArea / 2) * -1, $yArea / 2);
 
-            imagecopy($this->img, $letterImg, $x, $y, 0, 0, $w, $h);
+            imagecopy(
+                $this->img,
+                $letterImg,
+                (int) $x,
+                (int) $y,
+                0,
+                0,
+                (int) $w,
+                (int) $h,
+            );
             imagedestroy($letterImg);
         }
     }
@@ -351,7 +360,7 @@ class Safecode {
      * @param bool $new New code?
      * @return string
      */
-    function GetCode($id, $new = false) {
+    static function GetCode($id, $new = false) {
         global $db;
 
         if ($new) {
@@ -375,7 +384,7 @@ class Safecode {
      *
      * @param int $id
      */
-    function DumpCode($id, $perturbation = -1) {
+    static function DumpCode($id, $perturbation = -1) {
         global $bm_prefs;
 
         if ($perturbation == -1) {

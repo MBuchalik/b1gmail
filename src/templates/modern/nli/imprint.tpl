@@ -18,22 +18,30 @@
 						{lng p="contactform"}
 					</div>
 					<div class="panel-body">
-						{if $success}
-						<div class="alert alert-success" role="alert"><strong>{lng p="thankyou"}.</strong> {lng p="cform_sent"}</div>
+						{if isset($success) && $success}
+							<div class="alert alert-success" role="alert">
+								<strong>{lng p="thankyou"}.</strong> {lng p="cform_sent"}
+							</div>
 						{else}
 					
-						{if $errorMsg}<div class="alert alert-danger" role="alert"><strong>{lng p="error"}:</strong> {$errorMsg}</div>{/if}
-
-						{if $contactform_name}<div class="form-group">
-							<label class="control-label" for="name">
-								{lng p="name"}
-								<span class="required">{lng p="required"}</span>
-							</label>
-							<div class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-								<input type="text" class="form-control" required="true" name="name" id="name" value="{text value=$smarty.post.name allowEmpty=true}" />
+						{if isset($errorMsg) && $errorMsg}
+							<div class="alert alert-danger" role="alert">
+								<strong>{lng p="error"}:</strong> {$errorMsg}
 							</div>
-						</div>{/if}
+						{/if}
+
+						{if $contactform_name}
+							<div class="form-group">
+								<label class="control-label" for="name">
+									{lng p="name"}
+									<span class="required">{lng p="required"}</span>
+								</label>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input type="text" class="form-control" required="true" name="name" id="name" value="{if isset($smarty.post.name)}{text value=$smarty.post.name allowEmpty=true}{/if}" />
+								</div>
+							</div>
+						{/if}
 						<div class="form-group">
 							<label class="control-label" for="email">
 								{lng p="email"}
@@ -41,27 +49,29 @@
 							</label>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-								<input type="text" class="form-control" required="true" name="email" id="email" value="{text value=$smarty.post.email allowEmpty=true}" />
+								<input type="text" class="form-control" required="true" name="email" id="email" value="{if isset($smarty.post.email)}{text value=$smarty.post.email allowEmpty=true}{/if}" />
 							</div>
 						</div>
-						{if $contactform_subject}<div class="form-group">
-							<label class="control-label" for="subject">
-								{lng p="subject"}
-								<span class="required">{lng p="required"}</span>
-							</label>
-							<select class="form-control" id="subject" name="subject">
-								<option value="">--- {lng p="pleasechose"} ---</option>
-								{foreach from=$contactform_subjects item=subject}
-								<option value="{text value=$subject}"{if $smarty.post.subject==$subject} selected="selected"{/if}>{text value=$subject}</option>
-								{/foreach}
-							</select>
-						</div>{/if}
+						{if $contactform_subject}
+							<div class="form-group">
+								<label class="control-label" for="subject">
+									{lng p="subject"}
+									<span class="required">{lng p="required"}</span>
+								</label>
+								<select class="form-control" id="subject" name="subject">
+									<option value="">--- {lng p="pleasechose"} ---</option>
+									{foreach from=$contactform_subjects item=subject}
+									<option value="{text value=$subject}"{if $smarty.post.subject==$subject} selected="selected"{/if}>{text value=$subject}</option>
+									{/foreach}
+								</select>
+							</div>
+						{/if}
 						<div class="form-group">
 							<label class="control-label" for="text">
 								{lng p="message"}
 								<span class="required">{lng p="required"}</span>
 							</label>
-							<textarea class="form-control" name="text" id="text" rows="6" required="true">{text value=$smarty.post.text allowEmpty=true}</textarea>
+							<textarea class="form-control" name="text" id="text" rows="6" required="true">{if isset($smarty.post.text)}{text value=$smarty.post.text allowEmpty=true}{/if}</textarea>
 						</div>
 						<div class="row">
 							{if $captchaInfo.hasOwnInput}
@@ -95,15 +105,15 @@
 					</div>
 				</div>
 
-				{if $invalidFields}<script>
-				<!--
-					$(document).ready(function() {ldelim}
-					{foreach from=$invalidFields item=field}
-					markFieldAsInvalid('{$field}');
-					{/foreach}
-					{rdelim});
-				//-->
-				</script>{/if}
+				{if isset($invalidFields) && $invalidFields}
+					<script>
+						$(document).ready(function() {ldelim}
+						{foreach from=$invalidFields item=field}
+						markFieldAsInvalid('{$field}');
+						{/foreach}
+						{rdelim});
+					</script>
+				{/if}
 			</form>
 		</div>
 	</div>
