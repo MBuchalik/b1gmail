@@ -1,31 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <title>{if $title}{$title} - {/if}b1gMail {lng p="acp"}</title>
+  <title>{if $title}{$title} - {/if}b1gMail {lng p="acp"}</title>
 
-	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 
-	<!-- links -->
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<link href="{$tpldir}style/common.css?{fileDateSig file="style/common.css"}" rel="stylesheet" type="text/css" />
 	<link href="../clientlib/fontawesome/css/font-awesome.min.css?{fileDateSig file="../../clientlib/fontawesome/css/font-awesome.min.css"}" rel="stylesheet" type="text/css" />
 	<link href="../clientlib/fontawesome/css/font-awesome-animation.min.css?{fileDateSig file="../../clientlib/fontawesome/css/font-awesome-animation.min.css"}" rel="stylesheet" type="text/css" />
-{foreach from=$_cssFiles.admin item=_file}	<link rel="stylesheet" type="text/css" href="{$_file}" />
-{/foreach}
 
-	<!-- client scripts -->
+	{foreach from=$_cssFiles.admin item=_file}	
+		<link rel="stylesheet" type="text/css" href="{$_file}" />
+	{/foreach}
+
 	<script>
-	<!--
-		var currentSID = '{$sid}';
-	//-->
+		const currentSID = '{$sid}';
 	</script>
 	<script src="../clientlang.php?sid={$sid}" type="text/javascript"></script>
 	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}" type="text/javascript"></script>
-{foreach from=$_jsFiles.admin item=_file}	<script type="text/javascript" src="{$_file}"></script>
-{/foreach}
+
+	{foreach from=$_jsFiles.admin item=_file}	
+		<script type="text/javascript" src="{$_file}"></script>
+	{/foreach}
 
 	<link href="{$tpldir}style/print.css?{fileDateSig file="style/print.css"}" rel="stylesheet" type="text/css" media="print" />
 </head>
@@ -39,7 +36,6 @@
 					{if $adminRow.type==0}
 					<a href="welcome.php?action=phpinfo&sid={$sid}"><img src="{$tpldir}images/phpinfo.png" border="0" alt="" /> {lng p="phpinfo"}</a>
 					{/if}
-					<a href="javascript:showHelp();"><img src="{$tpldir}images/help.png" border="0" alt="" /> {lng p="help"}</a>
 					<a href="admins.php?sid={$sid}"><img src="{$tpldir}images/user_active.png" border="0" alt="" /> {text value=$adminRow.username}</a>
 					<a href="index.php?sid={$sid}&action=logout" onclick="return confirm('{lng p="logoutquestion"}');"><img src="{$tpldir}images/logout.png" border="0" alt="" /> {lng p="logout"}</a>
 				</div>
@@ -147,5 +143,4 @@
 	</div>
 
 </body>
-
 </html>

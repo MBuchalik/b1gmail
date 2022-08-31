@@ -229,51 +229,6 @@ function EBID(f)
 	return(document.getElementById(f));
 }
 
-function showHelp()
-{
-	var mainURL = document.location.href,
-		lastPart = mainURL.substring(mainURL.lastIndexOf('/')+1),
-		qmPos = lastPart.indexOf('?'),
-		theFile = '',
-		theAction = '',
-		thePlugin = '';
-
-	if(qmPos == -1)
-	{
-		theFile = lastPart;
-		theAction = '';
-	}
-	else
-	{
-		theFile = lastPart.substring(0, qmPos);
-
-		var params = lastPart.substring(qmPos+1).split('&');
-		for(var i=0; i<params.length; i++)
-		{
-			var eqPos = params[i].indexOf('=');
-			if(eqPos == -1)
-				continue;
-			if(params[i].substring(0, eqPos) == 'action')
-			{
-				theAction = params[i].substring(eqPos+1);
-			}
-			else if(theFile == 'plugin.page.php'
-				&& params[i].substring(0, eqPos) == 'plugin')
-			{
-				thePlugin = params[i].substring(eqPos+1);
-			}
-		}
-	}
-
-	theFile = theFile.substring(0, theFile.lastIndexOf('.php'));
-
-	window.open('https://service.b1gmail.org/help/jump.php?file=' + escape(theFile)
-			+ (thePlugin != '' ? '&plugin=' + escape(thePlugin) : '')
-			+ '&action=' + escape(theAction),
-		'help',
-		'dependent=yes,width=890,height=630,location=no,menubar=no,resizable=yes,scrollbars=no,status=yes');
-}
-
 function menuItem(id)
 {
 	var i = 0, obj;
