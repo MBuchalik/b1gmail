@@ -45,19 +45,23 @@ class Template extends Smarty {
     function __construct() {
         global $bm_prefs, $lang_user, $lang_info;
 
+        parent::__construct();
+
         $this->_cssFiles = ['nli' => [], 'li' => [], 'admin' => []];
         $this->_jsFiles = ['nli' => [], 'li' => [], 'admin' => []];
 
         // template & cache directories
         if (ADMIN_MODE) {
-            $this->template_dir = B1GMAIL_DIR . 'admin/templates/';
-            $this->compile_dir = B1GMAIL_DIR . 'admin/templates/cache/';
+            $this->setTemplateDir(B1GMAIL_DIR . 'admin/templates/');
+            $this->setCompileDir(B1GMAIL_DIR . 'admin/templates/cache/');
             $this->assign('tpldir', $this->tplDir = './templates/');
         } else {
-            $this->template_dir =
-                B1GMAIL_DIR . 'templates/' . $bm_prefs['template'] . '/';
-            $this->compile_dir =
-                B1GMAIL_DIR . 'templates/' . $bm_prefs['template'] . '/cache/';
+            $this->setTemplateDir(
+                B1GMAIL_DIR . 'templates/' . $bm_prefs['template'] . '/',
+            );
+            $this->setCompileDir(
+                B1GMAIL_DIR . 'templates/' . $bm_prefs['template'] . '/cache/',
+            );
             $this->assign(
                 'tpldir',
                 $this->tplDir =
@@ -91,27 +95,39 @@ class Template extends Smarty {
         }
 
         // functions
-        $this->register_function('banner', 'TemplateBanner');
-        $this->register_function('lng', 'TemplateLang');
-        $this->register_function('comment', 'TemplateComment');
-        $this->register_function('date', 'TemplateDate');
-        $this->register_function('size', 'TemplateSize');
-        $this->register_function('text', 'TemplateText');
-        $this->register_function('domain', 'TemplateDomain');
-        $this->register_function('email', 'TemplateEMail');
-        $this->register_function('progressBar', 'TemplateProgressBar');
-        $this->register_function('miniCalendar', 'TemplateMiniCalendar');
-        $this->register_function('fileSelector', 'TemplateFileSelector');
-        $this->register_function('pageNav', 'TemplatePageNav');
-        $this->register_function('addressList', 'TemplateAddressList');
-        $this->register_function('storeTime', 'TemplateStoreTime');
-        $this->register_function('halfHourToTime', 'TemplateHalfHourToTime');
-        $this->register_function('implode', 'TemplateImplode');
-        $this->register_function('mobileNr', 'TemplateMobileNr');
-        $this->register_function('hook', 'TemplateHook');
-        $this->register_function('fileDateSig', 'TemplateFileDateSig');
-        $this->register_function('number', 'TemplateNumber');
-        $this->register_function('fieldDate', 'TemplateFieldDate');
+        $this->registerPlugin('function', 'banner', 'TemplateBanner');
+        $this->registerPlugin('function', 'lng', 'TemplateLang');
+        $this->registerPlugin('function', 'comment', 'TemplateComment');
+        $this->registerPlugin('function', 'date', 'TemplateDate');
+        $this->registerPlugin('function', 'size', 'TemplateSize');
+        $this->registerPlugin('function', 'text', 'TemplateText');
+        $this->registerPlugin('function', 'domain', 'TemplateDomain');
+        $this->registerPlugin('function', 'email', 'TemplateEMail');
+        $this->registerPlugin('function', 'progressBar', 'TemplateProgressBar');
+        $this->registerPlugin(
+            'function',
+            'miniCalendar',
+            'TemplateMiniCalendar',
+        );
+        $this->registerPlugin(
+            'function',
+            'fileSelector',
+            'TemplateFileSelector',
+        );
+        $this->registerPlugin('function', 'pageNav', 'TemplatePageNav');
+        $this->registerPlugin('function', 'addressList', 'TemplateAddressList');
+        $this->registerPlugin('function', 'storeTime', 'TemplateStoreTime');
+        $this->registerPlugin(
+            'function',
+            'halfHourToTime',
+            'TemplateHalfHourToTime',
+        );
+        $this->registerPlugin('function', 'implode', 'TemplateImplode');
+        $this->registerPlugin('function', 'mobileNr', 'TemplateMobileNr');
+        $this->registerPlugin('function', 'hook', 'TemplateHook');
+        $this->registerPlugin('function', 'fileDateSig', 'TemplateFileDateSig');
+        $this->registerPlugin('function', 'number', 'TemplateNumber');
+        $this->registerPlugin('function', 'fieldDate', 'TemplateFieldDate');
 
         // module handler
         ModuleFunction('OnCreateTemplate', [&$this]);
@@ -168,11 +184,12 @@ class Template extends Smarty {
         return false;
     }
 
-    function fetch(
-        $resource_name,
+    function createTemplate(
+        $template,
         $cache_id = null,
         $compile_id = null,
-        $display = false
+        $parent = null,
+        $do_clone = true
     ) {
         global $thisUser,
             $userRow,
@@ -433,13 +450,19 @@ class Template extends Smarty {
             }
         }
 
-        ModuleFunction('BeforeDisplayTemplate', [$resource_name, &$this]);
+        ModuleFunction('BeforeDisplayTemplate', [$template, &$this]);
 
         $this->assign('_cssFiles', $this->_cssFiles);
         $this->assign('_jsFiles', $this->_jsFiles);
 
         StartPageOutput();
-        return Smarty::fetch($resource_name, $cache_id, $compile_id, $display);
+        return parent::createTemplate(
+            $template,
+            $cache_id,
+            $compile_id,
+            $parent,
+            $do_clone,
+        );
     }
 }
 
@@ -462,7 +485,7 @@ function TemplateTabSort($a, $b) {
 /**
  * functions registered with smarty
  */
-function TemplateFileDateSig($params, &$smarty) {
+function TemplateFileDateSig($params, $smarty) {
     $fileName = $smarty->template_dir . $params['file'];
     if (!file_exists($fileName)) {
         return '';
@@ -470,7 +493,7 @@ function TemplateFileDateSig($params, &$smarty) {
     $time = filemtime($fileName);
     return substr(md5($time), 0, 6);
 }
-function TemplateBanner($params, &$smarty) {
+function TemplateBanner($params, $smarty) {
     global $db, $groupRow;
 
     if (isset($groupRow) && is_array($groupRow) && $groupRow['ads'] == 'no') {
@@ -503,10 +526,10 @@ function TemplateBanner($params, &$smarty) {
 
     return '';
 }
-function TemplateImplode($params, &$smarty) {
+function TemplateImplode($params, $smarty) {
     return implode($params['glue'], $params['pieces']);
 }
-function TemplateLang($params, &$smarty) {
+function TemplateLang($params, $smarty) {
     global $lang_user, $lang_client, $lang_admin;
 
     $phrase = $params['p'];
@@ -521,7 +544,7 @@ function TemplateLang($params, &$smarty) {
 
     return '#UNKNOWN_PHRASE(' . $phrase . ')#';
 }
-function TemplateHalfHourToTime($params, &$smarty) {
+function TemplateHalfHourToTime($params, $smarty) {
     $value = $params['value'];
 
     if (isset($params['dateStart'])) {
@@ -541,13 +564,13 @@ function TemplateHalfHourToTime($params, &$smarty) {
         return sprintf('%d:%02d', ($value - 1) / 2, 30);
     }
 }
-function TemplateComment($params, &$smarty) {
+function TemplateComment($params, $smarty) {
     if (!DEBUG) {
         return '';
     }
     return '<!-- ' . $params['text'] . ' -->';
 }
-function TemplateDate($params, &$smarty) {
+function TemplateDate($params, $smarty) {
     global $userRow, $bm_prefs, $lang_user;
 
     if (isset($params['nozero']) && $params['timestamp'] == 0) {
@@ -629,7 +652,7 @@ function TemplateDate($params, &$smarty) {
         }
     }
 }
-function TemplateSize($params, &$smarty) {
+function TemplateSize($params, $smarty) {
     global $lang_user;
 
     $size = $params['bytes'];
@@ -688,7 +711,7 @@ function cutHTML($str, $length, $add = '') {
         return implode('', $result);
     }
 }
-function TemplateFieldDate($params, &$smarty) {
+function TemplateFieldDate($params, $smarty) {
     global $bm_prefs;
 
     $val = $params['value'];
@@ -708,7 +731,7 @@ function TemplateFieldDate($params, &$smarty) {
 
     return sprintf('%02d.%02d.%04d', $d, $m, $y);
 }
-function TemplateNumber($params, &$smarty) {
+function TemplateNumber($params, $smarty) {
     $no = (int) $params['value'];
     if (isset($params['min'])) {
         $no = max($params['min'], $no);
@@ -718,18 +741,18 @@ function TemplateNumber($params, &$smarty) {
     }
     return $no;
 }
-function TemplateDomain($params, &$smarty) {
+function TemplateDomain($params, $smarty) {
     $domain = $params['value'];
     return HTMLFormat(DecodeDomain($domain));
 }
-function TemplateEMail($params, &$smarty) {
+function TemplateEMail($params, $smarty) {
     $email = DecodeEMail($params['value']);
     if (isset($params['cut'])) {
         $email = cutHTML($email, $params['cut'], '...');
     }
     return HTMLFormat($email);
 }
-function TemplateText($params, &$smarty) {
+function TemplateText($params, $smarty) {
     $text = $params['value'];
 
     if (isset($params['ucFirst'])) {
@@ -765,7 +788,7 @@ function TemplateText($params, &$smarty) {
         return $text;
     }
 }
-function TemplateAddressList($params, &$smarty) {
+function TemplateAddressList($params, $smarty) {
     $list = '';
     $short = isset($params['short']);
 
@@ -835,7 +858,7 @@ function TemplateAddressList($params, &$smarty) {
 
     return trim($list);
 }
-function TemplateProgressBar($params, &$smarty) {
+function TemplateProgressBar($params, $smarty) {
     $value = $params['value'];
     $max = $params['max'];
     $width = $params['width'];
@@ -855,7 +878,7 @@ function TemplateProgressBar($params, &$smarty) {
         min($width - 2, $valueWidth),
     );
 }
-function TemplateMiniCalendar($params, &$smarty) {
+function TemplateMiniCalendar($params, $smarty) {
     global $userRow;
     if (!isset($userRow)) {
         return 'Not logged in';
@@ -866,7 +889,7 @@ function TemplateMiniCalendar($params, &$smarty) {
     $calendar = _new('BMCalendar', [$userRow['id']]);
     return $calendar->GenerateMiniCalendar(-1, -1);
 }
-function TemplateFileSelector($params, &$smarty) {
+function TemplateFileSelector($params, $smarty) {
     global $lang_user, $groupRow;
 
     $name = $params['name'];
@@ -905,7 +928,7 @@ function TemplateFileSelector($params, &$smarty) {
         $name,
     );
 }
-function TemplatePageNav($params, &$smarty) {
+function TemplatePageNav($params, $smarty) {
     $tpl_on = $params['on'];
     $tpl_off = $params['off'];
     $aktuelle_seite = $params['page'];
@@ -950,7 +973,7 @@ function TemplatePageNav($params, &$smarty) {
 
     return $ret;
 }
-function TemplateStoreTime($params, &$smarty) {
+function TemplateStoreTime($params, $smarty) {
     global $lang_user;
 
     $time = $params['value'];
@@ -973,7 +996,7 @@ function TemplateStoreTime($params, &$smarty) {
         return '-';
     }
 }
-function TemplateHook($params, &$smarty) {
+function TemplateHook($params, $smarty) {
     $result = '';
 
     if (DEBUG && isset($_REQUEST['_showHooks'])) {
@@ -1000,7 +1023,7 @@ function TemplateHook($params, &$smarty) {
 
     return $result;
 }
-function TemplateMobileNr($params, &$smarty) {
+function TemplateMobileNr($params, $smarty) {
     global $groupRow;
 
     $value = isset($params['value']) ? $params['value'] : '';
