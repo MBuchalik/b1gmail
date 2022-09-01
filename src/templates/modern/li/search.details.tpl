@@ -22,20 +22,20 @@
 	<tr>
 		<th colspan="2">&nbsp;</th>
 		<th><a href="#" onclick="changeSearchSort('title','{$sortOrderInv}');">{lng p="title"}</a>
-			{if $sortColumn=='title'}<img src="{$tpldir}images/li/{$sortOrder}.gif" border="0" alt="" align="absmiddle" />{/if}</th>
+			{if isset($sortColumn) && $sortColumn=='title'}<img src="{$tpldir}images/li/{$sortOrder}.gif" border="0" alt="" align="absmiddle" />{/if}</th>
 		<th><a href="#" onclick="changeSearchSort('date','{$sortOrderInv}');">{lng p="date"}</a>
-			{if $sortColumn=='date'}<img src="{$tpldir}images/li/{$sortOrder}.gif" border="0" alt="" align="absmiddle" />{/if}</th>
+			{if isset($sortColumn) && $sortColumn=='date'}<img src="{$tpldir}images/li/{$sortOrder}.gif" border="0" alt="" align="absmiddle" />{/if}</th>
 		<th><a href="#" onclick="changeSearchSort('size','{$sortOrderInv}');">{lng p="size"}</a>
-			{if $sortColumn=='size'}<img src="{$tpldir}images/li/{$sortOrder}.gif" border="0" alt="" align="absmiddle" />{/if}</th>
+			{if isset($sortColumn) && $sortColumn=='size'}<img src="{$tpldir}images/li/{$sortOrder}.gif" border="0" alt="" align="absmiddle" />{/if}</th>
 		<th><a href="#" onclick="changeSearchSort('score','{$sortOrderInv}');">{lng p="relevance"}</a>
-			{if $sortColumn=='score'}<img src="{$tpldir}images/li/{$sortOrder}.gif" border="0" alt="" align="absmiddle" />{/if}</th>
+			{if isset($sortColumn) && $sortColumn=='score'}<img src="{$tpldir}images/li/{$sortOrder}.gif" border="0" alt="" align="absmiddle" />{/if}</th>
 	</tr>
 	
-	{if $results}
+	{if isset($results)}
 	{foreach from=$results item=resultCat key=resultCatID}
 	<tr>
 		<td width="24" align="center" class="folderGroup">
-			<input type="checkbox"{if !$resultCat.massActions} disabled="disabled"{else} onclick="checkAll(this.checked, document.forms.f1, 'checkbox_{$resultCatID}_');toggleResultMassActions(document.forms.f1, {$resultCatID});"{/if} />
+			<input type="checkbox"{if !isset($resultCat.massActions) || !$resultCat.massActions} disabled="disabled"{else} onclick="checkAll(this.checked, document.forms.f1, 'checkbox_{$resultCatID}_');toggleResultMassActions(document.forms.f1, {$resultCatID});"{/if} />
 		</td>
 		<td colspan="5" class="folderGroup">
 			<a style="display:block;" href="javascript:toggleGroup({$resultCatID});">&nbsp;<img id="groupImage_{$resultCatID}" src="{$tpldir}images/contract.png" width="11" height="11" border="0" align="absmiddle" alt="" />
@@ -47,25 +47,25 @@
 	{cycle values="listTableTR,listTableTR2" assign="class"}
 	<tr class="{$class}">
 		<td width="24" align="center">
-			<input type="checkbox" name="items[{$resultCat.name}][]" id="checkbox_{$resultCatID}_{$resultID}" value="{$result.id}"{if !$resultCat.massActions} disabled="disabled"{/if} onchange="toggleResultMassActions(document.forms.f1, {$resultCatID});" />
+			<input type="checkbox" name="items[{$resultCat.name}][]" id="checkbox_{$resultCatID}_{$resultID}" value="{$result.id|default:''}"{if !isset($resultCat.massActions) || !$resultCat.massActions} disabled="disabled"{/if} onchange="toggleResultMassActions(document.forms.f1, {$resultCatID});" />
 		</td>
 		<td width="24">
-			<i class="fa {if $result.icon}{$result.icon}{else}{$resultCat.icon}{/if}" aria-hidden="true"></i>
+			<i class="fa {if isset($result.icon)}{$result.icon}{else}{$resultCat.icon}{/if}" aria-hidden="true"></i>
 		</td>
 		<td nowrap="nowrap" style="padding:4px;">
 			<a title="{text value=$result.title}" href="{if $result.extLink}{$result.extLink}{else}{$result.link}sid={$sid}{/if}"{if $result.extLink} target="_blank"{/if}>
-				<div style="text-overflow:ellipsis;overflow:hidden;{if $result.bold}font-weight:bold;{/if}{if $result.strike}text-decoration:line-through;{/if}">
+				<div style="text-overflow:ellipsis;overflow:hidden;{if isset($result.bold) && $result.bold}font-weight:bold;{/if}{if isset($result.strike) && $result.strike}text-decoration:line-through;{/if}">
 					{text value=$result.title}
 				</div>
-				{if $result.excerpt}<div style="color:#777;text-overflow:ellipsis;overflow:hidden;">{$result.excerpt}</div>{/if}
+				{if isset($result.excerpt) && $result.excerpt}<div style="color:#777;text-overflow:ellipsis;overflow:hidden;">{$result.excerpt}</div>{/if}
 			</a>
 		</td>
-		<td width="130"><span style="{if $result.bold}font-weight:bold;{/if}{if $result.strike}text-decoration:line-through;{/if}">{if $result.date}{date timestamp=$result.date nice=true}{/if}</span></td>
-		<td width="75"><span style="{if $result.bold}font-weight:bold;{/if}{if $result.strike}text-decoration:line-through;{/if}">{if $result.size||$result.size===0}{size bytes=$result.size}{/if}</span></td>
-		<td style="text-align:center;">{if $result.score}{$result.score} %{else}-{/if}</td>
+		<td width="130"><span style="{if isset($result.bold) && $result.bold}font-weight:bold;{/if}{if isset($result.strike) && $result.strike}text-decoration:line-through;{/if}">{if isset($result.date)}{date timestamp=$result.date nice=true}{/if}</span></td>
+		<td width="75"><span style="{if isset($result.bold) && $result.bold}font-weight:bold;{/if}{if isset($result.strike) && $result.strike}text-decoration:line-through;{/if}">{if isset($result.size)}{size bytes=$result.size}{/if}</span></td>
+		<td style="text-align:center;">{if isset($result.score) && $result.score}{$result.score} %{else}-{/if}</td>
 	</tr>
 	{/foreach}
-	{if $resultCat.massActions}
+	{if isset($resultCat.massActions) && $resultCat.massActions}
 	
 	<tr style="display:none;" id="massActions_{$resultCatID}">
 		<td colspan="6" class="listTableFoot" style="border-bottom:3px double #CCC;">

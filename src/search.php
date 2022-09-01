@@ -243,15 +243,15 @@ if ($_REQUEST['action'] == 'search') {
         }
 
         // show results
-        $tpl->assign('sortColumn', $sortColumn);
-        $tpl->assign('sortOrder', $sortOrder);
-        $tpl->assign('sortOrderInv', $sortOrder == 'asc' ? 'desc' : 'asc');
         $tpl->assign('pageNo', $pageNo);
         $tpl->assign('pageCount', $pageCount);
         $tpl->assign('results', $results);
     }
 
     // page output
+    $tpl->assign('sortOrderInv', $sortOrder == 'asc' ? 'desc' : 'asc');
+    $tpl->assign('sortColumn', $sortColumn);
+    $tpl->assign('sortOrder', $sortOrder);
     $tpl->assign('flexSpans', $bm_prefs['flexspans'] == 'yes');
     $tpl->assign('dateFrom', $dateFrom == 0 ? '--' : $dateFrom);
     $tpl->assign('dateTo', $dateTo == 0 ? '--' : $dateTo);
