@@ -40,6 +40,10 @@ if (!isset($_REQUEST['action'])) {
 $tpl->assign('activeTab', 'start');
 $tpl->assign('pageTitle', $lang_user['start']);
 
+if ($_REQUEST['action'] === 'start' || $_REQUEST['action'] === 'customize') {
+    $tpl->assign('disablePageMenu', true);
+}
+
 /**
  * page sidebar
  */

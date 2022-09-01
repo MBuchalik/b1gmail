@@ -1,7 +1,7 @@
 <div id="contentHeader">
 	<div class="left">
 		<i class="fa fa-sticky-note-o" aria-hidden="true"></i>
-		{if $note}{lng p="editnote"}{else}{lng p="addnote"}{/if}
+		{if isset($note)}{lng p="editnote"}{else}{lng p="addnote"}{/if}
 	</div>
 </div>
 

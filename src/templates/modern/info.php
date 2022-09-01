@@ -22,6 +22,7 @@
 $templateInfo = [
     'title' => 'b1gMail ' . $lang_admin['default'],
     'author' => 'b1gMail Project',
+    'website' => '',
     'for_b1gmail' => B1GMAIL_VERSION,
 
     'prefs' => [
@@ -29,15 +30,6 @@ $templateInfo = [
             'title' => $lang_admin['hidesignup'] . '?',
             'type' => FIELD_CHECKBOX,
             'default' => false,
-        ],
-        'navPos' => [
-            'title' => $lang_admin['navpos'] . ':',
-            'type' => FIELD_DROPDOWN,
-            'options' => [
-                'top' => $lang_admin['top'],
-                'left' => $lang_admin['left'],
-            ],
-            'default' => 'top',
         ],
         'prefsLayout' => [
             'title' => $lang_admin['prefslayout'] . ':',

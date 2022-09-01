@@ -41,6 +41,8 @@ if (!isset($_REQUEST['action'])) {
 }
 $tpl->assign('activeTab', 'organizer');
 $tpl->assign('pageTitle', $lang_user['notes']);
+$tpl->assign('organizerSection', 'notes');
+$tpl->assign('disablePageMenu', true);
 
 /**
  * notes interface

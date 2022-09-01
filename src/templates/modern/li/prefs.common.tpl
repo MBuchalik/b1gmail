@@ -161,11 +161,11 @@
 		<tr>
 			<td class="listTableLeft"><label for="re">{lng p="defaults"} (1):</label></td>
 			<td class="listTableRight">
-				<i class="fa fa-id-card-o" aria-hidden="true"></i> <input type="checkbox" name="composeDefaults[attachVCard]" id="attachVCard"{if $composeDefaults.attachVCard} checked="checked"{/if} /> <label for="attachVCard">{lng p="attachvc"}</label>
+				<i class="fa fa-id-card-o" aria-hidden="true"></i> <input type="checkbox" name="composeDefaults[attachVCard]" id="attachVCard"{if isset($composeDefaults.attachVCard) && $composeDefaults.attachVCard} checked="checked"{/if} /> <label for="attachVCard">{lng p="attachvc"}</label>
 				&nbsp;
-				<i class="fa fa-certificate" aria-hidden="true"></i> <input type="checkbox" name="composeDefaults[certMail]" id="certMail"{if $composeDefaults.certMail} checked="checked"{/if} /> <label for="certMail">{lng p="certmail"}</label>
+				<i class="fa fa-certificate" aria-hidden="true"></i> <input type="checkbox" name="composeDefaults[certMail]" id="certMail"{if isset($composeDefaults.certMail) && $composeDefaults.certMail} checked="checked"{/if} /> <label for="certMail">{lng p="certmail"}</label>
 				&nbsp;
-				<i class="fa fa-bullhorn" aria-hidden="true"></i> <input type="checkbox" name="composeDefaults[mailConfirmation]" id="mailConfirmation"{if $composeDefaults.mailConfirmation} checked="checked"{/if} /> <label for="mailConfirmation">{lng p="mailconfirmation"}</label>
+				<i class="fa fa-bullhorn" aria-hidden="true"></i> <input type="checkbox" name="composeDefaults[mailConfirmation]" id="mailConfirmation"{if isset($composeDefaults.mailConfirmation) && $composeDefaults.mailConfirmation} checked="checked"{/if} /> <label for="mailConfirmation">{lng p="mailconfirmation"}</label>
 
 			</td>
 		</tr>
@@ -175,15 +175,15 @@
 				<i class="fa fa-inbox" aria-hidden="true"></i> <label for="savecopy">{lng p="savecopy"}:</label>
 					<select name="composeDefaults[savecopy]" id="savecopy">
 					{foreach from=$dropdownFolderList key=dFolderID item=dFolderTitle}
-						<option value="{$dFolderID}" style="font-family:courier;"{if (!$composeDefaults.savecopy&&$composeDefaults.savecopy!=='0'&&$dFolderID==-2)||$composeDefaults.savecopy==$dFolderID} selected="selected"{/if}>{$dFolderTitle}</option>
+						<option value="{$dFolderID}" style="font-family:courier;"{if (!isset($composeDefaults.savecopy)&&$dFolderID==-2)||isset($composeDefaults.savecopy)&&$composeDefaults.savecopy==$dFolderID} selected="selected"{/if}>{$dFolderTitle}</option>
 					{/foreach}
 					</select>
 				&nbsp;
 				<i class="fa fa-flag" aria-hidden="true"></i>
 					<select name="composeDefaults[priority]" id="priority">
-						<option value="1"{if $composeDefaults.priority==1} selected="selected"{/if}>{lng p="prio_1"}</option>
-						<option value="0"{if !$composeDefaults.priority||$composeDefaults.priority==0} selected="selected"{/if}>{lng p="prio_0"}</option>
-						<option value="-1"{if $composeDefaults.priority==-1} selected="selected"{/if}>{lng p="prio_-1"}</option>
+						<option value="1"{if isset($composeDefaults.priority) && $composeDefaults.priority==1} selected="selected"{/if}>{lng p="prio_1"}</option>
+						<option value="0"{if !isset($composeDefaults.priority)||$composeDefaults.priority==0} selected="selected"{/if}>{lng p="prio_0"}</option>
+						<option value="-1"{if isset($composeDefaults.priority) && $composeDefaults.priority==-1} selected="selected"{/if}>{lng p="prio_-1"}</option>
 					</select>
 				{if $signatures}
 				&nbsp;
@@ -191,7 +191,7 @@
 					<select name="composeDefaults[signature]" id="signature">
 						<option value="0">-</option>
 					{foreach from=$signatures item=signature}
-						<option value="{$signature.id}"{if $composeDefaults.signature==$signature.id} selected="selected"{/if}>{text value=$signature.titel cut=15}</option>
+						<option value="{$signature.id}"{if isset($composeDefaults.priority) && $composeDefaults.signature==$signature.id} selected="selected"{/if}>{text value=$signature.titel cut=15}</option>
 					{/foreach}
 					</select>
 				{/if}

@@ -42,6 +42,8 @@ if (!isset($_REQUEST['action'])) {
 }
 $tpl->assign('activeTab', 'organizer');
 $tpl->assign('pageTitle', $lang_user['calendar']);
+$tpl->assign('organizerSection', 'calendar');
+$tpl->assign('disablePageMenu', true);
 
 /**
  * view mode?

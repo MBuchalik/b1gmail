@@ -30,12 +30,9 @@
 
 <script src="./clientlib/dragcontainer.js" type="text/javascript"></script>
 <script>
-<!--
-	currentSID = '{$sid}';
 	var dc = new dragContainer('startBoxes', 3, 'dc');
 	dc.order = '{$widgetOrder}';
 	dc.onOrderChanged = startBoardOrderChanged;
 	dc.run();
 	{if $autoSetPreviewPos}autoSetPreviewPos();{/if}
-//-->
 </script>

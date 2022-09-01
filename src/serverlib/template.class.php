@@ -486,7 +486,7 @@ function TemplateTabSort($a, $b) {
  * functions registered with smarty
  */
 function TemplateFileDateSig($params, $smarty) {
-    $fileName = $smarty->template_dir . $params['file'];
+    $fileName = $smarty->template_dir[0] . $params['file'];
     if (!file_exists($fileName)) {
         return '';
     }

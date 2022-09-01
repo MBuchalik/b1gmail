@@ -44,6 +44,8 @@ if (!isset($_REQUEST['action'])) {
 }
 $tpl->assign('activeTab', 'organizer');
 $tpl->assign('pageTitle', $lang_user['addressbook']);
+$tpl->assign('organizerSection', 'addressbook');
+$tpl->assign('disablePageMenu', true);
 
 /**
  * addressbook interface

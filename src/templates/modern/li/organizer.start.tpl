@@ -23,11 +23,8 @@
 
 <script src="./clientlib/dragcontainer.js" type="text/javascript"></script>
 <script>
-<!--
-	currentSID = '{$sid}';
 	var dc = new dragContainer('startBoxes', 3, 'dc');
 	dc.order = '{$widgetOrder}';
 	dc.onOrderChanged = organizerBoardOrderChanged;
 	dc.run();
-//-->
 </script>

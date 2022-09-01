@@ -364,7 +364,7 @@ class BMUser {
      * @param int $userID User ID
      * @return bool
      */
-    function UpdateBayesValues($nonSpam, $spam, $userID) {
+    static function UpdateBayesValues($nonSpam, $spam, $userID) {
         global $db;
 
         $db->Query(

@@ -8,7 +8,7 @@
 		<select class="smallInput" onchange="document.location.href='organizer.addressbook.php?sid='+currentSID+'&group={$currentGroup}&letter='+this.value;">
 			<option value="">{lng p="all"}</option>
 			{foreach from=$alpha key=key item=letter}
-			<option value="{$key}"{if $smarty.request.letter==$key} selected="selected"{/if}>{$letter}</option>
+			<option value="{$key}"{if isset($smarty.request.letter) && $smarty.request.letter==$key} selected="selected"{/if}>{$letter}</option>
 			{/foreach}
 		</select>
 		

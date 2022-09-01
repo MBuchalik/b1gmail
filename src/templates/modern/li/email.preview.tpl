@@ -169,11 +169,17 @@
 		{lng p="print"}
 	</button>
 	
-	{if !$folderInfo.readonly}<button type="button" onclick="{if $folderID==-5}if(confirm('{lng p="realdel"}')) {/if} deleteMail({$mailID});">
+	{if !isset($folderInfo.readonly) || !$folderInfo.readonly}<button type="button" onclick="{if $folderID==-5}if(confirm('{lng p="realdel"}')) {/if} deleteMail({$mailID});">
 		<i class="fa fa-remove"></i>
 		{lng p="delete"}
 	</button>{/if}
 
+	{if $folderID!=-4}
+		<button type="button" onclick="javascript:setMailSpamStatus({$mailID}, true, true)">
+			<i class="fa fa-frown-o"></i>
+			{lng p="spam"}!
+		</button>
+	{/if}
 </div>
 
 {if $folderID==-3}
@@ -194,24 +200,9 @@
 {if $flags&256}
 <div class="mailNote preview" id="spamQuestionDiv" style="display:;">
 	&nbsp;
-	<!--<img align="absmiddle" border="0" alt="" src="{$tpldir}images/li/spam.png" width="16" height="16" />-->
     <i class="fa fa-ban" aria-hidden="true"></i>    
 	{lng p="spamtext"}
-	{if !$trained}<a href="javascript:setMailSpamStatus({$mailID}, false)">{lng p="isnotspam"}</a>{/if}
-</div>
-{elseif !$trained}
-<div class="mailNote preview" id="spamQuestionDiv" style="display:;">
-	&nbsp;
-	<img align="absmiddle" border="0" alt="" src="{$tpldir}images/li/spam_question.png" width="16" height="16" />
-	{lng p="spamquestion"}
-	&nbsp;&nbsp;
-	<a href="javascript:setMailSpamStatus({$mailID}, true, true)">
-		<img src="{$tpldir}images/li/yes.png" width="16" height="16" border="0" alt="" align="absmiddle" /> {lng p="yes"}
-	</a>
-	&nbsp;&nbsp;
-	<a href="javascript:setMailSpamStatus({$mailID}, false)">
-		<img src="{$tpldir}images/li/no.png" width="16" height="16" border="0" alt="" align="absmiddle" /> {lng p="no"}
-	</a>
+	<a href="javascript:setMailSpamStatus({$mailID}, false, true)">{lng p="isnotspam"}</a>
 </div>
 {/if}
 {if $flags&512}

@@ -41,6 +41,8 @@ if (!isset($_REQUEST['action'])) {
 }
 $tpl->assign('activeTab', 'organizer');
 $tpl->assign('pageTitle', $lang_user['todolist']);
+$tpl->assign('organizerSection', 'todo');
+$tpl->assign('disablePageMenu', true);
 
 /**
  * todo interface

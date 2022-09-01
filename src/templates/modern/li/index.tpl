@@ -4,10 +4,8 @@
 <head>
     <title>{if $pageTitle}{text value=$pageTitle} - {/if}{$service_title}</title>
 
-	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 
-	<!-- links -->
 	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
 	<link href="{$tpldir}style/loggedin.css?{fileDateSig file="style/loggedin.css"}" rel="stylesheet" type="text/css" />
 	<link href="{$tpldir}style/dtree.css?{fileDateSig file="style/dtree.css"}" rel="stylesheet" type="text/css" />
@@ -16,12 +14,15 @@
 {foreach from=$_cssFiles.li item=_file}	<link rel="stylesheet" type="text/css" href="{$_file}" />
 {/foreach}
 
-	<!-- client scripts -->
-	<script type="text/javascript">
-	<!--
-		var currentSID = '{$sid}', tplDir = '{$tpldir}', serverTZ = {$serverTZ}, ftsBGIndexing = {if $ftsBGIndexing}true{else}false{/if}{if $bmNotifyInterval},
-			notifyInterval = {$bmNotifyInterval}, notifySound = {if $bmNotifySound}true{else}false{/if}{/if};
-	//-->
+	<script>
+		const currentSID = '{$sid}';
+		const tplDir = '{$tpldir}';
+		const serverTZ = {$serverTZ};
+		const ftsBGIndexing = {if $ftsBGIndexing}true{else}false{/if};
+		{if $bmNotifyInterval}
+			const	notifyInterval = {$bmNotifyInterval}; 
+			const notifySound = {if $bmNotifySound}true{else}false{/if};
+		{/if}
 	</script>
 	<script src="clientlang.php?sid={$sid}" type="text/javascript"></script>
 	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}" type="text/javascript"></script>
@@ -29,30 +30,48 @@
 	<script src="clientlib/dtree.js?{fileDateSig file="../../clientlib/dtree.js"}" type="text/javascript"></script>
 	<script src="clientlib/overlay.js?{fileDateSig file="../../clientlib/overlay.js"}" type="text/javascript"></script>
 	<script src="clientlib/autocomplete.js?{fileDateSig file="../../clientlib/autocomplete.js"}" type="text/javascript"></script>
-	<!--[if lt IE 9]>
-	<script defer type="text/javascript" src="clientlib/IE9.js"></script>
-	<![endif]-->
-	<!--[if IE]>
-	<meta http-equiv="Page-Enter" content="blendTrans(duration=0)" />
-	<meta http-equiv="Page-Exit" content="blendTrans(duration=0)" />
-	<![endif]-->
-{foreach from=$_jsFiles.li item=_file}	<script type="text/javascript" src="{$_file}"></script>
-{/foreach}
+
+	{foreach from=$_jsFiles.li item=_file}
+		<script src="{$_file}"></script>
+	{/foreach}
+
 	{hook id="li:index.tpl:head"}
 </head>
 
 <body onload="documentLoader()">
 	{hook id="li:index.tpl:beforeContent"}
 
-	<div id="main">
+	<div id="main" class="
+		{if isset($disablePageMenu) && $disablePageMenu} no-pageMenu {/if}
+		{if $pageContent === 'li/start.page.tpl'} page-start {/if}
+	">
 		<div class="dropdownNavbar">
-			<a class="logo" href="#"{if $templatePrefs.navPos=='top'} onclick="toggleDropdownNavMenu()"{/if}>
-				{if $activeTab=='_search'}<i class="fa fa-search"></i>{else}{foreach from=$pageTabs key=tabID item=tab}{if $activeTab==$tabID}
-				<i class="fa {$tab.faIcon}"></i>
-				{/if}{/foreach}{/if}
-				{$service_title}
-				{if $templatePrefs.navPos=='top'}<span style="">| <i class="fa fa-angle-down"></i></span>{/if}
-			</a>
+			<button id="menu-activate-small" onclick="toggleDropdownNavMenu()">
+				<i class="fa fa-bars"></i>
+			</button>				
+			<div id="menu-inline">
+				{foreach from=$pageTabs key=tabID item=tab}
+					{if $tabID=='organizer'}
+						<a href="organizer.calendar.php?sid={$sid}" title="{lng p="calendar"}"{if $activeTab==$tabID && $organizerSection=='calendar'} class="active"{/if}>
+							<i class="fa fa-calendar"></i>
+						</a>
+						<a href="organizer.todo.php?sid={$sid}" title="{lng p="tasks"}"{if $activeTab==$tabID && $organizerSection=='todo'} class="active"{/if}>
+							<i class="fa fa-check-square-o"></i>
+						</a>
+						<a href="organizer.addressbook.php?sid={$sid}" title="{lng p="addressbook"}"{if $activeTab==$tabID && $organizerSection=='addressbook'} class="active"{/if}>
+							<i class="fa fa-users"></i>
+						</a>
+						<a href="organizer.notes.php?sid={$sid}" title="{lng p="notes"}"{if $activeTab==$tabID && $organizerSection=='notes'} class="active"{/if}>
+							<i class="fa fa-pencil"></i>
+						</a>
+					{else}
+						{comment text="tab $tabID"}
+						<a href="{$tab.link}{$sid}" title="{$tab.text}"{if $activeTab==$tabID} class="active"{/if}>
+							<i class="fa {$tab.faIcon}"></i>
+						</a>
+					{/if}
+				{/foreach}
+			</div>
 
 			<div class="toolbar right">
 				{if $bmNotifyInterval>0}<a href="#" onclick="showNotifications(this)" title="{lng p="notifications"}" style="position:relative;"><i id="notifyIcon" class="fa fa-bell faa-ring"></i><div class="noBadge" id="notifyCount"{if $bmUnreadNotifications==0} style="display:none;"{/if}>{number value=$bmUnreadNotifications min=0 max=99}</div></a>{/if}
@@ -86,8 +105,9 @@
 			</div>
 		</div>
 
+		{if !isset($disablePageMenu) || !$disablePageMenu}
 		<div id="mainMenu" class="up">
-			<div id="mainMenuContainer"{if $templatePrefs.navPos=='left'} style="bottom:{math equation="x*29" x=$pageTabsCount}px;"{/if}>
+			<div id="mainMenuContainer">
 	            {if $pageMenuFile}
 	            {comment text="including $pageMenuFile"}
 	            {include file="$pageMenuFile"}
@@ -105,21 +125,8 @@
 	        	{/foreach}
 	            {/if}
             </div>
-
-			{if $templatePrefs.navPos=='left'}
-			<ul id="menuTabItems">
-	            {foreach from=$pageTabs key=tabID item=tab}
-	            {comment text="tab $tabID"}
-	            <li{if $activeTab==$tabID} class="active"{/if}>
-	            	<a href="{$tab.link}{$sid}">
-	            		<i class="fa {$tab.faIcon}"></i>
-	                    {if $tab.text}&nbsp;{$tab.text}{/if}
-	                </a>
-	            </li>
-	            {/foreach}
-			</ul>
-			{/if}
 		</div>
+		{/if}
 
 		<div id="mainBanner" style="display:none;">
 			{banner}
@@ -136,7 +143,7 @@
 				<table width="100%" cellspacing="0" cellpadding="0" class="up" onmouseover="disableHide=true;" onmouseout="disableHide=false;">
 					<tr>
 						<td>
-							{if $templatePrefs.navPos=='top'}<div class="arrow"></div>{/if}
+							<div class="arrow"></div>
 							<table cellspacing="0" cellpadding="0" width="100%">
 								<tr>
 									<td width="22" height="26" align="right"><i id="searchSpinner" style="display:none;" class="fa fa-spinner fa-pulse fa-fw"></i></td>

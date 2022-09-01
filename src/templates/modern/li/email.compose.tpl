@@ -52,7 +52,7 @@
 						<option value="{$senderID}"{if $senderID==$mail.from} selected="selected"{/if}>{email value=$sender}</option>
 					{/foreach}
 					</select></td>
-				<td width="140">&nbsp;</td>
+				<td width="160">&nbsp;</td>
 			</tr>
 			<tr>
 				<th>* <label for="to">{lng p="to"}:</label></th>

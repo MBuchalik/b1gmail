@@ -39,7 +39,7 @@
 	{if $mailList}
 	{assign var=first value=true}
 	{foreach from=$mailList key=mailID item=mail}
-	{assign var=mailGroupID value=$mail.groupID}
+	{assign var=mailGroupID value=$mail.groupID|default:'default'}
 	{cycle values="listTableTR,listTableTR2" assign="class"}
 
 	{if $mailID<0}
@@ -49,11 +49,11 @@
 	{/if}
 	<tr>
 		<td colspan="{if $templatePrefs.showCheckboxes}3{else}2{/if}" class="folderGroup">
-			<a style="display:block;cursor:pointer;" onclick="toggleGroup({$mailID},'{$mail.groupID}');">&nbsp;<img id="groupImage_{$mailID}" src="{$tpldir}images/{if $smarty.cookies.toggleGroup.$mailGroupID=='closed'}expand{else}contract{/if}.png" width="11" height="11" border="0" align="absmiddle" alt="" />
+			<a style="display:block;cursor:pointer;" onclick="toggleGroup({$mailID},'{$mail.groupID}');">&nbsp;<img id="groupImage_{$mailID}" src="{$tpldir}images/{if isset($smarty.cookies.toggleGroup.$mailGroupID) && $smarty.cookies.toggleGroup.$mailGroupID=='closed'}expand{else}contract{/if}.png" width="11" height="11" border="0" align="absmiddle" alt="" />
 			&nbsp;{$mail.text} {if $mail.date && $mail.date!=-1}({date timestamp=$mail.date dayonly=true}){/if}</a>
 		</td>
 	</tr>
-	<tbody id="group_{$mailID}" style="display:{if $smarty.cookies.toggleGroup.$mailGroupID=='closed'}none{/if};">
+	<tbody id="group_{$mailID}" style="display:{if isset($smarty.cookies.toggleGroup.$mailGroupID) && $smarty.cookies.toggleGroup.$mailGroupID=='closed'}none{/if};">
 	{assign var=first value=false}
 	{else}
 	<tr id="mail_{$mailID}_ntr" class="{$class}">
