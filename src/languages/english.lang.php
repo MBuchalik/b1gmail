@@ -19,8 +19,7 @@
  *
  */
 
-// b1gMailLang::English::Your Personal Hoster GbR::jw@yopeho.de::http://www.yopeho.de/::UTF-8::en_US.UTF-8|en_US|en_GB.UTF-8|en_GB|english|en|us::en
-// Translation: Thilo Weber / YoPeHo - Your Personal Hoster GbR (www.yopeho.de)
+// b1gMailLang::English::en_US.UTF-8|en_US|en_GB.UTF-8|en_GB|english|en|us::en
 
 /**
  * Client phrases

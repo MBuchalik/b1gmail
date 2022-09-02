@@ -19,7 +19,7 @@
  *
  */
 
-// b1gMailLang::Deutsch (Sie)::b1gMail Project::info@b1gmail.org::http://www.b1g.de/::UTF-8::de_DE.UTF-8|de_DE|de_DE@euro|de|ge|deu|deu_deu|ger::de
+// b1gMailLang::Deutsch::de_DE.UTF-8|de_DE|de_DE@euro|de|ge|deu|deu_deu|ger::de
 
 /**
  * Client phrases

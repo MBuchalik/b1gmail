@@ -43,7 +43,7 @@ class Template extends Smarty {
      * @return Template
      */
     function __construct() {
-        global $bm_prefs, $lang_user, $lang_info;
+        global $bm_prefs, $lang_user;
 
         parent::__construct();
 
@@ -71,7 +71,8 @@ class Template extends Smarty {
 
         // variables
         $this->assign('service_title', HTMLFormat($bm_prefs['titel']));
-        $this->assign('charset', $lang_info['charset']);
+        // In older versions of b1gmail, various charsets were supported. On the long run, we want to allow only UTF-8.
+        $this->assign('charset', 'utf-8');
         if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
             $this->assign(
                 'selfurl',

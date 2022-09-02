@@ -7,7 +7,6 @@
 			<th width="20">&nbsp;</th>
 			<th width="25" style="text-align:center;"><a href="javascript:invertSelection(document.forms.f1,'lang_');"><img src="{$tpldir}images/dot.png" border="0" alt="" width="10" height="8" /></a></th>
 			<th>{lng p="language"}</th>
-			<th>{lng p="author"}</th>
 			<th width="60">&nbsp;</th>
 		</tr>
 		
@@ -16,8 +15,7 @@
 		<tr class="{$class}">
 			<td align="center"><img src="{$tpldir}images/language.png" border="0" alt="" width="16" height="16" /></td>
 			<td align="center">{if $language.writeable && !$language.default}<input type="checkbox" name="lang_{$langID}" />{/if}</td>
-			<td>{text value=$language.title}<br /><small>{text value=$language.charset}, {text value=$language.locale}</small></td>
-			<td>{text value=$language.author}<br /><small>{text value=$language.authorWeb allowEmpty=true}</small></td>
+			<td>{text value=$language.title}<br /><small>{text value=$language.locale}</small></td>
 			<td>
 				<a href="prefs.languages.php?action=texts&lang={$langID}&sid={$sid}"><img src="{$tpldir}images/phrases.png" border="0" alt="{lng p="customtexts"}" width="16" height="16" /></a>
 				{if $language.writeable && !$language.default}<a href="prefs.languages.php?delete={$langID}&sid={$sid}" onclick="return confirm('{lng p="realdel"}');"><img src="{$tpldir}images/delete.png" border="0" alt="{lng p="delete"}" width="16" height="16" /></a>{/if}

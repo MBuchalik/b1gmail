@@ -3329,24 +3329,11 @@ function GetLanguageInfo($file) {
                 '// b1gMailLang::'
             ) {
                 $fields = explode('::', trim($line));
-                [
-                    ,
-                    $langTitle,
-                    $langAuthor,
-                    $langAuthorMail,
-                    $langAuthorWeb,
-                    $langCharset,
-                    $langLocale,
-                    $langCode,
-                ] = $fields;
+                [, $langTitle, $langLocale, $langCode] = $fields;
                 $result['ctime'] = filemtime($fileName);
                 $result['title'] = $langTitle;
-                $result['author'] = $langAuthor;
-                $result['authorMail'] = $langAuthorMail;
-                $result['authorWeb'] = $langAuthorWeb;
-                $result['charset'] = $langCharset;
                 $result['locale'] = $langLocale;
-                $result['code'] = isset($fields[7]) ? $fields[7] : '';
+                $result['code'] = $langCode;
                 $result['writeable'] = is_writeable(
                     B1GMAIL_DIR . 'languages/' . $file . '.lang.php',
                 );
@@ -3639,7 +3626,8 @@ function ReadLanguage() {
 
     // get info
     $currentLanguage = $language;
-    $currentCharset = $lang_info['charset'];
+    // In older versions of b1gmail, various charsets were supported. On the long run, we want to allow only UTF-8.
+    $currentCharset = 'utf-8';
 
     // locale
     $localeOK = false;
