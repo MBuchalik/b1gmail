@@ -83,7 +83,7 @@ if (
 if ($_REQUEST['action'] == 'tos') {
     // terms of service
     $tpl->assign('pageTitle', $lang_user['tos']);
-    $tpl->assign('tos', nl2br(HTMLFormat($lang_custom['tos'])));
+    $tpl->assign('tos', $lang_custom['tos']);
     $tpl->assign('page', 'nli/tos.tpl');
 } /**
  * imprint

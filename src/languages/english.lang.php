@@ -114,41 +114,7 @@ $lang_custom['welcome_text'] =
     "\n\n" .
     '(This email has been generated automatically)';
 $lang_custom['tos'] =
-    'I. TOS' .
-    "\n" .
-    '1. By signing up and/or clicking on "accept" and/or registering with our service, you signify your agreement to our terms of use and commit to observe them.' .
-    "\n" .
-    '2. The provider reserves the right to revise the terms of use at any time without notification.' .
-    "\n\n" .
-    'II. Description of our service' .
-    "\n" .
-    '1. Any internet costs the user may have while using this webmail are the user\'s responsibility.' .
-    "\n" .
-    '2. The software necessary to access our service(common web browser) must be provided by the user.' .
-    "\n" .
-    '3. The provider does not check on messages or any other content stored on b1gMail unless bound by law to do so.' .
-    "\n\n" .
-    'III. User\'s Obligations' .
-    "\n" .
-    '1. By purchasing this product you agree not to use it for spamming purposes of any kind and not to use it to offend against German law.' .
-    "\n" .
-    '2. The user and only the user is responsible for any operations carried out with the help of this application.' .
-    "\n" .
-    '3. It is the user\'s responsibility to keep his/her password safe and secret and to prevent his/her account from being accessed by any third party. If, however, a third pary should unauthorizedly gain access to the user\'s account and perform illegal actions(such as offend against thes terms of use or German law), only the registered user of the account can and will be held liable.' .
-    "\n" .
-    '4. It is explicitly prohibited to use this service for the purpose of sending spam emails and mass emails. The user will be liable to compensate for any damage or loss.' .
-    "\n" .
-    '5. Any contravention of III. 1-4 or any other section of the terms of use will authorize the provider to delete the contravening user\'s account and all of his/ data without requiring his/her consent.' .
-    "\n\n" .
-    'IV. Data Protection' .
-    "\n" .
-    '1. The provider is obliged not to give registration or address data to any third party unless bound by law to do so.' .
-    "\n" .
-    '2. The provider is authorized to retain the user\'s address data for an unlimited period of time as documentary support in case of a legal dispute.' .
-    "\n\n" .
-    'V. Final Provisions' .
-    "\n" .
-    '1. It is the operator named in the imprint that is responsible for this website and its contents. The producer of the software is not involved.';
+    'Please customize the Terms of Service (TOS).<br /><br />You will find it in the <a href="./admin/">administration panel</a> under <i>"Settings" - "Languages" - "Customizable Texts"</i>. This can be done for any language installed.';
 $lang_custom['imprint'] =
     'Please customize the imprint.<br /><br />You will find it in the <a href="./admin/">administration panel</a> under <i>"Settings" - "Languages" - "Customizable Texts"</i>. This can be done for any language installed.';
 $lang_custom['maintenance'] =

@@ -127,41 +127,7 @@ $lang_custom['welcome_text'] =
     "\n\n" .
     '(Diese E-Mail wurde automatisch erstellt)';
 $lang_custom['tos'] =
-    'I. AGB' .
-    "\n" .
-    '1. Mit der Anmeldung und/oder dem Klick auf "Akzeptieren" bzw. der Registrierung bei diesem Dienst erkennen Sie unsere AGB an und verpflichten sich, diese einzuhalten.' .
-    "\n" .
-    '2. Der Anbieter ist jederzeit dazu befugt, diese AGB ohne Benachrichtigung zu ändern.' .
-    "\n\n" .
-    'II. Umfang des Dienstes' .
-    "\n" .
-    '1. Die Kosten für die Internetkosten, die während der Benutzung dieses Webmail-Dienstes anfallen, sind vom User selbst zu tragen.' .
-    "\n" .
-    '2. Das Zugangsprogramm (gängiger Browser) hat der User selbst bereitzustellen.' .
-    "\n" .
-    '3. Der Anbieter wird keine von Ihnen gespeicherten Daten / E-Mails überprüfen bzw. einsehen, außer er wird gerichtlich bzw. gesetzlich dazu verpflichtet.' .
-    "\n\n" .
-    'III. Pflichten des Kunden' .
-    "\n" .
-    '1. Der User ist dazu verpflichtet, den Dienst nicht zum Betreiben von Spamming zu missbrauchen. Der User verpflichtet sich dazu, mit der Benutzung des Dienstes nicht gegen Deutsches Recht zu verstoßen.' .
-    "\n" .
-    '2. Für alle Aktionen die der User mit dem Dienst ausführt, ist ausschließlich der User voll und ganz verantwortlich.' .
-    "\n" .
-    '3. Der User ist dazu verpflichtet, seinen Account vor dem Zugang von Dritten zu schützen und sein Passwort gut zu verwahren und nicht weiterzugeben. Sollte dennoch ein Dritter in den Account eindringen und illegale Handlungen (gegen diese AGB bzw. Deutsches Recht) durchführen, kann und wird nur der wirkliche User des Accounts für diese Handlungen verantwortlich gemacht werden.' .
-    "\n" .
-    '4. Die Nutzung des Dienstes zum Versenden von Werbe-, Spam- und Massen-E-Mails ("Mail-Bomben") ist ausdrücklich verboten und verpflichtet den User zur Wiedergutmachung des entstandenen Schadens (gegenüber seines "Opfers" und gegenüber des Anbieters).' .
-    "\n" .
-    '5. Bei einem Verstoß gegen die Punkte III. 1-4 und allgemein gegen die AGB ist der Anbieter befugt, den User ohne jegliche Nachfrage zu löschen und alle seine gespeicherten Daten zu vernichten.' .
-    "\n\n" .
-    'IV. Datenschutz' .
-    "\n" .
-    '1. Der Anbieter verpflichtet sich, weder Anmeldungsdaten noch Adress- und Mitteilungsdaten an Dritte weiterzugeben, außer er ist gesetzlich dazu verpflichtet.' .
-    "\n" .
-    '2. Der Anbieter ist befugt, die Adressdaten des Users im Streitfall zu Beweiszwecken über unbegrenzten Zeitraum zu speichern.' .
-    "\n\n" .
-    'V. Schlussbestimmungen' .
-    "\n" .
-    '1. Verantwortlich für diese Webseite und diesen Dienst ist ausschließlich der im Impressum genannte Betreiber. Hersteller/Entwickler der zu Grunde liegenden Software haben keinen Einfluss auf diesen Dienst.';
+    'Bitte passen Sie die AGB an.<br /><br />Dies ist im <a href="./admin/">Administrations-Bereich</a> unter <i>"Einstellungen" - "Sprachen" - "Anpassbare Texte"</i> individuell f&uuml;r jede installierte Sprache m&ouml;glich.';
 $lang_custom['imprint'] =
     'Bitte passen Sie das Impressum an.<br /><br />Dies ist im <a href="./admin/">Administrations-Bereich</a> unter <i>"Einstellungen" - "Sprachen" - "Anpassbare Texte"</i> individuell f&uuml;r jede installierte Sprache m&ouml;glich.';
 $lang_custom['maintenance'] =
