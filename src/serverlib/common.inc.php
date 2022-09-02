@@ -1634,7 +1634,7 @@ function GetPhraseForLanguage($language, $var, $phrase) {
         }
 
         $lang_custom = $lang_client = $lang_user = $lang_admin = [];
-        @include B1GMAIL_DIR . 'languages/' . $language . '.lang.php';
+        @include B1GMAIL_DIR . 'serverlib/languages/' . $language . '.lang.php';
 
         if (!MAINTENANCE_MODE) {
             // module handler
@@ -3320,7 +3320,7 @@ function GetLanguageInfo($file) {
         }
     }
 
-    $fileName = B1GMAIL_DIR . 'languages/' . $file . '.lang.php';
+    $fileName = B1GMAIL_DIR . 'serverlib/languages/' . $file . '.lang.php';
     $cacheKey = 'langInfo:' . $file;
 
     // in cache?
@@ -3454,7 +3454,7 @@ function GetAvailableLanguages($includeDisabledLanguages = false) {
 
     $result = [];
 
-    $dir = @dir(B1GMAIL_DIR . 'languages/');
+    $dir = @dir(B1GMAIL_DIR . 'serverlib/languages/');
     if (is_object($dir)) {
         while ($file = $dir->read()) {
             if (
@@ -3571,12 +3571,16 @@ function ReadLanguage() {
     $language = preg_replace('/([^a-zA-Z0-9\-\_]*)/', '', $language);
 
     // exists?
-    if (!file_exists(B1GMAIL_DIR . 'languages/' . $language . '.lang.php')) {
+    if (
+        !file_exists(
+            B1GMAIL_DIR . 'serverlib/languages/' . $language . '.lang.php',
+        )
+    ) {
         // fall back?
         if (
             file_exists(
                 B1GMAIL_DIR .
-                    'languages/' .
+                    'serverlib/languages/' .
                     $bm_prefs['language'] .
                     '.lang.php',
             )
@@ -3614,7 +3618,12 @@ function ReadLanguage() {
         $lang_custom = $langData['custom'];
         unset($langData);
     } else {
-        if (!@include B1GMAIL_DIR . 'languages/' . $language . '.lang.php') {
+        if (
+            !@include B1GMAIL_DIR .
+                'serverlib/languages/' .
+                $language .
+                '.lang.php'
+        ) {
             // parse error
             DisplayError(
                 0x04,
