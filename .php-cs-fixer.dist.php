@@ -109,7 +109,6 @@ final class PrettierPHPFixer implements FixerInterface {
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__ . '/src/')
 
-    ->exclude('clientlib/')
     ->exclude('data/')
     ->exclude('serverlib/3rdparty/')
     ->exclude('temp/')

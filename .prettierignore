@@ -1,6 +1,6 @@
-src/clientlib/ckeditor/
-src/clientlib/fontawesome/
-src/clientlib/jquery/
 src/serverlib/3rdparty/
 src/templates/modern/bootstrap/
+src/templates/modern/clientlib/ckeditor/
+src/templates/modern/clientlib/fontawesome/
+src/templates/modern/clientlib/jquery/
 vendor/
