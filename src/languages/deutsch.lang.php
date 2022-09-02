@@ -128,6 +128,8 @@ $lang_custom['welcome_text'] =
     '(Diese E-Mail wurde automatisch erstellt)';
 $lang_custom['tos'] =
     'Bitte passen Sie die AGB an.<br /><br />Dies ist im <a href="./admin/">Administrations-Bereich</a> unter <i>"Einstellungen" - "Sprachen" - "Anpassbare Texte"</i> individuell f&uuml;r jede installierte Sprache m&ouml;glich.';
+$lang_custom['privacy_policy'] =
+    'Bitte passen Sie die Datenschutzerkl&auml;rung an.<br /><br />Dies ist im <a href="./admin/">Administrations-Bereich</a> unter <i>"Einstellungen" - "Sprachen" - "Anpassbare Texte"</i> individuell f&uuml;r jede installierte Sprache m&ouml;glich.';
 $lang_custom['imprint'] =
     'Bitte passen Sie das Impressum an.<br /><br />Dies ist im <a href="./admin/">Administrations-Bereich</a> unter <i>"Einstellungen" - "Sprachen" - "Anpassbare Texte"</i> individuell f&uuml;r jede installierte Sprache m&ouml;glich.';
 $lang_custom['maintenance'] =
@@ -378,6 +380,8 @@ $lang_user['jswarning'] =
     'Bitte aktivieren Sie JavaScript. Die Nutzung des Dienstes ist ansonsten nicht m&ouml;glich!';
 $lang_user['imprint'] = 'Impressum';
 $lang_user['tos'] = 'AGB';
+$lang_user['privacy'] = 'Datenschutz';
+$lang_user['privacy_policy'] = 'Datenschutz-Erkl&auml;rung';
 $lang_user['mobilepda'] = 'Mobil';
 $lang_user['mobiledenied'] =
     'Sie verf&uuml;gen nicht &uuml;ber die zum Zugriff auf das Mobil-Interface ben&ouml;tigen Zugriffsrechte.';

@@ -58,6 +58,7 @@
 				{foreach from=$pluginUserPages item=item}{if $item.top&&(!$item.after||$item.after=='tos')}
 					<li{if $item.active} class="active"{/if}><a href="{$item.link}">{$item.text}</a></li>
 				{/if}{/foreach}
+					<li{if $smarty.request.action=='privacy-policy'} class="active"{/if}><a href="index.php?action=privacy-policy">{lng p="privacy"}</a></li>
 					<li{if $smarty.request.action=='imprint'} class="active"{/if}><a href="index.php?action=imprint">{lng p="imprint"}</a></li>
 				</ul>
 				<form action="{if $ssl_login_enable || (isset($welcomeBack) && $welcomeBack && $smarty.cookies.bm_savedSSL)}{$ssl_url}{/if}index.php?action=login" method="post" id="loginFormPopover">

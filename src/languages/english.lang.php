@@ -114,6 +114,8 @@ $lang_custom['welcome_text'] =
     '(This email has been generated automatically)';
 $lang_custom['tos'] =
     'Please customize the Terms of Service (TOS).<br /><br />You will find it in the <a href="./admin/">administration panel</a> under <i>"Settings" - "Languages" - "Customizable Texts"</i>. This can be done for any language installed.';
+$lang_custom['privacy_policy'] =
+    'Please customize the Privacy Policy.<br /><br />You will find it in the <a href="./admin/">administration panel</a> under <i>"Settings" - "Languages" - "Customizable Texts"</i>. This can be done for any language installed.';
 $lang_custom['imprint'] =
     'Please customize the imprint.<br /><br />You will find it in the <a href="./admin/">administration panel</a> under <i>"Settings" - "Languages" - "Customizable Texts"</i>. This can be done for any language installed.';
 $lang_custom['maintenance'] =
@@ -460,6 +462,8 @@ $lang_user['jswarning'] =
     'Please activate JavaScript. Otherwise you will not be able to use this service!';
 $lang_user['imprint'] = 'Imprint';
 $lang_user['tos'] = 'TOS';
+$lang_user['privacy'] = 'Privacy';
+$lang_user['privacy_policy'] = 'Privacy Policy';
 $lang_user['mobilepda'] = 'Mobile';
 $lang_user['mobiledenied'] =
     'You are not authorized to use the mobile interface.';

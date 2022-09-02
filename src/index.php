@@ -77,17 +77,15 @@ if (
     exit();
 }
 
-/**
- * terms of service
- */
 if ($_REQUEST['action'] == 'tos') {
-    // terms of service
     $tpl->assign('pageTitle', $lang_user['tos']);
     $tpl->assign('tos', $lang_custom['tos']);
     $tpl->assign('page', 'nli/tos.tpl');
-} /**
- * imprint
- */ elseif ($_REQUEST['action'] == 'imprint') {
+} elseif ($_REQUEST['action'] == 'privacy-policy') {
+    $tpl->assign('pageTitle', $lang_user['privacy_policy']);
+    $tpl->assign('privacyPolicy', $lang_custom['privacy_policy']);
+    $tpl->assign('page', 'nli/privacy-policy.tpl');
+} elseif ($_REQUEST['action'] == 'imprint') {
     if ($bm_prefs['contactform'] == 'yes') {
         if (!class_exists('BMCaptcha')) {
             include B1GMAIL_DIR . 'serverlib/captcha.class.php';
@@ -190,10 +188,7 @@ if ($_REQUEST['action'] == 'tos') {
     $tpl->assign('pageTitle', $lang_user['contact']);
     $tpl->assign('imprint', $lang_custom['imprint']);
     $tpl->assign('page', 'nli/imprint.tpl');
-} /**
- * faq
- */ elseif ($_REQUEST['action'] == 'faq') {
-    // faq
+} elseif ($_REQUEST['action'] == 'faq') {
     $faq = [];
     $res = $db->Query(
         'SELECT id,frage,antwort FROM {pre}faq WHERE (lang=? OR lang=?) AND (typ=? OR typ=?) ORDER BY frage ASC',
@@ -217,9 +212,7 @@ if ($_REQUEST['action'] == 'tos') {
     $tpl->assign('pageTitle', $lang_user['faq']);
     $tpl->assign('faq', $faq);
     $tpl->assign('page', 'nli/faq.tpl');
-} /**
- * sign up
- */ elseif ($_REQUEST['action'] == 'signup') {
+} elseif ($_REQUEST['action'] == 'signup') {
     $tpl->assign('pageTitle', $lang_user['signup']);
 
     // sign up ip lock?
