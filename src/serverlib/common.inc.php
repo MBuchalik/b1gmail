@@ -3309,13 +3309,25 @@ function ModuleFunction($function, $args = false) {
 function GetLanguageInfo($file) {
     global $bm_prefs, $cacheManager;
 
+    $isDefault = $bm_prefs['language'] === $file;
+
+    $isDisabled = false;
+    // We also check whether it is the default language, because in this case, we simply want to ignore whether the language is disabled according to the setting.
+    if ($bm_prefs['disabled_languages'] !== null && !$isDefault) {
+        $allDisabledLanguages = explode(',', $bm_prefs['disabled_languages']);
+        if (in_array($file, $allDisabledLanguages)) {
+            $isDisabled = true;
+        }
+    }
+
     $fileName = B1GMAIL_DIR . 'languages/' . $file . '.lang.php';
     $cacheKey = 'langInfo:' . $file;
 
     // in cache?
     $cacheData = $cacheManager->Get($cacheKey);
-    if ($cacheData && $cacheData['ctime'] == filemtime($fileName)) {
-        $cacheData['default'] = $bm_prefs['language'] == $file;
+    if ($cacheData && $cacheData['ctime'] === filemtime($fileName)) {
+        $cacheData['default'] = $isDefault;
+        $cacheData['disabled'] = $isDisabled;
         return $cacheData;
     }
 
@@ -3334,7 +3346,8 @@ function GetLanguageInfo($file) {
                 $result['title'] = $langTitle;
                 $result['locale'] = $langLocale;
                 $result['code'] = $langCode;
-                $result['default'] = $bm_prefs['language'] == $file;
+                $result['default'] = $isDefault;
+                $result['disabled'] = $isDisabled;
                 break;
             }
         }
@@ -3436,7 +3449,7 @@ function GetAvailableTemplates() {
  *
  * @return array
  */
-function GetAvailableLanguages() {
+function GetAvailableLanguages($includeDisabledLanguages = false) {
     global $bm_prefs, $currentLanguage;
 
     $result = [];
@@ -3445,21 +3458,24 @@ function GetAvailableLanguages() {
     if (is_object($dir)) {
         while ($file = $dir->read()) {
             if (
-                $file != '.' &&
-                $file != '..' &&
-                substr($file, -9) == '.lang.php'
+                $file === '.' ||
+                $file === '..' ||
+                substr($file, -9) !== '.lang.php'
             ) {
-                if ($info = GetLanguageInfo(substr($file, 0, -9))) {
-                    if (
-                        strtolower($bm_prefs['language']) ==
-                        strtolower(substr($file, 0, -9))
-                    ) {
-                        $info['default'] = true;
-                    }
-                    $info['active'] = $currentLanguage == substr($file, 0, -9);
-                    $result[substr($file, 0, -9)] = $info;
-                }
+                continue;
             }
+
+            $info = GetLanguageInfo(substr($file, 0, -9));
+            if (!$info) {
+                continue;
+            }
+
+            if ($info['disabled'] && !$includeDisabledLanguages) {
+                continue;
+            }
+
+            $info['active'] = $currentLanguage === substr($file, 0, -9);
+            $result[substr($file, 0, -9)] = $info;
         }
         $dir->close();
     }

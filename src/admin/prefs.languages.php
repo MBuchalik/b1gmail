@@ -42,14 +42,60 @@ $tabs = [
     ],
 ];
 
+function updateDisabledLanguages(array $newListOfDisabledLanguages) {
+    global $db;
+
+    $langsAsString = implode(',', $newListOfDisabledLanguages);
+
+    $db->Query('UPDATE {pre}prefs SET disabled_languages = ?', $langsAsString);
+}
+
 /**
  * fields
  */
 if ($_REQUEST['action'] == 'languages') {
-    // get available languages
-    $languages = GetAvailableLanguages();
+    $languages = GetAvailableLanguages(true);
 
-    // assign
+    if (
+        isset($_REQUEST['disable']) &&
+        array_key_exists($_REQUEST['disable'], $languages) &&
+        !$languages[$_REQUEST['disable']]['default']
+    ) {
+        $allDisabledLanguages = [];
+        foreach ($languages as $langKey => $langInfo) {
+            if (!$langInfo['disabled']) {
+                continue;
+            }
+            $allDisabledLanguages[] = $langKey;
+        }
+
+        $allDisabledLanguages[] = $_REQUEST['disable'];
+
+        updateDisabledLanguages($allDisabledLanguages);
+        header('Location: prefs.languages.php?sid=' . session_id());
+        exit();
+    }
+
+    if (
+        isset($_REQUEST['enable']) &&
+        array_key_exists($_REQUEST['enable'], $languages)
+    ) {
+        $allDisabledLanguages = [];
+        foreach ($languages as $langKey => $langInfo) {
+            if (!$langInfo['disabled']) {
+                continue;
+            }
+            if ($langKey === $_REQUEST['enable']) {
+                continue;
+            }
+            $allDisabledLanguages[] = $langKey;
+        }
+
+        updateDisabledLanguages($allDisabledLanguages);
+        header('Location: prefs.languages.php?sid=' . session_id());
+        exit();
+    }
+
     $tpl->assign('languages', $languages);
     $tpl->assign('page', 'prefs.languages.tpl');
 } /**
