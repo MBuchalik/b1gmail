@@ -55,9 +55,11 @@ if (isset($_REQUEST['sid']) && trim($_REQUEST['sid']) != '') {
 }
 
 $lastModified = filemtime(
-    B1GMAIL_DIR . 'languages/' . $currentLanguage . '.lang.php',
+    B1GMAIL_DIR . 'serverlib/languages/' . $currentLanguage . '.lang.php',
 );
-$eTag = md5_file(B1GMAIL_DIR . 'languages/' . $currentLanguage . '.lang.php');
+$eTag = md5_file(
+    B1GMAIL_DIR . 'serverlib/languages/' . $currentLanguage . '.lang.php',
+);
 
 header('Content-Type: text/javascript; charset=' . $currentCharset);
 header('Cache-Control: private');
