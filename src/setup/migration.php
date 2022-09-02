@@ -31,8 +31,8 @@ class MigrationRunner {
         $migrationLevelsHigherThanCurrentLevel = [];
         foreach ($allMigrationLevels as $migrationLevel) {
             $comparisonResult = $this->compareMigrationLevels(
-                $currentMigrationLevel,
                 $migrationLevel,
+                $currentMigrationLevel,
             );
             if ($comparisonResult !== 1) {
                 continue;
@@ -95,7 +95,7 @@ class MigrationRunner {
     private function getAllMigrationLevels(): array {
         $allMigrations = [];
 
-        foreach (glob('../serverlib/migrations/*.php') as $filePath) {
+        foreach (glob('./migrations/*.php') as $filePath) {
             $migrationName = basename($filePath, '.php');
             $parsedMigrationName = $this->parseMigrationName($migrationName);
 
@@ -123,9 +123,9 @@ class MigrationRunner {
 
     /**
      * Compare the two provided Migration Levels.
-     * Return -1 if Level A is greater than Level B.
+     * Return -1 if Level A is less than Level B.
      * Return 0 is Levels A and B are equal.
-     * Return 1 is Level B is greater then Level A.
+     * Return 1 is Level A is greater than Level A.
      */
     private function compareMigrationLevels($levelA, $levelB): int {
         $fieldsToCompare = [
@@ -136,10 +136,10 @@ class MigrationRunner {
         ];
 
         foreach ($fieldsToCompare as $field) {
-            if ($levelA[$field] > $levelB[$field]) {
+            if ($levelA[$field] < $levelB[$field]) {
                 return -1;
             }
-            if ($levelB[$field] > $levelA[$field]) {
+            if ($levelA[$field] > $levelB[$field]) {
                 return 1;
             }
         }
@@ -153,7 +153,7 @@ class MigrationRunner {
     ): bool {
         $fileName = "{$migrationLevel['versionMajor']}-{$migrationLevel['versionMinor']}-{$migrationLevel['versionPatch']}--{$migrationLevel['migrationNumber']}";
 
-        require "../serverlib/migrations/{$fileName}.php";
+        require "./migrations/{$fileName}.php";
 
         $migrationClassName = "Migration_{$migrationLevel['versionMajor']}_{$migrationLevel['versionMinor']}_{$migrationLevel['versionPatch']}__{$migrationLevel['migrationNumber']}";
         $migrationInstance = new $migrationClassName();
