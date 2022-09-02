@@ -92,14 +92,16 @@
 							{/if}
 						</li>{/if}
 
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{foreach from=$languageList key=langKey item=langInfo}{if $langInfo.active}{$langInfo.title}{/if}{/foreach} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								{foreach from=$languageList key=langKey item=langInfo}
-								<li{if $langInfo.active} class="active"{/if}><a href="index.php?action=switchLanguage&amp;lang={$langKey}{if isset($smarty.get.action)}&amp;target={text value=$smarty.get.action}{/if}">{$langInfo.title}</a></li>
-								{/foreach}
-							</ul>
-						</li>
+						{if count($languageList) > 1}
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{foreach from=$languageList key=langKey item=langInfo}{if $langInfo.active}{$langInfo.title}{/if}{/foreach} <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									{foreach from=$languageList key=langKey item=langInfo}
+									<li{if $langInfo.active} class="active"{/if}><a href="index.php?action=switchLanguage&amp;lang={$langKey}{if isset($smarty.get.action)}&amp;target={text value=$smarty.get.action}{/if}">{$langInfo.title}</a></li>
+									{/foreach}
+								</ul>
+							</li>
+						{/if}
 					</ul>
 				</form>
 			</div>
