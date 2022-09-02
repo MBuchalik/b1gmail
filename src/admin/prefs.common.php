@@ -64,12 +64,6 @@ $tabs = [
         'link' => 'prefs.common.php?action=lockedusernames&',
         'active' => $_REQUEST['action'] == 'lockedusernames',
     ],
-    [
-        'title' => $lang_admin['taborder'],
-        'relIcon' => 'tab_order32.png',
-        'link' => 'prefs.common.php?action=taborder&',
-        'active' => $_REQUEST['action'] == 'taborder',
-    ],
 ];
 
 /**
@@ -481,95 +475,6 @@ if ($_REQUEST['action'] == 'common') {
     // assign
     $tpl->assign('domains', $domains);
     $tpl->assign('page', 'prefs.domains.tpl');
-} /**
- * tab order
- */ elseif ($_REQUEST['action'] == 'taborder') {
-    $pageTabs = [
-        'start' => [
-            'icon' => 'start',
-            'faIcon' => 'fa-home',
-            'text' => $lang_user['start'],
-            'order' => 100,
-        ],
-        'email' => [
-            'icon' => 'email',
-            'faIcon' => 'fa-envelope-o',
-            'text' => $lang_user['email'],
-            'order' => 200,
-        ],
-        'sms' => [
-            'icon' => 'sms',
-            'faIcon' => 'fa-comments',
-            'text' => $lang_user['sms'],
-            'order' => 300,
-        ],
-        'organizer' => [
-            'icon' => 'organizer',
-            'faIcon' => 'fa-calendar',
-            'text' => $lang_user['organizer'],
-            'order' => 400,
-        ],
-        'webdisk' => [
-            'icon' => 'webdisk',
-            'faIcon' => 'fa-cloud',
-            'text' => $lang_user['webdisk'],
-            'order' => 500,
-        ],
-    ];
-
-    if (!isset($groupRow) || !is_array($groupRow)) {
-        $groupRow = ['id' => $bm_prefs['std_gruppe']];
-    }
-
-    $moduleResult = $plugins->callFunction('getUserPages', false, true, [true]);
-    foreach ($moduleResult as $userPages) {
-        $pageTabs = array_merge($pageTabs, $userPages);
-    }
-
-    $pageTabs = array_merge($pageTabs, [
-        'prefs' => [
-            'icon' => 'prefs',
-            'faIcon' => 'fa-cog',
-            'text' => $lang_user['prefs'],
-            'order' => 600,
-        ],
-    ]);
-
-    // get tab order
-    $tabOrder = @unserialize($bm_prefs['taborder']);
-    if (!is_array($tabOrder)) {
-        $tabOrder = [];
-    }
-
-    // save?
-    if (
-        isset($_REQUEST['save']) &&
-        isset($_REQUEST['order']) &&
-        is_array($_REQUEST['order'])
-    ) {
-        foreach ($_REQUEST['order'] as $key => $order) {
-            $tabOrder[$key] = $order;
-        }
-        $db->Query('UPDATE {pre}prefs SET `taborder`=?', serialize($tabOrder));
-    }
-
-    // assign tab order
-    foreach ($tabOrder as $key => $val) {
-        if (isset($pageTabs[$key])) {
-            $pageTabs[$key]['order'] = $val;
-        }
-    }
-
-    // sort by order
-    ModuleFunction('BeforePageTabsAssign', [&$pageTabs]);
-    uasort($pageTabs, 'TemplateTabSort');
-
-    $tpl->assign(
-        'usertpldir',
-        B1GMAIL_REL . 'templates/' . $bm_prefs['template'] . '/',
-    );
-    $tpl->assign('pageTabs', $pageTabs);
-    $tpl->assign('page', 'prefs.taborder.tpl');
 }
 
 $tpl->assign('bm_prefs', $bm_prefs);

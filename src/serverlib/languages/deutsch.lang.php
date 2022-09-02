@@ -1608,7 +1608,6 @@ $lang_admin['layout_resetdesc'] =
 $lang_admin['organizerwidgets'] = 'Organizer-Dashboard';
 $lang_admin['pos'] = 'Position';
 $lang_admin['widgetlayouts'] = 'Widget-Layouts';
-$lang_admin['taborder'] = 'Tab-Reihenfolge';
 $lang_admin['payments'] = 'Zahlungen';
 $lang_admin['payment'] = 'Zahlung';
 $lang_admin['acp'] = 'Administrationsbereich (ACP)';

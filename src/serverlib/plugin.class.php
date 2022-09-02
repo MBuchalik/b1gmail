@@ -1231,11 +1231,6 @@ class BMPluginInterface {
      * @param string $pluginClass Plugin class name
      */
     function registerPlugin($pluginClass) {
-        // do not load obsolete plugins (integrated in b1gMail 7.2)
-        if (in_array($pluginClass, ['TabOrderPlugin', 'WidgetOrderPlugin'])) {
-            return false;
-        }
-
         $installed = false;
         $paused = false;
         $pos = 0;

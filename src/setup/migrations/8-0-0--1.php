@@ -30,6 +30,15 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
             return false;
         }
 
+        if (
+            !mysqli_query(
+                $dbConnection,
+                'ALTER TABLE bm60_prefs DROP COLUMN taborder',
+            )
+        ) {
+            return false;
+        }
+
         return true;
     }
 }

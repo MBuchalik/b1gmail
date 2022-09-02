@@ -1674,7 +1674,6 @@ $lang_admin['layout_resetdesc'] =
 $lang_admin['organizerwidgets'] = 'Organizer dashboard';
 $lang_admin['pos'] = 'Position';
 $lang_admin['widgetlayouts'] = 'Widget layouts';
-$lang_admin['taborder'] = 'Tab order';
 $lang_admin['payments'] = 'Payments';
 $lang_admin['invalidselffolder'] =
     'The configured absolute path to b1gMail (<code>%s</code>) does not exist. Please correct the path!';

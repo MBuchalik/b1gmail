@@ -244,25 +244,21 @@ class Template extends Smarty {
                     'faIcon' => 'fa-envelope-o',
                     'link' => 'email.compose.php?sid=',
                     'text' => $lang_user['email'],
-                    'order' => 100,
                 ],
                 [
                     'sep' => true,
-                    'order' => 200,
                 ],
                 [
                     'icon' => 'ico_calendar',
                     'faIcon' => 'fa-calendar',
                     'link' => 'organizer.calendar.php?action=addDate&sid=',
                     'text' => $lang_user['date2'],
-                    'order' => 300,
                 ],
                 [
                     'icon' => 'ico_todo',
                     'faIcon' => 'fa-tasks',
                     'link' => 'organizer.todo.php?action=addTask&sid=',
                     'text' => $lang_user['task'],
-                    'order' => 400,
                 ],
                 [
                     'icon' => 'ico_addressbook',
@@ -270,14 +266,12 @@ class Template extends Smarty {
                     'link' =>
                         'organizer.addressbook.php?action=addContact&sid=',
                     'text' => $lang_user['contact'],
-                    'order' => 500,
                 ],
                 [
                     'icon' => 'ico_notes',
                     'faIcon' => 'fa-sticky-note-o',
                     'link' => 'organizer.notes.php?action=addNote&sid=',
                     'text' => $lang_user['note'],
-                    'order' => 600,
                 ],
             ];
 
@@ -287,14 +281,12 @@ class Template extends Smarty {
                     'faIcon' => 'fa-home',
                     'link' => 'start.php?sid=',
                     'text' => $lang_user['start'],
-                    'order' => 100,
                 ],
                 'email' => [
                     'icon' => 'email',
                     'faIcon' => 'fa-envelope-o',
                     'link' => 'email.php?sid=',
                     'text' => $lang_user['email'],
-                    'order' => 200,
                 ],
             ];
 
@@ -304,19 +296,16 @@ class Template extends Smarty {
                     'faIcon' => 'fa-comments',
                     'link' => 'sms.php?sid=',
                     'text' => $lang_user['sms'],
-                    'order' => 300,
                 ];
 
                 $newMenu[] = [
                     'sep' => true,
-                    'order' => 800,
                 ];
                 $newMenu[] = [
                     'icon' => 'ico_composesms',
                     'faIcon' => 'fa-comments',
                     'link' => 'sms.php?sid=',
                     'text' => $lang_user['sms'],
-                    'order' => 801,
                 ];
             }
 
@@ -326,7 +315,6 @@ class Template extends Smarty {
                     'faIcon' => 'fa-calendar',
                     'link' => 'organizer.php?sid=',
                     'text' => $lang_user['organizer'],
-                    'order' => 400,
                 ],
             ]);
 
@@ -337,20 +325,17 @@ class Template extends Smarty {
                         'faIcon' => 'fa-cloud',
                         'link' => 'webdisk.php?sid=',
                         'text' => $lang_user['webdisk'],
-                        'order' => 500,
                     ],
                 ]);
 
                 $newMenu[] = [
                     'sep' => true,
-                    'order' => 700,
                 ];
                 $newMenu[] = [
                     'icon' => 'webdisk_file',
                     'faIcon' => 'fa-file-o',
                     'link' => 'webdisk.php?do=uploadFilesForm&sid=',
                     'text' => $lang_user['file'],
-                    'order' => 701,
                 ];
             }
 
@@ -377,26 +362,10 @@ class Template extends Smarty {
                     'faIcon' => 'fa-cog',
                     'link' => 'prefs.php?sid=',
                     'text' => $lang_user['prefs'],
-                    'order' => 600,
                 ],
             ]);
 
-            // sort by order
-            if (is_array($tabOrder = @unserialize($bm_prefs['taborder']))) {
-                foreach ($tabOrder as $orderKey => $orderVal) {
-                    if (isset($pageTabs[$orderKey])) {
-                        if ($orderVal == -1) {
-                            unset($pageTabs[$orderKey]);
-                        } else {
-                            $pageTabs[$orderKey]['order'] = $orderVal;
-                        }
-                    }
-                }
-            }
-
             ModuleFunction('BeforePageTabsAssign', [&$pageTabs]);
-            uasort($pageTabs, 'TemplateTabSort');
-            uasort($newMenu, 'TemplateTabSort');
 
             $this->assign('pageTabs', $pageTabs);
             $this->assign('pageTabsCount', count($pageTabs));
@@ -464,22 +433,6 @@ class Template extends Smarty {
             $parent,
             $do_clone,
         );
-    }
-}
-
-/**
- * helper functions
- */
-function TemplateTabSort($a, $b) {
-    $aOrder = isset($a['order']) ? $a['order'] : 599;
-    $bOrder = isset($b['order']) ? $b['order'] : 599;
-
-    if ($aOrder == $bOrder) {
-        return 0;
-    } elseif ($aOrder < $bOrder) {
-        return -1;
-    } else {
-        return 1;
     }
 }
 
