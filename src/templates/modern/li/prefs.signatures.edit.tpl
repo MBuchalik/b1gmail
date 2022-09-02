@@ -29,8 +29,8 @@
 			<td class="listTableRight">
 				<div style="border:1px solid #DDDDDD;">
 					<textarea name="html" id="html" style="width:100%;height:150px;">{if isset($signature)}{text value=$signature.html allowEmpty=true}{/if}</textarea>
-					<script src="./clientlib/wysiwyg.js?{fileDateSig file="../../clientlib/wysiwyg.js"}"></script>
-					<script type="text/javascript" src="./clientlib/ckeditor/ckeditor.js?{fileDateSig file="../../clientlib/ckeditor/ckeditor.js"}"></script>
+					<script src="{$tpldir}clientlib/wysiwyg.js?{fileDateSig file="clientlib/wysiwyg.js"}"></script>
+					<script type="text/javascript" src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
 					<script>
 						var editor = new htmlEditor('html', '{$tpldir}/images/editor/');
 						editor.init();

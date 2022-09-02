@@ -132,8 +132,8 @@
 		{else}
 		<input type="hidden" name="textMode" value="html" />
 		{/if}
-		<script src="./clientlib/wysiwyg.js?{fileDateSig file="../../clientlib/wysiwyg.js"}"></script>
-		<script type="text/javascript" src="./clientlib/ckeditor/ckeditor.js?{fileDateSig file="../../clientlib/ckeditor/ckeditor.js"}"></script>
+		<script src="{$tpldir}clientlib/wysiwyg.js?{fileDateSig file="clientlib/wysiwyg.js"}"></script>
+		<script type="text/javascript" src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
 		<script>
 		<!--
 			var autoSaveDrafts = {if $autoSaveDrafts}true{else}false{/if};
@@ -211,7 +211,7 @@
 
 <div id="composeLoading" style="display:none"><i class="fa fa-spinner fa-pulse fa-fw fa-3x"></i></div>
 
-<script src="./clientlib/dndupload.js?{fileDateSig file="../../clientlib/dndupload.js"}" type="text/javascript"></script>
+<script src="{$tpldir}clientlib/dndupload.js?{fileDateSig file="clientlib/dndupload.js"}" type="text/javascript"></script>
 
 <script>
 <!--

@@ -15,12 +15,12 @@
 	<!-- client scripts -->
 	<script type="text/javascript" src="{$selfurl}clientlang.php"></script>
 	<script type="text/javascript" src="{$selfurl}{$_tpldir}js/common.js"></script>
-	<script type="text/javascript" src="{$selfurl}clientlib/overlay.js"></script>
-	<script type="text/javascript" src="{$selfurl}clientlib/share.js"></script>
+	<script type="text/javascript" src="{$selfurl}{$_tpldir}clientlib/overlay.js"></script>
+	<script type="text/javascript" src="{$selfurl}{$_tpldir}clientlib/share.js"></script>
 
 	<!-- font awesome -->
-	<link href="{$selfurl}clientlib/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<link href="{$selfurl}clientlib/fontawesome/css/font-awesome-animation.min.css" rel="stylesheet" type="text/css" />
+	<link href="{$selfurl}{$_tpldir}clientlib/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="{$selfurl}{$_tpldir}clientlib/fontawesome/css/font-awesome-animation.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <!-- body -->

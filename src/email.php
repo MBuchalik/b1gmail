@@ -42,7 +42,7 @@ include './serverlib/email.top.php';
 /**
  * default action = start
  */
-$tpl->addJSFile('li', 'clientlib/selectable.js');
+$tpl->addJSFile('li', $tpl->tplDir . 'clientlib/selectable.js');
 $tpl->addJSFile('li', $tpl->tplDir . 'js/email.js');
 if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'folder';

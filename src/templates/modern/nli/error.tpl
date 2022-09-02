@@ -12,7 +12,7 @@
 						padding: 30px 15px; margin-top: 3em; margin-left: auto; margin-right: auto; }{/literal}
 	//-->
 	</style>
-	<link href="{$selfurl}clientlib/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="{$tpldir}clientlib/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body bgcolor="#F1F2F6">
 	

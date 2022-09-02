@@ -120,7 +120,7 @@
 	{hook id="webdisk.folder.tpl:foot"}
 	
 	{if !isset($smarty.post.inline)}
-	<script src="./clientlib/dndupload.js?{fileDateSig file="../../clientlib/dndupload.js"}" type="text/javascript"></script>
+	<script src="{$tpldir}clientlib/dndupload.js?{fileDateSig file="clientlib/dndupload.js"}" type="text/javascript"></script>
 	
 	<script>
 	{if $hotkeys}

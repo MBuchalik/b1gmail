@@ -6,13 +6,13 @@
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
-	<link rel="stylesheet" href="{$selfurl}clientlib/jquery/jquery.mobile-1.3.0.min.css" />
+	<link rel="stylesheet" href="{$selfurl}{$_tpldir}clientlib/jquery/jquery.mobile-1.3.0.min.css" />
 	<link rel="stylesheet" href="{$selfurl}{$_tpldir}style/m.css?{fileDateSig file="style/m.css"}" type="text/css" />
-	<link href="{$selfurl}clientlib/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<link href="{$selfurl}clientlib/fontawesome/css/font-awesome-animation.min.css" rel="stylesheet" type="text/css" />
+	<link href="{$selfurl}{$_tpldir}clientlib/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="{$selfurl}{$_tpldir}clientlib/fontawesome/css/font-awesome-animation.min.css" rel="stylesheet" type="text/css" />
 	<script src="{$selfurl}{$_tpldir}js/m.js?{fileDateSig file="js/m.js"}"></script>
-	<script src="{$selfurl}clientlib/jquery/jquery-1.8.2.min.js"></script>
-	<script src="{$selfurl}clientlib/jquery/jquery.mobile-1.3.0.min.js"></script>
+	<script src="{$selfurl}{$_tpldir}clientlib/jquery/jquery-1.8.2.min.js"></script>
+	<script src="{$selfurl}{$_tpldir}clientlib/jquery/jquery.mobile-1.3.0.min.js"></script>
 	
 	<script type="text/javascript">
 	<!--

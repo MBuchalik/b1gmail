@@ -22,7 +22,7 @@
 	<script src="{$tpldir}js/common.js" type="text/javascript"></script>
 	<script src="{$tpldir}js/loggedin.js" type="text/javascript"></script>
 	<script src="{$tpldir}js/dialog.js" type="text/javascript"></script>
-	<script src="{$selfurl}clientlib/dtree.js" type="text/javascript"></script>
+	<script src="{$tpldir}clientlib/dtree.js" type="text/javascript"></script>
 </head>
 
 <body onload="documentLoader()">

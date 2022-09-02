@@ -13,8 +13,8 @@
 	<link href="{$tpldir}style/dialog.css" rel="stylesheet" type="text/css" />
 
 	<!-- font awesome -->
-	<link href="{$selfurl}clientlib/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<link href="{$selfurl}clientlib/fontawesome/css/font-awesome-animation.min.css" rel="stylesheet" type="text/css" />
+	<link href="{$selfurl}{$_tpldir}clientlib/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="{$selfurl}{$_tpldir}clientlib/fontawesome/css/font-awesome-animation.min.css" rel="stylesheet" type="text/css" />
 	
 	<!-- client scripts -->
 	<script src="../clientlang.php" type="text/javascript"></script>

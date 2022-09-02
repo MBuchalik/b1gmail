@@ -21,7 +21,7 @@
 	</div>
 </div></div>
 
-<script src="./clientlib/dragcontainer.js" type="text/javascript"></script>
+<script src="{$tpldir}clientlib/dragcontainer.js" type="text/javascript"></script>
 <script>
 	var dc = new dragContainer('startBoxes', 3, 'dc');
 	dc.order = '{$widgetOrder}';

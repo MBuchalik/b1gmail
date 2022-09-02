@@ -22,9 +22,9 @@
 	<script src="clientlang.php?sid={$sid}" type="text/javascript"></script>
 	<script src="{$tpldir}js/common.js" type="text/javascript"></script>
 	<script src="{$tpldir}js/loggedin.js" type="text/javascript"></script>
-	<script src="clientlib/dtree.js" type="text/javascript"></script>
-	<script src="clientlib/overlay.js" type="text/javascript"></script>
-	<script src="clientlib/autocomplete.js" type="text/javascript"></script>
+	<script src="{$tpldir}clientlib/dtree.js" type="text/javascript"></script>
+	<script src="{$tpldir}clientlib/overlay.js" type="text/javascript"></script>
+	<script src="{$tpldir}clientlib/autocomplete.js" type="text/javascript"></script>
 
 	<base target="_top" />
 </head>

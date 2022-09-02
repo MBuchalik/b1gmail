@@ -9,8 +9,8 @@
 	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
 	<link href="{$tpldir}style/loggedin.css?{fileDateSig file="style/loggedin.css"}" rel="stylesheet" type="text/css" />
 	<link href="{$tpldir}style/dtree.css?{fileDateSig file="style/dtree.css"}" rel="stylesheet" type="text/css" />
-	<link href="clientlib/fontawesome/css/font-awesome.min.css?{fileDateSig file="../../clientlib/fontawesome/css/font-awesome.min.css"}" rel="stylesheet" type="text/css" />
-	<link href="clientlib/fontawesome/css/font-awesome-animation.min.css?{fileDateSig file="../../clientlib/fontawesome/css/font-awesome-animation.min.css"}" rel="stylesheet" type="text/css" />
+	<link href="{$tpldir}clientlib/fontawesome/css/font-awesome.min.css?{fileDateSig file="clientlib/fontawesome/css/font-awesome.min.css"}" rel="stylesheet" type="text/css" />
+	<link href="{$tpldir}clientlib/fontawesome/css/font-awesome-animation.min.css?{fileDateSig file="clientlib/fontawesome/css/font-awesome-animation.min.css"}" rel="stylesheet" type="text/css" />
 {foreach from=$_cssFiles.li item=_file}	<link rel="stylesheet" type="text/css" href="{$_file}" />
 {/foreach}
 
@@ -27,9 +27,9 @@
 	<script src="clientlang.php?sid={$sid}" type="text/javascript"></script>
 	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}" type="text/javascript"></script>
 	<script src="{$tpldir}js/loggedin.js?{fileDateSig file="js/loggedin.js"}" type="text/javascript"></script>
-	<script src="clientlib/dtree.js?{fileDateSig file="../../clientlib/dtree.js"}" type="text/javascript"></script>
-	<script src="clientlib/overlay.js?{fileDateSig file="../../clientlib/overlay.js"}" type="text/javascript"></script>
-	<script src="clientlib/autocomplete.js?{fileDateSig file="../../clientlib/autocomplete.js"}" type="text/javascript"></script>
+	<script src="{$tpldir}clientlib/dtree.js?{fileDateSig file="clientlib/dtree.js"}" type="text/javascript"></script>
+	<script src="{$tpldir}clientlib/overlay.js?{fileDateSig file="clientlib/overlay.js"}" type="text/javascript"></script>
+	<script src="{$tpldir}clientlib/autocomplete.js?{fileDateSig file="clientlib/autocomplete.js"}" type="text/javascript"></script>
 
 	{foreach from=$_jsFiles.li item=_file}
 		<script src="{$_file}"></script>

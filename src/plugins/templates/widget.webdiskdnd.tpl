@@ -3,7 +3,7 @@
 		<i class="fa fa-folder-open-o fa-5x" aria-hidden="true"></i>
 	</div>
 	
-	<script src="./clientlib/dndupload.js" type="text/javascript"></script>
+	<script src="{$tpldir}clientlib/dndupload.js" type="text/javascript"></script>
 	
 	<script>
 	<!--

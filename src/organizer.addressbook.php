@@ -37,7 +37,7 @@ ModuleFunction('FileHandler', [
 /**
  * default action = start
  */
-$tpl->addJSFile('li', 'clientlib/selectable.js');
+$tpl->addJSFile('li', $tpl->tplDir . 'clientlib/selectable.js');
 $tpl->addJSFile('li', $tpl->tplDir . 'js/organizer.js');
 if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'start';

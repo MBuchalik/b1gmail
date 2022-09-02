@@ -11,7 +11,7 @@
 	<!-- links -->
 	<link rel="shortcut icon" href="{$selfurl}favicon.ico" type="image/x-icon" />
 	<link href="{$tpldir}style/dialog.css?{fileDateSig file="style/dialog.css"}" rel="stylesheet" type="text/css" />
-	<link href="clientlib/fontawesome/css/font-awesome.min.css?{fileDateSig file="../../clientlib/fontawesome/css/font-awesome.min.css"}" rel="stylesheet" type="text/css" />
+	<link href="{$tpldir}clientlib/fontawesome/css/font-awesome.min.css?{fileDateSig file="clientlib/fontawesome/css/font-awesome.min.css"}" rel="stylesheet" type="text/css" />
 
 	<!-- client scripts -->
 	<script>
