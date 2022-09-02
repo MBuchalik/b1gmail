@@ -19,8 +19,8 @@
 </fieldset>
 
 {if $selectedLang}
-<script src="../clientlib/wysiwyg.js?{fileDateSig file="../../clientlib/wysiwyg.js"}"></script>
-<script type="text/javascript" src="../clientlib/ckeditor/ckeditor.js?{fileDateSig file="../../clientlib/ckeditor/ckeditor.js"}"></script>
+<script src="{$tpldir}clientlib/wysiwyg.js?{fileDateSig file="clientlib/wysiwyg.js"}"></script>
+<script type="text/javascript" src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
 
 <script>
 <!--

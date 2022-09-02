@@ -41,8 +41,8 @@
 			<tr>
 				<td colspan="2" style="border: 1px solid #DDDDDD;background-color:#FFFFFF;">
 					<textarea name="antwort" id="antwort" class="plainTextArea" style="width:100%;height:220px;">{$faq.antwort}</textarea>
-					<script src="../clientlib/wysiwyg.js?{fileDateSig file="../../clientlib/wysiwyg.js"}"></script>
-					<script type="text/javascript" src="../clientlib/ckeditor/ckeditor.js?{fileDateSig file="../../clientlib/ckeditor/ckeditor.js"}"></script>
+					<script src="{$tpldir}clientlib/wysiwyg.js?{fileDateSig file="clientlib/wysiwyg.js"}"></script>
+					<script type="text/javascript" src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
 					<script>
 					<!--
 						var editor = new htmlEditor('antwort');

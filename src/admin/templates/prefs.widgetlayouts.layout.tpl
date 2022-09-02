@@ -12,7 +12,7 @@
 		{/foreach}
 		</div>
 		
-		<script src="../clientlib/dragcontainer.js" type="text/javascript"></script>
+		<script src="{$tpldir}clientlib/dragcontainer.js" type="text/javascript"></script>
 		<script>
 		<!--
 			var dc = new dragContainer('dashboard', 3, 'dc');

@@ -7,8 +7,8 @@
 
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<link href="{$tpldir}style/common.css?{fileDateSig file="style/common.css"}" rel="stylesheet" type="text/css" />
-	<link href="../clientlib/fontawesome/css/font-awesome.min.css?{fileDateSig file="../../clientlib/fontawesome/css/font-awesome.min.css"}" rel="stylesheet" type="text/css" />
-	<link href="../clientlib/fontawesome/css/font-awesome-animation.min.css?{fileDateSig file="../../clientlib/fontawesome/css/font-awesome-animation.min.css"}" rel="stylesheet" type="text/css" />
+	<link href="{$tpldir}clientlib/fontawesome/css/font-awesome.min.css?{fileDateSig file="clientlib/fontawesome/css/font-awesome.min.css"}" rel="stylesheet" type="text/css" />
+	<link href="{$tpldir}clientlib/fontawesome/css/font-awesome-animation.min.css?{fileDateSig file="clientlib/fontawesome/css/font-awesome-animation.min.css"}" rel="stylesheet" type="text/css" />
 
 	{foreach from=$_cssFiles.admin item=_file}	
 		<link rel="stylesheet" type="text/css" href="{$_file}" />

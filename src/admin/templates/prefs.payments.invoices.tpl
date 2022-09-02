@@ -26,8 +26,8 @@
 			<tr>
 			<td style="border: 1px solid #DDDDDD;background-color:#FFFFFF;">
 			<textarea name="rgtemplate" id="rgtemplate" class="plainTextArea" style="width:100%;height:500px;">{text value=$bm_prefs.rgtemplate allowEmpty=true}</textarea>
-			<script src="../clientlib/wysiwyg.js?{fileDateSig file="../../clientlib/wysiwyg.js"}"></script>
-			<script type="text/javascript" src="../clientlib/ckeditor/ckeditor.js?{fileDateSig file="../../clientlib/ckeditor/ckeditor.js"}"></script>
+			<script src="{$tpldir}clientlib/wysiwyg.js?{fileDateSig file="clientlib/wysiwyg.js"}"></script>
+			<script type="text/javascript" src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
 			<script>
 			<!--
 				var editor = new htmlEditor('rgtemplate');
