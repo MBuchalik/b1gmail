@@ -1,6 +1,13 @@
 src/serverlib/3rdparty/
 src/templates/modern/bootstrap/
+vendor/
+
+# "Clientlib" folders in admin and the main template.
+
+src/admin/templates/clientlib/ckeditor/
+src/admin/templates/clientlib/fontawesome/
+src/admin/templates/clientlib/jquery/
+
 src/templates/modern/clientlib/ckeditor/
 src/templates/modern/clientlib/fontawesome/
 src/templates/modern/clientlib/jquery/
-vendor/
