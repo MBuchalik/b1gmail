@@ -46,57 +46,6 @@ $tabs = [
  * fields
  */
 if ($_REQUEST['action'] == 'languages') {
-    // add
-    if (isset($_REQUEST['add'])) {
-        if (
-            isset($_FILES['langfile']) &&
-            $_FILES['langfile']['error'] == 0 &&
-            $_FILES['langfile']['size'] > 5 &&
-            strtolower(substr($_FILES['langfile']['name'], -9)) == '.lang.php'
-        ) {
-            $fileName = $_FILES['langfile']['name'];
-            $newFileName = B1GMAIL_DIR . 'languages/' . $fileName;
-            move_uploaded_file($_FILES['langfile']['tmp_name'], $newFileName);
-            @chmod($newFileName, 0777);
-        }
-    }
-
-    // delete
-    if (isset($_REQUEST['delete'])) {
-        $langID = str_replace(['/', '\\'], '', $_REQUEST['delete']);
-        if (is_writeable(B1GMAIL_DIR . 'languages/' . $langID . '.lang.php')) {
-            unlink(B1GMAIL_DIR . 'languages/' . $langID . '.lang.php');
-        }
-    }
-
-    // mass action
-    if (isset($_REQUEST['executeMassAction'])) {
-        // get country IDs
-        $langIDs = [];
-        foreach ($_POST as $key => $val) {
-            if (substr($key, 0, 5) == 'lang_') {
-                $langIDs[] = str_replace(['/', '\\'], '', substr($key, 5));
-            }
-        }
-
-        if (count($langIDs) > 0) {
-            if ($_REQUEST['massAction'] == 'delete') {
-                // delete lang files
-                foreach ($langIDs as $langID) {
-                    if (
-                        is_writeable(
-                            B1GMAIL_DIR . 'languages/' . $langID . '.lang.php',
-                        )
-                    ) {
-                        unlink(
-                            B1GMAIL_DIR . 'languages/' . $langID . '.lang.php',
-                        );
-                    }
-                }
-            }
-        }
-    }
-
     // get available languages
     $languages = GetAvailableLanguages();
 

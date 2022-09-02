@@ -162,7 +162,6 @@ $backupTables = [
 // files and folders that should have write permissions
 $writeableFiles = [
     'admin/templates/cache/',
-    'languages/',
     'logs/',
     'plugins/',
     'plugins/templates/',

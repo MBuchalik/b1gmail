@@ -3334,9 +3334,6 @@ function GetLanguageInfo($file) {
                 $result['title'] = $langTitle;
                 $result['locale'] = $langLocale;
                 $result['code'] = $langCode;
-                $result['writeable'] = is_writeable(
-                    B1GMAIL_DIR . 'languages/' . $file . '.lang.php',
-                );
                 $result['default'] = $bm_prefs['language'] == $file;
                 break;
             }
