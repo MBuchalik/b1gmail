@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="page-header"><h1>{lng p="contact"}</h1></div>
+	<div class="page-header"><h1>{lng p="imprint"}</h1></div>
 
 	{if $contactform}
 	<div class="row">
