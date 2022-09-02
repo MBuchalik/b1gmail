@@ -10,4 +10,4 @@ After you have placed the updated files and folders in their directory, you need
 
 ### After running the update
 
-You can delete the `languages/` folder and its content.
+You can delete the `clientlib/` and `languages/` folders and their content.
