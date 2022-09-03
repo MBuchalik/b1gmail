@@ -16,14 +16,14 @@ function conv($in)
 }
 
 $lang_user = $lang_admin = $lang_client = $lang_custom = array();
-include('../src/languages/deutsch.lang.php');
+include('../src/serverlib/languages/deutsch.lang.php');
 $lang_user_de = $lang_user;
 $lang_admin_de = $lang_admin;
 $lang_client_de = $lang_client;
 $lang_custom_de = $lang_custom;
 
 $lang_user = $lang_admin = $lang_client = $lang_custom = array();
-include('../src/languages/english.lang.php');
+include('../src/serverlib/languages/english.lang.php');
 $lang_user_en = $lang_user;
 $lang_admin_en = $lang_admin;
 $lang_client_en = $lang_client;
