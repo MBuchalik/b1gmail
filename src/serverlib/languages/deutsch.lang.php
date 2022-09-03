@@ -92,7 +92,6 @@ $lang_client['deliverystatus'] = 'Zustell-Status';
 $lang_client['taxnote'] = 'inkl. %1% MwSt.';
 $lang_client['decsep'] = ',';
 $lang_client['lastsavedat'] = 'Zuletzt gespeichert um %1:%2 Uhr.';
-$lang_client['statement'] = 'Konto-Auszug';
 
 /**
  * Customizable phrases
@@ -224,7 +223,6 @@ $lang_custom['snotify_text'] =
     'Alternativ-E-Mail: %%altmail%%' .
     "\n\n" .
     'Details: %%link%%';
-$lang_custom['activationmail_sub'] = 'Ihre Registrierung (%%email%%)';
 $lang_custom['share_sub'] = 'Webdisk-Freigabe';
 $lang_custom['share_text'] =
     'Hallo,' .
@@ -551,8 +549,6 @@ $lang_user['open'] = '&Ouml;ffnen';
 $lang_user['delete'] = 'L&ouml;schen';
 $lang_user['paste'] = 'Einf&uuml;gen';
 $lang_user['realdel'] = 'Eintrag wirklich unwiderruflich entfernen?';
-$lang_user['realdel_order'] =
-    'Soll die Bestellung wirklich gelöscht werden? Wenn Sie zu dieser bereits eine Zahlung vorgenommen haben, kann diese danach nicht mehr zugeordnet werden! Löschen Sie Bestellungen also nur, wenn Sie sich sicher sind, noch keine Zahlung vorgenommen zu haben!\n\nWenn Sie eine Bestellung stornieren möchten, zu der Sie bereits eine Zahlung vorgenommen haben, setzen Sie sich bitte mit unserem Support in Verbindung.\n\nKlicken Sie auf OK, um die Löschung durchzuführen oder auf Abbrechen, um die Bestellung nicht zu löschen.';
 $lang_user['realempty'] = 'Ordner wirklich vollständig leeren?';
 $lang_user['sourcenex'] = 'Das Quellobjekt wurde nicht gefunden.';
 $lang_user['notraffic'] =
@@ -1325,44 +1321,11 @@ $lang_admin['phpinfo'] = 'PHP-Info';
 $lang_admin['yourinvoice'] = 'Ihre Rechnung';
 $lang_admin['dearsirormadam'] = 'Sehr geehrte Damen und Herren';
 $lang_admin['descr'] = 'Bezeichnung';
-$lang_admin['ep'] = 'Einzelpreis';
-$lang_admin['gp'] = 'Gesamtpreis';
-$lang_admin['gb'] = 'Gesamtbetrag';
-$lang_admin['vat'] = 'MwSt.';
-$lang_admin['net'] = 'netto';
-$lang_admin['gross'] = 'brutto';
 $lang_admin['kindregards'] = 'Mit freundlichen Gr&uuml;&szlig;en';
-$lang_admin['invtext'] =
-    'hiermit berechnen wir Ihnen die folgenden Produkte bzw. Leistungen';
-$lang_admin['invoiceno'] = 'Rechnungsnummer';
-$lang_admin['customerno'] = 'Kundennummer';
-$lang_admin['bankacc'] = 'Bankverbindung';
-$lang_admin['invfooter'] =
-    'Diese Rechnung wurde maschinell erstellt und ist auch ohne Unterschrift g&uuml;ltig.';
-$lang_admin['kto_inh'] = 'Konto-Inhaber';
-$lang_admin['kto_nr'] = 'Konto-Nummer';
-$lang_admin['kto_blz'] = 'BLZ';
-$lang_admin['kto_inst'] = 'Institut';
-$lang_admin['kto_iban'] = 'IBAN';
-$lang_admin['kto_bic'] = 'BIC/SWIFT-Code';
-$lang_admin['kto_subject'] = 'Verwendungszweck';
 $lang_admin['sender_aliases'] = 'Absender-Aliase';
 $lang_admin['attachments'] = 'Anlagen';
 $lang_admin['flexspans'] = 'Autom. Betreff-L&auml;nge';
 $lang_admin['redirectmobile'] = 'Autom. Mobil-Weiterleitung';
-$lang_admin['paidonly'] = 'Nur bezahlte';
-$lang_admin['account_debit'] = 'Konten Soll';
-$lang_admin['account_credit'] = 'Konto Haben';
-$lang_admin['accentries'] = 'Buchungen';
-$lang_admin['orderno'] = 'Best.-Nr.';
-$lang_admin['export2'] = 'Export';
-$lang_admin['vkcode'] = 'Vorkasse-Code';
-$lang_admin['amount'] = 'Betrag';
-$lang_admin['activate_ok'] = 'Zahlung erfolgreich aktiviert!';
-$lang_admin['activate_err'] =
-    'Nicht gefunden / bereits aktiviert / falscher Betrag!';
-$lang_admin['activate_desc'] =
-    'Hier k&ouml;nnen Sie Vorkasse-Zahlungen, die auf Ihrem Bank-Konto eingegangen sind, aktivieren.';
 $lang_admin['returnpathcheck'] = 'Return-Path-Pr&uuml;fung';
 $lang_admin['licensedetails'] = 'Lizenz-Details';
 $lang_admin['updateaccess'] = 'Updaterecht';
@@ -1603,8 +1566,6 @@ $lang_admin['mbstring'] =
     'Weder die <code>mbstring</code>- noch die <code>iconv</code>-PHP-Erweiterung ist installiert. Um optimale Ergebnisse in Bezug auf Sonderzeichen zu erhalten, sollten Sie m&ouml;glichst eine der Erweiterungen nachinstallieren.';
 $lang_admin['gdlib'] =
     'Die <code>gd</code>-PHP-Erweiterung ist nicht installiert. Einige Grafik-bezogene Funktionen von b1gMail ben&ouml;tigen diese Erweiterung. Sie Sollten die Erweiterung m&ouml;glichst nachinstallieren.';
-$lang_admin['waitingorders'] =
-    '<b>%d</b> Bestellungen mit benutzerdefinierter Zahlungsmethode warten auf Aktivierung durch Sie.';
 $lang_admin['idnlib'] =
     'Unterst&uuml;tzung f&uuml;r internationalisierte Domainnamen (IDN) ist nicht verf&uuml;gbar. Bitte installieren Sie die PECL-Erweiterungen <code>intl</code> bzw. <code>idn</code>, wenn Sie IDN nutzen m&ouml;chten.';
 $lang_admin['domdocument'] =
@@ -1875,8 +1836,6 @@ $lang_admin['text_alias_sub'] = 'Alias-Mail-Betreff';
 $lang_admin['text_alias_text'] = 'Alias-Mail-Text';
 $lang_admin['text_activationmail_sub'] = 'Aktivierungs-Mail-Betreff';
 $lang_admin['text_activationmail_text'] = 'Aktivierungs-Mail-Text';
-$lang_admin['text_paynotify_sub'] = 'Zahlungsbenachrichtigungs-Betreff';
-$lang_admin['text_paynotify_text'] = 'Zahlungsbenachrichtigungs-Text';
 $lang_admin['text_orderconfirm_sub'] = 'Bestellbestätigungs-Betreff';
 $lang_admin['text_orderconfirm_text'] = 'Bestellbestätigungs-Text';
 $lang_admin['text_share_sub'] = 'Webdisk-Freigabe-Mail-Betreff';
@@ -2038,7 +1997,6 @@ $lang_admin['contacthistory'] = 'Kontaktdaten-Verlauf';
 $lang_admin['savehistory'] = 'Kontaktdaten-Verlauf speichern';
 $lang_admin['discarded'] = 'Verworfen';
 $lang_admin['clearhistory'] = 'Verlauf leeren';
-$lang_admin['charge'] = 'Konto-Aufladung';
 $lang_admin['filetypes'] = 'Datei-Typ(en)';
 $lang_admin['addwebdiskicon'] = 'Webdisk-Icon hinzuf&uuml;gen';
 $lang_admin['icon'] = 'Icon';
@@ -2224,5 +2182,3 @@ $lang_admin['greeting'] = 'Gru&szlig;formel';
 $lang_admin['greeting_mr'] = 'Sehr geehrter Herr %s';
 $lang_admin['greeting_mrs'] = 'Sehr geehrte Frau %s';
 $lang_admin['greeting_none'] = 'Sehr geehrte Damen und Herren';
-$lang_admin['currency'] = 'W&auml;hrung';
-$lang_admin['skrillsecret'] = 'Geheimwort';

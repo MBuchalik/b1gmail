@@ -96,7 +96,6 @@ $lang_client['deliverystatus'] = 'Delivery status';
 $lang_client['taxnote'] = 'incl. %1% VAT';
 $lang_client['decsep'] = ',';
 $lang_client['lastsavedat'] = 'Last saved at %1:%2.';
-$lang_client['statement'] = 'Account statement';
 
 /**
  * Customizable phrases
@@ -310,7 +309,6 @@ $lang_user['notify_email'] = 'new emails';
 $lang_user['notify_birthday'] = 'birthdays of my contacts';
 $lang_user['auto'] = 'Automatic';
 $lang_user['details_default'] = 'Directly show detailed results';
-$lang_user['statement'] = 'Account statement';
 $lang_user['description'] = 'Description';
 $lang_user['current'] = 'current';
 $lang_user['langCode_editor'] = 'en';
@@ -345,13 +343,6 @@ $lang_user['nocontactselected'] = 'No contacts selected';
 $lang_user['showmore'] = 'Show more';
 $lang_user['paused'] = 'Paused';
 $lang_user['langCode'] = 'EN';
-$lang_user['skrill'] = 'Skrill (Moneybookers)';
-$lang_user['pn_skrill'] =
-    'The invoice amount (%.02f %s) has been gratefully received using Skrill (Moneybookers).';
-$lang_user['pn_custom'] =
-    'The invoice amount (%.02f %s) will be paid using %s.';
-$lang_user['pn_customtext'] =
-    'Thank you for your order. You have chosen to pay using %s. After our team has reviewed your order, it will be activated immediately.';
 $lang_user['pop3server'] = 'Inbox server (POP3)';
 $lang_user['undonetasks'] = 'Pending tasks';
 $lang_user['donetasks'] = 'Done tasks';
@@ -416,10 +407,8 @@ $lang_user['hiddenelements'] = 'Hidden elements';
 $lang_user['hide'] = 'Hide';
 $lang_user['atreply'] = 'At reply';
 $lang_user['insertquote'] = 'Quote original email';
-$lang_user['invoiceaddress'] = 'Invoice address';
 $lang_user['dearsirormadam'] = 'Dear Sir or Madam';
 $lang_user['kindregards'] = 'Kind regards';
-$lang_user['completed'] = 'Completed';
 $lang_user['setmailcolor'] = 'Set color';
 $lang_user['hotkeys'] = 'Hotkeys';
 $lang_user['to3'] = 'to';
@@ -1295,8 +1284,6 @@ $lang_admin['comment'] = 'Comment';
 $lang_admin['resetstats'] = 'Reset statistics';
 $lang_admin['reallyresetstats'] = 'Do you really want to reset the statistics?';
 $lang_admin['disable'] = 'Disable';
-$lang_admin['at_activation'] = 'Create at activation time';
-$lang_admin['at_order'] = 'Create at order time';
 $lang_admin['sync'] = 'Synchronization';
 $lang_admin['syncml'] = 'Synchronization';
 $lang_admin['hotkeys'] = 'Hotkeys';
@@ -1392,7 +1379,6 @@ $lang_admin['kindregards'] = 'Kind regards';
 $lang_admin['sender_aliases'] = 'Sender aliases';
 $lang_admin['attachments'] = 'Attachments';
 $lang_admin['flexspans'] = 'Auto subject length';
-$$lang_admin['amount'] = 'Amount';
 $lang_admin['returnpathcheck'] = 'Return path check';
 $lang_admin['licensedetails'] = 'License details';
 $lang_admin['updateaccess'] = 'Update access';
@@ -2173,4 +2159,3 @@ $lang_admin['cert_caerr_purpose'] =
     'The certificate is not suitable for issuing S/MIME certificates.';
 $lang_admin['cert_caerr_pkcheck'] =
     'The private key does not fit to the certificate or the password is wrong.';
-$lang_admin['sum'] = 'Sum';
