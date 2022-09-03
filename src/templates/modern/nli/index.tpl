@@ -45,8 +45,7 @@
 					<li{if $smarty.request.action=='login'} class="active"{/if}><a href="index.php">{lng p="home"}</a></li>
 				{foreach from=$pluginUserPages item=item}{if $item.top&&$item.after=='login'}
 					<li{if $item.active} class="active"{/if}><a href="{$item.link}">{$item.text}</a></li>
-				{/if}{/foreach}
-					{if $_regEnabled||(!$templatePrefs.hideSignup)}<li{if $smarty.request.action=='signup'} class="active"{/if}><a href="{if $ssl_signup_enable}{$ssl_url}{/if}index.php?action=signup">{lng p="signup"}</a></li>{/if}
+				{/if}{/foreach}					
 				{foreach from=$pluginUserPages item=item}{if $item.top&&$item.after=='signup'}
 					<li{if $item.active} class="active"{/if}><a href="{$item.link}">{$item.text}</a></li>
 				{/if}{/foreach}

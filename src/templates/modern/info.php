@@ -26,11 +26,6 @@ $templateInfo = [
     'for_b1gmail' => B1GMAIL_VERSION,
 
     'prefs' => [
-        'hideSignup' => [
-            'title' => $lang_admin['hidesignup'] . '?',
-            'type' => FIELD_CHECKBOX,
-            'default' => false,
-        ],
         'prefsLayout' => [
             'title' => $lang_admin['prefslayout'] . ':',
             'type' => FIELD_DROPDOWN,

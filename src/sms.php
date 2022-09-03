@@ -60,35 +60,7 @@ $tpl->assign('pageMenuFile', 'li/sms.sidebar.tpl');
 $tpl->assign('pageToolbarFile', 'li/sms.toolbar.tpl');
 $tpl->assign('accBalance', $thisUser->GetBalance());
 
-$validationRequired =
-    $groupRow['smsvalidation'] == 'yes' && $userRow['sms_validation'] == 0;
-
-/**
- * compose
- */
-if ($validationRequired && $_REQUEST['action'] != 'outbox') {
-    $enterCode =
-        $userRow['sms_validation_code'] != '' &&
-        $userRow['sms_validation_time'] > 0;
-
-    if (
-        isset($_REQUEST['do']) &&
-        $_REQUEST['do'] == 'validate' &&
-        $enterCode &&
-        isset($_REQUEST['sms_validation_code'])
-    ) {
-        if ($thisUser->ValidateMobileNo($_REQUEST['sms_validation_code'])) {
-            header('Location: sms.php?sid=' . session_id());
-            exit();
-        } else {
-            $tpl->assign('error', true);
-        }
-    }
-
-    $tpl->assign('enterCode', $enterCode);
-    $tpl->assign('pageContent', 'li/sms.validate.tpl');
-    $tpl->display('li/index.tpl');
-} elseif ($_REQUEST['action'] == 'compose') {
+if ($_REQUEST['action'] == 'compose') {
     // safe code?
     if ($groupRow['sms_send_code'] == 'yes') {
         if (!class_exists('BMCaptcha')) {

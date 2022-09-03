@@ -83,7 +83,6 @@ class Template extends Smarty {
         }
         $this->assign('_tpldir', 'templates/' . $bm_prefs['template'] . '/');
         $this->assign('_tplname', $bm_prefs['template']);
-        $this->assign('_regEnabled', $bm_prefs['regenabled'] == 'yes');
         $this->assign('serverTZ', date('Z'));
 
         // post vars?

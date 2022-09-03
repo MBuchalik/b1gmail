@@ -80,8 +80,6 @@
 			<tr>
 				<td class="td1">{lng p="show"}:</td>
 				<td class="td2">
-					<input type="checkbox" name="show_signup" id="show_signup" checked="checked" />
-					<label for="show_signup">{lng p="signup"}</label><br />
 					<input type="checkbox" name="show_li" id="show_li" checked="checked" />
 					<label for="show_li">{lng p="li"}</label>
 				</td>

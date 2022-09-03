@@ -549,65 +549,6 @@ if ($_REQUEST['action'] == 'users') {
             $userObject,
         ]);
 
-        // re-send validation sms
-        if (isset($_REQUEST['resendValidationSMS'])) {
-            if (!class_exists('BMSMS')) {
-                include B1GMAIL_DIR . 'serverlib/sms.class.php';
-            }
-
-            $smsText = GetPhraseForUser(
-                $userRow['id'],
-                'lang_custom',
-                'validationsms',
-            );
-            $smsText = str_replace(
-                '%%code%%',
-                $userRow['sms_validation_code'],
-                $smsText,
-            );
-
-            $sms = _new('BMSMS', [0, false]);
-            $sms->Send(
-                $bm_prefs['mail2sms_abs'],
-                preg_replace(
-                    '/[^0-9]/',
-                    '',
-                    str_replace('+', '00', $userRow['mail2sms_nummer']),
-                ),
-                $smsText,
-                $bm_prefs['smsvalidation_type'],
-                false,
-                false,
-            );
-
-            $tpl->assign('msg', $lang_admin['val_code_resent']);
-        }
-
-        // re-send validation email
-        if (isset($_REQUEST['resendValidationEmail'])) {
-            $vars = [
-                'activationcode' => $userRow['sms_validation_code'],
-                'email' => DecodeEMail($userRow['email']),
-                'url' => sprintf(
-                    '%sindex.php?action=activateAccount&id=%d&code=%s',
-                    $bm_prefs['selfurl'],
-                    $userRow['id'],
-                    $userRow['sms_validation_code'],
-                ),
-            ];
-
-            SystemMail(
-                $bm_prefs['passmail_abs'],
-                $userRow['altmail'],
-                $lang_custom['activationmail_sub'],
-                'activationmail_text',
-                $vars,
-                $userRow['id'],
-            );
-
-            $tpl->assign('msg', $lang_admin['val_code_resent']);
-        }
-
         // aliases
         $aliases = $userObject->GetAliases();
         foreach ($aliases as $key => $val) {
@@ -763,7 +704,6 @@ if ($_REQUEST['action'] == 'users') {
         $tpl->assign('payments', $payments);
         $tpl->assign('abusePoints', $abusePoints);
         $tpl->assign('abuseIndicator', $abuseIndicator);
-        $tpl->assign('regValidation', $bm_prefs['reg_validation']);
         $tpl->assign('historyCount', $historyCount);
         $tpl->assign('user', $user);
         $tpl->assign('group', $group);
@@ -1146,8 +1086,6 @@ if ($_REQUEST['action'] == 'users') {
                     $_REQUEST['mail2sms_nummer'],
                     $_REQUEST['passwort'],
                     $profileData,
-                    false,
-                    '',
                     $_REQUEST['anrede'],
                 );
 

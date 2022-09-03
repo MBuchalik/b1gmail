@@ -246,8 +246,6 @@ $lang_custom['snotify_text'] =
     'Alternativ-E-Mail: %%altmail%%' .
     "\n\n" .
     'Details: %%link%%';
-$lang_custom['validationsms'] =
-    'Vielen Dank für Ihre Anmeldung! Ihr Freischalt-Code: %%code%% - einfach nach dem Login bei Aufforderung eintippen!';
 $lang_custom['validationsms2'] =
     'Zur Freischaltung der Änderung Ihrer Nummer bitte den Freischalt-Code %%code%% unter "SMS" eintippen!';
 $lang_custom['activationmail_sub'] = 'Ihre Registrierung (%%email%%)';
@@ -1443,7 +1441,6 @@ $lang_admin['publickey'] = 'Public Key';
 $lang_admin['theme'] = 'Theme';
 $lang_admin['write_xsenderip'] = 'X-Sender-IP-Header schreiben';
 $lang_admin['fts_bg_indexing'] = 'Automatische Hintergrund-Indizierung';
-$lang_admin['signupsuggestions'] = 'Adress-Vorschl&auml;ge anbieten';
 $lang_admin['buildindex'] = 'Index aufbauen';
 $lang_admin['buildindex_desc'] =
     'Mit dieser Funktion k&ouml;nnen Sie noch nicht indizierte E-Mails dem Volltext-Such-Index hinzuf&uuml;gen.<br /><br />Dies kann z.B. erforderlich werden, wenn die Volltext-Suche f&uuml;r bereits existierende Benutzer erst im Nachhinein erlaubt wurde.';
@@ -1509,7 +1506,6 @@ $lang_admin['showcheckboxes'] = 'Mehrfachauswahl mit Checkbox';
 $lang_admin['domaindisplay'] = 'Domain-Anzeige';
 $lang_admin['ddisplay_normal'] = '@-Zeichen in Dropdown';
 $lang_admin['ddisplay_separate'] = '@-Zeichen separat';
-$lang_admin['signupdnsbl'] = 'Registrierungs-DNSBL-Filter';
 $lang_admin['blocksignup'] = 'Registrierung blockieren';
 $lang_admin['activatemanually'] =
     'Manuelle Account-Aktivierung durch Administrator';
@@ -1928,18 +1924,11 @@ $lang_admin['addresstaken'] =
     'Die angegebene E-Mail-Adresse ist bereits vergeben. Bitte versuchen Sie es erneut.';
 $lang_admin['accountcreated'] =
     'Der Benutzer wurde erfolgreich angelegt.<br /><br /><a href="users.php?do=edit&id=%d&sid=%s">&raquo; Benutzer bearbeiten</a>';
-$lang_admin['enablereg'] = 'Registrierung aktivieren';
-$lang_admin['stateafterreg'] = 'Status nach Registrierung';
 $lang_admin['smsvalidation_signup'] = 'Anmeldungs-Best&auml;tigung per SMS';
 $lang_admin['smsvalidation'] = 'SMS-Abs.-Validierung';
-$lang_admin['reg_validation'] = 'Registrierungs-Validierung';
-$lang_admin['max_resend_times'] = 'Max. Neuanforderungen';
-$lang_admin['min_resend_interval'] = 'Mindest-Abstand';
 $lang_admin['min_resend_interval_s'] = 'Mindest-Abstand (Sekunden)';
 $lang_admin['byemail'] = 'per E-Mail';
 $lang_admin['bysms'] = 'per SMS';
-$lang_admin['resend_val_email'] = 'Validierungs-E-Mail erneut zusenden';
-$lang_admin['resend_val_sms'] = 'Validierungs-SMS erneut zusenden';
 $lang_admin['val_code_resent'] =
     'Der Validierungs-Code wurde erneut zugesendet.';
 $lang_admin['stdgroup'] = 'Standard-Gruppe';
@@ -1964,11 +1953,9 @@ $lang_admin['altmailsepby'] =
     '(ein Eintrag pro Zeile, \'*\' als Platzhalter verwendbar, z.B. \'*@evil-domain.xy\')';
 $lang_admin['check_double_altmail'] = 'Nur ein Acc. pro Alternativ-E-Mail';
 $lang_admin['check_double_cellphone'] = 'Nur ein Acc. pro Handy-Nr.';
-$lang_admin['usercountlimit'] = 'Benutzer-Zahl-Begrenzung';
 $lang_admin['minaddrlength'] = 'Minimale Adress-L&auml;nge';
 $lang_admin['minpasslength'] = 'Minimale Passwort-L&auml;nge';
 $lang_admin['to2'] = 'An';
-$lang_admin['regnotify'] = 'Benachrichtigung bei Anmeldung';
 $lang_admin['recvrules'] = 'Empfangs-Regeln';
 $lang_admin['autodetection'] = 'Automatische Erkennung';
 $lang_admin['expression'] = 'Regul&auml;rer Ausdruck';

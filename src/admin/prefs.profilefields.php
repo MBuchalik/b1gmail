@@ -51,13 +51,12 @@ if ($_REQUEST['action'] == 'fields') {
         // add
         if (isset($_REQUEST['add'])) {
             $db->Query(
-                'INSERT INTO {pre}profilfelder(feld,typ,pflicht,rule,extra,show_signup,show_li) VALUES(?,?,?,?,?,?,?)',
+                'INSERT INTO {pre}profilfelder(feld,typ,pflicht,rule,extra,show_li) VALUES(?,?,?,?,?,?,?)',
                 $_REQUEST['feld'],
                 (int) $_REQUEST['typ'],
                 isset($_REQUEST['pflicht']) ? 'yes' : 'no',
                 $_REQUEST['rule'],
                 $_REQUEST['extra'],
-                isset($_REQUEST['show_signup']) ? 'yes' : 'no',
                 isset($_REQUEST['show_li']) ? 'yes' : 'no',
             );
         }

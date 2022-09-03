@@ -756,24 +756,10 @@ class BMUser {
     }
 
     /**
-     * create a new account
+     * Create a new user account.
      *
-     * @param string $email
-     * @param string $firstname
-     * @param string $surname
-     * @param string $street
-     * @param string $no
-     * @param string $zip
-     * @param string $city
-     * @param int $country
-     * @param string $phone
-     * @param string $fax
-     * @param string $altmail
-     * @param string $mobile_nr
-     * @param string $password
-     * @param array $profilefields
-     * @param bool $allowNotification
-     * @return int User ID
+     * This method returns the User ID if the account creation was successful.
+     * This method returns false if something went wrong.
      */
     static function CreateAccount(
         $email,
@@ -790,10 +776,7 @@ class BMUser {
         $mobile_nr,
         $password,
         $profilefields = [],
-        $allowNotification = true,
-        $c_uid = '',
-        $salutation = '',
-        $createLocked = false
+        $salutation = ''
     ) {
         global $db, $bm_prefs, $currentCharset, $currentLanguage, $lang_custom;
 
@@ -804,230 +787,101 @@ class BMUser {
         $profilefields = serialize($profilefields);
 
         // check if user already exists and if address is valid
-        if (BMUser::AddressAvailable($email) && BMUser::AddressValid($email)) {
-            $defaultGroupRow = BMGroup::FetchGroupById($bm_prefs['std_gruppe']);
-            $instantHTML = $defaultGroupRow['soforthtml'];
+        if (
+            !BMUser::AddressAvailable($email) ||
+            !BMUser::AddressValid($email)
+        ) {
+            return false;
+        }
+        $defaultGroupRow = BMGroup::FetchGroupById($bm_prefs['std_gruppe']);
+        $instantHTML = $defaultGroupRow['soforthtml'];
 
-            // status?
-            if (ADMIN_MODE) {
-                $userStatus = 'no';
-            } else {
-                if ($bm_prefs['reg_validation'] != 'off' || $createLocked) {
-                    $userStatus = 'locked';
-                } else {
-                    $userStatus = $bm_prefs['usr_status'];
-                }
-            }
+        // create salt
+        $salt = GenerateRandomSalt(8);
 
-            // validation code?
-            if (
-                ($bm_prefs['reg_validation'] == 'sms' &&
-                    trim($mobile_nr) != '') ||
-                ($bm_prefs['reg_validation'] == 'email' && trim($altmail) != '')
-            ) {
-                $ValidationCode = '';
-                for ($i = 0; $i < VALIDATIONCODE_LENGTH; $i++) {
-                    $ValidationCode .= substr(
-                        VALIDATIONCODE_CHARS,
-                        mt_rand(0, strlen(VALIDATIONCODE_CHARS) - 1),
-                        1,
-                    );
-                }
-            } else {
-                $ValidationCode = '';
-            }
+        // create account
+        $db->Query(
+            'INSERT INTO {pre}users(email,vorname,nachname,strasse,hnr,plz,ort,land,tel,fax,altmail,mail2sms_nummer,passwort,passwort_salt,gruppe,gesperrt,mail2sms,c_firstday,lastlogin,reg_ip,reg_date,profilfelder,datumsformat,charset,language,soforthtml,anrede,preview) ' .
+                'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,\'no\',\'1\',?,?,?,?,?,?,?,?,?,?)',
+            $email,
+            $firstname,
+            $surname,
+            $street,
+            $no,
+            $zip,
+            $city,
+            $country,
+            $phone,
+            $fax,
+            $altmail,
+            $mobile_nr,
+            md5(md5($password) . $salt),
+            $salt,
+            $bm_prefs['std_gruppe'],
+            'no',
+            0,
+            $_SERVER['REMOTE_ADDR'],
+            time(),
+            $profilefields,
+            $bm_prefs['datumsformat'],
+            $currentCharset,
+            $currentLanguage,
+            $instantHTML,
+            $salutation,
+            'yes',
+        );
+        $uid = $db->InsertId();
 
-            // create salt
-            $salt = GenerateRandomSalt(8);
-
-            // create account
+        // prefs
+        if ($bm_prefs['hotkeys_default'] == 'yes') {
             $db->Query(
-                'INSERT INTO {pre}users(email,vorname,nachname,strasse,hnr,plz,ort,land,tel,fax,altmail,mail2sms_nummer,passwort,passwort_salt,gruppe,gesperrt,mail2sms,c_firstday,lastlogin,reg_ip,reg_date,profilfelder,datumsformat,charset,language,soforthtml,uid,sms_validation_code,sms_validation_last_send,sms_validation_send_times,anrede,preview) ' .
-                    'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,\'no\',\'1\',?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-                $email,
-                $firstname,
-                $surname,
-                $street,
-                $no,
-                $zip,
-                $city,
-                $country,
-                $phone,
-                $fax,
-                $altmail,
-                $mobile_nr,
-                !LooksLikeMD5Hash($password)
-                    ? md5(md5($password) . $salt)
-                    : md5($password . $salt),
-                $salt,
-                $bm_prefs['std_gruppe'],
-                $userStatus,
-                0,
-                $_SERVER['REMOTE_ADDR'],
-                time(),
-                $profilefields,
-                $bm_prefs['datumsformat'],
-                $currentCharset,
-                $currentLanguage,
-                $instantHTML,
-                $c_uid,
-                $ValidationCode,
-                $ValidationCode != '' ? time() : 0,
-                0,
-                $salutation,
-                'yes',
+                'INSERT INTO {pre}userprefs(`userid`,`key`,`value`) VALUES(?,?,?)',
+                $uid,
+                'hotkeys',
+                1,
             );
-            $uid = $db->InsertId();
-
-            // prefs
-            if ($bm_prefs['hotkeys_default'] == 'yes') {
-                $db->Query(
-                    'INSERT INTO {pre}userprefs(`userid`,`key`,`value`) VALUES(?,?,?)',
-                    $uid,
-                    'hotkeys',
-                    1,
-                );
-            }
-
-            // send notify mail
-            if ($allowNotification && $bm_prefs['notify_mail'] == 'yes') {
-                [, $userDomain] = explode('@', $email);
-                $countryList = CountryList();
-                $countryName = $countryList[$country];
-                $vars = [
-                    'datum' => FormatDate(),
-                    'email' => DecodeEMail($email),
-                    'domain' => $userDomain,
-                    'anrede' => ucfirst($salutation),
-                    'name' => $surname . ', ' . $firstname,
-                    'strasse' => $street . ' ' . $no,
-                    'plzort' => $zip . ' ' . $city,
-                    'land' => $countryName . ' (#' . $country . ')',
-                    'tel' => $phone,
-                    'fax' => $fax,
-                    'altmail' => $altmail,
-                    'link' => sprintf(
-                        '%sadmin/?jump=%s',
-                        $bm_prefs['selfurl'],
-                        urlencode(sprintf('users.php?do=edit&id=%d&', $uid)),
-                    ),
-                ];
-                SystemMail(
-                    $bm_prefs['passmail_abs'],
-                    $bm_prefs['notify_to'],
-                    $lang_custom['snotify_sub'],
-                    'snotify_text',
-                    $vars,
-                );
-            }
-
-            // send welcome mail
-            if ($bm_prefs['welcome_mail'] == 'yes') {
-                [, $userDomain] = explode('@', $email);
-                $countryList = CountryList();
-                $countryName = $countryList[$country];
-                $vars = [
-                    'datum' => FormatDate(),
-                    'email' => DecodeEMail($email),
-                    'domain' => $userDomain,
-                    'anrede' => ucfirst($salutation),
-                    'vorname' => $firstname,
-                    'nachname' => $surname,
-                    'strasse' => $street . ' ' . $no,
-                    'plzort' => $zip . ' ' . $city,
-                    'land' => $countryName . ' (#' . $country . ')',
-                    'tel' => $phone,
-                    'fax' => $fax,
-                    'altmail' => $altmail,
-                ];
-                SystemMail(
-                    $bm_prefs['passmail_abs'],
-                    $email,
-                    $lang_custom['welcome_sub'],
-                    'welcome_text',
-                    $vars,
-                );
-            }
-
-            // send validation sms/mail?
-            if ($ValidationCode != '') {
-                if ($bm_prefs['reg_validation'] == 'sms') {
-                    if (!class_exists('BMSMS')) {
-                        include B1GMAIL_DIR . 'serverlib/sms.class.php';
-                    }
-
-                    $smsText = GetPhraseForUser(
-                        $uid,
-                        'lang_custom',
-                        'validationsms',
-                    );
-                    $smsText = str_replace(
-                        '%%code%%',
-                        $ValidationCode,
-                        $smsText,
-                    );
-
-                    $sms = _new('BMSMS', [0, false]);
-                    $sms->Send(
-                        $bm_prefs['mail2sms_abs'],
-                        preg_replace(
-                            '/[^0-9]/',
-                            '',
-                            str_replace('+', '00', $mobile_nr),
-                        ),
-                        $smsText,
-                        $bm_prefs['smsvalidation_type'],
-                        false,
-                        false,
-                    );
-                } elseif ($bm_prefs['reg_validation'] == 'email') {
-                    $vars = [
-                        'activationcode' => $ValidationCode,
-                        'email' => DecodeEMail($email),
-                        'url' => sprintf(
-                            '%sindex.php?action=activateAccount&id=%d&code=%s',
-                            $bm_prefs['selfurl'],
-                            $uid,
-                            $ValidationCode,
-                        ),
-                    ];
-
-                    SystemMail(
-                        $bm_prefs['passmail_abs'],
-                        $altmail,
-                        $lang_custom['activationmail_sub'],
-                        'activationmail_text',
-                        $vars,
-                    );
-                }
-            }
-
-            // module handler
-            ModuleFunction('OnSignup', [$uid, $email]);
-
-            // log
-            PutLog(
-                sprintf(
-                    'User <%s> (%d) created (adminMode: %d, allowNotification: %d, notification: %d, createLocked: %d, IP: %s)',
-                    $email,
-                    $uid,
-                    defined('ADMIN_MODE') && ADMIN_MODE ? 1 : 0,
-                    $allowNotification ? 1 : 0,
-                    $allowNotification && $bm_prefs['notify_mail'] == 'yes'
-                        ? 1
-                        : 0,
-                    $createLocked ? 1 : 0,
-                    $_SERVER['REMOTE_ADDR'],
-                ),
-                PRIO_NOTE,
-                __FILE__,
-                __LINE__,
-            );
-
-            return $uid;
         }
 
-        return false;
+        // send welcome mail
+        if ($bm_prefs['welcome_mail'] == 'yes') {
+            [, $userDomain] = explode('@', $email);
+            $countryList = CountryList();
+            $countryName = $countryList[$country];
+            $vars = [
+                'datum' => FormatDate(),
+                'email' => DecodeEMail($email),
+                'domain' => $userDomain,
+                'anrede' => ucfirst($salutation),
+                'vorname' => $firstname,
+                'nachname' => $surname,
+                'strasse' => $street . ' ' . $no,
+                'plzort' => $zip . ' ' . $city,
+                'land' => $countryName . ' (#' . $country . ')',
+                'tel' => $phone,
+                'fax' => $fax,
+                'altmail' => $altmail,
+            ];
+            SystemMail(
+                $bm_prefs['passmail_abs'],
+                $email,
+                $lang_custom['welcome_sub'],
+                'welcome_text',
+                $vars,
+            );
+        }
+
+        // module handler
+        ModuleFunction('OnSignup', [$uid, $email]);
+
+        // log
+        PutLog(
+            sprintf('User <%s> (%d) created', $email, $uid),
+            PRIO_NOTE,
+            __FILE__,
+            __LINE__,
+        );
+
+        return $uid;
     }
 
     /**
@@ -1254,56 +1108,6 @@ class BMUser {
     }
 
     /**
-     * activate a user account using it's activation code
-     *
-     * @param int $id User ID
-     * @param string $code Code
-     * @return bool Success
-     */
-    function ActivateAccount($id, $code) {
-        global $db, $bm_prefs;
-
-        $id = (int) $id;
-        $code = trim($code);
-
-        // check code length
-        if (strlen($code) != VALIDATIONCODE_LENGTH) {
-            return false;
-        }
-
-        // get user row
-        $res = $db->Query(
-            'SELECT `email`,`sms_validation_code` FROM {pre}users WHERE `id`=?',
-            $id,
-        );
-        if ($res->RowCount() != 1) {
-            return false;
-        }
-        $row = $res->FetchArray(MYSQLI_ASSOC);
-        $res->Free();
-
-        // check if validation is required
-        if (!BMUser::RequiresValidation($row['email'])) {
-            return false;
-        }
-
-        // validation code ok?
-        if (
-            strtoupper(trim($code)) == strtoupper($row['sms_validation_code'])
-        ) {
-            $db->Query(
-                'UPDATE {pre}users SET `sms_validation_code`=?,`gesperrt`=?,`sms_validation_time`=?,`sms_validation`=? WHERE `id`=?',
-                '',
-                'no',
-                time(),
-                $bm_prefs['reg_validation'] == 'sms' ? time() : 0,
-                $id,
-            );
-            return true;
-        }
-    }
-
-    /**
      * login a user
      *
      * @param string $email E-Mail
@@ -1317,7 +1121,6 @@ class BMUser {
         $passwordPlain,
         $createSession = true,
         $successLog = true,
-        $ValidationCode = '',
         $skipSalting = false
     ) {
         global $db, $currentCharset, $currentLanguage, $bm_prefs;
@@ -1338,7 +1141,7 @@ class BMUser {
             // get user ID
             $userID = BMUser::GetID($email);
             $res = $db->Query(
-                'SELECT id,gesperrt,passwort,passwort_salt,email,last_login_attempt,sms_validation_code,ip,lastlogin,preferred_language,last_timezone FROM {pre}users WHERE id=? LIMIT 1',
+                'SELECT id,gesperrt,passwort,passwort_salt,email,last_login_attempt,ip,lastlogin,preferred_language,last_timezone FROM {pre}users WHERE id=? LIMIT 1',
                 $userID,
             );
             $row = $res->FetchArray();
@@ -1349,7 +1152,7 @@ class BMUser {
         else {
             // find user
             $res = $db->Query(
-                'SELECT id,gesperrt,passwort,passwort_salt,email,last_login_attempt,sms_validation_code,ip,lastlogin,preferred_language,last_timezone FROM {pre}users WHERE uid=? LIMIT 1',
+                'SELECT id,gesperrt,passwort,passwort_salt,email,last_login_attempt,ip,lastlogin,preferred_language,last_timezone FROM {pre}users WHERE uid=? LIMIT 1',
                 $pluginAuth['uid'],
             );
             if ($res->RowCount() == 1) {
@@ -1441,16 +1244,6 @@ class BMUser {
                 ($row['last_login_attempt'] < 100 ||
                     $row['last_login_attempt'] + ACCOUNT_LOCK_TIME < time())
             ) {
-                // validation unlock?
-                if (
-                    $ValidationCode != '' &&
-                    BMUser::RequiresValidation($email)
-                ) {
-                    if (BMUser::ActivateAccount($userID, $ValidationCode)) {
-                        $row['gesperrt'] = 'no';
-                    }
-                }
-
                 // password ok
                 if ($row['gesperrt'] == 'no') {
                     if (
@@ -1622,61 +1415,6 @@ class BMUser {
             }
             session_destroy();
         }
-    }
-
-    /**
-     * check if user account requires validation
-     *
-     * @param string $email User account e-mail
-     * @return bool
-     */
-    static function RequiresValidation($email) {
-        global $db;
-
-        $res = $db->Query(
-            'SELECT `gesperrt`,`sms_validation_code` FROM {pre}users WHERE `email`=?',
-            $email,
-        );
-        if ($res->RowCount() != 1) {
-            return false;
-        }
-        [$userStatus, $ValidationCode] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-
-        return $userStatus == 'locked' &&
-            strlen($ValidationCode) == VALIDATIONCODE_LENGTH;
-    }
-
-    /**
-     * validate mobile no
-     *
-     * @param string $code Validation code
-     * @return bool
-     */
-    function ValidateMobileNo($code) {
-        global $db;
-
-        $res = $db->Query(
-            'SELECT `sms_validation_code`,`sms_validation` FROM {pre}users WHERE `id`=?',
-            $this->_id,
-        );
-        [$smsValidationCode, $smsValidation] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-
-        if (
-            trim(strtoupper($code)) == strtoupper($smsValidationCode) &&
-            strlen($smsValidationCode) == VALIDATIONCODE_LENGTH
-        ) {
-            $db->Query(
-                'UPDATE {pre}users SET `sms_validation_code`=?,`sms_validation`=? WHERE `id`=?',
-                '',
-                time(),
-                $this->_id,
-            );
-            return true;
-        }
-
-        return false;
     }
 
     /**
@@ -3289,7 +3027,7 @@ class BMUser {
 
             // store data
             $db->Query(
-                'UPDATE {pre}users SET vorname=?, nachname=?, strasse=?, hnr=?, plz=?, ort=?, land=?, tel=?, fax=?, mail2sms_nummer=?, altmail=?, profilfelder=?, passwort=?, contactHistory=?, sms_validation=?, anrede=? WHERE id=?',
+                'UPDATE {pre}users SET vorname=?, nachname=?, strasse=?, hnr=?, plz=?, ort=?, land=?, tel=?, fax=?, mail2sms_nummer=?, altmail=?, profilfelder=?, passwort=?, contactHistory=?, anrede=? WHERE id=?',
                 $userRow['vorname'],
                 $userRow['nachname'],
                 $userRow['strasse'],
@@ -3304,12 +3042,6 @@ class BMUser {
                 serialize($profileFields),
                 $userRow['passwort'],
                 $contactHistory,
-                $userID != 0
-                    ? 0
-                    : (trim($userRow['mail2sms_nummer']) !=
-                    trim($this->_row['mail2sms_nummer'])
-                        ? 0
-                        : $this->_row['sms_validation']),
                 $userRow['anrede'],
                 $userID != 0 ? $userID : $this->_id,
             );
@@ -3342,73 +3074,6 @@ class BMUser {
                         if ($privateKeyPasswords) {
                             $this->SetPrivateKeyPasswords($privateKeyPasswords);
                         }
-                    }
-                }
-
-                // mobile no changed?
-                if (
-                    $userID == 0 &&
-                    ((trim($userRow['mail2sms_nummer']) !=
-                        trim($this->_row['mail2sms_nummer']) ||
-                        ($this->_row['sms_validation'] == 0 &&
-                            $this->_row['sms_validation_time'] == 0)) &&
-                        trim($userRow['mail2sms_nummer']) != '')
-                ) {
-                    $userGroupRow = $this->GetGroup();
-
-                    if ($userGroupRow->_row['smsvalidation'] == 'yes') {
-                        // generate validation code
-                        $smsValidationCode = '';
-                        for ($i = 0; $i < VALIDATIONCODE_LENGTH; $i++) {
-                            $smsValidationCode .= substr(
-                                VALIDATIONCODE_CHARS,
-                                mt_rand(0, strlen(VALIDATIONCODE_CHARS) - 1),
-                                1,
-                            );
-                        }
-
-                        // send sms
-                        if (!class_exists('BMSMS')) {
-                            include B1GMAIL_DIR . 'serverlib/sms.class.php';
-                        }
-
-                        $smsText = GetPhraseForUser(
-                            $userID != 0 ? $userID : $this->_id,
-                            'lang_custom',
-                            'validationsms2',
-                        );
-                        $smsText = str_replace(
-                            '%%code%%',
-                            $smsValidationCode,
-                            $smsText,
-                        );
-
-                        $sms = _new('BMSMS', [0, false]);
-                        $sms->Send(
-                            $bm_prefs['mail2sms_abs'],
-                            preg_replace(
-                                '/[^0-9]/',
-                                '',
-                                str_replace(
-                                    '+',
-                                    '00',
-                                    $userRow['mail2sms_nummer'],
-                                ),
-                            ),
-                            $smsText,
-                            $bm_prefs['smsvalidation_type'],
-                            false,
-                            false,
-                        );
-
-                        // set code
-                        $db->Query(
-                            'UPDATE {pre}users SET `sms_validation_code`=?,`sms_validation_time`=?,`sms_validation`=? WHERE `id`=?',
-                            $smsValidationCode,
-                            time(),
-                            0,
-                            $userID != 0 ? $userID : $this->_id,
-                        );
                     }
                 }
             } else {

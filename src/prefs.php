@@ -579,30 +579,6 @@ if ($_REQUEST['action'] == 'start') {
                     }
                 }
             }
-
-            // changed?
-            if (
-                (trim($userRow['mail2sms_nummer']) != trim($oldNo) ||
-                    ($userRow['sms_validation'] == 0 &&
-                        $userRow['sms_validation_time'] == 0 &&
-                        $groupRow['smsvalidation'] == 'yes')) &&
-                trim($userRow['mail2sms_nummer']) != ''
-            ) {
-                // allow validation every 24 hours only
-                if (
-                    $groupRow['smsvalidation'] == 'yes' &&
-                    $userRow['sms_validation_time'] > time() - TIME_ONE_DAY
-                ) {
-                    if (trim($groupRow['sms_pre']) != '') {
-                        $invalidFields[] = 'mail2sms_nummer_pre';
-                        $invalidFields[] = 'mail2sms_nummer_no';
-                    } else {
-                        $invalidFields[] = 'mail2sms_nummer';
-                    }
-
-                    $errorInfo .= ' ' . $lang_user['val24error'];
-                }
-            }
         }
 
         // go on

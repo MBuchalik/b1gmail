@@ -33,7 +33,46 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
         if (
             !mysqli_query(
                 $dbConnection,
-                'ALTER TABLE bm60_prefs DROP COLUMN taborder',
+                'ALTER TABLE bm60_prefs
+                    DROP COLUMN taborder,
+                    DROP COLUMN regenabled,
+                    DROP COLUMN usr_status,
+                    DROP COLUMN user_count_limit,
+                    DROP COLUMN reg_iplock,
+                    DROP COLUMN signup_dnsbl,
+                    DROP COLUMN signup_dnsbl_enable,
+                    DROP COLUMN signup_dnsbl_action,
+                    DROP COLUMN reg_validation,
+                    DROP COLUMN reg_validation_max_resend_times,
+                    DROP COLUMN reg_validation_min_resend_interval,
+                    DROP COLUMN signup_suggestions,
+                    DROP COLUMN notify_mail,
+                    DROP COLUMN notify_to
+                ',
+            )
+        ) {
+            return false;
+        }
+
+        if (
+            !mysqli_query(
+                $dbConnection,
+                'ALTER TABLE bm60_profilfelder DROP COLUMN show_signup',
+            )
+        ) {
+            return false;
+        }
+
+        if (
+            !mysqli_query(
+                $dbConnection,
+                'ALTER TABLE bm60_users
+                    DROP COLUMN uid,
+                    DROP COLUMN sms_validation,
+                    DROP COLUMN sms_validation_code,
+                    DROP COLUMN sms_validation_last_send,
+                    DROP COLUMN sms_validation_send_times
+                ',
             )
         ) {
             return false;

@@ -379,14 +379,7 @@
 	<div style="float:left" class="buttons">
 		{lng p="action"}:&nbsp;
 		<select name="userAction" id="userAction">
-			<optgroup label="{lng p="actions"}">
-				{if $user.sms_validation_code!=''&&$user.gesperrt=='locked'}
-				{if $regValidation=='email'&&$user.altmail!=''}
-				<option value="users.php?do=edit&id={$user.id}&resendValidationEmail=true&sid={$sid}">{lng p="resend_val_email"}</option>
-				{elseif $regValidation=='sms'&&$user.mail2sms_nummer!=''}
-				<option value="users.php?do=edit&id={$user.id}&resendValidationSMS=true&sid={$sid}">{lng p="resend_val_sms"}</option>
-				{/if}
-				{/if}
+			<optgroup label="{lng p="actions"}">				
 				<option value="mailto:{email value=$user.email}">{lng p="sendmail"}</option>
 				{if $user.altmail!=''}<option value="mailto:{email value=$user.altmail}">{lng p="sendmail"} ({lng p="altmail"})</option>{/if}
 				<option value="popup;users.php?do=login&id={$user.id}&sid={$sid}">{lng p="login"}</option>

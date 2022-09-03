@@ -276,49 +276,24 @@ if ($_REQUEST['action'] == 'common') {
         }
         $lockedAltMail = implode(':', $lamArray);
 
-        $dnsblArray = explode("\n", $_REQUEST['signup_dnsbl']);
-        foreach ($dnsblArray as $key => $val) {
-            if (($val = trim($val)) != '') {
-                $dnsblArray[$key] = $val;
-            } else {
-                unset($dnsblArray[$key]);
-            }
-        }
-        $signupDNSBL = implode(':', $dnsblArray);
-
         $db->Query(
-            'UPDATE {pre}prefs SET regenabled=?, usr_status=?, std_gruppe=?, minuserlength=?, min_pass_length=?, notify_mail=?, welcome_mail=?, notify_to=?, f_strasse=?, f_telefon=?, f_fax=?, f_alternativ=?, f_mail2sms_nummer=?, f_safecode=?, reg_iplock=?, plz_check=?, alt_check=?, user_count_limit=?, reg_validation=?, reg_validation_max_resend_times=?, reg_validation_min_resend_interval=?, check_double_altmail=?, check_double_cellphone=?, f_anrede=?, locked_altmail=?, signup_dnsbl_enable=?, signup_dnsbl=?, signup_dnsbl_action=?, signup_suggestions=?, `nosignup_autodel`=?, `nosignup_autodel_days`=?',
-            isset($_REQUEST['regenabled']) ? 'yes' : 'no',
-            $_REQUEST['usr_status'],
+            'UPDATE {pre}prefs SET std_gruppe=?, minuserlength=?, min_pass_length=?, welcome_mail=?, f_strasse=?, f_telefon=?, f_fax=?, f_alternativ=?, f_mail2sms_nummer=?, f_safecode=?, check_double_altmail=?, check_double_cellphone=?, f_anrede=?, locked_altmail=?, `nosignup_autodel`=?, `nosignup_autodel_days`=?',
             $_REQUEST['std_gruppe'],
             max(1, $_REQUEST['minuserlength']),
             max(1, $_REQUEST['min_pass_length']),
-            isset($_REQUEST['notify_mail']) ? 'yes' : 'no',
             isset($_REQUEST['welcome_mail']) ? 'yes' : 'no',
-            EncodeEMail($_REQUEST['notify_to']),
             $_REQUEST['f_strasse'],
             $_REQUEST['f_telefon'],
             $_REQUEST['f_fax'],
             $_REQUEST['f_alternativ'],
             $_REQUEST['f_mail2sms_nummer'],
             $_REQUEST['f_safecode'],
-            $_REQUEST['reg_iplock'],
             isset($_REQUEST['plz_check']) ? 'yes' : 'no',
             isset($_REQUEST['alt_check']) ? 'yes' : 'no',
-            isset($_REQUEST['user_count_limit_enable'])
-                ? $_REQUEST['user_count_limit']
-                : 0,
-            $_REQUEST['reg_validation'],
-            (int) $_REQUEST['reg_validation_max_resend_times'],
-            (int) $_REQUEST['reg_validation_min_resend_interval'],
             isset($_REQUEST['check_double_altmail']) ? 'yes' : 'no',
             isset($_REQUEST['check_double_cellphone']) ? 'yes' : 'no',
             $_REQUEST['f_anrede'],
             $lockedAltMail,
-            isset($_REQUEST['signup_dnsbl_enable']) ? 'yes' : 'no',
-            $signupDNSBL,
-            $_REQUEST['signup_dnsbl_action'],
-            isset($_REQUEST['signup_suggestions']) ? 'yes' : 'no',
             isset($_REQUEST['nosignup_autodel']) ? 'yes' : 'no',
             max(1, $_REQUEST['nosignup_autodel_days']),
         );
@@ -326,11 +301,6 @@ if ($_REQUEST['action'] == 'common') {
     }
 
     // assign
-    $bm_prefs['signup_dnsbl'] = str_replace(
-        ':',
-        "\n",
-        $bm_prefs['signup_dnsbl'],
-    );
     $bm_prefs['locked_altmail'] = str_replace(
         ':',
         "\n",
