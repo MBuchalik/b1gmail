@@ -104,7 +104,7 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
         if (
             !mysqli_query(
                 $dbConnection,
-                'ALTER TABLE bm60_gruppen 
+                'ALTER TABLE bm60_gruppen
                     DROP COLUMN abuseprotect,
                     DROP COLUMN sms_monat,
                     DROP COLUMN sms_pre,
