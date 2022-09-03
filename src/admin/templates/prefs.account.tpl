@@ -1,4 +1,4 @@
-<form action="prefs.common.php?action=signup&save=true&sid={$sid}" method="post" onsubmit="spin(this)">
+<form action="prefs.common.php?action=account&save=true&sid={$sid}" method="post" onsubmit="spin(this)">
 	<fieldset>
 		<legend>{lng p="common"}</legend>
 

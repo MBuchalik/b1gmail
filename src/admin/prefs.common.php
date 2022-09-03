@@ -53,10 +53,10 @@ $tabs = [
         'active' => $_REQUEST['action'] == 'captcha',
     ],
     [
-        'title' => $lang_admin['signup'],
+        'title' => $lang_admin['account'],
         'relIcon' => 'ico_prefs_signup.png',
-        'link' => 'prefs.common.php?action=signup&',
-        'active' => $_REQUEST['action'] == 'signup',
+        'link' => 'prefs.common.php?action=account&',
+        'active' => $_REQUEST['action'] == 'account',
     ],
     [
         'title' => $lang_admin['lockedusernames'],
@@ -262,9 +262,7 @@ if ($_REQUEST['action'] == 'common') {
     $tpl->assign('defaultProvider', $bm_prefs['captcha_provider']);
     $tpl->assign('providers', $providers);
     $tpl->assign('page', 'prefs.captcha.tpl');
-} /**
- * signup
- */ elseif ($_REQUEST['action'] == 'signup') {
+} elseif ($_REQUEST['action'] == 'account') {
     if (isset($_REQUEST['save'])) {
         $lamArray = explode("\n", $_POST['locked_altmail']);
         foreach ($lamArray as $key => $val) {
@@ -307,7 +305,7 @@ if ($_REQUEST['action'] == 'common') {
         $bm_prefs['locked_altmail'],
     );
     $tpl->assign('groups', BMGroup::GetSimpleGroupList());
-    $tpl->assign('page', 'prefs.signup.tpl');
+    $tpl->assign('page', 'prefs.account.tpl');
 } /**
  * locked usernames
  */ elseif ($_REQUEST['action'] == 'lockedusernames') {
