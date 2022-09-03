@@ -165,10 +165,6 @@
 				<td class="td2"><input name="contact_history"{if $bm_prefs.contact_history=='yes'} checked="checked"{/if} type="checkbox" /></td>
 			</tr>
 			<tr>
-				<td class="td1" width="220">{lng p="gutregged"}?</td>
-				<td class="td2"><input name="gut_regged"{if $bm_prefs.gut_regged=='yes'} checked="checked"{/if} type="checkbox" /></td>
-			</tr>
-			<tr>
 				<td class="td1" width="220">{lng p="autocancel"}?</td>
 				<td class="td2"><input name="autocancel"{if $bm_prefs.autocancel=='yes'} checked="checked"{/if} type="checkbox" /></td>
 			</tr>

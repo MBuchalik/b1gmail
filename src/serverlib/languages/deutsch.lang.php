@@ -468,8 +468,6 @@ $lang_user['reglockdnsbl'] =
     'Sie k&ouml;nnen sich momentan leider nicht registrieren, da Registrierungen von Ihrer IP-Adresse gesperrt sind. Bitte versuchen Sie es sp&auml;ter erneut oder kontaktieren Sie unseren Support.';
 $lang_user['regdisabled'] =
     'Zur Zeit werden leider keine neuen Anmeldungen angenommen. Bitte versuchen Sie es sp&auml;ter erneut.';
-$lang_user['signupcouponerror'] =
-    'Der Gutschein-Code ist inkorrekt oder der Gutschein ist abgelaufen. Bitte korrigieren Sie die Gutscheincode-Eingabe oder lassen Sie das Feld frei.';
 $lang_user['doublealtmail'] =
     'Es existiert bereits ein Account mit dieser Alternativ-E-Mail-Adresse!';
 $lang_user['doublecellphone'] =
@@ -907,7 +905,6 @@ $lang_user['signatures'] = 'Signaturen';
 $lang_user['aliases'] = 'Aliase';
 $lang_user['autoresponder'] = 'Automatische Antwort';
 $lang_user['extpop3'] = 'POP3-Sammeldienst';
-$lang_user['coupons'] = 'Gutscheine';
 $lang_user['software'] = 'Software';
 $lang_user['software_intro'] =
     'Hier k&ouml;nnen Sie %s herunterladen &mdash; unsere Software f&uuml;r Ihren PC oder Mac. %s enth&auml;lt unter anderem einen E-Mail-Pr&uuml;fer und viele andere Tools zum einfachen Zugriff auf unsere Dienste.';
@@ -956,8 +953,6 @@ $lang_user['prefs_d_software'] =
     'Laden Sie Client-Software f&uuml;r Ihren Computer herunter, z.B. einen Mailpr&uuml;fer.';
 $lang_user['prefs_d_membership'] =
     'Sehen Sie Infos zu Ihrer Mitgliedschaft ein oder beenden Sie diese auf Wunsch.';
-$lang_user['prefs_d_coupons'] =
-    'L&ouml;sen Sie Gutscheine ein, die Sie z.B. aus Aktionen oder Gewinnspielen erhalten haben.';
 $lang_user['alias'] = 'Alias';
 $lang_user['addalias'] = 'Alias hinzuf&uuml;gen';
 $lang_user['aliastype_1'] = 'Absender';
@@ -989,7 +984,6 @@ $lang_user['balance'] = 'Saldo';
 $lang_user['dynamicbalance'] = 'Verbleibendes Monats-Guthaben';
 $lang_user['startingbalance'] = 'EB-Wert';
 $lang_user['tx_charge'] = 'Konto-Aufladung (%s)';
-$lang_user['tx_coupon'] = 'Gutschein-Einlösung (%s)';
 $lang_user['tx_sms'] = 'SMS-Versand';
 $lang_user['charge'] = 'Konto aufladen';
 $lang_user['charge_min'] =
@@ -1122,10 +1116,6 @@ $lang_user['with'] = 'mit';
 $lang_user['selectdraft'] = 'Entwurf w&auml;hlen';
 $lang_user['deleteforwarded'] = 'Weitergeleitete E-Mails l&ouml;schen';
 $lang_user['mail2sms'] = 'Mail-to-SMS';
-$lang_user['redeemcoupon'] = 'Gutschein einl&ouml;sen';
-$lang_user['couponerror'] =
-    'Der Gutschein konnte nicht eingel&ouml;st werden. M&ouml;glicherweise ist der Gutschein-Code inkorrekt, der Gutschein abgelaufen oder Sie haben den Gutschein bereits eingel&ouml;st.';
-$lang_user['couponok'] = 'Der Gutschein wurde erfolgreich eingel&ouml;st.';
 $lang_user['virusfilter'] = 'Virus-Filter';
 $lang_user['virusaction'] = 'Viren-Behandlung';
 $lang_user['changepw'] = 'Passwort &auml;ndern';
@@ -1635,7 +1625,6 @@ $lang_admin['webdiskicons'] = 'Webdisk-Icons';
 $lang_admin['sms'] = 'SMS';
 $lang_admin['ads'] = 'Werbung';
 $lang_admin['faq'] = 'FAQ';
-$lang_admin['coupons'] = 'Gutscheine';
 $lang_admin['tools'] = 'Tools';
 $lang_admin['toolbox'] = 'Toolbox';
 $lang_admin['test'] = 'Testen';
@@ -2244,7 +2233,6 @@ $lang_admin['reset'] = 'Zur&uuml;cksetzen';
 $lang_admin['bayesresetq'] =
     'Soll die Filter-Trainings-Datenbank wirklich zurückgesetzt werden? Der Filter ist danach erst nach erneutem Training wieder einsatzbereit.';
 $lang_admin['entries'] = 'Eintr&auml;ge';
-$lang_admin['addcoupon'] = 'Gutschein hinzuf&uuml;gen';
 $lang_admin['codes'] = 'Gutschein-Code(s)';
 $lang_admin['unlimited'] = 'unbegrenzt';
 $lang_admin['or'] = 'oder';

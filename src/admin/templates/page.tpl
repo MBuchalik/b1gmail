@@ -62,7 +62,6 @@
 							<li><a href="prefs.webdisk.php?sid={$sid}"><img src="./templates/images/ico_disk.png" />{lng p="webdisk"}</a></li>
 							<li><a href="prefs.sms.php?sid={$sid}"><img src="./templates/images/gateway32.png" />{lng p="sms"}</a></li>
 							<li><a href="prefs.abuse.php?sid={$sid}"><img src="./templates/images/abuse.png" />{lng p="abuseprotect"}</a></li>
-							<li><a href="prefs.coupons.php?sid={$sid}"><img src="./templates/images/coupon.png" />{lng p="coupons"}</a></li>
 							<li><a href="prefs.profilefields.php?sid={$sid}"><img src="./templates/images/field32.png" />{lng p="profilefields"}</a></li>
 							<li><a href="prefs.languages.php?sid={$sid}"><img src="./templates/images/lang32.png" />{lng p="languages"}</a></li>
 							<li><a href="prefs.templates.php?sid={$sid}"><img src="./templates/images/template.png" />{lng p="templates"}</a></li>

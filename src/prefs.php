@@ -75,9 +75,6 @@ if ($groupRow['responder'] == 'yes') {
 if ($groupRow['ownpop3'] > 0) {
     $prefsItems['extpop3'] = true;
 }
-if ($bm_prefs['gut_regged'] == 'yes') {
-    $prefsItems['coupons'] = true;
-}
 $tbxRelease = false;
 if ($groupRow['checker'] == 'yes') {
     // check if toolbox is available
@@ -647,38 +644,6 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('pageContent', 'li/prefs.contact.tpl');
     $tpl->assign('activeItem', 'contact');
     $tpl->display('li/index.tpl');
-} /**
- * coupons
- */ elseif ($_REQUEST['action'] == 'coupons' && isset($prefsItems['coupons'])) {
-    $tpl->assign('activeItem', 'coupons');
-
-    //
-    // form
-    //
-    if (!isset($_REQUEST['do'])) {
-        // display
-        $tpl->assign('pageContent', 'li/prefs.coupons.tpl');
-        $tpl->display('li/index.tpl');
-    }
-
-    //
-    // redeem
-    //
-    elseif ($_REQUEST['do'] == 'redeem' && IsPOSTRequest()) {
-        if ($thisUser->RedeemCoupon($_REQUEST['code'], 'loggedin')) {
-            // success
-            $tpl->assign('title', $lang_user['redeemcoupon']);
-            $tpl->assign('msg', $lang_user['couponok']);
-            $tpl->assign('backLink', 'prefs.php?sid=' . session_id());
-            $tpl->assign('pageContent', 'li/msg.tpl');
-        } else {
-            // failed
-            $tpl->assign('msg', $lang_user['couponerror']);
-            $tpl->assign('pageContent', 'li/error.tpl');
-        }
-
-        $tpl->display('li/index.tpl');
-    }
 } /**
  * filters
  */ elseif ($_REQUEST['action'] == 'filters' && isset($prefsItems['filters'])) {

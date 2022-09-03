@@ -47,7 +47,8 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                     DROP COLUMN reg_validation_min_resend_interval,
                     DROP COLUMN signup_suggestions,
                     DROP COLUMN notify_mail,
-                    DROP COLUMN notify_to
+                    DROP COLUMN notify_to,
+                    DROP COLUMN gut_regged
                 ',
             )
         ) {
@@ -75,6 +76,10 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                 ',
             )
         ) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_codes')) {
             return false;
         }
 

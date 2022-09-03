@@ -382,7 +382,6 @@ $lang_user['balance'] = 'Balance';
 $lang_user['dynamicbalance'] = 'Remaining monthly credits';
 $lang_user['startingbalance'] = 'Starting balance';
 $lang_user['tx_charge'] = 'Account charge (%s)';
-$lang_user['tx_coupon'] = 'Voucher (%s)';
 $lang_user['tx_sms'] = 'SMS';
 $lang_user['langCode_editor'] = 'en';
 $lang_user['sendnotify'] = 'Show notification';
@@ -644,8 +643,6 @@ $lang_user['reglockdnsbl'] =
     'We are sorry but you cannot register at the moment because your IP address is blocked. Please try again later or contact our support team.';
 $lang_user['regdisabled'] =
     'We are sorry but we cannot accept new registrations at the moment. Please try again later.';
-$lang_user['signupcouponerror'] =
-    'The voucher code is invalid or it has expired. Please correct your entry or leave the field blank.';
 
 // address book completion
 $lang_user['addrselfcomplete'] = 'addressbook completion';
@@ -1016,7 +1013,6 @@ $lang_user['signatures'] = 'Signatures';
 $lang_user['aliases'] = 'Aliases';
 $lang_user['autoresponder'] = 'Autoresponder';
 $lang_user['extpop3'] = 'POP3 accounts';
-$lang_user['coupons'] = 'Vouchers';
 $lang_user['software'] = 'Software';
 $lang_user['membership'] = 'Membership';
 $lang_user['validity'] = 'Validity';
@@ -1058,8 +1054,6 @@ $lang_user['prefs_d_software'] =
     'Download client-software for your computer, e.g. a mail checker.';
 $lang_user['prefs_d_membership'] =
     'View information on your membership or terminate it if desired.';
-$lang_user['prefs_d_coupons'] =
-    'Redeem the vouchers you may have obtained from special promotions.';
 $lang_user['alias'] = 'Alias';
 $lang_user['addalias'] = 'Add alias';
 $lang_user['aliastype_1'] = 'Sender';
@@ -1144,10 +1138,6 @@ $lang_user['forwarding'] = 'Forwarding';
 $lang_user['to2'] = 'to';
 $lang_user['deleteforwarded'] = 'Delete forwarded messages';
 $lang_user['mail2sms'] = 'Mail-to-SMS';
-$lang_user['redeemcoupon'] = 'Redeem voucher';
-$lang_user['couponerror'] =
-    'The voucher could not be redeemed. The voucher code may be incorrect or you may already have redeemed the voucher.';
-$lang_user['couponok'] = 'The voucher was redeemed successfully.';
 $lang_user['virusfilter'] = 'Virus filter';
 $lang_user['virusaction'] = 'Virus action';
 $lang_user['changepw'] = 'Change password';
@@ -1765,7 +1755,6 @@ $lang_admin['webdiskicons'] = 'Webdisc icons';
 $lang_admin['sms'] = 'SMS';
 $lang_admin['ads'] = 'Advertisements';
 $lang_admin['faq'] = 'FAQ';
-$lang_admin['coupons'] = 'Vouchers';
 $lang_admin['tools'] = 'Tools';
 $lang_admin['optimize'] = 'Optimize';
 $lang_admin['stats'] = 'Statistics';
@@ -2268,7 +2257,6 @@ $lang_admin['reset'] = 'Reset';
 $lang_admin['bayesresetq'] =
     'Are you sure you want to reset the filter training database? The filter will not be operational again until re-training.';
 $lang_admin['entries'] = 'Entries';
-$lang_admin['addcoupon'] = 'Add vouchers';
 $lang_admin['codes'] = 'Voucher code(s)';
 $lang_admin['unlimited'] = 'unlimited';
 $lang_admin['or'] = 'or';
