@@ -462,10 +462,6 @@ $lang_user['regdone'] =
     'Herzlichen Gl&uuml;ckwunsch, Sie haben sich erfolgreich registriert! Sie k&ouml;nnen sich nun mit Ihrer neuen E-Mail-Adresse <i>%s</i> und Ihrem Passwort <a href="index.php">einloggen</a> und Ihren Account nutzen.';
 $lang_user['regdonelocked'] =
     'Herzlichen Gl&uuml;ckwunsch, Sie haben sich erfolgreich registriert! Ihr Account mit der E-Mail-Adresse <i>%s</i> muss nun nur noch von einem Administrator aktiviert werden, bevor Sie sich <a href="index.php">einloggen</a> und Ihren Account nutzen k&ouml;nnen. Dies kann unter Umst&auml;nden 1-2 Werktage dauern.';
-$lang_user['reglock'] =
-    'Sie k&ouml;nnen sich momentan leider nicht registrieren, da von Ihrer IP-Adresse vor kurzer Zeit bereits eine Registrierung durchgef&uuml;hrt wurde. Bitte versuchen Sie es sp&auml;ter erneut.';
-$lang_user['reglockdnsbl'] =
-    'Sie k&ouml;nnen sich momentan leider nicht registrieren, da Registrierungen von Ihrer IP-Adresse gesperrt sind. Bitte versuchen Sie es sp&auml;ter erneut oder kontaktieren Sie unseren Support.';
 $lang_user['regdisabled'] =
     'Zur Zeit werden leider keine neuen Anmeldungen angenommen. Bitte versuchen Sie es sp&auml;ter erneut.';
 $lang_user['doublealtmail'] =

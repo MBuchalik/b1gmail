@@ -637,10 +637,6 @@ $lang_user['regdone'] =
     'Congratulations, you have registered successfully! You can now log in with your new email address <i>%s</i> and your password <a href="index.php"> </a> and use your account.';
 $lang_user['regdonelocked'] =
     'Congratulations, you have registered successfully! Your account with the email address <i>%s</i> has now to be activated by an administrator before you can <a href="index.php"> log in </a> and use your account. This may take one or two workdays.';
-$lang_user['reglock'] =
-    'We are sorry but you cannot register at the moment because there was a registration from your IP address a short time ago. Please try again later.';
-$lang_user['reglockdnsbl'] =
-    'We are sorry but you cannot register at the moment because your IP address is blocked. Please try again later or contact our support team.';
 $lang_user['regdisabled'] =
     'We are sorry but we cannot accept new registrations at the moment. Please try again later.';
 
