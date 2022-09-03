@@ -777,32 +777,33 @@ class BMUser {
         // create account
         $db->Query(
             'INSERT INTO {pre}users(email,vorname,nachname,strasse,hnr,plz,ort,land,tel,fax,altmail,passwort,passwort_salt,gruppe,gesperrt,c_firstday,lastlogin,reg_ip,reg_date,profilfelder,datumsformat,charset,language,soforthtml,anrede,preview) ' .
-                'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,\'no\',\'1\',?,?,?,?,?,?,?,?,?,?)',
-            $email,
-            $firstname,
-            $surname,
-            $street,
-            $no,
-            $zip,
-            $city,
-            $country,
-            $phone,
-            $fax,
-            $altmail,
-            md5(md5($password) . $salt),
-            $salt,
-            $bm_prefs['std_gruppe'],
-            'no',
-            0,
-            $_SERVER['REMOTE_ADDR'],
-            time(),
-            $profilefields,
-            $bm_prefs['datumsformat'],
-            $currentCharset,
-            $currentLanguage,
-            $instantHTML,
-            $salutation,
-            'yes',
+                'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+            $email, // email
+            $firstname, // vorname
+            $surname, // nachname
+            $street, // strasse
+            $no, // hnr
+            $zip, // plz
+            $city, // ort
+            $country, // land
+            $phone, // tel
+            $fax, // fax
+            $altmail, // altmail
+            md5(md5($password) . $salt), // passwort
+            $salt, // passwort_salt
+            $bm_prefs['std_gruppe'], // gruppe
+            'no', // gesperrt
+            1, // c_firstday
+            0, // lastlogin
+            $_SERVER['REMOTE_ADDR'], // reg_ip
+            time(), // reg_date
+            $profilefields, // profilfelder
+            $bm_prefs['datumsformat'], // datumsformat
+            $currentCharset, // charset
+            $currentLanguage, // language
+            $instantHTML, // soforthtml
+            $salutation, // anrede
+            'yes', // preview
         );
         $uid = $db->InsertId();
 
