@@ -47,8 +47,6 @@ $lang_client['addattach'] = 'Add attachment';
 $lang_client['saveattach'] = 'Save attachment';
 $lang_client['attachments'] = 'Attachments';
 $lang_client['date'] = 'Date';
-$lang_client['pricewarning'] =
-    'To send this SMS you must have a balance of at least %1 Credit(s). Your current balance of %2 Credit(s) is insufficient. Please top up your account.';
 $lang_client['switchwarning'] =
     'Switching from HTML-Mode to Text-Mode, all formatting will be lost. Are you sure you want to continue?';
 $lang_client['folderprompt'] =
@@ -168,7 +166,6 @@ $lang_custom['certmail'] =
     'Please not that this message will only be stored until %%date%% after which time it will expire.' .
     "\n\n" .
     '(This message has been generated automatically)';
-$lang_custom['mail2sms'] = 'New email from %%abs%%: %%betreff%%';
 $lang_custom['cs_subject'] = 'Delivery receipt';
 $lang_custom['cs_text'] =
     'Dear Sir or Madam,' .
@@ -187,7 +184,6 @@ $lang_custom['clndr_date_msg'] =
     'Notification: %%message%%' .
     "\n\n" .
     '(This message has been generated automatically)';
-$lang_custom['clndr_sms'] = '%%date%% %%time%% - %%subtitle%%';
 $lang_custom['receipt_text'] =
     'Dear Sir or Madam,' .
     "\n\n" .
@@ -232,49 +228,6 @@ $lang_custom['snotify_text'] =
     'Alternative email: %%altmail%%' .
     "\n\n" .
     'Details: %%link%%';
-$lang_custom['validationsms'] =
-    'Thank you for signing up! Your unlock code: %%code%% - just enter it when requested!';
-$lang_custom['validationsms2'] =
-    'Please enter the following unlock code at "SMS" in order to finish the change of your number: %%code%%';
-$lang_custom['activationmail_sub'] = 'Your registration (%%email%%)';
-$lang_custom['activationmail_text'] =
-    'Dear Sir or Madam,' .
-    "\n\n" .
-    'thank you for signing up with our service. In order to activate your new email address %%email%%, just click the following link or enter the following activation code when requested during your first login.' .
-    "\n\n" .
-    '	Link: %%url%%' .
-    "\n" .
-    '	Code: %%activationcode%%' .
-    "\n\n" .
-    '(This message has been generated automatically)';
-$lang_custom['paynotify_sub'] = 'Order activated';
-$lang_custom['paynotify_text'] =
-    'An order has just been activated:' .
-    "\n\n" .
-    'Order: #%%order_id%%' .
-    "\n" .
-    'User: #%%user_id%%' .
-    "\n" .
-    'Invoice no: %%invoice_no%%' .
-    "\n" .
-    'Customer no: %%customer_no%%' .
-    "\n" .
-    'Payment method: %%payment_method%%' .
-    "\n" .
-    'Order amount: %%order_amount%%' .
-    "\n" .
-    'Paid amount: %%paid_amount%%' .
-    "\n" .
-    'Transaction code: %%txn_id%%';
-$lang_custom['orderconfirm_sub'] = 'Yor order (%%invoice_no%%)';
-$lang_custom['orderconfirm_text'] =
-    'Dear Sir or Madam,' .
-    "\n\n" .
-    'thank you for your order. We have gratefully received your payment and activated the order.' .
-    "\n" .
-    'You can find the details of your order (including you invoice, if available) at \"Preferences\" -> \"Orders\".' .
-    "\n" .
-    '(This message has been generated automatically)';
 $lang_custom['share_sub'] = 'Webdisk share';
 $lang_custom['share_text'] =
     'Hi,' .
@@ -360,11 +313,6 @@ $lang_user['details_default'] = 'Directly show detailed results';
 $lang_user['statement'] = 'Account statement';
 $lang_user['description'] = 'Description';
 $lang_user['current'] = 'current';
-$lang_user['balance'] = 'Balance';
-$lang_user['dynamicbalance'] = 'Remaining monthly credits';
-$lang_user['startingbalance'] = 'Starting balance';
-$lang_user['tx_charge'] = 'Account charge (%s)';
-$lang_user['tx_sms'] = 'SMS';
 $lang_user['langCode_editor'] = 'en';
 $lang_user['sendnotify'] = 'Show notification';
 $lang_user['readonly'] = 'read only';
@@ -464,62 +412,13 @@ $lang_user['doublealtmail'] =
     'There is already an account using this alternative email address!';
 $lang_user['doublecellphone'] =
     'There is already an account using this cellphone number!';
-$lang_user['realdel_order'] =
-    'Do you really want to delete the order? If you have already paid for the order, we will not be able to assign your payment to you. Please delete orders only if you have not paid yet!\n\nIf you like to cancel an order you already paid for, please contact our support team.\n\nClick OK if you really want to cancel the order or Cancel to keep the order.';
 $lang_user['hiddenelements'] = 'Hidden elements';
 $lang_user['hide'] = 'Hide';
 $lang_user['atreply'] = 'At reply';
 $lang_user['insertquote'] = 'Quote original email';
 $lang_user['invoiceaddress'] = 'Invoice address';
-$lang_user['paymentmethod'] = 'Payment method';
-$lang_user['finalamount'] = 'Payment amount';
-$lang_user['placeorder'] = 'Submit order';
-$lang_user['banktransfer'] = 'Wire transfer';
-$lang_user['taxnote'] = 'incl. %.02f%% VAT';
-$lang_user['pn_paypal'] =
-    'The invoice amount (%.02f %s) has been gratefully received using PayPal.';
-$lang_user['pn_banktransfer'] =
-    'Please transfer the invoice amount (%.02f %s) to our bank account (see below). Please use the following code in the subject - otherwise we cannot process your payment: <b>VK-%s</b>.<br />As soon as we receive your payment, your order will be activated.';
-$lang_user['pn_sofortueberweisung'] =
-    'The invoice amount (%.02f %s) has been gratefully received using sofortueberweisung.de.';
-$lang_user['orders'] = 'Orders';
-$lang_user['order'] = 'Order';
-$lang_user['thankyou'] = 'Thank you';
-$lang_user['paymentreturn_txt'] =
-    '<p>Thank you for your payment.</p><p>In case your payment was successful, your order will be activated as soon as the payment is confirmed. In most cases this takes only a few seconds.</p><p>You can find your current order status at \"<a href=\"prefs.php?action=orders&sid=%s\">Orders</a>\" at \"Preferences\" anytime.';
-$lang_user['prefs_d_orders'] =
-    'Review your orders and download or print your invoices.';
-$lang_user['orderno'] = 'Order no';
-$lang_user['amount'] = 'Amount';
-$lang_user['invoice'] = 'Invoice';
-$lang_user['printinvoice'] = 'Print invoice';
-$lang_user['orderalreadypaid'] =
-    'This order has already been paid or has been cancelled.';
-$lang_user['yourinvoice'] = 'Your invoice';
 $lang_user['dearsirormadam'] = 'Dear Sir or Madam';
-$lang_user['pos'] = 'Position';
-$lang_user['descr'] = 'Description';
-$lang_user['ep'] = 'Unit price';
-$lang_user['gp'] = 'Price';
-$lang_user['gb'] = 'Total amount';
-$lang_user['vat'] = 'VAT';
-$lang_user['net'] = 'net';
-$lang_user['gross'] = 'gross';
 $lang_user['kindregards'] = 'Kind regards';
-$lang_user['invtext'] = 'please find your invoice below';
-$lang_user['invoiceno'] = 'Invoice no';
-$lang_user['customerno'] = 'Customer no';
-$lang_user['bankacc'] = 'Bank account';
-$lang_user['invfooter'] =
-    'This invoice has been generated automatically and is valid without a signature.';
-$lang_user['kto_inh'] = 'Account owner';
-$lang_user['kto_nr'] = 'Account no';
-$lang_user['kto_blz'] = 'Bank code';
-$lang_user['kto_inst'] = 'Bank name';
-$lang_user['kto_iban'] = 'IBAN';
-$lang_user['kto_bic'] = 'BIC/SWIFT code';
-$lang_user['kto_subject'] = 'Subject';
-$lang_user['pay'] = 'Pay';
 $lang_user['completed'] = 'Completed';
 $lang_user['setmailcolor'] = 'Set color';
 $lang_user['hotkeys'] = 'Hotkeys';
@@ -539,7 +438,6 @@ $lang_user['color_4'] = 'Orange';
 $lang_user['color_5'] = 'Purple';
 $lang_user['color_6'] = 'Violet';
 $lang_user['colors'] = 'Colors';
-$lang_user['sendsms2'] = 'Send SMS';
 $lang_user['targetfolder'] = 'Destination folder';
 $lang_user['existingfiles'] = 'Existing files';
 $lang_user['zipfile'] = 'ZIP file';
@@ -654,10 +552,6 @@ $lang_user['password'] = 'Password';
 $lang_user['language'] = 'Language';
 $lang_user['savelogin'] = 'Remember login';
 $lang_user['ssl'] = 'Secure SSL login';
-$lang_user['smsvalidation'] = 'Activate account';
-$lang_user['smsvalidation_text'] =
-    'Welcome! We sent a email / SMS containing your activation code to the email address / cellphone number you entered during sign up. Please enter the activation code to proceed.';
-$lang_user['validationcode'] = 'Activation code';
 $lang_user['validation_ok'] =
     'Your account has been activated successfully. You can now <a href="index.php">log in</a>.';
 $lang_user['validation_err'] =
@@ -1055,23 +949,6 @@ $lang_user['confirmaliasok'] =
     'The alias has been confirmed successfully and can now be used.';
 $lang_user['confirmaliaserr'] =
     'The alias has already been confirmed, could not be found, or is invalid.';
-$lang_user['credits'] = 'Credits';
-$lang_user['charge'] = 'Charge account';
-$lang_user['buynow'] = 'Buy now';
-$lang_user['pay_using'] = 'Payment method';
-$lang_user['paypal'] = 'PayPal';
-$lang_user['su'] = 'Wire transfer (sofort&uuml;berweisung.de)';
-$lang_user['charge_return'] =
-    'Thank you for topping up your user account. As soon as the payment has been confirmed by the payment service provider, the credits you bought will be added to your balance. Usually that will only take a few seconds. On rare occasions, however, it may take longer(e.g. when your bank account is insufficiently funded).';
-$lang_user['charge_min'] =
-    'The minimum amount of credit required to be selected to top up your account is <b>%.02f %s</b>.';
-$lang_user['charge_min_err'] =
-    'The minimum amount of credit required to be selected to top up your account is <b>%.02f %s</b>. The amount you selected is only <b>%.02f %s</b>. Select at least <b>%d</b>.';
-$lang_user['charge_desc'] =
-    'Here you can top up your credit account. In the following field please give the number of credits you would like to purchase. Please click &quot;OK&quot;. Once you have checked the total price, click &quot;Jetzt kaufen&quot; to pay. The credits will be added to your balance shortly after you have paid.';
-$lang_user['creditseach'] = 'Credits each <b>%.02f %s</b>';
-$lang_user['charge2'] = 'Top up';
-$lang_user['chargeitemname'] = 'Top up account (%d Credits)';
 $lang_user['wgmembership'] = 'Memberships of workgroups';
 $lang_user['membersince'] = 'Member since';
 $lang_user['cancelmembership'] = 'Cancel membership';
@@ -1115,7 +992,6 @@ $lang_user['receiveprefs'] = 'Receiving optionen';
 $lang_user['forwarding'] = 'Forwarding';
 $lang_user['to2'] = 'to';
 $lang_user['deleteforwarded'] = 'Delete forwarded messages';
-$lang_user['mail2sms'] = 'Mail-to-SMS';
 $lang_user['virusfilter'] = 'Virus filter';
 $lang_user['virusaction'] = 'Virus action';
 $lang_user['changepw'] = 'Change password';
@@ -1136,7 +1012,6 @@ $lang_user['never'] = 'never';
 $lang_user['keepmails'] = 'Keep messages on server';
 $lang_user['pop3loginerror'] =
     'With the given login, no connection to the POP3 server could be established.';
-$lang_user['sendsmsnotify'] = 'Send SMS notification';
 $lang_user['plaintextcourier'] = 'Plaintext mails';
 $lang_user['usecourier'] = 'Use font with fixed-width';
 $lang_user['subscribe'] = 'Subscribe';
@@ -1287,7 +1162,6 @@ $lang_user['duration'] = 'Duration';
 $lang_user['hours'] = 'hour(s)';
 $lang_user['minutes'] = 'minute(s)';
 $lang_user['byemail'] = 'by email';
-$lang_user['bysms'] = 'by SMS';
 $lang_user['timeframe'] = 'Timeframe';
 $lang_user['timebefore'] = 'before';
 $lang_user['repeatoptions'] = 'Repeating options';
@@ -1306,24 +1180,6 @@ $lang_user['fourth'] = 'fourth day';
 $lang_user['last'] = 'last day';
 $lang_user['editdate'] = 'edit day';
 $lang_user['cw'] = 'calendar week';
-
-// sms
-$lang_user['sms'] = 'SMS';
-$lang_user['sendsms'] = 'Send SMS';
-$lang_user['smsoutbox'] = 'SMS outbox';
-$lang_user['accbalance'] = 'Account balance';
-$lang_user['price'] = 'Price (credits)';
-$lang_user['chars'] = 'Characters';
-$lang_user['smssent'] = 'Your SMS has been sent successfully.';
-$lang_user['smssendfailed'] =
-    'Your SMS could not be sent. You may not have enough balance to send this message or there may be a temporary internal error. Please try again later.';
-$lang_user['smsvalidation2'] = 'Activate SMS functions';
-$lang_user['smsvalidation2_text'] =
-    'Please enter the activation code we sent to your cellphone.';
-$lang_user['pleasevalidate'] =
-    'Please enter your cellphone number at your contact details (at &quot;Preferences&quot;) in order to activate the SMS functions.';
-$lang_user['invalidsmscode'] =
-    'The activation code is invalid. Please double-check your input and try again.';
 
 /**
  * Admin phrases
@@ -1354,7 +1210,6 @@ $lang_admin['color'] = 'Color';
 $lang_admin['min_draft_save'] = 'Min. draft save interval';
 $lang_admin['auto_save_drafts'] = 'Automaticaly save drafts';
 $lang_admin['mail_send_code'] = 'Captcha code when sending mails';
-$lang_admin['sms_send_code'] = 'Captcha code when sending SMS';
 $lang_admin['timeframe'] = 'Timeframe';
 $lang_admin['last7d'] = 'last 7 days';
 $lang_admin['sendstats'] = 'Email send statistics';
@@ -1439,17 +1294,7 @@ $lang_admin['compresspages'] = 'Compress page output';
 $lang_admin['comment'] = 'Comment';
 $lang_admin['resetstats'] = 'Reset statistics';
 $lang_admin['reallyresetstats'] = 'Do you really want to reset the statistics?';
-$lang_admin['payment'] = 'Payment';
-$lang_admin['waitingorders'] =
-    '<b>%d</b> orders with custom payment methods are awaiting activation.';
 $lang_admin['disable'] = 'Disable';
-$lang_admin['enablechrgskrill'] = 'Payments by Skrill';
-$lang_admin['skrillacc'] = 'Skrill account';
-$lang_admin['skrillsecret'] = 'Secret word';
-$lang_admin['skrill'] = 'Skrill (Moneybookers)';
-$lang_admin['paymentmethod'] = 'Payment method';
-$lang_admin['addpaymethod'] = 'Add payment method';
-$lang_admin['invoice'] = 'Invoice';
 $lang_admin['at_activation'] = 'Create at activation time';
 $lang_admin['at_order'] = 'Create at order time';
 $lang_admin['sync'] = 'Synchronization';
@@ -1481,7 +1326,7 @@ $lang_admin['baseversion'] = 'Base version';
 $lang_admin['created'] = 'Created';
 $lang_admin['released'] = 'Released';
 $lang_admin['tbx_welcome1'] =
-    'The Toolbox is an application that can be installed by your cutomers on their desktop PCs. It contains an email checker, a tool to send SMS, a fax printer, Webdisk synchronization and more.';
+    'The Toolbox is an application that can be installed by your cutomers on their desktop PCs. It contains an email checker, a fax printer, Webdisk synchronization and more.';
 $lang_admin['tbx_welcome2'] =
     'In order to offer the Toolbox download to your users, you must create a Toolbox version and release it. Just click at &quot;Add&quot; at the bottom of this page, configure your Toolbox version and test and release it. Your users can find the Toolbox downloads in their account at &quot;Preferences&quot; &raquo; &quot;Software&quot; afterwards.';
 $lang_admin['branding'] = 'Branding';
@@ -1499,7 +1344,6 @@ $lang_admin['names'] = 'Names';
 $lang_admin['bmtoolbox'] = 'b1gMail Toolbox';
 $lang_admin['tbx_enable'] = 'Offer Toolbox';
 $lang_admin['tbx_webdisk'] = 'Webdisk sync';
-$lang_admin['tbx_smsmanager'] = 'SMS Manager';
 $lang_admin['notrecommended'] = 'NOT recommended';
 $lang_admin['prefslayout'] = 'Preferences overview';
 $lang_admin['onecolumn'] = 'One column';
@@ -1544,42 +1388,11 @@ $lang_admin['altmailsepby'] =
 $lang_admin['yourinvoice'] = 'Your invoice';
 $lang_admin['dearsirormadam'] = 'Dear Sir or Madam';
 $lang_admin['descr'] = 'Description';
-$lang_admin['ep'] = 'Unit price';
-$lang_admin['gp'] = 'Price';
-$lang_admin['gb'] = 'Total amount';
-$lang_admin['vat'] = 'VAT';
-$lang_admin['net'] = 'net';
-$lang_admin['gross'] = 'gross';
 $lang_admin['kindregards'] = 'Kind regards';
-$lang_admin['invtext'] = 'please find your invoice below';
-$lang_admin['invoiceno'] = 'Invoice no';
-$lang_admin['customerno'] = 'Customer no';
-$lang_admin['bankacc'] = 'Bank account';
-$lang_admin['invfooter'] =
-    'This invoice has been generated automatically and is valid without a signature.';
-$lang_admin['kto_inh'] = 'Account owner';
-$lang_admin['kto_nr'] = 'Account no';
-$lang_admin['kto_blz'] = 'Bank code';
-$lang_admin['kto_inst'] = 'Bank name';
-$lang_admin['kto_iban'] = 'IBAN';
-$lang_admin['kto_bic'] = 'BIC/SWIFT code';
-$lang_admin['kto_subject'] = 'Subject';
 $lang_admin['sender_aliases'] = 'Sender aliases';
 $lang_admin['attachments'] = 'Attachments';
 $lang_admin['flexspans'] = 'Auto subject length';
-$lang_admin['paidonly'] = 'Paid only';
-$lang_admin['account_debit'] = 'Debit account';
-$lang_admin['account_credit'] = 'Credit account';
-$lang_admin['accentries'] = 'Accounting entries';
-$lang_admin['orderno'] = 'Order no';
-$lang_admin['export2'] = 'Export';
-$lang_admin['vkcode'] = 'Wire transfer code';
-$lang_admin['activatepayment'] = 'Activate payment';
-$lang_admin['amount'] = 'Amount';
-$lang_admin['activate_ok'] = 'Payment activated successfully!';
-$lang_admin['activate_err'] = 'Not found / already activated / wrong amount!';
-$lang_admin['activate_desc'] =
-    'Here you can activate payments you received on your bank account.';
+$$lang_admin['amount'] = 'Amount';
 $lang_admin['returnpathcheck'] = 'Return path check';
 $lang_admin['licensedetails'] = 'License details';
 $lang_admin['updateaccess'] = 'Update access';
@@ -1593,7 +1406,6 @@ $lang_admin['layout_resetdesc'] =
 $lang_admin['organizerwidgets'] = 'Organizer dashboard';
 $lang_admin['pos'] = 'Position';
 $lang_admin['widgetlayouts'] = 'Widget layouts';
-$lang_admin['payments'] = 'Payments';
 $lang_admin['invalidselffolder'] =
     'The configured absolute path to b1gMail (<code>%s</code>) does not exist. Please correct the path!';
 $lang_admin['auto_tz'] = 'Timezone auto detect';
@@ -1612,8 +1424,6 @@ $lang_admin['diskorphans_desc'] =
     'This function deletes all orphaned webdisk files irrevocably.<br /><br />Orphaned webdisk files are files which do not belong to an user anymore. They can occur when an user deletion process aborts unexpectedly.';
 $lang_admin['mailorphans'] = 'Orphaned emails';
 $lang_admin['diskorphans'] = 'Orphaned webdisk files';
-$lang_admin['text_paynotify_sub'] = 'Payment notification subject';
-$lang_admin['text_paynotify_text'] = 'Payment notification text';
 $lang_admin['text_orderconfirm_sub'] = 'Order confirmation subject';
 $lang_admin['text_orderconfirm_text'] = 'Order confirmation text';
 $lang_admin['text_share_sub'] = 'Webdisk share mail subject';
@@ -1629,35 +1439,6 @@ $lang_admin['greeting'] = 'Greeting';
 $lang_admin['greeting_mr'] = 'Dear Mr %s';
 $lang_admin['greeting_mrs'] = 'Dear Mrs %s';
 $lang_admin['greeting_none'] = 'Dear Sir or Madam';
-$lang_admin['sunotifypass'] = 'Notification password';
-$lang_admin['suinputcheck'] = 'Input check';
-$lang_admin['invoices'] = 'Invoices';
-$lang_admin['pay_notification'] = 'Payment notifications';
-$lang_admin['vat'] = 'VAT';
-$lang_admin['vatrate'] = 'VAT rate';
-$lang_admin['vat_add'] = 'add to prices';
-$lang_admin['vat_enthalten'] = 'included in prices';
-$lang_admin['vat_nomwst'] = 'no VAT';
-$lang_admin['enablebanktransfer'] = 'Wire transfer payment';
-$lang_admin['kto_inh'] = 'Account owner';
-$lang_admin['kto_nr'] = 'Account no';
-$lang_admin['kto_blz'] = 'Bank code';
-$lang_admin['kto_inst'] = 'Bank name';
-$lang_admin['kto_iban'] = 'IBAN';
-$lang_admin['kto_bic'] = 'BIC/SWIFT code';
-$lang_admin['banktransfer'] = 'Wire transfer';
-$lang_admin['sendrg'] = 'Generate invoices';
-$lang_admin['rgnrfmt'] = 'Invoice no format';
-$lang_admin['kdnrfmt'] = 'Customer no format';
-$lang_admin['rgtemplate'] = 'Invoice template';
-$lang_admin['enablesmscharge'] = 'Enable SMS charging';
-$lang_admin['paypal'] = 'PayPal';
-$lang_admin['su'] = 'sofort&uuml;berweisung.de';
-$lang_admin['paymentmethods'] = 'Payment methods';
-$lang_admin['orderstatus_0'] = 'Created';
-$lang_admin['orderstatus_1'] = 'Activated';
-$lang_admin['downloadinvoices'] = 'Download invoices';
-$lang_admin['showinvoice'] = 'Show invoice';
 $lang_admin['acp'] = 'Administrator Control Panel (ACP)';
 $lang_admin['password'] = 'Password';
 $lang_admin['login'] = 'Login';
@@ -1683,7 +1464,6 @@ $lang_admin['common'] = 'Common';
 $lang_admin['profilefields'] = 'Profile fields';
 $lang_admin['languages'] = 'Languages';
 $lang_admin['webdiskicons'] = 'Webdisc icons';
-$lang_admin['sms'] = 'SMS';
 $lang_admin['ads'] = 'Advertisements';
 $lang_admin['faq'] = 'FAQ';
 $lang_admin['tools'] = 'Tools';
@@ -1907,7 +1687,6 @@ $lang_admin['monthasset'] = 'Assets per month';
 $lang_admin['yes'] = 'Yes';
 $lang_admin['no'] = 'No';
 $lang_admin['notconfirmed'] = 'Unconfirmed';
-$lang_admin['mail2sms'] = 'Mail-to-SMS';
 $lang_admin['forward'] = 'Forwarding';
 $lang_admin['forwardto'] = 'Forward to';
 $lang_admin['dateformat'] = 'Date format';
@@ -1918,10 +1697,7 @@ $lang_admin['addresstaken'] =
     'The email address you have entered is no longer available. Please try again.';
 $lang_admin['accountcreated'] =
     'The account has been created successfuly.<br /><br /><a href="users.php?do=edit&id=%d&sid=%s">&raquo; Edit user</a>';
-$lang_admin['smsvalidation_signup'] = 'SMS signup activation';
-$lang_admin['smsvalidation'] = 'SMS sender validation';
 $lang_admin['byemail'] = 'by email';
-$lang_admin['bysms'] = 'by SMS';
 $lang_admin['val_code_resent'] = 'The validation code has been re-sent.';
 $lang_admin['stdgroup'] = 'Default group';
 $lang_admin['scsf'] = 'Security code interference factor';
@@ -2067,15 +1843,11 @@ $lang_admin['text_selfcomp_text'] = 'Addressbook mail text';
 $lang_admin['text_passmail_sub'] = 'Password mail subject';
 $lang_admin['text_passmail_text'] = 'Password mail text';
 $lang_admin['text_certmail'] = 'Certified mail text';
-$lang_admin['text_mail2sms'] = 'Mail-to-SMS notification';
 $lang_admin['text_cs_subject'] = 'Cert. mail receipt subject';
 $lang_admin['text_cs_text'] = 'Cert. mail receipt text';
 $lang_admin['text_clndr_subject'] = 'Date nofiy subject';
 $lang_admin['text_clndr_date_msg'] = 'Date notify text';
-$lang_admin['text_clndr_sms'] = 'Date notify SMS';
 $lang_admin['text_receipt_text'] = 'Receipt mail text';
-$lang_admin['text_validationsms'] = 'Sign up SMS validation';
-$lang_admin['text_validationsms2'] = 'SMS sender validation';
 $lang_admin['text_alias_sub'] = 'Alias mail subject';
 $lang_admin['text_alias_text'] = 'Alias mail text';
 $lang_admin['text_activationmail_sub'] = 'Activation mail subject';
@@ -2119,7 +1891,6 @@ $lang_admin['mobileaccess'] = 'Mobile access';
 $lang_admin['mailchecker'] = 'Mail checker';
 $lang_admin['issue_certificates'] = 'Issue certificates';
 $lang_admin['upload_certificates'] = 'Upload certificates';
-$lang_admin['ownfrom'] = 'Own SMS sender';
 $lang_admin['wdshare'] = 'Webdisc share';
 $lang_admin['wdspeed'] = 'Webdisc speed';
 $lang_admin['sharespeed'] = 'Share speed';
@@ -2130,10 +1901,7 @@ $lang_admin['minutes'] = 'minute(s)';
 $lang_admin['ownpop3'] = 'External POP3 accounts';
 $lang_admin['ownpop3interval'] = 'POP3 poll interval';
 $lang_admin['selfpop3_check'] = 'Protect against fetching own account';
-$lang_admin['smspre'] = 'SMS area codes';
 $lang_admin['aliasdomains'] = 'Additional alias domains';
-$lang_admin['smsfrom'] = 'SMS sender';
-$lang_admin['smssig'] = 'SMS signature';
 $lang_admin['mailsig'] = 'Email signature';
 $lang_admin['creditprice'] = 'Credit price';
 $lang_admin['receivedmails'] = 'Received';
@@ -2149,15 +1917,9 @@ $lang_admin['addgateway'] = 'Add gateway';
 $lang_admin['returnvalue'] = 'Return value';
 $lang_admin['getstring'] = 'GET URL';
 $lang_admin['defaultgateway'] = 'Default gateway';
-$lang_admin['defaulttype'] = 'Default SMS type';
-$lang_admin['clndr_sms_type'] = 'SMS type for calendar SMS';
-$lang_admin['mail2sms_type'] = 'SMS type for Mail-to-SMS';
 $lang_admin['gateway'] = 'Gateway';
 $lang_admin['gateuser'] = 'Gateway user';
 $lang_admin['gatepass'] = 'Gateway password';
-$lang_admin['clndrsmsabs'] = 'Calendar SMS sender';
-$lang_admin['mail2smsabs'] = 'Mail-to-SMS sender';
-$lang_admin['smsreplyabs'] = 'SMS-to-mail sender';
 $lang_admin['datastorage'] = 'Data storage';
 $lang_admin['structstorage'] = 'Structured storage';
 $lang_admin['structsafewarn'] =
@@ -2222,7 +1984,6 @@ $lang_admin['view'] = 'View';
 $lang_admin['stat_login'] = 'Logins';
 $lang_admin['stat_mobile_login'] = 'Mobile logins';
 $lang_admin['stat_signup'] = 'Sign-ups';
-$lang_admin['stat_sms'] = 'Sent SMS';
 $lang_admin['stat_wd'] = 'Webdisc';
 $lang_admin['stat_wd_down'] = 'Webdisc (download, MB)';
 $lang_admin['stat_wd_up'] = 'Webdisc (upload, MB)';
@@ -2240,16 +2001,6 @@ $lang_admin['contacthistory'] = 'Contact history';
 $lang_admin['savehistory'] = 'Save contact history';
 $lang_admin['discarded'] = 'Discarded';
 $lang_admin['clearhistory'] = 'Clear history';
-$lang_admin['charge'] = 'Charge';
-$lang_admin['enablechrgpaypal'] = 'Payments by PayPal';
-$lang_admin['enablechrgsu'] = 'Payments by sofort&uuml;berweisung.de';
-$lang_admin['sukdnr'] = 'Customer number';
-$lang_admin['suprjnr'] = 'Project number';
-$lang_admin['suprjpass'] = 'Projekt password';
-$lang_admin['su_createnew'] = 'Create sofort&uuml;berweisung.de project';
-$lang_admin['enablecharge'] = 'Enable charge';
-$lang_admin['currency'] = 'Currency';
-$lang_admin['paypalacc'] = 'Paypal account';
 $lang_admin['filetypes'] = 'File type(s)';
 $lang_admin['addwebdiskicon'] = 'Add webdisc icon';
 $lang_admin['icon'] = 'Icon';
@@ -2276,7 +2027,6 @@ $lang_admin['includeinsearch'] =
     'Include the following sections in the user search';
 $lang_admin['mailsearchwarn'] =
     'Searching a large data stock is very CPU intensive.';
-$lang_admin['smsoutbox'] = 'SMS outbox';
 $lang_admin['tasks'] = 'Tasks';
 $lang_admin['addressbook'] = 'Addressbook';
 $lang_admin['all'] = 'All';

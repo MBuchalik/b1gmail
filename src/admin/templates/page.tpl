@@ -60,7 +60,6 @@
 							<li><a href="prefs.email.php?sid={$sid}"><img src="./templates/images/ico_prefs_email.png" />{lng p="email"}</a></li>
 							<li><a href="prefs.recvrules.php?sid={$sid}"><img src="./templates/images/rule32.png" />{lng p="recvrules"}</a></li>
 							<li><a href="prefs.webdisk.php?sid={$sid}"><img src="./templates/images/ico_disk.png" />{lng p="webdisk"}</a></li>
-							<li><a href="prefs.sms.php?sid={$sid}"><img src="./templates/images/gateway32.png" />{lng p="sms"}</a></li>
 							<li><a href="prefs.profilefields.php?sid={$sid}"><img src="./templates/images/field32.png" />{lng p="profilefields"}</a></li>
 							<li><a href="prefs.languages.php?sid={$sid}"><img src="./templates/images/lang32.png" />{lng p="languages"}</a></li>
 							<li><a href="prefs.templates.php?sid={$sid}"><img src="./templates/images/template.png" />{lng p="templates"}</a></li>
@@ -68,12 +67,11 @@
 							<li><a href="prefs.faq.php?sid={$sid}"><img src="./templates/images/faq32.png" />{lng p="faq"}</a></li>
 							<li><a href="prefs.countries.php?sid={$sid}"><img src="./templates/images/country.png" />{lng p="countries"}</a></li>
 							<li><a href="prefs.widgetlayouts.php?sid={$sid}"><img src="./templates/images/wlayout_add.png" />{lng p="widgetlayouts"}</a></li>
-							<li><a href="prefs.payments.php?sid={$sid}"><img src="./templates/images/ico_prefs_payments.png" />{lng p="payments"}</a></li>
 							<li><a href="toolbox.php?sid={$sid}"><img src="./templates/images/toolbox.png" />{lng p="toolbox"}</a></li>
 						</ul>
 					</li>
 					{/if}
-					{if $adminRow.type==0||$adminRow.privileges.users||$adminRow.privileges.groups||$adminRow.privileges.workgroups||$adminRow.privileges.activity||$adminRow.privileges.newsletter||$adminRow.privileges.payments}
+					{if $adminRow.type==0||$adminRow.privileges.users||$adminRow.privileges.groups||$adminRow.privileges.workgroups||$adminRow.privileges.activity||$adminRow.privileges.newsletter}
 					<li id="users-menu"><a href="#users-menu"><img src="./templates/images/ico_users.png" />{lng p="usersgroups"}</a>
 						<ul>
 							{if $adminRow.type==0||$adminRow.privileges.users}<li><a href="users.php?sid={$sid}"><img src="./templates/images/user_action.png" />{lng p="users"}</a></li>{/if}
@@ -81,7 +79,6 @@
 							{if $adminRow.type==0||$adminRow.privileges.workgroups}<li><a href="workgroups.php?sid={$sid}"><img src="./templates/images/ico_workgroup.png" />{lng p="workgroups"}</a>{/if}
 							{if $adminRow.type==0||$adminRow.privileges.activity}<li><a href="activity.php?sid={$sid}"><img src="./templates/images/activity.png" />{lng p="activity"}</a></li>{/if}
 							{if $adminRow.type==0||$adminRow.privileges.newsletter}<li><a href="newsletter.php?sid={$sid}"><img src="./templates/images/newsletter.png" />{lng p="newsletter"}</a></li>{/if}
-							{if $adminRow.type==0||$adminRow.privileges.payments}<li><a href="payments.php?sid={$sid}"><img src="./templates/images/ico_prefs_payments.png" />{lng p="payments"}</a></li>{/if}
 						</ul>
 					</li>
 					{/if}

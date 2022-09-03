@@ -36,7 +36,6 @@
 			<option value="5" {if $action.op==5}selected="selected" {/if}>{lng p="markspam"}</option>
 			<option value="6" {if $action.op==6}selected="selected" {/if}>{lng p="mark"}</option>
 			<option value="12" {if $action.op==12}selected="selected" {/if}>{lng p="markdone"}</option>
-			<option value="8" {if $action.op==8}selected="selected" {/if}>{lng p="sendsmsnotify"}</option>
 			<option value="13" {if $action.op==13}selected="selected" {/if}>{lng p="sendnotify"}</option>
 			<option value="9" {if $action.op==9}selected="selected" {/if}>{lng p="autoresponder"}</option>
 			{if $action.op==10||$forwardingAllowed}<option value="10" {if $action.op==10}selected="selected" {/if}>{lng p="forward"}</option>{/if}

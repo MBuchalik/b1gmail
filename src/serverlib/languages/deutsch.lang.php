@@ -54,8 +54,6 @@ $lang_client['addattach'] = 'Anlage hinzufügen';
 $lang_client['saveattach'] = 'Anlage speichern';
 $lang_client['attachments'] = 'Anlagen';
 $lang_client['date'] = 'Termin';
-$lang_client['pricewarning'] =
-    'Zum Senden dieser SMS benötigen Sie ein Guthaben von mindestens %1 Credit(s). Ihr aktuelles Guthaben von %2 Credit(s) reicht dazu leider nicht aus. Bitte laden Sie Ihr Konto vor dem Senden der SMS auf.';
 $lang_client['switchwarning'] =
     'Bei der Umstellung von den HTML- in den Text-Modus gehen alle Formatierungen verloren. Wollen Sie wirklich fortfahren?';
 $lang_client['folderprompt'] =
@@ -164,7 +162,6 @@ $lang_custom['certmail'] =
     'Bitte beachten Sie, dass die E-Mail nur bis zum %%date%% gespeichert wird und danach verfällt.' .
     "\n\n" .
     '(Diese E-Mail wurde automatisch erstellt)';
-$lang_custom['mail2sms'] = 'Neue E-Mail von %%abs%%: %%betreff%%';
 $lang_custom['cs_subject'] = 'Lesebestätigung';
 $lang_custom['cs_text'] =
     'Sehr geehrte Damen und Herren,' .
@@ -183,7 +180,6 @@ $lang_custom['clndr_date_msg'] =
     'Anmerkung: %%message%%' .
     "\n\n" .
     '(Diese E-Mail wurde automatisch erstellt)';
-$lang_custom['clndr_sms'] = '%%date%% %%time%% - %%subtitle%%';
 $lang_custom['receipt_text'] =
     'Sehr geehrte Damen und Herren,' .
     "\n\n" .
@@ -228,47 +224,7 @@ $lang_custom['snotify_text'] =
     'Alternativ-E-Mail: %%altmail%%' .
     "\n\n" .
     'Details: %%link%%';
-$lang_custom['validationsms2'] =
-    'Zur Freischaltung der Änderung Ihrer Nummer bitte den Freischalt-Code %%code%% unter "SMS" eintippen!';
 $lang_custom['activationmail_sub'] = 'Ihre Registrierung (%%email%%)';
-$lang_custom['activationmail_text'] =
-    'Sehr geehrte Damen und Herren,' .
-    "\n\n" .
-    'vielen Dank für Ihre Anmeldung bei unserem Service. Um Ihre neue E-Mail-Adresse %%email%% zu aktivieren, müssen Sie nur noch den folgenden Link klicken oder den folgenden Aktivierungs-Code beim ersten Login eingeben.' .
-    "\n\n" .
-    '	Link: %%url%%' .
-    "\n" .
-    '	Code: %%activationcode%%' .
-    "\n\n" .
-    '(Diese E-Mail wurde automatisch erstellt)';
-$lang_custom['paynotify_sub'] = 'Bestellung freigeschaltet';
-$lang_custom['paynotify_text'] =
-    'Soeben wurde eine Bestellung freigeschaltet:' .
-    "\n\n" .
-    'Bestellung: #%%order_id%%' .
-    "\n" .
-    'Benutzer: #%%user_id%%' .
-    "\n" .
-    'Rechnungsnummer: %%invoice_no%%' .
-    "\n" .
-    'Kundennummer: %%customer_no%%' .
-    "\n" .
-    'Zahlungs-Methode: %%payment_method%%' .
-    "\n" .
-    'Rechnungsbetrag: %%order_amount%%' .
-    "\n" .
-    'Gezahlter Betrag: %%paid_amount%%' .
-    "\n" .
-    'Transaktions-Code: %%txn_id%%';
-$lang_custom['orderconfirm_sub'] = 'Ihre Bestellung (%%invoice_no%%)';
-$lang_custom['orderconfirm_text'] =
-    'Sehr geehrte Damen und Herren,' .
-    "\n\n" .
-    'vielen Dank für Ihre Bestellung. Wir haben Ihre Zahlung erhalten und die Bestellung freigeschaltet.' .
-    "\n\n" .
-    'Sie finden alle Details zu Ihrer Bestellung (inkl. ggf. Ihrer Rechnung) unter "Einstellungen" -> "Bestellungen".' .
-    "\n\n" .
-    '(Diese E-Mail wurde automatisch erstellt)';
 $lang_custom['share_sub'] = 'Webdisk-Freigabe';
 $lang_custom['share_text'] =
     'Hallo,' .
@@ -485,10 +441,6 @@ $lang_user['password'] = 'Passwort';
 $lang_user['language'] = 'Sprache';
 $lang_user['ssl'] = 'Sicherer SSL-Login';
 $lang_user['savelogin'] = 'Login merken';
-$lang_user['smsvalidation'] = 'Account freischalten';
-$lang_user['smsvalidation_text'] =
-    'Herzlich Willkommen! Kurz nach Ihrer Anmeldung haben wir Ihnen einen Freischalt-Code an Ihre E-Mail-Adresse bzw. Handy-Nummer gesendet. Bitte geben Sie den Freischalt-Code hier ein, um Ihren Account zu aktivieren.';
-$lang_user['validationcode'] = 'Freischalt-Code';
 $lang_user['validation_ok'] =
     'Ihr Account wurde erfolgreich aktiviert. Sie k&ouml;nnen sich nun mit Ihren Zugangsdaten <a href="index.php">einloggen</a>.';
 $lang_user['validation_err'] =
@@ -954,90 +906,12 @@ $lang_user['confirmaliasok'] =
     'Der Alias wurde erfolgreich best&auml;tigt und ist ab sofort nutzbar.';
 $lang_user['confirmaliaserr'] =
     'Der Alias wurde bereits best&auml;tigt, nicht gefunden oder der Link ist ung&uuml;ltig.';
-$lang_user['credits'] = 'Credits';
-$lang_user['statement'] = 'Konto-Auszug';
 $lang_user['description'] = 'Beschreibung';
 $lang_user['current'] = 'aktuell';
-$lang_user['balance'] = 'Saldo';
-$lang_user['dynamicbalance'] = 'Verbleibendes Monats-Guthaben';
-$lang_user['startingbalance'] = 'EB-Wert';
-$lang_user['tx_charge'] = 'Konto-Aufladung (%s)';
-$lang_user['tx_sms'] = 'SMS-Versand';
-$lang_user['charge'] = 'Konto aufladen';
-$lang_user['charge_min'] =
-    'Der Mindestbetrag f&uuml;r eine Aufladung betr&auml;gt <b>%.02f %s</b>.';
-$lang_user['charge_min_err'] =
-    'Der Mindestbetrag f&uuml;r eine Aufladung betr&auml;gt <b>%.02f %s</b>. Der Wert der von Ihnen gew&uuml;nschten Aufladung betr&auml;gt jedoch nur <b>%.02f %s</b>. Laden Sie bitte mindestens <b>%d</b> Credits auf, um den Mindestpreis zu erreichen.';
-$lang_user['charge_desc'] =
-    'Hier k&ouml;nnen Sie Ihr Credit-Konto aufladen. Geben Sie dazu im folgenden Textfeld die Anzahl der Credits ein, die Sie erwerben m&ouml;chten und klicken Sie auf &quot;OK&quot;. Nachdem Sie den Gesamtpreis gepr&uuml;ft haben, gelangen Sie per Klick auf &quot;Jetzt kaufen&quot; auf die Zahlungsseite. Sofort nach der Zahlung werden Ihrem Konto die Credits gutgeschrieben.';
-$lang_user['creditseach'] = 'Credits zu je <b>%.02f %s</b>';
-$lang_user['charge2'] = 'Aufladen';
-$lang_user['buynow'] = 'Jetzt kaufen';
-$lang_user['pay_using'] = 'Zahlung per';
-$lang_user['paypal'] = 'PayPal';
-$lang_user['su'] = '&Uuml;berweisung (sofort&uuml;berweisung.de)';
-$lang_user['invoiceaddress'] = 'Rechnungs-Adresse';
-$lang_user['paymentmethod'] = 'Zahlungs-Methode';
-$lang_user['finalamount'] = 'Zahlungs-Betrag';
-$lang_user['placeorder'] = 'Bestellung zahlungspflichtig abschicken';
-$lang_user['banktransfer'] = 'Vorkasse-&Uuml;berweisung';
-$lang_user['taxnote'] = 'inkl. %.02f%% MwSt.';
 $lang_user['langCode'] = 'DE';
 $lang_user['langCode_editor'] = 'de';
-$lang_user['skrill'] = 'Skrill (Moneybookers)';
-$lang_user['pn_skrill'] =
-    'Der Rechnungsbetrag (%.02f %s) wurde dankend per Skrill (Moneybookers) erhalten.';
-$lang_user['pn_paypal'] =
-    'Der Rechnungsbetrag (%.02f %s) wurde dankend per PayPal erhalten.';
-$lang_user['pn_banktransfer'] =
-    'Bitte &uuml;berweisen Sie den Rechnungsbetrag (%.02f %s) auf unser unten angegebenes Bankkonto. Achten Sie <b>unbedingt</b> darauf, im Verwendungszweck exakt folgenden Code anzugeben, damit wir Ihre &Uuml;berweisung identifizieren k&ouml;nnen - andernfalls kann eine Freischaltung nicht oder nur mit Verz&ouml;gerung durchgef&uuml;hrt werden: <b>VK-%s</b>.<br />Ihre Bestellung wird sofort nach Geldeingang freigeschaltet.';
-$lang_user['pn_sofortueberweisung'] =
-    'Der Rechnungsbetrag (%.02f %s) wurde dankend per sofortueberweisung.de erhalten.';
-$lang_user['pn_custom'] =
-    'Der Rechnungsbetrag (%.02f %s) wird per %s beglichen.';
-$lang_user['pn_customtext'] =
-    'Vielen Dank f&uuml;r Ihre Bestellung. Sie haben die Zahlung per %s gew&auml;hlt. Sobald unser Team die Bestellung und die Zahlung gepr&uuml;ft hat, wird die Bestellung umgehend freigeschaltet.';
-$lang_user['orders'] = 'Bestellungen';
-$lang_user['order'] = 'Bestellung';
-$lang_user['thankyou'] = 'Vielen Dank';
-$lang_user['paymentreturn_txt'] =
-    '<p>Vielen Dank f&uuml;r Ihre Zahlung.</p><p>Sofern die Zahlung erfolgreich war, wird Ihre Bestellung freigeschaltet, sobald der Zahlungsdienstleister uns die Zahlung best&auml;tigt hat. Dies geschieht in der Regel innerhalb weniger Minuten.</p><p>Den aktuellen Status Ihrer Bestellungen finden Sie jederzeit unter "<a href="prefs.php?action=orders&sid=%s">Bestellungen</a>" im Bereich "Einstellungen".';
-$lang_user['prefs_d_orders'] =
-    'Sehen Sie Ihre bisherigen Bestellungen ein und laden Sie Ihre Rechnungen herunter.';
-$lang_user['orderno'] = 'Best.-Nr.';
-$lang_user['amount'] = 'Betrag';
-$lang_user['invoice'] = 'Rechnung';
-$lang_user['printinvoice'] = 'Rechnung drucken';
-$lang_user['orderalreadypaid'] =
-    'Diese Bestellung wurde entweder storniert oder bereits abgeschlossen.';
-$lang_user['yourinvoice'] = 'Ihre Rechnung';
 $lang_user['dearsirormadam'] = 'Sehr geehrte Damen und Herren';
-$lang_user['pos'] = 'Position';
-$lang_user['descr'] = 'Bezeichnung';
-$lang_user['ep'] = 'Einzelpreis';
-$lang_user['gp'] = 'Gesamtpreis';
-$lang_user['gb'] = 'Gesamtbetrag';
-$lang_user['vat'] = 'MwSt.';
-$lang_user['net'] = 'netto';
-$lang_user['gross'] = 'brutto';
 $lang_user['kindregards'] = 'Mit freundlichen Gr&uuml;&szlig;en';
-$lang_user['invtext'] =
-    'hiermit berechnen wir Ihnen die folgenden Produkte bzw. Leistungen';
-$lang_user['invoiceno'] = 'Rechnungsnummer';
-$lang_user['customerno'] = 'Kundennummer';
-$lang_user['bankacc'] = 'Bankverbindung';
-$lang_user['invfooter'] =
-    'Diese Rechnung wurde maschinell erstellt und ist auch ohne Unterschrift g&uuml;ltig.';
-$lang_user['kto_inh'] = 'Konto-Inhaber';
-$lang_user['kto_nr'] = 'Konto-Nummer';
-$lang_user['kto_blz'] = 'BLZ';
-$lang_user['kto_inst'] = 'Institut';
-$lang_user['kto_iban'] = 'IBAN';
-$lang_user['kto_bic'] = 'BIC/SWIFT-Code';
-$lang_user['kto_subject'] = 'Verwendungszweck';
-$lang_user['pay'] = 'Zahlen';
-$lang_user['completed'] = 'Abgeschlossen';
-$lang_user['chargeitemname'] = 'Konto-Aufladung (%d Credits)';
 $lang_user['wgmembership'] = 'Arbeitsgruppen-Mitgliedschaften';
 $lang_user['membersince'] = 'Mitglied seit';
 $lang_user['cancelmembership'] = 'Mitgliedschaft beenden';
@@ -1065,7 +939,6 @@ $lang_user['addfilter'] = 'Filter hinzuf&uuml;gen';
 $lang_user['active'] = 'Aktiv';
 $lang_user['filterrequiredis'] = 'Filter anwenden bei Erf&uuml;llung';
 $lang_user['editfilter'] = 'Filter bearbeiten';
-$lang_user['sendsmsnotify'] = 'SMS-Benachrichtigung senden';
 $lang_user['sendnotify'] = 'Benachrichtigung anzeigen';
 $lang_user['setmailcolor'] = 'Farb-Markierung setzen';
 $lang_user['stoprules'] = 'Weitere Filter &uuml;berspringen';
@@ -1093,7 +966,6 @@ $lang_user['to3'] = 'auf';
 $lang_user['with'] = 'mit';
 $lang_user['selectdraft'] = 'Entwurf w&auml;hlen';
 $lang_user['deleteforwarded'] = 'Weitergeleitete E-Mails l&ouml;schen';
-$lang_user['mail2sms'] = 'Mail-to-SMS';
 $lang_user['virusfilter'] = 'Virus-Filter';
 $lang_user['virusaction'] = 'Viren-Behandlung';
 $lang_user['changepw'] = 'Passwort &auml;ndern';
@@ -1282,7 +1154,6 @@ $lang_user['duration'] = 'Dauer';
 $lang_user['hours'] = 'Stunde(n)';
 $lang_user['minutes'] = 'Minute(n)';
 $lang_user['byemail'] = 'per E-Mail';
-$lang_user['bysms'] = 'per SMS';
 $lang_user['bynotify'] = 'per Benachrichtigung';
 $lang_user['timeframe'] = 'Zeitraum';
 $lang_user['timebefore'] = 'vor Beginn';
@@ -1310,25 +1181,6 @@ $lang_user['color_4'] = 'Orange';
 $lang_user['color_5'] = 'Lila';
 $lang_user['color_6'] = 'Violett';
 $lang_user['colors'] = 'Farben';
-
-// sms
-$lang_user['sendsms2'] = 'SMS senden';
-$lang_user['sms'] = 'SMS';
-$lang_user['sendsms'] = 'SMS senden';
-$lang_user['smsoutbox'] = 'Gesendete SMS';
-$lang_user['accbalance'] = 'Kontostand';
-$lang_user['price'] = 'Preis (Credits)';
-$lang_user['chars'] = 'Zeichen';
-$lang_user['smssent'] = 'Die SMS wurde erfolgreich verschickt.';
-$lang_user['smssendfailed'] =
-    'Die SMS konnte nicht gesendet werden. M&ouml;gliche Ursache ist ein zu kleines Guthaben oder ein tempor&auml;rer interner Fehler. Bitte versuchen Sie es sp&auml;ter erneut.';
-$lang_user['smsvalidation2'] = 'SMS-Funktion freischalten';
-$lang_user['smsvalidation2_text'] =
-    'Bitte geben Sie den Freischalt-Code ein, den wir Ihnen per SMS auf Ihr Handy gesendet haben.';
-$lang_user['pleasevalidate'] =
-    'Bitte hinterlegen Sie in Ihren Kontakt-Informationen im Bereich &quot;Einstellungen&quot; Ihre Handy-Nummer, um die SMS-Funktion freizuschalten.';
-$lang_user['invalidsmscode'] =
-    'Der eingegebene Freischalt-Code ist nicht korrekt. Bitte versuchen Sie es erneut.';
 
 /**
  * Admin phrases
@@ -1359,7 +1211,6 @@ $lang_admin['color'] = 'Farbe';
 $lang_admin['min_draft_save'] = 'Min. Entwurf-Speicher-Intervall';
 $lang_admin['auto_save_drafts'] = 'Auto-Entwurf-Speich.';
 $lang_admin['mail_send_code'] = 'Captcha-Code bei Mail-Versand';
-$lang_admin['sms_send_code'] = 'Captcha-Code bei SMS-Versand';
 $lang_admin['timeframe'] = 'Zeitraum';
 $lang_admin['last7d'] = 'letzte 7 Tage';
 $lang_admin['sendstats'] = 'E-Mail-Versand-Statistik';
@@ -1506,7 +1357,6 @@ $lang_admin['accentries'] = 'Buchungen';
 $lang_admin['orderno'] = 'Best.-Nr.';
 $lang_admin['export2'] = 'Export';
 $lang_admin['vkcode'] = 'Vorkasse-Code';
-$lang_admin['activatepayment'] = 'Zahlung freischalten';
 $lang_admin['amount'] = 'Betrag';
 $lang_admin['activate_ok'] = 'Zahlung erfolgreich aktiviert!';
 $lang_admin['activate_err'] =
@@ -1526,8 +1376,6 @@ $lang_admin['layout_resetdesc'] =
 $lang_admin['organizerwidgets'] = 'Organizer-Dashboard';
 $lang_admin['pos'] = 'Position';
 $lang_admin['widgetlayouts'] = 'Widget-Layouts';
-$lang_admin['payments'] = 'Zahlungen';
-$lang_admin['payment'] = 'Zahlung';
 $lang_admin['acp'] = 'Administrationsbereich (ACP)';
 $lang_admin['password'] = 'Passwort';
 $lang_admin['login'] = 'Login';
@@ -1554,7 +1402,6 @@ $lang_admin['common'] = 'Allgemein';
 $lang_admin['profilefields'] = 'Profilfelder';
 $lang_admin['languages'] = 'Sprachen';
 $lang_admin['webdiskicons'] = 'Webdisk-Icons';
-$lang_admin['sms'] = 'SMS';
 $lang_admin['ads'] = 'Werbung';
 $lang_admin['faq'] = 'FAQ';
 $lang_admin['tools'] = 'Tools';
@@ -1580,7 +1427,7 @@ $lang_admin['baseversion'] = 'Basis-Version';
 $lang_admin['created'] = 'Erstellt';
 $lang_admin['released'] = 'Freigegeben';
 $lang_admin['tbx_welcome1'] =
-    'Die Toolbox ist eine Anwendung, die Ihre Benutzer auf ihren Computern installieren k&ouml;nnen, um den E-Mail-Dienst in ihren Desktop zu integrieren. Die Toolbox enth&auml;lt z.B. eine Funktion zur Benachrichtigung &uuml;ber neue E-Mails, ein Tool zum Versand von SMS-Nachrichten, einen Faxdrucker und Webdisk-Synchronisierung.';
+    'Die Toolbox ist eine Anwendung, die Ihre Benutzer auf ihren Computern installieren k&ouml;nnen, um den E-Mail-Dienst in ihren Desktop zu integrieren. Die Toolbox enth&auml;lt z.B. eine Funktion zur Benachrichtigung &uuml;ber neue E-Mails, einen Faxdrucker und Webdisk-Synchronisierung.';
 $lang_admin['tbx_welcome2'] =
     'Um Ihren Benutzern die Toolbox anbieten zu k&ouml;nnen, m&uuml;ssen Sie hier eine neue Version der Toolbox anlegen und freigeben. Klicken Sie dazu unten auf dieser Seite auf &quot;Hinzuf&uuml;gen&quot;, legen Sie die Einstellungen und das Branding der Toolbox fest und geben Sie die Version dann frei. Ihre Benutzer finden den Toolbox-Download dann im Benutzer-Account unter &quot;Einstellungen&quot; &raquo; &quot;Software&quot;.';
 $lang_admin['branding'] = 'Branding';
@@ -1834,7 +1681,6 @@ $lang_admin['monthasset'] = 'Monats-Guthaben';
 $lang_admin['yes'] = 'Ja';
 $lang_admin['no'] = 'Nein';
 $lang_admin['notconfirmed'] = 'Nicht best&auml;tigt';
-$lang_admin['mail2sms'] = 'Mail-to-SMS';
 $lang_admin['forward'] = 'Weiterleitung';
 $lang_admin['forwardto'] = 'Weiterleiten an';
 $lang_admin['dateformat'] = 'Datumsformat';
@@ -1845,10 +1691,7 @@ $lang_admin['addresstaken'] =
     'Die angegebene E-Mail-Adresse ist bereits vergeben. Bitte versuchen Sie es erneut.';
 $lang_admin['accountcreated'] =
     'Der Benutzer wurde erfolgreich angelegt.<br /><br /><a href="users.php?do=edit&id=%d&sid=%s">&raquo; Benutzer bearbeiten</a>';
-$lang_admin['smsvalidation_signup'] = 'Anmeldungs-Best&auml;tigung per SMS';
-$lang_admin['smsvalidation'] = 'SMS-Abs.-Validierung';
 $lang_admin['byemail'] = 'per E-Mail';
-$lang_admin['bysms'] = 'per SMS';
 $lang_admin['val_code_resent'] =
     'Der Validierungs-Code wurde erneut zugesendet.';
 $lang_admin['stdgroup'] = 'Standard-Gruppe';
@@ -2023,15 +1866,11 @@ $lang_admin['text_selfcomp_text'] = 'Adressbuch-Mail-Text';
 $lang_admin['text_passmail_sub'] = 'Passwort-Mail-Betreff';
 $lang_admin['text_passmail_text'] = 'Passwort-Mail-Text';
 $lang_admin['text_certmail'] = 'Einschreiben-Mail-Text';
-$lang_admin['text_mail2sms'] = 'E-Mail-SMS-Benachrichtigung';
 $lang_admin['text_cs_subject'] = 'Einschreiben-Gelesen-Mail-Betreff';
 $lang_admin['text_cs_text'] = 'Einschreiben-Gelesen-Mail-Text';
 $lang_admin['text_clndr_subject'] = 'Kalender-Erinnerungs-Mail-Betreff';
 $lang_admin['text_clndr_date_msg'] = 'Kalender-Erinnerungs-Mail-Text';
-$lang_admin['text_clndr_sms'] = 'Kalender-Erinnerungs-SMS';
 $lang_admin['text_receipt_text'] = 'Lesebest&auml;tigungs-Mail-Text';
-$lang_admin['text_validationsms'] = 'Anmeldungs-Best&auml;tigungs-SMS';
-$lang_admin['text_validationsms2'] = 'SMS-Abs.-Validierungs-SMS';
 $lang_admin['text_alias_sub'] = 'Alias-Mail-Betreff';
 $lang_admin['text_alias_text'] = 'Alias-Mail-Text';
 $lang_admin['text_activationmail_sub'] = 'Aktivierungs-Mail-Betreff';
@@ -2084,10 +1923,8 @@ $lang_admin['mailchecker'] = 'Mailchecker';
 $lang_admin['bmtoolbox'] = 'b1gMail-Toolbox';
 $lang_admin['tbx_enable'] = 'Toolbox anbieten';
 $lang_admin['tbx_webdisk'] = 'Webdisk-Sync';
-$lang_admin['tbx_smsmanager'] = 'SMS-Manager';
 $lang_admin['issue_certificates'] = 'Zertifikat ausstellen';
 $lang_admin['upload_certificates'] = 'Zertifikat hochladbar';
-$lang_admin['ownfrom'] = 'Eigener SMS-Absender';
 $lang_admin['wdshare'] = 'Webdisk-Freigabe';
 $lang_admin['wdspeed'] = 'Webdisk-Geschw.';
 $lang_admin['sharespeed'] = 'Freigabe-Geschw.';
@@ -2098,10 +1935,7 @@ $lang_admin['minutes'] = 'Minute(n)';
 $lang_admin['ownpop3'] = 'Externe POP3-Accounts';
 $lang_admin['ownpop3interval'] = 'POP3-Abruf-Intervall';
 $lang_admin['selfpop3_check'] = 'Schutz v. Abruf d. eig. Accounts';
-$lang_admin['smspre'] = 'SMS-Vorwahlen';
 $lang_admin['aliasdomains'] = 'Zus&auml;tzliche Alias-Domains';
-$lang_admin['smsfrom'] = 'SMS-Absender';
-$lang_admin['smssig'] = 'SMS-Signatur';
 $lang_admin['mailsig'] = 'E-Mail-Signatur';
 $lang_admin['creditprice'] = 'Preis pro Credit';
 $lang_admin['receivedmails'] = 'Empfangen';
@@ -2117,16 +1951,9 @@ $lang_admin['addgateway'] = 'Gateway hinzuf&uuml;gen';
 $lang_admin['returnvalue'] = 'R&uuml;ckgabe-Wert';
 $lang_admin['getstring'] = 'GET-URL';
 $lang_admin['defaultgateway'] = 'Standard-Gateway';
-$lang_admin['defaulttype'] = 'Standard-SMS-Typ';
-$lang_admin['smsvalidation_type'] = 'SMS-Typ f&uuml;r Validierungen';
-$lang_admin['clndr_sms_type'] = 'SMS-Typ f&uuml;r Kalender-SMS';
-$lang_admin['mail2sms_type'] = 'SMS-Typ f&uuml;r Mail-to-SMS';
 $lang_admin['gateway'] = 'Gateway';
 $lang_admin['gateuser'] = 'Gateway-Benutzer';
 $lang_admin['gatepass'] = 'Gateway-Passwort';
-$lang_admin['clndrsmsabs'] = 'Kalender-SMS-Absender';
-$lang_admin['mail2smsabs'] = 'Mail-to-SMS-Absender';
-$lang_admin['smsreplyabs'] = 'SMS-to-Mail-Absender';
 $lang_admin['datastorage'] = 'Datei-Speicherung';
 $lang_admin['structstorage'] = 'Strukturierte Speicherung';
 $lang_admin['dynnorecvrules'] =
@@ -2194,7 +2021,6 @@ $lang_admin['view'] = 'Anzeige';
 $lang_admin['stat_login'] = 'Logins';
 $lang_admin['stat_mobile_login'] = 'Mobil-Logins';
 $lang_admin['stat_signup'] = 'Registrierungen';
-$lang_admin['stat_sms'] = 'Gesendete SMS';
 $lang_admin['stat_wd'] = 'Webdisk';
 $lang_admin['stat_wd_down'] = 'Webdisk (Download, MB)';
 $lang_admin['stat_wd_up'] = 'Webdisk (Upload, MB)';
@@ -2239,7 +2065,6 @@ $lang_admin['includeinsearch'] =
     'Folgende Bereiche bei der Benutzer-Suche durchsuchen';
 $lang_admin['mailsearchwarn'] =
     'Die Suche in gro&szlig;en Datenbest&auml;nden ist sehr rechenintensiv.';
-$lang_admin['smsoutbox'] = 'SMS-Ausgang';
 $lang_admin['tasks'] = 'Aufgaben';
 $lang_admin['addressbook'] = 'Adressbuch';
 $lang_admin['all'] = 'Alle';
@@ -2399,50 +2224,5 @@ $lang_admin['greeting'] = 'Gru&szlig;formel';
 $lang_admin['greeting_mr'] = 'Sehr geehrter Herr %s';
 $lang_admin['greeting_mrs'] = 'Sehr geehrte Frau %s';
 $lang_admin['greeting_none'] = 'Sehr geehrte Damen und Herren';
-$lang_admin['enablechrgpaypal'] = 'Zahlung per PayPal';
-$lang_admin['enablechrgskrill'] = 'Zahlung per Skrill';
-$lang_admin['enablechrgsu'] = 'Zahlung per sofort&uuml;berweisung.de';
-$lang_admin['sukdnr'] = 'Kunden-Nummer';
-$lang_admin['suprjnr'] = 'Projekt-Nummer';
-$lang_admin['suprjpass'] = 'Projekt-Passwort';
-$lang_admin['sunotifypass'] = 'Benachrichtigungs-Passwort';
-$lang_admin['suinputcheck'] = 'Input-Pr&uuml;fung';
-$lang_admin['su_createnew'] = 'Projekt bei sofort&uuml;berweisung.de anlegen';
 $lang_admin['currency'] = 'W&auml;hrung';
-$lang_admin['paypalacc'] = 'PayPal-Account';
-$lang_admin['skrillacc'] = 'Skrill-Account';
 $lang_admin['skrillsecret'] = 'Geheimwort';
-$lang_admin['invoices'] = 'Rechnungen';
-$lang_admin['pay_notification'] = 'Zahlungs-Benachrichtigung';
-$lang_admin['vat'] = 'Umsatzsteuer';
-$lang_admin['vatrate'] = 'USt.-Satz';
-$lang_admin['vat_add'] = 'zu Preisen hinzuaddieren';
-$lang_admin['vat_enthalten'] = 'ist in Preisen enthalten';
-$lang_admin['vat_nomwst'] = 'Nicht berechnen';
-$lang_admin['enablebanktransfer'] = 'Zahlung per Vorkasse';
-$lang_admin['kto_inh'] = 'Konto-Inhaber';
-$lang_admin['kto_nr'] = 'Konto-Nummer';
-$lang_admin['kto_blz'] = 'BLZ';
-$lang_admin['kto_inst'] = 'Institut';
-$lang_admin['kto_iban'] = 'IBAN';
-$lang_admin['kto_bic'] = 'BIC/SWIFT-Code';
-$lang_admin['banktransfer'] = 'Vorkasse-&Uuml;berweisung';
-$lang_admin['sendrg'] = 'Rechnungen ausstellen';
-$lang_admin['rgnrfmt'] = 'Rechnungs-Nr.-Format';
-$lang_admin['kdnrfmt'] = 'Kunden-Nr.-Format';
-$lang_admin['rgtemplate'] = 'Rechnungsvorlage';
-$lang_admin['enablesmscharge'] = 'SMS-Aufladung aktivieren';
-$lang_admin['paypal'] = 'PayPal';
-$lang_admin['su'] = 'sofort&uuml;berweisung.de';
-$lang_admin['skrill'] = 'Skrill (Moneybookers)';
-$lang_admin['paymentmethod'] = 'Zahlungsmethode';
-$lang_admin['paymentmethods'] = 'Zahlungsmethoden';
-$lang_admin['addpaymethod'] = 'Zahlungsmethode hinzuf&uuml;gen';
-$lang_admin['orderstatus_0'] = 'Erstellt';
-$lang_admin['orderstatus_1'] = 'Aktiviert';
-$lang_admin['downloadinvoices'] = 'Rechnungen herunterladen';
-$lang_admin['showinvoice'] = 'Rechnung anzeigen';
-$lang_admin['sum'] = 'Summe';
-$lang_admin['invoice'] = 'Rechnung';
-$lang_admin['at_activation'] = 'Erstellen bei Aktivierung';
-$lang_admin['at_order'] = 'Erstellen bei Bestellung';

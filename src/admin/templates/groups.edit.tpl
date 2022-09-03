@@ -1,4 +1,4 @@
-<form method="post" action="groups.php?{if $create}action=create&create=true{else}do=edit&id={$group.id}&save=true{/if}&sid={$sid}" onsubmit="spin(this)">
+<form method="post" action="groups.php?{if isset($create) && $create}action=create&create=true{else}do=edit&id={$group.id}&save=true{/if}&sid={$sid}" onsubmit="spin(this)">
 <table width="100%" cellspacing="2" cellpadding="0">
 	<tr>
 		<td valign="top" width="50%">
@@ -13,10 +13,6 @@
 					<tr>
 						<td class="td1">{lng p="htmlview"}?</td>
 						<td class="td2"><input type="checkbox" name="soforthtml"{if $group.soforthtml=='yes'} checked="checked"{/if} /></td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="monthasset"}:</td>
-						<td class="td2"><input type="text" name="sms_monat" value="{$group.sms_monat}" size="8" /> {lng p="credits"}</td>
 					</tr>
 				</table>
 			</fieldset>
@@ -86,18 +82,7 @@
 					<tr>
 						<td class="td1">{lng p="aliases"}:</td>
 						<td class="td2"><input type="text" name="aliase" value="{$group.aliase}" size="8" /></td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="smspre"}:</td>
-						<td class="td2">
-							<textarea style="width:100%;height:80px;" name="sms_pre">{text value=$group.sms_pre allowEmpty=true}</textarea>
-							<small>{lng p="sepby"}</small>
-						</td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="smsvalidation"}?</td>
-						<td class="td2"><input type="checkbox" name="smsvalidation"{if $group.smsvalidation=='yes'} checked="checked"{/if} /></td>
-					</tr>
+					</tr>					
 					<tr>
 						<td class="td1">{lng p="allownewsoptout"}?</td>
 						<td class="td2"><input name="allow_newsletter_optout"{if $group.allow_newsletter_optout=='yes'} checked="checked"{/if} type="checkbox" /></td>
@@ -105,10 +90,6 @@
 					<tr>
 						<td class="td1">{lng p="mail_send_code"}?</td>
 						<td class="td2"><input name="mail_send_code"{if $group.mail_send_code=='yes'} checked="checked"{/if} type="checkbox" /></td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="sms_send_code"}?</td>
-						<td class="td2"><input name="sms_send_code"{if $group.sms_send_code=='yes'} checked="checked"{/if} type="checkbox" /></td>
 					</tr>
 				</table>
 			</fieldset>
@@ -128,12 +109,6 @@
 						<td class="td1">{lng p="ads"}?</td>
 						<td class="td2"><input type="checkbox" name="ads"{if $group.ads=='yes'} checked="checked"{/if} /></td>
 						<td class="td2" colspan="2">&nbsp;</td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="mail2sms"}?</td>
-						<td class="td2"><input type="checkbox" name="mail2sms"{if $group.mail2sms=='yes'} checked="checked"{/if} /></td>
-						<td class="td1">{lng p="ownfrom"}?</td>
-						<td class="td2"><input type="checkbox" name="sms_ownfrom"{if $group.sms_ownfrom=='yes'} checked="checked"{/if} /></td>
 					</tr>
 					<tr>
 						<td class="td1">{lng p="mobileaccess"}?</td>
@@ -203,8 +178,6 @@
 					<tr>
 						<td class="td1">{lng p="tbx_webdisk"}?</td>
 						<td class="td2"><input type="checkbox" name="tbx_webdisk"{if $group.tbx_webdisk=='yes'} checked="checked"{/if} /></td>
-						<td class="td1">{lng p="tbx_smsmanager"}?</td>
-						<td class="td2"><input type="checkbox" name="tbx_smsmanager"{if $group.tbx_smsmanager=='yes'} checked="checked"{/if} /></td>
 					</tr>
 				</table>
 			</fieldset>
@@ -220,18 +193,6 @@
 				<legend>{lng p="misc"}</legend>
 				
 				<table width="100%">
-					<tr>
-						<td class="td1" width="160">{lng p="creditprice"}:</td>
-						<td class="td2"><input type="text" name="sms_price_per_credit" value="{$group.sms_price_per_credit}" size="6" /> (1/100 {$currency})</td>
-					</tr>
-					<tr>
-						<td class="td1" width="160">{lng p="smsfrom"}:</td>
-						<td class="td2"><input type="text" name="sms_from" value="{text value=$group.sms_from allowEmpty=true}" style="width:85%;" /></td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="smssig"}:</td>
-						<td class="td2"><input type="text" name="sms_sig" value="{text value=$group.sms_sig allowEmpty=true}" style="width:85%;" /></td>
-					</tr>
 					<tr>
 						<td class="td1">{lng p="mailsig"}:</td>
 						<td class="td2"><textarea style="width:100%;height:80px;" name="signatur">{text value=$group.signatur allowEmpty=true}</textarea></td>
@@ -267,7 +228,7 @@
 	</tr>
 </table>
 <p>
-	{if !$create}<div style="float:left" class="buttons">
+	{if !isset($create) || !$create}<div style="float:left" class="buttons">
 		&nbsp;{lng p="action"}:
 		<select name="groupAction" id="groupAction">
 			<optgroup label="{lng p="actions"}">

@@ -198,18 +198,6 @@ class BMPlugin {
     }
 
     /**
-     * activate an order item
-     *
-     * @param int $orderID Order ID
-     * @param int $userID User ID
-     * @param array $cartItem Cart item array
-     * @return bool Activated?
-     */
-    function ActivateOrderItem($orderID, $userID, $cartItem) {
-        return false;
-    }
-
-    /**
      * get implemented search categories
      *
      * @return array
@@ -332,12 +320,6 @@ class BMPlugin {
     }
 
     function AfterSendMail($userID, $from, $to, $outboxFP = false) {
-    }
-
-    function AfterSendSMS($success, $gatewayResult, $outboxID) {
-    }
-
-    function OnSendSMS(&$text, &$type, &$from, &$to, &$user) {
     }
 
     function OnLogin($userID, $interface = 'web') {

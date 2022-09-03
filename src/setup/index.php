@@ -93,7 +93,6 @@ define('FILTER_ACTION_STOP', 7);
 // calendar stuff (needed while updating)
 define('CLNDR_WHOLE_DAY', 1);
 define('CLNDR_REMIND_EMAIL', 2);
-define('CLNDR_REMIND_SMS', 4);
 define('CLNDR_REPEATING_UNTIL_ENDLESS', 1);
 define('CLNDR_REPEATING_UNTIL_COUNT', 2);
 define('CLNDR_REPEATING_UNTIL_DATE', 4);

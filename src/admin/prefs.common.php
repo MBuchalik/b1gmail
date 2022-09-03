@@ -274,7 +274,7 @@ if ($_REQUEST['action'] == 'common') {
         $lockedAltMail = implode(':', $lamArray);
 
         $db->Query(
-            'UPDATE {pre}prefs SET std_gruppe=?, minuserlength=?, min_pass_length=?, welcome_mail=?, f_strasse=?, f_telefon=?, f_fax=?, f_alternativ=?, f_mail2sms_nummer=?, f_safecode=?, alt_check=?, check_double_altmail=?, check_double_cellphone=?, f_anrede=?, locked_altmail=?, `nosignup_autodel`=?, `nosignup_autodel_days`=?',
+            'UPDATE {pre}prefs SET std_gruppe=?, minuserlength=?, min_pass_length=?, welcome_mail=?, f_strasse=?, f_telefon=?, f_fax=?, f_alternativ=?, f_safecode=?, alt_check=?, check_double_altmail=?, check_double_cellphone=?, f_anrede=?, locked_altmail=?, `nosignup_autodel`=?, `nosignup_autodel_days`=?',
             $_REQUEST['std_gruppe'],
             max(1, $_REQUEST['minuserlength']),
             max(1, $_REQUEST['min_pass_length']),
@@ -283,7 +283,6 @@ if ($_REQUEST['action'] == 'common') {
             $_REQUEST['f_telefon'],
             $_REQUEST['f_fax'],
             $_REQUEST['f_alternativ'],
-            $_REQUEST['f_mail2sms_nummer'],
             $_REQUEST['f_safecode'],
             isset($_REQUEST['alt_check']) ? 'yes' : 'no',
             isset($_REQUEST['check_double_altmail']) ? 'yes' : 'no',

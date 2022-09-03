@@ -21,7 +21,6 @@
 
 include './serverlib/init.inc.php';
 include './serverlib/mailbox.class.php';
-include './serverlib/payment.class.php';
 RequestPrivileges(PRIVILEGES_USER);
 
 $prefsItems = $prefsImages = $prefsIcons = [];
@@ -97,9 +96,6 @@ if ($groupRow['checker'] == 'yes') {
     }
 }
 $prefsItems['faq'] = true;
-if (BMPayment::Available()) {
-    $prefsItems['orders'] = true;
-}
 $prefsItems['membership'] = true;
 
 function PrefsDone() {
@@ -157,7 +153,6 @@ if ($_REQUEST['action'] == 'start') {
             (int) $_REQUEST['defaultSender'],
             $_REQUEST['re'],
             $_REQUEST['fwd'],
-            isset($_REQUEST['mail2sms']),
             isset($_REQUEST['forward']),
             $groupRow['forward'] == 'yes'
                 ? EncodeEMail($_REQUEST['forward_to'])
@@ -211,7 +206,6 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('allownewsoptout', $groupRow['allow_newsletter_optout']);
     $tpl->assign('newsletter_optin', $userRow['newsletter_optin']);
     $tpl->assign('preview', $userRow['preview']);
-    $tpl->assign('mail2sms', $userRow['mail2sms']);
     $tpl->assign('forward', $userRow['forward']);
     $tpl->assign('forward_to', $userRow['forward_to']);
     $tpl->assign('forward_delete', $userRow['forward_delete']);
@@ -262,7 +256,6 @@ if ($_REQUEST['action'] == 'start') {
         $mailbox->GetDropdownFolderList(-1, $null),
     );
     $tpl->assign('smimeAllowed', $groupRow['smime'] == 'yes');
-    $tpl->assign('mail2smsAllowed', $groupRow['mail2sms'] == 'yes');
     $tpl->assign('forwardingAllowed', $groupRow['forward'] == 'yes');
     $tpl->assign(
         'draftAutoSaveAllowed',
@@ -500,72 +493,6 @@ if ($_REQUEST['action'] == 'start') {
         }
         $res->Free();
 
-        // 'mail2sms_nummer'-field
-        if ($bm_prefs['f_mail2sms_nummer'] != 'n') {
-            $oldNo = $userRow['mail2sms_nummer'];
-            $userRow['mail2sms_nummer'] = SmartyCellphoneNo('mail2sms_nummer');
-
-            if (
-                strlen($userRow['mail2sms_nummer']) < 6 &&
-                (strlen($userRow['mail2sms_nummer']) > 0 ||
-                    $bm_prefs['f_mail2sms_nummer'] == 'p')
-            ) {
-                if (trim($groupRow['sms_pre']) != '') {
-                    $invalidFields[] = 'mail2sms_nummer_pre';
-                    $invalidFields[] = 'mail2sms_nummer_no';
-                } else {
-                    $invalidFields[] = 'mail2sms_nummer';
-                }
-            } else {
-                $noInvalid = false;
-                if (
-                    $bm_prefs['check_double_cellphone'] == 'yes' &&
-                    strlen($userRow['mail2sms_nummer']) > 0
-                ) {
-                    $res = $db->Query(
-                        'SELECT COUNT(*) FROM {pre}users WHERE `mail2sms_nummer`=? AND `id`!=?',
-                        $userRow['mail2sms_nummer'],
-                        $userRow['id'],
-                    );
-                    [$mobileNrCount] = $res->FetchArray(MYSQLI_NUM);
-                    $res->Free();
-
-                    if ($mobileNrCount > 0) {
-                        $invalidFields[] = 'mail2sms_nummer';
-                        $errorInfo .= ' ' . $lang_user['doublecellphone'];
-                        $noInvalid = true;
-                    }
-                }
-
-                // valid?
-                if (!$noInvalid) {
-                    if (
-                        $userRow['mail2sms_nummer'] != '' &&
-                        trim($groupRow['sms_pre']) != ''
-                    ) {
-                        $ok = false;
-                        $entries = explode(':', $groupRow['sms_pre']);
-                        foreach ($entries as $entry) {
-                            if (
-                                substr(
-                                    $userRow['mail2sms_nummer'],
-                                    0,
-                                    strlen($entry),
-                                ) == $entry
-                            ) {
-                                $ok = true;
-                            }
-                        }
-
-                        if (!$ok) {
-                            $invalidFields[] = 'mail2sms_nummer_pre';
-                            $invalidFields[] = 'mail2sms_nummer_no';
-                        }
-                    }
-                }
-            }
-        }
-
         // go on
         if (count($invalidFields) > 0) {
             // errors => mark fields red and show form again
@@ -590,7 +517,6 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('tel', $userRow['tel']);
     $tpl->assign('fax', $userRow['fax']);
     $tpl->assign('altmail', $userRow['altmail']);
-    $tpl->assign('mail2sms_nummer', $userRow['mail2sms_nummer']);
 
     // profile fields
     $profileFields = [];
@@ -624,7 +550,6 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('f_telefon', $bm_prefs['f_telefon']);
     $tpl->assign('f_fax', $bm_prefs['f_fax']);
     $tpl->assign('f_alternativ', $bm_prefs['f_alternativ']);
-    $tpl->assign('f_mail2sms_nummer', $bm_prefs['f_mail2sms_nummer']);
 
     // display
     $tpl->assign('profileFields', $profileFields);
@@ -1735,13 +1660,6 @@ if ($_REQUEST['action'] == 'start') {
             }
         }
 
-        // balance
-        $tpl->assign(
-            'allowCharge',
-            $bm_prefs['sms_enable_charge'] == 'yes' && BMPayment::Available(),
-        );
-        $tpl->assign('accBalance', $thisUser->GetBalance());
-
         // workgroup membership
         $tpl->assign('workgroups', $thisUser->GetWorkgroups(true));
 
@@ -1752,146 +1670,6 @@ if ($_REQUEST['action'] == 'start') {
         // page output
         $tpl->assign('pageContent', 'li/prefs.membership.tpl');
         $tpl->display('li/index.tpl');
-    }
-
-    //
-    // charge
-    //
-    elseif (
-        $_REQUEST['do'] == 'chargeAccount' &&
-        $bm_prefs['sms_enable_charge'] == 'yes' &&
-        BMPayment::Available()
-    ) {
-        // min credits?
-        $minCredits = ceil(
-            $bm_prefs['charge_min_amount'] / $groupRow['sms_price_per_credit'],
-        );
-
-        // credits given?
-        if (isset($_REQUEST['credits']) && $_REQUEST['credits'] > 0) {
-            $credits = max(1, ceil($_REQUEST['credits']));
-            $amount = round(
-                $credits * ($groupRow['sms_price_per_credit'] / 100),
-                2,
-            );
-
-            if ($amount >= $bm_prefs['charge_min_amount'] / 100) {
-                $tpl->assign('credits', $credits);
-
-                BMPayment::PreparePaymentForm(
-                    $tpl,
-                    sprintf(
-                        '%s: %d %s (%.02f %s)',
-                        $lang_user['charge'],
-                        $credits,
-                        $lang_user['credits'],
-                        $amount,
-                        $bm_prefs['currency'],
-                    ),
-                    $amount,
-                );
-
-                if (isset($_REQUEST['submitOrder'])) {
-                    $cart = [];
-                    $cart[] = [
-                        'key' => 'b1gMail.credits',
-                        'count' => $credits,
-                        'amount' => $groupRow['sms_price_per_credit'],
-                        'total' => $credits * $groupRow['sms_price_per_credit'],
-                        'text' => sprintf(
-                            '%s (%s)',
-                            $lang_user['credits'],
-                            $lang_user['charge'],
-                        ),
-                    ];
-
-                    if ($orderID = BMPayment::ProcessPaymentForm($tpl, $cart)) {
-                        BMPayment::InitiatePayment($tpl, $orderID);
-                        $tpl->display('li/index.tpl');
-                        exit();
-                    }
-                }
-            } else {
-                $tpl->assign(
-                    'error',
-                    sprintf(
-                        $lang_user['charge_min_err'],
-                        $bm_prefs['charge_min_amount'] / 100,
-                        $bm_prefs['currency'],
-                        $amount,
-                        $bm_prefs['currency'],
-                        $minCredits,
-                    ),
-                );
-            }
-        }
-
-        // page output
-        $minAmount =
-            $bm_prefs['charge_min_amount'] > 0
-                ? sprintf(
-                    $lang_user['charge_min'],
-                    $bm_prefs['charge_min_amount'] / 100,
-                    $bm_prefs['currency'],
-                )
-                : '';
-        $tpl->assign('minCredits', max(10, $minCredits));
-        $tpl->assign('minAmount', $minAmount);
-        $tpl->assign(
-            'priceText',
-            sprintf(
-                $lang_user['creditseach'],
-                $groupRow['sms_price_per_credit'] / 100,
-                $bm_prefs['currency'],
-            ),
-        );
-        $tpl->assign('pageContent', 'li/prefs.membership.charge.tpl');
-        $tpl->display('li/index.tpl');
-    }
-
-    //
-    // transactions statement
-    //
-    elseif ($_REQUEST['do'] == 'statement') {
-        if (!isset($_REQUEST['date_Month'])) {
-            $month = date('n');
-        } else {
-            $month = min(12, max(1, $_REQUEST['date_Month']));
-        }
-
-        if (!isset($_REQUEST['date_Year'])) {
-            $year = date('Y');
-        } else {
-            $year = $_REQUEST['date_Year'];
-        }
-
-        $timeFrom = mktime(0, 0, 0, $month, 1, $year);
-        $timeTo = min(
-            time(),
-            mktime(23, 59, 59, $month, date('t', $timeFrom), $year),
-        );
-
-        $endBalanceStatic = $thisUser->GetStaticBalance($timeTo);
-
-        if ($timeTo >= time()) {
-            $endBalance = $thisUser->GetBalance();
-            $dynamicBalance = max(0, $endBalance - $endBalanceStatic);
-        } else {
-            $endBalance = $endBalanceStatic;
-            $dynamicBalance = 0;
-        }
-
-        $tpl->assign('startBalance', $thisUser->GetStaticBalance($timeFrom));
-        $tpl->assign('endBalance', $endBalance);
-        $tpl->assign('dynamicBalance', $dynamicBalance);
-        $tpl->assign('timeFrom', $timeFrom);
-        $tpl->assign('timeTo', $timeTo);
-        $tpl->assign('timeToIsCurrent', $timeTo >= time());
-        $tpl->assign(
-            'transactions',
-            $thisUser->GetTransactions($timeFrom, $timeTo),
-        );
-        $tpl->display('li/dialog.statement.tpl');
     }
 
     //
@@ -1966,63 +1744,6 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('page', 'nli/msg.tpl');
         $tpl->display('nli/index.tpl');
     }
-} /**
- * orders
- */ elseif ($_REQUEST['action'] == 'orders' && BMPayment::Available()) {
-    if (!isset($_REQUEST['do'])) {
-        $orders = $thisUser->GetOrderList();
-
-        foreach ($orders as $orderID => $order) {
-            foreach ($order['cart'] as $id => $pos) {
-                $orders[$orderID]['cart'][$id]['amount'] = sprintf(
-                    '%.02f',
-                    $pos['amount'] / 100,
-                );
-                $orders[$orderID]['cart'][$id]['total'] = sprintf(
-                    '%.02f',
-                    $pos['total'] / 100,
-                );
-            }
-        }
-
-        $tpl->assign('currency', $bm_prefs['currency']);
-        $tpl->assign('orders', $orders);
-        $tpl->assign('pageContent', 'li/prefs.orders.tpl');
-        $tpl->display('li/index.tpl');
-    } elseif ($_REQUEST['do'] == 'showInvoice' && isset($_REQUEST['id'])) {
-        $invoice = $thisUser->GetOrderInvoice($_REQUEST['id']);
-
-        $tpl->assign('print', isset($_REQUEST['print']));
-        $tpl->assign('id', (int) $_REQUEST['id']);
-        $tpl->assign('invoice', $invoice);
-        $tpl->display('li/prefs.orders.invoice.tpl');
-    } elseif ($_REQUEST['do'] == 'initiatePayment' && isset($_REQUEST['id'])) {
-        BMPayment::InitiatePayment($tpl, $_REQUEST['id']);
-        $tpl->display('li/index.tpl');
-    } elseif ($_REQUEST['do'] == 'deleteOrder' && isset($_REQUEST['id'])) {
-        $db->Query(
-            'DELETE FROM {pre}orders WHERE `orderid`=? AND `userid`=? AND `status`=?',
-            $_REQUEST['id'],
-            $userRow['id'],
-            ORDER_STATUS_CREATED,
-        );
-        if ($db->AffectedRows() == 1) {
-            $db->Query(
-                'DELETE FROM {pre}invoices WHERE `orderid`=?',
-                $_REQUEST['id'],
-            );
-        }
-        header('Location: prefs.php?action=orders&sid=' . session_id());
-        exit();
-    }
-} /**
- * payment return page
- */ elseif ($_REQUEST['action'] == 'paymentReturn') {
-    $tpl->assign('title', $lang_user['thankyou']);
-    $tpl->assign('msg', sprintf($lang_user['paymentreturn_txt'], session_id()));
-    $tpl->assign('backLink', 'prefs.php?action=orders&sid=' . session_id());
-    $tpl->assign('pageContent', 'li/msg.tpl');
-    $tpl->display('li/index.tpl');
 } /**
  * keyring
  */ elseif ($_REQUEST['action'] == 'keyring' && $groupRow['smime'] == 'yes') {

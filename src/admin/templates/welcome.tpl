@@ -91,51 +91,6 @@
 </fieldset>
 {/if}
 
-{if $showActivation}
-<table width="100%" style="border-collapse:collapse;">
-	<tr>
-		<td style="width:50%;vertical-align:top;">
-			{/if}
-			<fieldset>
-				<legend>{lng p="notes"}</legend>
-				<form action="welcome.php?sid={$sid}&do=saveNotes" method="post" onsubmit="spin(this)">
-					<textarea style="width:100%;height:94px;" name="notes">{text value=$notes allowEmpty=true}</textarea>
-					<p align="right"><input type="submit" value=" {lng p="save"} " class="button" /></p>
-				</form>
-			</fieldset>
-			{if $showActivation}
-		</td>
-		<td style="width:50%;vertical-align:top;">
-			<fieldset>
-				<legend>{lng p="activatepayment"}</legend>
-
-				<table>
-					<tr>
-						<td align="left" rowspan="3" valign="top" width="40"><img src="templates/images/ico_prefs_payments.png" border="0" alt="" width="32" height="32" /></td>
-						<td colspan="2">{lng p="activate_desc"}</td>
-					</tr>
-					<tr>
-						<td class="td1" width="120">{lng p="vkcode"}:</td>
-						<td class="td2"><input type="text" name="vkCode" id="vkCode" value="VK-" size="26" onkeypress="return handleActivatePaymentInput(event, 0);"  /></td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="amount"}:</td>
-						<td class="td2"><input type="text" name="amount" id="amount" value="" size="10" onkeypress="return handleActivatePaymentInput(event, 1);" /> {text value=$bm_prefs.currency}</td>
-					</tr>
-				</table>
-
-				<p>
-					<div style="float:left;font-weight:bold;padding-top:4px;" id="activationResult">&nbsp;</div>
-					<div style="float:right">
-						<input class="button" type="button" onclick="activatePayment()" id="activateButton" value=" {lng p="activate"} " />
-					</div>
-				</p>
-			</fieldset>
-		</td>
-	</tr>
-</table>
-{/if}
-
 {if $adminRow.type==0}
 <fieldset>
 	<legend>{lng p="notices"}</legend>

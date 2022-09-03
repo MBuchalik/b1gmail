@@ -67,12 +67,6 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="td1">{lng p="cellphone"}:</td>
-							<td class="td2">
-								<input type="text" name="mail2sms_nummer" style="width:85%;" />
-							</td>
-						</tr>
-						<tr>
 							<td class="td1">{lng p="altmail"}:</td>
 							<td class="td2">
 								<input type="text" name="altmail" style="width:85%;" />

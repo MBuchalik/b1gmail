@@ -87,17 +87,6 @@ class B1GMailSearchProvider extends BMPlugin {
                 $destFolderID = (int) substr($action, 7);
                 $mailbox->MoveMail($items, $destFolderID);
             }
-        } elseif ($category == 'B1GMailSearchProvider_sms') {
-            if (!class_exists('BMSMS')) {
-                include B1GMAIL_DIR . 'serverlib/sms.class.php';
-            }
-            $sms = _new('BMSMS', [$userRow['id'], &$thisUser]);
-
-            if ($action == 'delete') {
-                foreach ($items as $itemID) {
-                    $sms->DeleteOutboxEntry((int) $itemID);
-                }
-            }
         } elseif ($category == 'B1GMailSearchProvider_calendar') {
             if (!class_exists('BMCalendar')) {
                 include B1GMAIL_DIR . 'serverlib/calendar.class.php';
@@ -222,12 +211,6 @@ class B1GMailSearchProvider extends BMPlugin {
             $result['B1GMailSearchProvider_attachments'] = [
                 'title' => $lang_user['attachments'],
                 'icon' => 'fa-paperclip',
-            ];
-        }
-        if (isset($searchIn['sms'])) {
-            $result['B1GMailSearchProvider_sms'] = [
-                'title' => $lang_user['smsoutbox'],
-                'icon' => 'fa-commenting-o',
             ];
         }
         if (isset($searchIn['calendar'])) {
@@ -508,48 +491,6 @@ class B1GMailSearchProvider extends BMPlugin {
                     'name' => 'B1GMailSearchProvider_attachments',
                     'title' => $lang_user['attachments'],
                     'results' => $thisResults,
-                ];
-            }
-        }
-        //
-        // sms outbox
-        //
-        if (isset($searchIn['sms'])) {
-            $thisResults = [];
-            $res = $db->Query(
-                'SELECT id,text,`date` FROM {pre}smsend WHERE `date`>=? AND `date`<=? AND isSMS=1 AND user=? AND deleted=0 AND (text LIKE ' .
-                    $q .
-                    ' OR `from` LIKE ' .
-                    $q .
-                    ' OR `to` LIKE ' .
-                    $q .
-                    ') ORDER BY text ASC',
-                $dateFrom,
-                $dateTo,
-                $thisUser->_id,
-            );
-            while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                $thisResults[] = [
-                    'title' => $row['text'],
-                    'link' => sprintf(
-                        'sms.php?action=outbox&show=%d&',
-                        $row['id'],
-                    ),
-                    'date' => $row['date'],
-                    'id' => $row['id'],
-                ];
-            }
-            $res->Free();
-
-            if (count($thisResults) > 0) {
-                $results[] = [
-                    'icon' => 'fa-commenting-o',
-                    'name' => 'B1GMailSearchProvider_sms',
-                    'title' => $lang_user['smsoutbox'],
-                    'results' => $thisResults,
-                    'massActions' => [
-                        'delete' => $lang_user['delete'],
-                    ],
                 ];
             }
         }

@@ -102,7 +102,7 @@ if ($_REQUEST['action'] == 'common' || $_REQUEST['action'] == 'email') {
     // common stats
     if ($_REQUEST['action'] == 'common') {
         $mode = 'common';
-        $statTypes = ['login', 'signup', 'sms', 'wd'];
+        $statTypes = ['login', 'signup', 'wd'];
     }
 
     // email stats

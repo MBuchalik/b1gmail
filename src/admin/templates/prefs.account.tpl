@@ -83,13 +83,6 @@
 				<td style="text-align:center;"><input type="radio" name="f_alternativ" value="v"{if $bm_prefs.f_alternativ=='v'} checked="checked"{/if} /></td>
 				<td style="text-align:center;"><input type="radio" name="f_alternativ" value="n"{if $bm_prefs.f_alternativ=='n'} checked="checked"{/if} /></td>
 			</tr>
-			<tr class="td2">
-				<td><img src="{$tpldir}images/field.png" border="0" alt="" width="16" height="16" /></td>
-				<td>{lng p="cellphone"}</td>
-				<td style="text-align:center;"><input type="radio" name="f_mail2sms_nummer" value="p"{if $bm_prefs.f_mail2sms_nummer=='p'} checked="checked"{/if} /></td>
-				<td style="text-align:center;"><input type="radio" name="f_mail2sms_nummer" value="v"{if $bm_prefs.f_mail2sms_nummer=='v'} checked="checked"{/if} /></td>
-				<td style="text-align:center;"><input type="radio" name="f_mail2sms_nummer" value="n"{if $bm_prefs.f_mail2sms_nummer=='n'} checked="checked"{/if} /></td>
-			</tr>
 			<tr class="td1">
 				<td><img src="{$tpldir}images/field.png" border="0" alt="" width="16" height="16" /></td>
 				<td>{lng p="safecode"}</td>

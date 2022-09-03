@@ -21,7 +21,6 @@
 
 include '../serverlib/admin.inc.php';
 include '../serverlib/mailbox.class.php';
-include '../serverlib/payment.class.php';
 RequestPrivileges(PRIVILEGES_ADMIN);
 AdminRequirePrivilege('users');
 
@@ -438,7 +437,7 @@ if ($_REQUEST['action'] == 'users') {
 
             // update common stuff
             $db->Query(
-                'UPDATE {pre}users SET profilfelder=?, email=?, vorname=?, nachname=?, strasse=?, hnr=?, plz=?, ort=?, land=?, tel=?, fax=?, mail2sms_nummer=?, altmail=?, gruppe=?, gesperrt=?, notes=?, re=?, fwd=?, mail2sms=?, forward=?, forward_to=?, `newsletter_optin`=?, datumsformat=?, absendername=?, anrede=?, saliase=?, mailspace_add=?, diskspace_add=?, traffic_add=? WHERE id=?',
+                'UPDATE {pre}users SET profilfelder=?, email=?, vorname=?, nachname=?, strasse=?, hnr=?, plz=?, ort=?, land=?, tel=?, fax=?, altmail=?, gruppe=?, gesperrt=?, notes=?, re=?, fwd=?, forward=?, forward_to=?, `newsletter_optin`=?, datumsformat=?, absendername=?, anrede=?, saliase=?, mailspace_add=?, diskspace_add=?, traffic_add=? WHERE id=?',
                 serialize($profileData),
                 EncodeEMail($_REQUEST['email']),
                 $_REQUEST['vorname'],
@@ -450,14 +449,12 @@ if ($_REQUEST['action'] == 'users') {
                 $_REQUEST['land'],
                 $_REQUEST['tel'],
                 $_REQUEST['fax'],
-                $_REQUEST['mail2sms_nummer'],
                 EncodeEMail($_REQUEST['altmail']),
                 $_REQUEST['gruppe'],
                 $_REQUEST['gesperrt'],
                 $_REQUEST['notes'],
                 $_REQUEST['re'],
                 $_REQUEST['fwd'],
-                $_REQUEST['mail2sms'],
                 $_REQUEST['forward'],
                 EncodeEMail($_REQUEST['forward_to']),
                 $_REQUEST['newsletter_optin'],
@@ -513,33 +510,6 @@ if ($_REQUEST['action'] == 'users') {
             $tpl->assign('showAliases', true);
         }
 
-        // delete payment?
-        if (isset($_REQUEST['deletePayment'])) {
-            $db->Query(
-                'DELETE FROM {pre}orders WHERE `orderid`=?',
-                (int) $_REQUEST['deletePayment'],
-            );
-            $db->Query(
-                'DELETE FROM {pre}invoices WHERE `orderid`=?',
-                (int) $_REQUEST['deletePayment'],
-            );
-            $tpl->assign('showPayments', true);
-        }
-
-        // activate payment?
-        if (isset($_REQUEST['activatePayment'])) {
-            $res = $db->Query(
-                'SELECT `orderid`,`amount` FROM {pre}orders WHERE `orderid`=? AND `status`=?',
-                (int) $_REQUEST['activatePayment'],
-                ORDER_STATUS_CREATED,
-            );
-            while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                BMPayment::ActivateOrder($row['orderid'], $row['amount']);
-            }
-            $res->Free();
-            $tpl->assign('showPayments', true);
-        }
-
         // get user data
         $userObject = _new('BMUser', [(int) $_REQUEST['id']]);
         $userRow = $user = $userObject->Fetch();
@@ -558,9 +528,6 @@ if ($_REQUEST['action'] == 'users') {
         // get group data
         $groupObject = $userObject->GetGroup();
         $group = $groupObject->Fetch();
-
-        // used month sms
-        $usedMonthSMS = $userObject->GetUsedMonthSMS();
 
         // traffic?
         if ($user['traffic_status'] != (int) date('m')) {
@@ -632,59 +599,12 @@ if ($_REQUEST['action'] == 'users') {
             array_map('DecodeDomain', explode(':', $user['saliase'])),
         );
 
-        // payments
-        $payMethods = BMPayment::GetCustomPaymentMethods();
-        $payments = [];
-        $res = $db->Query(
-            'SELECT * FROM {pre}orders WHERE `userid`=? ORDER BY `orderid` DESC LIMIT 15',
-            $_REQUEST['id'],
-        );
-        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-            $res2 = $db->Query(
-                'SELECT COUNT(*) FROM {pre}invoices WHERE `orderid`=?',
-                $row['orderid'],
-            );
-            [$row['hasInvoice']] = $res2->FetchArray(MYSQLI_NUM);
-            $res2->Free();
-
-            if ($row['paymethod'] == PAYMENT_METHOD_BANKTRANSFER) {
-                $row['method'] = $lang_admin['banktransfer'];
-            } elseif ($row['paymethod'] == PAYMENT_METHOD_PAYPAL) {
-                $row['method'] = $lang_admin['paypal'];
-            } elseif ($row['paymethod'] == PAYMENT_METHOD_SOFORTUEBERWEISUNG) {
-                $row['method'] = $lang_admin['su'];
-            } elseif ($row['paymethod'] == PAYMENT_METHOD_SKRILL) {
-                $row['method'] = $lang_admin['skrill'];
-            } elseif ($row['paymethod'] < 0) {
-                if (isset($payMethods[abs($row['paymethod'])])) {
-                    $row['method'] =
-                        $payMethods[abs($row['paymethod'])]['title'];
-                } else {
-                    $row['method'] = $lang_admin['unknown'];
-                }
-            }
-
-            $row['customerNo'] = BMPayment::CustomerNo($row['userid']);
-            $row['invoiceNo'] = BMPayment::InvoiceNo($row['orderid']);
-            $row['amount'] = sprintf(
-                '%.02f %s',
-                $row['amount'] / 100,
-                $bm_prefs['currency'],
-            );
-
-            $payments[] = $row;
-        }
-        $res->Free();
-
         // assign
-        $tpl->assign('staticBalance', $userObject->GetStaticBalance());
-        $tpl->assign('payments', $payments);
         $tpl->assign('historyCount', $historyCount);
         $tpl->assign('user', $user);
         $tpl->assign('group', $group);
         $tpl->assign('groups', BMGroup::GetSimpleGroupList());
         $tpl->assign('aliases', $aliases);
-        $tpl->assign('usedMonthSMS', (int) $usedMonthSMS);
         $tpl->assign('countries', CountryList());
         $tpl->assign('emailMails', $emailMails);
         $tpl->assign('emailFolders', $emailFolders);
@@ -692,190 +612,6 @@ if ($_REQUEST['action'] == 'users') {
         $tpl->assign('diskFiles', $diskFiles);
         $tpl->assign('diskFolders', $diskFolders);
         $tpl->assign('page', 'users.edit.tpl');
-    }
-
-    //
-    // transaction history
-    //
-    elseif ($_REQUEST['do'] == 'transactions' && isset($_REQUEST['id'])) {
-        // get user data
-        $userObject = _new('BMUser', [(int) $_REQUEST['id']]);
-        $user = $userObject->Fetch();
-        if (!$user) {
-            die('User not found');
-        }
-
-        // single action?
-        if (isset($_REQUEST['singleAction'])) {
-            if ($_REQUEST['singleAction'] == 'delete') {
-                $db->Query(
-                    'DELETE FROM {pre}transactions WHERE `userid`=? AND `transactionid`=?',
-                    $userObject->_id,
-                    $_REQUEST['singleID'],
-                );
-            }
-        }
-
-        // mass action
-        if (isset($_REQUEST['executeMassAction'])) {
-            // get transaction IDs
-            $transactionIDs = [];
-            if (
-                isset($_POST['transactions']) &&
-                is_array($_POST['transactions'])
-            ) {
-                $transactionIDs = array_map('intval', $_POST['transactions']);
-            }
-
-            if (count($transactionIDs) > 0) {
-                if ($_REQUEST['massAction'] == 'delete') {
-                    $db->Query(
-                        'DELETE FROM {pre}transactions WHERE `transactionid` IN ? AND `userid`=?',
-                        $transactionIDs,
-                        $userObject->_id,
-                    );
-                } elseif ($_REQUEST['massAction'] == 'cancel') {
-                    $db->Query(
-                        'UPDATE {pre}transactions SET `status`=? WHERE `transactionid` IN ? AND `userid`=?',
-                        TRANSACTION_CANCELLED,
-                        $transactionIDs,
-                        $userObject->_id,
-                    );
-                } elseif ($_REQUEST['massAction'] == 'uncancel') {
-                    $db->Query(
-                        'UPDATE {pre}transactions SET `status`=? WHERE `transactionid` IN ? AND `userid`=?',
-                        TRANSACTION_BOOKED,
-                        $transactionIDs,
-                        $userObject->_id,
-                    );
-                }
-            }
-        }
-
-        // add transaction?
-        if (isset($_REQUEST['add']) && isset($_POST['amount'])) {
-            $db->Query(
-                'INSERT INTO {pre}transactions(`userid`,`description`,`amount`,`date`,`status`) ' .
-                    'VALUES(?,?,?,?,?)',
-                $userObject->_id,
-                $_POST['description'],
-                (int) $_POST['amount'],
-                time(),
-                (int) $_POST['status'],
-            );
-        }
-
-        // sort options
-        $sortBy = isset($_REQUEST['sortBy']) ? $_REQUEST['sortBy'] : 'date';
-        $sortOrder = isset($_REQUEST['sortOrder'])
-            ? strtolower($_REQUEST['sortOrder'])
-            : 'desc';
-        $perPage = max(
-            1,
-            isset($_REQUEST['perPage']) ? (int) $_REQUEST['perPage'] : 50,
-        );
-
-        // page calculation
-        $res = $db->Query(
-            'SELECT COUNT(*) FROM {pre}transactions WHERE `userid`=?',
-            $userObject->_id,
-        );
-        [$transactionCount] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-        $pageCount = ceil($transactionCount / $perPage);
-        $pageNo = isset($_REQUEST['page'])
-            ? max(1, min($pageCount, (int) $_REQUEST['page']))
-            : 1;
-        $startPos = max(0, min($perPage * ($pageNo - 1), $transactionCount));
-
-        // get transactions
-        $transactions = [];
-        $res = $db->Query(
-            'SELECT * FROM {pre}transactions WHERE `userid`=? ' .
-                'ORDER BY ' .
-                $sortBy .
-                ' ' .
-                $sortOrder .
-                ' ' .
-                'LIMIT ' .
-                $startPos .
-                ',' .
-                $perPage,
-            $userObject->_id,
-        );
-        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-            if (
-                strlen($row['description']) > 5 &&
-                substr($row['description'], 0, 5) == 'lang:' &&
-                isset($lang_user[substr($row['description'], 5)])
-            ) {
-                $row['description'] =
-                    $lang_user[substr($row['description'], 5)];
-            }
-            $transactions[$row['transactionid']] = $row;
-        }
-        $res->Free();
-
-        // assign
-        $tpl->assign('staticBalance', $userObject->GetStaticBalance());
-        $tpl->assign('transactions', $transactions);
-        $tpl->assign('user', $user);
-        $tpl->assign('pageNo', $pageNo);
-        $tpl->assign('pageCount', $pageCount);
-        $tpl->assign('sortBy', $sortBy);
-        $tpl->assign('sortOrder', $sortOrder);
-        $tpl->assign('sortOrderInv', $sortOrder == 'asc' ? 'desc' : 'asc');
-        $tpl->assign('perPage', $perPage);
-        $tpl->assign('page', 'users.transactions.tpl');
-    }
-
-    //
-    // edit transactiopn
-    //
-    elseif (
-        $_REQUEST['do'] == 'editTransaction' &&
-        isset($_REQUEST['transactionid'])
-    ) {
-        // get transaction
-        $res = $db->Query(
-            'SELECT * FROM {pre}transactions WHERE `transactionid`=?',
-            $_REQUEST['transactionid'],
-        );
-        if ($res->RowCount() != 1) {
-            die('Transaction not found');
-        }
-        $tx = $res->FetchArray(MYSQLI_ASSOC);
-        $res->Free();
-
-        // save?
-        if (isset($_REQUEST['save']) && isset($_POST['amount'])) {
-            $db->Query(
-                'UPDATE {pre}transactions SET `description`=?,`amount`=?,`status`=? WHERE `transactionid`=?',
-                $_POST['description'],
-                (int) $_POST['amount'],
-                (int) $_POST['status'],
-                (int) $_REQUEST['transactionid'],
-            );
-            header(
-                'Location: users.php?do=transactions&id=' .
-                    $tx['userid'] .
-                    '&sid=' .
-                    session_id(),
-            );
-            exit();
-        }
-
-        // get user data
-        $userObject = _new('BMUser', [$tx['userid']]);
-        $user = $userObject->Fetch();
-        if (!$user) {
-            die('User not found');
-        }
-
-        // assign
-        $tpl->assign('tx', $tx);
-        $tpl->assign('user', $user);
-        $tpl->assign('page', 'users.transactions.edit.tpl');
     }
 
     //
@@ -990,11 +726,7 @@ if ($_REQUEST['action'] == 'users') {
                     'land',
                 ]);
             } elseif ($field == 'telfaxmobile') {
-                $fields = array_merge($fields, [
-                    'tel',
-                    'fax',
-                    'mail2sms_nummer',
-                ]);
+                $fields = array_merge($fields, ['tel', 'fax']);
             }
         }
 
@@ -1058,7 +790,6 @@ if ($_REQUEST['action'] == 'users') {
                     $_REQUEST['tel'],
                     $_REQUEST['fax'],
                     $_REQUEST['altmail'],
-                    $_REQUEST['mail2sms_nummer'],
                     $_REQUEST['passwort'],
                     $profileData,
                     $_REQUEST['anrede'],
@@ -1066,8 +797,7 @@ if ($_REQUEST['action'] == 'users') {
 
                 // update misc stuff
                 $db->Query(
-                    'UPDATE {pre}users SET mail2sms_nummer=?, gruppe=?, gesperrt=?, notes=? WHERE id=?',
-                    $_REQUEST['mail2sms_nummer'],
+                    'UPDATE {pre}users SET gruppe=?, gesperrt=?, notes=? WHERE id=?',
                     $_REQUEST['gruppe'],
                     $_REQUEST['gesperrt'],
                     $_REQUEST['notes'],

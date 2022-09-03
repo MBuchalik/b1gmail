@@ -87,12 +87,6 @@
 				<input type="text" name="fax" id="fax" value="{text value=$fax allowEmpty=true}" size="35" />
 			</td>
 		</tr>{/if}
-		{if $f_mail2sms_nummer!="n"}<tr>
-			<td class="listTableLeft">{if $f_mail2sms_nummer=="p"}*{/if} {lng p="mobile"}:</td>
-			<td class="listTableRight">	
-				{mobileNr name="mail2sms_nummer" value=$mail2sms_nummer size="280px"}
-			</td>
-		</tr>{/if}
 		
 		<tr>
 			<td class="listTableLeftDesc"><i class="fa fa-microchip" aria-hidden="true"></i></td>

@@ -12,8 +12,6 @@
 						<label for="searchMails"><b>{lng p="emails"}</b></label><br />
 					<input type="checkbox" name="searchIn[attachments]" id="searchAtt"{if $searchIn.attachments} checked="checked"{/if} />
 						<label for="searchAtt"><b>{lng p="attachments"}</b></label><br />
-					<input type="checkbox" name="searchIn[sms]" id="searchSMS"{if $searchIn.sms} checked="checked"{/if} />
-						<label for="searchSMS"><b>{lng p="smsoutbox"}</b></label><br />
 					<input type="checkbox" name="searchIn[calendar]" id="searchCalendar"{if $searchIn.calendar} checked="checked"{/if} />
 						<label for="searchCalendar"><b>{lng p="calendar"}</b></label><br />
 					<input type="checkbox" name="searchIn[tasks]" id="searchTasks"{if $searchIn.tasks} checked="checked"{/if} />

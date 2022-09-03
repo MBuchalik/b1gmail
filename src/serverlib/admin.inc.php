@@ -33,7 +33,6 @@ $permsTable = [
     'workgroups' => $lang_admin['workgroups'],
     'activity' => $lang_admin['activity'],
     'newsletter' => $lang_admin['newsletter'],
-    'payments' => $lang_admin['payments'],
     'optimize' => $lang_admin['optimize'],
     'maintenance' => $lang_admin['maintenance'],
     'stats' => $lang_admin['stats'],
@@ -91,7 +90,6 @@ $ruleTypeTable = [
 $faqRequirementTable = [
     'responder' => $lang_admin['autoresponder'],
     'forward' => $lang_admin['forward'],
-    'mail2sms' => $lang_admin['mail2sms'],
     'pop3' => $lang_admin['pop3'],
     'imap' => $lang_admin['imap'],
     'webdav' => $lang_admin['webdav'],
@@ -121,8 +119,6 @@ $backupTables = [
         'mods',
         'profilfelder',
         'recvrules',
-        'smsgateways',
-        'smstypen',
         'staaten',
         'texts',
         'workgroups',
@@ -141,7 +137,6 @@ $backupTables = [
         'folders',
         'pop3',
         'signaturen',
-        'smsend',
         'userprefs',
     ],
     'organizer' => [
@@ -566,9 +561,6 @@ function DeleteUser($userID, $qAddAND = '') {
 
     // sigs
     $db->Query('DELETE FROM {pre}signaturen WHERE user=?', $userID);
-
-    // sent sms
-    $db->Query('DELETE FROM {pre}smsend WHERE user=?', $userID);
 
     // spam index
     $db->Query('DELETE FROM {pre}spamindex WHERE userid=?', $userID);

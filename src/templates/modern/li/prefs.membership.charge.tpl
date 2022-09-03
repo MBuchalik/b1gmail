@@ -41,7 +41,7 @@
 <form action="prefs.php?action=membership&do=chargeAccount&sid={$sid}" method="post">
 <input type="hidden" name="credits" value="{$credits}" />
 <input type="hidden" name="submitOrder" value="true" />
-{include file="li/payment.form.tpl"}
+
 </form>
 {/if}
 

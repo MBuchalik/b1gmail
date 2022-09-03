@@ -41,26 +41,6 @@
 </table>
 </form>
 
-<h2>{lng p="accbalance"}</h2>
-<table class="listTable">
-	<tr>
-		<th class="listTableHead" colspan="2"> {lng p="accbalance"}</th>
-	</tr>
-	<tr>
-		<td class="listTableLeft">{lng p="accbalance"}:</td>
-		<td class="listTableRight">
-			{$accBalance} {lng p="credits"}
-		</td>
-	</tr>
-	<tr>
-		<td class="listTableLeft">&nbsp;</td>
-		<td class="listTableRight">
-			{if $allowCharge}<input type="button" class="primary" value=" {lng p="charge"} " onclick="document.location.href='prefs.php?action=membership&do=chargeAccount&sid={$sid}';" />{/if}
-			<input type="button" value="{lng p="statement"}" onclick="showStatement()" />
-		</td>
-	</tr>
-</table>
-
 {if $workgroups}
 <h2>{lng p="wgmembership"}</h2>
 <table class="listTable">

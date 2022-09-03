@@ -333,30 +333,6 @@ class BMUser {
     }
 
     /**
-     * check if user may see SMS stuff
-     *
-     * @return bool
-     */
-    function SMSEnabled() {
-        global $bm_prefs, $db;
-
-        $this->Fetch();
-
-        $group = $this->GetGroup();
-        $groupRow = $group->Fetch();
-
-        $res = $db->Query('SELECT COUNT(*) FROM {pre}smsgateways');
-        [$gatewayCount] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-
-        return $gatewayCount > 0 &&
-            ($this->GetStaticBalance() > 0 ||
-                $groupRow['mail2sms'] == 'yes' ||
-                $groupRow['sms_monat'] > 0 ||
-                $bm_prefs['sms_enable_charge'] == 'yes');
-    }
-
-    /**
      * update bayes training values for user
      *
      * @param int $nonSpam Count of NON spam mails
@@ -773,7 +749,6 @@ class BMUser {
         $phone,
         $fax,
         $altmail,
-        $mobile_nr,
         $password,
         $profilefields = [],
         $salutation = ''
@@ -801,8 +776,8 @@ class BMUser {
 
         // create account
         $db->Query(
-            'INSERT INTO {pre}users(email,vorname,nachname,strasse,hnr,plz,ort,land,tel,fax,altmail,mail2sms_nummer,passwort,passwort_salt,gruppe,gesperrt,mail2sms,c_firstday,lastlogin,reg_ip,reg_date,profilfelder,datumsformat,charset,language,soforthtml,anrede,preview) ' .
-                'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,\'no\',\'1\',?,?,?,?,?,?,?,?,?,?)',
+            'INSERT INTO {pre}users(email,vorname,nachname,strasse,hnr,plz,ort,land,tel,fax,altmail,passwort,passwort_salt,gruppe,gesperrt,c_firstday,lastlogin,reg_ip,reg_date,profilfelder,datumsformat,charset,language,soforthtml,anrede,preview) ' .
+                'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,\'no\',\'1\',?,?,?,?,?,?,?,?,?,?)',
             $email,
             $firstname,
             $surname,
@@ -814,7 +789,6 @@ class BMUser {
             $phone,
             $fax,
             $altmail,
-            $mobile_nr,
             md5(md5($password) . $salt),
             $salt,
             $bm_prefs['std_gruppe'],
@@ -1970,25 +1944,6 @@ class BMUser {
     }
 
     /**
-     * get used month sms credits
-     *
-     * @return int
-     */
-    function GetUsedMonthSMS() {
-        global $db;
-
-        $res = $db->Query(
-            'SELECT SUM(price) FROM {pre}smsend WHERE user=? AND monat=?',
-            $this->_id,
-            (int) date('mY'),
-        );
-        [$usedMonthSMS] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-
-        return $usedMonthSMS;
-    }
-
-    /**
      * get user count
      *
      * @return int
@@ -2011,174 +1966,6 @@ class BMUser {
      */
     function GetWorkgroups($withMembers = false) {
         return BMWorkgroup::GetSimpleWorkgroupList($this->_id, $withMembers);
-    }
-
-    /**
-     * get account balance
-     *
-     * @return int
-     */
-    function GetBalance() {
-        $group = $this->GetGroup();
-        $groupRow = $group->Fetch();
-
-        $smsPerMonth = $groupRow['sms_monat'];
-        $balance =
-            max(0, $smsPerMonth - $this->GetUsedMonthSMS()) +
-            $this->GetStaticBalance();
-
-        return $balance;
-    }
-
-    /**
-     * Get static-only credit balance at a certain point int ime
-     *
-     * Does not take into account monthly dynamic credits.
-     *
-     * @param int $when Timestamp (0 = now)
-     * @return int Credits
-     */
-    function GetStaticBalance($when = 0) {
-        global $db;
-
-        if ($when == 0) {
-            $when = time();
-        }
-
-        $result = 0;
-
-        $res = $db->Query(
-            'SELECT SUM(`amount`) FROM {pre}transactions WHERE `userid`=? AND `status`=? AND `date`<=?',
-            $this->_id,
-            TRANSACTION_BOOKED,
-            $when,
-        );
-        [$result] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-
-        return (int) $result;
-    }
-
-    /**
-     * charge account
-     *
-     * @param int $credits Credits
-     * @return int -1 = failed, 0 = ok, but no smsend ID, > 0 = smsend ID
-     */
-    function Debit($credits, $description = 'Unknown') {
-        global $db;
-
-        $result = -1;
-        $group = $this->GetGroup();
-        $groupRow = $group->Fetch();
-
-        $smsPerMonth = $groupRow['sms_monat'];
-        $freeMonthCredits = $smsPerMonth - $this->GetUsedMonthSMS();
-        $freeStaticCredits = $this->GetStaticBalance();
-
-        if ($credits < 0) {
-            $credits = abs($credits);
-            if ($credits <= $freeStaticCredits + $freeMonthCredits) {
-                $monthPart = min($freeMonthCredits, $credits);
-                $staticPart = $credits - $monthPart;
-
-                if ($monthPart > 0) {
-                    $db->Query(
-                        'INSERT INTO {pre}smsend(user,monat,price,isSMS) VALUES(?,?,?,?)',
-                        $this->_id,
-                        (int) date('mY'),
-                        $credits,
-                        0,
-                    );
-                    $result = $db->InsertId();
-                }
-
-                if ($staticPart > 0) {
-                    $db->Query(
-                        'INSERT INTO {pre}transactions(`userid`,`description`,`amount`,`date`,`status`) ' .
-                            'VALUES(?,?,?,?,?)',
-                        $this->_id,
-                        $description,
-                        -abs($staticPart),
-                        time(),
-                        TRANSACTION_BOOKED,
-                    );
-                    if ($result == -1) {
-                        $result = 0;
-                    }
-                }
-
-                return $result;
-            } else {
-                return -1;
-            }
-        } else {
-            $db->Query(
-                'INSERT INTO {pre}transactions(`userid`,`description`,`amount`,`date`,`status`) ' .
-                    'VALUES(?,?,?,?,?)',
-                $this->_id,
-                $description,
-                abs($credits),
-                time(),
-                TRANSACTION_BOOKED,
-            );
-            return 0;
-        }
-    }
-
-    /**
-     * get transactions in a certain timeframe
-     *
-     * @param int $from Start timestamp
-     * @param int $to End timestamp
-     * @param string $sortBy Sort field (date|transactionid|description|status|amount)
-     * @param string $sortOrder Sort order (ASC|DESC)
-     * @return array
-     */
-    function GetTransactions($from, $to, $sortBy = 'date', $sortOrder = 'ASC') {
-        global $db, $lang_user;
-
-        if (
-            !in_array($sortBy, [
-                'date',
-                'transactionid',
-                'description',
-                'status',
-                'amount',
-            ])
-        ) {
-            $sortBy = 'date';
-        }
-        if (!in_array($sortOrder, ['ASC', 'DESC'])) {
-            $sortOrder = 'ASC';
-        }
-
-        $result = [];
-
-        $res = $db->Query(
-            'SELECT * FROM {pre}transactions WHERE `userid`=? AND `date`>=? AND `date`<=? AND `status`>0 ' .
-                'ORDER BY `' .
-                $sortBy .
-                '` ' .
-                $sortOrder,
-            $this->_id,
-            $from,
-            $to,
-        );
-        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-            if (
-                strlen($row['description']) > 5 &&
-                substr($row['description'], 0, 5) == 'lang:' &&
-                isset($lang_user[substr($row['description'], 5)])
-            ) {
-                $row['description'] =
-                    $lang_user[substr($row['description'], 5)];
-            }
-            $result[$row['transactionid']] = $row;
-        }
-        $res->Free();
-
-        return $result;
     }
 
     /**
@@ -2744,7 +2531,6 @@ class BMUser {
      * @param int $defaultSender
      * @param string $rePrefix
      * @param string $fwdPrefix
-     * @param bool $mailToSMS
      * @param bool $forwardEnabled
      * @param string $forwardTo
      * @param bool $forwardDelete
@@ -2761,7 +2547,6 @@ class BMUser {
         $defaultSender,
         $rePrefix,
         $fwdPrefix,
-        $mailToSMS,
         $forwardEnabled,
         $forwardTo,
         $forwardDelete,
@@ -2785,7 +2570,7 @@ class BMUser {
         $this->SetPref('hotkeys', $hotkeys);
 
         $db->Query(
-            'UPDATE {pre}users SET in_refresh=?, soforthtml=?, c_firstday=?, datumsformat=?, absendername=?, defaultSender=?, re=?, fwd=?, mail2sms=?, forward=?, forward_to=?, forward_delete=?, preview=?, conversation_view=?, newsletter_optin=?, plaintext_courier=?, reply_quote=?, attcheck=?, search_details_default=?, preferred_language=?, notify_sound=?, notify_email=?, notify_birthday=?, auto_save_drafts=?, auto_save_drafts_interval=? WHERE id=?',
+            'UPDATE {pre}users SET in_refresh=?, soforthtml=?, c_firstday=?, datumsformat=?, absendername=?, defaultSender=?, re=?, fwd=?, forward=?, forward_to=?, forward_delete=?, preview=?, conversation_view=?, newsletter_optin=?, plaintext_courier=?, reply_quote=?, attcheck=?, search_details_default=?, preferred_language=?, notify_sound=?, notify_email=?, notify_birthday=?, auto_save_drafts=?, auto_save_drafts_interval=? WHERE id=?',
             $inboxRefresh,
             $instantHTML ? 'yes' : 'no',
             $firstDayOfWeek,
@@ -2794,7 +2579,6 @@ class BMUser {
             $defaultSender,
             $rePrefix,
             $fwdPrefix,
-            $mailToSMS ? 'yes' : 'no',
             $forwardEnabled ? 'yes' : 'no',
             $forwardTo,
             $forwardDelete ? 'yes' : 'no',
@@ -2860,7 +2644,6 @@ class BMUser {
                         'land' => (int) $this->_row['land'],
                         'tel' => $this->_row['tel'],
                         'fax' => $this->_row['fax'],
-                        'mail2sms_nummer' => $this->_row['mail2sms_nummer'],
                         'altmail' => $this->_row['altmail'],
                         'profilfelder' => $this->_row['profilfelder'],
                         'changeDate' => time(),
@@ -2887,7 +2670,7 @@ class BMUser {
 
             // store data
             $db->Query(
-                'UPDATE {pre}users SET vorname=?, nachname=?, strasse=?, hnr=?, plz=?, ort=?, land=?, tel=?, fax=?, mail2sms_nummer=?, altmail=?, profilfelder=?, passwort=?, contactHistory=?, anrede=? WHERE id=?',
+                'UPDATE {pre}users SET vorname=?, nachname=?, strasse=?, hnr=?, plz=?, ort=?, land=?, tel=?, fax=?, altmail=?, profilfelder=?, passwort=?, contactHistory=?, anrede=? WHERE id=?',
                 $userRow['vorname'],
                 $userRow['nachname'],
                 $userRow['strasse'],
@@ -2897,7 +2680,6 @@ class BMUser {
                 (int) $userRow['land'],
                 $userRow['tel'],
                 $userRow['fax'],
-                $userRow['mail2sms_nummer'],
                 $userRow['altmail'],
                 serialize($profileFields),
                 $userRow['passwort'],
@@ -2967,7 +2749,6 @@ class BMUser {
             'land' => $countryList[$this->_row['land']],
             'tel' => $this->_row['tel'],
             'fax' => $this->_row['fax'],
-            'handy' => $this->_row['mail2sms_nummer'],
             'email' => ExtractMailAddress($this->GetDefaultSender()),
         ];
 
@@ -3520,112 +3301,6 @@ class BMUser {
      */
     function GetPrivateKey($certID) {
         return $this->GetPref('PrivateKey_' . $certID);
-    }
-
-    /**
-     * get order list
-     *
-     * @param string $sortColumn Column to sort by
-     * @param string $sortOrder Sort order
-     * @return array
-     */
-    function GetOrderList($sortColumn = 'created', $sortOrder = 'DESC') {
-        global $db, $bm_prefs;
-
-        if (!class_exists('BMPayment')) {
-            include B1GMAIL_DIR . 'serverlib/payment.class.php';
-        }
-
-        // fetch orders
-        $result = [];
-        $res = $db->Query(
-            'SELECT * FROM {pre}orders WHERE `userid`=? ORDER BY `' .
-                $sortColumn .
-                '` ' .
-                $sortOrder,
-            $this->_id,
-        );
-        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-            $row['cart'] = @unserialize($row['cart']);
-            if (!is_array($row['cart'])) {
-                $row['cart'] = [];
-            }
-
-            $row['amountText'] = sprintf(
-                '%.02f %s',
-                $row['amount'] / 100,
-                $bm_prefs['currency'],
-            );
-            $row['invoiceNo'] = BMPayment::InvoiceNo($row['orderid']);
-            $row['invoiceAvailable'] = false; // checked later
-
-            $result[$row['orderid']] = $row;
-        }
-        $res->Free();
-
-        // check for invoices
-        if (count($result) > 0) {
-            $res = $db->Query(
-                'SELECT `orderid` FROM {pre}invoices WHERE `orderid` IN ?',
-                array_keys($result),
-            );
-            while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                $result[$row['orderid']]['invoiceAvailable'] = true;
-            }
-            $res->Free();
-        }
-
-        return $result;
-    }
-
-    /**
-     * get order details
-     *
-     * @param int $orderID Order ID
-     * @return array
-     */
-    function GetOrder($orderID) {
-        global $db;
-
-        $res = $db->Query(
-            'SELECT * FROM {pre}orders WHERE `userid`=? AND `orderid`=?',
-            $this->_id,
-            $orderID,
-        );
-        $row = $res->FetchArray(MYSQLI_ASSOC);
-        $res->Free();
-
-        $row['cart'] = @unserialize($row['cart']);
-        if (!is_array($row['cart'])) {
-            $row['cart'] = [];
-        }
-
-        return $row;
-    }
-
-    /**
-     * get order invoice
-     *
-     * @param int $orderID Order ID
-     * @return string
-     */
-    function GetOrderInvoice($orderID) {
-        global $db;
-
-        $result = false;
-
-        if ($this->GetOrder($orderID) !== false) {
-            $res = $db->Query(
-                'SELECT `invoice` FROM {pre}invoices WHERE `orderid`=?',
-                $orderID,
-            );
-            if ($res->RowCount() == 1) {
-                [$result] = $res->FetchArray(MYSQLI_NUM);
-            }
-            $res->Free();
-        }
-
-        return $result;
     }
 
     /**

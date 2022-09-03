@@ -895,10 +895,7 @@ class BMCalDAVBackend extends Sabre\CalDAV\Backend\AbstractBackend {
             'PRODID' => $os->getProdID(),
         ]);
         $vEvent = $obj->add('VEVENT', $event);
-        if (
-            $row['flags'] &
-            (CLNDR_REMIND_EMAIL | CLNDR_REMIND_SMS | CLNDR_REMIND_NOTIFY)
-        ) {
+        if ($row['flags'] & (CLNDR_REMIND_EMAIL | CLNDR_REMIND_NOTIFY)) {
             if ($row['reminder'] % TIME_ONE_WEEK == 0) {
                 $trigger = sprintf('-P%dW', $row['reminder'] / TIME_ONE_WEEK);
             } elseif ($row['reminder'] % TIME_ONE_DAY == 0) {
@@ -912,14 +909,6 @@ class BMCalDAVBackend extends Sabre\CalDAV\Backend\AbstractBackend {
                 );
             } else {
                 $trigger = sprintf('-PT%dS', $row['reminder']);
-            }
-
-            // as SMS is not supported by the standard, we use the EMAIL action instead
-            if ($row['flags'] & (CLNDR_REMIND_EMAIL | CLNDR_REMIND_SMS)) {
-                $vEvent->add('VALARM', [
-                    'TRIGGER' => $trigger,
-                    'ACTION' => 'EMAIL',
-                ]);
             }
 
             if ($row['flags'] & CLNDR_REMIND_NOTIFY) {

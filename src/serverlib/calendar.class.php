@@ -535,61 +535,6 @@ class BMCalendar {
             }
         }
 
-        // send sms notification
-        if ($date['flags'] & CLNDR_REMIND_SMS) {
-            // prepare SMS
-            $toNo = $user->_row['mail2sms_nummer'];
-            $smsText = GetPhraseForUser(
-                $date['user'],
-                'lang_custom',
-                'clndr_sms',
-            );
-            $smsText = str_replace(
-                '%%date%%',
-                date('d.m.Y', $date['startdate']),
-                $smsText,
-            );
-            $smsText = str_replace(
-                '%%time%%',
-                date('H:i', $date['startdate']),
-                $smsText,
-            );
-            $smsText = str_replace('%%subtitle%%', $date['title'], $smsText);
-            if (strlen($smsText) > 160) {
-                $smsText = substr($smsText, 0, 157) . '...';
-            }
-
-            // send SMS
-            if (!class_exists('BMSMS')) {
-                include B1GMAIL_DIR . 'serverlib/sms.class.php';
-            }
-            $sms = _new('BMSMS', [$date['user'], &$user]);
-            if (
-                $sms->Send(
-                    $bm_prefs['clndr_sms_abs'],
-                    $toNo,
-                    $smsText,
-                    $bm_prefs['clndr_sms_type'],
-                    true,
-                    true,
-                )
-            ) {
-                // log
-                PutLog(
-                    sprintf(
-                        'Sent SMS notification about date <%d> to <%s> (user %d)',
-                        $date['id'],
-                        $user->_row['mail2sms_nummer'],
-                        $date['user'],
-                    ),
-                    PRIO_NOTE,
-                    __FILE__,
-                    __LINE__,
-                );
-            }
-            $ok = true;
-        }
-
         // update last_reminder
         if ($ok) {
             $db->Query(
@@ -624,7 +569,7 @@ class BMCalendar {
                 'FROM {pre}dates ' .
                 'INNER JOIN {pre}users ON {pre}users.`id`={pre}dates.`user` ' .
                 'WHERE {pre}users.`gesperrt`!=\'delete\' AND ({pre}dates.flags&' .
-                (CLNDR_REMIND_EMAIL | CLNDR_REMIND_NOTIFY | CLNDR_REMIND_SMS) .
+                (CLNDR_REMIND_EMAIL | CLNDR_REMIND_NOTIFY) .
                 ')!=0 AND ((({pre}dates.startdate>=? OR {pre}dates.enddate<=? OR ({pre}dates.startdate<=? AND {pre}dates.enddate>=?)) AND {pre}dates.repeat_flags=0) OR ({pre}dates.repeat_flags>0 AND (({pre}dates.repeat_flags&' .
                 CLNDR_REPEATING_UNTIL_DATE .
                 ')=0 OR {pre}dates.repeat_value<=?))) ' .
@@ -1280,9 +1225,6 @@ class BMCalendar {
         $row['reminder'] = max(0, $_REQUEST['reminder']) * TIME_ONE_MINUTE;
         if (isset($_REQUEST['reminder_email'])) {
             $row['flags'] |= CLNDR_REMIND_EMAIL;
-        }
-        if (isset($_REQUEST['reminder_sms'])) {
-            $row['flags'] |= CLNDR_REMIND_SMS;
         }
         if (isset($_REQUEST['reminder_notify'])) {
             $row['flags'] |= CLNDR_REMIND_NOTIFY;

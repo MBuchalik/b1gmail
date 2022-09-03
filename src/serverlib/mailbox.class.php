@@ -26,9 +26,6 @@ if (!defined('B1GMAIL_INIT')) {
 if (!class_exists('BMMail')) {
     include B1GMAIL_DIR . 'serverlib/mail.class.php';
 }
-if (!class_exists('BMSMS')) {
-    include B1GMAIL_DIR . 'serverlib/sms.class.php';
-}
 
 /**
  * mailbox class
@@ -3617,54 +3614,6 @@ class BMMailbox {
         // stats, logs
         if ($storeResult == STORE_RESULT_OK) {
             $mail->id = $this->_lastInsertId;
-
-            // mail2sms if (nonspam and mail2sms enabled) or (filter action flag is set)
-            if (
-                (($this->_userObject->_row['mail2sms'] == 'yes' &&
-                    ($mail->flags & FLAG_SPAM) == 0) ||
-                    ($filterActionFlags & FILTER_ACTIONFLAG_MAIL2SMS) != 0) &&
-                strpos(
-                    strtolower($mail->GetHeaderValue('precedence')),
-                    'junk',
-                ) === false &&
-                (trim($mail->GetHeaderValue('auto-submitted')) == '' ||
-                    trim(strtolower($mail->GetHeaderValue('auto-submitted'))) ==
-                        'no') &&
-                (ExtractMailAddress($mail->GetHeaderValue('return-path')) !=
-                    '' ||
-                    $bm_prefs['returnpath_check'] == 'no') &&
-                strlen(trim($this->_userObject->_row['mail2sms_nummer'])) > 3
-            ) {
-                $toNo = $this->_userObject->_row['mail2sms_nummer'];
-                $smsText = GetPhraseForUser(
-                    $this->_userID,
-                    'lang_custom',
-                    'mail2sms',
-                );
-                $smsText = str_replace(
-                    '%%abs%%',
-                    ExtractMailAddress($mail->GetHeaderValue('from')),
-                    $smsText,
-                );
-                $smsText = str_replace(
-                    '%%betreff%%',
-                    $mail->GetHeaderValue('subject'),
-                    $smsText,
-                );
-                if (strlen($smsText) > 160) {
-                    $smsText = substr($smsText, 0, 157) . '...';
-                }
-
-                $sms = _new('BMSMS', [$this->_userID, &$this->_userObject]);
-                $sms->Send(
-                    $bm_prefs['mail2sms_abs'],
-                    $toNo,
-                    $smsText,
-                    $bm_prefs['mail2sms_type'],
-                    true,
-                    true,
-                );
-            }
 
             // notification
             if (($filterActionFlags & FILTER_ACTIONFLAG_NOTIFY) != 0) {

@@ -33,6 +33,15 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
         if (
             !mysqli_query(
                 $dbConnection,
+                "DELETE FROM bm60_stats WHERE typ='sms'",
+            )
+        ) {
+            return false;
+        }
+
+        if (
+            !mysqli_query(
+                $dbConnection,
                 'ALTER TABLE bm60_prefs
                     DROP COLUMN taborder,
                     DROP COLUMN regenabled,
@@ -56,7 +65,10 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                     DROP COLUMN ap_expire_mode,
                     DROP COLUMN ap_autolock,
                     DROP COLUMN ap_autolock_notify,
-                    DROP COLUMN ap_autolock_notify_to
+                    DROP COLUMN ap_autolock_notify_to,
+                    DROP COLUMN sms_enable_charge,
+                    DROP COLUMN f_mail2sms_nummer,
+                    DROP COLUMN enable_vk
                 ',
             )
         ) {
@@ -80,7 +92,9 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                     DROP COLUMN sms_validation,
                     DROP COLUMN sms_validation_code,
                     DROP COLUMN sms_validation_last_send,
-                    DROP COLUMN sms_validation_send_times
+                    DROP COLUMN sms_validation_send_times,
+                    DROP COLUMN mail2sms,
+                    DROP COLUMN mail2sms_nummer
                 ',
             )
         ) {
@@ -90,13 +104,49 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
         if (
             !mysqli_query(
                 $dbConnection,
-                'ALTER TABLE bm60_gruppen DROP COLUMN abuseprotect',
+                'ALTER TABLE bm60_gruppen 
+                    DROP COLUMN abuseprotect,
+                    DROP COLUMN sms_monat,
+                    DROP COLUMN sms_pre,
+                    DROP COLUMN mail2sms,
+                    DROP COLUMN sms_ownfrom,
+                    DROP COLUMN tbx_smsmanager,
+                    DROP COLUMN sms_price_per_credit,
+                    DROP COLUMN sms_from,
+                    DROP COLUMN sms_sig,
+                    DROP COLUMN smsvalidation,
+                    DROP COLUMN sms_send_code
+            ',
             )
         ) {
             return false;
         }
 
         if (!mysqli_query($dbConnection, 'DROP TABLE bm60_codes')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_orders')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_invoices')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_transactions')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_smsend')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_smstypen')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_smsgateways')) {
             return false;
         }
 

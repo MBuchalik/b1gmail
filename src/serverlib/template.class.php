@@ -289,25 +289,6 @@ class Template extends Smarty {
                 ],
             ];
 
-            if ($thisUser->SMSEnabled()) {
-                $pageTabs['sms'] = [
-                    'icon' => 'sms',
-                    'faIcon' => 'fa-comments',
-                    'link' => 'sms.php?sid=',
-                    'text' => $lang_user['sms'],
-                ];
-
-                $newMenu[] = [
-                    'sep' => true,
-                ];
-                $newMenu[] = [
-                    'icon' => 'ico_composesms',
-                    'faIcon' => 'fa-comments',
-                    'link' => 'sms.php?sid=',
-                    'text' => $lang_user['sms'],
-                ];
-            }
-
             $pageTabs = array_merge($pageTabs, [
                 'organizer' => [
                     'icon' => 'organizer',
@@ -977,61 +958,15 @@ function TemplateHook($params, $smarty) {
     return $result;
 }
 function TemplateMobileNr($params, $smarty) {
-    global $groupRow;
-
     $value = isset($params['value']) ? $params['value'] : '';
     $name = $params['name'];
     $size = isset($params['size']) ? $params['size'] : '100%';
 
-    if (trim($groupRow['sms_pre']) != '') {
-        $preOptions = '';
-        $haveValue = false;
-        $entries = explode(':', $groupRow['sms_pre']);
-        foreach ($entries as $entry) {
-            if (trim($entry) != '') {
-                if (
-                    substr($value, 0, strlen($entry)) == $entry &&
-                    !$haveValue
-                ) {
-                    $preOptions .= sprintf(
-                        '<option value="%s" selected="selected">%s</option>',
-                        $entry,
-                        $entry,
-                    );
-                    $value = substr($value, strlen($entry));
-                    $haveValue = true;
-                } else {
-                    $preOptions .= sprintf(
-                        '<option value="%s">%s</option>',
-                        $entry,
-                        $entry,
-                    );
-                }
-            }
-        }
-
-        return sprintf(
-            '<table width="%s" cellspacing="0" cellpadding="0">' .
-                '<tr>' .
-                '<td width="1" nowrap="nowrap"><nobr>(<select name="%s_pre" id="%s_pre">%s</select>)&nbsp;</nobr></td>' .
-                '<td><input type="text" name="%s_no" id="%s_no" style="width:100%%;" value="%s" /></td>' .
-                '</tr>' .
-                '</table>',
-            $size,
-            $name,
-            $name,
-            $preOptions,
-            $name,
-            $name,
-            $value,
-        );
-    } else {
-        return sprintf(
-            '<input type="text" name="%s" id="%s" style="width:%s;" value="%s" />',
-            $name,
-            $name,
-            $size,
-            HTMLFormat($value),
-        );
-    }
+    return sprintf(
+        '<input type="text" name="%s" id="%s" style="width:%s;" value="%s" />',
+        $name,
+        $name,
+        $size,
+        HTMLFormat($value),
+    );
 }

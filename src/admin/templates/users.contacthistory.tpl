@@ -22,7 +22,6 @@
 			<td>{text value=$item.strasse cut=20} {text value=$item.hnr}</td>
 			<td>{text value=$item.plz} {text value=$item.ort cut=20}<br /><small>{text value=$countries[$item.land]}</small></td>
 			<td>{text value=$item.tel cut=20}<br /><small>{text value=$item.fax cut=20}</small></td>
-			<td>{text value=$item.mail2sms_nummer cut=20}</td>
 			<td>{if $item.changeDate}{date timestamp=$item.changeDate}{else}-{/if}</td>
 		</tr>
 		{/foreach}

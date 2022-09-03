@@ -273,26 +273,21 @@
 		</tr>
 		{/if}
 		
-		{if $mail2smsAllowed||$forwardingAllowed}<tr>
-			<td class="listTableLeftDesc"><i class="fa fa-folder-o" aria-hidden="true"></i></td>
-			<td class="listTableRightDesc">{lng p="receiveprefs"}</td>
-		</tr>{/if}
-		{if $mail2smsAllowed}<tr>
-			<td class="listTableLeft"><label for="mail2sms">{lng p="mail2sms"}:</label></td>
-			<td class="listTableRight">
-				<input type="checkbox" name="mail2sms" id="mail2sms"{if $mail2sms=='yes'} checked="checked"{/if} />
-					<label for="mail2sms">{lng p="enable"}</label>
-			</td>
-		</tr>{/if}
-		{if $forwardingAllowed}<tr>
-			<td class="listTableLeft"><label for="forward_to">{lng p="forwarding"}?</label></td>
-			<td class="listTableRight">
-				<input type="checkbox" name="forward" id="forward"{if $forward=='yes'} checked="checked"{/if} />
-					{lng p="to2"} <input type="text" name="forward_to" id="forward_to" value="{email value=$forward_to}" style="width:200px;" onkeypress="EBID('forward').checked=true;" /><br />
-				<input type="checkbox" name="forward_delete" id="forward_delete"{if $forward_delete=='yes'} checked="checked"{/if} />
-					<label for="forward_delete">{lng p="deleteforwarded"}</label>
-			</td>
-		</tr>{/if}
+		{if $forwardingAllowed}
+			<tr>
+				<td class="listTableLeftDesc"><i class="fa fa-folder-o" aria-hidden="true"></i></td>
+				<td class="listTableRightDesc">{lng p="receiveprefs"}</td>
+			</tr>
+			<tr>
+				<td class="listTableLeft"><label for="forward_to">{lng p="forwarding"}?</label></td>
+				<td class="listTableRight">
+					<input type="checkbox" name="forward" id="forward"{if $forward=='yes'} checked="checked"{/if} />
+						{lng p="to2"} <input type="text" name="forward_to" id="forward_to" value="{email value=$forward_to}" style="width:200px;" onkeypress="EBID('forward').checked=true;" /><br />
+					<input type="checkbox" name="forward_delete" id="forward_delete"{if $forward_delete=='yes'} checked="checked"{/if} />
+						<label for="forward_delete">{lng p="deleteforwarded"}</label>
+				</td>
+			</tr>
+		{/if}
 		
 		<tr>
 			<td class="listTableLeft">&nbsp;</td>

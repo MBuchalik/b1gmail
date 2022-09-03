@@ -174,7 +174,6 @@ $tpl->assign(
     'thisMonthText',
     date('F Y', mktime(0, 0, 0, date('m', $date), 15, date('Y', $date))),
 );
-$tpl->assign('smsEnabled', $thisUser->SMSEnabled());
 
 /**
  * page menu

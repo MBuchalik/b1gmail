@@ -62,10 +62,6 @@
 						<td class="td2"><input type="text" name="fax" value="{text value=$user.fax allowEmpty=true}" style="width:85%;" /></td>
 					</tr>
 					<tr>
-						<td class="td1">{lng p="cellphone"}:</td>
-						<td class="td2"><input type="text" name="mail2sms_nummer" value="{text value=$user.mail2sms_nummer allowEmpty=true}" style="width:85%;" /></td>
-					</tr>
-					<tr>
 						<td class="td1">{lng p="altmail"}:</td>
 						<td class="td2"><input type="text" name="altmail" value="{email value=$user.altmail}" style="width:85%;" /></td>
 					</tr>
@@ -131,10 +127,6 @@
 						</select></td>
 					</tr>
 					<tr>
-						<td class="td1">{lng p="assets"}:</td>
-						<td class="td2"><a href="users.php?do=transactions&id={$user.id}&sid={$sid}">{$staticBalance} {lng p="credits"}</a></td>
-					</tr>
-					<tr>
 						<td class="td1">{lng p="newpassword"}:</td>
 						<td class="td2"><input type="text" name="passwort" value="" style="width:85%;" /></td>
 					</tr>
@@ -187,19 +179,7 @@
 							{if $group.traffic>0}{progressBar value=$user.traffic_down+$user.traffic_up max=$group.traffic width=200}{/if}
 							<small>{size bytes=$user.traffic_down+$user.traffic_up}{if $group.traffic>0} / {size bytes=$group.traffic}{/if} {lng p="used2"}</small>
 						</td>
-					</tr>
-
-					{if $group.sms_monat>0}
-					<tr>
-						<td class="td1">{lng p="monthasset"}:</td>
-						<td class="td2">
-							{progressBar value=$usedMonthSMS max=$group.sms_monat width=200}
-							<small>{$usedMonthSMS} / {$group.sms_monat} {lng p="credits"} {lng p="used2"}</small>
-						</td>
-					</tr>
-					{/if}
-
-					
+					</tr>	
 				</table>
 			</fieldset>
 
@@ -251,13 +231,6 @@
 							<td class="td1" width="160">{lng p="re"}/{lng p="fwd"}:</td>
 							<td class="td2"><input type="text" name="re" value="{text value=$user.re allowEmpty=true}" style="width:35%;" />
 											<input type="text" name="fwd" value="{text value=$user.fwd allowEmpty=true}" style="width:35%;" /></td>
-						</tr>
-						<tr>
-							<td class="td1">{lng p="mail2sms"}:</td>
-							<td class="td2"><select name="mail2sms">
-								<option value="yes"{if $user.mail2sms=='yes'} selected="selected"{/if}>{lng p="yes"}</option>
-								<option value="no"{if $user.mail2sms=='no'} selected="selected"{/if}>{lng p="no"}</option>
-							</select></td>
 						</tr>
 						<tr>
 							<td class="td1">{lng p="forward"}:</td>
@@ -319,46 +292,7 @@
 						{/foreach}
 					</table>
 				</div>
-			</fieldset>
-
-			<fieldset class="{if isset($showPayments) && $showPayments}un{/if}collapsed">
-				<legend><a href="javascript:;" onclick="toggleFieldset(this)">{lng p="payments"}</a> ({lng p="max"} 15)</legend>
-				<div class="content">
-					<table class="list">
-						<tr>
-							<th width="20">&nbsp;</th>
-							<th>{lng p="orderno"}</th>
-							<th width="135">{lng p="amount"}</th>
-							<th width="145">{lng p="date"}</th>
-							<th width="65">&nbsp;</th>
-						</tr>
-
-						{foreach from=$payments item=payment}
-						{cycle values="td1,td2" name="class" assign="class"}
-						<tr class="{$class}">
-							<td align="center"><img src="templates/images/{if $payment.status==1}yes{else}no{/if}.png" border="0" alt="" width="16" height="16" /></td>
-							<td>{text value=$payment.invoiceNo}<br /><small>{text value=$payment.customerNo}</small></td>
-							<td>
-								<div style="float:left;">
-									{$payment.amount}<br /><small>{$payment.method}</small>
-								</div>
-								{if $payment.paymethod<0}
-								<div style="float:right;">
-									<a href="payments.php?do=details&orderid={$payment.orderid}&sid={$sid}" title="{lng p="details"}"><img src="{$tpldir}images/ico_prefs_payments.png" border="0" alt="{lng p="details"}" width="16" height="16" /></a>
-								</div>
-								{/if}
-							</td>
-							<td>{date timestamp=$payment.created nice=true}</td>
-							<td>
-								{if $payment.hasInvoice}<a href="javascript:void(0);" onclick="openWindow('payments.php?action=showInvoice&orderID={$payment.orderid}&sid={$sid}','invoice_{$payment.orderid}',640,480);" title="{lng p="showinvoice"}"><img src="{$tpldir}images/file.png" border="0" alt="{lng p="showinvoice"}" width="16" height="16" /></a>{/if}
-								{if $payment.status==0}<a href="{if $payment.paymethod<0}payments.php?do=details&orderid={$payment.orderid}&sid={$sid}{else}users.php?do=edit&id={$user.id}&activatePayment={$payment.orderid}&sid={$sid}{/if}" title="{lng p="activatepayment"}"><img src="{$tpldir}images/unlock.png" border="0" alt="{lng p="activatepayment"}" width="16" height="16" /></a>{/if}
-								<a href="users.php?do=edit&id={$user.id}&deletePayment={$payment.orderid}&sid={$sid}" onclick="return confirm('{lng p="realdel"}');" title="{lng p="delete"}"><img src="{$tpldir}images/delete.png" border="0" alt="{lng p="delete"}" width="16" height="16" /></a>
-							</td>
-						</tr>
-						{/foreach}
-					</table>
-				</div>
-			</fieldset>
+			</fieldset>			
 		</td>
 	</tr>
 </table>

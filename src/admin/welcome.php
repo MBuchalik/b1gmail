@@ -434,21 +434,6 @@ if ($_REQUEST['action'] == 'welcome') {
         ];
     }
 
-    // orders with custom payment methods waiting for activation
-    $res = $db->Query(
-        'SELECT COUNT(*) FROM {pre}orders WHERE `paymethod`<0 AND `status`=?',
-        ORDER_STATUS_CREATED,
-    );
-    [$orderCount] = $res->FetchArray(MYSQLI_NUM);
-    $res->Free();
-    if ($orderCount > 0) {
-        $notices[] = [
-            'type' => 'info',
-            'text' => sprintf($lang_admin['waitingorders'], $orderCount),
-            'link' => 'payments.php?',
-        ];
-    }
-
     // users waiting for activation
     if ($notActivatedUserCount > 0) {
         $notices[] = [
@@ -512,10 +497,6 @@ if ($_REQUEST['action'] == 'welcome') {
     // misc
     //
     $tpl->assign('bm_prefs', $bm_prefs);
-    $tpl->assign(
-        'showActivation',
-        $bm_prefs['enable_vk'] == 'yes' && AdminAllowed('payments'),
-    );
     $tpl->assign('lang', $currentLanguage);
     $tpl->assign('serial', $bm_prefs['serial']);
     $tpl->assign('notes', $adminRow['notes']);

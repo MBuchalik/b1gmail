@@ -41,7 +41,7 @@ if (!class_exists('BMWebdisk')) {
  *
  */
 class BMToolInterface {
-    var $_sms, $_user, $_group;
+    var $_user, $_group;
 
     /**
      * constructor
@@ -426,139 +426,6 @@ class BMToolInterface {
     }
 
     /**
-     * send a SMS (smsmanager interface)
-     *
-     * @param string $userName
-     * @param string $passwordHash
-     * @param string $from
-     * @param string $to
-     * @param int $type
-     * @param string $text
-     * @return array
-     */
-    function SendSMS($userName, $passwordHash, $from, $to, $type, $text) {
-        $result = ['sendOK' => false];
-        $userInfo = $this->CheckLogin($userName, $passwordHash);
-
-        if ($userInfo['loginOK'] > 0 && is_object($this->_sms)) {
-            $userID = $userInfo['userID'];
-
-            // validation required?
-            $validationRequired =
-                $this->_group->_row['smsvalidation'] == 'yes' &&
-                $this->_user->_row['sms_validation'] == 0;
-            if ($validationRequired) {
-                $result['sendOK'] = false;
-                return $result;
-            }
-
-            // prepare from number
-            if ($this->_group->_row['sms_ownfrom'] == 'yes') {
-                $from = str_replace('+', '00', $from);
-                $from = preg_replace('/[^0-9]/', '', $from);
-            } else {
-                $from = $this->_group->_row['sms_from'];
-            }
-
-            // prepare to number
-            $to = str_replace('+', '00', $to);
-            $to = preg_replace('/[^0-9]/', '', $to);
-
-            // add signature
-            if (strlen($text) > $this->_sms->GetMaxChars((int) $type)) {
-                $text = substr($text, 0, $this->_sms->GetMaxChars((int) $type));
-            }
-            $text .= $this->_group->_row['sms_sig'];
-
-            if (
-                !BMSMS::PreOK($to, $this->_group->_row['sms_pre']) ||
-                ($this->_group->_row['sms_ownfrom'] == 'yes' &&
-                    !BMSMS::PreOK($from, $this->_group->_row['sms_pre']))
-            ) {
-                $result['sendOK'] = false;
-            } else {
-                $result['sendOK'] = $this->_sms->Send(
-                    $from,
-                    $to,
-                    $text,
-                    (int) $type,
-                    true,
-                    true,
-                );
-            }
-
-            $this->_user->Fetch(-1, true);
-            $result['balance'] = $this->_user->GetBalance();
-        } else {
-            $result['status'] = 'Invalid login';
-        }
-        return $result;
-    }
-
-    /**
-     * get SMS outbox (smsmanager interface)
-     *
-     * @param string $userName
-     * @param string $passwordHash
-     * @return array
-     */
-    function GetSMSOutbox($userName, $passwordHash) {
-        $result = ['sendOK' => false];
-        $userInfo = $this->CheckLogin($userName, $passwordHash);
-
-        if ($userInfo['loginOK'] > 0 && is_object($this->_sms)) {
-            $result['outbox'] = $this->_sms->GetOutbox('date', 'desc');
-            $result['status'] = 'OK';
-        } else {
-            $result['status'] = 'Invalid login';
-        }
-        return $result;
-    }
-
-    /**
-     * get SMS/fax addressbook (smsmanager interface)
-     *
-     * @param string $userName
-     * @param string $passwordHash
-     * @return array
-     */
-    function GetSMSAddressbook($userName, $passwordHash) {
-        $result = ['sendOK' => false];
-        $userInfo = $this->CheckLogin($userName, $passwordHash);
-
-        if ($userInfo['loginOK'] > 0 && is_object($this->_sms)) {
-            $userID = $userInfo['userID'];
-
-            // addressbook
-            $addresses = [];
-            $book = _new('BMAddressbook', [$userID]);
-            $addressBook = $book->GetAddressBook('*', -1, 'nachname', 'asc');
-            foreach ($addressBook as $id => $entry) {
-                if (
-                    trim($entry['handy']) != '' ||
-                    trim($entry['work_handy']) != ''
-                ) {
-                    $addresses[] = [
-                        'firstname' => $entry['vorname'],
-                        'lastname' => $entry['nachname'],
-                        'handy' => $entry['handy'],
-                        'work_handy' => $entry['work_handy'],
-                        'fax' => $entry['fax'],
-                        'work_fax' => $entry['work_fax'],
-                        'id' => $entry['id'],
-                    ];
-                }
-            }
-
-            $result['addresses'] = $addresses;
-            $result['status'] = 'OK';
-        } else {
-            $result['status'] = 'Invalid login';
-        }
-        return $result;
-    }
-
-    /**
      * get service info
      *
      * @return array
@@ -754,7 +621,7 @@ class BMToolInterface {
         $userID = BMUser::GetID($userName);
         if ($userID != 0) {
             $res = $db->Query(
-                'SELECT passwort,passwort_salt,gesperrt,gruppe,mail2sms_nummer FROM {pre}users WHERE id=?',
+                'SELECT passwort,passwort_salt,gesperrt,gruppe FROM {pre}users WHERE id=?',
                 $userID,
             );
             if ($res->RowCount() == 1) {
@@ -795,14 +662,12 @@ class BMToolInterface {
                         'pop3Access' => $groupRow['pop3'] == 'yes',
                         'imapAccess' => $groupRow['imap'] == 'yes',
                         'smtpAccess' => $groupRow['smtp'] == 'yes',
-                        'smsAccess' =>
-                            $user->SMSEnabled() &&
-                            $groupRow['tbx_smsmanager'] == 'yes',
+                        // There used to be SMS features. We have removed them.
+                        'smsAccess' => false,
                         'webdiskAccess' =>
                             $groupRow['webdisk'] +
                                 $user->_row['diskspace_add'] >
                                 0 && $groupRow['tbx_webdisk'] == 'yes',
-                        'balance' => $user->GetBalance(),
                         'latestVersion' => $latestVersion,
                         'notificationInterval' =>
                             $groupRow['notifications'] == 'yes'
@@ -836,26 +701,6 @@ class BMToolInterface {
                         if (is_array($addInfo) && count($addInfo) > 0) {
                             $result['plugins'][$pluginName] = $addInfo;
                         }
-                    }
-
-                    if ($result['smsAccess']) {
-                        $sms = _new('BMSMS', [$userID, &$user]);
-                        $result['smsMaxChars'] = $sms->GetMaxChars();
-                        $result['smsTypes'] = $sms->GetTypes();
-                        $result['smsPre'] =
-                            trim($groupRow['sms_pre']) == ''
-                                ? '0'
-                                : $groupRow['sms_pre'];
-
-                        if ($groupRow['sms_ownfrom'] == 'yes') {
-                            $result['smsOwnFrom'] = true;
-                            $result['smsFrom'] = $row['mail2sms_nummer'];
-                        } else {
-                            $result['smsOwnFrom'] = false;
-                            $result['smsFrom'] = $groupRow['sms_from'];
-                        }
-
-                        $this->_sms = $sms;
                     }
 
                     $this->_user = $user;
