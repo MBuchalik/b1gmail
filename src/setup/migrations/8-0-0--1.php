@@ -48,7 +48,8 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                     DROP COLUMN signup_suggestions,
                     DROP COLUMN notify_mail,
                     DROP COLUMN notify_to,
-                    DROP COLUMN gut_regged
+                    DROP COLUMN gut_regged,
+                    DROP COLUMN plz_check
                 ',
             )
         ) {

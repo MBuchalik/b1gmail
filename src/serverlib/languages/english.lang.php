@@ -2006,7 +2006,6 @@ $lang_admin['sessioniplock'] = 'Session IP lock';
 $lang_admin['sessioncookielock'] = 'Session cookie lock';
 $lang_admin['regiplock'] = 'Sign-up IP lock';
 $lang_admin['seconds'] = 'seconds';
-$lang_admin['plzcheck'] = 'Check if zip code and city match';
 $lang_admin['altcheck'] = 'Check alternative email';
 $lang_admin['minaddrlength'] = 'Minimum username length';
 $lang_admin['to2'] = 'To';

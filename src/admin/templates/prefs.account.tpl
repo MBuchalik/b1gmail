@@ -112,10 +112,6 @@
 				<td width="40" valign="top" rowspan="6"><img src="{$tpldir}images/ico_prefs_validation.png" border="0" alt="" width="32" height="32" /></td>				
 			</tr>
 			<tr>
-				<td class="td1">{lng p="plzcheck"}?</td>
-				<td class="td2"><input name="plz_check"{if $bm_prefs.plz_check=='yes'} checked="checked"{/if} type="checkbox" /></td>
-			</tr>
-			<tr>
 				<td class="td1">{lng p="altcheck"}?</td>
 				<td class="td2"><input name="alt_check"{if $bm_prefs.alt_check=='yes'} checked="checked"{/if} type="checkbox" /></td>
 			</tr>

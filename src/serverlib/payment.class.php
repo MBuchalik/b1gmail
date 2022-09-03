@@ -624,9 +624,7 @@ class BMPayment {
             // zip check
             if (
                 !in_array('plz', $invalidFields) &&
-                !in_array('ort', $invalidFields) &&
-                $bm_prefs['plz_check'] == 'yes' &&
-                !ZIPCheck($zip, $city, $_POST['land'])
+                !in_array('ort', $invalidFields)
             ) {
                 $invalidFields[] = 'plz';
                 $invalidFields[] = 'ort';

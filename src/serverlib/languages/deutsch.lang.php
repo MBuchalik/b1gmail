@@ -1935,7 +1935,6 @@ $lang_admin['sessioniplock'] = 'Session-IP-Sperre';
 $lang_admin['sessioncookielock'] = 'Session-Cookie-Sperre';
 $lang_admin['regiplock'] = 'Registrierungs-IP-Sperre';
 $lang_admin['seconds'] = 'Sekunden';
-$lang_admin['plzcheck'] = 'PLZ/Ort-&Uuml;bereinstimmung pr&uuml;fen';
 $lang_admin['altcheck'] = 'Alternativ-E-Mail-Existenz pr&uuml;fen';
 $lang_admin['lockedaltmails'] = 'Verbotene Alt.-E-Mail-Adressen';
 $lang_admin['altmailsepby'] =

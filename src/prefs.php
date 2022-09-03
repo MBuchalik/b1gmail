@@ -355,18 +355,6 @@ if ($_REQUEST['action'] == 'start') {
 
             // country
             $userRow['land'] = (int) $_POST['land'];
-
-            // zip/city check?
-            if (
-                !in_array('plz', $invalidFields) &&
-                !in_array('ort', $invalidFields) &&
-                $bm_prefs['plz_check'] == 'yes' &&
-                !ZIPCheck($userRow['plz'], $userRow['ort'], $userRow['land'])
-            ) {
-                $invalidFields[] = 'plz';
-                $invalidFields[] = 'ort';
-                $errorInfo .= ' ' . $lang_user['plzerror'];
-            }
         }
 
         // 'telefon'-field
