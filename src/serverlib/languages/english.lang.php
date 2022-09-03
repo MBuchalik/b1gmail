@@ -287,24 +287,6 @@ $lang_custom['share_text'] =
     'Best Regards,' .
     "\n\n" .
     '%%firstname%% %%lastname%%';
-$lang_custom['ap_autolock_sub'] =
-    'User %%email%% locked because of suspicious activity';
-$lang_custom['ap_autolock_text'] =
-    'The user %%email%% (#%%id%%) has been locked automatically because the abuse protect point limit has been exceeded.' .
-    "\n\n" .
-    'Email: %%email%% (#%%id%%)' .
-    "\n" .
-    'Points: %%pointsum%%' .
-    "\n\n" .
-    'Point statement:' .
-    "\n" .
-    '------------------------------------------------------------------------' .
-    "\n" .
-    '%%points%%' .
-    "\n" .
-    '------------------------------------------------------------------------' .
-    "\n\n" .
-    'Details: %%link%%';
 $lang_custom['contact_subjects'] =
     'Question about the offer' .
     "\n" .
@@ -1432,63 +1414,19 @@ $lang_admin['ftsindex'] = 'Full text index';
 $lang_admin['showlist'] = 'Show list';
 $lang_admin['lastactivity'] = 'Last activity';
 $lang_admin['never'] = 'never';
-$lang_admin['ap_medium_limit'] = 'Warn limit';
-$lang_admin['ap_hard_limit'] = 'Lock limit';
-$lang_admin['ap_expire_time'] = 'Points expire after';
-$lang_admin['ap_expire_mode'] = 'Expiration plan';
-$lang_admin['ap_dynamic'] =
-    'All points expire as soon as the user did not get any new points in the specified timeframe';
-$lang_admin['ap_static'] =
-    'Points expire individually as soon as they reach the specified age';
-$lang_admin['ap_autolock'] = 'Automatically lock accounts';
-$lang_admin['ap_athardlimit'] = 'When exceeding the lock limit';
 $lang_admin['hours'] = 'Hour(s)';
-$lang_admin['pointtypes'] = 'Point types';
-$lang_admin['ap_warn_medium'] =
-    '<b>%d</b> active user(s) has/have exceeded the abuse protect warn limit.';
-$lang_admin['ap_warn_hard'] =
-    '<b>%d</b> active user(s) has/have exceeded the abuse protect lock limit.';
-$lang_admin['ap_autolock_log'] =
-    "\n" .
-    '[%s] User locked by abuse protection system after exceeding the lock limit (%d >= %d).';
-$lang_admin['ap_autolock_notify'] = 'Lock notification';
-$lang_admin['limit_amount_count'] = 'Max. amount';
-$lang_admin['limit_amount_mb'] = 'Max. traffic (MB)';
-$lang_admin['limit_interval_m'] = 'Period (minutes)';
-$lang_admin['ap_type1'] = 'Attempt to exceed the recipient count limit';
-$lang_admin['ap_comment_1'] = 'Compose form, %d recipients';
-$lang_admin['ap_comment_1_m'] = 'Mobile compose form, %d recipient';
-$lang_admin['ap_type2'] = 'Attempt to exceed the sending frequency limit';
-$lang_admin['ap_type3'] = 'Attempt to send to blocked recipients';
-$lang_admin['ap_comment_3'] = 'Compose form, to %s';
-$lang_admin['ap_comment_3_m'] = 'Mobile compose form, to %s';
-$lang_admin['ap_comment_7'] =
-    'Time between opening form and sending: %d seconds';
-$lang_admin['ap_comment_21'] = 'Received %d mails in last %d minutes';
-$lang_admin['ap_comment_22'] = 'Received %.02f MB in last %d minutes';
-$lang_admin['ap_type4'] =
-    'Attempt to send to existing domain, but non-existing recipient';
-$lang_admin['ap_type5'] = 'Attempt to send to non-existing domain';
-$lang_admin['ap_type6'] = 'SMTP submission without prior POP3/IMAP login';
-$lang_admin['ap_type7'] =
-    'Sending of an email too quickly after opening the compose form';
-$lang_admin['ap_type21'] = 'High email receiving frequency';
-$lang_admin['ap_type22'] = 'High incoming email traffic';
 $lang_admin['workgroup'] = 'Workgroup';
 $lang_admin['noaccess'] = 'No access';
 $lang_admin['readonly'] = 'Read only';
 $lang_admin['readwrite'] = 'Read / Write';
 $lang_admin['sharedfolders'] = 'Email folders';
 $lang_admin['recover'] = 'Recover';
-$lang_admin['min_resend_interval_s'] = 'Minimum time (seconds)';
 $lang_admin['minpasslength'] = 'Minimum password length';
 $lang_admin['text_notify_date'] = 'Appointment notification';
 $lang_admin['text_notify_newemail'] = 'Email notification';
 $lang_admin['text_notify_email'] = 'Email notification from filter';
 $lang_admin['text_notify_birthday'] = 'Birthday notification';
 $lang_admin['text_contact_subjects'] = 'Contact form subjects';
-$lang_admin['text_ap_autolock_sub'] = 'Abuse protect lock email subject';
-$lang_admin['text_ap_autolock_text'] = 'Abuse protect lock email text';
 $lang_admin['ssl_signup_enable'] = 'Signup via SSL';
 $lang_admin['showcheckboxes'] = 'Multi-select using checkboxes';
 $lang_admin['domaindisplay'] = 'Domain display';
@@ -1522,9 +1460,6 @@ $lang_admin['enableolder'] = 'Enable for entries older than';
 $lang_admin['week'] = 'Week';
 $lang_admin['calendarviewmode'] = 'Calendar view';
 $lang_admin['month'] = 'Month';
-$lang_admin['points'] = 'Points';
-$lang_admin['lastpoint'] = 'Last point';
-$lang_admin['abuseprotect'] = 'Abuse protection';
 $lang_admin['toolbox'] = 'Toolbox';
 $lang_admin['test'] = 'Test';
 $lang_admin['release'] = 'Release';

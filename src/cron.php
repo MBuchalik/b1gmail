@@ -109,9 +109,6 @@ if ($bm_prefs['last_cron'] < time() - $bm_prefs['cron_interval']) {
     // clean up notifications
     CleanupNotifications();
 
-    // abuse protect cron
-    AbuseCron();
-
     // reset webdisk traffic
     ResetWebdiskTraffic();
 

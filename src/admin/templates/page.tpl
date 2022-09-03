@@ -61,7 +61,6 @@
 							<li><a href="prefs.recvrules.php?sid={$sid}"><img src="./templates/images/rule32.png" />{lng p="recvrules"}</a></li>
 							<li><a href="prefs.webdisk.php?sid={$sid}"><img src="./templates/images/ico_disk.png" />{lng p="webdisk"}</a></li>
 							<li><a href="prefs.sms.php?sid={$sid}"><img src="./templates/images/gateway32.png" />{lng p="sms"}</a></li>
-							<li><a href="prefs.abuse.php?sid={$sid}"><img src="./templates/images/abuse.png" />{lng p="abuseprotect"}</a></li>
 							<li><a href="prefs.profilefields.php?sid={$sid}"><img src="./templates/images/field32.png" />{lng p="profilefields"}</a></li>
 							<li><a href="prefs.languages.php?sid={$sid}"><img src="./templates/images/lang32.png" />{lng p="languages"}</a></li>
 							<li><a href="prefs.templates.php?sid={$sid}"><img src="./templates/images/template.png" />{lng p="templates"}</a></li>
@@ -81,7 +80,6 @@
 							{if $adminRow.type==0||$adminRow.privileges.groups}<li><a href="groups.php?sid={$sid}"><img src="./templates/images/ico_group.png" />{lng p="groups"}</a></li>{/if}
 							{if $adminRow.type==0||$adminRow.privileges.workgroups}<li><a href="workgroups.php?sid={$sid}"><img src="./templates/images/ico_workgroup.png" />{lng p="workgroups"}</a>{/if}
 							{if $adminRow.type==0||$adminRow.privileges.activity}<li><a href="activity.php?sid={$sid}"><img src="./templates/images/activity.png" />{lng p="activity"}</a></li>{/if}
-							{if $adminRow.type==0||$adminRow.privileges.abuse}<li><a href="abuse.php?sid={$sid}"><img src="./templates/images/abuse.png" />{lng p="abuseprotect"}</a></li>{/if}
 							{if $adminRow.type==0||$adminRow.privileges.newsletter}<li><a href="newsletter.php?sid={$sid}"><img src="./templates/images/newsletter.png" />{lng p="newsletter"}</a></li>{/if}
 							{if $adminRow.type==0||$adminRow.privileges.payments}<li><a href="payments.php?sid={$sid}"><img src="./templates/images/ico_prefs_payments.png" />{lng p="payments"}</a></li>{/if}
 						</ul>

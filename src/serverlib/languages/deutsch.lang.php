@@ -99,24 +99,6 @@ $lang_client['statement'] = 'Konto-Auszug';
 /**
  * Customizable phrases
  */
-$lang_custom['ap_autolock_sub'] =
-    'Benutzer %%email%% gesperrt wegen Missbrauchs-Verdacht';
-$lang_custom['ap_autolock_text'] =
-    'Der Benutzer %%email%% (#%%id%%) wurde soeben wegen Überschreitung des Missbrauchs-Schutz-Punktelimits automatisch gesperrt.' .
-    "\n\n" .
-    'E-Mail: %%email%% (#%%id%%)' .
-    "\n" .
-    'Punkte: %%pointsum%%' .
-    "\n\n" .
-    'Punkte-Konto:' .
-    "\n" .
-    '------------------------------------------------------------------------' .
-    "\n" .
-    '%%points%%' .
-    "\n" .
-    '------------------------------------------------------------------------' .
-    "\n\n" .
-    'Details: %%link%%';
 $lang_custom['welcome_sub'] = 'Vielen Dank für Ihre Anmeldung!';
 $lang_custom['welcome_text'] =
     'Sehr geehrte(r) %%vorname%% %%nachname%%,' .
@@ -1439,50 +1421,7 @@ $lang_admin['ftsindex'] = 'Volltext-Index';
 $lang_admin['showlist'] = 'Auflisten';
 $lang_admin['lastactivity'] = 'Letzte Aktivit&auml;t';
 $lang_admin['never'] = 'niemals';
-$lang_admin['ap_medium_limit'] = 'Warn-Limit';
-$lang_admin['ap_hard_limit'] = 'Sperr-Limit';
-$lang_admin['ap_expire_time'] = 'Punkte laufen ab nach';
-$lang_admin['ap_expire_mode'] = 'Ablauf-Konzept';
-$lang_admin['ap_dynamic'] =
-    'Alle Punkte laufen ab, sobald der Benutzer f&uuml;r o.g. Zeitraum keine neuen Punkte bekommen hat';
-$lang_admin['ap_static'] =
-    'Punkte laufen individuell ab, sobald sie das o.g. Alter erreicht haben';
-$lang_admin['ap_autolock'] = 'Accounts automatisch sperren';
-$lang_admin['ap_athardlimit'] = 'Bei &Uuml;berschreitung des Sperr-Limits';
 $lang_admin['hours'] = 'Stunde(n)';
-$lang_admin['pointtypes'] = 'Versto&szlig;-Arten';
-$lang_admin['ap_warn_medium'] =
-    '<b>%d</b> aktive(r) Benutzer hat/haben das Warn-Limit f&uuml;r Missbrauchs-Schutz-Punkte &uuml;berschritten.';
-$lang_admin['ap_warn_hard'] =
-    '<b>%d</b> aktive(r) Benutzer hat/haben das Sperr-Limit f&uuml;r Missbrauchs-Schutz-Punkte &uuml;berschritten.';
-$lang_admin['ap_autolock_log'] =
-    "\n[%s] Benutzer vom Missbrauchs-Schutz-System gesperrt wegen Ueberschreitung des Punkte-Limits (%d >= %d).";
-$lang_admin['ap_autolock_notify'] = 'Sperr-Benachrichtigung';
-$lang_admin['limit_amount_count'] = 'Max. Anzahl';
-$lang_admin['limit_amount_mb'] = 'Max. Traffic (MB)';
-$lang_admin['limit_interval_m'] = 'Zeitraum (Minuten)';
-$lang_admin['ap_type1'] =
-    'Versuch, das Empf&auml;nger-Anzahl-Limit zu &uuml;berschreiten';
-$lang_admin['ap_comment_1'] = 'Verfassen-Formular, %d Empfänger';
-$lang_admin['ap_comment_1_m'] = 'Mobiles Verfassen-Formular, %d Empfänger';
-$lang_admin['ap_type2'] =
-    'Versuch, das Versand-Frequenz-Limit zu &uuml;berschreiten';
-$lang_admin['ap_type3'] =
-    'Versuch, an f&uuml;r den Versand gesperrte Empf&auml;nger zu senden';
-$lang_admin['ap_comment_3'] = 'Verfassen-Formular, an %s';
-$lang_admin['ap_comment_3_m'] = 'Mobiles Verfassen-Formular, an %s';
-$lang_admin['ap_comment_7'] =
-    'Abstand zwischen Formular-Aufruf und Versand: %d Sekunden';
-$lang_admin['ap_comment_21'] = '%d E-Mails in den letzten %d Minuten empfangen';
-$lang_admin['ap_comment_22'] = '%.02f MB in den letzten %d Minuten empfangen';
-$lang_admin['ap_type4'] =
-    'Versand an existente Domain, aber nicht existenten Empf&auml;nger';
-$lang_admin['ap_type5'] = 'Versand an nicht existente Domain';
-$lang_admin['ap_type6'] = 'SMTP-Versand ohne vorherigen POP3-/IMAP-Login';
-$lang_admin['ap_type7'] =
-    'Zu geringer Abstand zwischen Formular-Aufruf und Mail-Versand';
-$lang_admin['ap_type21'] = 'Hohe E-Mail-Empfangs-Frequenz';
-$lang_admin['ap_type22'] = 'Hoher eingehender E-Mail-Traffic';
 $lang_admin['workgroup'] = 'Arbeitsgruppe';
 $lang_admin['noaccess'] = 'Kein Zugriff';
 $lang_admin['readonly'] = 'Nur lesen';
@@ -1509,9 +1448,6 @@ $lang_admin['enableolder'] = 'Aktivieren f&uuml;r Eintr&auml;ge &auml;lter als';
 $lang_admin['calendarviewmode'] = 'Kalender-Ansicht';
 $lang_admin['week'] = 'Woche';
 $lang_admin['month'] = 'Monat';
-$lang_admin['points'] = 'Punkte';
-$lang_admin['lastpoint'] = 'Letzter Punkt';
-$lang_admin['abuseprotect'] = 'Missbrauchs-Schutz';
 $lang_admin['notrecommended'] = 'NICHT empfohlen';
 $lang_admin['prefslayout'] = 'Einstellungs-&Uuml;bersicht';
 $lang_admin['onecolumn'] = 'Einspaltig';
@@ -1911,7 +1847,6 @@ $lang_admin['accountcreated'] =
     'Der Benutzer wurde erfolgreich angelegt.<br /><br /><a href="users.php?do=edit&id=%d&sid=%s">&raquo; Benutzer bearbeiten</a>';
 $lang_admin['smsvalidation_signup'] = 'Anmeldungs-Best&auml;tigung per SMS';
 $lang_admin['smsvalidation'] = 'SMS-Abs.-Validierung';
-$lang_admin['min_resend_interval_s'] = 'Mindest-Abstand (Sekunden)';
 $lang_admin['byemail'] = 'per E-Mail';
 $lang_admin['bysms'] = 'per SMS';
 $lang_admin['val_code_resent'] =
@@ -2074,10 +2009,6 @@ $lang_admin['text_notify_newemail'] = 'E-Mail-Benachrichtigung';
 $lang_admin['text_notify_email'] = 'E-Mail-Benachrichtigung aus Filter';
 $lang_admin['text_notify_birthday'] = 'Geburtstags-Benachrichtigung';
 $lang_admin['text_contact_subjects'] = 'Kontakt-Formular-Betreff-Auswahl';
-$lang_admin['text_ap_autolock_sub'] =
-    'Missbrauchs-Sperrungs-Benachrichtigung-Betreff';
-$lang_admin['text_ap_autolock_text'] =
-    'Missbrauchs-Sperrungs-Benachrichtigung-Text';
 $lang_admin['text_maintenance'] = 'Wartungsmodus-Hinweis';
 $lang_admin['text_welcome_sub'] = 'Willkommens-Mail-Betreff';
 $lang_admin['text_welcome_text'] = 'Willkommens-Mail-Text';

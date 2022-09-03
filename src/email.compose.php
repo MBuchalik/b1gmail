@@ -791,11 +791,6 @@ if ($_REQUEST['action'] == 'compose') {
                 $_REQUEST['do'] != 'saveDraft' &&
                 count($recipients) > $groupRow['max_recps']
             ) {
-                AddAbusePoint(
-                    $userRow['id'],
-                    BMAP_SEND_RECP_LIMIT,
-                    sprintf($lang_admin['ap_comment_1'], count($recipients)),
-                );
                 $tpl->assign(
                     'msg',
                     sprintf(
@@ -812,14 +807,6 @@ if ($_REQUEST['action'] == 'compose') {
                 $_REQUEST['do'] != 'saveDraft' &&
                 count($blockedRecipients) > 0
             ) {
-                AddAbusePoint(
-                    $userRow['id'],
-                    BMAP_SEND_RECP_BLOCKED,
-                    sprintf(
-                        $lang_admin['ap_comment_3'],
-                        implode(', ', $blockedRecipients),
-                    ),
-                );
                 $tpl->assign(
                     'msg',
                     sprintf(
@@ -835,11 +822,6 @@ if ($_REQUEST['action'] == 'compose') {
                 $_REQUEST['do'] != 'saveDraft' &&
                 !$thisUser->MaySendMail(count($recipients))
             ) {
-                AddAbusePoint(
-                    $userRow['id'],
-                    BMAP_SEND_FREQ_LIMIT,
-                    sprintf($lang_admin['ap_comment_1'], count($recipients)),
-                );
                 $tpl->assign(
                     'msg',
                     sprintf(
@@ -1145,22 +1127,6 @@ if ($_REQUEST['action'] == 'compose') {
                             true,
                         )
                     ) {
-                        $sendFastPrefs = GetAbuseTypePrefs(BMAP_SEND_FAST);
-                        if (
-                            isset($sendFastPrefs['interval']) &&
-                            $actionTokenAge !== false &&
-                            $actionTokenAge < $sendFastPrefs['interval']
-                        ) {
-                            AddAbusePoint(
-                                $userRow['id'],
-                                BMAP_SEND_FAST,
-                                sprintf(
-                                    $lang_admin['ap_comment_7'],
-                                    $actionTokenAge,
-                                ),
-                            );
-                        }
-
                         $outboxFP = $mail->Send();
                     } else {
                         $outboxFP = false;

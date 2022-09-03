@@ -199,20 +199,7 @@
 					</tr>
 					{/if}
 
-					<tr>
-						<td class="td1">{lng p="abuseprotect"}:</td>
-						<td class="td2">
-							<img src="{$tpldir}/images/indicator_{$abuseIndicator}.png" alt="" border="0" align="absmiddle" />
-								<a href="abuse.php?do=show&userid={$user.id}&sid={$sid}">
-								{if $abuseIndicator!='grey'}
-									{$abusePoints}
-									{lng p="points"}
-								{else}
-									({lng p="disabled"})
-								{/if}
-								</a>
-						</td>
-					</tr>
+					
 				</table>
 			</fieldset>
 

@@ -593,29 +593,6 @@ if ($_REQUEST['action'] == 'users') {
         [$diskFolders] = $res->FetchArray(MYSQLI_NUM);
         $res->Free();
 
-        // abuse protect
-        if ($group['abuseprotect'] == 'yes') {
-            $res = $db->Query(
-                'SELECT SUM(`points`) FROM {pre}abuse_points WHERE `userid`=? AND `expired`=0',
-                $user['id'],
-            );
-            [$abusePoints] = $res->FetchArray(MYSQLI_NUM);
-            $res->Free();
-
-            $abusePoints = (int) $abusePoints;
-
-            if ($abusePoints >= $bm_prefs['ap_hard_limit']) {
-                $abuseIndicator = 'red';
-            } elseif ($abusePoints >= $bm_prefs['ap_medium_limit']) {
-                $abuseIndicator = 'yellow';
-            } else {
-                $abuseIndicator = 'green';
-            }
-        } else {
-            $abusePoints = '-';
-            $abuseIndicator = 'grey';
-        }
-
         // profile fields
         $profileFields = [];
         $profileData = [];
@@ -702,8 +679,6 @@ if ($_REQUEST['action'] == 'users') {
         // assign
         $tpl->assign('staticBalance', $userObject->GetStaticBalance());
         $tpl->assign('payments', $payments);
-        $tpl->assign('abusePoints', $abusePoints);
-        $tpl->assign('abuseIndicator', $abuseIndicator);
         $tpl->assign('historyCount', $historyCount);
         $tpl->assign('user', $user);
         $tpl->assign('group', $group);

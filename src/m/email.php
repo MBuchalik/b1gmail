@@ -408,13 +408,8 @@ if ($_REQUEST['action'] == 'inbox') {
 
     // no recipients?
     if (count($recipients) > 0) {
-        // too much recipients?
+        // too many recipients?
         if (count($recipients) > $groupRow['max_recps']) {
-            AddAbusePoint(
-                $userRow['id'],
-                BMAP_SEND_RECP_LIMIT,
-                sprintf($lang_admin['ap_comment_1_m'], count($recipients)),
-            );
             $tpl->assign(
                 'msg',
                 sprintf(
@@ -426,14 +421,6 @@ if ($_REQUEST['action'] == 'inbox') {
         }
         // blocked recipients?
         elseif (count($blockedRecipients) > 0) {
-            AddAbusePoint(
-                $userRow['id'],
-                BMAP_SEND_RECP_BLOCKED,
-                sprintf(
-                    $lang_admin['ap_comment_3_m'],
-                    implode(', ', $blockedRecipients),
-                ),
-            );
             $tpl->assign(
                 'msg',
                 sprintf(
@@ -444,11 +431,6 @@ if ($_REQUEST['action'] == 'inbox') {
         }
         // over send limit?
         elseif (!$thisUser->MaySendMail(count($recipients))) {
-            AddAbusePoint(
-                $userRow['id'],
-                BMAP_SEND_FREQ_LIMIT,
-                sprintf($lang_admin['ap_comment_1_m'], count($recipients)),
-            );
             $tpl->assign(
                 'msg',
                 sprintf(

@@ -49,7 +49,14 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                     DROP COLUMN notify_mail,
                     DROP COLUMN notify_to,
                     DROP COLUMN gut_regged,
-                    DROP COLUMN plz_check
+                    DROP COLUMN plz_check,
+                    DROP COLUMN ap_medium_limit,
+                    DROP COLUMN ap_hard_limit,
+                    DROP COLUMN ap_expire_time,
+                    DROP COLUMN ap_expire_mode,
+                    DROP COLUMN ap_autolock,
+                    DROP COLUMN ap_autolock_notify,
+                    DROP COLUMN ap_autolock_notify_to
                 ',
             )
         ) {
@@ -80,7 +87,26 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
             return false;
         }
 
+        if (
+            !mysqli_query(
+                $dbConnection,
+                'ALTER TABLE bm60_gruppen DROP COLUMN abuseprotect',
+            )
+        ) {
+            return false;
+        }
+
         if (!mysqli_query($dbConnection, 'DROP TABLE bm60_codes')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_abuse_points')) {
+            return false;
+        }
+
+        if (
+            !mysqli_query($dbConnection, 'DROP TABLE bm60_abuse_points_config')
+        ) {
             return false;
         }
 

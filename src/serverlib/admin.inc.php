@@ -32,7 +32,6 @@ $permsTable = [
     'groups' => $lang_admin['groups'],
     'workgroups' => $lang_admin['workgroups'],
     'activity' => $lang_admin['activity'],
-    'abuse' => $lang_admin['abuseprotect'],
     'newsletter' => $lang_admin['newsletter'],
     'payments' => $lang_admin['payments'],
     'optimize' => $lang_admin['optimize'],
@@ -438,9 +437,6 @@ function DeleteUser($userID, $qAddAND = '') {
 
     // delivery status entries
     $db->Query('DELETE FROM {pre}maildeliverystatus WHERE userid=?', $userID);
-
-    // abuse points
-    $db->Query('DELETE FROM {pre}abuse_points WHERE userid=?', $userID);
 
     // delete group<->member associations + groups
     $groupIDs = [];

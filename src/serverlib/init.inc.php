@@ -279,15 +279,6 @@ define('BMCL_TYPE_CONTACT', 0); // changelog/sync item types
 define('BMCL_TYPE_CALENDAR', 1);
 define('BMCL_TYPE_TODO', 2);
 define('BMCL_TYPE_CONTACTGROUP', 3);
-define('BMAP_SEND_RECP_LIMIT', 1); // abuse point types
-define('BMAP_SEND_FREQ_LIMIT', 2);
-define('BMAP_SEND_RECP_BLOCKED', 3);
-define('BMAP_SEND_RECP_LOCAL_INVALID', 4);
-define('BMAP_SEND_RECP_DOMAIN_INVALID', 5);
-define('BMAP_SEND_WITHOUT_RECEIVE', 6);
-define('BMAP_SEND_FAST', 7);
-define('BMAP_RECV_FREQ_LIMIT', 21);
-define('BMAP_RECV_TRAFFIC_LIMIT', 22);
 define('FTS_BGINDEX_COUNT', 10); // no of mails to index in each fts bg index step
 define('NOTIFICATION_LIMIT', 25);
 define('NOTIFICATION_FLAG_USELANG', 1);

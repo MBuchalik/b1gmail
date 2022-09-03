@@ -110,10 +110,6 @@
 						<td class="td1">{lng p="sms_send_code"}?</td>
 						<td class="td2"><input name="sms_send_code"{if $group.sms_send_code=='yes'} checked="checked"{/if} type="checkbox" /></td>
 					</tr>
-					<tr>
-						<td class="td1">{lng p="abuseprotect"}?</td>
-						<td class="td2"><input name="abuseprotect"{if $group.abuseprotect=='yes'} checked="checked"{/if} type="checkbox" /></td>
-					</tr>
 				</table>
 			</fieldset>
 		</td>

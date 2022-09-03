@@ -449,37 +449,6 @@ if ($_REQUEST['action'] == 'welcome') {
         ];
     }
 
-    // users who are not locked and exceeded the abuse points hard limit
-    $apHardCount = $apMediumCount = 0;
-    $res = $db->Query(
-        'SELECT SUM(`points`) FROM {pre}users ' .
-            'INNER JOIN {pre}abuse_points ON {pre}abuse_points.`userid`={pre}users.`id` ' .
-            'WHERE `expired`=0 AND `gesperrt`=\'no\' ' .
-            'GROUP BY {pre}users.`id`',
-    );
-    while ($row = $res->FetchArray(MYSQLI_NUM)) {
-        if ($row[0] >= $bm_prefs['ap_hard_limit']) {
-            $apHardCount++;
-        } elseif ($row[0] >= $bm_prefs['ap_medium_limit']) {
-            $apMediumCount++;
-        }
-    }
-    $res->Free();
-    if ($apHardCount > 0) {
-        $notices[] = [
-            'type' => 'warning',
-            'text' => sprintf($lang_admin['ap_warn_hard'], $apHardCount),
-            'link' => 'abuse.php?',
-        ];
-    }
-    if ($apMediumCount > 0) {
-        $notices[] = [
-            'type' => 'info',
-            'text' => sprintf($lang_admin['ap_warn_medium'], $apMediumCount),
-            'link' => 'abuse.php?',
-        ];
-    }
-
     // users waiting for activation
     if ($notActivatedUserCount > 0) {
         $notices[] = [
