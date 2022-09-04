@@ -1209,50 +1209,6 @@ class BMWebdisk {
     }
 
     /**
-     * display a file extension
-     *
-     * @param string $ext Extension
-     */
-    function DisplayExtension($ext) {
-        global $db;
-
-        $res = $db->Query(
-            "SELECT bild,ctype FROM {pre}extensions WHERE (ext='$ext') OR (ext LIKE '$ext,%') OR (ext LIKE '%,$ext,%') OR (ext LIKE '%,$ext') LIMIT 1",
-        );
-        if ($res->RowCount() == 0 && $ext != '.?') {
-            return BMWebdisk::DisplayExtension('.?');
-        }
-        [$img, $ctype] = $res->FetchArray(MYSQLI_NUM);
-
-        $lastModifiedTime = mktime(0, 0, 0);
-        $eTag = md5($img);
-
-        header('Cache-Control: private');
-        header(
-            'Last-Modified: ' .
-                gmdate('D, d M Y H:i:s', $lastModifiedTime) .
-                ' GMT',
-        );
-        header('ETag: ' . $eTag);
-
-        if (
-            @strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) ==
-                $lastModifiedTime ||
-            (isset($_SERVER['HTTP_IF_NONE_MATCH']) &&
-                trim($_SERVER['HTTP_IF_NONE_MATCH']) == $eTag)
-        ) {
-            header('HTTP/1.1 304 Not Modified');
-        } else {
-            $img = base64_decode($img);
-
-            header('Content-Type: ' . $ctype);
-            header('Content-Length: ' . strlen($img));
-
-            echo $img;
-        }
-    }
-
-    /**
      * update folder access time
      *
      * @param int $folderID Folder ID

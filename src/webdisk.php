@@ -1081,15 +1081,6 @@ if ($_REQUEST['action'] == 'folder') {
         );
     }
 } /**
- * extension image
- */ elseif ($_REQUEST['action'] == 'displayExtension') {
-    if (isset($_REQUEST['ext'])) {
-        $ext = preg_replace('/[^a-zA-Z\.0-9]/', '', $_REQUEST['ext']);
-    } else {
-        $ext = '.?';
-    }
-    $webdisk->DisplayExtension($ext);
-} /**
  * dialog
  */ elseif ($_REQUEST['action'] == 'webdiskDialog') {
     // type

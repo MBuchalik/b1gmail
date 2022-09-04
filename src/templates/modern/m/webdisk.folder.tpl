@@ -12,7 +12,11 @@
 	{foreach from=$folderContent item=item}
 		<li{if $item.type==2} data-icon="false"{/if}>
 			<a href="webdisk.php?{if $item.type==1}folder={$item.id}{else}action=downloadFile&id={$item.id}{if $item.viewable}&view=true{/if}{/if}&sid={$sid}"{if $item.type==2} rel="external" target="_blank"{/if} data-transition="slide">
-				<img src="webdisk.php?action=displayExtension&ext={$item.ext}&sid={$sid}" class="ui-li-icon" />
+				{if $item.type === 1}
+					<i class="fa fa-folder-o"></i>
+				{else}
+					<i class="fa fa-file"></i>
+				{/if}
 				{text value=$item.title}
 			</a>
 			<a href="webdisk.php?action=itemDetails&type={$item.type}&id={$item.id}&sid={$sid}" data-transition="slide">{lng p="details"}</a>

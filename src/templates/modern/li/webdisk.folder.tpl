@@ -63,7 +63,12 @@
 		<a id="wli_{$item.type}_{$item.id}"
 			class="webdiskItem"
 			title="{text value=$item.title}">
-			<img src="webdisk.php?action=displayExtension&ext={$item.ext}&sid={$sid}" border="0" alt="" draggable="true"><br />
+			{if $item.type === 1}
+				<i class="fa fa-folder-o fa-2x"></i>
+			{else}
+				<i class="fa fa-file fa-2x"></i>
+			{/if}
+			<br />
 			<span id="wd_{$item.type}_{$item.id}" draggable="false">{text value=$item.title cut=15}</span><br />
 			<small style="color:#666;line-height:1.5em;" draggable="false">{if $item.type==1}{lng p="folder"}{else}{size bytes=$item.size}{/if}</small>
 		</a>
@@ -75,7 +80,6 @@
 	
 	<table class="bigTable" id="wdContentTable">
 		<tr>
-			<th width="24">&nbsp;</th>
 			<th>{lng p="filename"}</th>
 			<th width="150">{lng p="created"}</th>
 			<th width="80">{lng p="size"}</th>
@@ -84,9 +88,6 @@
 		{foreach from=$folderContent item=item}	
 		{cycle values="listTableTR,listTableTR2" assign="class"}
 		<tr class="{$class}" id="wli_{$item.type}_{$item.id}">
-			<td style="text-align:center;">
-				<img src="webdisk.php?action=displayExtension&ext={$item.ext}&sid={$sid}" width="16" height="16" border="0" alt="" />
-			</td>
 			<td nowrap="nowrap" 
 				style="cursor:default;"
 				id="wd_{$item.type}_{$item.id}">

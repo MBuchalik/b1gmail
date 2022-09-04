@@ -5,7 +5,11 @@
 
 <div data-role="content">
 	<div>
-		<img src="webdisk.php?action=displayExtension&ext={$item.ext}&sid={$sid}" style="vertical-align:middle;"/>
+		{if $item.type === 1}
+			<i class="fa fa-folder-o"></i>
+		{else}
+			<i class="fa fa-file"></i>
+		{/if}
 		<strong>{$pageTitle}</strong>
 	</div>
 	<p><small>
