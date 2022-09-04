@@ -107,51 +107,6 @@ $lockedTypeTable = [
     'ende' => $lang_admin['endswith'],
     'gleich' => $lang_admin['isequal'],
 ];
-$backupTables = [
-    'prefs' => [
-        'prefs',
-        'ads',
-        'codes',
-        'extensions',
-        'faq',
-        'gruppen',
-        'locked',
-        'mods',
-        'profilfelder',
-        'recvrules',
-        'staaten',
-        'texts',
-        'workgroups',
-        'workgroups_member',
-        'groupoptions',
-    ],
-    'stats' => ['stats'],
-    'users' => [
-        'users',
-        'aliase',
-        'autoresponder',
-        'filter',
-        'filter_actions',
-        'filter_conditions',
-        'folder_conditions',
-        'folders',
-        'pop3',
-        'signaturen',
-        'userprefs',
-    ],
-    'organizer' => [
-        'adressen',
-        'adressen_gruppen',
-        'adressen_gruppen_member',
-        'dates',
-        'dates_attendees',
-        'dates_groups',
-        'notes',
-        'tasks',
-    ],
-    'mails' => ['mails', 'certmails'],
-    'webdisk' => ['diskfiles', 'diskfolders', 'diskprops'],
-];
 
 // files and folders that should have write permissions
 $writeableFiles = [

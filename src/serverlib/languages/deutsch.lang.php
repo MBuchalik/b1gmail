@@ -1758,10 +1758,6 @@ $lang_admin['cachesize'] = 'Cache-Gr&ouml;&szlig;e';
 $lang_admin['inactiveonly'] = 'nur f&uuml;r abgelaufene Dateien';
 $lang_admin['storein'] = 'Daten speichern in';
 $lang_admin['language'] = 'Sprache';
-$lang_admin['addlanguage'] = 'Sprache hinzuf&uuml;gen';
-$lang_admin['addlang_desc'] =
-    'Sie k&ouml;nnen hier eine neue Sprachdatei (.lang.php-Datei) installieren, indem Sie diese mit folgendem Formular hochladen. Achten Sie bitte darauf, dass die Sprachdatei f&uuml;r Ihre b1gMail-Verison geeignet ist.';
-$lang_admin['langfile'] = 'Sprachdatei';
 $lang_admin['pipeetc'] = 'b1gMailServer / Pipe / Transportmap';
 $lang_admin['pop3host'] = 'POP3-Server';
 $lang_admin['pop3user'] = 'POP3-Benutzer';
@@ -1942,16 +1938,7 @@ $lang_admin['benefit'] = 'Verg&uuml;tung';
 $lang_admin['movetogroup'] = 'In Gruppe verschieben';
 $lang_admin['addcredits'] = 'Credits gutschreiben';
 $lang_admin['code'] = 'Code';
-$lang_admin['createbackup'] = 'Backup erstellen';
-$lang_admin['backupitems'] = 'Sicherung erstellen von';
 $lang_admin['approx'] = 'ca.';
-$lang_admin['userdata'] = 'Benutzer-Daten';
-$lang_admin['maildata'] = 'E-Mail-Daten';
-$lang_admin['webdiskdata'] = 'Webdisk-Daten';
-$lang_admin['statsdata'] = 'Statistik-Daten';
-$lang_admin['organizerdata'] = 'Organizer-Daten';
-$lang_admin['backupwarn'] =
-    'Die Integrit&auml;t der Backups kann nicht garantiert werden. Nutzung auf eigene Gefahr.';
 $lang_admin['usagebycategory'] = 'Speicher-Nutzung nach Kategorie';
 $lang_admin['category'] = 'Kategorie';
 $lang_admin['organizer'] = 'Organizer';

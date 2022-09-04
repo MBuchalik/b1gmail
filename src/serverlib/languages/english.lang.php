@@ -1767,10 +1767,6 @@ $lang_admin['cachesize'] = 'Cache size';
 $lang_admin['inactiveonly'] = 'For inactive files only';
 $lang_admin['storein'] = 'Store message in';
 $lang_admin['language'] = 'Language';
-$lang_admin['addlanguage'] = 'Add language';
-$lang_admin['addlang_desc'] =
-    'Here you can install a new language file (.lang.php file) by uploading it using the following form. Please make sure the language file is applicable for your version of b1gMail.';
-$lang_admin['langfile'] = 'Language file';
 $lang_admin['pipeetc'] = 'Pipe / transportmap gateway';
 $lang_admin['pop3host'] = 'POP3 server';
 $lang_admin['pop3user'] = 'POP3 user';
@@ -1933,16 +1929,7 @@ $lang_admin['benefit'] = 'Benefit';
 $lang_admin['movetogroup'] = 'Move to group';
 $lang_admin['addcredits'] = 'Add credits';
 $lang_admin['code'] = 'Code';
-$lang_admin['createbackup'] = 'Create backup';
-$lang_admin['backupitems'] = 'Create backup of';
 $lang_admin['approx'] = 'approx.';
-$lang_admin['userdata'] = 'User data';
-$lang_admin['maildata'] = 'Email data';
-$lang_admin['webdiskdata'] = 'Webdisc data';
-$lang_admin['statsdata'] = 'Statistics data';
-$lang_admin['organizerdata'] = 'Organizer data';
-$lang_admin['backupwarn'] =
-    'The integrity of backups cannot be guaranteed. Use at own risk.';
 $lang_admin['usagebycategory'] = 'Space use by category';
 $lang_admin['category'] = 'Category';
 $lang_admin['organizer'] = 'Organizer';
