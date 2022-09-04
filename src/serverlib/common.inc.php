@@ -999,57 +999,6 @@ function GetDomainList($purpose = '') {
 }
 
 /**
- * query b1gMail signature server
- *
- * @param string $command Command
- * @param array $params Parameters
- * @return array
- */
-function QuerySignatureServer($command, $params = []) {
-    // load class, if needed
-    if (!class_exists('BMHTTP')) {
-        include B1GMAIL_DIR . 'serverlib/http.class.php';
-    }
-
-    // base url
-    $url = sprintf(SIGNATURE_SERVER . '?action=%s', urlencode($command));
-
-    // params
-    foreach ($params as $key => $val) {
-        $url .= '&' . urlencode($key) . '=' . urlencode($val);
-    }
-
-    // request
-    $http = _new('BMHTTP', [$url]);
-    $result = $http->DownloadToString();
-
-    // check signature
-    $signature = substr($result, -32);
-    $result = substr($result, 0, -32);
-    if ($signature === md5($result . B1GMAIL_SIGNKEY)) {
-        $result = @unserialize($result);
-
-        // error?
-        if (!is_array($result)) {
-            $result = [
-                'type' => 'error',
-                'text' =>
-                    'Signature server returned unexpected result. Please try again later.',
-            ];
-        }
-    } else {
-        $result = [
-            'type' => 'error',
-            'text' =>
-                'The respone signature returned by the signature server is invalid.',
-        ];
-    }
-
-    // return
-    return $result;
-}
-
-/**
  * check POP3 login
  *
  * @param string $host

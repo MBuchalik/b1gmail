@@ -50,7 +50,6 @@ class BMPlugin {
     var $admin_page_title = 'Plugin base';
     var $admin_page_icon = '';
     var $internal_name = 'BMPlugin';
-    var $update_url = false;
     var $_groupOptions = [];
     var $order = 0;
 
@@ -76,84 +75,6 @@ class BMPlugin {
      */
     function Uninstall() {
         return true;
-    }
-
-    //
-    // update routines
-    //
-
-    /**
-     * check if $ver1 is newer as $ver2
-     *
-     * @param string $ver1
-     * @param string $ver2
-     * @return bool
-     */
-    function IsVersionNewer($ver1, $ver2) {
-        $version1Parts = explode('.', $ver1);
-        $version2Parts = explode('.', $ver2);
-
-        $count = max(count($version1Parts), count($version2Parts));
-
-        if (count($version1Parts) < $count) {
-            $version1Parts = array_pad($version1Parts, $count, 0);
-        }
-        if (count($version2Parts) < $count) {
-            $version2Parts = array_pad($version2Parts, $count, 0);
-        }
-
-        for ($i = 0; $i < $count; $i++) {
-            if ($version1Parts[$i] == $version2Parts[$i]) {
-                continue;
-            } elseif ($version1Parts[$i] > $version2Parts[$i]) {
-                return true;
-            } elseif ($version1Parts[$i] < $version2Parts[$i]) {
-                return false;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * check for updates
-     *
-     * @param string $latestVersion Contains latest version, if successfuly retrieved
-     * @return int BM_UPDATE_* valur
-     */
-    function CheckForUpdates(&$latestVersion) {
-        if (empty($this->update_url)) {
-            return BM_UPDATE_UNKNOWN;
-        }
-
-        if (!class_exists('BMHTTP')) {
-            include B1GMAIL_DIR . 'serverlib/http.class.php';
-        }
-
-        $queryURL = sprintf(
-            '%s?action=getLatestVersion&internalName=%s&b1gMailVersion=%s',
-            $this->update_url,
-            urlencode($this->internal_name),
-            urlencode(B1GMAIL_VERSION),
-        );
-        $http = _new('BMHTTP', [$queryURL]);
-        $queryResult = @unserialize($http->DownloadToString());
-
-        if (
-            !is_array($queryResult) ||
-            !isset($queryResult['latestVersion']) ||
-            $queryResult['internalName'] != $this->internal_name
-        ) {
-            return BM_UPDATE_UNKNOWN;
-        }
-
-        $latestVersion = $queryResult['latestVersion'];
-
-        if ($this->IsVersionNewer($latestVersion, $this->version)) {
-            return BM_UPDATE_AVAILABLE;
-        }
-
-        return BM_UPDATE_NOT_AVAILABLE;
     }
 
     //
@@ -628,364 +549,6 @@ class BMPlugin {
 }
 
 /**
- * plugin package reader/installer
- *
- */
-class BMPluginPackage {
-    var $_magic = 'B1GPLUGIN100!';
-    var $_fp;
-    var $_parsed;
-    var $_fileTypes;
-    var $_parseResult;
-    var $metaInfo;
-    var $files;
-    var $signature;
-
-    /**
-     * constructor
-     *
-     * @param resource $fp File pointer
-     * @return BMPluginPackage
-     */
-    function __construct($fp) {
-        $this->_fp = $fp;
-        $this->_parsed = false;
-        $this->_fileTypes = [
-            'plugins' => 'plugins/',
-            'templates' => 'plugins/templates/',
-            'images' => 'plugins/templates/images/',
-            'css' => 'plugins/css/',
-            'js' => 'plugins/js/',
-        ];
-        $this->ParseFile();
-    }
-
-    /**
-     * parse package file
-     *
-     * @return bool
-     */
-    function ParseFile() {
-        // already parsed?
-        if ($this->_parsed) {
-            return $this->_parseResult;
-        }
-
-        // init fp
-        if (!is_resource($this->_fp)) {
-            return false;
-        }
-        fseek($this->_fp, 0, SEEK_SET);
-
-        // read magic
-        $magic = fread($this->_fp, strlen($this->_magic));
-        if ($magic == $this->_magic) {
-            // get signature + data
-            $rawDataSignature = fread($this->_fp, 32);
-            $rawData = '';
-            while (!feof($this->_fp)) {
-                $rawData .= fread($this->_fp, 4096);
-            }
-
-            // verify signature
-            if (md5($rawData) === $rawDataSignature) {
-                // uncompress data
-                if ($inflatedData = gzinflate($rawData)) {
-                    // free raw data
-                    unset($rawData);
-
-                    // unserialize
-                    $pluginData = @unserialize($inflatedData);
-                    if (
-                        is_array($pluginData) &&
-                        isset($pluginData['meta']) &&
-                        isset($pluginData['files']) &&
-                        isset($pluginData['files']['plugins']) &&
-                        isset($pluginData['files']['templates']) &&
-                        isset($pluginData['files']['images'])
-                    ) {
-                        unset($inflatedData);
-                        $this->signature = $rawDataSignature;
-                        $this->metaInfo = $pluginData['meta'];
-                        $this->files = $pluginData['files'];
-                        $this->_parsed = true;
-                        unset($pluginData);
-
-                        // return
-                        $this->_parseResult = true;
-                        return true;
-                    }
-                }
-            }
-        }
-
-        // something failed
-        $this->_parseResult = false;
-        $this->_parsed = true;
-        return false;
-    }
-
-    /**
-     * verify a signature / get signature type
-     *
-     * @param string $signature Signature, if called statically
-     * @return int SIGNATURE_-constant or false
-     */
-    function VerifySignature($signature = '') {
-        // not called statically?
-        if ($signature == '') {
-            $signature = $this->signature;
-        }
-
-        // query signature server
-        $res = QuerySignatureServer('verifyPluginSignature', [
-            'signature' => $signature,
-        ]);
-        if (
-            $res['type'] == 'response' &&
-            isset($res['sigType']) &&
-            isset($res['signature']) &&
-            $res['signature'] == $signature
-        ) {
-            return (int) $res['sigType'];
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * check if package is already installed
-     *
-     * @param string $signature Signature, if called statically
-     * @return bool
-     */
-    function AlreadyInstalled($signature = '') {
-        global $db;
-
-        // not called statically?
-        if ($signature == '') {
-            $signature = $this->signature;
-        }
-
-        // lookup
-        $res = $db->Query(
-            'SELECT COUNT(*) FROM {pre}mods WHERE signature=?',
-            $signature,
-        );
-        [$rowCount] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-
-        return $rowCount != 0;
-    }
-
-    /**
-     * install package (step 1 = remove old package)
-     *
-     */
-    function InstallStep1() {
-        global $db, $cacheManager, $plugins;
-
-        // already installed?
-        if ($this->AlreadyInstalled()) {
-            return false;
-        }
-
-        // delete existing files
-        foreach ($this->files as $fileType => $fileItems) {
-            if (!isset($this->_fileTypes[$fileType])) {
-                continue;
-            }
-
-            // delete files
-            foreach ($fileItems as $fileName => $fileContents) {
-                if (trim($fileName) == '') {
-                    continue;
-                }
-
-                $fileName =
-                    $this->_fileTypes[$fileType] .
-                    str_replace(['..', '/'], '', $fileName);
-                $filePath = B1GMAIL_DIR . $fileName;
-
-                if (file_exists($filePath)) {
-                    @chmod($filePath, 0666);
-
-                    if (!@unlink($filePath)) {
-                        $myFP = @fopen($filePath, 'wb');
-                        if ($myFP) {
-                            @ftruncate($myFP, 0);
-                            @fclose($myFP);
-                        }
-                    }
-                }
-            }
-        }
-
-        // remove DB entries
-        foreach ($this->metaInfo['classes'] as $className) {
-            $db->Query('DELETE FROM {pre}mods WHERE modname=?', $className);
-        }
-
-        // empty cache
-        $cacheManager->Delete('dbPlugins_v2');
-
-        return true;
-    }
-
-    /**
-     * install package (step 2 = install new package)
-     *
-     * @return bool
-     */
-    function InstallStep2() {
-        global $db, $cacheManager, $plugins;
-
-        // already installed?
-        if ($this->AlreadyInstalled()) {
-            return false;
-        }
-
-        // iterate file types
-        $installedFiles = [];
-        $pluginFiles = [];
-        foreach ($this->files as $fileType => $fileItems) {
-            if (!isset($this->_fileTypes[$fileType])) {
-                continue;
-            }
-
-            // create files
-            foreach ($fileItems as $fileName => $fileContents) {
-                if (trim($fileName) == '') {
-                    continue;
-                }
-
-                $fileName =
-                    $this->_fileTypes[$fileType] .
-                    str_replace(['..', '/'], '', $fileName);
-                $filePath = B1GMAIL_DIR . $fileName;
-
-                if (
-                    !file_exists($filePath) ||
-                    strpos(strtolower($filePath), '.php') !== false
-                ) {
-                    $myFP = fopen($filePath, 'wb');
-                    if ($myFP) {
-                        ftruncate($myFP, 0);
-                        fwrite($myFP, $fileContents);
-                        fclose($myFP);
-
-                        // try to chmod
-                        @chmod($filePath, 0666);
-
-                        // add to installed files list
-                        $installedFiles[] = $fileName;
-
-                        // add to plugin list
-                        if ($fileType == 'plugins') {
-                            $pluginFiles[] = $filePath;
-                        }
-                    }
-                }
-            }
-        }
-
-        // put to DB
-        foreach ($this->metaInfo['classes'] as $className) {
-            $db->Query(
-                'REPLACE INTO {pre}mods(modname,installed,packageName,signature,files) VALUES(?,?,?,?,?)',
-                $className,
-                0,
-                $this->metaInfo['name'],
-                $this->signature,
-                serialize($installedFiles),
-            );
-        }
-
-        // include
-        foreach ($pluginFiles as $pluginFile) {
-            if (function_exists('opcache_invalidate')) {
-                @opcache_invalidate($pluginFile, true);
-            }
-            if (!include $pluginFile) {
-                DisplayError(
-                    0x11,
-                    'Plugin cannot be loaded',
-                    'A plugin cannot be loaded.',
-                    sprintf("Module:\n%s", basename($pluginFile)),
-                    __FILE__,
-                    __LINE__,
-                );
-                die();
-            }
-        }
-
-        // install
-        foreach ($this->metaInfo['classes'] as $className) {
-            $plugins->activatePlugin($className);
-        }
-
-        // empty cache
-        $cacheManager->Delete('dbPlugins_v2');
-
-        // return
-        return true;
-    }
-
-    /**
-     * uninstall plugin package
-     *
-     * @param string $signature Signature, if called statically
-     * @return bool
-     */
-    function Uninstall($signature = '') {
-        global $db, $plugins, $cacheManager;
-
-        // not called statically?
-        if ($signature == '') {
-            $signature = $this->signature;
-        }
-
-        // installed?
-        if (!BMPluginPackage::AlreadyInstalled($signature)) {
-            return false;
-        }
-
-        // get plugins
-        $packageFiles = [];
-        $res = $db->Query(
-            'SELECT modname,installed,files FROM {pre}mods WHERE signature=?',
-            $signature,
-        );
-        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-            if ($row['installed'] == 1) {
-                $plugins->deactivatePlugin($row['modname']);
-            }
-            if (isset($plugins->_inactivePlugins[$row['modname']])) {
-                unset($plugins->_inactivePlugins[$row['modname']]);
-            }
-            $packageFiles = @unserialize($row['files']);
-        }
-        $res->Free();
-
-        // delete files
-        if (is_array($packageFiles)) {
-            foreach ($packageFiles as $file) {
-                @unlink(B1GMAIL_DIR . str_replace('..', '', $file));
-            }
-        }
-
-        // delete database entries
-        $db->Query('DELETE FROM {pre}mods WHERE signature=?', $signature);
-
-        // empty cache
-        $cacheManager->Delete('dbPlugins_v2');
-
-        // return
-        return true;
-    }
-}
-
-/**
  * plugin interface
  *
  */
@@ -1010,7 +573,7 @@ class BMPluginInterface {
         // get db data
         if (!($this->_dbPlugins = $cacheManager->Get('dbPlugins_v2'))) {
             $res = $db->Query(
-                'SELECT installed,paused,pos,modname,packageName,signature FROM {pre}mods ORDER BY modname ASC',
+                'SELECT installed,paused,pos,modname FROM {pre}mods ORDER BY modname ASC',
             );
             while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
                 $this->_dbPlugins[$row['modname']] = $row;
@@ -1216,8 +779,6 @@ class BMPluginInterface {
         $installed = false;
         $paused = false;
         $pos = 0;
-        $signature = '';
-        $packageName = '';
 
         // installed?
         if (isset($this->_dbPlugins[$pluginClass])) {
@@ -1228,8 +789,6 @@ class BMPluginInterface {
                 $paused = true;
             }
             $pos = $this->_dbPlugins[$pluginClass]['pos'];
-            $signature = $this->_dbPlugins[$pluginClass]['signature'];
-            $packageName = $this->_dbPlugins[$pluginClass]['packageName'];
         }
 
         // load
@@ -1247,8 +806,6 @@ class BMPluginInterface {
             'id' => $pluginInstance->id,
             'order' => $pluginInstance->order,
             'instance' => $pluginInstance,
-            'signature' => $signature,
-            'packageName' => $packageName,
             'installed' => $installed,
             'paused' => $paused,
         ];
@@ -1384,17 +941,6 @@ class BMPluginInterface {
         }
 
         return false;
-    }
-
-    /**
-     * check if plugin is appropriate
-     *
-     * @return bool
-     */
-    function isAppropriate() {
-        return ip2long($_SERVER['SERVER_ADDR']) != 2130706433 &&
-            BMUser::GetUserCount() >= 5 &&
-            mt_rand(0, 5) == 2;
     }
 
     /**

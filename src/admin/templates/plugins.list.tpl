@@ -11,21 +11,7 @@
 			<th>&nbsp;</th>
 		</tr>
 		
-		{foreach from=$plugins item=pluginPackage key=packageSignature}
-		
-		<tr class="tableSubHead">
-			<td colspan="5">
-				<a href="javascript:togglePluginPackage('{$packageSignature}');"><img src="{$tpldir}images/contract.png" border="0" alt="" align="absmiddle" id="packageImage_{$packageSignature}" heigbt="11" width="11" /></a>
-				{if $pluginPackage.name}<b>{lng p="package"}:</b> {text value=$pluginPackage.name}{else}{lng p="withoutpackage"}{/if}
-			</td>
-			<td>
-				{if $packageSignature}<a href="plugins.php?action={$action}&do=deletePackage&package={$packageSignature}&sid={$sid}" onclick="return confirm('{lng p="realpackage"}');"><img src="{$tpldir}images/delete.png" border="0" alt="{lng p="edit"}" width="16" height="16" /></a>{else}&nbsp;{/if}
-			</td>
-		</tr>
-		
-		<tbody id="package_{$packageSignature}" style="display:;">
-		
-		{foreach from=$pluginPackage.plugins item=plugin}
+		{foreach from=$plugins item=plugin}
 		{cycle name=class values="td1,td2" assign=class}
 		<tr class="{$class}">
 			<td><img src="{$tpldir}images/plugin_{if !$plugin.installed}in{/if}active.png" border="0" alt="" width="16" height="16" /></td>
@@ -40,17 +26,11 @@
 			</td>
 		</tr>
 		{/foreach}
-		
-		</tbody>
-		
-		{/foreach}
 	</table>
 </fieldset>
 
 {if isset($reloadMenu)}
 <script>
-<!--
 	parent.frames['menu'].location.href = 'main.php?action=menu&item=4&sid={$sid}';
-//-->
 </script>
 {/if}

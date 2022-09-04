@@ -122,6 +122,19 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
             return false;
         }
 
+        if (
+            !mysqli_query(
+                $dbConnection,
+                'ALTER TABLE bm60_mods
+                    DROP COLUMN packageName,
+                    DROP COLUMN signature,
+                    DROP COLUMN files
+            ',
+            )
+        ) {
+            return false;
+        }
+
         if (!mysqli_query($dbConnection, 'DROP TABLE bm60_codes')) {
             return false;
         }
