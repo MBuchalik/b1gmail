@@ -1,28 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
     <title>{text value=$filename}</title>
     
-	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 	
-	<!-- links -->
 	<link rel="shortcut icon" href="{$selfurl}favicon.ico" type="image/x-icon" />
 	<link href="{$tpldir}style/dialog.css" rel="stylesheet" type="text/css" />
 	
-	<!-- client scripts -->
 	<script>
-	<!--
-		var tplDir = '{$tpldir}';
-	//-->
+		const tplDir = '{$tpldir}';
 	</script>
-	<script src="{$selfurl}clientlang.php" type="text/javascript"></script>
-	<script src="{$tpldir}js/common.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/loggedin.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/dialog.js" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/dtree.js" type="text/javascript"></script>
+	<script src="{$selfurl}clientlang.php"></script>
+	<script src="{$tpldir}js/common.js"></script>
+	<script src="{$tpldir}js/loggedin.js"></script>
+	<script src="{$tpldir}js/dialog.js"></script>
+	<script src="{$tpldir}clientlib/dtree.js"></script>
 </head>
 
 <body onload="documentLoader()">
@@ -33,7 +28,6 @@
 				<div class="fileListDiv">
 					<div class="cycleBG">
 						<script>
-						<!--
 							var zip = new dTree('zip');
 							zip.config.useCookies = false;
 							zip.config.useLines = false;
@@ -42,7 +36,6 @@
 							zip.add({$file.fileNo}, {$file.parentID}, ' {text value=$file.baseName cut=65 escape=true noentities=true}', '{if $file.type=='file'}email.read.php?action=attachedZIP&id={$id}&attachment={$attachment}&do=extract&fileNo={$file.fileNo}&sid={$sid}{/if}', '{text value=$file.baseName escape=true noentities=true}{if $file.type=='file'} ({size bytes=$file.uncompressedSize}){/if}', '', '{$tpldir}images/li/webdisk_{if $file.type=='folder'}folder{else}file{/if}.png', '{$tpldir}images/li/webdisk_{if $file.type=='folder'}folder{else}file{/if}.png'); 
 							{/foreach}
 							document.write(zip);
-						//-->
 						</script>
 					</div>
 				</div>

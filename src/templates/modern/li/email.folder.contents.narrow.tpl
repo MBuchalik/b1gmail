@@ -153,13 +153,11 @@
 </form>
 
 <script>
-<!--
 	currentSortColumn = '{$sortColumn}';
 	currentSortOrder = '{$sortOrder}';
 	currentPageNo = {$pageNo};
 	currentPageCount = {$pageCount};
 	narrowMode = true;
 	initMailSel();
-//-->
 </script>
 {/if}

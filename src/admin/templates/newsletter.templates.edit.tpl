@@ -38,16 +38,14 @@
 			<td colspan="2" style="border: 1px solid #DDDDDD;background-color:#FFFFFF;">
 				<textarea name="emailText" id="emailText" class="plainTextArea" style="width:100%;height:400px;">{text allowEmpty=true value=$tpl.body}</textarea>
 				<script src="{$tpldir}clientlib/wysiwyg.js?{fileDateSig file="clientlib/wysiwyg.js"}"></script>
-				<script type="text/javascript" src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
+				<script src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
 				<script>
-				<!--
 					var editor = new htmlEditor('emailText');
 					editor.height = 400;
 					editor.disableIntro = true;
 					editor.init();
 					registerLoadAction('editor.start()');
 					registerLoadAction('editor.switchMode("{if $tpl.mode=='text'}text{else}html{/if}", true);');
-				//-->
 				</script>
 			</td>
 		</tr>

@@ -133,9 +133,8 @@
 		<input type="hidden" name="textMode" value="html" />
 		{/if}
 		<script src="{$tpldir}clientlib/wysiwyg.js?{fileDateSig file="clientlib/wysiwyg.js"}"></script>
-		<script type="text/javascript" src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
+		<script src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
 		<script>
-		<!--
 			var autoSaveDrafts = {if $autoSaveDrafts}true{else}false{/if};
 			var autoSaveDraftsInterval = {if $autoSaveDraftsInterval}{$autoSaveDraftsInterval}{else}0{/if};
 			
@@ -148,7 +147,6 @@
 			{literal}}{/literal}
 			{if $autoSaveDrafts}editor.onChange = beginDraftAutoSave;{/if}
 			editor.init();
-		//-->
 		</script>
 	</div>
 </div>
@@ -192,13 +190,11 @@
 
 <div id="composeLoading" style="display:none"><i class="fa fa-spinner fa-pulse fa-fw fa-3x"></i></div>
 
-<script src="{$tpldir}clientlib/dndupload.js?{fileDateSig file="clientlib/dndupload.js"}" type="text/javascript"></script>
+<script src="{$tpldir}clientlib/dndupload.js?{fileDateSig file="clientlib/dndupload.js"}"></script>
 
 <script>
-<!--
 	registerLoadAction(initComposeAutoComplete);
 	registerLoadAction(generateAttachmentList);
 	registerLoadAction(composeSizer);
 	initDnDUpload(EBID('mainContent'), 'email.compose.php?action=uploadDnDAttachment&sid=' + currentSID, false, dndAttachmentUploaded, dndAttachmentURLAddition);
-//-->
 </script>

@@ -155,7 +155,5 @@
 </div>
 
 <script>
-<!--
 	registerLoadAction('initVSep()');
-//-->
 </script>

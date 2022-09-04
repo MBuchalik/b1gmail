@@ -66,12 +66,12 @@
 			
 					<tr style="height:auto;">
 						<td colspan="{if $templatePrefs.showCheckboxes}2{else}1{/if}" class="folderGroup">
-							<a style="display:block;cursor:pointer;" onclick="toggleGroup('{$letter}','addr{$letter}');">&nbsp;<img id="groupImage_{$letter}" src="{$tpldir}images/{if $smarty.cookies.toggleGroup.$groupID=='closed'}expand{else}contract{/if}.png" width="11" height="11" border="0" align="absmiddle" alt="" />
+							<a style="display:block;cursor:pointer;" onclick="toggleGroup('{$letter}','addr{$letter}');">&nbsp;<img id="groupImage_{$letter}" src="{$tpldir}images/{if isset($smarty.cookies.toggleGroup.$groupID) && $smarty.cookies.toggleGroup.$groupID=='closed'}expand{else}contract{/if}.png" width="11" height="11" border="0" align="absmiddle" alt="" />
 							&nbsp;{$letter}</a>
 						</td>
 					</tr>
 
-					<tbody id="group_{$letter}" style="display:{if $smarty.cookies.toggleGroup.$groupID=='closed'}none{/if};">
+					<tbody id="group_{$letter}" style="display:{if isset($smarty.cookies.toggleGroup.$groupID) && $smarty.cookies.toggleGroup.$groupID=='closed'}none{/if};">
 			
 					{foreach from=$addresses key=addressID item=address}
 					{cycle values="listTableTD,listTableTD2" assign="class"}
@@ -144,10 +144,8 @@
 </div>
 
 <script>
-<!--
 	registerLoadAction('initHSep(\'addr\')');
 	initAddrSel();
-//-->
 </script>
 
 </form>

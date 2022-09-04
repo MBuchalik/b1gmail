@@ -1,31 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
-    <title>Calendar Day View</title>
+  <title>Calendar Day View</title>
     
-	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 	
-	<!-- links -->
 	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
 	<link href="{$tpldir}style/loggedin.css" rel="stylesheet" type="text/css" />
 	<link href="{$tpldir}style/dtree.css" rel="stylesheet" type="text/css" />
 	
-	<!-- client scripts -->
 	<script>
-	<!--
-		var currentSID = '{$sid}', tplDir = '{$tpldir}', serverTZ = {$serverTZ};
-	//-->
+		const currentSID = '{$sid}';
+		const tplDir = '{$tpldir}';
+		const serverTZ = {$serverTZ};
 	</script>
-	<script src="clientlang.php?sid={$sid}" type="text/javascript"></script>
-	<script src="{$tpldir}js/common.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/loggedin.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/organizer.js" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/dtree.js" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/overlay.js" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/autocomplete.js" type="text/javascript"></script>
+	<script src="clientlang.php?sid={$sid}"></script>
+	<script src="{$tpldir}js/common.js"></script>
+	<script src="{$tpldir}js/loggedin.js"></script>
+	<script src="{$tpldir}js/organizer.js"></script>
+	<script src="{$tpldir}clientlib/dtree.js"></script>
+	<script src="{$tpldir}clientlib/overlay.js"></script>
+	<script src="{$tpldir}clientlib/autocomplete.js"></script>
 </head>
 
 <body onload="initCalendar()" style="background-color:#FFF;background-image:none;">
@@ -51,7 +48,6 @@
 	</div>
 
 	<script>
-	<!--
 		var calendarDayStart = {$dayStart},
 			calendarDayEnd = {$dayEnd},
 			calendarDates = [];
@@ -67,7 +63,6 @@
 		]);
 		{/if}
 		{/foreach}
-	//-->
 	</script>
 </body>
 

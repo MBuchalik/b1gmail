@@ -18,11 +18,9 @@
 <div class="contentMenuIcons" id="folderList">
 </div>
 <script>
-<!--
 	{include file="li/webdisk.folderlist.tpl"}
 	EBID('folderList').innerHTML = webdisk_d;
 	enableWebdiskDragTargets();
-//-->
 </script>
 
 <img src="{$tpldir}images/li/drag_wdfile.png" style="display:none;" /><img src="{$tpldir}images/li/drag_wdfolder.png" style="display:none;" /><img src="{$tpldir}images/li/drag_wditems.png" style="display:none;" />

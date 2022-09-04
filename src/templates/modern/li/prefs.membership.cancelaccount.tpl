@@ -26,7 +26,6 @@
 </form>
 
 <script>
-<!--
 	{literal}var i = 30;
 	
 	function cancelTimer()
@@ -48,7 +47,6 @@
 	}
 	
 	window.setTimeout('cancelTimer()', 1000);{/literal}
-//-->
 </script>
 
 </div></div>

@@ -20,12 +20,10 @@
 
 {if $selectedLang}
 <script src="{$tpldir}clientlib/wysiwyg.js?{fileDateSig file="clientlib/wysiwyg.js"}"></script>
-<script type="text/javascript" src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
+<script src="{$tpldir}clientlib/ckeditor/ckeditor.js?{fileDateSig file="clientlib/ckeditor/ckeditor.js"}"></script>
 
 <script>
-<!--
 	var editors = [];
-//-->
 </script>
 
 <fieldset>
@@ -53,12 +51,10 @@
 				{if isset($customTextsHTML[$text.key])}
 				</div>
 				<script>
-				<!--
 					editors['{$text.key}'] = new htmlEditor('text-{$text.key}');
 					editors['{$text.key}'].disableIntro = true;
 					editors['{$text.key}'].init();
 					registerLoadAction('editors[\'{$text.key}\'].start()');
-				//-->
 				</script>
 				{/if}
 			</td>

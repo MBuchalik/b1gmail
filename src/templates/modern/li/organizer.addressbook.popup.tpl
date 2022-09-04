@@ -1,27 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
     <title>{lng p="addressbook"}</title>
     
-	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 	
-	<!-- links -->
 	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
 	<link href="{$tpldir}style/dialog.css" rel="stylesheet" type="text/css" />
 	
-	<!-- client scripts -->
 	<script>
-	<!--
-		var tplDir = '{$tpldir}';
-	//-->
+		const tplDir = '{$tpldir}';
 	</script>
-	<script src="clientlang.php" type="text/javascript"></script>
-	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}" type="text/javascript"></script>
-	<script src="{$tpldir}js/loggedin.js?{fileDateSig file="js/loggedin.js"}" type="text/javascript"></script>
-	<script src="{$tpldir}js/dialog.js?{fileDateSig file="js/dialog.js"}" type="text/javascript"></script>
+	<script src="clientlang.php"></script>
+	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}"></script>
+	<script src="{$tpldir}js/loggedin.js?{fileDateSig file="js/loggedin.js"}"></script>
+	<script src="{$tpldir}js/dialog.js?{fileDateSig file="js/dialog.js"}"></script>
 </head>
 
 <body onload="documentLoader()">
@@ -62,7 +57,6 @@
 		</tr>
 	</table>
 	<script>
-	<!--
 		registerLoadAction(initAddressDialog);
 	
 		var toAddr = [],
@@ -88,7 +82,6 @@
 			{/if}
 			{literal}
 		}{/literal}
-	//-->
 	</script>
 	
 </body>

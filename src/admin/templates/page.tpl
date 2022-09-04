@@ -17,11 +17,11 @@
 	<script>
 		const currentSID = '{$sid}';
 	</script>
-	<script src="../clientlang.php?sid={$sid}" type="text/javascript"></script>
-	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}" type="text/javascript"></script>
+	<script src="../clientlang.php?sid={$sid}"></script>
+	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}"></script>
 
 	{foreach from=$_jsFiles.admin item=_file}	
-		<script type="text/javascript" src="{$_file}"></script>
+		<script src="{$_file}"></script>
 	{/foreach}
 
 	<link href="{$tpldir}style/print.css?{fileDateSig file="style/print.css"}" rel="stylesheet" type="text/css" media="print" />

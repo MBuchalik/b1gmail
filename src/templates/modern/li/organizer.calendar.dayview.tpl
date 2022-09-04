@@ -34,9 +34,7 @@
 </div>
 
 <script>
-<!--
 	registerLoadAction('calendarDaySizer()');
-//-->
 </script>
 
 <div id="contentFooter">

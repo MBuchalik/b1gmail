@@ -185,10 +185,8 @@ if ($_REQUEST['action'] == 'folder') {
 
         if (isset($_REQUEST['overlay'])) {
             echo '<script>' . "\n";
-            echo '<!--' . "\n";
             echo 'parent.switchPage(0);' . "\n";
             echo 'parent.hideOverlay();' . "\n";
-            echo '//-->' . "\n";
             echo '</script>' . "\n";
             exit();
         }

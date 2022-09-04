@@ -2,7 +2,6 @@
 <head>
 	<title>{$service_title}: {lng p="error"}</title>
 	<style>
-	<!--
 		{literal}*			{ font-family: tahoma, arial, verdana; font-size: 12px; }
 		H1			{ font-size: 16px; font-weight: bold; border-bottom: 1px solid #DDDDDD; }
 		H2			{ font-size: 14px; font-weight: normal; }
@@ -10,7 +9,6 @@
 						border: 1px solid #DDDDDD; padding: 5px; }
 		.box		{ width: 600px; border: 1px solid #CCC; border-radius: 10px; background-color: #FFF;
 						padding: 30px 15px; margin-top: 3em; margin-left: auto; margin-right: auto; }{/literal}
-	//-->
 	</style>
 	<link href="{$tpldir}clientlib/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 </head>

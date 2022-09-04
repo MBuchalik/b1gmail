@@ -1,23 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
-    <title>Password</title>
+  <title>Password</title>
     
-	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 	
-	<!-- links -->
 	<link rel="shortcut icon" type="image/png" href="{$selfurl}{$_tpldir}images/li/webdisk_folder.png" />
 	<link href="{$tpldir}style/dialog.css" rel="stylesheet" type="text/css" />
 
-	<!-- font awesome -->
 	<link href="{$selfurl}{$_tpldir}clientlib/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<link href="{$selfurl}{$_tpldir}clientlib/fontawesome/css/font-awesome-animation.min.css" rel="stylesheet" type="text/css" />
 	
-	<!-- client scripts -->
-	<script src="../clientlang.php" type="text/javascript"></script>
+	<script src="../clientlang.php"></script>
 </head>
 
 <body onload="document.getElementById('pw').focus()">

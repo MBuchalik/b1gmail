@@ -230,9 +230,7 @@
 	<textarea id="textArea_raw" style="display:none;">{text allowEmpty=true value=$text allowDoubleEnc=true}</textarea>
 
 	<script>
-	<!--
 		initEMailTextArea(EBID('textArea_raw').value);
-	//-->
 	</script>
 </p>
 {hook id="email.read.tpl:afterText"}

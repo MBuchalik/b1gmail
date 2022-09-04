@@ -1,30 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
-    <title>{$service_title}</title>
+  <title>{$service_title}</title>
 
-	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 
-	<!-- links -->
 	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
 	<link href="{$tpldir}style/loggedin.css" rel="stylesheet" type="text/css" />
 	<link href="{$tpldir}style/dtree.css" rel="stylesheet" type="text/css" />
 
-	<!-- client scripts -->
 	<script>
-	<!--
-		var currentSID = '{$sid}', tplDir = '{$tpldir}', serverTZ = {$serverTZ};
-	//-->
+		const currentSID = '{$sid}';
+		const tplDir = '{$tpldir}';
+		const serverTZ = {$serverTZ};
 	</script>
-	<script src="clientlang.php?sid={$sid}" type="text/javascript"></script>
-	<script src="{$tpldir}js/common.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/loggedin.js" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/dtree.js" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/overlay.js" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/autocomplete.js" type="text/javascript"></script>
+	<script src="clientlang.php?sid={$sid}"></script>
+	<script src="{$tpldir}js/common.js"></script>
+	<script src="{$tpldir}js/loggedin.js"></script>
+	<script src="{$tpldir}clientlib/dtree.js"></script>
+	<script src="{$tpldir}clientlib/overlay.js"></script>
+	<script src="{$tpldir}clientlib/autocomplete.js"></script>
 
 	<base target="_top" />
 </head>
@@ -69,7 +66,6 @@
 	</table>
 
 	<script>
-	<!--
 		{literal}
 		var h = parseInt(document.body.scrollHeight);
 
@@ -83,7 +79,6 @@
 			}
 		}
 		{/literal}
-	//-->
 	</script>
 
 </body>

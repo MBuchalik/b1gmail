@@ -1,19 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 	<title>{$service_title} - {lng p="maintenance"}</title>
 	
-	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 
-	<!-- links -->
 	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="{$tpldir}style/notloggedin.css" />
 </head>
 
-<!-- body -->
 <body>
 
 	<center>

@@ -644,10 +644,8 @@ if ($_REQUEST['action'] == 'move' && isset($_REQUEST['id'])) {
             $mailbox->MoveMail((int) $_REQUEST['id'], (int) $_REQUEST['dest']);
 
             echo '<script>' . "\n";
-            echo '<!--' . "\n";
             echo 'parent.document.location.reload();' . "\n";
             echo 'parent.hideOverlay();' . "\n";
-            echo '//-->' . "\n";
             echo '</script>' . "\n";
         } else {
             $tpl->assign('mailID', (int) $_REQUEST['id']);

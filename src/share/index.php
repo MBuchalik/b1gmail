@@ -138,8 +138,7 @@ if ($_REQUEST['action'] == 'start') {
     isset($_REQUEST['folder']) &&
     isset($_REQUEST['pw'])
 ) {
-    echo '<script type="text/javascript">' . "\n";
-    echo '<!--' . "\n";
+    echo '<script>' . "\n";
 
     $folderInfo = $webdisk->GetFolderInfo((int) $_REQUEST['folder']);
     if (
@@ -165,7 +164,6 @@ if ($_REQUEST['action'] == 'start') {
     }
 
     echo 'parent.hideOverlay();' . "\n";
-    echo '//-->' . "\n";
     echo '</script>' . "\n";
 } /**
  * download file

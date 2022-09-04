@@ -134,10 +134,8 @@
 </div>
 
 <script>
-<!--
 	currentTaskListID = {$taskListID};
 	initTasksSel();
 	enableTodoDragTargets();
 	EBID('newTaskText').focus();
-//-->
 </script>

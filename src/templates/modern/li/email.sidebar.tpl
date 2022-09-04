@@ -11,11 +11,9 @@
 <div class="contentMenuIcons" id="folderList">
 </div>
 <script language="javascript">
-<!--
 	{include file="li/email.folderlist.tpl"}
 	EBID('folderList').innerHTML = d;
 	enableFolderDragTargets();
-//-->
 </script>
 
 {hook id="email.sidebar.tpl:foot"}

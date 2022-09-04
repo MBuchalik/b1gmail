@@ -1855,7 +1855,6 @@ if ($_REQUEST['action'] == 'start') {
             $pkcs12UploadFile = getUploadedFile('pkcs12File', $pkcs12TempName);
 
             echo '<script>' . "\n";
-            echo '<!--' . "\n";
 
             if (
                 $pkcs12UploadFile &&
@@ -1912,7 +1911,6 @@ if ($_REQUEST['action'] == 'start') {
             ReleaseTempFile($userRow['id'], $pkcs12TempID);
 
             echo 'parent.hideOverlay();' . "\n";
-            echo '//-->' . "\n";
             echo '</script>' . "\n";
         }
 
@@ -1938,7 +1936,6 @@ if ($_REQUEST['action'] == 'start') {
             $chainUploadFile = getUploadedFile('chainFile', $chainTempName);
 
             echo '<script>' . "\n";
-            echo '<!--' . "\n";
 
             if (
                 $certUploadFile &&
@@ -2005,7 +2002,6 @@ if ($_REQUEST['action'] == 'start') {
             ReleaseTempFile($userRow['id'], $chainTempID);
 
             echo 'parent.hideOverlay();' . "\n";
-            echo '//-->' . "\n";
             echo '</script>' . "\n";
         }
     }
@@ -2035,7 +2031,6 @@ if ($_REQUEST['action'] == 'start') {
         $uploadFile = getUploadedFile('certFile', $tempName);
 
         echo '<script>' . "\n";
-        echo '<!--' . "\n";
 
         if (
             $uploadFile &&
@@ -2068,7 +2063,6 @@ if ($_REQUEST['action'] == 'start') {
         ReleaseTempFile($userRow['id'], $tempID);
 
         echo 'parent.hideOverlay();' . "\n";
-        echo '//-->' . "\n";
         echo '</script>' . "\n";
     }
 
@@ -2337,7 +2331,6 @@ if ($_REQUEST['action'] == 'start') {
         PKCS12_SUPPORT
     ) {
         echo '<script>' . "\n";
-        echo '<!--' . "\n";
 
         $hash = $_REQUEST['hash'];
         $pw1 = $_REQUEST['pw1'];
@@ -2385,7 +2378,6 @@ if ($_REQUEST['action'] == 'start') {
             echo 'history.back(1);' . "\n";
         }
 
-        echo '//-->' . "\n";
         echo '</script>' . "\n";
     }
 

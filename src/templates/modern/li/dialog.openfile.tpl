@@ -1,25 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
     <title>{$title}</title>
 
-	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 
-	<!-- links -->
 	<link rel="shortcut icon" href="{$selfurl}favicon.ico" type="image/x-icon" />
 	<link href="{$tpldir}style/dialog.css" rel="stylesheet" type="text/css" />
 	{foreach from=$_cssFiles.li item=_file}	<link rel="stylesheet" type="text/css" href="{$_file}" /> {/foreach}
 
-	<!-- client scripts -->
-	<script src="{$selfurl}clientlang.php?sid={$sid}" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/overlay.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/common.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/loggedin.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/dialog.js" type="text/javascript"></script>
-	{foreach from=$_jsFiles.li item=_file}  <script type="text/javascript" src="{$_file}"></script>{/foreach}
+	<script src="{$selfurl}clientlang.php?sid={$sid}"></script>
+	<script src="{$tpldir}clientlib/overlay.js"></script>
+	<script src="{$tpldir}js/common.js"></script>
+	<script src="{$tpldir}js/loggedin.js"></script>
+	<script src="{$tpldir}js/dialog.js"></script>
+	{foreach from=$_jsFiles.li item=_file}
+		<script src="{$_file}"></script>
+	{/foreach}
 </head>
 
 <body>

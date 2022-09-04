@@ -70,7 +70,6 @@
 	</div>
 	
 	<script>
-	<!--
 		var calendarDayStart = {$dayStart},
 			calendarDayEnd = {$dayEnd},
 			calendarDates = [];
@@ -94,7 +93,6 @@
 		
 		registerLoadAction('calendarDaySizer()');
 		registerLoadAction('initCalendar()');
-	//-->
 	</script>
 </div>
 

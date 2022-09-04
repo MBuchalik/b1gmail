@@ -75,7 +75,6 @@ if (
     exit();
 }
 
-echo '<!--' . "\n";
 echo 'var lang = new Array();' . "\n";
 
 foreach ($lang_client as $key => $value) {
@@ -85,5 +84,3 @@ foreach ($lang_client as $key => $value) {
         str_replace("\n", '\n', str_replace("\r", '', addslashes($value))),
     );
 }
-
-echo '//-->';

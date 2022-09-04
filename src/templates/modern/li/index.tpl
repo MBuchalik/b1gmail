@@ -24,12 +24,12 @@
 			const notifySound = {if $bmNotifySound}true{else}false{/if};
 		{/if}
 	</script>
-	<script src="clientlang.php?sid={$sid}" type="text/javascript"></script>
-	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}" type="text/javascript"></script>
-	<script src="{$tpldir}js/loggedin.js?{fileDateSig file="js/loggedin.js"}" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/dtree.js?{fileDateSig file="clientlib/dtree.js"}" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/overlay.js?{fileDateSig file="clientlib/overlay.js"}" type="text/javascript"></script>
-	<script src="{$tpldir}clientlib/autocomplete.js?{fileDateSig file="clientlib/autocomplete.js"}" type="text/javascript"></script>
+	<script src="clientlang.php?sid={$sid}"></script>
+	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}"></script>
+	<script src="{$tpldir}js/loggedin.js?{fileDateSig file="js/loggedin.js"}"></script>
+	<script src="{$tpldir}clientlib/dtree.js?{fileDateSig file="clientlib/dtree.js"}"></script>
+	<script src="{$tpldir}clientlib/overlay.js?{fileDateSig file="clientlib/overlay.js"}"></script>
+	<script src="{$tpldir}clientlib/autocomplete.js?{fileDateSig file="clientlib/autocomplete.js"}"></script>
 
 	{foreach from=$_jsFiles.li item=_file}
 		<script src="{$_file}"></script>

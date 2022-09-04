@@ -1168,7 +1168,6 @@ if ($_REQUEST['action'] == 'folder') {
     $folderID = (int) $_REQUEST['path'];
 
     echo '<script>' . "\n";
-    echo '<!--' . "\n";
 
     // load class, if needed
     if (!class_exists('BMMailbox')) {
@@ -1233,7 +1232,6 @@ if ($_REQUEST['action'] == 'folder') {
     }
 
     echo 'parent.hideOverlay();' . "\n";
-    echo '//-->' . "\n";
     echo '</script>' . "\n";
 } /**
  * create folder RPC

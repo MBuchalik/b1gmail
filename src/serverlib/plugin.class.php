@@ -494,13 +494,11 @@ class BMPlugin {
      */
     function _closeWidgetPrefs($reload = true) {
         echo '<script>' . "\n";
-        echo '<!--' . "\n";
         if ($reload) {
             echo '	parent.document.location.reload();' . "\n";
         } else {
             echo '	parent.hideOverlay();' . "\n";
         }
-        echo '//-->' . "\n";
         echo '</script>' . "\n";
 
         exit();

@@ -14,10 +14,8 @@
 	<script src="{$selfurl}{$_tpldir}clientlib/jquery/jquery-1.8.2.min.js"></script>
 	<script src="{$selfurl}{$_tpldir}clientlib/jquery/jquery.mobile-1.3.0.min.js"></script>
 	
-	<script type="text/javascript">
-	<!--
-		var currentSID = '{$sid}';
-	//-->
+	<script>
+		const currentSID = '{$sid}';
 	</script>
 </head> 
 <body> 

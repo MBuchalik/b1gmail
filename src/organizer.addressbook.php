@@ -297,7 +297,6 @@ if ($_REQUEST['action'] == 'start') {
         $tempName = TempFileName($tempID);
 
         $jsCode = '<script>' . "\n";
-        $jsCode .= '<!--' . "\n";
 
         // parse card
         $vcardReader = _new('VCardReader', [
@@ -320,7 +319,6 @@ if ($_REQUEST['action'] == 'start') {
             }
         }
 
-        $jsCode .= '//-->' . "\n";
         $jsCode .= '</script>' . "\n";
 
         ReleaseTempFile($userRow['id'], $tempID);
@@ -852,7 +850,6 @@ if ($_REQUEST['action'] == 'start') {
     $vcfFile = getUploadedFile('vcfFile', $tempName);
 
     echo '<script>' . "\n";
-    echo '<!--' . "\n";
 
     // parse card, if any
     if ($vcfFile) {
@@ -877,7 +874,6 @@ if ($_REQUEST['action'] == 'start') {
     }
 
     echo 'parent.hideOverlay();' . "\n";
-    echo '//-->' . "\n";
     echo '</script>' . "\n";
 
     ReleaseTempFile($userRow['id'], $tempID);
@@ -1159,7 +1155,6 @@ if ($_REQUEST['action'] == 'start') {
     $uploadFile = getUploadedFile('pictureFile', $tempName);
 
     echo '<script>' . "\n";
-    echo '<!--' . "\n";
 
     if (
         $uploadFile &&
@@ -1227,7 +1222,6 @@ if ($_REQUEST['action'] == 'start') {
     }
 
     echo 'parent.hideOverlay();' . "\n";
-    echo '//-->' . "\n";
     echo '</script>' . "\n";
 } /**
  * whole addressbook export
@@ -1345,7 +1339,6 @@ if ($_REQUEST['action'] == 'start') {
     }
 
     echo '<script>' . "\n";
-    echo '<!--' . "\n";
 
     if ($fileOK) {
         echo 'parent.document.location.href = \'organizer.addressbook.php?action=importFile&type=' .
@@ -1366,7 +1359,6 @@ if ($_REQUEST['action'] == 'start') {
     }
 
     echo 'parent.hideOverlay();' . "\n";
-    echo '//-->' . "\n";
     echo '</script>' . "\n";
 } /**
  * file import

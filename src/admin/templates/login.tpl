@@ -8,8 +8,8 @@
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<link href="{$tpldir}style/common.css?{fileDateSig file="style/common.css"}" rel="stylesheet" type="text/css" />
 	
-	<script src="../clientlang.php?sid={$sid}" type="text/javascript"></script>
-	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}" type="text/javascript"></script>
+	<script src="../clientlang.php?sid={$sid}"></script>
+	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}"></script>
 </head>
 
 <body id="loginBody">

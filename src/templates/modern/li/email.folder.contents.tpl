@@ -184,11 +184,9 @@
 
 
 <script>
-<!--
 	currentSortColumn = '{$sortColumn}';
 	currentSortOrder = '{$sortOrder}';
 	currentPageNo = {$pageNo};
 	currentPageCount = {$pageCount};
 	initMailSel();
-//-->
 </script>

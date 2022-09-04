@@ -588,7 +588,6 @@ if ($_REQUEST['action'] == 'compose') {
     IsPOSTRequest()
 ) {
     echo '<script>' . "\n";
-    echo '<!--' . "\n";
 
     $spaceLeft = (int) $_REQUEST['spaceLeft'];
     $files = getUploadedFiles('attachFile');
@@ -623,7 +622,6 @@ if ($_REQUEST['action'] == 'compose') {
 
     echo 'parent.generateAttachmentList();' . "\n";
     echo 'parent.hideOverlay();' . "\n";
-    echo '//-->' . "\n";
     echo '</script>' . "\n";
 } /**
  * upload attachment from DnD

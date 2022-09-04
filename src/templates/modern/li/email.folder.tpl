@@ -22,10 +22,8 @@
 		</div>
 		
 		<script>
-		<!--
 			var folderNarrowView = true;
 			registerLoadAction('initHSep()');
-		//-->
 		</script>
 	{else}
 		<div id="vSep1">
@@ -50,10 +48,8 @@
 		</div>
 		
 		<script>
-		<!--
 			var folderNarrowView = false;
 			registerLoadAction('initVSep()');
-		//-->
 		</script>
 	{/if}
 {else}
@@ -128,7 +124,6 @@
 {hook id="email.folder.tpl:foot"}
 
 <script>
-<!--
 	var currentFolderID = {$folderID};
 {if $refreshEnabled&&$refreshInterval>0}
 	initFolderRefresh({$folderID}, {$refreshInterval});
@@ -136,7 +131,6 @@
 {if $hotkeys}
 	registerLoadAction('registerFolderHotkeyHandler()');
 {/if}
-//-->
 </script>
 
 {include file="li/email.addressmenu.tpl"}

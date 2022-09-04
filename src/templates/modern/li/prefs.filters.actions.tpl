@@ -1,23 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
     <title>Actions</title>
     
-	<!-- meta -->
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 	
-	<!-- links -->
 	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
 	<link href="{$tpldir}style/loggedin.css" rel="stylesheet" type="text/css" />
 	
-	<!-- client scripts -->
-	<script src="clientlang.php" type="text/javascript"></script>
-	<script src="{$tpldir}js/common.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/loggedin.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/dialog.js" type="text/javascript"></script>
-	<script src="{$tpldir}js/prefs.js" type="text/javascript"></script>
+	<script src="clientlang.php"></script>
+	<script src="{$tpldir}js/common.js"></script>
+	<script src="{$tpldir}js/loggedin.js"></script>
+	<script src="{$tpldir}js/dialog.js"></script>
+	<script src="{$tpldir}js/prefs.js"></script>
 </head>
 
 <body style="margin: 0px; background-color: #FFFFFF; background-image: none;">
@@ -83,9 +80,7 @@
 		</span>
 		
 		<script>
-		<!--
 			showAppropriateValueLayer(EBID('op_{$action.id}'), '{$action.id}');
-		//-->
 		</script>
 	</td>
 	<td align="right"><input type="submit" name="remove_{$action.id}" value=" - " {if $actionCount==1} disabled="disabled"{/if}/>
@@ -96,11 +91,9 @@
 </form>
 
 <script>
-<!--
 	parent.document.getElementById('action_frame').style.height = max(getElementMetrics(EBID('table'), 'h'), 30) + 'px';
 	{if $smarty.request.submitParent}parent.document.formSubmitOK = true;
 	parent.document.forms.f1.submit();{/if}
-//-->
 </script>
 
 </body>

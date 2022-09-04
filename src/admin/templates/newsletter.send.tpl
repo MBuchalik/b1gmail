@@ -12,11 +12,9 @@
 	</center>
 </fieldset>
 
-<script type="text/javascript">
-<!--
+<script>
 	rc_perpage = {$perPage};
 	rc_id = '{$id}';
 	rc_all = {$recpCount};
 	registerLoadAction('sendNewsletter()');
-//-->
 </script>
