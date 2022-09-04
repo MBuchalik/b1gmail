@@ -112,11 +112,6 @@ $lockedTypeTable = [
 $writeableFiles = [
     'admin/templates/cache/',
     'logs/',
-    'plugins/',
-    'plugins/templates/',
-    'plugins/templates/images/',
-    'plugins/js/',
-    'plugins/css/',
     'temp/',
     'temp/session/',
     'temp/cache/',
