@@ -42,12 +42,18 @@ $tabs = [
     ],
 ];
 
-function updateDisabledLanguages(array $newListOfDisabledLanguages) {
+function updateDisabledLanguages(array $newListOfDisabledLanguages): void {
     global $db;
 
-    $langsAsString = implode(',', $newListOfDisabledLanguages);
+    $serializedLanguages = null;
+    if (count($newListOfDisabledLanguages) > 0) {
+        $serializedLanguages = serialize($newListOfDisabledLanguages);
+    }
 
-    $db->Query('UPDATE {pre}prefs SET disabled_languages = ?', $langsAsString);
+    $db->Query(
+        'UPDATE {pre}prefs SET disabled_languages = ?',
+        $serializedLanguages,
+    );
 }
 
 /**

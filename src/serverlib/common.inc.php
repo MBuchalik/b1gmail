@@ -3127,8 +3127,8 @@ function GetLanguageInfo($file) {
     $isDisabled = false;
     // We also check whether it is the default language, because in this case, we simply want to ignore whether the language is disabled according to the setting.
     if ($bm_prefs['disabled_languages'] !== null && !$isDefault) {
-        $allDisabledLanguages = explode(',', $bm_prefs['disabled_languages']);
-        if (in_array($file, $allDisabledLanguages)) {
+        $allDisabledLanguages = @unserialize($bm_prefs['disabled_languages']);
+        if ($allDisabledLanguages && in_array($file, $allDisabledLanguages)) {
             $isDisabled = true;
         }
     }
