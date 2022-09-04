@@ -405,7 +405,6 @@ if ($_REQUEST['action'] == 'groups') {
 $tpl->assign('davSupport', PHPNumVersion() >= 540);
 $tpl->assign('ftsSupport', FTS_SUPPORT);
 $tpl->assign('smimeSupport', SMIME_SUPPORT);
-$tpl->assign('currency', $bm_prefs['currency']);
 $tpl->assign('tabs', $tabs);
 $tpl->assign(
     'title',

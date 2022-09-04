@@ -120,9 +120,6 @@ define('STEP_UPDATE_UPDATE', 107);
 define('STEP_UPDATE_STEP', 108);
 define('STEP_UPDATE_DONE', 109);
 
-// invoice
-require_once './data/default-invoice.php';
-
 // step?
 if (!isset($_REQUEST['step'])) {
     $step = STEP_SELECT_LANGUAGE;
@@ -661,7 +658,7 @@ example.org</textarea>
                 ),
                 // UTF8 Mode --> We always set this to true.
                 1,
-                $defaultInvoice,
+                '',
                 SQLEscape($lang_setup['accounting'], $connection),
                 SQLEscape(
                     'postmaster@' . EncodeDomain($firstDomain),

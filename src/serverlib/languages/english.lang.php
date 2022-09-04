@@ -93,7 +93,6 @@ $lang_client['checkingaddr'] = 'Checking availability...';
 $lang_client['showsuggestions'] = 'Show suggestions';
 $lang_client['pleasewait'] = 'Please wait...';
 $lang_client['deliverystatus'] = 'Delivery status';
-$lang_client['taxnote'] = 'incl. %1% VAT';
 $lang_client['decsep'] = ',';
 $lang_client['lastsavedat'] = 'Last saved at %1:%2.';
 
@@ -2092,7 +2091,6 @@ $lang_admin['searchengine'] = 'Search engine';
 $lang_admin['activate'] = 'Enable';
 $lang_admin['licensekey'] = 'License key';
 $lang_admin['features'] = 'Features';
-$lang_admin['minamount'] = 'Minimum amount (in the currency stated above)';
 $lang_admin['smime'] = 'S/MIME';
 $lang_admin['openssl_err'] =
     'The PHP extension <code>openssl</code> is not available. S/MIME support required the PHP <code>openssl</code> extension to be installed. Please install the extension in order to use S/MIME in b1gMail.';

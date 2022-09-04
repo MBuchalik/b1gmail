@@ -68,7 +68,49 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                     DROP COLUMN ap_autolock_notify_to,
                     DROP COLUMN sms_enable_charge,
                     DROP COLUMN f_mail2sms_nummer,
-                    DROP COLUMN enable_vk
+                    DROP COLUMN enable_vk,
+                    DROP COLUMN rgtemplate,
+                    DROP COLUMN send_pay_notification,
+                    DROP COLUMN pay_notification_to,
+                    DROP COLUMN pay_emailfrom,
+                    DROP COLUMN pay_emailfromemail,
+                    DROP COLUMN mwst,
+                    DROP COLUMN enable_paypal,
+                    DROP COLUMN paypal_mail,
+                    DROP COLUMN enable_su,
+                    DROP COLUMN su_kdnr,
+                    DROP COLUMN su_prjnr,
+                    DROP COLUMN su_prjpass,
+                    DROP COLUMN su_inputcheck,
+                    DROP COLUMN vk_kto_inh,
+                    DROP COLUMN vk_kto_nr,
+                    DROP COLUMN vk_kto_blz,
+                    DROP COLUMN vk_kto_inst,
+                    DROP COLUMN vk_kto_iban,
+                    DROP COLUMN vk_kto_bic,
+                    DROP COLUMN sendrg,
+                    DROP COLUMN rgnrfmt,
+                    DROP COLUMN kdnrfmt,
+                    DROP COLUMN su_notifypass,
+                    DROP COLUMN default_paymethod,
+                    DROP COLUMN enable_skrill,
+                    DROP COLUMN skrill_mail,
+                    DROP COLUMN skrill_secret,
+                    DROP COLUMN mail2sms_type,
+                    DROP COLUMN clndr_sms_abs,
+                    DROP COLUMN clndr_sms_type,
+                    DROP COLUMN sms_gateway,
+                    DROP COLUMN mail2sms_abs,
+                    DROP COLUMN sms_enable_paypal,
+                    DROP COLUMN sms_paypal_mail,
+                    DROP COLUMN sms_enable_su,
+                    DROP COLUMN sms_su_kdnr,
+                    DROP COLUMN sms_su_prjnr,
+                    DROP COLUMN sms_su_prjpass,
+                    DROP COLUMN smsreply_abs,
+                    DROP COLUMN smsvalidation_type,
+                    DROP COLUMN reg_smsvalidation,
+                    DROP COLUMN currency
                 ',
             )
         ) {
@@ -136,6 +178,10 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
         }
 
         if (!mysqli_query($dbConnection, 'DROP TABLE bm60_codes')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_paymethods')) {
             return false;
         }
 

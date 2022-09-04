@@ -89,7 +89,6 @@ $lang_client['cancel'] = 'Abbrechen';
 $lang_client['showsuggestions'] = 'Alternativ-Vorschl&auml;ge anzeigen';
 $lang_client['pleasewait'] = 'Bitte warten...';
 $lang_client['deliverystatus'] = 'Zustell-Status';
-$lang_client['taxnote'] = 'inkl. %1% MwSt.';
 $lang_client['decsep'] = ',';
 $lang_client['lastsavedat'] = 'Zuletzt gespeichert um %1:%2 Uhr.';
 
@@ -2107,7 +2106,6 @@ $lang_admin['searchengine'] = 'Suchmaschine';
 $lang_admin['activate'] = 'Aktivieren';
 $lang_admin['licensekey'] = 'Lizenz-Schl&uuml;ssel';
 $lang_admin['features'] = 'Features';
-$lang_admin['minamount'] = 'Mindestbetrag';
 $lang_admin['smime'] = 'S/MIME';
 $lang_admin['openssl_err'] =
     'Die PHP-Erweiterung <code>openssl</code> ist nicht installiert. S/MIME-Unterst&uuml;tzung setzt voraus, dass die <code>openssl</code>-Erweiterung installiert ist. Bitte installieren Sie die Erweiterung nach, um S/MIME-Support zum Verschl&uuml;sseln und Signieren von E-Mails in b1gMail nutzen zu k&ouml;nnen.';
