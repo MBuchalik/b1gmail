@@ -113,7 +113,10 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                     DROP COLUMN currency,
                     DROP COLUMN contactform,
                     DROP COLUMN contactform_to,
-                    DROP COLUMN contactform_subject
+                    DROP COLUMN contactform_subject,
+                    DROP COLUMN captcha_config,
+                    DROP COLUMN captcha_provider,
+                    DROP COLUMN f_safecode
                 ',
             )
         ) {
@@ -160,7 +163,8 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                     DROP COLUMN sms_from,
                     DROP COLUMN sms_sig,
                     DROP COLUMN smsvalidation,
-                    DROP COLUMN sms_send_code
+                    DROP COLUMN sms_send_code,
+                    DROP COLUMN mail_send_code
             ',
             )
         ) {
@@ -227,6 +231,10 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
         }
 
         if (!mysqli_query($dbConnection, 'DROP TABLE bm60_staaten')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_safecode')) {
             return false;
         }
 

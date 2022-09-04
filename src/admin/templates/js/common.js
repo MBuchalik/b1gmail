@@ -20,24 +20,6 @@ function toggleFieldset(elem) {
   elem.className = elem.className == 'collapsed' ? 'uncollapsed' : 'collapsed';
 }
 
-function changeCaptchaProvider(elem) {
-  var currentProvider = elem.value;
-
-  var elems = document.getElementsByTagName('fieldset');
-  for (var i = 0; i < elems.length; ++i) {
-    var el = elems[i];
-
-    if (
-      typeof el.id == 'undefined' ||
-      el.id.length < 4 ||
-      el.id.substr(0, 3) != 'cp_'
-    )
-      continue;
-
-    el.style.display = el.id == 'cp_' + currentProvider ? '' : 'none';
-  }
-}
-
 function userMassActionFormSubmit(form) {
   // no action required for all actions except 'delete'
   if (EBID('massAction').value != 'delete') {

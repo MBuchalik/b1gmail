@@ -83,13 +83,6 @@
 				<td style="text-align:center;"><input type="radio" name="f_alternativ" value="v"{if $bm_prefs.f_alternativ=='v'} checked="checked"{/if} /></td>
 				<td style="text-align:center;"><input type="radio" name="f_alternativ" value="n"{if $bm_prefs.f_alternativ=='n'} checked="checked"{/if} /></td>
 			</tr>
-			<tr class="td1">
-				<td><img src="{$tpldir}images/field.png" border="0" alt="" width="16" height="16" /></td>
-				<td>{lng p="safecode"}</td>
-				<td style="text-align:center;"><input type="radio" name="f_safecode" value="p"{if $bm_prefs.f_safecode=='p'} checked="checked"{/if} /></td>
-				<td style="text-align:center;"><input type="radio" disabled="disabled" /></td>
-				<td style="text-align:center;"><input type="radio" name="f_safecode" value="n"{if $bm_prefs.f_safecode=='n'} checked="checked"{/if} /></td>
-			</tr>
 		</table>
 
 		<p align="center">

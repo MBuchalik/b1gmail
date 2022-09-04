@@ -436,16 +436,6 @@ if ($_REQUEST['action'] == 'compose') {
         $mail['from'] = $userRow['defaultSender'];
     }
 
-    // safe code?
-    if ($groupRow['mail_send_code'] == 'yes') {
-        if (!class_exists('BMCaptcha')) {
-            include B1GMAIL_DIR . 'serverlib/captcha.class.php';
-        }
-        $captcha = BMCaptcha::createDefaultProvider();
-        $tpl->assign('captchaHTML', $captcha->getHTML());
-        $tpl->assign('captchaInfo', $captcha->getInfo());
-    }
-
     // defaults
     $mail['attachVCard'] = isset($composeDefaults['attachVCard']);
     $mail['certMail'] = isset($composeDefaults['certMail']);
@@ -753,636 +743,597 @@ if ($_REQUEST['action'] == 'compose') {
         false,
     )
 ) {
-    $captcha = false;
-    if ($groupRow['mail_send_code'] == 'yes') {
-        if (!class_exists('BMCaptcha')) {
-            include B1GMAIL_DIR . 'serverlib/captcha.class.php';
+    // sanitize + expand addresses
+    $_REQUEST['to'] = PrepareSendAddresses($_REQUEST['to']);
+    $_REQUEST['cc'] = PrepareSendAddresses($_REQUEST['cc']);
+    $_REQUEST['bcc'] = PrepareSendAddresses($_REQUEST['bcc']);
+
+    // get recipients
+    $recipients = ExtractMailAddresses(
+        $_REQUEST['to'] . ' ' . $_REQUEST['cc'] . ' ' . $_REQUEST['bcc'],
+    );
+
+    // check if recipients are blocked
+    $blockedRecipients = [];
+    foreach ($recipients as $recp) {
+        if (RecipientBlocked($recp)) {
+            $blockedRecipients[] = $recp;
         }
-        $captcha = BMCaptcha::createDefaultProvider();
     }
 
-    // safecode?
-    if ($captcha !== false && !$captcha->check()) {
-        $tpl->assign('msg', $lang_user['invalidcode']);
-        $tpl->assign('pageContent', 'li/error.tpl');
-    } else {
-        // sanitize + expand addresses
-        $_REQUEST['to'] = PrepareSendAddresses($_REQUEST['to']);
-        $_REQUEST['cc'] = PrepareSendAddresses($_REQUEST['cc']);
-        $_REQUEST['bcc'] = PrepareSendAddresses($_REQUEST['bcc']);
-
-        // get recipients
-        $recipients = ExtractMailAddresses(
-            $_REQUEST['to'] . ' ' . $_REQUEST['cc'] . ' ' . $_REQUEST['bcc'],
-        );
-
-        // check if recipients are blocked
-        $blockedRecipients = [];
-        foreach ($recipients as $recp) {
-            if (RecipientBlocked($recp)) {
-                $blockedRecipients[] = $recp;
-            }
+    // no recipients?
+    if (count($recipients) > 0 || $_REQUEST['do'] == 'saveDraft') {
+        // too many recipients?
+        if (
+            $_REQUEST['do'] != 'saveDraft' &&
+            count($recipients) > $groupRow['max_recps']
+        ) {
+            $tpl->assign(
+                'msg',
+                sprintf(
+                    $lang_user['toomanyrecipients'],
+                    $groupRow['max_recps'],
+                    count($recipients),
+                ),
+            );
+            $tpl->assign('pageContent', 'li/error.tpl');
         }
 
-        // no recipients?
-        if (count($recipients) > 0 || $_REQUEST['do'] == 'saveDraft') {
-            // too many recipients?
-            if (
-                $_REQUEST['do'] != 'saveDraft' &&
-                count($recipients) > $groupRow['max_recps']
-            ) {
-                $tpl->assign(
-                    'msg',
-                    sprintf(
-                        $lang_user['toomanyrecipients'],
-                        $groupRow['max_recps'],
-                        count($recipients),
-                    ),
-                );
-                $tpl->assign('pageContent', 'li/error.tpl');
-            }
+        // blocked recipients?
+        elseif (
+            $_REQUEST['do'] != 'saveDraft' &&
+            count($blockedRecipients) > 0
+        ) {
+            $tpl->assign(
+                'msg',
+                sprintf(
+                    $lang_user['blockedrecipients'],
+                    HTMLFormat(implode(', ', $blockedRecipients)),
+                ),
+            );
+            $tpl->assign('pageContent', 'li/error.tpl');
+        }
 
-            // blocked recipients?
-            elseif (
-                $_REQUEST['do'] != 'saveDraft' &&
-                count($blockedRecipients) > 0
-            ) {
-                $tpl->assign(
-                    'msg',
-                    sprintf(
-                        $lang_user['blockedrecipients'],
-                        HTMLFormat(implode(', ', $blockedRecipients)),
-                    ),
-                );
-                $tpl->assign('pageContent', 'li/error.tpl');
-            }
+        // over send limit?
+        elseif (
+            $_REQUEST['do'] != 'saveDraft' &&
+            !$thisUser->MaySendMail(count($recipients))
+        ) {
+            $tpl->assign(
+                'msg',
+                sprintf(
+                    $lang_user['exceededsendlimit'],
+                    $groupRow['send_limit_count'],
+                    $groupRow['send_limit_time'],
+                ),
+            );
+            $tpl->assign('pageContent', 'li/error.tpl');
+        } else {
+            $deleteDraftAfterSend = 0;
 
-            // over send limit?
-            elseif (
-                $_REQUEST['do'] != 'saveDraft' &&
-                !$thisUser->MaySendMail(count($recipients))
-            ) {
-                $tpl->assign(
-                    'msg',
-                    sprintf(
-                        $lang_user['exceededsendlimit'],
-                        $groupRow['send_limit_count'],
-                        $groupRow['send_limit_time'],
-                    ),
-                );
-                $tpl->assign('pageContent', 'li/error.tpl');
+            //
+            // headers
+            //
+            $to = $_REQUEST['to'];
+            $cc = $_REQUEST['cc'];
+            $bcc = $_REQUEST['bcc'];
+
+            // sender?
+            $senderAddresses = $thisUser->GetPossibleSenders();
+            if (isset($senderAddresses[$_REQUEST['from']])) {
+                $from = $senderAddresses[$_REQUEST['from']];
             } else {
-                $deleteDraftAfterSend = 0;
+                $from = $senderAddresses[0];
+            }
 
-                //
-                // headers
-                //
-                $to = $_REQUEST['to'];
-                $cc = $_REQUEST['cc'];
-                $bcc = $_REQUEST['bcc'];
-
-                // sender?
-                $senderAddresses = $thisUser->GetPossibleSenders();
-                if (isset($senderAddresses[$_REQUEST['from']])) {
-                    $from = $senderAddresses[$_REQUEST['from']];
-                } else {
-                    $from = $senderAddresses[0];
-                }
-
-                // check if sender address is ext. an alias
-                $senderAddressIsAlias = false;
-                $aliases = $thisUser->GetAliases();
-                foreach ($aliases as $alias) {
-                    if ($alias['type'] == ALIAS_SENDER) {
-                        if (
-                            strtolower(ExtractMailAddress($alias['email'])) ==
-                            strtolower(ExtractMailAddress($from))
-                        ) {
-                            $senderAddressIsAlias = true;
-                            break;
-                        }
+            // check if sender address is ext. an alias
+            $senderAddressIsAlias = false;
+            $aliases = $thisUser->GetAliases();
+            foreach ($aliases as $alias) {
+                if ($alias['type'] == ALIAS_SENDER) {
+                    if (
+                        strtolower(ExtractMailAddress($alias['email'])) ==
+                        strtolower(ExtractMailAddress($from))
+                    ) {
+                        $senderAddressIsAlias = true;
+                        break;
                     }
                 }
+            }
 
-                // prepare header fields
-                $subject = trim(
-                    str_replace(["\r", "\t", "\n"], '', $_REQUEST['subject']),
+            // prepare header fields
+            $subject = trim(
+                str_replace(["\r", "\t", "\n"], '', $_REQUEST['subject']),
+            );
+            if (count(ExtractMailAddresses($_REQUEST['replyto'])) > 0) {
+                $replyTo = trim(
+                    str_replace(["\r", "\t", "\n"], '', $_REQUEST['replyto']),
                 );
-                if (count(ExtractMailAddresses($_REQUEST['replyto'])) > 0) {
-                    $replyTo = trim(
-                        str_replace(
-                            ["\r", "\t", "\n"],
-                            '',
-                            $_REQUEST['replyto'],
-                        ),
-                    );
-                } else {
-                    $replyTo = $from;
-                }
+            } else {
+                $replyTo = $from;
+            }
 
-                // build the mail
-                $mail = _new('BMMailBuilder');
-                $mail->SetUserID($userRow['id']);
+            // build the mail
+            $mail = _new('BMMailBuilder');
+            $mail->SetUserID($userRow['id']);
 
-                // s/mime?
-                if ($groupRow['smime'] == 'yes') {
-                    $mail->_smimeUser = &$thisUser;
+            // s/mime?
+            if ($groupRow['smime'] == 'yes') {
+                $mail->_smimeUser = &$thisUser;
 
-                    // sign?
-                    if (
-                        isset($_REQUEST['smimeSign']) &&
-                        !isset($_REQUEST['certMail'])
-                    ) {
-                        $mail->_smimeSign = true;
-                    }
-
-                    // encrypt?
-                    if (
-                        isset($_REQUEST['smimeEncrypt']) &&
-                        !isset($_REQUEST['certMail'])
-                    ) {
-                        $mail->_smimeEncrypt = true;
-                    }
-                }
-
-                // mandatory headers
-                if ($bm_prefs['write_xsenderip'] == 'yes') {
-                    $mail->AddHeaderField(
-                        'X-Sender-IP',
-                        $_SERVER['REMOTE_ADDR'],
-                    );
-                }
-                $mail->AddHeaderField('From', $from);
-                $mail->AddHeaderField('Subject', $subject);
-                $mail->AddHeaderField('Reply-To', $replyTo);
-
-                // ext. alias sender?
-                if ($senderAddressIsAlias) {
-                    $mail->SetMailFrom($userRow['email']);
-                }
-
-                // optional headers
-                if ($to != '') {
-                    $mail->AddHeaderField('To', $to);
-                }
-                if ($cc != '') {
-                    $mail->AddHeaderField('Cc', $cc);
-                }
-                if ($bcc != '') {
-                    $mail->AddHeaderField('Bcc', $bcc);
-                }
-
-                // priority
-                if ($_REQUEST['priority'] != 0) {
-                    $mail->AddHeaderField(
-                        'X-Priority',
-                        $_REQUEST['priority'] == ITEMPRIO_HIGH
-                            ? 1
-                            : ($_REQUEST['priority'] == ITEMPRIO_LOW
-                                ? 5
-                                : 3),
-                    );
-                }
-
-                // mail confirmation?
+                // sign?
                 if (
-                    isset($_REQUEST['mailConfirmation']) &&
+                    isset($_REQUEST['smimeSign']) &&
                     !isset($_REQUEST['certMail'])
                 ) {
-                    $mail->AddHeaderField(
-                        'Disposition-Notification-To',
-                        $replyTo,
-                    );
+                    $mail->_smimeSign = true;
                 }
 
-                // ref headers
+                // encrypt?
                 if (
-                    isset($_REQUEST['reference']) &&
-                    strpos($_REQUEST['reference'], ':') !== false
+                    isset($_REQUEST['smimeEncrypt']) &&
+                    !isset($_REQUEST['certMail'])
                 ) {
-                    [$type, $id] = explode(':', $_REQUEST['reference']);
+                    $mail->_smimeEncrypt = true;
+                }
+            }
 
-                    $referencedMail = $mailbox->GetMail($id);
-                    if ($referencedMail !== false) {
-                        if ($type == 'reply') {
-                            $mail->AddHeaderField(
-                                'In-Reply-To',
-                                $referencedMail->GetHeaderValue('message-id'),
+            // mandatory headers
+            if ($bm_prefs['write_xsenderip'] == 'yes') {
+                $mail->AddHeaderField('X-Sender-IP', $_SERVER['REMOTE_ADDR']);
+            }
+            $mail->AddHeaderField('From', $from);
+            $mail->AddHeaderField('Subject', $subject);
+            $mail->AddHeaderField('Reply-To', $replyTo);
+
+            // ext. alias sender?
+            if ($senderAddressIsAlias) {
+                $mail->SetMailFrom($userRow['email']);
+            }
+
+            // optional headers
+            if ($to != '') {
+                $mail->AddHeaderField('To', $to);
+            }
+            if ($cc != '') {
+                $mail->AddHeaderField('Cc', $cc);
+            }
+            if ($bcc != '') {
+                $mail->AddHeaderField('Bcc', $bcc);
+            }
+
+            // priority
+            if ($_REQUEST['priority'] != 0) {
+                $mail->AddHeaderField(
+                    'X-Priority',
+                    $_REQUEST['priority'] == ITEMPRIO_HIGH
+                        ? 1
+                        : ($_REQUEST['priority'] == ITEMPRIO_LOW
+                            ? 5
+                            : 3),
+                );
+            }
+
+            // mail confirmation?
+            if (
+                isset($_REQUEST['mailConfirmation']) &&
+                !isset($_REQUEST['certMail'])
+            ) {
+                $mail->AddHeaderField('Disposition-Notification-To', $replyTo);
+            }
+
+            // ref headers
+            if (
+                isset($_REQUEST['reference']) &&
+                strpos($_REQUEST['reference'], ':') !== false
+            ) {
+                [$type, $id] = explode(':', $_REQUEST['reference']);
+
+                $referencedMail = $mailbox->GetMail($id);
+                if ($referencedMail !== false) {
+                    if ($type == 'reply') {
+                        $mail->AddHeaderField(
+                            'In-Reply-To',
+                            $referencedMail->GetHeaderValue('message-id'),
+                        );
+                    }
+
+                    if ($type == 'reply' || $type == 'forward') {
+                        $msgReferences = ExtractMessageIDs(
+                            $referencedMail->GetHeaderValue('references'),
+                        );
+                        $msgReferences[] = $referencedMail->GetHeaderValue(
+                            'message-id',
+                        );
+
+                        if (count($msgReferences) > 10) {
+                            $msgReferences = array_slice(
+                                $msgReferences,
+                                count($msgReferences) - 10,
                             );
                         }
 
-                        if ($type == 'reply' || $type == 'forward') {
-                            $msgReferences = ExtractMessageIDs(
-                                $referencedMail->GetHeaderValue('references'),
-                            );
-                            $msgReferences[] = $referencedMail->GetHeaderValue(
-                                'message-id',
-                            );
-
-                            if (count($msgReferences) > 10) {
-                                $msgReferences = array_slice(
-                                    $msgReferences,
-                                    count($msgReferences) - 10,
-                                );
-                            }
-
-                            $mail->AddHeaderField(
-                                'References',
-                                implode(' ', $msgReferences),
-                            );
-                        }
+                        $mail->AddHeaderField(
+                            'References',
+                            implode(' ', $msgReferences),
+                        );
                     }
                 }
+            }
 
-                // based on an auto-saved draft which needs to be deleted?
-                if (isset($_REQUEST['baseDraftID'])) {
-                    $baseDraftMail = $mailbox->GetMail(
-                        (int) $_REQUEST['baseDraftID'],
-                    );
+            // based on an auto-saved draft which needs to be deleted?
+            if (isset($_REQUEST['baseDraftID'])) {
+                $baseDraftMail = $mailbox->GetMail(
+                    (int) $_REQUEST['baseDraftID'],
+                );
 
-                    if (
-                        $baseDraftMail !== false &&
-                        ($baseDraftMail->flags & FLAG_AUTOSAVEDDRAFT) != 0
-                    ) {
-                        $deleteDraftAfterSend = $baseDraftMail->id;
-                    }
+                if (
+                    $baseDraftMail !== false &&
+                    ($baseDraftMail->flags & FLAG_AUTOSAVEDDRAFT) != 0
+                ) {
+                    $deleteDraftAfterSend = $baseDraftMail->id;
+                }
+            }
+
+            //
+            // add text
+            //
+            $mailText = $_REQUEST['emailText'];
+            if ($_REQUEST['newTextMode'] == 'html') {
+                if ($_REQUEST['do'] != 'saveDraft') {
+                    $mailText .= GetSigStr('html');
+                    ModuleFunction('OnSendMail', [&$mailText, true]);
                 }
 
-                //
-                // add text
-                //
-                $mailText = $_REQUEST['emailText'];
-                if ($_REQUEST['newTextMode'] == 'html') {
-                    if ($_REQUEST['do'] != 'saveDraft') {
-                        $mailText .= GetSigStr('html');
-                        ModuleFunction('OnSendMail', [&$mailText, true]);
-                    }
-
-                    // html mail
-                    $mail->AddText(
-                        '<html>' . $mailText . '</html>',
-                        'html',
-                        $currentCharset,
-                    );
-                } else {
-                    if ($_REQUEST['do'] != 'saveDraft') {
-                        $mailText .= GetSigStr('text');
-                        ModuleFunction('OnSendMail', [&$mailText, false]);
-                    }
-
-                    // text mail
-                    $mail->AddText($mailText, 'plain', $currentCharset);
+                // html mail
+                $mail->AddText(
+                    '<html>' . $mailText . '</html>',
+                    'html',
+                    $currentCharset,
+                );
+            } else {
+                if ($_REQUEST['do'] != 'saveDraft') {
+                    $mailText .= GetSigStr('text');
+                    ModuleFunction('OnSendMail', [&$mailText, false]);
                 }
 
-                //
-                // add attachments
-                //
-                $attSize = 0;
-                $attTempFiles = [];
-                if (strlen(trim($_REQUEST['attachments'])) > 3) {
-                    $attachments = explode(';', $_REQUEST['attachments']);
-                    foreach ($attachments as $attachment) {
-                        if (strlen(trim($attachment)) > 3) {
-                            [$tempFileID, $fileName, $contentType] = explode(
-                                ',',
-                                $attachment,
-                            );
-                            $tempFileID = (int) $tempFileID;
-                            if (ValidTempFile($userRow['id'], $tempFileID)) {
+                // text mail
+                $mail->AddText($mailText, 'plain', $currentCharset);
+            }
+
+            //
+            // add attachments
+            //
+            $attSize = 0;
+            $attTempFiles = [];
+            if (strlen(trim($_REQUEST['attachments'])) > 3) {
+                $attachments = explode(';', $_REQUEST['attachments']);
+                foreach ($attachments as $attachment) {
+                    if (strlen(trim($attachment)) > 3) {
+                        [$tempFileID, $fileName, $contentType] = explode(
+                            ',',
+                            $attachment,
+                        );
+                        $tempFileID = (int) $tempFileID;
+                        if (ValidTempFile($userRow['id'], $tempFileID)) {
+                            if (
+                                $attSize +
+                                    filesize(TempFileName($tempFileID)) <=
+                                $groupRow['anlagen']
+                            ) {
+                                // open attachment
                                 if (
-                                    $attSize +
-                                        filesize(TempFileName($tempFileID)) <=
-                                    $groupRow['anlagen']
+                                    $tempFileFP = fopen(
+                                        TempFileName($tempFileID),
+                                        'rb',
+                                    )
                                 ) {
-                                    // open attachment
-                                    if (
-                                        $tempFileFP = fopen(
-                                            TempFileName($tempFileID),
-                                            'rb',
-                                        )
-                                    ) {
-                                        // add to mail
-                                        $mail->AddAttachment(
-                                            $tempFileFP,
-                                            $contentType,
-                                            $fileName,
-                                        );
+                                    // add to mail
+                                    $mail->AddAttachment(
+                                        $tempFileFP,
+                                        $contentType,
+                                        $fileName,
+                                    );
 
-                                        // add temp id to delete list
-                                        $attTempFiles[] = [
-                                            $tempFileID,
-                                            $tempFileFP,
-                                        ];
-                                        $attSize += filesize(
-                                            TempFileName($tempFileID),
-                                        );
-                                    }
-                                } else {
                                     // add temp id to delete list
                                     $attTempFiles[] = [
                                         $tempFileID,
                                         $tempFileFP,
                                     ];
+                                    $attSize += filesize(
+                                        TempFileName($tempFileID),
+                                    );
                                 }
-                            }
-                        }
-                    }
-                }
-
-                //
-                // add vcard?
-                //
-                if (isset($_REQUEST['attachVCard'])) {
-                    // add to mail
-                    $mail->AddAttachment(
-                        $thisUser->BuildVCard(),
-                        'text/x-vcard',
-                        preg_replace(
-                            '/[^0-9a-zA-Z ]/',
-                            '',
-                            $userRow['vorname'] . ' ' . $userRow['nachname'],
-                        ) . '.vcf',
-                    );
-                }
-
-                //
-                // send!
-                //
-                if (
-                    $_REQUEST['do'] == 'saveDraft' ||
-                    isset($_REQUEST['certMail'])
-                ) {
-                    $outboxFP = $mail->Build();
-                } else {
-                    $actionTokenAge = GetActionTokenAge(
-                        $userRow['id'],
-                        $_POST['actionToken'],
-                    );
-
-                    if (
-                        CheckActionToken(
-                            $userRow['id'],
-                            ATACTION_SENDMAIL,
-                            $_POST['actionToken'],
-                            true,
-                        )
-                    ) {
-                        $outboxFP = $mail->Send();
-                    } else {
-                        $outboxFP = false;
-                    }
-                }
-
-                //
-                // ok?
-                //
-                if ($outboxFP && is_resource($outboxFP)) {
-                    if ($_REQUEST['do'] != 'saveDraft') {
-                        //
-                        // update stats
-                        //
-                        Add2Stat('send');
-                        $domains = GetDomainList();
-                        $local = false;
-                        foreach ($domains as $domain) {
-                            if (
-                                strpos(
-                                    strtolower($to . $cc . $bcc),
-                                    '@' . strtolower($domain),
-                                ) !== false
-                            ) {
-                                $local = true;
-                            }
-                        }
-                        Add2Stat('send_' . ($local ? 'intern' : 'extern'));
-                        $thisUser->AddSendStat(count($recipients));
-                        $thisUser->UpdateLastSend(count($recipients));
-
-                        //
-                        // add log entry
-                        //
-                        PutLog(
-                            sprintf(
-                                '<%s> (%d, IP: %s) sends%s mail from <%s> to <%s> using compose form',
-                                $userRow['email'],
-                                $userRow['id'],
-                                $_SERVER['REMOTE_ADDR'],
-                                isset($_REQUEST['certMail'])
-                                    ? ' certified'
-                                    : '',
-                                ExtractMailAddress($from),
-                                implode('>, <', $recipients),
-                            ),
-                            PRIO_NOTE,
-                            __FILE__,
-                            __LINE__,
-                        );
-
-                        //
-                        // reference
-                        //
-                        if (
-                            isset($_REQUEST['reference']) &&
-                            strpos($_REQUEST['reference'], ':') !== false
-                        ) {
-                            [$type, $id] = explode(':', $_REQUEST['reference']);
-                            if ($type == 'reply') {
-                                $mailbox->FlagMail(
-                                    FLAG_ANSWERED,
-                                    true,
-                                    (int) $id,
-                                );
-                            } elseif ($type == 'forward') {
-                                $mailbox->FlagMail(
-                                    FLAG_FORWARDED,
-                                    true,
-                                    (int) $id,
-                                );
-                            }
-                        }
-
-                        ModuleFunction('AfterSendMail', [
-                            $userRow['id'],
-                            ExtractMailAddress($from),
-                            $recipients,
-                            $outboxFP,
-                        ]);
-
-                        //
-                        // are there recipients who are not in the addressbook?
-                        //
-                        $book = false;
-                        $recpList = ParseMailList(
-                            $to . ', ' . $cc . ', ' . $bcc,
-                        );
-                        $addrMails = [];
-                        foreach ($recpList as $recp) {
-                            $address = ExtractMailAddress($recp['mail']);
-                            if (empty($address)) {
-                                continue;
-                            }
-                            if (
-                                strtolower($address) ==
-                                strtolower($userRow['email'])
-                            ) {
-                                continue;
-                            }
-                            $isAlias = false;
-                            foreach ($aliases as $alias) {
-                                if (
-                                    strtolower($address) ==
-                                    strtolower($alias['email'])
-                                ) {
-                                    $isAlias = true;
-                                    break;
-                                }
-                            }
-                            if ($isAlias) {
-                                continue;
-                            }
-                            if ($book === false) {
-                                $book = _new('BMAddressbook', [$userRow['id']]);
-                            }
-                            if (
-                                $book->LookupEmail($address) > 0 ||
-                                $book->LookupEmail(DecodeEMail($address)) > 0
-                            ) {
-                                continue;
-                            }
-
-                            $firstName = $lastName = '';
-
-                            $nameParts = explode(',', $recp['name']);
-                            if (count($nameParts) == 2) {
-                                $lastName = trim($nameParts[0]);
-                                $firstName = trim($nameParts[1]);
                             } else {
-                                $nameParts = explode(' ', $recp['name']);
-
-                                if (count($nameParts) == 1) {
-                                    $lastName = $nameParts[0];
-                                } elseif (count($nameParts) == 2) {
-                                    $firstName = $nameParts[0];
-                                    $lastName = $nameParts[1];
-                                } elseif (count($nameParts) > 2) {
-                                    $firstName = array_shift($nameParts);
-                                    $lastName = implode(' ', $nameParts);
-                                }
+                                // add temp id to delete list
+                                $attTempFiles[] = [$tempFileID, $tempFileFP];
                             }
-
-                            $addrMails[] = [
-                                'email' => DecodeEMail($address),
-                                'firstname' => $firstName,
-                                'lastname' => $lastName,
-                            ];
-                        }
-
-                        if ($book) {
-                            $tpl->assign('groups', $book->GetGroupList());
-                        }
-                        $tpl->assign('addrMails', $addrMails);
-                        $tpl->assign('pageContent', 'li/email.sent.tpl');
-                    }
-
-                    //
-                    // save copy
-                    //
-                    $mailID = 0;
-                    $saveTo =
-                        $_REQUEST['do'] == 'saveDraft'
-                            ? FOLDER_DRAFTS
-                            : (int) $_REQUEST['savecopy'];
-                    $mailObj = _new('BMMail', [0, false, $outboxFP, false]);
-                    $mailObj->Parse();
-                    $mailObj->ParseInfo();
-                    if (
-                        $_REQUEST['do'] == 'saveDraft' &&
-                        isset($_REQUEST['autoSave'])
-                    ) {
-                        $mailObj->flags |= FLAG_AUTOSAVEDDRAFT;
-                    }
-                    if ($saveTo != -128) {
-                        $mailbox->StoreMail($mailObj, $saveTo);
-                        $mailID = $mailbox->_lastInsertId;
-
-                        if (
-                            $_REQUEST['do'] != 'saveDraft' &&
-                            !isset($_REQUEST['certMail']) &&
-                            is_object($mail)
-                        ) {
-                            $mail->SetDeliveryStatusOutboxID($mailID);
                         }
                     }
-
-                    //
-                    // certified mail?
-                    //
-                    if (
-                        isset($_REQUEST['certMail']) &&
-                        (!isset($_REQUEST['do']) ||
-                            $_REQUEST['do'] != 'saveDraft') &&
-                        $mailID
-                    ) {
-                        $mailbox->SendCertMail($mailID, $mailObj);
-                    }
-
-                    //
-                    // train as NON-spam
-                    //
-                    if (
-                        $userRow['spamfilter'] == 'yes' &&
-                        $bm_prefs['use_bayes'] == 'yes' &&
-                        $userRow['unspamme'] == 'yes' &&
-                        $_REQUEST['do'] != 'saveDraft'
-                    ) {
-                        $mailbox->SetSpamStatus($mailbox->_lastInsertId, false);
-                    }
-
-                    //
-                    // clean up
-                    //
-                    $mail->CleanUp();
-                    if (!isset($_REQUEST['autoSave'])) {
-                        foreach ($attTempFiles as $attData) {
-                            [$tempFileID, $tempFileFP] = $attData;
-                            fclose($tempFileFP);
-                            ReleaseTempFile($userRow['id'], $tempFileID);
-                        }
-                    }
-
-                    //
-                    // delete old draft, if required
-                    //
-                    if ($deleteDraftAfterSend > 0) {
-                        $mailbox->DeleteMail($deleteDraftAfterSend, true);
-                    }
-
-                    //
-                    // draft folder?
-                    //
-                    if ($_REQUEST['do'] == 'saveDraft') {
-                        if (isset($_REQUEST['autoSave'])) {
-                            echo $mailID;
-                            exit();
-                        } else {
-                            header(
-                                'Location: email.php?folder=' .
-                                    FOLDER_DRAFTS .
-                                    '&sid=' .
-                                    session_id(),
-                            );
-                            exit();
-                        }
-                    }
-                } else {
-                    $tpl->assign('msg', $lang_user['sendfailed']);
-                    $tpl->assign('pageContent', 'li/error.tpl');
                 }
             }
-        } else {
-            $tpl->assign('msg', $lang_user['norecipients']);
-            $tpl->assign('pageContent', 'li/error.tpl');
+
+            //
+            // add vcard?
+            //
+            if (isset($_REQUEST['attachVCard'])) {
+                // add to mail
+                $mail->AddAttachment(
+                    $thisUser->BuildVCard(),
+                    'text/x-vcard',
+                    preg_replace(
+                        '/[^0-9a-zA-Z ]/',
+                        '',
+                        $userRow['vorname'] . ' ' . $userRow['nachname'],
+                    ) . '.vcf',
+                );
+            }
+
+            //
+            // send!
+            //
+            if (
+                $_REQUEST['do'] == 'saveDraft' ||
+                isset($_REQUEST['certMail'])
+            ) {
+                $outboxFP = $mail->Build();
+            } else {
+                $actionTokenAge = GetActionTokenAge(
+                    $userRow['id'],
+                    $_POST['actionToken'],
+                );
+
+                if (
+                    CheckActionToken(
+                        $userRow['id'],
+                        ATACTION_SENDMAIL,
+                        $_POST['actionToken'],
+                        true,
+                    )
+                ) {
+                    $outboxFP = $mail->Send();
+                } else {
+                    $outboxFP = false;
+                }
+            }
+
+            //
+            // ok?
+            //
+            if ($outboxFP && is_resource($outboxFP)) {
+                if ($_REQUEST['do'] != 'saveDraft') {
+                    //
+                    // update stats
+                    //
+                    Add2Stat('send');
+                    $domains = GetDomainList();
+                    $local = false;
+                    foreach ($domains as $domain) {
+                        if (
+                            strpos(
+                                strtolower($to . $cc . $bcc),
+                                '@' . strtolower($domain),
+                            ) !== false
+                        ) {
+                            $local = true;
+                        }
+                    }
+                    Add2Stat('send_' . ($local ? 'intern' : 'extern'));
+                    $thisUser->AddSendStat(count($recipients));
+                    $thisUser->UpdateLastSend(count($recipients));
+
+                    //
+                    // add log entry
+                    //
+                    PutLog(
+                        sprintf(
+                            '<%s> (%d, IP: %s) sends%s mail from <%s> to <%s> using compose form',
+                            $userRow['email'],
+                            $userRow['id'],
+                            $_SERVER['REMOTE_ADDR'],
+                            isset($_REQUEST['certMail']) ? ' certified' : '',
+                            ExtractMailAddress($from),
+                            implode('>, <', $recipients),
+                        ),
+                        PRIO_NOTE,
+                        __FILE__,
+                        __LINE__,
+                    );
+
+                    //
+                    // reference
+                    //
+                    if (
+                        isset($_REQUEST['reference']) &&
+                        strpos($_REQUEST['reference'], ':') !== false
+                    ) {
+                        [$type, $id] = explode(':', $_REQUEST['reference']);
+                        if ($type == 'reply') {
+                            $mailbox->FlagMail(FLAG_ANSWERED, true, (int) $id);
+                        } elseif ($type == 'forward') {
+                            $mailbox->FlagMail(FLAG_FORWARDED, true, (int) $id);
+                        }
+                    }
+
+                    ModuleFunction('AfterSendMail', [
+                        $userRow['id'],
+                        ExtractMailAddress($from),
+                        $recipients,
+                        $outboxFP,
+                    ]);
+
+                    //
+                    // are there recipients who are not in the addressbook?
+                    //
+                    $book = false;
+                    $recpList = ParseMailList($to . ', ' . $cc . ', ' . $bcc);
+                    $addrMails = [];
+                    foreach ($recpList as $recp) {
+                        $address = ExtractMailAddress($recp['mail']);
+                        if (empty($address)) {
+                            continue;
+                        }
+                        if (
+                            strtolower($address) ==
+                            strtolower($userRow['email'])
+                        ) {
+                            continue;
+                        }
+                        $isAlias = false;
+                        foreach ($aliases as $alias) {
+                            if (
+                                strtolower($address) ==
+                                strtolower($alias['email'])
+                            ) {
+                                $isAlias = true;
+                                break;
+                            }
+                        }
+                        if ($isAlias) {
+                            continue;
+                        }
+                        if ($book === false) {
+                            $book = _new('BMAddressbook', [$userRow['id']]);
+                        }
+                        if (
+                            $book->LookupEmail($address) > 0 ||
+                            $book->LookupEmail(DecodeEMail($address)) > 0
+                        ) {
+                            continue;
+                        }
+
+                        $firstName = $lastName = '';
+
+                        $nameParts = explode(',', $recp['name']);
+                        if (count($nameParts) == 2) {
+                            $lastName = trim($nameParts[0]);
+                            $firstName = trim($nameParts[1]);
+                        } else {
+                            $nameParts = explode(' ', $recp['name']);
+
+                            if (count($nameParts) == 1) {
+                                $lastName = $nameParts[0];
+                            } elseif (count($nameParts) == 2) {
+                                $firstName = $nameParts[0];
+                                $lastName = $nameParts[1];
+                            } elseif (count($nameParts) > 2) {
+                                $firstName = array_shift($nameParts);
+                                $lastName = implode(' ', $nameParts);
+                            }
+                        }
+
+                        $addrMails[] = [
+                            'email' => DecodeEMail($address),
+                            'firstname' => $firstName,
+                            'lastname' => $lastName,
+                        ];
+                    }
+
+                    if ($book) {
+                        $tpl->assign('groups', $book->GetGroupList());
+                    }
+                    $tpl->assign('addrMails', $addrMails);
+                    $tpl->assign('pageContent', 'li/email.sent.tpl');
+                }
+
+                //
+                // save copy
+                //
+                $mailID = 0;
+                $saveTo =
+                    $_REQUEST['do'] == 'saveDraft'
+                        ? FOLDER_DRAFTS
+                        : (int) $_REQUEST['savecopy'];
+                $mailObj = _new('BMMail', [0, false, $outboxFP, false]);
+                $mailObj->Parse();
+                $mailObj->ParseInfo();
+                if (
+                    $_REQUEST['do'] == 'saveDraft' &&
+                    isset($_REQUEST['autoSave'])
+                ) {
+                    $mailObj->flags |= FLAG_AUTOSAVEDDRAFT;
+                }
+                if ($saveTo != -128) {
+                    $mailbox->StoreMail($mailObj, $saveTo);
+                    $mailID = $mailbox->_lastInsertId;
+
+                    if (
+                        $_REQUEST['do'] != 'saveDraft' &&
+                        !isset($_REQUEST['certMail']) &&
+                        is_object($mail)
+                    ) {
+                        $mail->SetDeliveryStatusOutboxID($mailID);
+                    }
+                }
+
+                //
+                // certified mail?
+                //
+                if (
+                    isset($_REQUEST['certMail']) &&
+                    (!isset($_REQUEST['do']) ||
+                        $_REQUEST['do'] != 'saveDraft') &&
+                    $mailID
+                ) {
+                    $mailbox->SendCertMail($mailID, $mailObj);
+                }
+
+                //
+                // train as NON-spam
+                //
+                if (
+                    $userRow['spamfilter'] == 'yes' &&
+                    $bm_prefs['use_bayes'] == 'yes' &&
+                    $userRow['unspamme'] == 'yes' &&
+                    $_REQUEST['do'] != 'saveDraft'
+                ) {
+                    $mailbox->SetSpamStatus($mailbox->_lastInsertId, false);
+                }
+
+                //
+                // clean up
+                //
+                $mail->CleanUp();
+                if (!isset($_REQUEST['autoSave'])) {
+                    foreach ($attTempFiles as $attData) {
+                        [$tempFileID, $tempFileFP] = $attData;
+                        fclose($tempFileFP);
+                        ReleaseTempFile($userRow['id'], $tempFileID);
+                    }
+                }
+
+                //
+                // delete old draft, if required
+                //
+                if ($deleteDraftAfterSend > 0) {
+                    $mailbox->DeleteMail($deleteDraftAfterSend, true);
+                }
+
+                //
+                // draft folder?
+                //
+                if ($_REQUEST['do'] == 'saveDraft') {
+                    if (isset($_REQUEST['autoSave'])) {
+                        echo $mailID;
+                        exit();
+                    } else {
+                        header(
+                            'Location: email.php?folder=' .
+                                FOLDER_DRAFTS .
+                                '&sid=' .
+                                session_id(),
+                        );
+                        exit();
+                    }
+                }
+            } else {
+                $tpl->assign('msg', $lang_user['sendfailed']);
+                $tpl->assign('pageContent', 'li/error.tpl');
+            }
         }
+    } else {
+        $tpl->assign('msg', $lang_user['norecipients']);
+        $tpl->assign('pageContent', 'li/error.tpl');
     }
 
     $tpl->assign('pageTitle', $lang_user['sendmail']);

@@ -20,8 +20,7 @@
  */
 
 $exampleData = [];
-$exampleData[] =
-    'INSERT INTO bm60_faq(`id`,`typ`,`required`,`frage`,`antwort`,`lang`) VALUES(\'1\',\'nli\',\'\',\'Was hat es mit dem Captcha-Code auf sich?\',\'Mit dem Captcha-Code stellen wir sicher, dass keine Massen-Registrierungen durchgeführt werden, z.B. durch speziell dazu entwickelten Programmen. Die jeweiligen Porgramme können den Captcha-Code, der durch Bilder angezeigt wird, nicht einlesen und somit keine Registrierungen durchführen. So schützen wir unseren Dienst vor Spam-Anmeldungen.\',\'deutsch\')';
+
 $exampleData[] =
     'INSERT INTO bm60_faq(`id`,`typ`,`required`,`frage`,`antwort`,`lang`) VALUES(\'2\',\'nli\',\'\',\'Das Land in dem ich lebe ist nicht in der Liste aufgef&uuml;hrt. Was soll ich tun?\',\'F&uuml;r diesen Zweck haben wir einen Extra-Eintrag hinzugef&uuml;gt: \"Anderes Land\". W&auml;hlen Sie bitte diesen Eintrag, wenn ihr Land nicht aufgef&uuml;hrt sein sollte.\',\':all:\')';
 $exampleData[] =

@@ -125,19 +125,6 @@ if ($_REQUEST['action'] == 'start') {
 ) {
     $dashboard->showWidgetPrefs($_REQUEST['name']);
 } /**
- * safe code validation RPC
- */ elseif ($_REQUEST['action'] == 'checkSafeCode') {
-    if (!class_exists('BMCaptcha')) {
-        include B1GMAIL_DIR . 'serverlib/captcha.class.php';
-    }
-    $captcha = BMCaptcha::createDefaultProvider();
-    if ($captcha->check(false)) {
-        echo '1';
-    } else {
-        echo '0';
-    }
-    exit();
-} /**
  * notifications
  */ elseif ($_REQUEST['action'] == 'getNotifications') {
     $tpl->assign('bmNotifications', $thisUser->GetNotifications());

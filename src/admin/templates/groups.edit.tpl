@@ -87,10 +87,6 @@
 						<td class="td1">{lng p="allownewsoptout"}?</td>
 						<td class="td2"><input name="allow_newsletter_optout"{if $group.allow_newsletter_optout=='yes'} checked="checked"{/if} type="checkbox" /></td>
 					</tr>
-					<tr>
-						<td class="td1">{lng p="mail_send_code"}?</td>
-						<td class="td2"><input name="mail_send_code"{if $group.mail_send_code=='yes'} checked="checked"{/if} type="checkbox" /></td>
-					</tr>
 				</table>
 			</fieldset>
 		</td>

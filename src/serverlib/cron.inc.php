@@ -246,18 +246,6 @@ function CleanupCertMails() {
 }
 
 /**
- * clean up expired safe codes
- *
- */
-function CleanupSafeCodes() {
-    global $db;
-    $db->Query(
-        'DELETE FROM {pre}safecode WHERE generation<' .
-            (time() - 8 * TIME_ONE_HOUR),
-    );
-}
-
-/**
  * delete outdated, pending aliases
  *
  * @return bool

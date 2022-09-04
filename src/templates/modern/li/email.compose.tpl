@@ -155,25 +155,6 @@
 
 {hook id="email.compose.tpl:foot"}
 
-{if $captchaInfo}
-<div id="safecodeFooter"{if $captchaInfo.heightHint} style="height:{$captchaInfo.heightHint};"{/if}>
-	<table cellpadding="0" style="margin-left:auto;margin-right:auto;">
-		<tr>
-			<td>
-				<label for="safecode">{lng p="safecode"}:</label>
-			</td>
-			<td style="padding-left:2em;" id="captchaContainer">{$captchaHTML}</td>
-			{if !$captchaInfo.hasOwnInput}
-			<td style="padding-left:2em;">
-				<input type="text" size="20" style="text-align:center;width:212px;" name="safecode" id="safecode" />
-			</td>
-			{/if}
-			{if $captchaInfo.showNotReadable}<td style="padding-left:2em;"><small>{lng p="notreadable"}</small></td>{/if}
-		</tr>
-	</table>
-</div>
-{/if}
-
 <div id="contentFooter">
 	<div class="left">
 		<i class="fa fa-folder-o"></i> <label for="savecopy">{lng p="savecopy"}</label> <select name="savecopy" id="savecopy">
@@ -200,7 +181,7 @@
 			<i class="fa fa-save"></i>
 			{lng p="savedraft"}
 		</button>
-		<button class="primary" type="button" id="sendButton" onclick="if(!checkComposeForm(document.forms.f1, {if $attCheck}true{else}false{/if}, '{lng p="att_keywords"}')) return(false); EBID('do').value='sendMail';editor.submit();checkSMIME('{if isset($captchaInfo) && !$captchaInfo.hasOwnAJAXCheck}checkSafeCode(\'{$captchaInfo.failAction}\',\'submitComposeForm();\');{else}submitComposeForm();{/if}');">
+		<button class="primary" type="button" id="sendButton" onclick="if(!checkComposeForm(document.forms.f1, {if $attCheck}true{else}false{/if}, '{lng p="att_keywords"}')) return(false); EBID('do').value='sendMail';editor.submit();checkSMIME('submitComposeForm();');">
 			<i class="fa fa-send"></i>
 			{lng p="sendmail2"}
 		</button>

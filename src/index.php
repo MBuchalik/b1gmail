@@ -113,15 +113,6 @@ if ($_REQUEST['action'] == 'tos') {
     $tpl->assign('faq', $faq);
     $tpl->assign('page', 'nli/faq.tpl');
 } /**
- * safe code image dump
- */ elseif ($_REQUEST['action'] == 'codegen') {
-    if (!class_exists('BMCaptcha')) {
-        include B1GMAIL_DIR . 'serverlib/captcha.class.php';
-    }
-    $captcha = BMCaptcha::createDefaultProvider();
-    $captcha->generate();
-    exit();
-} /**
  * address availability check (RPC)
  */ elseif ($_REQUEST['action'] == 'checkAddressAvailability') {
     if (!isset($_GET['address'])) {

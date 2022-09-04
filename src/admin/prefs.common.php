@@ -47,12 +47,6 @@ $tabs = [
         'active' => $_REQUEST['action'] == 'caching',
     ],
     [
-        'title' => $lang_admin['safecode'],
-        'relIcon' => 'captcha32.png',
-        'link' => 'prefs.common.php?action=captcha&',
-        'active' => $_REQUEST['action'] == 'captcha',
-    ],
-    [
         'title' => $lang_admin['account'],
         'relIcon' => 'ico_prefs_signup.png',
         'link' => 'prefs.common.php?action=account&',
@@ -192,72 +186,6 @@ if ($_REQUEST['action'] == 'common') {
         class_exists('Memcache') || class_exists('Memcached'),
     );
     $tpl->assign('page', 'prefs.caching.tpl');
-} /**
- * captcha
- */ elseif ($_REQUEST['action'] == 'captcha') {
-    if (!class_exists('BMCaptcha')) {
-        include B1GMAIL_DIR . 'serverlib/captcha.class.php';
-    }
-
-    $providers = BMCaptcha::getAvailableProviders();
-
-    if (isset($_REQUEST['save']) && isset($_POST['captcha_provider'])) {
-        $postPrefs =
-            isset($_POST['prefs']) && is_array($_POST['prefs'])
-                ? $_POST['prefs']
-                : [];
-        $config = [];
-
-        foreach ($providers as $provKey => $prov) {
-            $provPrefs = [];
-
-            foreach ($prov['configFields'] as $fieldKey => $val) {
-                switch ($val['type']) {
-                    case FIELD_CHECKBOX:
-                        $value = isset($postPrefs[$provKey][$fieldKey]) ? 1 : 0;
-                        break;
-
-                    default:
-                        $value = $postPrefs[$provKey][$fieldKey];
-                        break;
-                }
-
-                $provPrefs[$fieldKey] = $value;
-            }
-
-            if (count($provPrefs) > 0) {
-                $config[$provKey] = $provPrefs;
-            }
-        }
-
-        $db->Query(
-            'UPDATE {pre}prefs SET `captcha_provider`=?,`captcha_config`=?',
-            $_POST['captcha_provider'],
-            serialize($config),
-        );
-        ReadConfig();
-    }
-
-    $config = @unserialize($bm_prefs['captcha_config']);
-    if (!is_array($config)) {
-        $config = [];
-    }
-
-    foreach ($providers as $provKey => $prov) {
-        foreach ($prov['configFields'] as $fieldKey => $val) {
-            if (isset($config[$provKey][$fieldKey])) {
-                $providers[$provKey]['configFields'][$fieldKey]['value'] =
-                    $config[$provKey][$fieldKey];
-            } else {
-                $providers[$provKey]['configFields'][$fieldKey]['value'] =
-                    $val['default'];
-            }
-        }
-    }
-
-    $tpl->assign('defaultProvider', $bm_prefs['captcha_provider']);
-    $tpl->assign('providers', $providers);
-    $tpl->assign('page', 'prefs.captcha.tpl');
 } elseif ($_REQUEST['action'] == 'account') {
     if (isset($_REQUEST['save'])) {
         $lamArray = explode("\n", $_POST['locked_altmail']);
@@ -271,7 +199,7 @@ if ($_REQUEST['action'] == 'common') {
         $lockedAltMail = implode(':', $lamArray);
 
         $db->Query(
-            'UPDATE {pre}prefs SET std_gruppe=?, minuserlength=?, min_pass_length=?, welcome_mail=?, f_strasse=?, f_telefon=?, f_fax=?, f_alternativ=?, f_safecode=?, alt_check=?, check_double_altmail=?, check_double_cellphone=?, f_anrede=?, locked_altmail=?, `nosignup_autodel`=?, `nosignup_autodel_days`=?',
+            'UPDATE {pre}prefs SET std_gruppe=?, minuserlength=?, min_pass_length=?, welcome_mail=?, f_strasse=?, f_telefon=?, f_fax=?, f_alternativ=?, alt_check=?, check_double_altmail=?, check_double_cellphone=?, f_anrede=?, locked_altmail=?, `nosignup_autodel`=?, `nosignup_autodel_days`=?',
             $_REQUEST['std_gruppe'],
             max(1, $_REQUEST['minuserlength']),
             max(1, $_REQUEST['min_pass_length']),
@@ -280,7 +208,6 @@ if ($_REQUEST['action'] == 'common') {
             $_REQUEST['f_telefon'],
             $_REQUEST['f_fax'],
             $_REQUEST['f_alternativ'],
-            $_REQUEST['f_safecode'],
             isset($_REQUEST['alt_check']) ? 'yes' : 'no',
             isset($_REQUEST['check_double_altmail']) ? 'yes' : 'no',
             isset($_REQUEST['check_double_cellphone']) ? 'yes' : 'no',
