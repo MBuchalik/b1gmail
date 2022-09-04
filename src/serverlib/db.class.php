@@ -93,28 +93,27 @@ class DB {
                 if ($pos === false) {
                     $szUsername = $args[$i];
                     break;
-                } else {
-                    if (
-                        is_string($args[$i]) &&
-                        strcmp($args[$i], '#NULL#') == 0
-                    ) {
-                        $intxt = 'NULL';
-                    } elseif (is_array($args[$i])) {
-                        $intxt = '';
-                        foreach ($args[$i] as $val) {
-                            $intxt .= ',\'' . $this->Escape($val) . '\'';
-                        }
-                        $intxt = '(' . substr($intxt, 1) . ')';
-                        if ($intxt == '()') {
-                            $intxt = '(0)';
-                        }
-                    } else {
-                        $intxt = '\'' . $this->Escape($args[$i]) . '\'';
-                    }
-
-                    $query = substr_replace($query, $intxt, $pos, 1);
-                    $pos += strlen($intxt);
                 }
+                if (
+                    $args[$i] === null ||
+                    (is_string($args[$i]) && strcmp($args[$i], '#NULL#') === 0)
+                ) {
+                    $intxt = 'NULL';
+                } elseif (is_array($args[$i])) {
+                    $intxt = '';
+                    foreach ($args[$i] as $val) {
+                        $intxt .= ',\'' . $this->Escape($val) . '\'';
+                    }
+                    $intxt = '(' . substr($intxt, 1) . ')';
+                    if ($intxt == '()') {
+                        $intxt = '(0)';
+                    }
+                } else {
+                    $intxt = '\'' . $this->Escape($args[$i]) . '\'';
+                }
+
+                $query = substr_replace($query, $intxt, $pos, 1);
+                $pos += strlen($intxt);
             }
         }
 
