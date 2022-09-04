@@ -110,7 +110,10 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                     DROP COLUMN smsreply_abs,
                     DROP COLUMN smsvalidation_type,
                     DROP COLUMN reg_smsvalidation,
-                    DROP COLUMN currency
+                    DROP COLUMN currency,
+                    DROP COLUMN contactform,
+                    DROP COLUMN contactform_to,
+                    DROP COLUMN contactform_subject
                 ',
             )
         ) {

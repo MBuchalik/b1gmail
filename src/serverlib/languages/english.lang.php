@@ -238,16 +238,6 @@ $lang_custom['share_text'] =
     'Best Regards,' .
     "\n\n" .
     '%%firstname%% %%lastname%%';
-$lang_custom['contact_subjects'] =
-    'Question about the offer' .
-    "\n" .
-    'Question about the signup process' .
-    "\n" .
-    'Question about logging in' .
-    "\n" .
-    'Lost password' .
-    "\n" .
-    'Other questions';
 $lang_custom['notify_date'] = 'Appointment: <strong>%s</strong>';
 $lang_custom['notify_newemail'] = '<strong>%d</strong> new email(s): %s';
 $lang_custom['notify_email'] = 'Email received from <strong>%s</strong>: %s';
@@ -276,7 +266,6 @@ $lang_user['suggestions_desc'] =
     'We have determined the following suggestions for your new email address. All shown addresses are still available:';
 $lang_user['choose'] = 'Choose';
 $lang_user['nothanks'] = 'No thanks';
-$lang_user['contactform'] = 'Contact form';
 $lang_user['message'] = 'Message';
 $lang_user['cform_senderror'] =
     'Your message could not be sent. Please try again later.';
@@ -1232,11 +1221,6 @@ $lang_admin['rbbs_webdisk'] = 'Convert webdisk files';
 $lang_admin['separatefiles'] = 'one file per object';
 $lang_admin['userdb'] = 'one file per user';
 $lang_admin['nliarea'] = 'Not logged-in area';
-$lang_admin['contactform'] = 'Contact form';
-$lang_admin['contactform_name'] = 'Name field in contact form';
-$lang_admin['contactform_subject'] = 'Subject field in contact form';
-$lang_admin['cfs_note'] =
-    'The subject choices can be customized per language at';
 $lang_admin['captchaprovider'] = 'Captcha provider';
 $lang_admin['privatekey'] = 'Private key';
 $lang_admin['publickey'] = 'Public key';
@@ -1267,7 +1251,6 @@ $lang_admin['text_notify_date'] = 'Appointment notification';
 $lang_admin['text_notify_newemail'] = 'Email notification';
 $lang_admin['text_notify_email'] = 'Email notification from filter';
 $lang_admin['text_notify_birthday'] = 'Birthday notification';
-$lang_admin['text_contact_subjects'] = 'Contact form subjects';
 $lang_admin['ssl_signup_enable'] = 'Signup via SSL';
 $lang_admin['showcheckboxes'] = 'Multi-select using checkboxes';
 $lang_admin['domaindisplay'] = 'Domain display';

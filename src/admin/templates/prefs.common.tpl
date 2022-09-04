@@ -60,29 +60,13 @@
 
 		<table>
 			<tr>
-				<td width="40" valign="top" rowspan="5"><img src="{$tpldir}images/template32.png" border="0" alt="" width="32" height="32" /></td>
+				<td width="40" valign="top" rowspan="2"><img src="{$tpldir}images/template32.png" border="0" alt="" width="32" height="32" /></td>
 				<td class="td1" width="220">{lng p="domain_combobox"}?</td>
 				<td class="td2"><input name="domain_combobox"{if $bm_prefs.domain_combobox=='yes'} checked="checked"{/if} type="checkbox" /></td>
 			</tr>
 			<tr>
 				<td class="td1">{lng p="redirectmobile"}?</td>
 				<td class="td2"><input name="redirect_mobile"{if $bm_prefs.redirect_mobile=='yes'} checked="checked"{/if} type="checkbox" /></td>
-			</tr>
-			<tr>
-				<td class="td1">{lng p="contactform"}?</td>
-				<td class="td2"><input name="contactform" id="contactform"{if $bm_prefs.contactform=='yes'} checked="checked"{/if} type="checkbox" />
-					<label for="contactform"> {lng p="to2"}: </label><input type="text" name="contactform_to" value="{email value=$bm_prefs.contactform_to}" size="24" /></td>
-			</tr>
-			<tr>
-				<td class="td1">{lng p="contactform_name"}?</td>
-				<td class="td2"><input name="contactform_name"{if $bm_prefs.contactform_name=='yes'} checked="checked"{/if} type="checkbox" /></td>
-			</tr>
-			<tr>
-				<td class="td1">{lng p="contactform_subject"}?</td>
-				<td class="td2"><input name="contactform_subject"{if $bm_prefs.contactform_subject=='yes'} checked="checked"{/if} type="checkbox" />
-					&nbsp;
-					<small>{lng p="cfs_note"}
-						<a href="prefs.languages.php?action=texts&sid={$sid}#contact_subjects">&raquo; {lng p="customtexts"}</a></small></td>
 			</tr>
 		</table>
 	</fieldset>

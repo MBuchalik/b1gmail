@@ -234,12 +234,6 @@ $lang_custom['share_text'] =
     'Viele Grüße,' .
     "\n\n" .
     '%%firstname%% %%lastname%%';
-$lang_custom['contact_subjects'] =
-    "Frage zum Angebot\n" .
-    "Frage zur Registrierung\n" .
-    "Frage zum Login\n" .
-    "Passwort vergessen\n" .
-    'Sonstiges Anliegen';
 $lang_custom['notify_date'] = 'Termin: <strong>%s</strong>';
 $lang_custom['notify_newemail'] = '<strong>%d</strong> neue E-Mail(s): %s';
 $lang_custom['notify_email'] =
@@ -283,7 +277,6 @@ $lang_user['suggestions_desc'] =
     'Wir haben die folgenden Adress-Vorschl&auml;ge ermittelt, die noch zur Registrierung zur Verf&uuml;gung stehen:';
 $lang_user['choose'] = '&Uuml;bernehmen';
 $lang_user['nothanks'] = 'Nein Danke';
-$lang_user['contactform'] = 'Kontakt-Formular';
 $lang_user['message'] = 'Nachricht';
 $lang_user['cform_senderror'] =
     'Ihre Nachricht kann derzeit nicht gesendet werden. Bitte versuchen Sie es sp&auml;ter erneut.';
@@ -1241,11 +1234,6 @@ $lang_admin['rbbs_webdisk'] = 'Webdisk-Dateien umspeichern';
 $lang_admin['separatefiles'] = 'eine Datei pro Objekt';
 $lang_admin['userdb'] = 'eine Datei pro Benutzer';
 $lang_admin['nliarea'] = 'Nicht-eingeloggter Bereich';
-$lang_admin['contactform'] = 'Kontakt-Formular';
-$lang_admin['contactform_name'] = 'Name-Feld im Kontakt-Formular';
-$lang_admin['contactform_subject'] = 'Betreff-Feld im Kontakt-Formular';
-$lang_admin['cfs_note'] =
-    'Die Betreff-Auswahl ist sprach-abh&auml;ngig anpassbar unter';
 $lang_admin['captchaprovider'] = 'Captcha-Provider';
 $lang_admin['privatekey'] = 'Private Key';
 $lang_admin['publickey'] = 'Public Key';
@@ -1794,7 +1782,6 @@ $lang_admin['text_notify_date'] = 'Termin-Benachrichtigung';
 $lang_admin['text_notify_newemail'] = 'E-Mail-Benachrichtigung';
 $lang_admin['text_notify_email'] = 'E-Mail-Benachrichtigung aus Filter';
 $lang_admin['text_notify_birthday'] = 'Geburtstags-Benachrichtigung';
-$lang_admin['text_contact_subjects'] = 'Kontakt-Formular-Betreff-Auswahl';
 $lang_admin['text_maintenance'] = 'Wartungsmodus-Hinweis';
 $lang_admin['text_welcome_sub'] = 'Willkommens-Mail-Betreff';
 $lang_admin['text_welcome_text'] = 'Willkommens-Mail-Text';
