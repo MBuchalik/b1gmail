@@ -38,8 +38,6 @@ class BMPlugin_Widget_Websearch extends BMPlugin {
         $this->author = 'b1gMail Project';
         $this->widgetTemplate = 'widget.search.tpl';
         $this->widgetTitle = $lang_user['websearch'];
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
         $this->version = '1.1';
 
         $this->widgetIcon = 'widget_websearch.png';
@@ -68,8 +66,6 @@ class BMPlugin_Widget_Mailspace extends BMPlugin {
         $this->widgetTemplate = 'widget.mailspace.tpl';
         $this->widgetTitle =
             $lang_user['space'] . ' (' . $lang_user['email'] . ')';
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
         $this->version = '1.1';
 
         $this->widgetIcon = 'widget_mailspace.png';
@@ -107,8 +103,6 @@ class BMPlugin_Widget_Webdiskspace extends BMPlugin {
         $this->widgetTemplate = 'widget.webdiskspace.tpl';
         $this->widgetTitle =
             $lang_user['space'] . ' (' . $lang_user['webdisk'] . ')';
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
         $this->version = '1.1';
 
         $this->widgetIcon = 'widget_webdiskspace.png';
@@ -148,8 +142,6 @@ class BMPlugin_Widget_Tasks extends BMPlugin {
         $this->author = 'b1gMail Project';
         $this->widgetTemplate = 'widget.tasks.tpl';
         $this->widgetTitle = $lang_user['tasks'];
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
         $this->version = '1.2';
 
         $this->widgetIcon = 'widget_tasks.png';
@@ -199,8 +191,6 @@ class BMPlugin_Widget_Welcome extends BMPlugin {
         $this->author = 'b1gMail Project';
         $this->widgetTemplate = 'widget.welcome.tpl';
         $this->widgetTitle = $lang_user['welcome'];
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
         $this->version = '1.2';
 
         $this->widgetIcon = 'widget_welcome.png';
@@ -299,8 +289,6 @@ class BMPlugin_Widget_WebdiskDND extends BMPlugin {
         $this->widgetTemplate = 'widget.webdiskdnd.tpl';
         $this->widgetTitle =
             $lang_user['webdisk'] . ' ' . $lang_user['dnd_upload'];
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
         $this->version = '1.1';
 
         $this->widgetIcon = 'widget_webdiskdnd.png';
@@ -339,8 +327,6 @@ class BMPlugin_Widget_Calendar extends BMPlugin {
         $this->author = 'b1gMail Project';
         $this->widgetTemplate = 'widget.calendar.tpl';
         $this->widgetTitle = $lang_user['calendar'];
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
         $this->version = '1.1';
 
         $this->widgetIcon = 'widget_calendar.png';
@@ -402,8 +388,6 @@ class BMPlugin_Widget_Notes extends BMPlugin {
         $this->author = 'b1gMail Project';
         $this->widgetTemplate = 'widget.notes.tpl';
         $this->widgetTitle = $lang_user['notes'];
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
         $this->version = '1.1';
 
         $this->widgetIcon = 'widget_notes.png';
@@ -443,8 +427,6 @@ class BMPlugin_Widget_EMail extends BMPlugin {
         $this->author = 'b1gMail Project';
         $this->widgetTemplate = 'widget.email.tpl';
         $this->widgetTitle = $lang_user['email'];
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
         $this->version = '1.2';
 
         $this->widgetPrefs = true;
@@ -566,8 +548,6 @@ class BMPlugin_Widget_Quicklinks extends BMPlugin {
         $this->author = 'b1gMail Project';
         $this->widgetTemplate = 'widget.quicklinks.tpl';
         $this->widgetTitle = $lang_user['quicklinks'];
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
         $this->version = '1.1';
 
         $this->widgetIcon = 'widget_quicklinks.png';

@@ -132,7 +132,7 @@ class BMCaptchaProvider_reCAPTCHA extends BMAbstractCaptchaProvider {
         return [
             'title' => 'reCAPTCHA',
             'author' => 'b1gMail Project',
-            'website' => 'https://www.b1gmail.org/',
+            'website' => '',
             'showNotReadable' => false,
             'hasOwnInput' => true,
             'hasOwnAJAXCheck' => false,

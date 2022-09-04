@@ -11,10 +11,6 @@
 </p>
 
 <p align="center">
-	Copyright &copy; 2002-2021 <a target="_blank" href="https://www.b1gmail.org">b1gMail Project</a>
-</p>
-
-<p align="center">
 	<small>
 		{lng p="acpiconsfrom"} <a href="http://www.fatcow.com/free-icons" target="_blank" rel="noreferrer">FatCow Web Hosting</a><br />
 		{lng p="acpbgfrom"} <a href="http://subtlepatterns.com" target="_blank" rel="noreferrer">subtlepatterns.com</a>

@@ -73,7 +73,6 @@ if (!defined('EXTENDED_WORKGROUPS')) {
     define('EXTENDED_WORKGROUPS', false);
 }
 define('TOOLBOX_SERVER', 'https://service.b1gmail.org/toolbox/');
-define('UPDATE_SERVER', 'https://service.b1gmail.org/patches/');
 define('SERVER_WINDOWS', strtolower(substr(PHP_OS, 0, 3)) == 'win');
 define(
     'SERVER_IIS',

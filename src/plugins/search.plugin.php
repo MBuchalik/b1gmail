@@ -37,8 +37,6 @@ class B1GMailSearchProvider extends BMPlugin {
         $this->name = 'b1gMail Search Provider';
         $this->author = 'b1gMail Project';
         $this->version = '1.21';
-        $this->website = 'https://www.b1gmail.org/';
-        $this->update_url = 'https://service.b1gmail.org/plugin_updates/';
 
         // admin pages
         $this->admin_pages = true;

@@ -91,7 +91,7 @@ class BMCaptchaProvider_Default extends BMAbstractCaptchaProvider {
         return [
             'title' => $lang_admin['default'],
             'author' => 'b1gMail Project',
-            'website' => 'https://www.b1gmail.org/',
+            'website' => '',
             'showNotReadable' => true,
             'hasOwnInput' => false,
             'hasOwnAJAXCheck' => false,
