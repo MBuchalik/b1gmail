@@ -1559,7 +1559,6 @@ $lang_admin['file2db_desc'] =
 $lang_admin['db2file_desc'] =
     'Emails stored in the database will be re-stored as files.';
 $lang_admin['installedplugins'] = 'Installed plugins';
-$lang_admin['installplugin'] = 'Install plugin';
 $lang_admin['inactive'] = 'Inactive';
 $lang_admin['active'] = 'Active';
 $lang_admin['type'] = 'Type';
@@ -1576,14 +1575,7 @@ $lang_admin['widgets'] = 'Widgets';
 $lang_admin['acdeactivate'] = 'Activate / deactivate';
 $lang_admin['reallyplugin'] =
     'Are you sure you want to activate / deactivate the plugin? Activating faulty plugins may compromise system integrity; deactivating plugins may permanently erase the data associated with the plugin!';
-$lang_admin['plugpackage'] = 'Plugin package (.bmplugin file)';
-$lang_admin['install_desc'] =
-    'You can easily install new plugins if they are available as a .bmplugin package. Just upload the plugin package here and it will be installed automatically.';
 $lang_admin['install'] = 'Install';
-$lang_admin['plugin_formaterr'] =
-    'The file you uploaded is damaged or it is not a valid plugin package in .bmplugin format!';
-$lang_admin['sourcewarning'] =
-    'Please make sure you install files from trustworthy sources only - they might contain dangerous code!';
 $lang_admin['archiving'] = 'Archiving';
 $lang_admin['entry'] = 'Entry';
 $lang_admin['date'] = 'Date';
@@ -2084,34 +2076,9 @@ $lang_admin['trash_done'] =
     'The action has been completed. <b>%d</b> emails (%.02f MB) have been deleted.';
 $lang_admin['trash_sizesonly'] = 'are larger than:';
 $lang_admin['whobelongtogrps'] = 'belong to one of the following groups:';
-$lang_admin['withoutpackage'] = 'Without package';
-$lang_admin['package'] = 'Package';
-$lang_admin['realpackage'] =
-    'Are you sure you want to disable and erase the entire plugin package? Disabling plugins may permanently erase the data connected to the plugin!';
-$lang_admin['install_desc2'] =
-    'In the following you will find a summary of the plugin package meta data. Are you sure you want to install the package you have uploaded? Only install plugin packages from a trustworthy source because plugins may contain malicious code!';
 $lang_admin['vendor'] = 'Vendor';
 $lang_admin['forb1gmail'] = 'For b1gMail';
 $lang_admin['yourversion'] = 'Your version';
-$lang_admin['checkingsig'] = 'Checking digital signature...';
-$lang_admin['sigfailed'] = 'Signature checking failed';
-$lang_admin['sigfailed_desc'] =
-    'The connection to the signature server for checking the plugin signature failed.';
-$lang_admin['sigofficial'] = 'Official plugin package';
-$lang_admin['sigofficial_desc'] =
-    'This plugin package was officially released by the b1gMail project and has a valid signature. It may be installed without concern.';
-$lang_admin['sigver'] = 'Verified plugin package';
-$lang_admin['sigver_desc'] =
-    'The source of the plugin-package has been verified. The package is not known to cause any damage or errors.';
-$lang_admin['sigunknown'] = 'Unknown plugin package';
-$lang_admin['sigunknown_desc'] =
-    'This plugin and its source are unknown. Only install it if it is from a reliable source.';
-$lang_admin['sigmal'] = 'Erroneous/malicious plugin package';
-$lang_admin['sigmal_desc'] =
-    'This plugin package contains serious errors or malicious code and should not be installed under any circumstances.';
-$lang_admin['plugin_insterr'] =
-    'The plugin could not be installed. It may already have been installed, it may be erroneous, or it may be incompatible with other packages.';
-$lang_admin['plugin_installed'] = 'The plugin has been installed successfully.';
 $lang_admin['sendingletter'] = 'Sending newsletter...';
 $lang_admin['lockedusernames'] = 'Blocked user names';
 $lang_admin['addlockedusername'] = 'Add blocked user name';

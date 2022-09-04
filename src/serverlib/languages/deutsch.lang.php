@@ -1516,7 +1516,6 @@ $lang_admin['file2db_desc'] =
 $lang_admin['db2file_desc'] =
     'Speichert noch in der Datenbank gespeicherte E-Mails in Dateien um.';
 $lang_admin['installedplugins'] = 'Installierte Plugins';
-$lang_admin['installplugin'] = 'Plugin installieren';
 $lang_admin['inactive'] = 'Inaktiv';
 $lang_admin['active'] = 'Aktiv';
 $lang_admin['type'] = 'Typ';
@@ -1533,14 +1532,7 @@ $lang_admin['widgets'] = 'Widgets';
 $lang_admin['acdeactivate'] = 'Aktivieren / Deaktivieren';
 $lang_admin['reallyplugin'] =
     'Soll das Plugin wirklich aktiviert bzw. deaktiviert werden? Das Aktivieren fehlerhafter Plugins kann die Systemintegrität gefährden; das Deaktivieren von Plugins kann die mit dem Plugin verbundenen Daten unwiderruflich löschen!';
-$lang_admin['plugpackage'] = 'Plugin-Paket (.bmplugin-Datei)';
-$lang_admin['install_desc'] =
-    'Sie k&ouml;nnen neue Plugins ganz einfach installieren, wenn diese als .bmplugin-Paket vorliegen. Laden Sie das Plugin-Paket einfach hier hoch und es wird automatisch installiert.';
 $lang_admin['install'] = 'Installieren';
-$lang_admin['plugin_formaterr'] =
-    'Die hochgeladene Datei ist besch&auml;digt oder kein g&uuml;ltiges Plugin-Paket im .bmplugin-Format!';
-$lang_admin['sourcewarning'] =
-    'Installieren Sie nur Dateien, deren Quelle vertrauensw&uuml;rdig ist - sie k&ouml;nnten b&ouml;sartigen Code enthalten!';
 $lang_admin['archiving'] = 'Archivierung';
 $lang_admin['entry'] = 'Eintrag';
 $lang_admin['date'] = 'Datum';
@@ -2099,35 +2091,9 @@ $lang_admin['trash_done'] =
     'Die Aktion wurde ausgef&uuml;hrt. Es wurden <b>%d</b> E-Mails (%.02f MB) gel&ouml;scht.';
 $lang_admin['trash_sizesonly'] = 'gr&ouml;&szlig;er sind als:';
 $lang_admin['whobelongtogrps'] = 'einer der folgenden Gruppen angeh&ouml;ren:';
-$lang_admin['withoutpackage'] = 'Ohne Paket';
-$lang_admin['package'] = 'Paket';
-$lang_admin['realpackage'] =
-    'Soll das gesamte Plugin-Paket wirklich deaktiviert und gel&ouml;scht werden? Das Deaktivieren von Plugins kann die mit dem Plugin verbundenen Daten unwiderruflich löschen!';
-$lang_admin['install_desc2'] =
-    'Im Folgenden finden Sie eine Zusammenfassung der Plugin-Paket-Meta-Daten. M&ouml;chten Sie das hochgeladene Plugin-Paket wirklich installieren? Installieren Sie nur Plugin-Pakete, deren Quelle vertrauensw&uuml;rdig ist, da Plugins b&ouml;sartigen Code enthalten k&ouml;nnen!';
 $lang_admin['vendor'] = 'Hersteller';
 $lang_admin['forb1gmail'] = 'F&uuml;r b1gMail';
 $lang_admin['yourversion'] = 'Ihre Version';
-$lang_admin['checkingsig'] = 'Digitale Signatur wird gepr&uuml;ft...';
-$lang_admin['sigfailed'] = 'Signatur-Pr&uuml;fung fehlgeschlagen';
-$lang_admin['sigfailed_desc'] =
-    'Die Verbindung zum Signatur-Server zur Pr&uuml;fung der Plugin-Signatur ist fehlgeschlagen. Die G&uuml;te des Plugins kann nicht festgestellt werden.';
-$lang_admin['sigofficial'] = 'Offizielles Plugin-Paket';
-$lang_admin['sigofficial_desc'] =
-    'Dieses Plugin-Paket wurde vom b1gMail-Projekt herausgegeben und weist eine g&uuml;ltige Signatur auf. Es kann bedenkenlos installiert werden.';
-$lang_admin['sigver'] = 'Verifiziertes Plugin-Paket';
-$lang_admin['sigver_desc'] =
-    'Die Herkunft dieses Plugin-Pakets wurde erfolgreich verifiziert. Fehler oder Sch&auml;den durch dieses Paket sind nicht bekannt.';
-$lang_admin['sigunknown'] = 'Unbekanntes Plugin-Paket';
-$lang_admin['sigunknown_desc'] =
-    'Dieses Plugin-Paket und dessen Herkunft sind unbekannt. Installieren Sie es nur, wenn die Quelle vertrauensw&uuml;rdig ist.';
-$lang_admin['sigmal'] = 'Fehlerhaftes/b&ouml;sartiges Plugin-Paket';
-$lang_admin['sigmal_desc'] =
-    'Dieses Plugin-Paket enth&auml;lt schwerwiegende Fehler oder b&ouml;sartigen Code und sollte unter keinen Umst&auml;nden installiert werden.';
-$lang_admin['plugin_insterr'] =
-    'Das Plugin-Paket konnte nicht installiert werden. M&ouml;glicherweise ist das Paket schon installiert, fehlerhaft oder steht in Konflikt zu anderen Paketen.';
-$lang_admin['plugin_installed'] =
-    'Das Plugin-Paket wurde erfolgreich installiert.';
 $lang_admin['sendingletter'] = 'Newsletter versenden...';
 $lang_admin['lockedusernames'] = 'Gesperrte Benutzer-Namen';
 $lang_admin['addlockedusername'] = 'Gesperrten Benutzer-Name hinzuf&uuml;gen';
