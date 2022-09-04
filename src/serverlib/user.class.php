@@ -440,7 +440,7 @@ class BMUser {
      * @param string $userm
      * @return bool
      */
-    function AddressLocked($userm) {
+    static function AddressLocked($userm) {
         global $db;
 
         $userm = strtolower($userm);
