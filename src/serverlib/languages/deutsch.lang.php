@@ -1212,9 +1212,6 @@ $lang_admin['sendstats'] = 'E-Mail-Versand-Statistik';
 $lang_admin['recvstats'] = 'E-Mail-Empfangs-Statistik';
 $lang_admin['pfrulenote'] =
     '(nur f&uuml;r Text-Felder (regul&auml;rer Ausdruck) oder Datums-Felder (z.B. &quot;&gt;= 18y&quot;))';
-$lang_admin['vatratenotice'] =
-    'Der USt.-Satz ist l&auml;nderspezifisch einstellbar unter';
-$lang_admin['eucountry'] = 'EU-Staat';
 $lang_admin['registered'] = 'Registriert';
 $lang_admin['max'] = 'max.';
 $lang_admin['onlyfor'] = 'gilt nur f&uuml;r';
@@ -1756,7 +1753,6 @@ $lang_admin['clamwarning'] =
     'Aktivieren Sie die ClamAV-Integration nur, wenn ClamAV/clamd auf dem genannten Server installiert und aktiviert ist.';
 $lang_admin['countries'] = 'L&auml;nder';
 $lang_admin['plzdb'] = 'PLZ-DB';
-$lang_admin['addcountry'] = 'Land hinzuf&uuml;gen';
 $lang_admin['cachetime'] = 'Cache-G&uuml;ltigkeit';
 $lang_admin['cachesize'] = 'Cache-Gr&ouml;&szlig;e';
 $lang_admin['inactiveonly'] = 'nur f&uuml;r abgelaufene Dateien';

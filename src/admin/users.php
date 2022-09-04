@@ -599,13 +599,16 @@ if ($_REQUEST['action'] == 'users') {
             array_map('DecodeDomain', explode(':', $user['saliase'])),
         );
 
+        $countryList = CountryList();
+        asort($countryList);
+
         // assign
         $tpl->assign('historyCount', $historyCount);
         $tpl->assign('user', $user);
         $tpl->assign('group', $group);
         $tpl->assign('groups', BMGroup::GetSimpleGroupList());
         $tpl->assign('aliases', $aliases);
-        $tpl->assign('countries', CountryList());
+        $tpl->assign('countries', $countryList);
         $tpl->assign('emailMails', $emailMails);
         $tpl->assign('emailFolders', $emailFolders);
         $tpl->assign('profileFields', $profileFields);
@@ -628,8 +631,11 @@ if ($_REQUEST['action'] == 'users') {
         $history[] = $user;
         $history = array_reverse($history);
 
+        $countryList = CountryList();
+        asort($countryList);
+
         // assign
-        $tpl->assign('countries', CountryList());
+        $tpl->assign('countries', $countryList);
         $tpl->assign('history', $history);
         $tpl->assign('user', $user);
         $tpl->assign('page', 'users.contacthistory.tpl');
@@ -844,11 +850,14 @@ if ($_REQUEST['action'] == 'users') {
         }
         $res->Free();
 
+        $countryList = CountryList();
+        asort($countryList);
+
         // assign
         $tpl->assign('profileFields', $profileFields);
         $tpl->assign('groups', BMGroup::GetSimpleGroupList());
         $tpl->assign('defaultGroup', $bm_prefs['std_gruppe']);
-        $tpl->assign('countries', CountryList());
+        $tpl->assign('countries', $countryList);
         $tpl->assign('defaultCountry', $bm_prefs['std_land']);
         $tpl->assign('domainList', GetDomainList());
         $tpl->assign('page', 'users.create.tpl');

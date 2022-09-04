@@ -1204,8 +1204,6 @@ $lang_admin['sendstats'] = 'Email send statistics';
 $lang_admin['recvstats'] = 'Email receive statistics';
 $lang_admin['pfrulenote'] =
     '(only for text fields (regular expressions) or date fields (e.g. &quot;&gt;= 18y&quot;))';
-$lang_admin['vatratenotice'] = 'The VAT rate is configurable per country at';
-$lang_admin['eucountry'] = 'EU country';
 $lang_admin['registered'] = 'Registered';
 $lang_admin['max'] = 'max.';
 $lang_admin['onlyfor'] = 'only for';
@@ -1764,7 +1762,6 @@ $lang_admin['clamwarning'] =
     'Only enable ClamAV-integration if ClamAV/clamd has been installed on the mentioned server and is enabled.';
 $lang_admin['countries'] = 'Countries';
 $lang_admin['plzdb'] = 'ZIP DB';
-$lang_admin['addcountry'] = 'Add country';
 $lang_admin['cachetime'] = 'Cache validity';
 $lang_admin['cachesize'] = 'Cache size';
 $lang_admin['inactiveonly'] = 'For inactive files only';

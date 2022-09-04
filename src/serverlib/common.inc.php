@@ -2821,29 +2821,22 @@ function XMLEncode($str) {
  * country list
  *
  */
-function CountryList($withDetails = false) {
-    global $db, $cacheManager;
+function CountryList() {
+    global $currentLanguage;
 
-    $cacheKey = 'countryList' . ($withDetails ? 'WithDetails' : '');
+    include B1GMAIL_DIR . 'serverlib/countrylist.php';
 
-    if (!($laender = $cacheManager->Get($cacheKey))) {
-        $laender = [];
-        $res = $db->Query(
-            'SELECT id,land,is_eu,vat FROM {pre}staaten ORDER BY land ASC',
-        );
-        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-            if ($withDetails) {
-                $laender[$row['id']] = $row;
-            } else {
-                $laender[$row['id']] = $row['land'];
-            }
+    $result = [];
+
+    foreach ($countryListRaw as $item) {
+        if ($currentLanguage === 'deutsch') {
+            $result[$item['id']] = $item['name_deutsch'];
+        } else {
+            $result[$item['id']] = $item['name_english'];
         }
-        $res->Free();
-
-        $cacheManager->Set($cacheKey, $laender);
     }
 
-    return $laender;
+    return $result;
 }
 
 /**

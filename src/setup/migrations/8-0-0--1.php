@@ -223,6 +223,10 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
             return false;
         }
 
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_staaten')) {
+            return false;
+        }
+
         return true;
     }
 }

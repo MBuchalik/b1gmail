@@ -152,12 +152,13 @@ if ($_REQUEST['action'] == 'common') {
 
     // get available languages
     $languages = GetAvailableLanguages();
-    $countries = CountryList();
+    $countryList = CountryList();
+    asort($countryList);
 
     // assign
     $tpl->assign('safemode', ini_get('safe_mode'));
     $tpl->assign('languages', $languages);
-    $tpl->assign('countries', CountryList());
+    $tpl->assign('countries', $countryList);
     $tpl->assign('page', 'prefs.common.tpl');
 } /**
  * caching
