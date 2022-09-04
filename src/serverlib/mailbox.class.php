@@ -2851,12 +2851,12 @@ class BMMailbox {
                     : 'normal'),
             time(),
             $messageID,
-            $mail->infection,
+            $mail->infection ?? '',
             0,
             implode(';;;', $mail->GetReferences()),
             $mail->flags,
             $mailSize,
-            $mail->color,
+            $mail->color ?? '',
         );
 
         // get insert id
