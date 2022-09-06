@@ -8,7 +8,7 @@
 
 	<title>{$service_title}{if isset($pageTitle)} - {text value=$pageTitle}{/if}</title>
 
-	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
+	<link rel="shortcut icon" type="image/png" href="{$tpldir}res/favicon.png" />
 
 	<link rel="stylesheet" href="{$tpldir}bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{$tpldir}style/notloggedin.css?{fileDateSig file="style/notloggedin.css"}" />

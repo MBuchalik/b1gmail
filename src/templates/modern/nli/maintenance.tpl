@@ -7,7 +7,7 @@
 	
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 
-	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
+	<link rel="shortcut icon" type="image/png" href="{$tpldir}res/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="{$tpldir}style/notloggedin.css" />
 </head>
 

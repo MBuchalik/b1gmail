@@ -6,7 +6,7 @@
 
 	<meta http-equiv="content-type" content="text/html; charset={$charset}" />
 
-	<link rel="shortcut icon" type="image/png" href="res/favicon.png" />
+	<link rel="shortcut icon" type="image/png" href="{$tpldir}res/favicon.png" />
 	<link href="{$tpldir}style/loggedin.css?{fileDateSig file="style/loggedin.css"}" rel="stylesheet" type="text/css" />
 	<link href="{$tpldir}style/dtree.css?{fileDateSig file="style/dtree.css"}" rel="stylesheet" type="text/css" />
 	<link href="{$tpldir}clientlib/fontawesome/css/font-awesome.min.css?{fileDateSig file="clientlib/fontawesome/css/font-awesome.min.css"}" rel="stylesheet" type="text/css" />

@@ -75,21 +75,21 @@ function dTree(objName) {
 
 	this.icon = {
 
-		root				: 'res/empty.gif',
+		root				: tplDir + 'res/empty.gif',
 
-		folder			: 'res/folder.gif',
+		folder			: tplDir + 'res/folder.gif',
 
-		folderOpen	: 'res/folderopen.gif',
+		folderOpen	: tplDir + 'res/folderopen.gif',
 
-		node				: 'res/page.gif',
+		node				: tplDir + 'res/page.gif',
 
-		empty				: 'res/empty.gif',
+		empty				: tplDir + 'res/empty.gif',
 
-		line				: 'res/empty.gif',
+		line				: tplDir + 'res/empty.gif',
 
-		join				: 'res/empty.gif',
+		join				: tplDir + 'res/empty.gif',
 
-		joinBottom	: 'res/empty.gif',
+		joinBottom	: tplDir + 'res/empty.gif',
 
 		plus				: 'fa fa-caret-right',
 

@@ -34,10 +34,6 @@ if (!isset($_REQUEST['out']) || $_REQUEST['out'] == 'text') {
     $str = microtime() . ' - OK';
     header('Content-Length: ' . strlen($str));
     echo $str;
-} elseif (isset($_REQUEST['out']) && $_REQUEST['out'] == 'img') {
-    header('Content-Type: image/gif');
-    header('Content-Length: ' . filesize('res/dummy.gif'));
-    readfile('res/dummy.gif');
 }
 flush();
 

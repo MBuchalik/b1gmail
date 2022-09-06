@@ -87,7 +87,7 @@ function setNotificationCount(count) {
         EBID('notifyIcon').className.replace(' animated', '') + ' animated';
 
       if (typeof notifySound != 'undefined' && notifySound) {
-        new Audio('./res/notify.mp3').play();
+        new Audio(tplDir + 'res/notify.mp3').play();
       }
     }
   } else {
