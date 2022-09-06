@@ -1399,6 +1399,7 @@ $lang_admin['greeting'] = 'Greeting';
 $lang_admin['greeting_mr'] = 'Dear Mr %s';
 $lang_admin['greeting_mrs'] = 'Dear Mrs %s';
 $lang_admin['greeting_none'] = 'Dear Sir or Madam';
+$lang_admin['sum'] = 'Sum';
 $lang_admin['acp'] = 'Administrator Control Panel (ACP)';
 $lang_admin['password'] = 'Password';
 $lang_admin['login'] = 'Login';

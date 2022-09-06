@@ -2106,3 +2106,4 @@ $lang_admin['greeting'] = 'Gru&szlig;formel';
 $lang_admin['greeting_mr'] = 'Sehr geehrter Herr %s';
 $lang_admin['greeting_mrs'] = 'Sehr geehrte Frau %s';
 $lang_admin['greeting_none'] = 'Sehr geehrte Damen und Herren';
+$lang_admin['sum'] = 'Summe';
