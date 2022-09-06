@@ -2157,7 +2157,7 @@ if ($_REQUEST['action'] == 'start') {
 
                     // config args
                     $configArgs = [
-                        'config' => B1GMAIL_DIR . 'res/openssl.cnf',
+                        'config' => B1GMAIL_DIR . 'serverlib/res/openssl.cnf',
                     ];
 
                     // generate private/public key pair
