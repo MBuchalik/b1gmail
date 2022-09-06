@@ -249,15 +249,6 @@ function GetCategorizedSpaceUsage() {
 
     // estimate sizes
     $sizes = [];
-    foreach ($backupTables as $key => $tables) {
-        foreach ($tables as $table) {
-            if (isset($sizes[$key])) {
-                $sizes[$key] += $tableSizes[$table];
-            } else {
-                $sizes[$key] = $tableSizes[$table];
-            }
-        }
-    }
 
     // data size for mails + webdisk
     $res = $db->Query('SELECT SUM(size) FROM {pre}mails');
@@ -266,8 +257,8 @@ function GetCategorizedSpaceUsage() {
     $res = $db->Query('SELECT SUM(size) FROM {pre}diskfiles');
     [$diskSize] = $res->FetchArray(MYSQLI_NUM);
     $res->Free();
-    $sizes['mails'] += $emailSize;
-    $sizes['webdisk'] += $diskSize;
+    $sizes['mails'] = $emailSize;
+    $sizes['webdisk'] = $diskSize;
 
     // return
     return $sizes;
