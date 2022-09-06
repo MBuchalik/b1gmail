@@ -1806,7 +1806,6 @@ $lang_admin['selffolder'] = 'Abs. Pfad zu b1gMail';
 $lang_admin['ssl'] = 'SSL';
 $lang_admin['ssl_url'] = 'SSL-URL zu b1gMail';
 $lang_admin['ssl_login_enable'] = 'Login standardm&auml;&szlig;ig per SSL';
-$lang_admin['ssl_login_option'] = 'SSL bei Login an-/abw&auml;hlbar';
 $lang_admin['ssl_signup_enable'] = 'Registrierung per SSL';
 $lang_admin['datafolder'] = 'Data-Verzeichnis';
 $lang_admin['hostname'] = 'Hostname';

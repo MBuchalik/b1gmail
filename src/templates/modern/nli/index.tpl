@@ -152,12 +152,7 @@
 				<input type="password" name="password" id="password_p" class="form-control" placeholder="{lng p="password"}" required="true" />
 			</div>
 		</div>
-		{if $ssl_login_option}<div class="checkbox">
-			<label>
-				<input type="checkbox" id="ssl_p"{if $ssl_login_enable} checked="checked"{/if} onchange="updateFormSSL(this)" onclick="updateFormSSL(this)" />
-				{lng p="ssl"}
-			</label>
-		</div>{/if}
+
 		<div class="form-group">
 			<button type="submit" class="btn btn-success btn-block">{lng p="login"}</button>
 		</div>

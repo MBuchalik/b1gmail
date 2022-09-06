@@ -98,7 +98,7 @@ if ($_REQUEST['action'] == 'common') {
         }
 
         $db->Query(
-            'UPDATE {pre}prefs SET titel=?, b1gmta_host=?, selffolder=?, selfurl=?, mobile_url=?, search_engine=?, datafolder=?, language=?, std_land=?, datumsformat=?, ordner_proseite=?,  autocancel=?, wartung=?, structstorage=?, cron_interval=?, logouturl=?, contact_history=?, ip_lock=?, cookie_lock=?, domain_combobox=?, ssl_url=?, ssl_login_option=?, ssl_login_enable=?, ssl_signup_enable=?, auto_tz=?, compress_pages=?, redirect_mobile=?, calendar_defaultviewmode=?, logs_autodelete=?, logs_autodelete_days=?, logs_autodelete_archive=?, hotkeys_default=?, notify_interval=?, notify_lifetime=?, mail_groupmode=?',
+            'UPDATE {pre}prefs SET titel=?, b1gmta_host=?, selffolder=?, selfurl=?, mobile_url=?, search_engine=?, datafolder=?, language=?, std_land=?, datumsformat=?, ordner_proseite=?,  autocancel=?, wartung=?, structstorage=?, cron_interval=?, logouturl=?, contact_history=?, ip_lock=?, cookie_lock=?, domain_combobox=?, ssl_url=?, ssl_login_enable=?, ssl_signup_enable=?, auto_tz=?, compress_pages=?, redirect_mobile=?, calendar_defaultviewmode=?, logs_autodelete=?, logs_autodelete_days=?, logs_autodelete_archive=?, hotkeys_default=?, notify_interval=?, notify_lifetime=?, mail_groupmode=?',
             $_POST['titel'],
             $_POST['b1gmta_host'],
             $_POST['selffolder'],
@@ -120,7 +120,6 @@ if ($_REQUEST['action'] == 'common') {
             isset($_POST['cookie_lock']) ? 'yes' : 'no',
             isset($_POST['domain_combobox']) ? 'yes' : 'no',
             $_POST['ssl_url'],
-            isset($_POST['ssl_login_option']) ? 'yes' : 'no',
             isset($_POST['ssl_login_enable']) ? 'yes' : 'no',
             isset($_POST['ssl_signup_enable']) ? 'yes' : 'no',
             isset($_POST['auto_tz']) ? 'yes' : 'no',

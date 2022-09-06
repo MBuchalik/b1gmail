@@ -37,15 +37,11 @@
 							<input type="password" name="password" id="password" class="form-control" placeholder="{lng p="password"}" required="true" />
 						</div>
 					</div>
+					
 					<div class="lost-pw">
 						<a href="#" data-toggle="modal" data-target="#lostPW">{lng p="lostpw"}?</a>
 					</div>
-					{if $ssl_login_option}<div class="checkbox">
-						<label>
-							<input type="checkbox" id="ssl"{if $ssl_login_enable} checked="checked"{/if} onchange="updateFormSSL(this)" onclick="updateFormSSL(this)" />
-							{lng p="ssl"}
-						</label>
-					</div>{/if}
+
 					<div class="form-group">
 						<button type="submit" class="btn btn-success btn-block">{lng p="login"}</button>
 					</div>

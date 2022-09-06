@@ -1710,10 +1710,6 @@ if ($_REQUEST['action'] == 'start') {
             $bm_prefs['ssl_login_enable'] == 'yes',
         );
         $tpl->assign(
-            'ssl_login_option',
-            $bm_prefs['ssl_login_option'] == 'yes',
-        );
-        $tpl->assign(
             'ssl_signup_enable',
             $bm_prefs['ssl_signup_enable'] == 'yes',
         );

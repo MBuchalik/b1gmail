@@ -81,10 +81,6 @@
 				<td class="td2"><input type="text" name="ssl_url" value="{text allowEmpty=true value=$bm_prefs.ssl_url}" size="36" /></td>
 			</tr>
 			<tr>
-				<td class="td1" width="220">{lng p="ssl_login_option"}?</td>
-				<td class="td2"><input name="ssl_login_option"{if $bm_prefs.ssl_login_option=='yes'} checked="checked"{/if} type="checkbox" /></td>
-			</tr>
-			<tr>
 				<td class="td1" width="220">{lng p="ssl_login_enable"}?</td>
 				<td class="td2"><input name="ssl_login_enable"{if $bm_prefs.ssl_login_enable=='yes'} checked="checked"{/if} type="checkbox" /></td>
 			</tr>

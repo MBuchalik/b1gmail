@@ -1801,7 +1801,6 @@ $lang_admin['mobile_url'] = 'Mobile b1gMail URL';
 $lang_admin['ssl'] = 'SSL';
 $lang_admin['ssl_url'] = 'b1gMail SSL URL';
 $lang_admin['ssl_login_enable'] = 'Login using SSL by default';
-$lang_admin['ssl_login_option'] = 'SSL login checkbox';
 $lang_admin['datafolder'] = 'Data directory';
 $lang_admin['hostname'] = 'Hostname';
 $lang_admin['template'] = 'Template';
