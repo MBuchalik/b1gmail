@@ -23,15 +23,6 @@ $lang_setup['showchmod'] = 'Show <tt>chmod</tt> commands';
 $lang_setup['dbmails_note'] =
     'Your database contains emails stored in a deprecated format which is not supported anymore as of b1gMail 7.4. Please revert copying the update files (i.e. restore your backup), log in to the b1gMail ACP, go to &quot;Preferences&quot; - &quot;Email&quot; and ensure that mails are stored in files. Then, go to &quot;Tools&quot; - &quot;Optimize&quot; - &quot;File system&quot; and let b1gMail move all remaining mails stored in DB to the file system. Afterwards, retry the update.';
 $lang_setup['dbmails'] = 'Mails saved in deprecated mode (DB)';
-$lang_setup['setupmode'] = 'Setup mode';
-$lang_setup['mode_public'] = 'Public email service';
-$lang_setup['mode_public_desc'] =
-    'Configures b1gMail for public email service providing. Enabled a public signup form which is accessible for visitors to register email addresses.';
-$lang_setup['mode_private'] = 'Internal email system';
-$lang_setup['mode_private_desc'] =
-    'Configures b1gMail as an internal email system. The public signup form will be disabled and new users can only be created by the administrator.';
-$lang_setup['mode_note'] =
-    'b1gMail will be pre-configured according to the setup mode chosen below. The configuration can be changed at any time after installation.';
 $lang_setup['accounting'] = 'Accounting';
 $lang_setup['credit_text'] = 'Credits (charge account)';
 $lang_setup['setup'] = 'Setup';

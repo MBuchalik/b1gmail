@@ -23,15 +23,6 @@ $lang_setup['showchmod'] = '<tt>chmod</tt>-Kommandos anzeigen';
 $lang_setup['dbmails_note'] =
     'In Ihrer Datenbank befinden sich E-Mails, die in einem veralteten Format gespeichert sind. Dieses Format wird in b1gMail ab 7.4 nicht mehr unterst&uuml;tzt. Bitte stellen Sie den alten Stand der b1gMail-Dateien wieder her (d.h. wie vor Kopieren der Update-Dateien), loggen Sie sich in den Adminbereich ein, gehen Sie zu &quot;Einstellungen&quot; - &quot;E-Mail&quot; und stellen Sie sicher, dass als Speichermethode die Speicherung in Dateien gew&auml;hlt ist. Danach rufen Sie bitte &quot;Tools&quot; - &quot;Optimierung&quot; - &quot;Dateisystem&quot; auf und lassen alle noch in der Datenbank gespeicherten Mails in Dateien umspeichern. Danach kann das Update wiederholt werden.';
 $lang_setup['dbmails'] = 'In veraltetem Modus gespeicherte Mails (DB)';
-$lang_setup['setupmode'] = 'Einrichtungs-Modus';
-$lang_setup['mode_public'] = '&Ouml;ffentlicher E-Mail-Dienst';
-$lang_setup['mode_public_desc'] =
-    'Konfiguriert b1gMail zum Betrieb eines &ouml;ffentlichen E-Mail-Dienstes vor. Ein f&uuml;r Besucher zug&auml;ngliches Registrierungs-Formular zum Anlegen neuer E-Mail-Adressen wird aktiviert.';
-$lang_setup['mode_private'] = 'Internes E-Mail-System';
-$lang_setup['mode_private_desc'] =
-    'Konfiguriert b1gMail zum Betrieb eines internen E-Mail-Systems vor. Das &ouml;ffentliche Registrierungs-Formular wird deaktiviert; neue Benutzer k&ouml;nnen nur durch den Administrator angelegt werden.';
-$lang_setup['mode_note'] =
-    'Der Einrichtungs-Modus bestimmt, wie Ihre b1gMail-Installation vorkonfiguriert wird. Die Konfiguration ist nach der Installation jederzeit &auml;nderbar.';
 $lang_setup['accounting'] = 'Buchhaltung';
 $lang_setup['credit_text'] = 'Credits (Konto aufladen)';
 $lang_setup['setup'] = 'Installation';

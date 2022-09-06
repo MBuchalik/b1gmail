@@ -186,10 +186,10 @@ if ($step == STEP_SELECT_LANGUAGE) {
 		</tr>
 		<tr>
 			<th><?php echo $lang_setup['phpversion']; ?></th>
-			<td>5.3.0</td>
+			<td>7.4.0</td>
 			<td><?php echo phpversion(); ?></td>
 			<td><img src="../admin/templates/images/<?php if (
-       (int) str_replace('.', '', phpversion()) >= 530
+       (int) str_replace('.', '', phpversion()) >= 740
    ) {
        echo 'ok';
    } else {
@@ -329,29 +329,7 @@ if ($step == STEP_SELECT_LANGUAGE) {
 			<?php echo $lang_setup['emailcfg_text']; ?>
 
 			<br /><br />
-			<fieldset>
-				<legend><?php echo $lang_setup['setupmode']; ?></legend>
 
-				<?php echo $lang_setup['mode_note']; ?><br /><br />
-
-				<input type="radio" id="setup_mode_public" name="setup_mode" value="public" checked="checked" />
-				<label for="setup_mode_public"><?php echo $lang_setup[
-        'mode_public'
-    ]; ?></label><br />
-				<blockquote>
-					<?php echo $lang_setup['mode_public_desc']; ?><br />
-				</blockquote>
-
-				<input type="radio" id="setup_mode_private" name="setup_mode" value="private" />
-				<label for="setup_mode_private"><?php echo $lang_setup[
-        'mode_private'
-    ]; ?></label>
-				<blockquote>
-					<?php echo $lang_setup['mode_private_desc']; ?><br />
-				</blockquote>
-			</fieldset>
-
-			<br />
 			<fieldset>
 				<legend><?php echo $lang_setup['receiving']; ?></legend>
 
@@ -462,9 +440,6 @@ example.org</textarea>
          ); ?>" size="32" />
 			</blockquote>
 
-			<input type="hidden" name="setup_mode" value="<?php echo htmlentities(
-       $_REQUEST['setup_mode'],
-   ); ?>" />
 			<input type="hidden" name="receive_method" value="<?php echo htmlentities(
        $_REQUEST['receive_method'],
    ); ?>" />
@@ -571,12 +546,6 @@ example.org</textarea>
             [$mysqlVersion] = mysqli_fetch_array($result, MYSQLI_NUM);
             mysqli_free_result($result);
 
-            // setup mode?
-            $setupMode = $_REQUEST['setup_mode'];
-            if (!in_array($setupMode, ['public', 'private'])) {
-                $setupMode = 'public';
-            }
-
             // create db structure
             $dbStructResult = 'ok';
             $result = CreateDatabaseStructure(
@@ -664,7 +633,8 @@ example.org</textarea>
                     'postmaster@' . EncodeDomain($firstDomain),
                     $connection,
                 ),
-                $setupMode == 'public' ? 'yes' : 'no',
+                // There are no signup features anymore, but the database structure expects a value to be set here.
+                'no',
                 SQLEscape(
                     'postmaster@' . EncodeDomain($firstDomain),
                     $connection,
@@ -800,12 +770,10 @@ example.org</textarea>
             );
 
             // install template prefs
-            if ($setupMode == 'private') {
-                mysqli_query(
-                    $connection,
-                    'INSERT INTO bm60_templateprefs(`template`,`key`,`value`) VALUES(\'modern\',\'hideSignup\',\'1\')',
-                );
-            }
+            mysqli_query(
+                $connection,
+                'INSERT INTO bm60_templateprefs(`template`,`key`,`value`) VALUES(\'modern\',\'hideSignup\',\'1\')',
+            );
 
             // create sign key
             if (function_exists('random_bytes')) {
