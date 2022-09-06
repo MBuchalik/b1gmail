@@ -22,8 +22,6 @@ Often, when developing locally, you don't want to actually send emails (and even
 define('DEV_MOCK_MAIL_SENDING', true);
 ```
 
-## Migrating from the commercial to the GPL version
+## Migrating from one major release version to another
 
-A guide still has to be created. One important thing to note is that the B1GMAIL_SIGNKEY
-from the commercial version's `init.inc.php` has to be moved to `config.php` in order
-to prevent data loss, especially w.r.t. to encrypted resources.
+See [UPGRADE.md](UPGRADE.md).
