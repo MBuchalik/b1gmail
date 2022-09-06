@@ -513,7 +513,7 @@ if ($_REQUEST['action'] == 'overview') {
             $args['files[' . $key . ']'] = base64_encode($val);
         }
 
-        // load http class
+        // This does not exist anymore, but since the toolbox features will soon be removed, it is not a big issue.
         if (!class_exists('BMHTTP')) {
             include B1GMAIL_DIR . 'serverlib/http.class.php';
         }
