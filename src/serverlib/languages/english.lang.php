@@ -1243,7 +1243,6 @@ $lang_admin['text_notify_date'] = 'Appointment notification';
 $lang_admin['text_notify_newemail'] = 'Email notification';
 $lang_admin['text_notify_email'] = 'Email notification from filter';
 $lang_admin['text_notify_birthday'] = 'Birthday notification';
-$lang_admin['ssl_signup_enable'] = 'Signup via SSL';
 $lang_admin['showcheckboxes'] = 'Multi-select using checkboxes';
 $lang_admin['domaindisplay'] = 'Domain display';
 $lang_admin['ddisplay_normal'] = '@ char in dropdown';

@@ -1709,10 +1709,6 @@ if ($_REQUEST['action'] == 'start') {
             'ssl_login_enable',
             $bm_prefs['ssl_login_enable'] == 'yes',
         );
-        $tpl->assign(
-            'ssl_signup_enable',
-            $bm_prefs['ssl_signup_enable'] == 'yes',
-        );
         $tpl->assign('domain_combobox', $bm_prefs['domain_combobox'] == 'yes');
         $tpl->assign('domainList', GetDomainList('login'));
         $tpl->assign('timezone', date('Z'));

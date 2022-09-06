@@ -117,7 +117,8 @@ class Migration_8_0_0__1 extends SingleMigrationStep {
                     DROP COLUMN captcha_config,
                     DROP COLUMN captcha_provider,
                     DROP COLUMN f_safecode,
-                    DROP COLUMN ssl_login_option
+                    DROP COLUMN ssl_login_option,
+                    DROP COLUMN ssl_signup_enable
                 ',
             )
         ) {

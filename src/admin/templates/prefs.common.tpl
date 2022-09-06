@@ -84,10 +84,6 @@
 				<td class="td1" width="220">{lng p="ssl_login_enable"}?</td>
 				<td class="td2"><input name="ssl_login_enable"{if $bm_prefs.ssl_login_enable=='yes'} checked="checked"{/if} type="checkbox" /></td>
 			</tr>
-			<tr>
-				<td class="td1" width="220">{lng p="ssl_signup_enable"}?</td>
-				<td class="td2"><input name="ssl_signup_enable"{if $bm_prefs.ssl_signup_enable=='yes'} checked="checked"{/if} type="checkbox" /></td>
-			</tr>
 		</table>
 	</fieldset>
 
