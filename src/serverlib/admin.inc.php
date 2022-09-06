@@ -151,6 +151,7 @@ $unnecessaryFilesAndFolders = [
         // These directories existed in b1gmail 7.4.0.
         B1GMAIL_DIR . 'clientlib/',
         B1GMAIL_DIR . 'languages/',
+        B1GMAIL_DIR . 'plz/',
         B1GMAIL_DIR . 'res/',
     ],
 ];
