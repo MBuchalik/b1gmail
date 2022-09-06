@@ -64,18 +64,21 @@ $tbxConfig['1.0'] = [
                 'title' => $lang_admin['applogo'] . ':',
                 'type' => FIELD_IMAGE,
                 'imgSize' => '32x32',
+                // This does not exist anymore, but since the toolbox features will soon be removed, it is not a big issue.
                 'default' => 'res/toolbox/applogo.png',
             ],
             'wizardLeft' => [
                 'title' => $lang_admin['wizardleft'] . ':',
                 'type' => FIELD_IMAGE,
                 'imgSize' => '164x314',
+                // This does not exist anymore, but since the toolbox features will soon be removed, it is not a big issue.
                 'default' => 'res/toolbox/wizard-left.png',
             ],
             'wizardHead' => [
                 'title' => $lang_admin['wizardhead'] . ':',
                 'type' => FIELD_IMAGE,
                 'imgSize' => '150x57',
+                // This does not exist anymore, but since the toolbox features will soon be removed, it is not a big issue.
                 'default' => 'res/toolbox/wizard-head.png',
             ],
             'tbBranding' => [
