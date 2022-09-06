@@ -122,7 +122,7 @@ class BMWorkgroup {
      * @param string $email Mail address
      * @return int
      */
-    function GetIDbyMail($email) {
+    static function GetIDbyMail($email) {
         global $db;
 
         [, $domainPart] = explode('@', $email);

@@ -642,7 +642,7 @@ class BMUser {
      * @param string $email User's E-Mail address
      * @return bool
      */
-    function LostPassword($email) {
+    static function LostPassword($email) {
         global $db, $bm_prefs, $lang_custom;
 
         // user ID?

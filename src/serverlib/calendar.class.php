@@ -553,7 +553,7 @@ class BMCalendar {
      *
      * @return int Number of sent notifications
      */
-    function ProcessNotifications() {
+    static function ProcessNotifications() {
         global $db, $bm_prefs;
 
         $notifications = 0;
