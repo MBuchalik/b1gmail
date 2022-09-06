@@ -452,7 +452,7 @@ class BMSMIME {
             0,
             $certTempFileName,
             [TempFileName($certFileID)],
-            B1GMAIL_DIR . 'res/dummy.pem',
+            B1GMAIL_DIR . 'serverlib/res/dummy.pem',
             $destTempFileName,
         );
         if (!$result) {
@@ -461,7 +461,7 @@ class BMSMIME {
                 PKCS7_NOVERIFY,
                 $certTempFileName,
                 [TempFileName($certFileID)],
-                B1GMAIL_DIR . 'res/dummy.pem',
+                B1GMAIL_DIR . 'serverlib/res/dummy.pem',
                 $destTempFileName,
             );
             $resultCode =
