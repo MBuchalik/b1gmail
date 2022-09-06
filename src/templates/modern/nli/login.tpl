@@ -40,12 +40,6 @@
 					<div class="lost-pw">
 						<a href="#" data-toggle="modal" data-target="#lostPW">{lng p="lostpw"}?</a>
 					</div>
-					<div class="checkbox">
-						<label>
-							<input type="checkbox" name="savelogin" id="savelogin" />
-							{lng p="savelogin"}
-						</label>
-					</div>
 					{if $ssl_login_option}<div class="checkbox">
 						<label>
 							<input type="checkbox" id="ssl"{if $ssl_login_enable} checked="checked"{/if} onchange="updateFormSSL(this)" onclick="updateFormSSL(this)" />

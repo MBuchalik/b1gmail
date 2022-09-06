@@ -182,16 +182,6 @@ function ProcessBirthdayNotifications() {
 }
 
 /**
- * Delete expired saved login tokens
- *
- */
-function CleanupSavedLogins() {
-    global $db;
-
-    $db->Query('DELETE FROM {pre}savedlogins WHERE `expires`<?', time());
-}
-
-/**
  * reset webdisk traffic
  *
  */

@@ -412,7 +412,6 @@ $lang_user['certmailerror'] =
 // login
 $lang_user['pwcrypted'] =
     'Ihr Passwort wird sicher verschl&uuml;sselt &uuml;bertragen.';
-$lang_user['welcomeback'] = 'Willkommen zur&uuml;ck, <i>%s</i>.';
 $lang_user['otheruser'] = 'Anderer Benutzer?';
 $lang_user['loginblocked'] =
     'Ihr Account wurde wegen zu vielen fehlerhaften Loginversuchen sicherheitshalber bis zum <i>%s</i> gesperrt. Bei weiteren Fragen kontaktieren Sie uns bitte.';
@@ -427,7 +426,6 @@ $lang_user['email'] = 'E-Mail';
 $lang_user['password'] = 'Passwort';
 $lang_user['language'] = 'Sprache';
 $lang_user['ssl'] = 'Sicherer SSL-Login';
-$lang_user['savelogin'] = 'Login merken';
 $lang_user['validation_ok'] =
     'Ihr Account wurde erfolgreich aktiviert. Sie k&ouml;nnen sich nun mit Ihren Zugangsdaten <a href="index.php">einloggen</a>.';
 $lang_user['validation_err'] =

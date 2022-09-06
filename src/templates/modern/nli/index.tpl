@@ -60,35 +60,15 @@
 					<li{if $smarty.request.action=='privacy-policy'} class="active"{/if}><a href="index.php?action=privacy-policy">{lng p="privacy"}</a></li>
 					<li{if $smarty.request.action=='imprint'} class="active"{/if}><a href="index.php?action=imprint">{lng p="imprint"}</a></li>
 				</ul>
-				<form action="{if $ssl_login_enable || (isset($welcomeBack) && $welcomeBack && $smarty.cookies.bm_savedSSL)}{$ssl_url}{/if}index.php?action=login" method="post" id="loginFormPopover">
+				<form action="{if $ssl_login_enable}{$ssl_url}{/if}index.php?action=login" method="post" id="loginFormPopover">
 					<input type="hidden" name="do" value="login" />
 					<input type="hidden" name="timezone" value="{$timezone}" />
 
 					<ul class="nav navbar-nav navbar-right">
-						{if $smarty.request.action!='login'|| (isset($welcomeBack) && $welcomeBack)}<li class="login-li{if !isset($welcomeBack) || !$welcomeBack} hidden-xs{/if}">
-							{if isset($welcomeBack) && $welcomeBack}
-							<input type="hidden" name="email_full" value="{$smarty.cookies.bm_savedUser}" />
-							<input type="hidden" name="password" value="" />
-							<input type="hidden" name="savelogin" value="true" />
-							{if $smarty.cookies.bm_savedSSL}<input type="hidden" name="ssl" value="true" />{/if}
-
-							<div class="btn-group">
-								<button type="submit" class="btn btn-primary navbar-btn">
-									<span class="glyphicon glyphicon-user"></span>
-									{text value=$smarty.cookies.bm_savedUser cut=18}
-								</button>
-								<button type="button" class="btn btn-primary navbar-btn dropdown-toggle" data-toggle="dropdown">
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="index.php?action=forgetCookie">{lng p="logout"}</a></li>
-								</ul>
-							</div>
-							{else}
+						{if $smarty.request.action!='login'}<li class="login-li hidden-xs">							
 							<button type="button" class="btn btn-primary navbar-btn dropdown-toggle" data-toggle="popover" data-placement="bottom">
 								{lng p="login"} <span class="caret"></span>
 							</button>
-							{/if}
 						</li>{/if}
 
 						{if count($languageList) > 1}
@@ -171,12 +151,6 @@
 				<label class="sr-only" for="password_p">{lng p="password"}</label>
 				<input type="password" name="password" id="password_p" class="form-control" placeholder="{lng p="password"}" required="true" />
 			</div>
-		</div>
-		<div class="checkbox">
-			<label>
-				<input type="checkbox" name="savelogin" id="savelogin_p" />
-				{lng p="savelogin"}
-			</label>
 		</div>
 		{if $ssl_login_option}<div class="checkbox">
 			<label>

@@ -77,9 +77,6 @@ if ($bm_prefs['last_cron'] < time() - $bm_prefs['cron_interval']) {
     // clean up mail receive stats
     CleanupRecvStats();
 
-    // clean up saved logins
-    CleanupSavedLogins();
-
     // clean up temp file
     CleanupTempFiles();
 

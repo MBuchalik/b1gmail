@@ -1648,14 +1648,6 @@ if ($_REQUEST['action'] == 'start') {
                     $suPass1,
                 );
 
-                // delete cookies
-                if (isset($_COOKIE['bm_savedToken'])) {
-                    BMUser::DeleteSavedLogin($_COOKIE['bm_savedToken']);
-                }
-                setcookie('bm_savedUser', '', time() - TIME_ONE_HOUR);
-                setcookie('bm_savedToken', '', time() - TIME_ONE_HOUR);
-                setcookie('bm_savedPassword', '', time() - TIME_ONE_HOUR);
-
                 PrefsDone();
             }
         }
@@ -1710,14 +1702,6 @@ if ($_REQUEST['action'] == 'start') {
         );
         $thisUser->CancelAccount();
         BMUser::Logout();
-
-        // delete cookies
-        if (isset($_COOKIE['bm_savedToken'])) {
-            BMUser::DeleteSavedLogin($_COOKIE['bm_savedToken']);
-        }
-        setcookie('bm_savedUser', '', time() - TIME_ONE_HOUR);
-        setcookie('bm_savedToken', '', time() - TIME_ONE_HOUR);
-        setcookie('bm_savedPassword', '', time() - TIME_ONE_HOUR);
 
         // page output
         $tpl->assign('ssl_url', $bm_prefs['ssl_url']);

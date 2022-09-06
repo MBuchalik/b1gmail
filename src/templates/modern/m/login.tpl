@@ -10,20 +10,12 @@
 	
 		<div data-role="fieldcontain">
 			<label for="email">{lng p="email"}:</label>
-			<input type="email" name="email" id="email" value="{text value=$smarty.cookies.bm_msavedUser allowEmpty=true}"  />
+			<input type="email" name="email" id="email"  />
 		</div>
 
 		<div data-role="fieldcontain">
 			<label for="password">{lng p="password"}:</label>
-			<input type="password" name="password" id="password" value="{text value=$smarty.cookies.bm_msavedPassword allowEmpty=true}"  />
-		</div>
-	
-		<div data-role="fieldcontain" class="ui-hide-label">
-		    <fieldset data-role="controlgroup">
-			   <legend>{lng p="savelogin"}:</legend>
-			   <input type="checkbox" name="savelogin" id="savelogin"{if $smarty.cookies.bm_msavedUser} checked="checked"{/if} />
-			   <label for="savelogin">{lng p="savelogin"}</label>
-		    </fieldset>
+			<input type="password" name="password" id="password"  />
 		</div>
 	
 		<button type="submit">{lng p="login"}</button>

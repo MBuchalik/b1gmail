@@ -510,7 +510,6 @@ $lang_user['certmailerror'] =
 // login
 $lang_user['pwcrypted'] =
     'The transmission of your password is safely encoded.';
-$lang_user['welcomeback'] = 'Welcome back, <i>%s</i>.';
 $lang_user['otheruser'] = 'Change account';
 $lang_user['loginblocked'] =
     'Due to too many failed log-in attempts, your account will remain locked until <i>%s</i>. If you have any questions, please contact us.';
@@ -524,7 +523,6 @@ $lang_user['login'] = 'Login';
 $lang_user['email'] = 'Email';
 $lang_user['password'] = 'Password';
 $lang_user['language'] = 'Language';
-$lang_user['savelogin'] = 'Remember login';
 $lang_user['ssl'] = 'Secure SSL login';
 $lang_user['validation_ok'] =
     'Your account has been activated successfully. You can now <a href="index.php">log in</a>.';

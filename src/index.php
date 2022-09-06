@@ -59,7 +59,6 @@ $nonMobileActions = [
     'codegen',
     'checkAddressAvailability',
     'resetPassword',
-    'forgetCookie',
     'confirmAlias',
     'readCertMail',
     'completeAddressBookEntry',
@@ -151,17 +150,6 @@ if ($_REQUEST['action'] == 'tos') {
     $page = preg_replace('/([^a-zA-Z0-9]*)/', '', $_GET['page']);
     $tpl->assign('page', 'custompages/' . $page . '.tpl');
 } /**
- * forget cookies
- */ elseif ($_REQUEST['action'] == 'forgetCookie') {
-    // delete cookies
-    setcookie('bm_savedUser', '', time() - TIME_ONE_HOUR);
-    setcookie('bm_savedPassword', '', time() - TIME_ONE_HOUR);
-    setcookie('bm_savedToken', '', time() - TIME_ONE_HOUR);
-
-    // reload
-    header('Location: index.php');
-    exit();
-} /**
  * forgot password
  */ elseif (
     $_REQUEST['action'] == 'lostPassword' &&
@@ -206,11 +194,6 @@ if ($_REQUEST['action'] == 'tos') {
     $resetKey = trim($_REQUEST['key']);
 
     if (BMUser::ResetPassword($userID, $resetKey)) {
-        // delete cookies
-        setcookie('bm_savedUser', '', time() - TIME_ONE_HOUR);
-        setcookie('bm_savedToken', '', time() - TIME_ONE_HOUR);
-        setcookie('bm_savedPassword', '', time() - TIME_ONE_HOUR);
-
         // ok
         $tpl->assign('msg', $lang_user['pwresetsuccess2']);
     } else {
@@ -536,52 +519,13 @@ if ($_REQUEST['action'] == 'tos') {
                 ),
         );
 
-        // saved login?
-        if ($password == '' && isset($_COOKIE['bm_savedToken'])) {
-            $password = BMUser::LoadLogin($_COOKIE['bm_savedToken']);
-        }
-
         // login
         [$result, $param] = BMUser::Login($email, $password, true, true);
 
         // login ok?
         if ($result == USER_OK) {
-            // delete token?
-            if (isset($_COOKIE['bm_savedToken'])) {
-                BMUser::DeleteSavedLogin($_COOKIE['bm_savedToken']);
-            }
-
             // stats
             Add2Stat('login');
-
-            // save login?
-            if (isset($_POST['savelogin'])) {
-                $cookieToken = BMUser::SaveLogin($password);
-
-                // set cookies
-                setcookie('bm_savedUser', $email, time() + TIME_ONE_YEAR);
-                if (isset($_COOKIE['savedPassword'])) {
-                    setcookie('bm_savedPassword', '', time() - TIME_ONE_HOUR);
-                }
-                setcookie(
-                    'bm_savedToken',
-                    $cookieToken,
-                    time() + TIME_ONE_YEAR,
-                );
-                setcookie(
-                    'bm_savedSSL',
-                    isset($_POST['ssl']) ? true : false,
-                    time() + TIME_ONE_YEAR,
-                );
-            } else {
-                // delete cookies
-                setcookie('bm_savedUser', '', time() - TIME_ONE_HOUR);
-                if (isset($_COOKIE['savedPassword'])) {
-                    setcookie('bm_savedPassword', '', time() - TIME_ONE_HOUR);
-                }
-                setcookie('bm_savedToken', '', time() - TIME_ONE_HOUR);
-                setcookie('bm_savedSSL', '', time() - TIME_ONE_HOUR);
-            }
 
             // register timezone
             $_SESSION['bm_timezone'] = isset($_REQUEST['timezone'])
@@ -669,16 +613,6 @@ if ($_REQUEST['action'] == 'tos') {
         }
         $tpl->assign('page', 'nli/login.tpl');
     }
-}
-
-// welcome back
-if (isset($_COOKIE['bm_savedUser'])) {
-    header('Pragma: no-cache');
-    header('Cache-Control: no-cache');
-    $tpl->assign(
-        'welcomeBack',
-        sprintf($lang_user['welcomeback'], $_COOKIE['bm_savedUser']),
-    );
 }
 
 $tpl->display('nli/index.tpl');
