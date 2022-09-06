@@ -2107,3 +2107,17 @@ $lang_admin['greeting_mr'] = 'Sehr geehrter Herr %s';
 $lang_admin['greeting_mrs'] = 'Sehr geehrte Frau %s';
 $lang_admin['greeting_none'] = 'Sehr geehrte Damen und Herren';
 $lang_admin['sum'] = 'Summe';
+$lang_admin['ufaf_notice'] =
+    'Es wurden unnötige Dateien oder Ordner gefunden, die vermutlich Überbleibsel von einem vorherigen Update sind.';
+$lang_admin['ufaf_title'] = 'Unnötige Dateien und Ordner';
+$lang_admin['ufaf_nothing_to_do'] =
+    'Keine unnötigen Dateien und Ordner gefunden.';
+$lang_admin['ufaf_list_description'] =
+    'Die folgenden Dateien und Ordner sind vermutlich Überbleibsel von einem vorherigen Update von b1gmail:';
+$lang_admin['ufaf_description'] =
+    'Sie können diese Dateien und Ordner hier löschen.';
+$lang_admin['ufaf_warning'] =
+    'ACHTUNG: Diese Operation kann nicht rückgängig gemacht werden!';
+$lang_admin['ufaf_action'] = 'Dateien und Ordner entfernen';
+$lang_admin['ufaf_confirm'] =
+    'Möchten Sie diese Dateien und Ordner wirklich löschen? Die Aktion kann nicht rückgängig gemacht werden!';

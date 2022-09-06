@@ -129,6 +129,32 @@ $htaccessFiles = [
     B1GMAIL_DIR . 'serverlib/.htaccess',
 ];
 
+// Files and folders that should not exist (they are most likely leftovers from previous versions/updates).
+$unnecessaryFilesAndFolders = [
+    'files' => [
+        // These files existed in b1gmail 7.4.0.
+        B1GMAIL_DIR . 'organizer.php',
+        B1GMAIL_DIR . 'sms.php',
+    ],
+    'folders' => [
+        // The setup folder should always be deleted after running the setup.
+        B1GMAIL_DIR . 'setup/',
+
+        // The recommendation is to always rename a folder to "-old" when running the setup.
+        B1GMAIL_DIR . 'admin-old/',
+        B1GMAIL_DIR . 'interface-old/',
+        B1GMAIL_DIR . 'm-old/',
+        B1GMAIL_DIR . 'serverlib-old/',
+        B1GMAIL_DIR . 'share-old/',
+        B1GMAIL_DIR . 'templates-old/',
+
+        // These directories existed in b1gmail 7.4.0.
+        B1GMAIL_DIR . 'clientlib/',
+        B1GMAIL_DIR . 'languages/',
+        B1GMAIL_DIR . 'res/',
+    ],
+];
+
 /**
  * check if admin is allowed to do sth.
  *

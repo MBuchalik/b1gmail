@@ -2082,3 +2082,15 @@ $lang_admin['cert_caerr_purpose'] =
     'The certificate is not suitable for issuing S/MIME certificates.';
 $lang_admin['cert_caerr_pkcheck'] =
     'The private key does not fit to the certificate or the password is wrong.';
+$lang_admin['ufaf_notice'] =
+    'Found unnecessary files or folders that are probably leftovers from a previous update.';
+$lang_admin['ufaf_title'] = 'Unnecessary files and folders';
+$lang_admin['ufaf_nothing_to_do'] = 'Found no unnecessary files or folders.';
+$lang_admin['ufaf_list_description'] =
+    'The following files and folders are most likely leftovers from a previous update of b1gmail:';
+$lang_admin['ufaf_description'] =
+    'Here, you can delete these files and folders.';
+$lang_admin['ufaf_warning'] = 'DANGER: This operation cannot be reversed!';
+$lang_admin['ufaf_action'] = 'Delete files and folders';
+$lang_admin['ufaf_confirm'] =
+    'Do you really want to delete these files and folders? This action cannot be reversed!';

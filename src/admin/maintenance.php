@@ -47,6 +47,12 @@ $tabs = [
         'link' => 'maintenance.php?action=orphans&',
         'active' => $_REQUEST['action'] == 'orphans',
     ],
+    3 => [
+        'title' => $lang_admin['ufaf_title'],
+        'relIcon' => 'ico_prefs_validation.png',
+        'link' => 'maintenance.php?action=unnecessaryFiles&',
+        'active' => $_REQUEST['action'] == 'unnecessaryFiles',
+    ],
 ];
 
 if (FTS_SUPPORT) {
@@ -454,6 +460,70 @@ if ($_REQUEST['action'] == 'inactive') {
         $tpl->assign('msgIcon', 'info32');
         $tpl->assign('backLink', 'maintenance.php?action=trash&');
         $tpl->assign('page', 'msg.tpl');
+    }
+} elseif ($_REQUEST['action'] == 'unnecessaryFiles') {
+    if (!isset($_REQUEST['do'])) {
+        $existingUnnecessaryItemsForTemplate = [];
+        foreach ($unnecessaryFilesAndFolders['files'] as $filePath) {
+            if (file_exists($filePath)) {
+                $existingUnnecessaryItemsForTemplate[] = $filePath;
+            }
+        }
+        foreach ($unnecessaryFilesAndFolders['folders'] as $folderPath) {
+            if (file_exists($folderPath)) {
+                $existingUnnecessaryItemsForTemplate[] = $folderPath;
+            }
+        }
+
+        $tpl->assign(
+            'existingUnnecessaryItems',
+            $existingUnnecessaryItemsForTemplate,
+        );
+        $tpl->assign('page', 'maintenance.unnecessary-items.tpl');
+    } elseif ($_REQUEST['do'] === 'exec') {
+        function cleanUpRec($folderPath) {
+            if (substr($folderPath, -1) !== '/') {
+                exit(
+                    'Seems like the folder path does not end on "/". This should not happen.'
+                );
+            }
+            if (!is_dir($folderPath)) {
+                exit(
+                    'Seems like the folder path does not exist: " ' .
+                        $folderPath .
+                        ' "'
+                );
+            }
+
+            // We still use a slash ("/") just to be extra safe.
+            $children = glob($folderPath . '/*');
+            foreach ($children as $childPath) {
+                if (is_file($childPath)) {
+                    unlink($childPath);
+                    continue;
+                }
+                cleanUpRec($childPath . '/');
+            }
+
+            @rmdir($folderPath);
+        }
+
+        foreach ($unnecessaryFilesAndFolders['files'] as $filePath) {
+            if (file_exists($filePath) && is_file($filePath)) {
+                @unlink($filePath);
+            }
+        }
+        foreach ($unnecessaryFilesAndFolders['folders'] as $folderPath) {
+            if (file_exists($folderPath) && is_dir($folderPath)) {
+                cleanUpRec($folderPath);
+            }
+        }
+
+        header(
+            'Location: maintenance.php?action=unnecessaryFiles&sid=' .
+                session_id(),
+        );
+        exit();
     }
 } /**
  * full-text search index

@@ -269,6 +269,27 @@ if ($_REQUEST['action'] == 'welcome') {
         ];
     }
 
+    $hasUnnecessaryFileOrFolder = false;
+    foreach ($unnecessaryFilesAndFolders['files'] as $filePath) {
+        if (file_exists($filePath)) {
+            $hasUnnecessaryFileOrFolder = true;
+            break;
+        }
+    }
+    foreach ($unnecessaryFilesAndFolders['folders'] as $folderPath) {
+        if (file_exists($folderPath)) {
+            $hasUnnecessaryFileOrFolder = true;
+            break;
+        }
+    }
+    if ($hasUnnecessaryFileOrFolder) {
+        $notices[] = [
+            'type' => 'warning',
+            'text' => $lang_admin['ufaf_notice'],
+            'link' => 'maintenance.php?action=unnecessaryFiles&',
+        ];
+    }
+
     // htaccess files
     $brokenHTAccess = [];
     foreach ($htaccessFiles as $item) {
