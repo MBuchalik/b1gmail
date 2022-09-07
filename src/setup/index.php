@@ -561,6 +561,19 @@ example.org</textarea>
                 }
             }
 
+            // Apply migrations
+            include './migration.php';
+
+            $migrationRunner = new MigrationRunner();
+
+            $migrationSuccess = $migrationRunner->performMigrations(
+                $connection,
+            );
+            if (!$migrationSuccess) {
+                echo 'ERROR: Failed to perform database migrations';
+                exit();
+            }
+
             // create default config
             $blobDBSupport =
                 class_exists('SQLite3') ||
@@ -588,7 +601,7 @@ example.org</textarea>
                 str_replace('\\', '/', $_SERVER['SCRIPT_FILENAME']),
             );
             $prefsQuery = sprintf(
-                'INSERT INTO bm60_prefs(template,language,selfurl,mobile_url,send_method,smtp_host,sendmail_path,receive_method,pop3_host,pop3_user,pop3_pass,passmail_abs,titel,datafolder,selffolder,b1gmta_host,dnsbl,signup_dnsbl,smsreply_abs,widget_order_start,widget_order_organizer,structstorage,search_in,db_is_utf8,rgtemplate,pay_emailfrom,pay_emailfromemail,regenabled,contactform_to,ap_autolock_notify_to,blobstorage_provider,blobstorage_provider_webdisk,blobstorage_compress,blobstorage_webdisk_compress) ' .
+                'INSERT INTO bm60_prefs(template,language,selfurl,mobile_url,send_method,smtp_host,sendmail_path,receive_method,pop3_host,pop3_user,pop3_pass,passmail_abs,titel,datafolder,selffolder,b1gmta_host,dnsbl,widget_order_start,widget_order_organizer,structstorage,search_in,db_is_utf8,blobstorage_provider,blobstorage_provider_webdisk,blobstorage_compress,blobstorage_webdisk_compress) ' .
                     'VALUES(
                         \'%s\', /* template */
                         \'%s\', /* language */
@@ -607,19 +620,11 @@ example.org</textarea>
                         \'%s\', /* selffolder */
                         \'%s\', /* b1gmta_host */
                         \'%s\', /* dnsbl */
-                        \'%s\', /* signup_dnsbl */
-                        \'%s\', /* smsreply_abs */
                         \'%s\', /* widget_order_start */
                         \'%s\', /* widget_order_organizer */
                         \'%s\', /* structstorage */
                         \'%s\', /* search_in_db */
                         %d, /* db_is_utf8 */
-                        \'%s\', /* rgtemplate */
-                        \'%s\', /* pay_emailfrom */
-                        \'%s\', /* pay_emailfromemail */
-                        \'%s\', /* regenabled */
-                        \'%s\', /* contactform_to */
-                        \'%s\', /* ap_autolock_notify_to */
                         %d, /* blobstorage_provider */
                         %d, /* blobstorage_provider_webdisk */
                         \'%s\', /* blobstorage_compress */
@@ -649,11 +654,6 @@ example.org</textarea>
                 SQLEscape($selfFolder, $connection), // selffolder
                 $hostName, // b1gmta_host
                 'ix.dnsbl.manitu.net:zen.spamhaus.org', // dnsbl
-                'dnsbl.tornevall.org', // signup_dnsbl
-                SQLEscape(
-                    'postmaster@' . EncodeDomain($firstDomain),
-                    $connection,
-                ), // smsreply_abs
                 'BMPlugin_Widget_Welcome,BMPlugin_Widget_EMail,BMPlugin_Widget_Websearch;BMPlugin_Widget_Mailspace,,BMPlugin_Widget_Quicklinks;BMPlugin_Widget_Webdiskspace,,', // widget_order_start
                 'BMPlugin_Widget_Websearch,BMPlugin_Widget_Calendar,BMPlugin_Widget_Notes;,BMPlugin_Widget_Tasks,', // widget_order_organizer
                 !ini_get('safe_mode') ? 'yes' : 'no', // structstorage
@@ -663,22 +663,6 @@ example.org</textarea>
                 ), // search_in_db
                 // UTF8 Mode --> We always set this to true.
                 1, // db_is_utf8
-                '', // rgtemplate
-                SQLEscape($lang_setup['accounting'], $connection), // pay_emailfrom
-                SQLEscape(
-                    'postmaster@' . EncodeDomain($firstDomain),
-                    $connection,
-                ), // pay_emailfromemail
-                // There are no signup features anymore, but the database structure expects a value to be set here.
-                'no', // regenabled
-                SQLEscape(
-                    'postmaster@' . EncodeDomain($firstDomain),
-                    $connection,
-                ), // contactform_to
-                SQLEscape(
-                    'postmaster@' . EncodeDomain($firstDomain),
-                    $connection,
-                ), // ap_autolock_notify_to
                 $blobDBSupport ? 1 : 0, // blobstorage_provider
                 $blobDBSupport ? 1 : 0, // blobstorage_provider_webdisk
                 $gzSupport ? 'yes' : 'no', // blobstorage_compress
@@ -828,21 +812,6 @@ example.org</textarea>
                 );
             } else {
                 $signKey = md5(microtime() . mt_rand(0, PHP_INT_MAX));
-            }
-
-            // Apply migrations
-            include './migration.php';
-
-            $migrationRunner = new MigrationRunner();
-
-            $migrationSuccess = $migrationRunner->performMigrations(
-                $connection,
-            );
-            if ($migrationSuccess) {
-            } else {
-                echo 'ERROR: Failed to perform database migrations';
-
-                // We still try to perform the next steps.
             }
 
             // create config file
