@@ -1777,6 +1777,7 @@ $lang_admin['text_maintenance'] = 'Wartungsmodus-Hinweis';
 $lang_admin['text_welcome_sub'] = 'Willkommens-Mail-Betreff';
 $lang_admin['text_welcome_text'] = 'Willkommens-Mail-Text';
 $lang_admin['text_tos'] = 'AGB';
+$lang_admin['text_privacy_policy'] = 'Datenschutz-Erklärung';
 $lang_admin['text_imprint'] = 'Impressum';
 $lang_admin['text_snotify_sub'] = 'Registrierungs-Hinweis-Betreff';
 $lang_admin['text_snotify_text'] = 'Registrierungs-Hinweis-Text';

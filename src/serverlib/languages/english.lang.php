@@ -1777,6 +1777,7 @@ $lang_admin['text_maintenance'] = 'Maintenance mode note';
 $lang_admin['text_welcome_sub'] = 'Welcome mail subject';
 $lang_admin['text_welcome_text'] = 'Welcome mail text';
 $lang_admin['text_tos'] = 'TOS';
+$lang_admin['text_privacy_policy'] = 'Privacy Policy';
 $lang_admin['text_imprint'] = 'Impint';
 $lang_admin['text_snotify_sub'] = 'Sign-up note subject';
 $lang_admin['text_snotify_text'] = 'Sign-up note text';
