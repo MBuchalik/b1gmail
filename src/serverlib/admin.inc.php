@@ -129,6 +129,15 @@ $htaccessFiles = [
     B1GMAIL_DIR . 'serverlib/.htaccess',
 ];
 
+// The expected file content of the .htaccess files.
+$htaccessContent = "<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+  Deny from all
+</IfModule>";
+
 // Files and folders that should not exist (they are most likely leftovers from previous versions/updates).
 $unnecessaryFilesAndFolders = [
     'files' => [

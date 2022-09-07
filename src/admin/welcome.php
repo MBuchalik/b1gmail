@@ -292,8 +292,32 @@ if ($_REQUEST['action'] == 'welcome') {
 
     // htaccess files
     $brokenHTAccess = [];
+    $irrelevantCharactersInHTAccessFiles = '/[\s\n]/';
+    $htaccessContentWithoutIrrelevantCharacters = preg_replace(
+        $irrelevantCharactersInHTAccessFiles,
+        '',
+        $htaccessContent,
+    );
     foreach ($htaccessFiles as $item) {
         if (!file_exists($item)) {
+            $brokenHTAccess[] = $item;
+            continue;
+        }
+
+        $fileContent = file_get_contents($item);
+
+        $fileContent = preg_replace(
+            $irrelevantCharactersInHTAccessFiles,
+            '',
+            $fileContent,
+        );
+
+        if (
+            !str_contains(
+                $fileContent,
+                $htaccessContentWithoutIrrelevantCharacters,
+            )
+        ) {
             $brokenHTAccess[] = $item;
         }
     }

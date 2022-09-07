@@ -1679,7 +1679,7 @@ $lang_admin['optionsdesc'] =
 $lang_admin['brokenperms'] =
     'Folgende Dateien und Ordner sind nicht beschreibbar: <code>%s</code>. Bitte korrigieren Sie die Zugriffsrechte!';
 $lang_admin['brokenhtaccess'] =
-    'Folgende .htaccess-Dateien existieren nicht: <code>%s</code>. Bitte laden Sie die Dateien erneut hoch - ohne diese Dateien sind einige Datendateien nicht vor unberechtigten Zugriffen gesch&uuml;tzt!';
+    'Folgende .htaccess-Dateien existieren nicht oder sind beschädigt: <code>%s</code>. Bitte laden Sie die Dateien erneut hoch - ohne diese Dateien sind einige Datendateien nicht vor unberechtigten Zugriffen geschützt!';
 $lang_admin['orphansfound'] =
     'Es wurde(n) %d verwaiste(s) E-Mail(s) (%.02f KB) gefunden. Die L&ouml;schung der verwaisten Objekte wird empfohlen.';
 $lang_admin['diskorphansfound'] =

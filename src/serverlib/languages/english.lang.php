@@ -1698,7 +1698,7 @@ $lang_admin['optionsdesc'] =
 $lang_admin['brokenperms'] =
     'The following files and folders are not writeable: <code>%s</code>. Please check the access rights!';
 $lang_admin['brokenhtaccess'] =
-    'The following .htaccess files do not exist: <code>%s</code>. Please upload the files again - without these files some of the data files are not protected from unauthorized access!';
+    'The following .htaccess files do not exist or are broken: <code>%s</code>. Please upload the files again - without these files some of the data files are not protected from unauthorized access!';
 $lang_admin['maintenance'] = 'Maintenance';
 $lang_admin['inactiveusers'] = 'Inactive users';
 $lang_admin['trash'] = 'Trash';
