@@ -19,6 +19,11 @@
  *
  */
 
+if (!file_exists('./serverlib/init.inc.php')) {
+    // Maybe, an update (or similar maintenance work) is currently taking place.
+    exit();
+}
+
 include './serverlib/init.inc.php';
 include './serverlib/todo.class.php';
 include './serverlib/calendar.class.php';
