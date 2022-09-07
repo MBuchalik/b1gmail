@@ -246,7 +246,7 @@ if ($step == STEP_WELCOME) {
     elseif ($do == 'struct2') {
         include './migration.php';
 
-        $migrationRunner = new MigrationRunner();
+        $migrationRunner = new MigrationRunner(false);
 
         $migrationSuccess = $migrationRunner->performMigrations($connection);
         if ($migrationSuccess) {

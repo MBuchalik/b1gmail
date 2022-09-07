@@ -24,6 +24,12 @@ abstract class SingleMigrationStep {
 }
 
 class MigrationRunner {
+    private bool $forSetup;
+
+    function __construct($forSetup) {
+        $this->forSetup = $forSetup;
+    }
+
     function performMigrations($dbConnection): bool {
         $allMigrationLevels = $this->getAllMigrationLevels();
         $currentMigrationLevel = $this->getCurrentMigrationLevel($dbConnection);
@@ -56,14 +62,29 @@ class MigrationRunner {
         return true;
     }
 
+    function getLatestAvailableMigrationLevelAsString(): string {
+        $allMigrationLevels = $this->getAllMigrationLevels();
+        usort($allMigrationLevels, function ($a, $b) {
+            return $this->compareMigrationLevels($a, $b);
+        });
+
+        $latest = $allMigrationLevels[count($allMigrationLevels) - 1];
+
+        return $this->convertMigrationLevelToString($latest);
+    }
+
     /**
      * Get the Migration Level the system is currently on (i.e. read the value of column "migration_level" from "bm60_prefs").
      * If the column does not exist, return the default Migration Level 0-0-0--0.
      *
      * (This method returns the already parsed Migration Level.)
      */
-    function getCurrentMigrationLevel($dbConnection): array {
+    private function getCurrentMigrationLevel($dbConnection): array {
         $DEFAULT_MIGRATION_LEVEL = $this->parseMigrationName('0-0-0--0');
+
+        if ($this->forSetup) {
+            return $DEFAULT_MIGRATION_LEVEL;
+        }
 
         $hasMigrationLevelColumn = false;
 
@@ -121,6 +142,12 @@ class MigrationRunner {
         ];
     }
 
+    private function convertMigrationLevelToString(
+        array $migrationLevel
+    ): string {
+        return "{$migrationLevel['versionMajor']}-{$migrationLevel['versionMinor']}-{$migrationLevel['versionPatch']}--{$migrationLevel['migrationNumber']}";
+    }
+
     /**
      * Compare the two provided Migration Levels.
      * Return -1 if Level A is less than Level B.
@@ -151,7 +178,7 @@ class MigrationRunner {
         $migrationLevel,
         $dbConnection
     ): bool {
-        $fileName = "{$migrationLevel['versionMajor']}-{$migrationLevel['versionMinor']}-{$migrationLevel['versionPatch']}--{$migrationLevel['migrationNumber']}";
+        $fileName = $this->convertMigrationLevelToString($migrationLevel);
 
         require "./migrations/{$fileName}.php";
 
@@ -161,6 +188,10 @@ class MigrationRunner {
         $migrationSuccess = $migrationInstance->applyMigration($dbConnection);
         if (!$migrationSuccess) {
             return false;
+        }
+
+        if ($this->forSetup) {
+            return true;
         }
 
         if (

@@ -564,7 +564,7 @@ example.org</textarea>
             // Apply migrations
             include './migration.php';
 
-            $migrationRunner = new MigrationRunner();
+            $migrationRunner = new MigrationRunner(true);
 
             $migrationSuccess = $migrationRunner->performMigrations(
                 $connection,
@@ -601,8 +601,9 @@ example.org</textarea>
                 str_replace('\\', '/', $_SERVER['SCRIPT_FILENAME']),
             );
             $prefsQuery = sprintf(
-                'INSERT INTO bm60_prefs(template,language,selfurl,mobile_url,send_method,smtp_host,sendmail_path,receive_method,pop3_host,pop3_user,pop3_pass,passmail_abs,titel,datafolder,selffolder,b1gmta_host,dnsbl,widget_order_start,widget_order_organizer,structstorage,search_in,db_is_utf8,blobstorage_provider,blobstorage_provider_webdisk,blobstorage_compress,blobstorage_webdisk_compress) ' .
+                'INSERT INTO bm60_prefs(migration_level,template,language,selfurl,mobile_url,send_method,smtp_host,sendmail_path,receive_method,pop3_host,pop3_user,pop3_pass,passmail_abs,titel,datafolder,selffolder,b1gmta_host,dnsbl,widget_order_start,widget_order_organizer,structstorage,search_in,db_is_utf8,blobstorage_provider,blobstorage_provider_webdisk,blobstorage_compress,blobstorage_webdisk_compress) ' .
                     'VALUES(
+                        \'%s\', /* migration_level */
                         \'%s\', /* template */
                         \'%s\', /* language */
                         \'%s\', /* selfurl */
@@ -630,6 +631,7 @@ example.org</textarea>
                         \'%s\', /* blobstorage_compress */
                         \'%s\' /* blobstorage_webdisk_compress */
                     )',
+                $migrationRunner->getLatestAvailableMigrationLevelAsString(), // migration_level
                 'modern', // template
                 $_REQUEST['lng'] == 'deutsch' ? 'deutsch' : 'english', // language
                 SQLEscape($_REQUEST['url'], $connection), // selfurl
