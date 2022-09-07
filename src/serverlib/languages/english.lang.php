@@ -1626,6 +1626,8 @@ $lang_admin['credits'] = 'Credits';
 $lang_admin['alias'] = 'Alias';
 $lang_admin['realdel'] =
     'Are you sure you want to erase the entry permanently?';
+$lang_admin['userrealdel'] =
+    'Are you sure you want to delete the user permanently?';
 $lang_admin['wdtraffic'] = 'Webdisc traffic';
 $lang_admin['used2'] = 'used';
 $lang_admin['used3'] = 'Used';

@@ -1599,6 +1599,7 @@ $lang_admin['assets'] = 'Guthaben';
 $lang_admin['credits'] = 'Credits';
 $lang_admin['alias'] = 'Alias';
 $lang_admin['realdel'] = 'Eintrag wirklich unwiderruflich entfernen?';
+$lang_admin['userrealdel'] = 'Benutzer wirklich unwiderruflich entfernen?';
 $lang_admin['wdtraffic'] = 'Webdisk-Traffic';
 $lang_admin['used2'] = 'verbraucht';
 $lang_admin['used3'] = 'Verbraucht';

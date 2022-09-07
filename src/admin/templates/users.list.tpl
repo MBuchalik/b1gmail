@@ -55,9 +55,24 @@
 			{/if}{/foreach}
 			<td>{$user.status}<br /><small>{lng p="group"}: {text value=$user.groupName cut=25}</small></td>
 			<td>
-				<a href="users.php?do=edit&id={$user.id}&sid={$sid}"><img src="{$tpldir}images/edit.png" border="0" alt="{lng p="edit"}" width="16" height="16" /></a>
-				<a href="javascript:singleAction('{if $user.gesperrt=='no'}lock{elseif $user.gesperrt=='yes'}unlock{elseif $user.gesperrt=='locked'}activate{elseif $user.gesperrt=='delete'}recover{/if}', '{$user.id}');"><img src="{$tpldir}images/{if $user.gesperrt=='no'}lock{elseif $user.gesperrt=='yes'}unlock{elseif $user.gesperrt=='locked'}unlock{elseif $user.gesperrt=='delete'}recover{/if}.png" border="0" alt="{if $user.gesperrt=='no'}{lng p="lock"}{elseif $user.gesperrt=='yes'}{lng p="unlock"}{elseif $user.gesperrt=='locked'}{lng p="activate"}{elseif $user.gesperrt=='delete'}{lng p="recover"}{/if}" width="16" height="16" /></a>
-				<a href="javascript:singleAction('delete', '{$user.id}');"><img src="{$tpldir}images/{if $user.gesperrt=='delete'}delete{else}trash{/if}.png" border="0" alt="{lng p="delete"}" width="16" height="16" /></a>
+				<a href="users.php?do=edit&id={$user.id}&sid={$sid}">
+					<img src="{$tpldir}images/edit.png" border="0" alt="{lng p="edit"}" width="16" height="16" />
+				</a>
+
+				<a href="javascript:singleAction('{if $user.gesperrt=='no'}lock{elseif $user.gesperrt=='yes'}unlock{elseif $user.gesperrt=='locked'}activate{elseif $user.gesperrt=='delete'}recover{/if}', '{$user.id}');">
+					<img src="{$tpldir}images/{if $user.gesperrt=='no'}lock{elseif $user.gesperrt=='yes'}unlock{elseif $user.gesperrt=='locked'}unlock{elseif $user.gesperrt=='delete'}recover{/if}.png" border="0" alt="{if $user.gesperrt=='no'}{lng p="lock"}{elseif $user.gesperrt=='yes'}{lng p="unlock"}{elseif $user.gesperrt=='locked'}{lng p="activate"}{elseif $user.gesperrt=='delete'}{lng p="recover"}{/if}" width="16" height="16" />
+				</a>
+
+				{if $user.gesperrt=='delete'}
+					<a href="javascript:singleAction('delete', '{$user.id}');" onclick="return confirm('{lng p="userrealdel"}')">
+						<img src="{$tpldir}images/delete.png" border="0" alt="{lng p="delete"}" width="16" height="16" />
+					</a>
+				{else}
+					<a href="javascript:singleAction('delete', '{$user.id}');">
+						<img src="{$tpldir}images/trash.png" border="0" alt="{lng p="delete"}" width="16" height="16" />
+					</a>
+				{/if}
+
 				<a href="users.php?do=login&id={$user.id}&sid={$sid}" target="_blank" onclick="return confirm('{lng p="loginwarning"}');"><img src="{$tpldir}images/login.png" border="0" alt="{lng p="login"}" width="16" height="16" /></a>
 			</td>
 		</tr>
