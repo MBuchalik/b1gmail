@@ -133,7 +133,7 @@ class BMCalendar {
      * @param int $end
      * @return array
      */
-    function _dateFor($row, $time, $start, $end) {
+    static function _dateFor($row, $time, $start, $end) {
         $row['enddate'] = min(
             $end,
             $row['enddate'] - $row['startdate'] + $time,
@@ -150,7 +150,7 @@ class BMCalendar {
      * @param int $end End
      * @return array Row of occurenced
      */
-    function _getOccurencesInTimeframe($row, $start, $end) {
+    static function _getOccurencesInTimeframe($row, $start, $end) {
         $result = [];
 
         if ($start > $end) {
@@ -450,7 +450,7 @@ class BMCalendar {
             $this->_userID,
         );
         while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-            $dates = $this->_getOccurencesInTimeframe($row, $start, $end);
+            $dates = BMCalendar::_getOccurencesInTimeframe($row, $start, $end);
             if (count($dates) > 0) {
                 $result = array_merge($result, $dates);
             }
