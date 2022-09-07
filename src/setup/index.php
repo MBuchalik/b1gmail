@@ -186,10 +186,10 @@ if ($step == STEP_SELECT_LANGUAGE) {
 		</tr>
 		<tr>
 			<th><?php echo $lang_setup['phpversion']; ?></th>
-			<td>7.4.0</td>
+			<td>8.0.0</td>
 			<td><?php echo phpversion(); ?></td>
 			<td><img src="../admin/templates/images/<?php if (
-       (int) str_replace('.', '', phpversion()) >= 740
+       (int) str_replace('.', '', phpversion()) >= 800
    ) {
        echo 'ok';
    } else {
