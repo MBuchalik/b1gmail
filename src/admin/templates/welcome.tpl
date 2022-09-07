@@ -89,6 +89,14 @@
 		</tr>
 	</table>
 </fieldset>
+
+<fieldset>
+	<legend>{lng p="notes"}</legend>
+	<form action="welcome.php?sid={$sid}&do=saveNotes" method="post" onsubmit="spin(this)">
+		<textarea style="width:100%;height:94px;" name="notes">{text value=$notes allowEmpty=true}</textarea>
+		<p align="right"><input type="submit" value=" {lng p="save"} " class="button" /></p>
+	</form>
+</fieldset>
 {/if}
 
 {if $adminRow.type==0}
