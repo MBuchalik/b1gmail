@@ -589,17 +589,53 @@ example.org</textarea>
             );
             $prefsQuery = sprintf(
                 'INSERT INTO bm60_prefs(template,language,selfurl,mobile_url,send_method,smtp_host,sendmail_path,receive_method,pop3_host,pop3_user,pop3_pass,passmail_abs,titel,datafolder,selffolder,b1gmta_host,dnsbl,signup_dnsbl,smsreply_abs,widget_order_start,widget_order_organizer,structstorage,search_in,db_is_utf8,rgtemplate,pay_emailfrom,pay_emailfromemail,regenabled,contactform_to,ap_autolock_notify_to,blobstorage_provider,blobstorage_provider_webdisk,blobstorage_compress,blobstorage_webdisk_compress) ' .
-                    'VALUES(\'modern\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',%d,\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',\'%s\',%d,%d,\'%s\',\'%s\')',
-                $_REQUEST['lng'] == 'deutsch' ? 'deutsch' : 'english',
-                SQLEscape($_REQUEST['url'], $connection),
-                SQLEscape($_REQUEST['url'] . 'm/', $connection),
-                SQLEscape($_REQUEST['send_method'], $connection),
-                SQLEscape($_REQUEST['smtp_host'], $connection),
-                SQLEscape($_REQUEST['sendmail_path'], $connection),
-                SQLEscape($_REQUEST['receive_method'], $connection),
-                SQLEscape($_REQUEST['pop3_host'], $connection),
-                SQLEscape($_REQUEST['pop3_user'], $connection),
-                SQLEscape($_REQUEST['pop3_pass'], $connection),
+                    'VALUES(
+                        \'%s\', /* template */
+                        \'%s\', /* language */
+                        \'%s\', /* selfurl */
+                        \'%s\', /* mobile_url */
+                        \'%s\', /* send_method */
+                        \'%s\', /* smtp_host */
+                        \'%s\', /* sendmail_path */
+                        \'%s\', /* receive_method */
+                        \'%s\', /* pop3_host */
+                        \'%s\', /* pop3_user */
+                        \'%s\', /* pop3_pass */
+                        \'%s\', /* passmail_abs */
+                        \'%s\', /* titel */
+                        \'%s\', /* datafolder */
+                        \'%s\', /* selffolder */
+                        \'%s\', /* b1gmta_host */
+                        \'%s\', /* dnsbl */
+                        \'%s\', /* signup_dnsbl */
+                        \'%s\', /* smsreply_abs */
+                        \'%s\', /* widget_order_start */
+                        \'%s\', /* widget_order_organizer */
+                        \'%s\', /* structstorage */
+                        \'%s\', /* search_in_db */
+                        %d, /* db_is_utf8 */
+                        \'%s\', /* rgtemplate */
+                        \'%s\', /* pay_emailfrom */
+                        \'%s\', /* pay_emailfromemail */
+                        \'%s\', /* regenabled */
+                        \'%s\', /* contactform_to */
+                        \'%s\', /* ap_autolock_notify_to */
+                        %d, /* blobstorage_provider */
+                        %d, /* blobstorage_provider_webdisk */
+                        \'%s\', /* blobstorage_compress */
+                        \'%s\' /* blobstorage_webdisk_compress */
+                    )',
+                'modern', // template
+                $_REQUEST['lng'] == 'deutsch' ? 'deutsch' : 'english', // language
+                SQLEscape($_REQUEST['url'], $connection), // selfurl
+                SQLEscape($_REQUEST['url'] . 'm/', $connection), // mobile_url
+                SQLEscape($_REQUEST['send_method'], $connection), // send_method
+                SQLEscape($_REQUEST['smtp_host'], $connection), // smtp_host
+                SQLEscape($_REQUEST['sendmail_path'], $connection), // sendmail_path
+                SQLEscape($_REQUEST['receive_method'], $connection), // receive_method
+                SQLEscape($_REQUEST['pop3_host'], $connection), // pop3_host
+                SQLEscape($_REQUEST['pop3_user'], $connection), // pop3_user
+                SQLEscape($_REQUEST['pop3_pass'], $connection), // pop3_pass
                 SQLEscape(
                     '"Postmaster ' .
                         $firstDomain .
@@ -607,46 +643,46 @@ example.org</textarea>
                         EncodeDomain($firstDomain) .
                         '>',
                     $connection,
-                ),
-                SQLEscape($firstDomain . ' Mail', $connection),
-                SQLEscape($dataFolder, $connection),
-                SQLEscape($selfFolder, $connection),
-                $hostName,
-                'ix.dnsbl.manitu.net:zen.spamhaus.org',
-                'dnsbl.tornevall.org',
+                ), // passmail_abs
+                SQLEscape($firstDomain . ' Mail', $connection), // titel
+                SQLEscape($dataFolder, $connection), // datafolder
+                SQLEscape($selfFolder, $connection), // selffolder
+                $hostName, // b1gmta_host
+                'ix.dnsbl.manitu.net:zen.spamhaus.org', // dnsbl
+                'dnsbl.tornevall.org', // signup_dnsbl
                 SQLEscape(
                     'postmaster@' . EncodeDomain($firstDomain),
                     $connection,
-                ),
-                'BMPlugin_Widget_Welcome,BMPlugin_Widget_EMail,BMPlugin_Widget_Websearch;BMPlugin_Widget_Mailspace,,BMPlugin_Widget_Quicklinks;BMPlugin_Widget_Webdiskspace,,',
-                'BMPlugin_Widget_Websearch,BMPlugin_Widget_Calendar,BMPlugin_Widget_Notes;,BMPlugin_Widget_Tasks,',
-                !ini_get('safe_mode') ? 'yes' : 'no',
+                ), // smsreply_abs
+                'BMPlugin_Widget_Welcome,BMPlugin_Widget_EMail,BMPlugin_Widget_Websearch;BMPlugin_Widget_Mailspace,,BMPlugin_Widget_Quicklinks;BMPlugin_Widget_Webdiskspace,,', // widget_order_start
+                'BMPlugin_Widget_Websearch,BMPlugin_Widget_Calendar,BMPlugin_Widget_Notes;,BMPlugin_Widget_Tasks,', // widget_order_organizer
+                !ini_get('safe_mode') ? 'yes' : 'no', // structstorage
                 SQLEscape(
                     'a:8:{s:5:"mails";s:2:"on";s:11:"attachments";s:2:"on";s:3:"sms";s:2:"on";s:8:"calendar";s:2:"on";s:5:"tasks";s:2:"on";s:11:"addressbook";s:2:"on";s:5:"notes";s:2:"on";s:7:"webdisk";s:2:"on";}',
                     $connection,
-                ),
+                ), // search_in_db
                 // UTF8 Mode --> We always set this to true.
-                1,
-                '',
-                SQLEscape($lang_setup['accounting'], $connection),
+                1, // db_is_utf8
+                '', // rgtemplate
+                SQLEscape($lang_setup['accounting'], $connection), // pay_emailfrom
                 SQLEscape(
                     'postmaster@' . EncodeDomain($firstDomain),
                     $connection,
-                ),
+                ), // pay_emailfromemail
                 // There are no signup features anymore, but the database structure expects a value to be set here.
-                'no',
+                'no', // regenabled
                 SQLEscape(
                     'postmaster@' . EncodeDomain($firstDomain),
                     $connection,
-                ),
+                ), // contactform_to
                 SQLEscape(
                     'postmaster@' . EncodeDomain($firstDomain),
                     $connection,
-                ),
-                $blobDBSupport ? 1 : 0,
-                $blobDBSupport ? 1 : 0,
-                $gzSupport ? 'yes' : 'no',
-                $gzSupport ? 'yes' : 'no',
+                ), // ap_autolock_notify_to
+                $blobDBSupport ? 1 : 0, // blobstorage_provider
+                $blobDBSupport ? 1 : 0, // blobstorage_provider_webdisk
+                $gzSupport ? 'yes' : 'no', // blobstorage_compress
+                $gzSupport ? 'yes' : 'no', // blobstorage_webdisk_compress
             );
             if (mysqli_query($connection, $prefsQuery)) {
                 $defaultConfigResut = 'ok';
