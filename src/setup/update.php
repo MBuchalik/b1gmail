@@ -98,10 +98,10 @@ if ($step == STEP_WELCOME) {
 		</tr>
 		<tr>
 			<th><?php echo $lang_setup['phpversion']; ?></th>
-			<td>5.3.0</td>
+			<td>7.4.0</td>
 			<td><?php echo phpversion(); ?></td>
 			<td><img src="../admin/templates/images/<?php if (
-       (int) str_replace('.', '', phpversion()) >= 530
+       (int) str_replace('.', '', phpversion()) >= 740
    ) {
        echo 'ok';
    } else {
