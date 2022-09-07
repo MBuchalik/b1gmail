@@ -801,7 +801,7 @@ $initialDbStruct[] = 'CREATE TABLE bm60_prefs(
   `nosignup_autodel_days` int(11) NOT NULL DEFAULT 7,
   `min_pass_length` tinyint(4) NOT NULL DEFAULT 8,
   `min_draft_save_interval` int(11) NOT NULL DEFAULT 15,
-  `mail_groupmode` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT \'fetched\',
+  `mail_groupmode` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT \'-\',
   PRIMARY KEY (`id`)
  )';
 $initialDbStruct[] = 'CREATE TABLE bm60_profilfelder(
