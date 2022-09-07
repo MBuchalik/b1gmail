@@ -115,7 +115,7 @@ if ($_REQUEST['action'] == 'languages') {
     // get custom lang of lang file
     function GetCustomLang($langfile) {
         $lang_client = $lang_user = $lang_admin = $lang_custom = [];
-        include B1GMAIL_DIR . 'languages/' . $langfile . '.lang.php';
+        include B1GMAIL_DIR . 'serverlib/languages/' . $langfile . '.lang.php';
         ModuleFunction('OnReadLang', [
             &$lang_user,
             &$lang_client,
