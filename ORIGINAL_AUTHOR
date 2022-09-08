@@ -1,8 +1,3 @@
-# This is the list of b1gMail's significant contributors.
-#
-# This does not necessarily list everyone who has contributed code,
-# especially since many employees of one corporation may be contributing.
-# To see the full list of contributors, see the revision history in
-# source control.
-Patrick Schlangen <patrick@schlangen.me>
+b1gMail used to be a commercial product, powering a pretty significant number of email services. Among them were also services with hundreds of thousands of users. On February 19, 2019, it was announced that b1gMail will be discontinued. The original developer, Patrick Schlangen, then made b1gMail available under the GPL2 license. We are really thankful for such a great product, and it makes us really proud to be able to continue the journey as open source software.
 
+Thus, we would like to thank the original author Patrick Schlangen (patrick@schlangen.me), who has made all of this possible!
