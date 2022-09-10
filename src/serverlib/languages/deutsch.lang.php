@@ -30,7 +30,6 @@ $lang_client['certmailsign'] = 'Digital signieren';
 $lang_client['certmailencrypt'] = 'Verschlüsseln';
 $lang_client['certmailconfirm'] = 'Lesebestätigung';
 $lang_client['prefs'] = 'Einstellungen';
-$lang_client['checkingaddr'] = 'Die Verfügbarkeit der Adresse wird geprüft...';
 $lang_client['nomailsselected'] = 'Keine E-Mail ausgew&auml;hlt';
 $lang_client['mailsselected'] = 'E-Mails ausgew&auml;hlt';
 $lang_client['nocontactselected'] = 'Kein Kontakt ausgew&auml;hlt';
@@ -51,7 +50,6 @@ $lang_client['importvcf'] = 'VCF importieren';
 $lang_client['import'] = 'Import';
 $lang_client['userpicture'] = 'Benutzerbild';
 $lang_client['addattach'] = 'Anlage hinzufügen';
-$lang_client['saveattach'] = 'Anlage speichern';
 $lang_client['attachments'] = 'Anlagen';
 $lang_client['date'] = 'Termin';
 $lang_client['switchwarning'] =
@@ -62,8 +60,6 @@ $lang_client['newfolder'] = 'Neuer Ordner';
 $lang_client['foldererror'] = 'Der Ordner konnte nicht erstellt werden.';
 $lang_client['attendees'] = 'Teilnehmer';
 $lang_client['addattendee'] = 'Teilnehmer hinzuf&uuml;gen';
-$lang_client['newpatches'] =
-    'Es sind neue Patches über das automatische Update-System verfügbar.';
 $lang_client['protectedfolder'] = 'Geschütztes Verzeichnis';
 $lang_client['source'] = 'Quelltext';
 $lang_client['sendwosubject'] =
@@ -86,7 +82,6 @@ $lang_client['groups'] = 'Gruppen';
 $lang_client['nwslttrtplwarn'] =
     'Bei Wechsel des Templates gehen alle Eingaben, die bisher gemacht wurden, verloren. Sind Sie sicher, dass Sie das Template wechseln möchten?';
 $lang_client['cancel'] = 'Abbrechen';
-$lang_client['showsuggestions'] = 'Alternativ-Vorschl&auml;ge anzeigen';
 $lang_client['pleasewait'] = 'Bitte warten...';
 $lang_client['deliverystatus'] = 'Zustell-Status';
 $lang_client['decsep'] = ',';
@@ -245,7 +240,6 @@ $lang_custom['notify_birthday'] =
  * User phrases
  */
 
-$lang_user['weekdays'] = 'SMDMDFS'; // sunday through saturday
 $lang_user['weekdays_long'] = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.']; // sunday through saturday
 $lang_user['full_weekdays'] = [
     'Sonntag',
@@ -258,30 +252,10 @@ $lang_user['full_weekdays'] = [
 ];
 
 // phrases for new nli layout
-$lang_user['pleasechose'] = 'Bitte w&auml;hlen';
 $lang_user['home'] = 'Home';
-$lang_user['plans'] = 'Tarife';
-$lang_user['required'] = 'erforderlich';
-$lang_user['street'] = 'Stra&szlig;e';
-$lang_user['nr'] = 'Nr.';
-$lang_user['wishaddressandpw'] = 'Name, Wunschadresse und Passwort';
-$lang_user['accepttos'] = 'Ich akzeptiere die';
-$lang_user['completesignup'] = 'Registrierung abschlie&szlig;en';
-$lang_user['next'] = 'Weiter';
 $lang_user['pleasewait'] = 'Bitte warten...';
 $lang_user['readcertmail'] = 'Einschreiben lesen';
-$lang_user['suggestions'] = 'Vorschl&auml;ge';
-$lang_user['nosuggestions'] =
-    'Es konnten keine Vorschl&auml;ge gefunden werden.';
-$lang_user['suggestions_desc'] =
-    'Wir haben die folgenden Adress-Vorschl&auml;ge ermittelt, die noch zur Registrierung zur Verf&uuml;gung stehen:';
-$lang_user['choose'] = '&Uuml;bernehmen';
 $lang_user['nothanks'] = 'Nein Danke';
-$lang_user['message'] = 'Nachricht';
-$lang_user['cform_senderror'] =
-    'Ihre Nachricht kann derzeit nicht gesendet werden. Bitte versuchen Sie es sp&auml;ter erneut.';
-$lang_user['cform_sent'] =
-    'Wir haben Ihre Anfrage erhalten und werden diese schnellstm&ouml;glich bearbeiten.';
 
 // misc
 $lang_user['nonotifications'] = 'keine aktuellen Benachrichtigungen';
@@ -302,13 +276,10 @@ $lang_user['datefrom'] = 'von';
 $lang_user['dateto'] = 'bis';
 $lang_user['nothingfound'] = 'Keine Treffer gefunden.';
 $lang_user['details'] = 'Details';
-$lang_user['jswarning'] =
-    'Bitte aktivieren Sie JavaScript. Die Nutzung des Dienstes ist ansonsten nicht m&ouml;glich!';
 $lang_user['imprint'] = 'Impressum';
 $lang_user['tos'] = 'AGB';
 $lang_user['privacy'] = 'Datenschutz';
 $lang_user['privacy_policy'] = 'Datenschutz-Erkl&auml;rung';
-$lang_user['mobilepda'] = 'Mobil';
 $lang_user['mobiledenied'] =
     'Sie verf&uuml;gen nicht &uuml;ber die zum Zugriff auf das Mobil-Interface ben&ouml;tigen Zugriffsrechte.';
 $lang_user['workgroup'] = 'Arbeitsgruppe';
@@ -342,17 +313,7 @@ $lang_user['pwresetsuccess2'] =
     'Ihr neues Passwort wurde erfolgreich aktiviert. Sie k&ouml;nnen sich nun mit Ihrer E-Mail-Adresse und dem Passwort <a href="index.php">einloggen</a>.';
 
 // sign up
-$lang_user['minchars'] = 'min. %d Zeichen';
-$lang_user['wishaddress'] = 'Wunschadresse';
 $lang_user['signup'] = 'Registrieren';
-$lang_user['signuptxt'] =
-    'F&uuml;llen Sie einfach das folgende Formular aus, um sich eine kostenlose E-Mail-Adresse zu registrieren.';
-$lang_user['signuptxt_code'] =
-    'Falls Sie einen Gutscheincode haben, k&ouml;nnen Sie diesen in das entsprechende Feld eingeben - ansonsten k&ouml;nnen Sie dieses Feld leer lassen.';
-$lang_user['notmember'] = 'Noch nicht Mitglied';
-$lang_user['notmembertxt'] =
-    'Sichern Sie sich Ihre kostenlose E-Mail-Adresse mit Funktionen der Extraklasse. <a href="index.php?action=signup">Klicken Sie hier</a>, um sich v&ouml;llig kostenlos anzumelden!';
-$lang_user['contactinfo'] = 'Kontaktinformationen';
 $lang_user['firstname'] = 'Vorname';
 $lang_user['surname'] = 'Nachname';
 $lang_user['streetnr'] = 'Stra&szlig;e/Nr.';
@@ -365,36 +326,17 @@ $lang_user['altmail'] = 'E-Mail';
 $lang_user['altmail2'] = 'Alternativ-E-Mail';
 $lang_user['repeat'] = 'Wiederholen';
 $lang_user['security'] = 'Sicherheit';
-$lang_user['code'] = 'Gutscheincode';
 $lang_user['submit'] = 'Abschicken';
 $lang_user['iprecord'] =
     'Ihre IP-Adresse wird zur Betrugspr&auml;vention gespeichert.';
 $lang_user['misc'] = 'Sonstiges';
-$lang_user['tosaccept'] = 'Ich akzeptiere die AGB';
-$lang_user['tosnaccept'] = 'Ich akzeptiere die AGB nicht';
 $lang_user['country'] = 'Land';
 $lang_user['checkfields'] =
     'Bitte pr&uuml;fen Sie die rot markierten Felder und versuchen Sie es erneut.';
 $lang_user['pwerror'] =
     'Ihr Passwort ist zu kurz (&lt; %d Zeichen), gleicht Ihrem Benutzernamen oder stimmt nicht mit der Wiederholung &uuml;berein.';
-$lang_user['plzerror'] =
-    'Ihre PLZ stimmt nicht mit dem eingegebenen Ort &uuml;berein.';
-$lang_user['toserror'] =
-    'Sie m&uuml;ssen unseren AGB zustimmen, um sich registrieren zu k&ouml;nnen.';
-$lang_user['regerror'] =
-    'Die Registrierung ist aus unbekannten Gr&uuml;nden fehlgeschlagen. Bitte versuchen Sie es sp&auml;ter erneut.';
-$lang_user['regdone'] =
-    'Herzlichen Gl&uuml;ckwunsch, Sie haben sich erfolgreich registriert! Sie k&ouml;nnen sich nun mit Ihrer neuen E-Mail-Adresse <i>%s</i> und Ihrem Passwort <a href="index.php">einloggen</a> und Ihren Account nutzen.';
-$lang_user['regdonelocked'] =
-    'Herzlichen Gl&uuml;ckwunsch, Sie haben sich erfolgreich registriert! Ihr Account mit der E-Mail-Adresse <i>%s</i> muss nun nur noch von einem Administrator aktiviert werden, bevor Sie sich <a href="index.php">einloggen</a> und Ihren Account nutzen k&ouml;nnen. Dies kann unter Umst&auml;nden 1-2 Werktage dauern.';
-$lang_user['regdisabled'] =
-    'Zur Zeit werden leider keine neuen Anmeldungen angenommen. Bitte versuchen Sie es sp&auml;ter erneut.';
 $lang_user['doublealtmail'] =
     'Es existiert bereits ein Account mit dieser Alternativ-E-Mail-Adresse!';
-$lang_user['doublecellphone'] =
-    'Es existiert bereits ein Account mit dieser Handy-Nummer!';
-$lang_user['altmaillocked'] =
-    'Die angegebene E-Mail-Adresse ist nicht f&uuml;r die Anmeldung zugelassen. Bitte verwenden Sie eine andere E-Mail-Adresse.';
 
 // address book completion
 $lang_user['addrselfcomplete'] = 'Adressbuch-Vervollst&auml;ndigung';
@@ -410,9 +352,6 @@ $lang_user['certmailerror'] =
     'Der Link zum Einschreiben ist ung&uuml;ltig oder das Einschreiben ist abgelaufen oder wurde gel&ouml;scht.';
 
 // login
-$lang_user['pwcrypted'] =
-    'Ihr Passwort wird sicher verschl&uuml;sselt &uuml;bertragen.';
-$lang_user['otheruser'] = 'Anderer Benutzer?';
 $lang_user['loginblocked'] =
     'Ihr Account wurde wegen zu vielen fehlerhaften Loginversuchen sicherheitshalber bis zum <i>%s</i> gesperrt. Bei weiteren Fragen kontaktieren Sie uns bitte.';
 $lang_user['badlogin'] =
@@ -426,19 +365,6 @@ $lang_user['email'] = 'E-Mail';
 $lang_user['password'] = 'Passwort';
 $lang_user['language'] = 'Sprache';
 $lang_user['ssl'] = 'Sicherer SSL-Login';
-$lang_user['validation_ok'] =
-    'Ihr Account wurde erfolgreich aktiviert. Sie k&ouml;nnen sich nun mit Ihren Zugangsdaten <a href="index.php">einloggen</a>.';
-$lang_user['validation_err'] =
-    'Ihr Account konnte leider nicht aktiviert werden. Eventuell ist Ihr Account schon aktiviert oder der Aktivierungs-Link wurde nicht korrekt aufgerufen.';
-$lang_user['didnotgetcode'] = 'Freischalt-Code nicht erhalten?';
-$lang_user['resendcode'] = 'Code erneut zusenden';
-$lang_user['coderesent'] = 'Ihr Freischalt-Code wurde erneut zugesendet.';
-$lang_user['validation_resend_text'] =
-    'Sie k&ouml;nnen Ihren Freischalt-Code noch %d mal erneut zusenden lassen.';
-$lang_user['validation_count_limit'] =
-    'Sie haben Ihren Freischalt-Code bereits %d mal angefordert. Bitte kontaktieren Sie unseren Support, wenn Sie Probleme bei der Freischaltung haben.';
-$lang_user['validation_time_limit'] =
-    'Sie k&ouml;nnen Ihren Freischalt-Code in %d:%02d Minuten erneut anfordern.';
 
 // folders
 $lang_user['folders'] = 'Ordner';
@@ -511,8 +437,6 @@ $lang_user['pleaseselectitem'] =
     'W&auml;hlen Sie einen Ordner oder eine Datei aus.';
 $lang_user['actions'] = 'Aktionen';
 $lang_user['count'] = 'Anzahl';
-$lang_user['droptext'] =
-    'Ziehen Sie Ihre Dateien zum Hochladen aus Ihrem Dateimanager heraus auf den Ordner.';
 $lang_user['filename'] = 'Dateiname';
 $lang_user['size'] = 'Gr&ouml;&szlig;e';
 $lang_user['created'] = 'Erstellt';
@@ -532,7 +456,6 @@ $lang_user['rename'] = 'Umbenennen';
 $lang_user['download'] = 'Herunterladen';
 $lang_user['move'] = 'Verschieben';
 $lang_user['cut'] = 'Ausschneiden';
-$lang_user['open'] = '&Ouml;ffnen';
 $lang_user['delete'] = 'L&ouml;schen';
 $lang_user['paste'] = 'Einf&uuml;gen';
 $lang_user['realdel'] = 'Eintrag wirklich unwiderruflich entfernen?';
@@ -604,7 +527,6 @@ $lang_user['addraddtext'] =
     'Mindestens ein Empf&auml;nger der soeben gesendeten E-Mail befindet sich noch nicht in Ihrem Adressbuch. Sie k&ouml;nnen noch nicht im Adressbuch befindliche Empf&auml;nger direkt in Ihr Adressbuch &uuml;bernehmen. Markieren Sie dazu die Empf&auml;nger, die Sie hinzuf&uuml;gen m&ouml;chten, geben Sie ggf. die zugeh&ouml;rigen Namen an und klicken Sie auf &quot;Speichern&quot.';
 $lang_user['addradddone'] =
     'Die Adresse(n) wurde(n) erfolgreich in Ihr Adressbuch eingetragen.';
-$lang_user['addtogroup'] = 'Zu Gruppe hinzuf&uuml;gen';
 $lang_user['addcontact'] = 'Kontakt hinzuf&uuml;gen';
 $lang_user['editcontact'] = 'Kontakt bearbeiten';
 $lang_user['company'] = 'Firma';
@@ -659,7 +581,6 @@ $lang_user['import'] = 'Import';
 $lang_user['export'] = 'Export';
 $lang_user['groupexists'] = 'Eine Gruppe mit diesem Titel existiert bereits.';
 $lang_user['editgroup'] = 'Gruppe bearbeiten';
-$lang_user['doexport'] = 'Exportieren';
 $lang_user['invalidpicture'] =
     'Das ausgewählte Bild ist ungültig. Bitte verwenden Sie ein JPG-, PNG- oder GIF-Bild, dass nicht größer als %.02f KB ist.';
 $lang_user['semicolon'] = 'Semikolon';
@@ -670,11 +591,9 @@ $lang_user['single'] = 'Einfach';
 $lang_user['linebreakchar'] = 'Zeilenumbruch';
 $lang_user['sepchar'] = 'Trennzeichen';
 $lang_user['quotechar'] = 'Anf&uuml;hrungszeichen';
-$lang_user['advanced'] = 'Erweitert';
 $lang_user['type'] = 'Typ';
 $lang_user['csvfile'] = 'CSV-Datei';
 $lang_user['encoding'] = 'Zeichensatz';
-$lang_user['vcfzipfile'] = 'ZIP-Datei mit .VCF-Dateien';
 $lang_user['addrimporttext'] =
     'Bitte w&auml;hlen Sie die Datei aus, die Sie in Ihr Adressbuch importieren m&ouml;chten. Achten Sie bitte darauf, dass die Datei genau das Format hat, das Sie unter &quot;Typ&quot; ausgew&auml;hlt haben.';
 $lang_user['invalidformat'] =
@@ -707,14 +626,11 @@ $lang_user['showsource'] = 'Quelltext anzeigen';
 $lang_user['moveto'] = 'nach';
 $lang_user['sendmail'] = 'Neue E-Mail';
 $lang_user['folderadmin'] = 'Ordnerverwaltung';
-$lang_user['previewpane'] = 'Vorschau-Fenster';
 $lang_user['preview'] = 'Vorschau';
 $lang_user['mail_read'] = 'E-Mail lesen';
 $lang_user['mail_del'] = 'E-Mail l&ouml;schen';
 $lang_user['mails_del'] = 'E-Mails l&ouml;schen';
-$lang_user['mail_menu'] = 'E-Mail-Optionen';
 $lang_user['print'] = 'Drucken';
-$lang_user['mail_menu'] = 'E-Mail-Optionen';
 $lang_user['reply'] = 'Antworten';
 $lang_user['replyall'] = 'Allen antworten';
 $lang_user['forward'] = 'Weiterleiten';
@@ -734,8 +650,6 @@ $lang_user['to'] = 'An';
 $lang_user['cc'] = 'Kopie';
 $lang_user['bcc'] = 'Blindkopie';
 $lang_user['replyto'] = 'Antworten an';
-$lang_user['quotesel'] = 'Markierten Text zitieren';
-$lang_user['searchsel'] = 'Markierten Text im Internet suchen';
 $lang_user['attachments'] = 'Anlagen';
 $lang_user['approx'] = 'ca.';
 $lang_user['savetowebdisk'] = 'Auf Webdisk speichern';
@@ -780,7 +694,6 @@ $lang_user['elapsed_day'] = ' (vor %d Tag)';
 $lang_user['sendconfirmation'] = 'Best&auml;tigung senden';
 $lang_user['senderconfirmto'] =
     'Der Absender der E-Mail erbittet eine Lesebest&auml;tigung an';
-$lang_user['nomails'] = 'Keine E-Mails vorhanden.';
 $lang_user['mailsent'] = 'Die E-Mail wurde erfolgreich verschickt.';
 $lang_user['certmailinfo'] =
     'Diese E-Mail ist ein Einschreiben. Wenn Sie die E-Mail l&ouml;schen, ist das Einschreiben nicht mehr lesbar!';
@@ -839,33 +752,6 @@ $lang_user['version'] = 'Version';
 $lang_user['serial'] = 'Seriennummer';
 $lang_user['publickey'] = '&Ouml;ffentlicher Schl&uuml;ssel';
 $lang_user['bits'] = 'Bits';
-$lang_user['keyring'] = 'Schl&uuml;sselbund';
-$lang_user['prefs_d_keyring'] =
-    'Verwalten Sie Ihre Schl&uuml;ssel und Zertifikate zum Signieren und Ver-/Entschl&uuml;sseln von E-Mails.';
-$lang_user['prefs_d_faq'] =
-    'Hier finden Sie wertvolle Antworten auf h&auml;ufig gestellte Fragen.';
-$lang_user['prefs_d_common'] =
-    'Allgemeine Einstellungen (wie Lese- und Zitieroptionen) Ihres Accounts bearbeiten.';
-$lang_user['prefs_d_contact'] =
-    'Ihre Kontaktdaten, die auch f&uuml;r Ihre digitale Visitenkarte benutzt werden, bearbeiten.';
-$lang_user['prefs_d_filters'] =
-    'Eingehenden E-Mail-Verkehr mittels selbst definierten Filter-Regeln sortieren.';
-$lang_user['prefs_d_signatures'] =
-    'Bearbeiten Sie Ihre E-Mail-Signaturen oder f&uuml;gen Sie neue Signaturen hinzu.';
-$lang_user['prefs_d_antivirus'] =
-    'Sch&uuml;tzen Sie Ihre Mailbox und Ihre Daten durch das integrierte Anti-Virus-System.';
-$lang_user['prefs_d_antispam'] =
-    'Lassen Sie nur die E-Mails durchkommen, die Sie auch wirklich haben m&ouml;chten.';
-$lang_user['prefs_d_aliases'] =
-    'Sichern Sie sich weitere E-Mail-Adressen f&uuml;r diesen Account.';
-$lang_user['prefs_d_autoresponder'] =
-    'Lassen Sie eingehende E-Mails automatisch beantworten, z.B. bei Abwesenheit.';
-$lang_user['prefs_d_extpop3'] =
-    'Sie k&ouml;nnen E-Mails von externen POP3-Accounts in Ihren E-Mail-Account einsammeln lassen.';
-$lang_user['prefs_d_software'] =
-    'Laden Sie Client-Software f&uuml;r Ihren Computer herunter, z.B. einen Mailpr&uuml;fer.';
-$lang_user['prefs_d_membership'] =
-    'Sehen Sie Infos zu Ihrer Mitgliedschaft ein oder beenden Sie diese auf Wunsch.';
 $lang_user['alias'] = 'Alias';
 $lang_user['addalias'] = 'Alias hinzuf&uuml;gen';
 $lang_user['aliastype_1'] = 'Absender';
@@ -890,11 +776,7 @@ $lang_user['confirmaliasok'] =
 $lang_user['confirmaliaserr'] =
     'Der Alias wurde bereits best&auml;tigt, nicht gefunden oder der Link ist ung&uuml;ltig.';
 $lang_user['description'] = 'Beschreibung';
-$lang_user['current'] = 'aktuell';
 $lang_user['langCode'] = 'DE';
-$lang_user['langCode_editor'] = 'de';
-$lang_user['dearsirormadam'] = 'Sehr geehrte Damen und Herren';
-$lang_user['kindregards'] = 'Mit freundlichen Gr&uuml;&szlig;en';
 $lang_user['wgmembership'] = 'Arbeitsgruppen-Mitgliedschaften';
 $lang_user['membersince'] = 'Mitglied seit';
 $lang_user['cancelmembership'] = 'Mitgliedschaft beenden';
@@ -957,8 +839,6 @@ $lang_user['editsignature'] = 'Signatur bearbeiten';
 $lang_user['question'] = 'Frage';
 $lang_user['addpop3'] = 'POP3-Account hinzuf&uuml;gen';
 $lang_user['editpop3'] = 'POP3-Account bearbeiten';
-$lang_user['toomanypop3'] =
-    'Die maximale POP3-Account-Anzahl wurde erreicht. Sie m&uuml;ssen zuerst einen Account l&ouml;schen, bevor Sie einen neuen einrichten k&ouml;nnen.';
 $lang_user['pop3usage'] = '<b>%d</b> von <b>%d</b> Account(s) eingerichtet.';
 $lang_user['username'] = 'Benutzername';
 $lang_user['host'] = 'Hostname';
@@ -972,8 +852,6 @@ $lang_user['pop3loginerror'] =
     'Mit den angegebenen Zugangsdaten konnte keine Verbindung zu einem POP3-Server aufgebaut werden.';
 $lang_user['pop3ownerror'] =
     'Sie k&ouml;nnen nicht das Postfach in sich selbst abrufen lassen.';
-$lang_user['val24error'] =
-    'Die &Auml;nderung Ihrer Mobil-Nummer ist nur einmal je 24 Stunden m&ouml;glich!';
 $lang_user['addcert'] = 'Zertifikat importieren';
 $lang_user['publiccerts'] = '&Ouml;ffentliche Zertifikate';
 $lang_user['owncerts'] = 'Eigene Zertifikate';
@@ -1065,7 +943,6 @@ $lang_user['attcheck'] = 'Anlagen-Warnung';
 $lang_user['attcheck_desc'] =
     'Auf m&ouml;glicherweise vergessenen Anhang hinweisen';
 $lang_user['sendmail2'] = 'E-Mail senden';
-$lang_user['sendmail3'] = 'Senden';
 $lang_user['attachvc'] = 'Visitenkarte';
 $lang_user['certmail'] = 'Einschreiben';
 $lang_user['mailconfirmation'] = 'Lesebest&auml;tigung';
@@ -1079,12 +956,7 @@ $lang_user['addattachtext'] =
     'Bitte w&auml;hlen Sie die Datei aus, die Sie an die E-Mail anh&auml;ngen m&ouml;chten und klicken Sie auf &quot;OK&quot;. Sie k&ouml;nnen entweder eine Datei von Ihrem Computer hochladen oder eine Datei von Ihrer Webdisk verwenden (falls vorhanden).';
 $lang_user['toobigattach'] =
     'Die gewählte Datei ist zu groß. Die Gesamtgröße aller Anhänge einer E-Mail darf %.02f KB nicht überschreiten.';
-$lang_user['smartattach'] = 'Anlagen als Download versenden';
 $lang_user['savedraft'] = 'Als Entwurf speichern';
-$lang_user['waituntil1'] = 'Absenden in';
-$lang_user['waituntil2'] = 'Sekunden m&ouml;glich.';
-$lang_user['waituntil3'] =
-    'Das erneute Versenden einer E-Mail ist erst in <b>%d</b> Sekunden wieder m&ouml;glich. Bitte versuchen Sie es nach diesem Zeitraum erneut.';
 $lang_user['norecipients'] =
     'Sie haben keine g&uuml;ltigen Empf&auml;nger angegeben. Bitte gehen Sie zur&uuml;ck und versuchen Sie es erneut.';
 $lang_user['toomanyrecipients'] =
@@ -1162,22 +1034,15 @@ $lang_user['color_3'] = 'Rot';
 $lang_user['color_4'] = 'Orange';
 $lang_user['color_5'] = 'Lila';
 $lang_user['color_6'] = 'Violett';
-$lang_user['colors'] = 'Farben';
 
 /**
  * Admin phrases
  */
-$lang_admin['disabled'] = 'nicht aktiviert';
-$lang_admin['republickey'] = 'Websiteschl&uuml;ssel';
-$lang_admin['reprivatekey'] = 'Geheimer Schl&uuml;ssel';
-$lang_admin['addtransaction'] = 'Transaktion hinzuf&uuml;gen';
 $lang_admin['edittransaction'] = 'Transaktion bearbeiten';
 $lang_admin['booked'] = 'Gebucht';
 $lang_admin['cancelled'] = 'Storniert';
-$lang_admin['transactions'] = 'Transaktionen';
 $lang_admin['description'] = 'Beschreibung';
 $lang_admin['cancel'] = 'Stornieren';
-$lang_admin['uncancel'] = 'Stornierung aufheben';
 $lang_admin['mail_groupmode'] = 'E-Mail-Gruppierung';
 $lang_admin['props'] = 'Eigenschaften';
 $lang_admin['flags'] = 'Markierungen';
@@ -1191,13 +1056,9 @@ $lang_admin['color'] = 'Farbe';
 $lang_admin['min_draft_save'] = 'Min. Entwurf-Speicher-Intervall';
 $lang_admin['auto_save_drafts'] = 'Auto-Entwurf-Speich.';
 $lang_admin['timeframe'] = 'Zeitraum';
-$lang_admin['last7d'] = 'letzte 7 Tage';
-$lang_admin['sendstats'] = 'E-Mail-Versand-Statistik';
-$lang_admin['recvstats'] = 'E-Mail-Empfangs-Statistik';
 $lang_admin['pfrulenote'] =
     '(nur f&uuml;r Text-Felder (regul&auml;rer Ausdruck) oder Datums-Felder (z.B. &quot;&gt;= 18y&quot;))';
 $lang_admin['registered'] = 'Registriert';
-$lang_admin['max'] = 'max.';
 $lang_admin['onlyfor'] = 'gilt nur f&uuml;r';
 $lang_admin['deliverystatus'] = 'Zustell-Status';
 $lang_admin['acpiconsfrom'] = 'Adminbereich-Icons von';
@@ -1225,9 +1086,7 @@ $lang_admin['rbbs_webdisk'] = 'Webdisk-Dateien umspeichern';
 $lang_admin['separatefiles'] = 'eine Datei pro Objekt';
 $lang_admin['userdb'] = 'eine Datei pro Benutzer';
 $lang_admin['nliarea'] = 'Nicht-eingeloggter Bereich';
-$lang_admin['privatekey'] = 'Private Key';
 $lang_admin['publickey'] = 'Public Key';
-$lang_admin['theme'] = 'Theme';
 $lang_admin['write_xsenderip'] = 'X-Sender-IP-Header schreiben';
 $lang_admin['fts_bg_indexing'] = 'Automatische Hintergrund-Indizierung';
 $lang_admin['buildindex'] = 'Index aufbauen';
@@ -1249,12 +1108,6 @@ $lang_admin['readonly'] = 'Nur lesen';
 $lang_admin['readwrite'] = 'Lesen / Schreiben';
 $lang_admin['sharedfolders'] = 'E-Mail-Ordner';
 $lang_admin['showcheckboxes'] = 'Mehrfachauswahl mit Checkbox';
-$lang_admin['domaindisplay'] = 'Domain-Anzeige';
-$lang_admin['ddisplay_normal'] = '@-Zeichen in Dropdown';
-$lang_admin['ddisplay_separate'] = '@-Zeichen separat';
-$lang_admin['blocksignup'] = 'Registrierung blockieren';
-$lang_admin['activatemanually'] =
-    'Manuelle Account-Aktivierung durch Administrator';
 $lang_admin['details'] = 'Details';
 $lang_admin['compresspages'] = 'Seiten-Ausgabe komprimieren';
 $lang_admin['comment'] = 'Kommentar';
@@ -1269,21 +1122,12 @@ $lang_admin['enableolder'] = 'Aktivieren f&uuml;r Eintr&auml;ge &auml;lter als';
 $lang_admin['calendarviewmode'] = 'Kalender-Ansicht';
 $lang_admin['week'] = 'Woche';
 $lang_admin['month'] = 'Monat';
-$lang_admin['notrecommended'] = 'NICHT empfohlen';
 $lang_admin['prefslayout'] = 'Einstellungs-&Uuml;bersicht';
 $lang_admin['onecolumn'] = 'Einspaltig';
 $lang_admin['twocolumns'] = 'Zweispaltig';
-$lang_admin['navpos'] = 'Haupt-Navigation';
-$lang_admin['left'] = 'Links';
-$lang_admin['top'] = 'Oben';
 $lang_admin['defaultemplate'] = 'Standard-Template';
-$lang_admin['colorscheme'] = 'Farb-Schema';
-$lang_admin['orange'] = 'Orange';
-$lang_admin['blue'] = 'Blau';
-$lang_admin['tabmode'] = 'Tab-Modus';
 $lang_admin['complete'] = 'Vollst&auml;ndig';
 $lang_admin['icons'] = 'Icons';
-$lang_admin['hidesignup'] = 'Registrierung verstecken wenn deaktiviert';
 $lang_admin['showuseremail'] = 'Benutzer-E-Mail-Adresse anzeigen';
 $lang_admin['templates'] = 'Templates';
 $lang_admin['show_at'] = 'Anzeigen bei';
@@ -1292,17 +1136,10 @@ $lang_admin['account'] = 'Account';
 $lang_admin['admins'] = 'Administratoren';
 $lang_admin['download'] = 'Herunterladen';
 $lang_admin['phpinfo'] = 'PHP-Info';
-$lang_admin['yourinvoice'] = 'Ihre Rechnung';
-$lang_admin['dearsirormadam'] = 'Sehr geehrte Damen und Herren';
-$lang_admin['descr'] = 'Bezeichnung';
-$lang_admin['kindregards'] = 'Mit freundlichen Gr&uuml;&szlig;en';
 $lang_admin['sender_aliases'] = 'Absender-Aliase';
 $lang_admin['attachments'] = 'Anlagen';
-$lang_admin['flexspans'] = 'Autom. Betreff-L&auml;nge';
 $lang_admin['redirectmobile'] = 'Autom. Mobil-Weiterleitung';
 $lang_admin['returnpathcheck'] = 'Return-Path-Pr&uuml;fung';
-$lang_admin['licensedetails'] = 'Lizenz-Details';
-$lang_admin['updateaccess'] = 'Updaterecht';
 $lang_admin['pleasewait'] = 'Bitte warten...';
 $lang_admin['startwidgets'] = 'Start-Dashboard';
 $lang_admin['defaultlayout'] = 'Standard-Layout';
@@ -1316,8 +1153,6 @@ $lang_admin['widgetlayouts'] = 'Widget-Layouts';
 $lang_admin['acp'] = 'Administrationsbereich (ACP)';
 $lang_admin['password'] = 'Passwort';
 $lang_admin['login'] = 'Login';
-$lang_admin['dattempt'] =
-    'Dies ist ihr %d. Loginversuch, nach insgesamt 5 Versuchen wird der Login f&uuml;r 5 Minuten gesperrt.';
 $lang_admin['dattempt2'] =
     'Der Login f&uuml;r diesen Account ist wegen zu vielen fehlgeschlagenen Versuchen bis zum %s gesperrt.';
 $lang_admin['loginerror'] =
@@ -1325,7 +1160,6 @@ $lang_admin['loginerror'] =
 $lang_admin['welcome'] = 'Willkommen';
 $lang_admin['usersgroups'] = 'Benutzer &amp; Gruppen';
 $lang_admin['users'] = 'Benutzer';
-$lang_admin['user'] = 'Benutzer';
 $lang_admin['domain'] = 'Domain';
 $lang_admin['groups'] = 'Gruppen';
 $lang_admin['activity'] = 'Aktivit&auml;t';
@@ -1380,20 +1214,15 @@ $lang_admin['stylesheet'] = 'Stylesheet';
 $lang_admin['names'] = 'Namen';
 $lang_admin['optimize'] = 'Optimierung';
 $lang_admin['stats'] = 'Statistiken';
-$lang_admin['backup'] = 'Backup';
 $lang_admin['logs'] = 'Logs';
-$lang_admin['receivesys'] = 'Empfangssystem';
-$lang_admin['updates'] = 'Updates';
 $lang_admin['plugins'] = 'Plugins';
 $lang_admin['logout'] = 'Logout';
 $lang_admin['logoutquestion'] = 'Möchten Sie sich wirklich ausloggen?';
-$lang_admin['license'] = 'Lizenz';
 $lang_admin['overview'] = '&Uuml;bersicht';
 $lang_admin['notes'] = 'Notizen';
 $lang_admin['notices'] = 'Hinweise';
 $lang_admin['about'] = '&Uuml;ber b1gMail';
 $lang_admin['version'] = 'Version';
-$lang_admin['nonotices'] = 'Keine aktuellen Hineweise vorhanden.';
 $lang_admin['save'] = 'Speichern';
 $lang_admin['notactivated'] = 'Nicht aktiviert';
 $lang_admin['locked'] = 'Gesperrt';
@@ -1406,22 +1235,10 @@ $lang_admin['webserver'] = 'Webserver';
 $lang_admin['mysqlversion'] = 'MySQL-Version';
 $lang_admin['dbsize'] = 'Datenbank-Gr&ouml;&szlig;e';
 $lang_admin['load'] = 'Serverlast';
-$lang_admin['db'] = 'Datenbank';
-$lang_admin['deprecated'] = 'veraltet';
 $lang_admin['cache'] = 'Cache';
 $lang_admin['filesystem'] = 'Dateisystem';
-$lang_admin['optimizedb'] = 'Datenbank optimieren';
 $lang_admin['tables'] = 'Tabellen';
 $lang_admin['action'] = 'Aktion';
-$lang_admin['op_optimize'] = 'Optimieren';
-$lang_admin['op_optimize_desc'] =
-    'Gibt freien Speicher der Tabellen frei und r&auml;umt diese f&uuml;r schnelleren Zugriff auf.';
-$lang_admin['op_repair'] = 'Reparieren';
-$lang_admin['op_repair_desc'] =
-    '&Uuml;berpr&uuml;ft die Tabellen auf Fehler und repariert diese, sofern dies m&ouml;glich ist.';
-$lang_admin['op_struct'] = 'Struktur pr&uuml;fen';
-$lang_admin['op_struct_desc'] =
-    '&Uuml;berpr&uuml;ft die Tabellen-Struktur und repariert diese auf Wunsch. Diese Operation ist unabh&auml;ngig von der Tabellen-Auswahl.';
 $lang_admin['execute'] = 'Ausf&uuml;hren';
 $lang_admin['back'] = 'Zur&uuml;ck';
 $lang_admin['success'] = 'Erfolgreich';
@@ -1465,23 +1282,14 @@ $lang_admin['antispam'] = 'Anti-Spam';
 $lang_admin['antivirus'] = 'Anti-Virus';
 $lang_admin['recvmethod'] = 'Empfangsmethode';
 $lang_admin['miscprefs'] = 'Sonstige Einstellungen';
-$lang_admin['rules'] = 'Regeln';
-$lang_admin['gateways'] = 'Gateways';
-$lang_admin['maxlength'] = 'Max. L&auml;nge';
-$lang_admin['types'] = 'Typen';
-$lang_admin['texts'] = 'Texte';
 $lang_admin['calendar'] = 'Kalender';
 $lang_admin['signup'] = 'Registrierung';
-$lang_admin['optimizedb'] = 'Datenbank optimieren';
 $lang_admin['tempfiles'] = 'Tempor&auml;re Dateien';
 $lang_admin['count'] = 'Anzahl';
 $lang_admin['size'] = 'Gr&ouml;&szlig;e';
 $lang_admin['tempdesc'] =
     'Tempor&auml;re Dateien werden von b1gMail i.d.R. automatisch gel&ouml;scht, wenn sie nicht mehr ben&ouml;tigt werden. Sie k&ouml;nnen den Aufr&auml;um-Vorgang hier jedoch auch manuell starten. Beachten Sie bitte, dass nur tempor&auml;re Dateien, die ein bestimmtes Alter erreicht haben, gel&ouml;scht werden.';
 $lang_admin['cleanup'] = 'Aufr&auml;umen';
-$lang_admin['mailstorage'] = 'Mail-Speicherung';
-$lang_admin['storage_desc'] =
-    'Mit dieser Funktion k&ouml;nnen Sie E-Mails, die noch nicht entsprechend der aktuellen Mail-Speicher-Methode gespeichert sind, &uuml;bertragen.';
 $lang_admin['file2db'] = 'Dateien -&gt; Datenbank';
 $lang_admin['db2file'] = 'Datenbank -&gt; Dateien';
 $lang_admin['file2db_desc'] =
@@ -1498,14 +1306,12 @@ $lang_admin['info'] = 'Info';
 $lang_admin['status'] = 'Status';
 $lang_admin['installed'] = 'Installiert';
 $lang_admin['notinstalled'] = 'Nicht installiert';
-$lang_admin['current'] = 'Aktuell';
 $lang_admin['module'] = 'Modul';
 $lang_admin['widget'] = 'Widget';
 $lang_admin['widgets'] = 'Widgets';
 $lang_admin['acdeactivate'] = 'Aktivieren / Deaktivieren';
 $lang_admin['reallyplugin'] =
     'Soll das Plugin wirklich aktiviert bzw. deaktiviert werden? Das Aktivieren fehlerhafter Plugins kann die Systemintegrität gefährden; das Deaktivieren von Plugins kann die mit dem Plugin verbundenen Daten unwiderruflich löschen!';
-$lang_admin['install'] = 'Installieren';
 $lang_admin['archiving'] = 'Archivierung';
 $lang_admin['entry'] = 'Eintrag';
 $lang_admin['date'] = 'Datum';
@@ -1593,18 +1399,15 @@ $lang_admin['adminexists'] =
 $lang_admin['permissions'] = 'Berechtigungen';
 $lang_admin['editadmin'] = 'Administrator bearbeiten';
 $lang_admin['areas'] = 'Bereiche';
-$lang_admin['assets'] = 'Guthaben';
 $lang_admin['credits'] = 'Credits';
 $lang_admin['alias'] = 'Alias';
 $lang_admin['realdel'] = 'Eintrag wirklich unwiderruflich entfernen?';
 $lang_admin['userrealdel'] = 'Benutzer wirklich unwiderruflich entfernen?';
 $lang_admin['wdtraffic'] = 'Webdisk-Traffic';
 $lang_admin['used2'] = 'verbraucht';
-$lang_admin['used3'] = 'Verbraucht';
 $lang_admin['ok'] = 'OK';
 $lang_admin['sendmail'] = 'E-Mail senden';
 $lang_admin['emptytrash'] = 'Papierkorb leeren';
-$lang_admin['monthasset'] = 'Monats-Guthaben';
 $lang_admin['yes'] = 'Ja';
 $lang_admin['no'] = 'Nein';
 $lang_admin['notconfirmed'] = 'Nicht best&auml;tigt';
@@ -1619,8 +1422,6 @@ $lang_admin['addresstaken'] =
 $lang_admin['accountcreated'] =
     'Der Benutzer wurde erfolgreich angelegt.<br /><br /><a href="users.php?do=edit&id=%d&sid=%s">&raquo; Benutzer bearbeiten</a>';
 $lang_admin['byemail'] = 'per E-Mail';
-$lang_admin['val_code_resent'] =
-    'Der Validierungs-Code wurde erneut zugesendet.';
 $lang_admin['stdgroup'] = 'Standard-Gruppe';
 $lang_admin['auto_tz'] = 'Zeitzonen-Automatik';
 $lang_admin['domain_combobox'] = 'Login-Domain-Auswahl';
@@ -1632,7 +1433,6 @@ $lang_admin['notavailable'] = 'Nicht verf&uuml;gbar';
 $lang_admin['datavalidation'] = 'Daten-Pr&uuml;fung';
 $lang_admin['sessioniplock'] = 'Session-IP-Sperre';
 $lang_admin['sessioncookielock'] = 'Session-Cookie-Sperre';
-$lang_admin['regiplock'] = 'Registrierungs-IP-Sperre';
 $lang_admin['seconds'] = 'Sekunden';
 $lang_admin['altcheck'] = 'Alternativ-E-Mail-Existenz pr&uuml;fen';
 $lang_admin['lockedaltmails'] = 'Verbotene Alt.-E-Mail-Adressen';
@@ -1664,7 +1464,6 @@ $lang_admin['ruledesc'] =
     'Hier k&ouml;nnen Sie eine .bmrecvrules-Datei mit Empfangsregeln importieren.';
 $lang_admin['rulefile'] = 'Regel-Datei (.bmrecvrules-Datei)';
 $lang_admin['validityrule'] = 'G&uuml;ltigkeits-Regel';
-$lang_admin['validitytime'] = 'G&uuml;ltigkeits-Zeitraum';
 $lang_admin['checkbox'] = 'Checkbox';
 $lang_admin['dropdown'] = 'Dropdown';
 $lang_admin['radio'] = 'Radiobutton';
@@ -1673,7 +1472,6 @@ $lang_admin['customfieldsat'] =
     'Benutzerdefinierte Felder sind konfigurierbar unter';
 $lang_admin['addprofilefield'] = 'Profilfeld hinzuf&uuml;gen';
 $lang_admin['options'] = 'Optionen';
-$lang_admin['onlyfortext'] = '(nur f&uuml;r Text-Felder)';
 $lang_admin['optionsdesc'] =
     '(nur bei Radiobutton oder Dropdown-Feld, mehrere durch Komma getrennt)';
 $lang_admin['brokenperms'] =
@@ -1699,7 +1497,6 @@ $lang_admin['trash'] = 'Papierkorb';
 $lang_admin['pop3gateway'] = 'POP3-Gateway';
 $lang_admin['pop3fetch_desc'] =
     'Hier k&ouml;nnen Sie die CatchAll-POP3-Box des POP3-Gateways manuell abrufen lassen, falls sich dort einmal E-Mails gestaut haben sollten. Sollte der Prozess unerwartet abbrechen, achten Sie bitte darauf, die Mailgr&ouml;&szlig;en-Limits nicht zu hoch eingestellt zu haben und nicht zu viele Operationen pro Instanz durchzuf&uuml;hren.';
-$lang_admin['help'] = 'Hilfe';
 $lang_admin['none'] = 'keine';
 $lang_admin['persistent'] = 'Persistente Verbindungen';
 $lang_admin['servers'] = 'Server';
@@ -1725,12 +1522,9 @@ $lang_admin['clamintegration'] = 'ClamAV-/clamd-Integration';
 $lang_admin['host'] = 'Host';
 $lang_admin['port'] = 'Port';
 $lang_admin['enable'] = 'Aktivieren';
-$lang_admin['disable'] = 'Deaktivieren';
 $lang_admin['clamwarning'] =
     'Aktivieren Sie die ClamAV-Integration nur, wenn ClamAV/clamd auf dem genannten Server installiert und aktiviert ist.';
 $lang_admin['countries'] = 'L&auml;nder';
-$lang_admin['plzdb'] = 'PLZ-DB';
-$lang_admin['cachetime'] = 'Cache-G&uuml;ltigkeit';
 $lang_admin['cachesize'] = 'Cache-Gr&ouml;&szlig;e';
 $lang_admin['inactiveonly'] = 'nur f&uuml;r abgelaufene Dateien';
 $lang_admin['storein'] = 'Daten speichern in';
@@ -1811,18 +1605,12 @@ $lang_admin['hostname'] = 'Hostname';
 $lang_admin['template'] = 'Template';
 $lang_admin['defaults'] = 'Voreinstellungen';
 $lang_admin['itemsperpage'] = 'Eintr&auml;ge pro Seite';
-$lang_admin['censorchar'] = 'Zensur-Zeichen';
 $lang_admin['domains'] = 'Domains';
 $lang_admin['allownewsoptout'] = 'Newsletter-Abmeldung erlauben';
-$lang_admin['allow_newsletter_optout'] = 'Newsletter-Abmeldung erlauben';
-$lang_admin['gutregged'] = 'Gutscheine f&uuml;r reg. Benutzer';
 $lang_admin['autocancel'] = 'Mitgliedschaft selbst beendbar';
 $lang_admin['maintmode'] = 'Wartungsmodus';
 $lang_admin['maintmodenote'] =
     'Der Wartungsmodus ist aktiv. Die b1gMail-Installation ist für Benutzer nicht erreichbar.';
-$lang_admin['dldate'] = 'Paket-Datum';
-$lang_admin['invalidserial'] =
-    'Die angegebene Seriennummer ist ung&uuml;ltig. Bitte versuchen Sie es erneut.';
 $lang_admin['members'] = 'Mitglieder';
 $lang_admin['addmember'] = 'Mitglied hinzuf&uuml;gen';
 $lang_admin['storage'] = 'Speicher';
@@ -1853,23 +1641,9 @@ $lang_admin['ownpop3interval'] = 'POP3-Abruf-Intervall';
 $lang_admin['selfpop3_check'] = 'Schutz v. Abruf d. eig. Accounts';
 $lang_admin['aliasdomains'] = 'Zus&auml;tzliche Alias-Domains';
 $lang_admin['mailsig'] = 'E-Mail-Signatur';
-$lang_admin['creditprice'] = 'Preis pro Credit';
 $lang_admin['receivedmails'] = 'Empfangen';
 $lang_admin['sentmails'] = 'Gesendet';
 $lang_admin['wdtrafficshort'] = 'WD-Traffic';
-$lang_admin['structstate'] = 'Fehlend / Ung&uuml;ltig';
-$lang_admin['exists'] = 'Vorhanden';
-$lang_admin['table'] = 'Tabelle';
-$lang_admin['query'] = 'Abfrage';
-$lang_admin['repairstruct'] = 'Struktur reparieren';
-$lang_admin['repairdone'] = 'Die Datenbankstruktur wurde repariert.';
-$lang_admin['addgateway'] = 'Gateway hinzuf&uuml;gen';
-$lang_admin['returnvalue'] = 'R&uuml;ckgabe-Wert';
-$lang_admin['getstring'] = 'GET-URL';
-$lang_admin['defaultgateway'] = 'Standard-Gateway';
-$lang_admin['gateway'] = 'Gateway';
-$lang_admin['gateuser'] = 'Gateway-Benutzer';
-$lang_admin['gatepass'] = 'Gateway-Passwort';
 $lang_admin['datastorage'] = 'Datei-Speicherung';
 $lang_admin['structstorage'] = 'Strukturierte Speicherung';
 $lang_admin['dynnorecvrules'] =
@@ -1881,15 +1655,9 @@ $lang_admin['structrec'] =
 $lang_admin['dnsblreq'] = 'Erforderliche positive Tests';
 $lang_admin['croninterval'] = 'Minimales Cronjob-Intervall';
 $lang_admin['logouturl'] = 'Logout-URL';
-$lang_admin['addtype'] = 'Typ hinzuf&uuml;gen';
-$lang_admin['price'] = 'Preis';
-$lang_admin['disablesender'] = 'Absender-Feld deaktivieren';
-$lang_admin['setdefault'] = 'Als Standard setzen';
 $lang_admin['deletegroup'] = 'Gruppe l&ouml;schen';
 $lang_admin['groupdeletedesc'] =
     'Bitte w&auml;hlen Sie die Gruppe(n) aus, in welche die Mitglieder der Gruppe(n), die gel&ouml;scht werden soll(en), verschoben werden sollen.';
-$lang_admin['dbwarn'] =
-    'Vor der Ausf&uuml;hrung sollte ein Backup erstellt werden. Alle Aktionen auf eigene Gefahr.';
 $lang_admin['workgroups'] = 'Arbeitsgruppen';
 $lang_admin['collaboration'] = 'Zusammenarbeit';
 $lang_admin['share_addr'] = 'Gemeinsame Adressen';
@@ -1902,22 +1670,11 @@ $lang_admin['reset'] = 'Zur&uuml;cksetzen';
 $lang_admin['bayesresetq'] =
     'Soll die Filter-Trainings-Datenbank wirklich zurückgesetzt werden? Der Filter ist danach erst nach erneutem Training wieder einsatzbereit.';
 $lang_admin['entries'] = 'Eintr&auml;ge';
-$lang_admin['codes'] = 'Gutschein-Code(s)';
-$lang_admin['unlimited'] = 'unbegrenzt';
-$lang_admin['or'] = 'oder';
-$lang_admin['now'] = 'jetzt';
-$lang_admin['generate'] = 'Generieren';
-$lang_admin['chars'] = 'Zeichen';
-$lang_admin['length'] = 'L&auml;nge';
-$lang_admin['benefit'] = 'Verg&uuml;tung';
 $lang_admin['movetogroup'] = 'In Gruppe verschieben';
-$lang_admin['addcredits'] = 'Credits gutschreiben';
-$lang_admin['code'] = 'Code';
 $lang_admin['approx'] = 'ca.';
 $lang_admin['usagebycategory'] = 'Speicher-Nutzung nach Kategorie';
 $lang_admin['category'] = 'Kategorie';
 $lang_admin['organizer'] = 'Organizer';
-$lang_admin['mails'] = 'E-Mails';
 $lang_admin['overall'] = 'Gesamt';
 $lang_admin['usagebygroup'] = 'Speicher-Nutzung nach Gruppe';
 $lang_admin['useraverage'] = 'Benutzer-Durchschnitt';
@@ -1939,14 +1696,11 @@ $lang_admin['stat_send_intern'] = 'Versendete E-Mails (intern)';
 $lang_admin['stat_send_extern'] = 'Versendete E-Mails (extern)';
 $lang_admin['stat_sysmail'] = 'System-E-Mails';
 $lang_admin['day'] = 'Tag';
-$lang_admin['redeemedby'] = 'Eingel&ouml;st von...';
 $lang_admin['oldcontacts'] = 'alte(r) Datens&auml;tze/Datensatz vorhanden.';
 $lang_admin['contacthistory'] = 'Kontaktdaten-Verlauf';
 $lang_admin['savehistory'] = 'Kontaktdaten-Verlauf speichern';
 $lang_admin['discarded'] = 'Verworfen';
 $lang_admin['clearhistory'] = 'Verlauf leeren';
-$lang_admin['filetypes'] = 'Datei-Typ(en)';
-$lang_admin['icon'] = 'Icon';
 $lang_admin['recipients'] = 'Empf&auml;nger';
 $lang_admin['priority'] = 'Priorit&auml;t';
 $lang_admin['prio_-1'] = 'Niedrig';
@@ -1979,39 +1733,9 @@ $lang_admin['question'] = 'Frage';
 $lang_admin['requires'] = 'Ben&ouml;tigt';
 $lang_admin['addfaq'] = 'FAQ hinzuf&uuml;gen';
 $lang_admin['both'] = 'Beide';
-$lang_admin['autoperms'] = 'Automatische Berechtigungs-Einstellung';
-$lang_admin['autoperms_desc'] =
-    'Wenn Sie hier die FTP-Daten zu Ihrer b1gMail-Installation hinterlegen, kann der Update-Assistent die Berechtigungen f&uuml;r zu aktualisierende Dateien automatisch setzen. Dies erleichtert den Update-Prozess f&uuml;r Sie erheblich; Sie brauchen dann w&auml;hrend des Updates keinen FTP-Client oder &auml;hnliches.';
-$lang_admin['ftphost'] = 'FTP-Host';
-$lang_admin['ftpport'] = 'FTP-Port';
-$lang_admin['ftpuser'] = 'FTP-Benutzer';
-$lang_admin['ftppass'] = 'FTP-Passwort';
-$lang_admin['ftpdir'] = 'Pfad zu b1gMail';
-$lang_admin['ftpperms'] = 'Standard-Berechtigungen';
 $lang_admin['certmaillife'] = 'Einschreiben-Speicherzeit';
 $lang_admin['days'] = 'Tage';
-$lang_admin['searchupdatesnow'] = 'Jetzt nach neuen Updates suchen';
-$lang_admin['updatesdesc'] =
-    'Klicken Sie auf den folgenden Button, um nach Updates (z.B. wichtige Sicherheits-Aktualisierungen) f&uuml;r Ihre b1gMail-Installation zu suchen. Hinweis: Beim Update-Vorgang werden Lizenz- und Seriennummer Ihrer b1gMail-Lizenz an unseren Update-Server &uuml;bertragen.';
-$lang_admin['upderrordesc'] =
-    'Beim Update ist ein Fehler aufgetreten. Bitte beachten Sie die folgende Fehlermeldung.';
-$lang_admin['noupdatesfound'] =
-    'Es wurden keine Updates f&uuml;r Ihre b1gMail-Installation gefunden. Bitte versuchen Sie es ggf. sp&auml;ter erneut.';
-$lang_admin['updatesfound'] =
-    'Es wurden die folgenden Updates f&uuml;r Ihre b1gMail-Installation gefunden.';
-$lang_admin['clicktoupdate'] =
-    'Klicken Sie auf &quot;Weiter &raquo;&quot;, um mit der dringend empfohlenen Installation der Updates zu beginnen.';
-$lang_admin['next'] = 'Weiter';
-$lang_admin['pleasereadme'] =
-    'Bitte lesen Sie die folgenden Informationen zu diesem Update sorgf&auml;ltig durch.';
-$lang_admin['changedfiles'] =
-    'Bei der Installation des Updates werden die folgenden Dateien &uuml;berschrieben. Die Dateien m&uuml;ssen daher beschreibbar sein (CHMOD 777). Sofern Sie korrekte FTP-Daten hinterlegt haben und die automatische Rechte-Einstellung aktiviert haben, aktualisiert der Update-Assistent die Rechte selbstst&auml;ndig und es ist keine Aktion Ihrerseites erforderlich. ';
 $lang_admin['filename'] = 'Dateiname';
-$lang_admin['writeable'] = 'Beschreibbar';
-$lang_admin['updating'] = 'Update installieren...';
-$lang_admin['updateinstalled'] = 'Das Update wurde installiert.';
-$lang_admin['moreupdates'] =
-    'Es sind weitere Updates vorhanden. Bitte klicken Sie auf &quot;Weiter &raquo;&quot;, um fortzufahren.';
 $lang_admin['banners'] = 'Banner';
 $lang_admin['banner'] = 'Banner';
 $lang_admin['weight'] = 'Gewichtung';
@@ -2046,9 +1770,6 @@ $lang_admin['trash_done'] =
     'Die Aktion wurde ausgef&uuml;hrt. Es wurden <b>%d</b> E-Mails (%.02f MB) gel&ouml;scht.';
 $lang_admin['trash_sizesonly'] = 'gr&ouml;&szlig;er sind als:';
 $lang_admin['whobelongtogrps'] = 'einer der folgenden Gruppen angeh&ouml;ren:';
-$lang_admin['vendor'] = 'Hersteller';
-$lang_admin['forb1gmail'] = 'F&uuml;r b1gMail';
-$lang_admin['yourversion'] = 'Ihre Version';
 $lang_admin['sendingletter'] = 'Newsletter versenden...';
 $lang_admin['lockedusernames'] = 'Gesperrte Benutzer-Namen';
 $lang_admin['addlockedusername'] = 'Gesperrten Benutzer-Name hinzuf&uuml;gen';
@@ -2062,7 +1783,6 @@ $lang_admin['rd_static'] = 'Automatisch';
 $lang_admin['rd_dynamic'] = 'Empfangs-Regeln verwenden';
 $lang_admin['searchengine'] = 'Suchmaschine';
 $lang_admin['activate'] = 'Aktivieren';
-$lang_admin['licensekey'] = 'Lizenz-Schl&uuml;ssel';
 $lang_admin['features'] = 'Features';
 $lang_admin['smime'] = 'S/MIME';
 $lang_admin['openssl_err'] =
@@ -2076,12 +1796,8 @@ $lang_admin['cert_err_noca'] =
 $lang_admin['cert_err_format'] =
     'Diese Datei ist kein g&uuml;ltiges Zertifikat im PEM-Format.';
 $lang_admin['cert_err_exists'] = 'Das Zertifikat existiert bereits.';
-$lang_admin['cert_upload_own'] = 'Eigenes Zertifikat hochladbar';
-$lang_admin['cert_generate'] = 'Zertifikate ausstellen';
 $lang_admin['cert_ca'] = 'Zertifizierungs-Instanz';
 $lang_admin['setedit'] = 'Hinterlegen / Bearbeiten';
-$lang_admin['cert_pleasesetca'] =
-    'Bitte hinterlegen Sie zuerst Zertifikat und Schl&uuml;ssel einer Zertifizierungs-Instanz.';
 $lang_admin['cert_ca_info'] =
     'Das hier angegebene CA-Zertifikat wird zur Ausstellung der Zertifikate f&uuml;r Ihre Benutzer verwendet, wenn diese aus ihrem Account heraus ein Zertifikat anfordern.<br /><br /><b>ACHTUNG:</b> Sowohl Zertifikat als auch Private Key werden unverschl&uuml;sselt in der Datenbank gespeichert!';
 $lang_admin['cert_ca_current'] = 'Aktuelle Zertifizierungs-Instanz';

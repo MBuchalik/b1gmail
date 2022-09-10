@@ -44,7 +44,6 @@ $lang_client['importvcf'] = 'Import VCF';
 $lang_client['import'] = 'Import';
 $lang_client['userpicture'] = 'User picture';
 $lang_client['addattach'] = 'Add attachment';
-$lang_client['saveattach'] = 'Save attachment';
 $lang_client['attachments'] = 'Attachments';
 $lang_client['date'] = 'Date';
 $lang_client['switchwarning'] =
@@ -55,8 +54,6 @@ $lang_client['newfolder'] = 'New folder';
 $lang_client['foldererror'] = 'Folder could not be created.';
 $lang_client['attendees'] = 'Attendees';
 $lang_client['addattendee'] = 'Add attendees';
-$lang_client['newpatches'] =
-    'New patches are available via the automatic update system.';
 $lang_client['protectedfolder'] = 'Protected folder';
 $lang_client['source'] = 'Source';
 $lang_client['sendwosubject'] =
@@ -89,8 +86,6 @@ $lang_client['items'] = 'Items';
 $lang_client['cancel'] = 'Cancel';
 $lang_client['nocontactselected'] = 'No contact selected';
 $lang_client['contactsselected'] = 'contacts selected';
-$lang_client['checkingaddr'] = 'Checking availability...';
-$lang_client['showsuggestions'] = 'Show suggestions';
 $lang_client['pleasewait'] = 'Please wait...';
 $lang_client['deliverystatus'] = 'Delivery status';
 $lang_client['decsep'] = ',';
@@ -247,7 +242,6 @@ $lang_custom['notify_birthday'] =
 /**
  * User phrases
  */
-$lang_user['weekdays'] = 'SMTWTFS'; // sunday through saturday
 $lang_user['weekdays_long'] = ['So', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']; // sunday through saturday
 $lang_user['full_weekdays'] = [
     'Sunday',
@@ -259,22 +253,10 @@ $lang_user['full_weekdays'] = [
     'Saturday',
 ];
 
-$lang_user['pleasechose'] = 'Please choose';
-$lang_user['suggestions'] = 'Suggestions';
-$lang_user['nosuggestions'] = 'We could not find any suggestions.';
-$lang_user['suggestions_desc'] =
-    'We have determined the following suggestions for your new email address. All shown addresses are still available:';
-$lang_user['choose'] = 'Choose';
 $lang_user['nothanks'] = 'No thanks';
-$lang_user['message'] = 'Message';
-$lang_user['cform_senderror'] =
-    'Your message could not be sent. Please try again later.';
-$lang_user['cform_sent'] =
-    'We have received your inquiry and will get back to you as soon as possible.';
 $lang_user['nonotifications'] = 'no current notifications';
 $lang_user['notifications'] = 'Notifications';
 $lang_user['relevance'] = 'Relevance';
-$lang_user['minchars'] = 'min. %d chars';
 $lang_user['deliverystatus'] = 'Delivery status';
 $lang_user['mds_delivered'] = 'Delivered to <strong>%d</strong> recipient(s).';
 $lang_user['mds_deferred'] =
@@ -298,8 +280,6 @@ $lang_user['notify_birthday'] = 'birthdays of my contacts';
 $lang_user['auto'] = 'Automatic';
 $lang_user['details_default'] = 'Directly show detailed results';
 $lang_user['description'] = 'Description';
-$lang_user['current'] = 'current';
-$lang_user['langCode_editor'] = 'en';
 $lang_user['sendnotify'] = 'Show notification';
 $lang_user['readonly'] = 'read only';
 $lang_user['sharedfolders'] = 'Shared folders';
@@ -313,14 +293,6 @@ $lang_user['bynotify'] = 'by notification';
 
 // phrases for new nli layout
 $lang_user['home'] = 'Home';
-$lang_user['plans'] = 'Plans';
-$lang_user['required'] = 'required';
-$lang_user['street'] = 'Street';
-$lang_user['nr'] = 'No';
-$lang_user['wishaddressandpw'] = 'Name, preferred email address and password';
-$lang_user['accepttos'] = 'I agree to the';
-$lang_user['completesignup'] = 'Complete signup';
-$lang_user['next'] = 'Next';
 $lang_user['pleasewait'] = 'Please wait...';
 $lang_user['readcertmail'] = 'Read certified email';
 
@@ -362,17 +334,13 @@ $lang_user['mailsfromab'] = 'Mail sender in address book';
 $lang_user['att_keywords'] = 'attached,attachment';
 $lang_user['attcheck'] = 'Attachment notice';
 $lang_user['attcheck_desc'] = 'Display notice in case of forgotten attachments';
-$lang_user['sendmail3'] = 'Send';
 $lang_user['maintenance'] = 'Maintenance';
 $lang_user['search'] = 'Search';
 $lang_user['nothingfound'] = 'No match.';
-$lang_user['jswarning'] =
-    'Please activate JavaScript. Otherwise you will not be able to use this service!';
 $lang_user['imprint'] = 'Imprint';
 $lang_user['tos'] = 'TOS';
 $lang_user['privacy'] = 'Privacy';
 $lang_user['privacy_policy'] = 'Privacy Policy';
-$lang_user['mobilepda'] = 'Mobile';
 $lang_user['mobiledenied'] =
     'You are not authorized to use the mobile interface.';
 $lang_user['workgroup'] = 'Workgroup';
@@ -389,14 +357,10 @@ $lang_user['sess_expired_desc'] =
     'Your session has been closed because of inactivity for security reasons. Please re-login.';
 $lang_user['doublealtmail'] =
     'There is already an account using this alternative email address!';
-$lang_user['doublecellphone'] =
-    'There is already an account using this cellphone number!';
 $lang_user['hiddenelements'] = 'Hidden elements';
 $lang_user['hide'] = 'Hide';
 $lang_user['atreply'] = 'At reply';
 $lang_user['insertquote'] = 'Quote original email';
-$lang_user['dearsirormadam'] = 'Dear Sir or Madam';
-$lang_user['kindregards'] = 'Kind regards';
 $lang_user['setmailcolor'] = 'Set color';
 $lang_user['hotkeys'] = 'Hotkeys';
 $lang_user['to3'] = 'to';
@@ -414,7 +378,6 @@ $lang_user['color_3'] = 'Red';
 $lang_user['color_4'] = 'Orange';
 $lang_user['color_5'] = 'Purple';
 $lang_user['color_6'] = 'Violet';
-$lang_user['colors'] = 'Colors';
 $lang_user['targetfolder'] = 'Destination folder';
 $lang_user['existingfiles'] = 'Existing files';
 $lang_user['zipfile'] = 'ZIP file';
@@ -422,8 +385,6 @@ $lang_user['deleteafterextract'] = 'Delete after extraction';
 $lang_user['keep'] = 'Retain';
 $lang_user['overwrite'] = 'Overwrite';
 $lang_user['extract'] = 'Extract';
-$lang_user['altmaillocked'] =
-    'The email address you entered is not authorized for signing up with our service. Please use another email address.';
 
 // webdisk share
 $lang_user['badshare'] = 'Share path not found.';
@@ -449,16 +410,7 @@ $lang_user['pwresetsuccess2'] =
     'Your new password has been activated successfully. You can now log in with your email address and your new password <a href="index.php"> </a>.';
 
 // sign up
-$lang_user['wishaddress'] = 'Preferred address';
 $lang_user['signup'] = 'Sign up';
-$lang_user['signuptxt'] =
-    'Please fill out the following form to register for a free email address.';
-$lang_user['signuptxt_code'] =
-    'If you have voucher codes, enter them in the field provided - if not, just leave the field blank.';
-$lang_user['notmember'] = 'Not a member yet';
-$lang_user['notmembertxt'] =
-    'Get your free email address and benefit from our special features. <a href="index.php?action=signup"> Click here</a> to sign-up free of charge!';
-$lang_user['contactinfo'] = 'Contact Details';
 $lang_user['firstname'] = 'First name';
 $lang_user['surname'] = 'Surname';
 $lang_user['streetnr'] = 'Street / no';
@@ -471,28 +423,14 @@ $lang_user['altmail'] = 'Email';
 $lang_user['altmail2'] = 'Alternative email';
 $lang_user['repeat'] = 'Repeat';
 $lang_user['security'] = 'Security';
-$lang_user['code'] = 'Voucher code';
 $lang_user['submit'] = 'Submit';
 $lang_user['iprecord'] =
     'Your IP address will be recorded to prevent fraudulent requests.';
 $lang_user['misc'] = 'Miscellaneous';
-$lang_user['tosaccept'] = 'I accept the terms of use';
-$lang_user['tosnaccept'] = 'I do not accept the terms of use';
 $lang_user['country'] = 'Country';
 $lang_user['checkfields'] = 'Please check the fields marked red and try again.';
 $lang_user['pwerror'] =
     'Your password is too short (&lt; 4 characters), is too similar to your user name or does not match the password repeat.';
-$lang_user['plzerror'] = 'The postcode does not match the city.';
-$lang_user['toserror'] =
-    'You have to accept the terms of use before you can register.';
-$lang_user['regerror'] =
-    'Registration failed for unknown reasons. Please try again later.';
-$lang_user['regdone'] =
-    'Congratulations, you have registered successfully! You can now log in with your new email address <i>%s</i> and your password <a href="index.php"> </a> and use your account.';
-$lang_user['regdonelocked'] =
-    'Congratulations, you have registered successfully! Your account with the email address <i>%s</i> has now to be activated by an administrator before you can <a href="index.php"> log in </a> and use your account. This may take one or two workdays.';
-$lang_user['regdisabled'] =
-    'We are sorry but we cannot accept new registrations at the moment. Please try again later.';
 
 // address book completion
 $lang_user['addrselfcomplete'] = 'addressbook completion';
@@ -508,9 +446,6 @@ $lang_user['certmailerror'] =
     'The link for the certified message is invalid or the certified message has expired or the certified message has been deleted.';
 
 // login
-$lang_user['pwcrypted'] =
-    'The transmission of your password is safely encoded.';
-$lang_user['otheruser'] = 'Change account';
 $lang_user['loginblocked'] =
     'Due to too many failed log-in attempts, your account will remain locked until <i>%s</i>. If you have any questions, please contact us.';
 $lang_user['badlogin'] =
@@ -524,19 +459,6 @@ $lang_user['email'] = 'Email';
 $lang_user['password'] = 'Password';
 $lang_user['language'] = 'Language';
 $lang_user['ssl'] = 'Secure SSL login';
-$lang_user['validation_ok'] =
-    'Your account has been activated successfully. You can now <a href="index.php">log in</a>.';
-$lang_user['validation_err'] =
-    'We could not activate your account. Either the account is already activated or you did not call the activation link properly.';
-$lang_user['didnotgetcode'] = 'Did not get your activation code?';
-$lang_user['resendcode'] = 'Re-send code';
-$lang_user['coderesent'] = 'Your activation code has been re-sent.';
-$lang_user['validation_resend_text'] =
-    'You have %d activation code re-sends left.';
-$lang_user['validation_count_limit'] =
-    'You already requested resending of your activation code %d times. Please contact our support team if you encounter problems during account activation.';
-$lang_user['validation_time_limit'] =
-    'You can request a re-send of your activation code in %d:%02d minutes.';
 
 // folders
 $lang_user['folders'] = 'Folders';
@@ -584,8 +506,6 @@ $lang_user['iteminfo'] = 'Details';
 $lang_user['pleaseselectitem'] = 'Select a folder or a file.';
 $lang_user['actions'] = 'Action';
 $lang_user['count'] = 'Number';
-$lang_user['droptext'] =
-    'To upload files please drag them from the file manager and drop them into the folder.';
 $lang_user['filename'] = 'File name';
 $lang_user['size'] = 'Size';
 $lang_user['created'] = 'Created';
@@ -604,7 +524,6 @@ $lang_user['rename'] = 'Rename';
 $lang_user['download'] = 'Download';
 $lang_user['move'] = 'Move';
 $lang_user['cut'] = 'Cut';
-$lang_user['open'] = 'Open';
 $lang_user['delete'] = 'Delete';
 $lang_user['paste'] = 'Paste';
 $lang_user['realdel'] = 'Delete entry irrevocably?';
@@ -664,7 +583,6 @@ $lang_user['comment'] = 'Comment';
 // addressbook
 $lang_user['send_anyhow'] = 'Send anyhow';
 $lang_user['convfolder'] = 'Create convers. folder';
-$lang_user['addtogroup'] = 'Add to group';
 $lang_user['addcontact'] = 'Add contact';
 $lang_user['editcontact'] = 'Edit contact';
 $lang_user['company'] = 'Company';
@@ -717,7 +635,6 @@ $lang_user['import'] = 'Import';
 $lang_user['export'] = 'Export';
 $lang_user['groupexists'] = 'There is a group by that name already.';
 $lang_user['editgroup'] = 'Edit group';
-$lang_user['doexport'] = 'Export';
 $lang_user['invalidpicture'] =
     'The picture you selected is invalid. Please use a JPG-, PNG-, or GIF-picture no bigger than %.02f KB.';
 $lang_user['semicolon'] = 'Semicolon';
@@ -728,11 +645,9 @@ $lang_user['single'] = 'Single';
 $lang_user['linebreakchar'] = 'Line break';
 $lang_user['sepchar'] = 'Separator';
 $lang_user['quotechar'] = 'Quotation marks';
-$lang_user['advanced'] = 'Advanced';
 $lang_user['type'] = 'Type';
 $lang_user['csvfile'] = 'CSV-file';
 $lang_user['encoding'] = 'Encoding';
-$lang_user['vcfzipfile'] = 'ZIP-file with .VCF-files';
 $lang_user['addrimporttext'] =
     'Please select the file you want to import into your addressbook. Make sure that the file is the same format as you selected under &quot;Typ&quot;.';
 $lang_user['invalidformat'] =
@@ -763,13 +678,10 @@ $lang_user['showsource'] = 'Show source';
 $lang_user['moveto'] = 'move to';
 $lang_user['sendmail'] = 'Send email';
 $lang_user['folderadmin'] = 'Folder administration';
-$lang_user['previewpane'] = 'Preview';
 $lang_user['preview'] = 'Preview';
 $lang_user['mail_read'] = 'Read email';
 $lang_user['mail_del'] = 'Delete email';
-$lang_user['mail_menu'] = 'Email options';
 $lang_user['print'] = 'Print';
-$lang_user['mail_menu'] = 'Email options';
 $lang_user['reply'] = 'Reply';
 $lang_user['replyall'] = 'Reply all';
 $lang_user['forward'] = 'Forward';
@@ -785,8 +697,6 @@ $lang_user['to'] = 'To';
 $lang_user['cc'] = 'Cc';
 $lang_user['bcc'] = 'Bcc';
 $lang_user['replyto'] = 'Reply to';
-$lang_user['quotesel'] = 'Quote slected text';
-$lang_user['searchsel'] = 'Search the internet for selected text';
 $lang_user['attachments'] = 'Attachments';
 $lang_user['approx'] = 'approx.';
 $lang_user['savetowebdisk'] = 'Save to webdisc';
@@ -825,7 +735,6 @@ $lang_user['elapsed_day'] = ' (%d day ago)';
 $lang_user['sendconfirmation'] = 'Send confirmation';
 $lang_user['senderconfirmto'] =
     'The sender has requested a receiving confirmation.';
-$lang_user['nomails'] = 'No messages.';
 $lang_user['mailsent'] = 'The messages has been sent successfully.';
 $lang_user['certmailinfo'] =
     'This is a certified message. If you delete it, the certified message will no longer be legible!';
@@ -872,32 +781,6 @@ $lang_user['version'] = 'Version';
 $lang_user['serial'] = 'Serial number';
 $lang_user['publickey'] = 'Public key';
 $lang_user['bits'] = 'Bits';
-$lang_user['keyring'] = 'Keyring';
-$lang_user['prefs_d_keyring'] =
-    'Manage your keys and certificates for email signing and crypting.';
-$lang_user['prefs_d_faq'] =
-    'Here you find answers to frequently asked questions.';
-$lang_user['prefs_d_common'] =
-    'Edit general settings of your account (e.g. reading and quoting options).';
-$lang_user['prefs_d_contact'] =
-    'Edit your contact details, which will also be used for your vCard.';
-$lang_user['prefs_d_filters'] =
-    'Sort incoming messages using self-defined filter rules.';
-$lang_user['prefs_d_signatures'] =
-    'Edit your email signatures or add new signatures.';
-$lang_user['prefs_d_antivirus'] =
-    'Protect your mailbox and your files using the integrated anti-virus-system.';
-$lang_user['prefs_d_antispam'] =
-    'Only allow messages you are sure you want to receive.';
-$lang_user['prefs_d_aliases'] = 'Get more email addresses for this account.';
-$lang_user['prefs_d_autoresponder'] =
-    'Have your email responded to automatically, e.g. when you are not available.';
-$lang_user['prefs_d_extpop3'] =
-    'You can have external POP3-accounts collect your messages into your email-account.';
-$lang_user['prefs_d_software'] =
-    'Download client-software for your computer, e.g. a mail checker.';
-$lang_user['prefs_d_membership'] =
-    'View information on your membership or terminate it if desired.';
 $lang_user['alias'] = 'Alias';
 $lang_user['addalias'] = 'Add alias';
 $lang_user['aliastype_1'] = 'Sender';
@@ -972,8 +855,6 @@ $lang_user['editsignature'] = 'Edit signature';
 $lang_user['question'] = 'Question';
 $lang_user['addpop3'] = 'Add POP3 account';
 $lang_user['editpop3'] = 'Edit POP3 account';
-$lang_user['toomanypop3'] =
-    'You have reached the maximum number of POP3-Accounts. You have to delete an account before you can create a new one.';
 $lang_user['pop3usage'] = '<b>%d</b> of <b>%d</b> account(s) created.';
 $lang_user['username'] = 'Username';
 $lang_user['host'] = 'Hostname';
@@ -988,8 +869,6 @@ $lang_user['plaintextcourier'] = 'Plaintext mails';
 $lang_user['usecourier'] = 'Use font with fixed-width';
 $lang_user['subscribe'] = 'Subscribe';
 $lang_user['newsletter'] = 'Newsletter';
-$lang_user['val24error'] =
-    'You can change your cellphone number once each 24 hours only!';
 $lang_user['addcert'] = 'Import certificate';
 $lang_user['publiccerts'] = 'Public certificates';
 $lang_user['owncerts'] = 'Own certificates';
@@ -1081,12 +960,7 @@ $lang_user['addattachtext'] =
     'Please select the file you would like to attach to your email and click &quot;OK&quot;. You can upload a file from your computer or use a file from your webdisc (if available).';
 $lang_user['toobigattach'] =
     'The file you selected is too big. Please limit the total size of all email attachments to under %.02f KB.';
-$lang_user['smartattach'] = 'smart attachment';
 $lang_user['savedraft'] = 'Save as draft';
-$lang_user['waituntil1'] = 'Please wait';
-$lang_user['waituntil2'] = 'seconds to send the email.';
-$lang_user['waituntil3'] =
-    'To send another email, please wait <b>%d</b> seconds.';
 $lang_user['norecipients'] =
     'You did not enter a valid recipient address. Please go back and try again.';
 $lang_user['toomanyrecipients'] =
@@ -1155,17 +1029,11 @@ $lang_user['cw'] = 'calendar week';
 /**
  * Admin phrases
  */
-$lang_admin['disabled'] = 'disabled';
-$lang_admin['republickey'] = 'Site key';
-$lang_admin['reprivatekey'] = 'Secret key';
-$lang_admin['addtransaction'] = 'Add transaction';
 $lang_admin['edittransaction'] = 'Edit transaction';
 $lang_admin['booked'] = 'Booked';
 $lang_admin['cancelled'] = 'Cancelled';
-$lang_admin['transactions'] = 'Transactions';
 $lang_admin['description'] = 'Description';
 $lang_admin['cancel'] = 'Cancel';
-$lang_admin['uncancel'] = 'Un-cancel';
 $lang_admin['mail_groupmode'] = 'Email grouping';
 $lang_admin['props'] = 'Properties';
 $lang_admin['flags'] = 'Flags';
@@ -1179,13 +1047,9 @@ $lang_admin['color'] = 'Color';
 $lang_admin['min_draft_save'] = 'Min. draft save interval';
 $lang_admin['auto_save_drafts'] = 'Automaticaly save drafts';
 $lang_admin['timeframe'] = 'Timeframe';
-$lang_admin['last7d'] = 'last 7 days';
-$lang_admin['sendstats'] = 'Email send statistics';
-$lang_admin['recvstats'] = 'Email receive statistics';
 $lang_admin['pfrulenote'] =
     '(only for text fields (regular expressions) or date fields (e.g. &quot;&gt;= 18y&quot;))';
 $lang_admin['registered'] = 'Registered';
-$lang_admin['max'] = 'max.';
 $lang_admin['onlyfor'] = 'only for';
 $lang_admin['deliverystatus'] = 'Delivery status';
 $lang_admin['acpiconsfrom'] = 'ACP icons by';
@@ -1212,9 +1076,7 @@ $lang_admin['rbbs_webdisk'] = 'Convert webdisk files';
 $lang_admin['separatefiles'] = 'one file per object';
 $lang_admin['userdb'] = 'one file per user';
 $lang_admin['nliarea'] = 'Not logged-in area';
-$lang_admin['privatekey'] = 'Private key';
 $lang_admin['publickey'] = 'Public key';
-$lang_admin['theme'] = 'Theme';
 $lang_admin['write_xsenderip'] = 'Write X-Sender-IP header';
 $lang_admin['fts_bg_indexing'] = 'Automatic background indexing';
 $lang_admin['buildindex'] = 'Build index';
@@ -1242,17 +1104,11 @@ $lang_admin['text_notify_newemail'] = 'Email notification';
 $lang_admin['text_notify_email'] = 'Email notification from filter';
 $lang_admin['text_notify_birthday'] = 'Birthday notification';
 $lang_admin['showcheckboxes'] = 'Multi-select using checkboxes';
-$lang_admin['domaindisplay'] = 'Domain display';
-$lang_admin['ddisplay_normal'] = '@ char in dropdown';
-$lang_admin['ddisplay_separate'] = '@ char separated';
-$lang_admin['blocksignup'] = 'Reject signup';
-$lang_admin['activatemanually'] = 'Activate manually';
 $lang_admin['details'] = 'Details';
 $lang_admin['compresspages'] = 'Compress page output';
 $lang_admin['comment'] = 'Comment';
 $lang_admin['resetstats'] = 'Reset statistics';
 $lang_admin['reallyresetstats'] = 'Do you really want to reset the statistics?';
-$lang_admin['disable'] = 'Disable';
 $lang_admin['sync'] = 'Synchronization';
 $lang_admin['syncml'] = 'Synchronization';
 $lang_admin['hotkeys'] = 'Hotkeys';
@@ -1300,22 +1156,12 @@ $lang_admin['names'] = 'Names';
 $lang_admin['bmtoolbox'] = 'b1gMail Toolbox';
 $lang_admin['tbx_enable'] = 'Offer Toolbox';
 $lang_admin['tbx_webdisk'] = 'Webdisk sync';
-$lang_admin['notrecommended'] = 'NOT recommended';
 $lang_admin['prefslayout'] = 'Preferences overview';
 $lang_admin['onecolumn'] = 'One column';
 $lang_admin['twocolumns'] = 'Two columns';
-$lang_admin['navpos'] = 'Main navigation';
-$lang_admin['left'] = 'Left';
-$lang_admin['top'] = 'Top';
-$lang_admin['deprecated'] = 'deprecated';
 $lang_admin['defaultemplate'] = 'Default template';
-$lang_admin['colorscheme'] = 'Color scheme';
-$lang_admin['orange'] = 'Orange';
-$lang_admin['blue'] = 'Blue';
-$lang_admin['tabmode'] = 'Tab mode';
 $lang_admin['complete'] = 'Complete';
 $lang_admin['icons'] = 'Icons';
-$lang_admin['hidesignup'] = 'Hide signup when disabled';
 $lang_admin['showuseremail'] = 'Show user email address';
 $lang_admin['templates'] = 'Templates';
 $lang_admin['show_at'] = 'Show at';
@@ -1325,7 +1171,6 @@ $lang_admin['admins'] = 'Administrators';
 $lang_admin['download'] = 'Download';
 $lang_admin['phpinfo'] = 'PHP info';
 $lang_admin['redirectmobile'] = 'Mobile interface redirect';
-$lang_admin['maxlength'] = 'Max. length';
 $lang_admin['repeat'] = 'repeat';
 $lang_admin['admin'] = 'Administrator';
 $lang_admin['superadmin'] = 'Super administrator';
@@ -1341,16 +1186,9 @@ $lang_admin['areas'] = 'Areas';
 $lang_admin['lockedaltmails'] = 'Forbidden alt. email addresses';
 $lang_admin['altmailsepby'] =
     '(one entry per line, \'*\' usable as wild card, e.g. \'*@evil-domain.xy\')';
-$lang_admin['yourinvoice'] = 'Your invoice';
-$lang_admin['dearsirormadam'] = 'Dear Sir or Madam';
-$lang_admin['descr'] = 'Description';
-$lang_admin['kindregards'] = 'Kind regards';
 $lang_admin['sender_aliases'] = 'Sender aliases';
 $lang_admin['attachments'] = 'Attachments';
-$lang_admin['flexspans'] = 'Auto subject length';
 $lang_admin['returnpathcheck'] = 'Return path check';
-$lang_admin['licensedetails'] = 'License details';
-$lang_admin['updateaccess'] = 'Update access';
 $lang_admin['pleasewait'] = 'Please wait...';
 $lang_admin['startwidgets'] = 'Start dashboard';
 $lang_admin['defaultlayout'] = 'Default layout';
@@ -1386,7 +1224,6 @@ $lang_admin['text_share_text'] = 'Webdisk share mail text';
 $lang_admin['selffolder'] = 'Abs. path to b1gMail';
 $lang_admin['dynnorecvrules'] =
     'Recipient detemination is set to &quot;Use receive rules&quot; but no receive rule exists. This way, receiving emails is impossible. Please set the recipient determination method to &quot;Automatic&quot; or add receive rules.';
-$lang_admin['disablesender'] = 'Disable sender field';
 $lang_admin['salutation'] = 'Salutation';
 $lang_admin['mrs'] = 'Mrs';
 $lang_admin['mr'] = 'Mr';
@@ -1398,15 +1235,12 @@ $lang_admin['sum'] = 'Sum';
 $lang_admin['acp'] = 'Administrator Control Panel (ACP)';
 $lang_admin['password'] = 'Password';
 $lang_admin['login'] = 'Login';
-$lang_admin['dattempt'] =
-    'This is your %d. attempt to log in, after 5 attempts log-in will be blocked for 5 minutes.';
 $lang_admin['dattempt2'] =
     'Due to too many failed login attempts login for this account will be blocked until %s .';
 $lang_admin['loginerror'] = 'Invalid password. Please try again.';
 $lang_admin['welcome'] = 'Welcome';
 $lang_admin['usersgroups'] = 'Users &amp; Groups';
 $lang_admin['users'] = 'Users';
-$lang_admin['user'] = 'User';
 $lang_admin['domain'] = 'Domain';
 $lang_admin['groups'] = 'Groups';
 $lang_admin['activity'] = 'Activity';
@@ -1424,20 +1258,15 @@ $lang_admin['faq'] = 'FAQ';
 $lang_admin['tools'] = 'Tools';
 $lang_admin['optimize'] = 'Optimize';
 $lang_admin['stats'] = 'Statistics';
-$lang_admin['backup'] = 'Backup';
 $lang_admin['logs'] = 'Log files';
-$lang_admin['receivesys'] = 'Receiving';
-$lang_admin['updates'] = 'Updates';
 $lang_admin['plugins'] = 'Plugins';
 $lang_admin['logout'] = 'Logout';
 $lang_admin['logoutquestion'] = 'Are you sure you want to log out?';
-$lang_admin['license'] = 'License';
 $lang_admin['overview'] = 'Overview';
 $lang_admin['notes'] = 'Notes';
 $lang_admin['notices'] = 'Notifications';
 $lang_admin['about'] = 'About b1gMail';
 $lang_admin['version'] = 'Version';
-$lang_admin['nonotices'] = 'Currently there are no new notifications.';
 $lang_admin['save'] = 'Save';
 $lang_admin['notactivated'] = 'Not activated';
 $lang_admin['locked'] = 'Locked';
@@ -1450,21 +1279,10 @@ $lang_admin['webserver'] = 'Webserver';
 $lang_admin['mysqlversion'] = 'MySQL version';
 $lang_admin['dbsize'] = 'Database size';
 $lang_admin['load'] = 'Server load';
-$lang_admin['db'] = 'Database';
 $lang_admin['cache'] = 'Cache';
 $lang_admin['filesystem'] = 'File system';
-$lang_admin['optimizedb'] = 'Optimize database';
 $lang_admin['tables'] = 'Tables';
 $lang_admin['action'] = 'Action';
-$lang_admin['op_optimize'] = 'Optimize';
-$lang_admin['op_optimize_desc'] =
-    'Will release unused space in the tables and clean them up for quicker access.';
-$lang_admin['op_repair'] = 'Repair';
-$lang_admin['op_repair_desc'] =
-    'Will check tables for errors and repair them as good as possible.';
-$lang_admin['op_struct'] = 'Check structure';
-$lang_admin['op_struct_desc'] =
-    'Will check the structure of the tables and repair them if requested. This operation is not dependent on the table selection.';
 $lang_admin['execute'] = 'Execute';
 $lang_admin['back'] = 'Back';
 $lang_admin['success'] = 'Success';
@@ -1505,22 +1323,14 @@ $lang_admin['antispam'] = 'Anti spam';
 $lang_admin['antivirus'] = 'Anti virus';
 $lang_admin['recvmethod'] = 'Receiving method';
 $lang_admin['miscprefs'] = 'Miscellaneous preferences';
-$lang_admin['rules'] = 'Rules';
-$lang_admin['gateways'] = 'Gateways';
-$lang_admin['types'] = 'Types';
-$lang_admin['texts'] = 'Texts';
 $lang_admin['calendar'] = 'Calendar';
 $lang_admin['signup'] = 'Sign-up';
-$lang_admin['optimizedb'] = 'Optimize database';
 $lang_admin['tempfiles'] = 'Temporary files';
 $lang_admin['count'] = 'Count';
 $lang_admin['size'] = 'Size';
 $lang_admin['tempdesc'] =
     'Temporary files will usually be deleted by b1gMail if they are no longer required. You may also start the cleanup process manually. Please note that only those files will be deleted that have reached a certain age.';
 $lang_admin['cleanup'] = 'Clean up';
-$lang_admin['mailstorage'] = 'Email storage';
-$lang_admin['storage_desc'] =
-    'Here you can transfer emails to the current storage.';
 $lang_admin['file2db'] = 'Files -&gt; database';
 $lang_admin['db2file'] = 'Database -&gt; files';
 $lang_admin['file2db_desc'] =
@@ -1537,14 +1347,12 @@ $lang_admin['info'] = 'Info';
 $lang_admin['status'] = 'Status';
 $lang_admin['installed'] = 'Installed';
 $lang_admin['notinstalled'] = 'Not installed';
-$lang_admin['current'] = 'Latest';
 $lang_admin['module'] = 'Module';
 $lang_admin['widget'] = 'Widget';
 $lang_admin['widgets'] = 'Widgets';
 $lang_admin['acdeactivate'] = 'Activate / deactivate';
 $lang_admin['reallyplugin'] =
     'Are you sure you want to activate / deactivate the plugin? Activating faulty plugins may compromise system integrity; deactivating plugins may permanently erase the data associated with the plugin!';
-$lang_admin['install'] = 'Install';
 $lang_admin['archiving'] = 'Archiving';
 $lang_admin['entry'] = 'Entry';
 $lang_admin['date'] = 'Date';
@@ -1619,7 +1427,6 @@ $lang_admin['lastpop3'] = 'Last POP3 access';
 $lang_admin['lastimap'] = 'Last IMAP access';
 $lang_admin['lastsmtp'] = 'Last SMTP access';
 $lang_admin['newpassword'] = '(New) password';
-$lang_admin['assets'] = 'Assets';
 $lang_admin['credits'] = 'Credits';
 $lang_admin['alias'] = 'Alias';
 $lang_admin['realdel'] =
@@ -1628,11 +1435,9 @@ $lang_admin['userrealdel'] =
     'Are you sure you want to delete the user permanently?';
 $lang_admin['wdtraffic'] = 'Webdisc traffic';
 $lang_admin['used2'] = 'used';
-$lang_admin['used3'] = 'Used';
 $lang_admin['ok'] = 'OK';
 $lang_admin['sendmail'] = 'Send email';
 $lang_admin['emptytrash'] = 'Empty trash';
-$lang_admin['monthasset'] = 'Assets per month';
 $lang_admin['yes'] = 'Yes';
 $lang_admin['no'] = 'No';
 $lang_admin['notconfirmed'] = 'Unconfirmed';
@@ -1647,7 +1452,6 @@ $lang_admin['addresstaken'] =
 $lang_admin['accountcreated'] =
     'The account has been created successfuly.<br /><br /><a href="users.php?do=edit&id=%d&sid=%s">&raquo; Edit user</a>';
 $lang_admin['byemail'] = 'by email';
-$lang_admin['val_code_resent'] = 'The validation code has been re-sent.';
 $lang_admin['stdgroup'] = 'Default group';
 $lang_admin['domain_combobox'] = 'Login domain combo box';
 $lang_admin['fields'] = 'Fields';
@@ -1658,7 +1462,6 @@ $lang_admin['notavailable'] = 'Not available';
 $lang_admin['datavalidation'] = 'Data validation';
 $lang_admin['sessioniplock'] = 'Session IP lock';
 $lang_admin['sessioncookielock'] = 'Session cookie lock';
-$lang_admin['regiplock'] = 'Sign-up IP lock';
 $lang_admin['seconds'] = 'seconds';
 $lang_admin['altcheck'] = 'Check alternative email';
 $lang_admin['minaddrlength'] = 'Minimum username length';
@@ -1684,7 +1487,6 @@ $lang_admin['ruledesc'] =
     'Here you can import a .bmrecvrules-file with receive rules.';
 $lang_admin['rulefile'] = 'Rule file (.bmrecvrules file)';
 $lang_admin['validityrule'] = 'Validity rule';
-$lang_admin['validitytime'] = 'Period of validity';
 $lang_admin['checkbox'] = 'Checkbox';
 $lang_admin['dropdown'] = 'Dropdown';
 $lang_admin['radio'] = 'Radio button';
@@ -1692,7 +1494,6 @@ $lang_admin['text'] = 'Text';
 $lang_admin['customfieldsat'] = 'Custom fields can be configured at';
 $lang_admin['addprofilefield'] = 'Add profile field';
 $lang_admin['options'] = 'Options';
-$lang_admin['onlyfortext'] = '(for text fields only)';
 $lang_admin['optionsdesc'] =
     '(only for radio button or dropdown field, use comma to seperate)';
 $lang_admin['brokenperms'] =
@@ -1705,7 +1506,6 @@ $lang_admin['trash'] = 'Trash';
 $lang_admin['pop3gateway'] = 'POP3 gateway';
 $lang_admin['pop3fetch_desc'] =
     'Here you can check the CatchAll POP3 account of the POP3 gateway manually in case too many emails exist in it. If the process aborts unexpectedly, please check that your mail size limits are not set to a too large value.';
-$lang_admin['help'] = 'Help';
 $lang_admin['none'] = 'None';
 $lang_admin['persistent'] = 'Persistent connections';
 $lang_admin['servers'] = 'Server';
@@ -1734,8 +1534,6 @@ $lang_admin['enable'] = 'Enable';
 $lang_admin['clamwarning'] =
     'Only enable ClamAV-integration if ClamAV/clamd has been installed on the mentioned server and is enabled.';
 $lang_admin['countries'] = 'Countries';
-$lang_admin['plzdb'] = 'ZIP DB';
-$lang_admin['cachetime'] = 'Cache validity';
 $lang_admin['cachesize'] = 'Cache size';
 $lang_admin['inactiveonly'] = 'For inactive files only';
 $lang_admin['storein'] = 'Store message in';
@@ -1806,18 +1604,12 @@ $lang_admin['hostname'] = 'Hostname';
 $lang_admin['template'] = 'Template';
 $lang_admin['defaults'] = 'Defaults';
 $lang_admin['itemsperpage'] = 'Entries per page';
-$lang_admin['censorchar'] = 'Censorship character';
 $lang_admin['domains'] = 'Domains';
 $lang_admin['allownewsoptout'] = 'Allow newsletter opt-out';
-$lang_admin['allow_newsletter_optout'] = 'Allow newsletter opt-out';
-$lang_admin['gutregged'] = 'Vouchers for registered users';
 $lang_admin['autocancel'] = 'Account deletable by user';
 $lang_admin['maintmode'] = 'Maintenance mode';
 $lang_admin['maintmodenote'] =
     'Maintenance mode is enabled. The b1gMail installation is not accessible for users.';
-$lang_admin['dldate'] = 'Package date';
-$lang_admin['invalidserial'] =
-    'The serial number you have entered is invalid. Please try again.';
 $lang_admin['members'] = 'Members';
 $lang_admin['addmember'] = 'Add member';
 $lang_admin['storage'] = 'Storage';
@@ -1845,23 +1637,9 @@ $lang_admin['ownpop3interval'] = 'POP3 poll interval';
 $lang_admin['selfpop3_check'] = 'Protect against fetching own account';
 $lang_admin['aliasdomains'] = 'Additional alias domains';
 $lang_admin['mailsig'] = 'Email signature';
-$lang_admin['creditprice'] = 'Credit price';
 $lang_admin['receivedmails'] = 'Received';
 $lang_admin['sentmails'] = 'Sent';
 $lang_admin['wdtrafficshort'] = 'WD traffic';
-$lang_admin['structstate'] = 'missing / invalid';
-$lang_admin['exists'] = 'exists';
-$lang_admin['table'] = 'Table';
-$lang_admin['query'] = 'Query';
-$lang_admin['repairstruct'] = 'Repair structure';
-$lang_admin['repairdone'] = 'The database structure has been repaired.';
-$lang_admin['addgateway'] = 'Add gateway';
-$lang_admin['returnvalue'] = 'Return value';
-$lang_admin['getstring'] = 'GET URL';
-$lang_admin['defaultgateway'] = 'Default gateway';
-$lang_admin['gateway'] = 'Gateway';
-$lang_admin['gateuser'] = 'Gateway user';
-$lang_admin['gatepass'] = 'Gateway password';
 $lang_admin['datastorage'] = 'Data storage';
 $lang_admin['structstorage'] = 'Structured storage';
 $lang_admin['structsafewarn'] =
@@ -1871,14 +1649,9 @@ $lang_admin['structrec'] =
 $lang_admin['dnsblreq'] = 'Required positive tests';
 $lang_admin['croninterval'] = 'Minimum cronjob interval';
 $lang_admin['logouturl'] = 'Logout URL';
-$lang_admin['addtype'] = 'Add type';
-$lang_admin['price'] = 'Price';
-$lang_admin['setdefault'] = 'Set as default';
 $lang_admin['deletegroup'] = 'Delete group';
 $lang_admin['groupdeletedesc'] =
     'Please select the group(s) to which the members of those groups are to be assigned that you want to delete.';
-$lang_admin['dbwarn'] =
-    'It is highly recommended to create a backup before running. Use at own risk.';
 $lang_admin['workgroups'] = 'Workgroup';
 $lang_admin['collaboration'] = 'Collaboration';
 $lang_admin['share_addr'] = 'Shared addresses';
@@ -1891,22 +1664,11 @@ $lang_admin['reset'] = 'Reset';
 $lang_admin['bayesresetq'] =
     'Are you sure you want to reset the filter training database? The filter will not be operational again until re-training.';
 $lang_admin['entries'] = 'Entries';
-$lang_admin['codes'] = 'Voucher code(s)';
-$lang_admin['unlimited'] = 'unlimited';
-$lang_admin['or'] = 'or';
-$lang_admin['now'] = 'now';
-$lang_admin['generate'] = 'Generate';
-$lang_admin['chars'] = 'Characters';
-$lang_admin['length'] = 'Length';
-$lang_admin['benefit'] = 'Benefit';
 $lang_admin['movetogroup'] = 'Move to group';
-$lang_admin['addcredits'] = 'Add credits';
-$lang_admin['code'] = 'Code';
 $lang_admin['approx'] = 'approx.';
 $lang_admin['usagebycategory'] = 'Space use by category';
 $lang_admin['category'] = 'Category';
 $lang_admin['organizer'] = 'Organizer';
-$lang_admin['mails'] = 'Emails';
 $lang_admin['overall'] = 'Overall';
 $lang_admin['usagebygroup'] = 'Memory usage by group';
 $lang_admin['useraverage'] = 'User average';
@@ -1928,14 +1690,11 @@ $lang_admin['stat_send_intern'] = 'Sent emails (internal)';
 $lang_admin['stat_send_extern'] = 'Sent emails (external)';
 $lang_admin['stat_sysmail'] = 'System emails';
 $lang_admin['day'] = 'Day';
-$lang_admin['redeemedby'] = 'Redeemed by...';
 $lang_admin['oldcontacts'] = 'Old contact information available.';
 $lang_admin['contacthistory'] = 'Contact history';
 $lang_admin['savehistory'] = 'Save contact history';
 $lang_admin['discarded'] = 'Discarded';
 $lang_admin['clearhistory'] = 'Clear history';
-$lang_admin['filetypes'] = 'File type(s)';
-$lang_admin['icon'] = 'Icon';
 $lang_admin['recipients'] = 'Recipients';
 $lang_admin['priority'] = 'Priority';
 $lang_admin['prio_-1'] = 'Low';
@@ -1968,39 +1727,9 @@ $lang_admin['question'] = 'Question';
 $lang_admin['requires'] = 'Requires';
 $lang_admin['addfaq'] = 'Add FAQ';
 $lang_admin['both'] = 'Both';
-$lang_admin['autoperms'] = 'Automatic permission settings';
-$lang_admin['autoperms_desc'] =
-    'If you give the FTP-details from your b1gMail installation here, the update wizard will be able to give permission for files to be updated automatically. That will make the updating process a lot easier for you. You will not need an FTP client or the like.';
-$lang_admin['ftphost'] = 'FTP host';
-$lang_admin['ftpport'] = 'FTP port';
-$lang_admin['ftpuser'] = 'FTP user';
-$lang_admin['ftppass'] = 'FTP password';
-$lang_admin['ftpdir'] = 'Directory to b1gMail';
-$lang_admin['ftpperms'] = 'Default permissions';
 $lang_admin['certmaillife'] = 'Certified mail storage time';
 $lang_admin['days'] = 'days';
-$lang_admin['searchupdatesnow'] = 'Search for new updates now.';
-$lang_admin['updatesdesc'] =
-    'Please click the following button to search for updates (e.g. important security updates) for your b1gMail installation. Please note that in the updating process the license number and serial number of your b1gMail license will be transmitted to our update server.';
-$lang_admin['upderrordesc'] =
-    'An error occurred while trying to update. Please read the following error message.';
-$lang_admin['noupdatesfound'] =
-    'No updates for your b1gMail installation have been found. Please try again later if necessary.';
-$lang_admin['updatesfound'] =
-    'The following updates for your b1gMail installation have been found.';
-$lang_admin['clicktoupdate'] =
-    'Please click &quot;Next &raquo;&quot; to start the update setup process.';
-$lang_admin['next'] = 'Next';
-$lang_admin['pleasereadme'] =
-    'Please read the following information on this update carefully.';
-$lang_admin['changedfiles'] =
-    'Installing the update, the following files will be overwritten. Therefore they have to be writable (CHMOD 777). If you have specified your correct FTP details and if you have enabled the automatic permission settings, the update wizard will update the permissions automatically and you will not have to do anything.';
 $lang_admin['filename'] = 'Filename';
-$lang_admin['writeable'] = 'Writable';
-$lang_admin['updating'] = 'Updating...';
-$lang_admin['updateinstalled'] = 'The update has been installed.';
-$lang_admin['moreupdates'] =
-    'Further updates are available. Please click &quot;Next &raquo;&quot; to continue.';
 $lang_admin['banners'] = 'Banners';
 $lang_admin['banner'] = 'Banner';
 $lang_admin['weight'] = 'Weight';
@@ -2030,9 +1759,6 @@ $lang_admin['trash_done'] =
     'The action has been completed. <b>%d</b> emails (%.02f MB) have been deleted.';
 $lang_admin['trash_sizesonly'] = 'are larger than:';
 $lang_admin['whobelongtogrps'] = 'belong to one of the following groups:';
-$lang_admin['vendor'] = 'Vendor';
-$lang_admin['forb1gmail'] = 'For b1gMail';
-$lang_admin['yourversion'] = 'Your version';
 $lang_admin['sendingletter'] = 'Sending newsletter...';
 $lang_admin['lockedusernames'] = 'Blocked user names';
 $lang_admin['addlockedusername'] = 'Add blocked user name';
@@ -2046,7 +1772,6 @@ $lang_admin['rd_static'] = 'Conventional (statically)';
 $lang_admin['rd_dynamic'] = 'Use receive rules (dynamically)';
 $lang_admin['searchengine'] = 'Search engine';
 $lang_admin['activate'] = 'Enable';
-$lang_admin['licensekey'] = 'License key';
 $lang_admin['features'] = 'Features';
 $lang_admin['smime'] = 'S/MIME';
 $lang_admin['openssl_err'] =
@@ -2059,11 +1784,8 @@ $lang_admin['cert_err_noca'] =
     'This certificate cannot be imported because it is not a root certificate for S/MIME purposes.';
 $lang_admin['cert_err_format'] = 'The file is not a valid PEM certificate.';
 $lang_admin['cert_err_exists'] = 'The certificate already exists.';
-$lang_admin['cert_upload_own'] = 'Upload own certificates';
-$lang_admin['cert_generate'] = 'Issue certificates';
 $lang_admin['cert_ca'] = 'Certificate authority';
 $lang_admin['setedit'] = 'Add / edit';
-$lang_admin['cert_pleasesetca'] = 'Please add a certificate authority first.';
 $lang_admin['cert_ca_info'] =
     'This certificate authority will be used to issue certificates for your users.<br /><br /><b>NOTICE:</b> Both certificate and private key will be stored unencrypted in the database!';
 $lang_admin['cert_ca_current'] = 'Current certificate authority';
