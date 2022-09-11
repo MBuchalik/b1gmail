@@ -747,6 +747,32 @@ $lang_user['version'] = 'Version';
 $lang_user['serial'] = 'Seriennummer';
 $lang_user['publickey'] = '&Ouml;ffentlicher Schl&uuml;ssel';
 $lang_user['bits'] = 'Bits';
+$lang_user['prefs_d_keyring'] =
+    'Verwalten Sie Ihre Schl&uuml;ssel und Zertifikate zum Signieren und Ver-/Entschl&uuml;sseln von E-Mails.';
+$lang_user['prefs_d_faq'] =
+    'Hier finden Sie wertvolle Antworten auf h&auml;ufig gestellte Fragen.';
+$lang_user['prefs_d_common'] =
+    'Allgemeine Einstellungen (wie Lese- und Zitieroptionen) Ihres Accounts bearbeiten.';
+$lang_user['prefs_d_contact'] =
+    'Ihre Kontaktdaten, die auch f&uuml;r Ihre digitale Visitenkarte benutzt werden, bearbeiten.';
+$lang_user['prefs_d_filters'] =
+    'Eingehenden E-Mail-Verkehr mittels selbst definierten Filter-Regeln sortieren.';
+$lang_user['prefs_d_signatures'] =
+    'Bearbeiten Sie Ihre E-Mail-Signaturen oder f&uuml;gen Sie neue Signaturen hinzu.';
+$lang_user['prefs_d_antivirus'] =
+    'Sch&uuml;tzen Sie Ihre Mailbox und Ihre Daten durch das integrierte Anti-Virus-System.';
+$lang_user['prefs_d_antispam'] =
+    'Lassen Sie nur die E-Mails durchkommen, die Sie auch wirklich haben m&ouml;chten.';
+$lang_user['prefs_d_aliases'] =
+    'Sichern Sie sich weitere E-Mail-Adressen f&uuml;r diesen Account.';
+$lang_user['prefs_d_autoresponder'] =
+    'Lassen Sie eingehende E-Mails automatisch beantworten, z.B. bei Abwesenheit.';
+$lang_user['prefs_d_extpop3'] =
+    'Sie k&ouml;nnen E-Mails von externen POP3-Accounts in Ihren E-Mail-Account einsammeln lassen.';
+$lang_user['prefs_d_software'] =
+    'Laden Sie Client-Software f&uuml;r Ihren Computer herunter, z.B. einen Mailpr&uuml;fer.';
+$lang_user['prefs_d_membership'] =
+    'Sehen Sie Infos zu Ihrer Mitgliedschaft ein oder beenden Sie diese auf Wunsch.';
 $lang_user['alias'] = 'Alias';
 $lang_user['addalias'] = 'Alias hinzuf&uuml;gen';
 $lang_user['aliastype_1'] = 'Absender';

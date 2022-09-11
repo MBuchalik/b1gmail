@@ -776,6 +776,31 @@ $lang_user['version'] = 'Version';
 $lang_user['serial'] = 'Serial number';
 $lang_user['publickey'] = 'Public key';
 $lang_user['bits'] = 'Bits';
+$lang_user['prefs_d_keyring'] =
+    'Manage your keys and certificates for email signing and crypting.';
+$lang_user['prefs_d_faq'] =
+    'Here you find answers to frequently asked questions.';
+$lang_user['prefs_d_common'] =
+    'Edit general settings of your account (e.g. reading and quoting options).';
+$lang_user['prefs_d_contact'] =
+    'Edit your contact details, which will also be used for your vCard.';
+$lang_user['prefs_d_filters'] =
+    'Sort incoming messages using self-defined filter rules.';
+$lang_user['prefs_d_signatures'] =
+    'Edit your email signatures or add new signatures.';
+$lang_user['prefs_d_antivirus'] =
+    'Protect your mailbox and your files using the integrated anti-virus-system.';
+$lang_user['prefs_d_antispam'] =
+    'Only allow messages you are sure you want to receive.';
+$lang_user['prefs_d_aliases'] = 'Get more email addresses for this account.';
+$lang_user['prefs_d_autoresponder'] =
+    'Have your email responded to automatically, e.g. when you are not available.';
+$lang_user['prefs_d_extpop3'] =
+    'You can have external POP3-accounts collect your messages into your email-account.';
+$lang_user['prefs_d_software'] =
+    'Download client-software for your computer, e.g. a mail checker.';
+$lang_user['prefs_d_membership'] =
+    'View information on your membership or terminate it if desired.';
 $lang_user['alias'] = 'Alias';
 $lang_user['addalias'] = 'Add alias';
 $lang_user['aliastype_1'] = 'Sender';

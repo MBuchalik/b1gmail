@@ -90,7 +90,7 @@ function printLangIfNotNeeded($langType, $langKey): void {
     global $fileContents;
 
     // Some strings are loaded in a "dynamic" way, e.g. $lang_admin['text_' . $key]
-    $dynamicPrefixes = ['text_', 'stat_', 'cert_err', 'cert_caerr'];
+    $dynamicPrefixes = ['text_', 'stat_', 'cert_err', 'cert_caerr', 'prefs_d_'];
     foreach ($dynamicPrefixes as $prefix) {
         if (str_starts_with($langKey, $prefix)) {
             return;
