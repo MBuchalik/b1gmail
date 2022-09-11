@@ -265,7 +265,6 @@ define(
 define('FALLBACK_CHARSET', 'ISO-8859-15');
 define('BMCL_TYPE_CONTACT', 0); // changelog/sync item types
 define('BMCL_TYPE_CALENDAR', 1);
-define('BMCL_TYPE_TODO', 2);
 define('BMCL_TYPE_CONTACTGROUP', 3);
 define('FTS_BGINDEX_COUNT', 10); // no of mails to index in each fts bg index step
 define('NOTIFICATION_LIMIT', 25);

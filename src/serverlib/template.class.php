@@ -254,12 +254,6 @@ class Template extends Smarty {
                     'text' => $lang_user['date2'],
                 ],
                 [
-                    'icon' => 'ico_todo',
-                    'faIcon' => 'fa-tasks',
-                    'link' => 'organizer.todo.php?action=addTask&sid=',
-                    'text' => $lang_user['task'],
-                ],
-                [
                     'icon' => 'ico_addressbook',
                     'faIcon' => 'fa-address-book-o',
                     'link' =>

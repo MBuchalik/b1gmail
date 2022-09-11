@@ -18,57 +18,17 @@
  *
  */
 
-function loadMoreMails(folder, page)
-{
-	$.ajax({
-		type:		'POST',
-		url:		'email.php',
-		data:		({ sid: currentSID, listOnly: 'true', folder: folder, page: page }),
-		cache:		false,
-		dataType:	'text'
-	}).done(function (msg)
-	{
-		$('#mailList').append(msg);
-		$('#mailList').listview('refresh');
-		if(msg.indexOf('<!-- hideMoreMailsLink -->') >= 0)
-			$('#moreMailsLink').remove();
-	});
-}
-
-function setTaskDone(id, done)
-{
-	$.ajax({
-		type:		'POST',
-		url: 		'tasks.php',
-		data:		({ sid: currentSID, action: 'setTaskDone', id: id, done: done }),
-		cache: 		false,
-		dataType:	'text'
-	});
-}
-
-function initTaskList()
-{
-	$('#page').live('pagebeforeshow', function(e, data)
-	{
-		$('input[type="checkbox"]').each(function()
-		{
-			($(this).is(':checked')) ? $(this).parent().parent().addClass('checked') : $(this).parent().parent().addClass('not-checked');
-		});
-	});
-
-	$('.listCheckbox').bind('click', function(e)
-	{
-		if($(this).find('input[type="checkbox"]').is(':checked'))
-		{
-			setTaskDone($(this).find('input[type="checkbox"]').attr('name').substr(1), false);
-			$(this).removeClass('checked').addClass('not-checked');
-			$(this).find('input[type="checkbox"]').attr('checked', false);
-		}
-		else
-		{
-			setTaskDone($(this).find('input[type="checkbox"]').attr('name').substr(1), true);
-			$(this).removeClass('not-checked').addClass('checked');
-			$(this).find('input[type="checkbox"]').attr('checked', true);
-		}
-	});
+function loadMoreMails(folder, page) {
+  $.ajax({
+    type: 'POST',
+    url: 'email.php',
+    data: { sid: currentSID, listOnly: 'true', folder: folder, page: page },
+    cache: false,
+    dataType: 'text',
+  }).done(function (msg) {
+    $('#mailList').append(msg);
+    $('#mailList').listview('refresh');
+    if (msg.indexOf('<!-- hideMoreMailsLink -->') >= 0)
+      $('#moreMailsLink').remove();
+  });
 }

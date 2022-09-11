@@ -152,28 +152,7 @@ class BMPlugin_Widget_Tasks extends BMPlugin {
     }
 
     function renderWidget() {
-        global $tpl, $thisUser;
-
-        if (!class_exists('BMTodo')) {
-            include B1GMAIL_DIR . 'serverlib/todo.class.php';
-        }
-
-        $todoList = _new('BMTodo', [$thisUser->_id]);
-        $tasks = $todoList->GetTodoList(
-            'faellig',
-            'desc',
-            BASEWIDGET_ITEMCOUNT + 1,
-            0,
-            true,
-        );
-        $tpl->assign(
-            'bmwidget_tasks_haveMore',
-            count($tasks) > BASEWIDGET_ITEMCOUNT,
-        );
-        if (count($tasks) > BASEWIDGET_ITEMCOUNT) {
-            $tasks = array_slice($tasks, 0, BASEWIDGET_ITEMCOUNT);
-        }
-        $tpl->assign('bmwidget_tasks_items', $tasks);
+        // Keep this as a dummy for now.
         return true;
     }
 }
@@ -206,9 +185,6 @@ class BMPlugin_Widget_Welcome extends BMPlugin {
         if (!class_exists('BMMailbox')) {
             include B1GMAIL_DIR . 'serverlib/mailbox.class.php';
         }
-        if (!class_exists('BMTodo')) {
-            include B1GMAIL_DIR . 'serverlib/todo.class.php';
-        }
         if (!class_exists('BMCalendar')) {
             include B1GMAIL_DIR . 'serverlib/calendar.class.php';
         }
@@ -220,10 +196,6 @@ class BMPlugin_Widget_Welcome extends BMPlugin {
             $thisUser,
         ]);
         $mailCount = $mailbox->GetMailCount(-1, true);
-
-        // count tasks
-        $todo = _new('BMTodo', [$thisUser->_id]);
-        $taskCount = $todo->GetUndoneTaskCount();
 
         // count dates
         $calendar = _new('BMCalendar', [$thisUser->_id]);
@@ -259,15 +231,6 @@ class BMPlugin_Widget_Welcome extends BMPlugin {
                     ? $lang_user['datetext1']
                     : $lang_user['datetext'],
                 $dateCount,
-            ),
-        );
-        $tpl->assign(
-            'bmwidget_welcome_tasks',
-            sprintf(
-                $taskCount == 1
-                    ? $lang_user['tasktext1']
-                    : $lang_user['tasktext'],
-                $taskCount,
             ),
         );
 

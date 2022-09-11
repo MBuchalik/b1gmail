@@ -25,7 +25,6 @@ if (!file_exists('./serverlib/init.inc.php')) {
 }
 
 include './serverlib/init.inc.php';
-include './serverlib/todo.class.php';
 include './serverlib/calendar.class.php';
 include './serverlib/addressbook.class.php';
 RequestPrivileges(PRIVILEGES_USER);
@@ -179,17 +178,6 @@ $tpl->assign(
     'thisMonthText',
     date('F Y', mktime(0, 0, 0, date('m', $date), 15, date('Y', $date))),
 );
-
-/**
- * page menu
- */
-$todo = _new('BMTodo', [$userRow['id']]);
-$sideTasks = $todo->GetTodoList('faellig', 'asc', 6, 0, true);
-$tpl->assign('tasks_haveMore', count($sideTasks) > 5);
-if (count($sideTasks) > 5) {
-    $sideTasks = array_slice($sideTasks, 0, 5);
-}
-$tpl->assign('tasks', $sideTasks);
 
 /**
  * start page

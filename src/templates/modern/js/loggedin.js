@@ -150,27 +150,6 @@ function autoSetPreviewPos() {
   );
 }
 
-function setTaskDone(sid, id, done) {
-  var reload = EBID('taskListContainer') ? true : false;
-
-  if (EBID('sbTask_' + id)) EBID('sbTask_' + id).checked = done;
-
-  MakeXMLRequest(
-    'organizer.todo.php?do=setTaskDone&id=' +
-      id +
-      (reload ? '&listOnly=true&taskListID=' + currentTaskListID : '') +
-      '&done=' +
-      (done ? 'true' : 'false') +
-      '&sid=' +
-      currentSID,
-    function (e) {
-      if (e.readyState == 4) {
-        if (reload) reloadTaskList(e.responseText);
-      }
-    },
-  );
-}
-
 function ajaxFormData(f) {
   var data = '';
 

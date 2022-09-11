@@ -96,17 +96,6 @@ class B1GMailSearchProvider extends BMPlugin {
                     $calendar->DeleteDate((int) $itemID);
                 }
             }
-        } elseif ($category == 'B1GMailSearchProvider_tasks') {
-            if (!class_exists('BMTodo')) {
-                include B1GMAIL_DIR . 'serverlib/todo.class.php';
-            }
-            $calendar = _new('BMTodo', [$userRow['id']]);
-
-            if ($action == 'delete') {
-                foreach ($items as $itemID) {
-                    $calendar->Delete((int) $itemID);
-                }
-            }
         } elseif ($category == 'B1GMailSearchProvider_addressbook') {
             if (!class_exists('BMAddressbook')) {
                 include B1GMAIL_DIR . 'serverlib/addressbook.class.php';
@@ -204,12 +193,6 @@ class B1GMailSearchProvider extends BMPlugin {
             $result['B1GMailSearchProvider_calendar'] = [
                 'title' => $lang_user['dates2'],
                 'icon' => 'fa-calendar',
-            ];
-        }
-        if (isset($searchIn['tasks'])) {
-            $result['B1GMailSearchProvider_tasks'] = [
-                'title' => $lang_user['tasks'],
-                'icon' => 'fa-tasks',
             ];
         }
         if (isset($searchIn['addressbook'])) {
@@ -509,47 +492,6 @@ class B1GMailSearchProvider extends BMPlugin {
                     'icon' => 'fa-calendar',
                     'name' => 'B1GMailSearchProvider_calendar',
                     'title' => $lang_user['dates2'],
-                    'results' => $thisResults,
-                    'massActions' => [
-                        'delete' => $lang_user['delete'],
-                    ],
-                ];
-            }
-        }
-
-        //
-        // tasks
-        //
-        if (isset($searchIn['tasks'])) {
-            $thisResults = [];
-            $res = $db->Query(
-                'SELECT id,titel,faellig FROM {pre}tasks WHERE faellig>=? AND faellig<=? AND user=? AND (titel LIKE ' .
-                    $q .
-                    ' OR comments LIKE ' .
-                    $q .
-                    ') ORDER BY titel ASC',
-                $dateFrom,
-                $dateTo,
-                $thisUser->_id,
-            );
-            while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                $thisResults[] = [
-                    'title' => $row['titel'],
-                    'link' => sprintf(
-                        'organizer.todo.php?action=editTask&id=%d&',
-                        $row['id'],
-                    ),
-                    'date' => $row['faellig'],
-                    'id' => $row['id'],
-                ];
-            }
-            $res->Free();
-
-            if (count($thisResults) > 0) {
-                $results[] = [
-                    'icon' => 'fa-tasks',
-                    'name' => 'B1GMailSearchProvider_tasks',
-                    'title' => $lang_user['tasks'],
                     'results' => $thisResults,
                     'massActions' => [
                         'delete' => $lang_user['delete'],

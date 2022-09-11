@@ -144,6 +144,7 @@ $unnecessaryFilesAndFolders = [
         // These files existed in b1gmail 7.4.0.
         B1GMAIL_DIR . 'organizer.php',
         B1GMAIL_DIR . 'organizer.notes.php',
+        B1GMAIL_DIR . 'organizer.todo.php',
         B1GMAIL_DIR . 'sms.php',
     ],
     'folders' => [
@@ -518,9 +519,6 @@ function DeleteUser($userID, $qAddAND = '') {
     $db->Query('DELETE FROM {pre}mails WHERE userid=?', $userID);
     $db->Query('DELETE FROM {pre}attachments WHERE userid=?', $userID);
 
-    // delete notes
-    $db->Query('DELETE FROM {pre}notes WHERE user=?', $userID);
-
     // uid index + ext. pop3s
     $pop3IDs = [];
     $res = $db->Query('SELECT id FROM {pre}pop3 WHERE user=?', $userID);
@@ -542,9 +540,6 @@ function DeleteUser($userID, $qAddAND = '') {
 
     // spam index
     $db->Query('DELETE FROM {pre}spamindex WHERE userid=?', $userID);
-
-    // tasks
-    $db->Query('DELETE FROM {pre}tasks WHERE user=?', $userID);
 
     // workgroup memberships
     $db->Query('DELETE FROM {pre}workgroups_member WHERE user=?', $userID);

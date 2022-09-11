@@ -14,8 +14,6 @@
 										{lng p="overview"}</a><br />
 		<a href="organizer.calendar.php?sid={$sid}"><i class="fa fa-calendar" aria-hidden="true"></i>
 										{lng p="calendar"}</a><br />
-		<a href="organizer.todo.php?sid={$sid}"><i class="fa fa-tasks" aria-hidden="true"></i>
-										{lng p="tasks"}</a><br />
 		<a href="organizer.addressbook.php?sid={$sid}"><i class="fa fa-address-book" aria-hidden="true"></i>
 										{lng p="addressbook"}</a><br />
 	</fieldset>

@@ -304,10 +304,6 @@ $lang_user['showmore'] = 'Show more';
 $lang_user['paused'] = 'Paused';
 $lang_user['langCode'] = 'EN';
 $lang_user['pop3server'] = 'Inbox server (POP3)';
-$lang_user['undonetasks'] = 'Pending tasks';
-$lang_user['donetasks'] = 'Done tasks';
-$lang_user['tasklist'] = 'Task list';
-$lang_user['tasklists'] = 'Task lists';
 $lang_user['nodatesin31d'] = 'No appointments in the next 31 days.';
 $lang_user['desktopversion'] = 'Desktop version';
 $lang_user['new'] = 'New';
@@ -315,7 +311,6 @@ $lang_user['right'] = 'Right';
 $lang_user['bottom'] = 'Bottom';
 $lang_user['notice'] = 'Notice';
 $lang_user['from2'] = 'from';
-$lang_user['task'] = 'Task';
 $lang_user['addraddtext'] =
     'At least one of the recipients of the email is not in your address book.  You can easily add these recipients to your address book. Just select the recipients you want to add to your address book, complete their names and click &quot;Save&quot.';
 $lang_user['addradddone'] =
@@ -384,6 +379,12 @@ $lang_user['deleteafterextract'] = 'Delete after extraction';
 $lang_user['keep'] = 'Retain';
 $lang_user['overwrite'] = 'Overwrite';
 $lang_user['extract'] = 'Extract';
+$lang_user['tasks'] = 'Tasks';
+$lang_user['begin'] = 'Begin';
+$lang_user['status'] = 'Status';
+$lang_user['done'] = 'Done';
+$lang_user['title'] = 'Title';
+$lang_user['comment'] = 'Comment';
 
 // webdisk share
 $lang_user['badshare'] = 'Share path not found.';
@@ -544,7 +545,6 @@ $lang_user['sharednote'] =
 // organizer
 $lang_user['calendar'] = 'Calendar';
 $lang_user['overview'] = 'Overview';
-$lang_user['todolist'] = 'To do';
 $lang_user['addressbook'] = 'Addressbook';
 $lang_user['notes'] = 'Notes';
 
@@ -557,23 +557,6 @@ $lang_user['prio_0'] = 'Normal';
 $lang_user['prio_1'] = 'High';
 $lang_user['selaction'] = 'Action';
 $lang_user['reset'] = 'Reset';
-$lang_user['markasdone'] = 'Mark as done';
-
-// todo list
-$lang_user['more'] = 'More';
-$lang_user['tasks'] = 'Tasks';
-$lang_user['addtask'] = 'Add task';
-$lang_user['edittask'] = 'Edit task';
-$lang_user['begin'] = 'Begin';
-$lang_user['due'] = 'Due';
-$lang_user['status'] = 'Status';
-$lang_user['done'] = 'Done';
-$lang_user['title'] = 'Title';
-$lang_user['taskst_16'] = 'Not begun';
-$lang_user['taskst_32'] = 'In Progress';
-$lang_user['taskst_64'] = 'Done';
-$lang_user['taskst_128'] = 'Deferred';
-$lang_user['comment'] = 'Comment';
 
 // addressbook
 $lang_user['send_anyhow'] = 'Send anyhow';
@@ -1738,7 +1721,6 @@ $lang_admin['includeinsearch'] =
     'Include the following sections in the user search';
 $lang_admin['mailsearchwarn'] =
     'Searching a large data stock is very CPU intensive.';
-$lang_admin['tasks'] = 'Tasks';
 $lang_admin['addressbook'] = 'Addressbook';
 $lang_admin['all'] = 'All';
 $lang_admin['li'] = 'Logged in';

@@ -2472,81 +2472,6 @@ A:hover {
 }
 
 /* ******************************************************************* */
-#tasksTable TR {
-  border-bottom: 1px dotted #ccc;
-  height: 30px;
-  cursor: default;
-}
-#tasksTable TR.done {
-  opacity: 0.45;
-  filter: alpha(opacity=45);
-}
-#tasksTable TD INPUT[type='text'] {
-  width: 95%;
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-}
-.taskLists {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  bottom: 0px;
-  height: 100%;
-  width: 200px;
-  overflow: auto;
-  border-right: 1px solid #ccc;
-}
-.taskLists .taskList {
-  display: block;
-  padding: 1em;
-  border-bottom: 1px solid #ddd;
-
-  background-color: #f9f9f9;
-}
-.taskLists .taskList IMG {
-  float: right;
-  display: none;
-}
-.taskLists .taskList.selected IMG {
-  display: block;
-}
-.taskLists .taskList.selected {
-  font-weight: bold;
-  color: #fff;
-  background-color: #428bca;
-}
-.taskContents {
-  position: absolute;
-  left: 201px;
-  top: 0px;
-  bottom: 0px;
-  right: 0px;
-}
-.taskContainer {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  width: 100%;
-}
-.taskContainer.taskList {
-  background-image: url(../images/li/tasklist_bg.png);
-  background-repeat: repeat-y;
-}
-.taskCheckBox {
-  background-image: url(../images/li/tasklist_bg.png);
-  background-repeat: repeat-y;
-  padding-left: 3px;
-}
-.taskCheckBox IMG {
-  width: 16px;
-  height: 16px;
-}
-
-/* ******************************************************************* */
 .addressContents {
   position: absolute;
   left: 0px;
@@ -2762,9 +2687,6 @@ body {
 }
 .selected td,
 .selected span {
-  background: var(--bm-color-main);
-}
-.taskLists .taskList.selected {
   background: var(--bm-color-main);
 }
 

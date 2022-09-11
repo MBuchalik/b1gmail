@@ -25,6 +25,14 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
             return false;
         }
 
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_tasks')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_tasklists')) {
+            return false;
+        }
+
         return true;
     }
 }

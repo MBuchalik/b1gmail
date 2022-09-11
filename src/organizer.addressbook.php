@@ -25,7 +25,6 @@ if (!file_exists('./serverlib/init.inc.php')) {
 }
 
 include './serverlib/init.inc.php';
-include './serverlib/todo.class.php';
 include './serverlib/vcard.class.php';
 include './serverlib/addressbook.class.php';
 include './serverlib/csv.class.php';
@@ -56,17 +55,6 @@ $tpl->assign('disablePageMenu', true);
  * addressbook interface
  */
 $book = _new('BMAddressbook', [$userRow['id']]);
-
-/**
- * page menu
- */
-$todo = _new('BMTodo', [$userRow['id']]);
-$sideTasks = $todo->GetTodoList('faellig', 'asc', 6, 0, true);
-$tpl->assign('tasks_haveMore', count($sideTasks) > 5);
-if (count($sideTasks) > 5) {
-    $sideTasks = array_slice($sideTasks, 0, 5);
-}
-$tpl->assign('tasks', $sideTasks);
 
 /**
  * addressbook fields

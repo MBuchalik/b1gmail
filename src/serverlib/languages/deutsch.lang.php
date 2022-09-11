@@ -288,6 +288,12 @@ $lang_user['groups'] = 'Gruppen';
 $lang_user['sess_expired'] = 'Sitzung abgelaufen';
 $lang_user['sess_expired_desc'] =
     'Ihre Sitzung wurde aus Sicherheitsgr&uuml;nden wegen Inaktivit&auml;t beendet. Bitte loggen Sie sich erneut ein.';
+$lang_user['tasks'] = 'Aufgaben';
+$lang_user['begin'] = 'Beginn';
+$lang_user['status'] = 'Status';
+$lang_user['done'] = 'Erledigt';
+$lang_user['title'] = 'Titel';
+$lang_user['comment'] = 'Kommentar';
 
 // webdisk share
 $lang_user['badshare'] = 'Die angegebene Freigabe wurde nicht gefunden.';
@@ -480,7 +486,6 @@ $lang_user['newgroup'] = 'Neue Gruppe';
 $lang_user['associatewith'] = 'Zuordnen zu';
 $lang_user['calendar'] = 'Kalender';
 $lang_user['overview'] = '&Uuml;bersicht';
-$lang_user['todolist'] = 'Aufgabenliste';
 $lang_user['addressbook'] = 'Adressbuch';
 $lang_user['notes'] = 'Notizen';
 
@@ -493,28 +498,6 @@ $lang_user['prio_0'] = 'Normal';
 $lang_user['prio_1'] = 'Hoch';
 $lang_user['selaction'] = 'Aktion';
 $lang_user['reset'] = 'Zur&uuml;cksetzen';
-$lang_user['markasdone'] = 'Als erledigt markieren';
-
-// todo list
-$lang_user['more'] = 'Mehr';
-$lang_user['undonetasks'] = 'Unerledigte Aufgaben';
-$lang_user['donetasks'] = 'Erledigte Aufgaben';
-$lang_user['tasklist'] = 'Aufgaben-Liste';
-$lang_user['tasklists'] = 'Aufgaben-Listen';
-$lang_user['task'] = 'Aufgabe';
-$lang_user['tasks'] = 'Aufgaben';
-$lang_user['addtask'] = 'Aufgabe hinzuf&uuml;gen';
-$lang_user['edittask'] = 'Aufgabe bearbeiten';
-$lang_user['begin'] = 'Beginn';
-$lang_user['due'] = 'F&auml;llig';
-$lang_user['status'] = 'Status';
-$lang_user['done'] = 'Erledigt';
-$lang_user['title'] = 'Titel';
-$lang_user['taskst_16'] = 'Nicht begonnen';
-$lang_user['taskst_32'] = 'In Bearbeitung';
-$lang_user['taskst_64'] = 'Erledigt';
-$lang_user['taskst_128'] = 'Zur&uuml;ckgestellt';
-$lang_user['comment'] = 'Kommentar';
 
 // addressbook
 $lang_user['nocontactselected'] = 'Kein Kontakt ausgew&auml;hlt';
@@ -1745,7 +1728,6 @@ $lang_admin['includeinsearch'] =
     'Folgende Bereiche bei der Benutzer-Suche durchsuchen';
 $lang_admin['mailsearchwarn'] =
     'Die Suche in gro&szlig;en Datenbest&auml;nden ist sehr rechenintensiv.';
-$lang_admin['tasks'] = 'Aufgaben';
 $lang_admin['addressbook'] = 'Adressbuch';
 $lang_admin['all'] = 'Alle';
 $lang_admin['li'] = 'Eingeloggt';
