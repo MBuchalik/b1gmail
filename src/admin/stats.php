@@ -204,7 +204,13 @@ if ($_REQUEST['action'] == 'common' || $_REQUEST['action'] == 'email') {
     if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'showSpaceByCategory') {
         $data = [];
         foreach ($byCategory as $key => $val) {
-            $data[$lang_admin[$key]] = $val;
+            if ($key === 'mails') {
+                $data[$lang_admin['mails']] = $val;
+            } elseif ($key === 'webdisk') {
+                $data[$lang_admin['webdisk']] = $val;
+            } else {
+                exit('Unknown category');
+            }
         }
 
         $chart = _new('BMBarChart', [$lang_admin['usagebycategory'], 500, 90]);

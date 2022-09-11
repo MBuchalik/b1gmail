@@ -1672,6 +1672,7 @@ $lang_admin['approx'] = 'approx.';
 $lang_admin['usagebycategory'] = 'Space use by category';
 $lang_admin['category'] = 'Category';
 $lang_admin['organizer'] = 'Organizer';
+$lang_admin['mails'] = 'Emails';
 $lang_admin['overall'] = 'Overall';
 $lang_admin['usagebygroup'] = 'Memory usage by group';
 $lang_admin['useraverage'] = 'User average';

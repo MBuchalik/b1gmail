@@ -1679,6 +1679,7 @@ $lang_admin['approx'] = 'ca.';
 $lang_admin['usagebycategory'] = 'Speicher-Nutzung nach Kategorie';
 $lang_admin['category'] = 'Kategorie';
 $lang_admin['organizer'] = 'Organizer';
+$lang_admin['mails'] = 'E-Mails';
 $lang_admin['overall'] = 'Gesamt';
 $lang_admin['usagebygroup'] = 'Speicher-Nutzung nach Gruppe';
 $lang_admin['useraverage'] = 'Benutzer-Durchschnitt';

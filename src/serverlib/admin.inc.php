@@ -265,27 +265,8 @@ function GetStatData($types, $time) {
  * @return array
  */
 function GetCategorizedSpaceUsage() {
-    global $backupTables, $db, $mysql;
+    global $db, $mysql;
 
-    // get table sizes
-    $tableSizes = [];
-    $res = $db->Query('SHOW TABLE STATUS');
-    while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-        if (
-            substr($row['Name'], 0, strlen($mysql['prefix'])) ==
-            $mysql['prefix']
-        ) {
-            if ($row['Engine'] == 'InnoDB') {
-                $val = $row['Data_length'];
-            } else {
-                $val = $row['Data_length'] - $row['Data_free'];
-            }
-            $tableSizes[substr($row['Name'], strlen($mysql['prefix']))] = $val;
-        }
-    }
-    $res->Free();
-
-    // estimate sizes
     $sizes = [];
 
     // data size for mails + webdisk
