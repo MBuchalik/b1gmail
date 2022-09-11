@@ -63,7 +63,6 @@ if (count($sideTasks) > 5) {
     $sideTasks = array_slice($sideTasks, 0, 5);
 }
 $tpl->assign('tasks', $sideTasks);
-$tpl->assign('pageMenuFile', 'li/organizer.sidebar.tpl');
 
 /**
  * start page
