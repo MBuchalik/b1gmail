@@ -140,18 +140,6 @@ function toggleDropdownNavMenu() {
   }
 }
 
-function _previewNote(request) {
-  if (request.readyState == 4) {
-    EBID('notePreview').innerHTML = NL2BR(HTMLEntities(request.responseText));
-  }
-}
-function previewNote(sid, id) {
-  MakeXMLRequest(
-    'organizer.notes.php?action=getNoteText&sid=' + sid + '&id=' + id,
-    _previewNote,
-  );
-}
-
 function autoSetPreviewPos() {
   MakeXMLRequest(
     'email.php?action=setPreviewPosition&pos=' +

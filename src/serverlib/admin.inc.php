@@ -143,6 +143,7 @@ $unnecessaryFilesAndFolders = [
     'files' => [
         // These files existed in b1gmail 7.4.0.
         B1GMAIL_DIR . 'organizer.php',
+        B1GMAIL_DIR . 'organizer.notes.php',
         B1GMAIL_DIR . 'sms.php',
     ],
     'folders' => [

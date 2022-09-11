@@ -61,9 +61,6 @@
 						<a href="organizer.addressbook.php?sid={$sid}" title="{lng p="addressbook"}"{if $activeTab==$tabID && $organizerSection=='addressbook'} class="active"{/if}>
 							<i class="fa fa-users"></i>
 						</a>
-						<a href="organizer.notes.php?sid={$sid}" title="{lng p="notes"}"{if $activeTab==$tabID && $organizerSection=='notes'} class="active"{/if}>
-							<i class="fa fa-pencil"></i>
-						</a>
 					{else}
 						{comment text="tab $tabID"}
 						<a href="{$tab.link}{$sid}" title="{$tab.text}"{if $activeTab==$tabID} class="active"{/if}>

@@ -315,7 +315,6 @@ $lang_user['right'] = 'Right';
 $lang_user['bottom'] = 'Bottom';
 $lang_user['notice'] = 'Notice';
 $lang_user['from2'] = 'from';
-$lang_user['note'] = 'Note';
 $lang_user['task'] = 'Task';
 $lang_user['addraddtext'] =
     'At least one of the recipients of the email is not in your address book.  You can easily add these recipients to your address book. Just select the recipients you want to add to your address book, complete their names and click &quot;Save&quot.';
@@ -556,11 +555,7 @@ $lang_user['priority'] = 'Priority';
 $lang_user['prio_-1'] = 'Low';
 $lang_user['prio_0'] = 'Normal';
 $lang_user['prio_1'] = 'High';
-$lang_user['clicknote'] =
-    'Please click the text preview of a note in the list of notes to view the complete text.';
 $lang_user['selaction'] = 'Action';
-$lang_user['addnote'] = 'Add note';
-$lang_user['editnote'] = 'Edit note';
 $lang_user['reset'] = 'Reset';
 $lang_user['markasdone'] = 'Mark as done';
 

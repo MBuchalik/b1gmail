@@ -18,8 +18,6 @@
 						<label for="searchTasks"><b>{lng p="tasks"}</b></label><br />
 					<input type="checkbox" name="searchIn[addressbook]" id="searchAddressbook"{if $searchIn.addressbook} checked="checked"{/if} />
 						<label for="searchAddressbook"><b>{lng p="addressbook"}</b></label><br />
-					<input type="checkbox" name="searchIn[notes]" id="searchNotes"{if $searchIn.notes} checked="checked"{/if} />
-						<label for="searchNotes"><b>{lng p="notes"}</b></label><br />
 					<input type="checkbox" name="searchIn[webdisk]" id="searchWebdisk"{if $searchIn.webdisk} checked="checked"{/if} />
 						<label for="searchWebdisk"><b>{lng p="webdisk"}</b></label><br />
 				</blockquote>

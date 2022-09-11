@@ -149,17 +149,6 @@ class B1GMailSearchProvider extends BMPlugin {
                 );
                 exit();
             }
-        } elseif ($category == 'B1GMailSearchProvider_notes') {
-            if (!class_exists('BMNotes')) {
-                include B1GMAIL_DIR . 'serverlib/notes.class.php';
-            }
-            $notes = _new('BMNotes', [$userRow['id']]);
-
-            if ($action == 'delete') {
-                foreach ($items as $itemID) {
-                    $notes->Delete((int) $itemID);
-                }
-            }
         } elseif ($category == 'B1GMailSearchProvider_webdisk') {
             if (!class_exists('BMWebdisk')) {
                 include B1GMAIL_DIR . 'serverlib/webdisk.class.php';
@@ -227,12 +216,6 @@ class B1GMailSearchProvider extends BMPlugin {
             $result['B1GMailSearchProvider_addressbook'] = [
                 'title' => $lang_user['contacts'],
                 'icon' => 'fa-address-book-o',
-            ];
-        }
-        if (isset($searchIn['notes'])) {
-            $result['B1GMailSearchProvider_notes'] = [
-                'title' => $lang_user['notes'],
-                'icon' => 'fa-sticky-note-o',
             ];
         }
         if (isset($searchIn['webdisk'])) {
@@ -616,45 +599,6 @@ class B1GMailSearchProvider extends BMPlugin {
                     'results' => $thisResults,
                     'massActions' => [
                         'compose' => $lang_user['sendmail'],
-                        'delete' => $lang_user['delete'],
-                    ],
-                ];
-            }
-        }
-
-        //
-        // notes
-        //
-        if (isset($searchIn['notes'])) {
-            $thisResults = [];
-            $res = $db->Query(
-                'SELECT id,text,`date` FROM {pre}notes WHERE `date`>=? AND `date`<=? AND user=? AND text LIKE ' .
-                    $q .
-                    ' ORDER BY text ASC',
-                $dateFrom,
-                $dateTo,
-                $thisUser->_id,
-            );
-            while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                $thisResults[] = [
-                    'title' => $row['text'],
-                    'link' => sprintf(
-                        'organizer.notes.php?show=%d&',
-                        $row['id'],
-                    ),
-                    'date' => $row['date'],
-                    'id' => $row['id'],
-                ];
-            }
-            $res->Free();
-
-            if (count($thisResults) > 0) {
-                $results[] = [
-                    'icon' => 'fa-sticky-note-o',
-                    'name' => 'B1GMailSearchProvider_notes',
-                    'title' => $lang_user['notes'],
-                    'results' => $thisResults,
-                    'massActions' => [
                         'delete' => $lang_user['delete'],
                     ],
                 ];

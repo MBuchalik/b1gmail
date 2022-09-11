@@ -398,18 +398,7 @@ class BMPlugin_Widget_Notes extends BMPlugin {
     }
 
     function renderWidget() {
-        global $tpl, $thisUser;
-
-        if (!class_exists('BMNotes')) {
-            include B1GMAIL_DIR . 'serverlib/notes.class.php';
-        }
-
-        $notesList = _new('BMNotes', [$thisUser->_id]);
-
-        $tpl->assign(
-            'bmwidget_notes_items',
-            $notesList->GetNoteList('date', 'DESC', BASEWIDGET_ITEMCOUNT),
-        );
+        // Keep this as a dummy for now.
         return true;
     }
 }

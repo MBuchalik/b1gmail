@@ -483,7 +483,6 @@ $lang_user['overview'] = '&Uuml;bersicht';
 $lang_user['todolist'] = 'Aufgabenliste';
 $lang_user['addressbook'] = 'Adressbuch';
 $lang_user['notes'] = 'Notizen';
-$lang_user['note'] = 'Notiz';
 
 // notes
 $lang_user['edit'] = 'Bearbeiten';
@@ -492,11 +491,7 @@ $lang_user['priority'] = 'Priorit&auml;t';
 $lang_user['prio_-1'] = 'Niedrig';
 $lang_user['prio_0'] = 'Normal';
 $lang_user['prio_1'] = 'Hoch';
-$lang_user['clicknote'] =
-    'Klicken Sie auf die Textvorschau einer Notiz in der Notizliste, um den vollst&auml;ndigen Text anzuzeigen.';
 $lang_user['selaction'] = 'Aktion';
-$lang_user['addnote'] = 'Notiz hinzuf&uuml;gen';
-$lang_user['editnote'] = 'Notiz bearbeiten';
 $lang_user['reset'] = 'Zur&uuml;cksetzen';
 $lang_user['markasdone'] = 'Als erledigt markieren';
 

@@ -18,8 +18,6 @@
 										{lng p="tasks"}</a><br />
 		<a href="organizer.addressbook.php?sid={$sid}"><i class="fa fa-address-book" aria-hidden="true"></i>
 										{lng p="addressbook"}</a><br />
-		<a href="organizer.notes.php?sid={$sid}"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>
-										{lng p="notes"}</a><br />
 	</fieldset>
 	{if $pageTabs.webdisk}<fieldset>
 		<legend>{lng p="webdisk"}</legend>

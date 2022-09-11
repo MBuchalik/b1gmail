@@ -4,7 +4,6 @@
 	<a href="organizer.calendar.php?sid={$sid}"><i class="fa fa-calendar" aria-hidden="true"></i> {lng p="calendar"}</a><br />
 	<a href="organizer.todo.php?sid={$sid}"><i class="fa fa-tasks" aria-hidden="true"></i> {lng p="todolist"}</a><br />
 	<a href="organizer.addressbook.php?sid={$sid}"><i class="fa fa-address-book-o" aria-hidden="true"></i> {lng p="addressbook"}</a><br />
-	<a href="organizer.notes.php?sid={$sid}"><i class="fa fa-sticky-note-o" aria-hidden="true"></i> {lng p="notes"}</a><br />
 </div>
 
 <div class="sidebarHeading">{lng p="tasks"}</div>

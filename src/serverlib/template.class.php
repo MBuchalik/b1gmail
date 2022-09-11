@@ -266,12 +266,6 @@ class Template extends Smarty {
                         'organizer.addressbook.php?action=addContact&sid=',
                     'text' => $lang_user['contact'],
                 ],
-                [
-                    'icon' => 'ico_notes',
-                    'faIcon' => 'fa-sticky-note-o',
-                    'link' => 'organizer.notes.php?action=addNote&sid=',
-                    'text' => $lang_user['note'],
-                ],
             ];
 
             $pageTabs = [
