@@ -895,7 +895,7 @@ $lang_user['htmltext'] = 'HTML';
 $lang_user['srcmsg'] = 'original message';
 $lang_user['addattach'] = 'add attachment';
 $lang_user['addattachtext'] =
-    'Please select the file you would like to attach to your email and click &quot;OK&quot;. You can upload a file from your computer or use a file from your webdisc (if available).';
+    'Please select the file you would like to attach to your email and click &quot;OK&quot;.';
 $lang_user['toobigattach'] =
     'The file you selected is too big. Please limit the total size of all email attachments to under %.02f KB.';
 $lang_user['savedraft'] = 'Save as draft';
@@ -1550,7 +1550,6 @@ $lang_admin['pause'] = 'Pause';
 $lang_admin['continue'] = 'Continue';
 $lang_admin['addbanner'] = 'Add banner';
 $lang_admin['vars'] = 'Variables';
-$lang_admin['wddomain'] = 'Webdisc subdomain';
 $lang_admin['searchfor'] = 'Search for';
 $lang_admin['searchin'] = 'Search in';
 $lang_admin['address'] = 'Address';

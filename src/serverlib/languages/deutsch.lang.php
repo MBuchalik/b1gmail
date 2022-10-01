@@ -897,7 +897,7 @@ $lang_user['htmltext'] = 'HTML';
 $lang_user['srcmsg'] = 'Ursprüngliche Nachricht';
 $lang_user['addattach'] = 'Anlage hinzuf&uuml;gen';
 $lang_user['addattachtext'] =
-    'Bitte w&auml;hlen Sie die Datei aus, die Sie an die E-Mail anh&auml;ngen m&ouml;chten und klicken Sie auf &quot;OK&quot;. Sie k&ouml;nnen entweder eine Datei von Ihrem Computer hochladen oder eine Datei von Ihrer Webdisk verwenden (falls vorhanden).';
+    'Bitte w&auml;hlen Sie die Datei aus, die Sie an die E-Mail anh&auml;ngen m&ouml;chten und klicken Sie auf &quot;OK&quot;.';
 $lang_user['toobigattach'] =
     'Die gewählte Datei ist zu groß. Die Gesamtgröße aller Anhänge einer E-Mail darf %.02f KB nicht überschreiten.';
 $lang_user['savedraft'] = 'Als Entwurf speichern';
@@ -1552,7 +1552,6 @@ $lang_admin['pause'] = 'Pausieren';
 $lang_admin['continue'] = 'Fortfahren';
 $lang_admin['addbanner'] = 'Banner hinzuf&uuml;gen';
 $lang_admin['vars'] = 'Variablen';
-$lang_admin['wddomain'] = 'Webdisk-Subdomain';
 $lang_admin['searchfor'] = 'Suchen nach';
 $lang_admin['searchin'] = 'Suchen in';
 $lang_admin['salutation'] = 'Anrede';
