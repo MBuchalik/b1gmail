@@ -1109,7 +1109,6 @@ $lang_admin['resetstats'] = 'Statistiken zur&uuml;cksetzen';
 $lang_admin['reallyresetstats'] =
     'M&ouml;chten Sie die Statistiken wirklich zur&uuml;cksetzen?';
 $lang_admin['sync'] = 'Synchronisierung';
-$lang_admin['syncml'] = 'Synchronisierung';
 $lang_admin['hotkeys'] = 'Hotkeys';
 $lang_admin['log_autodelete'] = 'Auto-Archivierung';
 $lang_admin['enableolder'] = 'Aktivieren f&uuml;r Eintr&auml;ge &auml;lter als';

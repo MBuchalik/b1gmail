@@ -95,7 +95,6 @@ $faqRequirementTable = [
     'wap' => $lang_admin['mobileaccess'],
     'webdisk' => $lang_admin['webdisk'],
     'share' => $lang_admin['wdshare'],
-    'syncml' => $lang_admin['syncml'],
     'ftsearch' => $lang_admin['ftsearch'],
 ];
 $lockedTypeTable = [

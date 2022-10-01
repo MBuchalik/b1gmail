@@ -1103,7 +1103,6 @@ $lang_admin['comment'] = 'Comment';
 $lang_admin['resetstats'] = 'Reset statistics';
 $lang_admin['reallyresetstats'] = 'Do you really want to reset the statistics?';
 $lang_admin['sync'] = 'Synchronization';
-$lang_admin['syncml'] = 'Synchronization';
 $lang_admin['hotkeys'] = 'Hotkeys';
 $lang_admin['log_autodelete'] = 'Auto archiving';
 $lang_admin['enableolder'] = 'Enable for entries older than';

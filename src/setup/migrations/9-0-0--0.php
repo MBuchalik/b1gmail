@@ -27,7 +27,8 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
                 'ALTER TABLE bm60_gruppen
                     DROP COLUMN checker,
                     DROP COLUMN tbx_webdisk,
-                    DROP COLUMN organizerdav
+                    DROP COLUMN organizerdav,
+                    DROP COLUMN syncml
             ',
             )
         ) {

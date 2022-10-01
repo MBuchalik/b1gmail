@@ -109,8 +109,6 @@
 					<tr>
 						<td class="td1">{lng p="mobileaccess"}?</td>
 						<td class="td2"><input type="checkbox" name="wap"{if $group.wap=='yes'} checked="checked"{/if} /></td>
-						<td class="td1">{lng p="sync"}?</td>
-						<td class="td2"><input type="checkbox" name="syncml"{if $group.syncml=='yes'} checked="checked"{/if} /></td>
 					</tr>
 					<tr>
 						<td class="td1">{lng p="wdshare"}?</td>
