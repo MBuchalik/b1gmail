@@ -164,6 +164,9 @@ $unnecessaryFilesAndFolders = [
         B1GMAIL_DIR . 'languages/',
         B1GMAIL_DIR . 'plz/',
         B1GMAIL_DIR . 'res/',
+
+        // This directory was removed in b1gmail 9.0.0.
+        B1GMAIL_DIR . 'share/',
     ],
 ];
 
