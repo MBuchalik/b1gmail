@@ -113,8 +113,6 @@
 					<tr>
 						<td class="td1">{lng p="wdshare"}?</td>
 						<td class="td2"><input type="checkbox" name="share"{if $group.share=='yes'} checked="checked"{/if} /></td>
-						<td class="td1">{lng p="webdav"}?</td>
-						<td class="td2"><input type="checkbox" name="webdav"{if !$davSupport} disabled="disabled"{else}{if $group.webdav=='yes'} checked="checked"{/if}{/if} /></td>
 					</tr>
 					<tr>
 						<td class="td1">{lng p="smtp"}?</td>

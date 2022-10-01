@@ -146,7 +146,7 @@ if ($_REQUEST['action'] == 'groups') {
             }
 
             $db->Query(
-                'UPDATE {pre}gruppen SET titel=?, soforthtml=?, storage=?, webdisk=?, maxsize=?, anlagen=?, traffic=?, wd_member_kbs=?, wd_open_kbs=?, send_limit_count=?, send_limit_time=?, ownpop3=?, ownpop3_interval=?, selfpop3_check=?, aliase=?, wap=?, ads=?, share=?, pop3=?, smtp=?, responder=?, imap=?, forward=?, webdav=?, saliase=?, signatur=?, allow_newsletter_optout=?, smime=?, issue_certificates=?, upload_certificates=?, max_recps=?, sender_aliases=?, ftsearch=?, notifications=?, maildeliverystatus=?, auto_save_drafts=? WHERE id=?',
+                'UPDATE {pre}gruppen SET titel=?, soforthtml=?, storage=?, webdisk=?, maxsize=?, anlagen=?, traffic=?, wd_member_kbs=?, wd_open_kbs=?, send_limit_count=?, send_limit_time=?, ownpop3=?, ownpop3_interval=?, selfpop3_check=?, aliase=?, wap=?, ads=?, share=?, pop3=?, smtp=?, responder=?, imap=?, forward=?, saliase=?, signatur=?, allow_newsletter_optout=?, smime=?, issue_certificates=?, upload_certificates=?, max_recps=?, sender_aliases=?, ftsearch=?, notifications=?, maildeliverystatus=?, auto_save_drafts=? WHERE id=?',
                 $_REQUEST['titel'],
                 isset($_REQUEST['soforthtml']) ? 'yes' : 'no',
                 $_REQUEST['storage'],
@@ -170,7 +170,6 @@ if ($_REQUEST['action'] == 'groups') {
                 isset($_REQUEST['responder']) ? 'yes' : 'no',
                 isset($_REQUEST['imap']) ? 'yes' : 'no',
                 isset($_REQUEST['forward']) ? 'yes' : 'no',
-                isset($_REQUEST['webdav']) ? 'yes' : 'no',
                 $saliase,
                 $_REQUEST['signatur'],
                 isset($_REQUEST['allow_newsletter_optout']) ? 'yes' : 'no',
@@ -309,7 +308,7 @@ if ($_REQUEST['action'] == 'groups') {
         }
 
         $db->Query(
-            'INSERT INTO {pre}gruppen(titel,soforthtml,storage,webdisk,maxsize,anlagen,traffic,wd_member_kbs,wd_open_kbs,send_limit_count,send_limit_time,ownpop3,ownpop3_interval,selfpop3_check,aliase,wap,ads,share,pop3,smtp,responder,imap,forward,webdav,saliase,signatur,allow_newsletter_optout,smime,issue_certificates,upload_certificates,sender_aliases,ftsearch,notifications,maildeliverystatus,auto_save_drafts) VALUES ' .
+            'INSERT INTO {pre}gruppen(titel,soforthtml,storage,webdisk,maxsize,anlagen,traffic,wd_member_kbs,wd_open_kbs,send_limit_count,send_limit_time,ownpop3,ownpop3_interval,selfpop3_check,aliase,wap,ads,share,pop3,smtp,responder,imap,forward,saliase,signatur,allow_newsletter_optout,smime,issue_certificates,upload_certificates,sender_aliases,ftsearch,notifications,maildeliverystatus,auto_save_drafts) VALUES ' .
                 '(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
             $_REQUEST['titel'],
             isset($_REQUEST['soforthtml']) ? 'yes' : 'no',
@@ -334,7 +333,6 @@ if ($_REQUEST['action'] == 'groups') {
             isset($_REQUEST['responder']) ? 'yes' : 'no',
             isset($_REQUEST['imap']) ? 'yes' : 'no',
             isset($_REQUEST['forward']) ? 'yes' : 'no',
-            isset($_REQUEST['webdav']) ? 'yes' : 'no',
             $saliase,
             $_REQUEST['signatur'],
             isset($_REQUEST['allow_newsletter_optout']) ? 'yes' : 'no',
@@ -392,7 +390,6 @@ if ($_REQUEST['action'] == 'groups') {
     }
 }
 
-$tpl->assign('davSupport', PHPNumVersion() >= 540);
 $tpl->assign('ftsSupport', FTS_SUPPORT);
 $tpl->assign('smimeSupport', SMIME_SUPPORT);
 $tpl->assign('tabs', $tabs);
