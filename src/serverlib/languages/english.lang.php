@@ -1698,3 +1698,10 @@ $lang_admin['ufaf_warning'] = 'DANGER: This operation cannot be reversed!';
 $lang_admin['ufaf_action'] = 'Delete files and folders';
 $lang_admin['ufaf_confirm'] =
     'Do you really want to delete these files and folders? This action cannot be reversed!';
+$lang_admin['wdfiles_notice'] =
+    'Webdisk files found. The Webdisk does not exist since b1gmail 9.0.0. Thus, it is highly recommended to delete these files.';
+$lang_admin['wdfiles_title'] = 'Webdisk Files';
+$lang_admin['wdfiles_nothing_to_do'] = 'Found no Webdisk files.';
+$lang_admin['wdfiles_description'] =
+    'We have detected %d Webdisk files. The Webdisk does not exist since b1gmail 9.0.0. Thus, it is highly recommended to delete these files. You can delete these files here. Info: To keep this operation as simple as possible, one button click only deletes a small number of files. Thus, you might need to click this button multiple times.';
+$lang_admin['wdfiles_action'] = 'Remove files';

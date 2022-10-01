@@ -53,6 +53,12 @@ $tabs = [
         'link' => 'maintenance.php?action=unnecessaryFiles&',
         'active' => $_REQUEST['action'] == 'unnecessaryFiles',
     ],
+    4 => [
+        'title' => $lang_admin['wdfiles_title'],
+        'relIcon' => 'ico_prefs_validation.png',
+        'link' => 'maintenance.php?action=wdfiles&',
+        'active' => $_REQUEST['action'] == 'wdfiles',
+    ],
 ];
 
 if (FTS_SUPPORT) {
@@ -523,6 +529,34 @@ if ($_REQUEST['action'] == 'inactive') {
             'Location: maintenance.php?action=unnecessaryFiles&sid=' .
                 session_id(),
         );
+        exit();
+    }
+} elseif ($_REQUEST['action'] == 'wdfiles') {
+    if (!isset($_REQUEST['do'])) {
+        $res = $db->Query(
+            'SELECT COUNT(*) as numberOfWdFiles FROM {pre}diskfiles',
+        );
+        $row = $res->FetchArray(MYSQLI_ASSOC);
+        $numberOfWdFiles = (int) $row['numberOfWdFiles'];
+        $res->Free();
+
+        $tpl->assign('numberOfWdFiles', $numberOfWdFiles);
+        $tpl->assign(
+            'description',
+            sprintf($lang_admin['wdfiles_description'], $numberOfWdFiles),
+        );
+        $tpl->assign('page', 'maintenance.wdfiles.tpl');
+    } elseif ($_REQUEST['do'] === 'exec') {
+        require B1GMAIL_DIR . 'serverlib/webdisk.class.php';
+
+        $res = $db->Query('SELECT id, user FROM {pre}diskfiles LIMIT 50');
+        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
+            $wd = _new('BMWebdisk', [$row['user']]);
+            $wd->DeleteFile($row['id']);
+        }
+        $res->Free();
+
+        header('Location: maintenance.php?action=wdfiles&sid=' . session_id());
         exit();
     }
 } /**

@@ -287,6 +287,17 @@ if ($_REQUEST['action'] == 'welcome') {
         ];
     }
 
+    $res = $db->Query('SELECT COUNT(*) as numberOfWdFiles FROM {pre}diskfiles');
+    $row = $res->FetchArray(MYSQLI_ASSOC);
+    if ((int) $row['numberOfWdFiles'] > 0) {
+        $notices[] = [
+            'type' => 'warning',
+            'text' => $lang_admin['wdfiles_notice'],
+            'link' => 'maintenance.php?action=wdfiles&',
+        ];
+    }
+    $res->Free();
+
     // htaccess files
     $brokenHTAccess = [];
     $irrelevantCharactersInHTAccessFiles = '/[\s\n]/';

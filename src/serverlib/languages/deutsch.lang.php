@@ -1718,3 +1718,10 @@ $lang_admin['ufaf_warning'] =
 $lang_admin['ufaf_action'] = 'Dateien und Ordner entfernen';
 $lang_admin['ufaf_confirm'] =
     'Möchten Sie diese Dateien und Ordner wirklich löschen? Die Aktion kann nicht rückgängig gemacht werden!';
+$lang_admin['wdfiles_notice'] =
+    'Es wurden Webdisk-Dateien gefunden. Seit b1gmail 9.0.0 existiert die Webdisk nicht mehr, daher sollten diese Dateien unbedingt gelöscht werden.';
+$lang_admin['wdfiles_title'] = 'Webdisk-Dateien';
+$lang_admin['wdfiles_nothing_to_do'] = 'Keine Webdisk-Dateien gefunden.';
+$lang_admin['wdfiles_description'] =
+    'Es wurden %d Webdisk-Dateien gefunden. Seit b1gmail 9.0.0 existiert die Webdisk nicht mehr, daher sollten diese Dateien unbedingt gelöscht werden. Sie können diese Dateien hier löschen. Hinweis: Um diese Operation möglichst einfach zu halten, wird bei einem Klick auf diesen Button lediglich eine kleine Zahl an Dateien entfernt. Daher muss der Button womöglich mehrmals betätigt werden.';
+$lang_admin['wdfiles_action'] = 'Dateien entfernen';
