@@ -39,7 +39,6 @@ $lang_client['fillinname'] =
 $lang_client['reallyreset'] =
     'Are you sure you want to reset the form? Entries may be lost!';
 $lang_client['addressbook'] = 'Addressbook';
-$lang_client['browse'] = 'Browse';
 $lang_client['importvcf'] = 'Import VCF';
 $lang_client['import'] = 'Import';
 $lang_client['userpicture'] = 'User picture';
@@ -48,11 +47,7 @@ $lang_client['attachments'] = 'Attachments';
 $lang_client['date'] = 'Date';
 $lang_client['switchwarning'] =
     'Switching from HTML-Mode to Text-Mode, all formatting will be lost. Are you sure you want to continue?';
-$lang_client['folderprompt'] =
-    'Please give the name of the folder to be created:';
-$lang_client['newfolder'] = 'New folder';
 $lang_client['foldererror'] = 'Folder could not be created.';
-$lang_client['protectedfolder'] = 'Protected folder';
 $lang_client['source'] = 'Source';
 $lang_client['sendwosubject'] =
     'You did not enter a subject for your email. Click "Cancel", to enter a subject or click "OK" to send the email without a subject.';
@@ -80,7 +75,6 @@ $lang_client['export'] = 'Export';
 $lang_client['groups'] = 'Groups';
 $lang_client['nwslttrtplwarn'] =
     'Are your sure you want to apply a new template? All your input will be lost!';
-$lang_client['items'] = 'Items';
 $lang_client['cancel'] = 'Cancel';
 $lang_client['nocontactselected'] = 'No contact selected';
 $lang_client['contactsselected'] = 'contacts selected';
@@ -345,8 +339,6 @@ $lang_user['sess_expired_desc'] =
     'Your session has been closed because of inactivity for security reasons. Please re-login.';
 $lang_user['doublealtmail'] =
     'There is already an account using this alternative email address!';
-$lang_user['hiddenelements'] = 'Hidden elements';
-$lang_user['hide'] = 'Hide';
 $lang_user['atreply'] = 'At reply';
 $lang_user['insertquote'] = 'Quote original email';
 $lang_user['setmailcolor'] = 'Set color';
@@ -367,12 +359,6 @@ $lang_user['color_4'] = 'Orange';
 $lang_user['color_5'] = 'Purple';
 $lang_user['color_6'] = 'Violet';
 $lang_user['targetfolder'] = 'Destination folder';
-$lang_user['existingfiles'] = 'Existing files';
-$lang_user['zipfile'] = 'ZIP file';
-$lang_user['deleteafterextract'] = 'Delete after extraction';
-$lang_user['keep'] = 'Retain';
-$lang_user['overwrite'] = 'Overwrite';
-$lang_user['extract'] = 'Extract';
 $lang_user['tasks'] = 'Tasks';
 $lang_user['status'] = 'Status';
 $lang_user['done'] = 'Done';
@@ -385,12 +371,24 @@ $lang_user['editgroups'] = 'Edit groups';
 $lang_user['color'] = 'Color';
 $lang_user['minutes'] = 'minute(s)';
 $lang_user['until'] = 'until';
-
-// webdisk share
-$lang_user['badshare'] = 'Share path not found.';
-$lang_user['protected_desc'] =
-    'The folder is password protected. Please enter the password and click &quot;OK&quot; to continue.';
-$lang_user['folder_wrongpw'] = 'The password you entered is not correct.';
+$lang_user['dnd_upload'] = 'Drag&amp;Drop';
+$lang_user['foldererror'] =
+    'The folder could not be created. Either a folder by this name already exists or the name is invalid (minimum of 1 character).';
+$lang_user['actions'] = 'Action';
+$lang_user['count'] = 'Number';
+$lang_user['size'] = 'Size';
+$lang_user['success'] = 'Successful';
+$lang_user['space'] = 'Space';
+$lang_user['used'] = 'used';
+$lang_user['unlimited'] = 'unlimited';
+$lang_user['download'] = 'Download';
+$lang_user['move'] = 'Move';
+$lang_user['delete'] = 'Delete';
+$lang_user['realdel'] = 'Delete entry irrevocably?';
+$lang_user['realempty'] = 'Are you sure you want to empty the folder?';
+$lang_user['folder'] = 'Folder';
+$lang_user['save'] = 'Save';
+$lang_user['cancel'] = 'Cancel';
 
 // faq
 $lang_user['faq'] = 'FAQ';
@@ -492,56 +490,6 @@ $lang_user['later'] = 'Later';
 $lang_user['ok'] = 'OK';
 $lang_user['error'] = 'Error';
 
-// webdisk
-$lang_user['dragfileshere'] = 'Simply drag and drop your files into this area.';
-$lang_user['list'] = 'List';
-$lang_user['icons'] = 'Icons';
-$lang_user['viewmode'] = 'View';
-$lang_user['dnd_upload'] = 'Drag&amp;Drop';
-$lang_user['foldererror'] =
-    'The folder could not be created. Either a folder by this name already exists or the name is invalid (minimum of 1 character).';
-$lang_user['createfolder'] = 'Create folder';
-$lang_user['uploadfiles'] = 'Upload files';
-$lang_user['iteminfo'] = 'Details';
-$lang_user['pleaseselectitem'] = 'Select a folder or a file.';
-$lang_user['actions'] = 'Action';
-$lang_user['count'] = 'Number';
-$lang_user['filename'] = 'File name';
-$lang_user['size'] = 'Size';
-$lang_user['created'] = 'Created';
-$lang_user['internalerror'] = 'Internal Error - Please again later.';
-$lang_user['success'] = 'Successful';
-$lang_user['fileexists'] =
-    'A file by this name already exists or this type of file is invalid.';
-$lang_user['nospace'] = 'Not enough webspace';
-$lang_user['nospace2'] =
-    'Not enough webspace or internal error- the folder may not have been copied completely';
-$lang_user['space'] = 'Space';
-$lang_user['used'] = 'used';
-$lang_user['unlimited'] = 'unlimited';
-$lang_user['copy'] = 'Copy';
-$lang_user['rename'] = 'Rename';
-$lang_user['download'] = 'Download';
-$lang_user['move'] = 'Move';
-$lang_user['cut'] = 'Cut';
-$lang_user['delete'] = 'Delete';
-$lang_user['paste'] = 'Paste';
-$lang_user['realdel'] = 'Delete entry irrevocably?';
-$lang_user['realempty'] = 'Are you sure you want to empty the folder?';
-$lang_user['sourcenex'] = 'Source was not found.';
-$lang_user['notraffic'] = 'Not enough traffic for this operation';
-$lang_user['traffic'] = 'Traffic';
-$lang_user['sharing'] = 'Sharing';
-$lang_user['shared'] = 'Shared';
-$lang_user['share'] = 'Share';
-$lang_user['folder'] = 'Folder';
-$lang_user['save'] = 'Save';
-$lang_user['saveas'] = 'Save as';
-$lang_user['cancel'] = 'Cancel';
-$lang_user['modified'] = 'Modified';
-$lang_user['sharednote'] =
-    'You currently share this folder. It is accessible under the following address:';
-
 // organizer
 $lang_user['calendar'] = 'Calendar';
 $lang_user['overview'] = 'Overview';
@@ -596,7 +544,6 @@ $lang_user['complete'] = 'Autocomplete';
 $lang_user['importvcftext'] =
     'Please select the vCard (VCF-file) you want to import. Please note that by importing the file any data that you may have entered into the &quot;Kontakt hinzuf&uuml;gen&quot;-Mask will be replaced.';
 $lang_user['localfile'] = 'Local file';
-$lang_user['webdiskfile'] = 'Webdisc file';
 $lang_user['completetext'] =
     'Using this feature, your contact can complete his contact details himself/herself. He/She will receive a message containing a link that will lead him/her to a website where he/she can enter his/her contact details. The information will be copied into your addressbook.<br /><br /> Please select the email address you want to send the link to.';
 $lang_user['complete_noemail'] =
@@ -677,7 +624,6 @@ $lang_user['bcc'] = 'Bcc';
 $lang_user['replyto'] = 'Reply to';
 $lang_user['attachments'] = 'Attachments';
 $lang_user['approx'] = 'approx.';
-$lang_user['savetowebdisk'] = 'Save to webdisc';
 $lang_user['view'] = 'View';
 $lang_user['toaddr'] = 'Add to addressbook';
 $lang_user['read'] = 'Read';
@@ -1000,8 +946,6 @@ $lang_admin['acpiconsfrom'] = 'ACP icons by';
 $lang_admin['acpbgfrom'] = 'ACP background by';
 $lang_admin['addservices'] = 'Additional services';
 $lang_admin['mailspace_add'] = 'Add. email space';
-$lang_admin['diskspace_add'] = 'Add. webdisk space';
-$lang_admin['traffic_add'] = 'Add. webdisk traffic';
 $lang_admin['notifications'] = 'Notifications';
 $lang_admin['notifyinterval'] = 'Check for notifications every';
 $lang_admin['notifylifetime'] = 'Delete notifications after';
@@ -1016,7 +960,6 @@ $lang_admin['rebuildblobstor'] = 'Convert storage format';
 $lang_admin['rebuildblobstor_desc'] =
     'When changing the storage method for a data type, all objects which have already been stored remain in their format. You can use this feature to convert objects in your old storage method to your new storage method.';
 $lang_admin['rbbs_email'] = 'Convert emails';
-$lang_admin['rbbs_webdisk'] = 'Convert webdisk files';
 $lang_admin['separatefiles'] = 'one file per object';
 $lang_admin['userdb'] = 'one file per user';
 $lang_admin['nliarea'] = 'Not logged-in area';
@@ -1059,7 +1002,6 @@ $lang_admin['onecolumn'] = 'One column';
 $lang_admin['twocolumns'] = 'Two columns';
 $lang_admin['defaultemplate'] = 'Default template';
 $lang_admin['complete'] = 'Complete';
-$lang_admin['icons'] = 'Icons';
 $lang_admin['showuseremail'] = 'Show user email address';
 $lang_admin['templates'] = 'Templates';
 $lang_admin['show_at'] = 'Show at';
@@ -1109,12 +1051,7 @@ $lang_admin['orphans_desc'] =
 $lang_admin['orphans_done'] =
     '%d orphaned object(s) have been found and deleted (%.02f KB).';
 $lang_admin['orphans'] = 'Orphans';
-$lang_admin['diskorphansfound'] =
-    '%d orphaned webdisk file(s) have been found (%.02f KB). We recommend to delete the orphaned objects.';
-$lang_admin['diskorphans_desc'] =
-    'This function deletes all orphaned webdisk files irrevocably.<br /><br />Orphaned webdisk files are files which do not belong to an user anymore. They can occur when an user deletion process aborts unexpectedly.';
 $lang_admin['mailorphans'] = 'Orphaned emails';
-$lang_admin['diskorphans'] = 'Orphaned webdisk files';
 $lang_admin['text_orderconfirm_sub'] = 'Order confirmation subject';
 $lang_admin['text_orderconfirm_text'] = 'Order confirmation text';
 $lang_admin['text_share_sub'] = 'Webdisk share mail subject';
@@ -1170,8 +1107,6 @@ $lang_admin['notactivated'] = 'Not activated';
 $lang_admin['locked'] = 'Locked';
 $lang_admin['emails'] = 'Emails';
 $lang_admin['folders'] = 'Folders';
-$lang_admin['disksize'] = 'Webdisc size';
-$lang_admin['files'] = 'Files';
 $lang_admin['phpversion'] = 'PHP version';
 $lang_admin['webserver'] = 'Webserver';
 $lang_admin['mysqlversion'] = 'MySQL version';
@@ -1300,7 +1235,6 @@ $lang_admin['edit'] = 'Edit';
 $lang_admin['loginwarning'] =
     'Are you sure you want to log on to the account you have selected? Please pay attention to the data privacy regulations applying in your country and respect your user\'s privacy!';
 $lang_admin['spaceusage'] = 'Space usage';
-$lang_admin['webdisk'] = 'Webdisc';
 $lang_admin['used'] = 'used';
 $lang_admin['usage'] = 'Usage';
 $lang_admin['aliases'] = 'Aliases';
@@ -1330,8 +1264,6 @@ $lang_admin['realdel'] =
     'Are you sure you want to erase the entry permanently?';
 $lang_admin['userrealdel'] =
     'Are you sure you want to delete the user permanently?';
-$lang_admin['wdtraffic'] = 'Webdisc traffic';
-$lang_admin['used2'] = 'used';
 $lang_admin['ok'] = 'OK';
 $lang_admin['sendmail'] = 'Send email';
 $lang_admin['emptytrash'] = 'Empty trash';
@@ -1520,8 +1452,6 @@ $lang_admin['mobileaccess'] = 'Mobile access';
 $lang_admin['issue_certificates'] = 'Issue certificates';
 $lang_admin['upload_certificates'] = 'Upload certificates';
 $lang_admin['wdshare'] = 'Webdisc share';
-$lang_admin['wdspeed'] = 'Webdisc speed';
-$lang_admin['sharespeed'] = 'Share speed';
 $lang_admin['htmlview'] = 'HTML mode by default';
 $lang_admin['sendlimit'] = 'Send limit';
 $lang_admin['emailsin'] = 'email(s) in';
@@ -1533,7 +1463,6 @@ $lang_admin['aliasdomains'] = 'Additional alias domains';
 $lang_admin['mailsig'] = 'Email signature';
 $lang_admin['receivedmails'] = 'Received';
 $lang_admin['sentmails'] = 'Sent';
-$lang_admin['wdtrafficshort'] = 'WD traffic';
 $lang_admin['datastorage'] = 'Data storage';
 $lang_admin['structstorage'] = 'Structured storage';
 $lang_admin['structsafewarn'] =
@@ -1596,8 +1525,6 @@ $lang_admin['mode'] = 'Mode';
 $lang_admin['plaintext'] = 'Text';
 $lang_admin['htmltext'] = 'HTML';
 $lang_admin['team'] = 'Team';
-$lang_admin['limitedextensions'] = 'Forbidden file extensions';
-$lang_admin['limitedmimetypes'] = 'Forbidden MIME types';
 $lang_admin['sendwelcomemail'] = 'Send welcome email';
 $lang_admin['searchprovider'] = 'b1gMail search provider';
 $lang_admin['includeinsearch'] =
@@ -1614,7 +1541,6 @@ $lang_admin['addfaq'] = 'Add FAQ';
 $lang_admin['both'] = 'Both';
 $lang_admin['certmaillife'] = 'Certified mail storage time';
 $lang_admin['days'] = 'days';
-$lang_admin['filename'] = 'Filename';
 $lang_admin['banners'] = 'Banners';
 $lang_admin['banner'] = 'Banner';
 $lang_admin['weight'] = 'Weight';

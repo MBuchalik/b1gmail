@@ -34,7 +34,6 @@ $lang_client['nomailsselected'] = 'Keine E-Mail ausgew&auml;hlt';
 $lang_client['mailsselected'] = 'E-Mails ausgew&auml;hlt';
 $lang_client['nocontactselected'] = 'Kein Kontakt ausgew&auml;hlt';
 $lang_client['contactsselected'] = 'Kontakte ausgew&auml;hlt';
-$lang_client['items'] = 'Elemente';
 $lang_client['addravailable'] = 'Die Adresse ist noch frei!';
 $lang_client['addrtaken'] = 'Die Adresse ist belegt!';
 $lang_client['addrinvalid'] = 'Ungültige Adresse!';
@@ -45,7 +44,6 @@ $lang_client['fillinname'] =
 $lang_client['reallyreset'] =
     'Soll das Formular wirklich zurückgesetzt werden? Eingaben gehen evtl. verloren!';
 $lang_client['addressbook'] = 'Adressbuch';
-$lang_client['browse'] = 'Durchsuchen';
 $lang_client['importvcf'] = 'VCF importieren';
 $lang_client['import'] = 'Import';
 $lang_client['userpicture'] = 'Benutzerbild';
@@ -54,11 +52,7 @@ $lang_client['attachments'] = 'Anlagen';
 $lang_client['date'] = 'Termin';
 $lang_client['switchwarning'] =
     'Bei der Umstellung von den HTML- in den Text-Modus gehen alle Formatierungen verloren. Wollen Sie wirklich fortfahren?';
-$lang_client['folderprompt'] =
-    'Bitte geben Sie den Namen des zu erstellenden Ordners an:';
-$lang_client['newfolder'] = 'Neuer Ordner';
 $lang_client['foldererror'] = 'Der Ordner konnte nicht erstellt werden.';
-$lang_client['protectedfolder'] = 'Geschütztes Verzeichnis';
 $lang_client['source'] = 'Quelltext';
 $lang_client['sendwosubject'] =
     'Sie haben keinen Betreff für die E-Mail angegeben. Klicken Sie auf "Abbrechen", um einen Betreff anzugeben oder auf "OK", um die E-Mail ohne Betreff zu senden.';
@@ -304,12 +298,25 @@ $lang_user['color_3'] = 'Rot';
 $lang_user['color_4'] = 'Orange';
 $lang_user['color_5'] = 'Lila';
 $lang_user['color_6'] = 'Violett';
-
-// webdisk share
-$lang_user['badshare'] = 'Die angegebene Freigabe wurde nicht gefunden.';
-$lang_user['protected_desc'] =
-    'Das Verzeichnis ist mit einem Passwort-Schutz versehen. Bitte geben Sie das Passwort f&uuml;r dieses Verzeichnis ein und klicken Sie auf &quot;OK&quot;, um fortzufahren.';
-$lang_user['folder_wrongpw'] = 'Das angegebene Passwort ist nicht korrekt.';
+$lang_user['targetfolder'] = 'Ziel-Ordner';
+$lang_user['dnd_upload'] = 'Drag&amp;Drop';
+$lang_user['foldererror'] =
+    'Der Ordner konnte nicht angelegt werden. Entweder existiert schon ein Ordner mit diesem Namen oder der Name ist ung&uuml;ltig (er muss mindestens 1 Zeichen lang sein).';
+$lang_user['actions'] = 'Aktionen';
+$lang_user['count'] = 'Anzahl';
+$lang_user['size'] = 'Gr&ouml;&szlig;e';
+$lang_user['success'] = 'Erfolgreich';
+$lang_user['space'] = 'Speicherplatz';
+$lang_user['used'] = 'genutzt';
+$lang_user['unlimited'] = 'unbegrenzt';
+$lang_user['download'] = 'Herunterladen';
+$lang_user['move'] = 'Verschieben';
+$lang_user['delete'] = 'L&ouml;schen';
+$lang_user['realdel'] = 'Eintrag wirklich unwiderruflich entfernen?';
+$lang_user['realempty'] = 'Ordner wirklich vollständig leeren?';
+$lang_user['folder'] = 'Ordner';
+$lang_user['save'] = 'Speichern';
+$lang_user['cancel'] = 'Abbrechen';
 
 // faq
 $lang_user['faq'] = 'FAQ';
@@ -430,67 +437,6 @@ $lang_user['mds_recp_deferred'] = 'In Zustellung (verz&ouml;gert)';
 $lang_user['mds_recp_failed'] = 'Zustellung fehlgeschlagen';
 $lang_user['recipient'] = 'Empf&auml;nger';
 
-// webdisk
-$lang_user['dragfileshere'] =
-    'Ziehen Sie Ihre Dateien einfach in diesen Bereich.';
-$lang_user['targetfolder'] = 'Ziel-Ordner';
-$lang_user['existingfiles'] = 'Existierende Dateien';
-$lang_user['zipfile'] = 'ZIP-Datei';
-$lang_user['deleteafterextract'] = 'Nach Entpacken l&ouml;schen';
-$lang_user['keep'] = 'Behalten';
-$lang_user['overwrite'] = '&Uuml;berschreiben';
-$lang_user['extract'] = 'Entpacken';
-$lang_user['list'] = 'Liste';
-$lang_user['icons'] = 'Symbole';
-$lang_user['viewmode'] = 'Ansicht';
-$lang_user['dnd_upload'] = 'Drag&amp;Drop';
-$lang_user['foldererror'] =
-    'Der Ordner konnte nicht angelegt werden. Entweder existiert schon ein Ordner mit diesem Namen oder der Name ist ung&uuml;ltig (er muss mindestens 1 Zeichen lang sein).';
-$lang_user['createfolder'] = 'Ordner erstellen';
-$lang_user['uploadfiles'] = 'Dateien hochladen';
-$lang_user['iteminfo'] = 'Details';
-$lang_user['pleaseselectitem'] =
-    'W&auml;hlen Sie einen Ordner oder eine Datei aus.';
-$lang_user['actions'] = 'Aktionen';
-$lang_user['count'] = 'Anzahl';
-$lang_user['filename'] = 'Dateiname';
-$lang_user['size'] = 'Gr&ouml;&szlig;e';
-$lang_user['created'] = 'Erstellt';
-$lang_user['internalerror'] =
-    'Interner Fehler - bitte versuchen Sie es sp&auml;ter erneut';
-$lang_user['success'] = 'Erfolgreich';
-$lang_user['fileexists'] =
-    'Eine Datei mit diesem Namen existiert bereits oder der Dateityp ist nicht gestattet';
-$lang_user['nospace'] = 'Nicht genug Speicherplatz vorhanden';
-$lang_user['nospace2'] =
-    'Nicht genug Speicherplatz vorhanden oder interner Fehler - der Ordner wurde eventuell nicht vollst&auml;ndig kopiert';
-$lang_user['space'] = 'Speicherplatz';
-$lang_user['used'] = 'genutzt';
-$lang_user['unlimited'] = 'unbegrenzt';
-$lang_user['copy'] = 'Kopieren';
-$lang_user['rename'] = 'Umbenennen';
-$lang_user['download'] = 'Herunterladen';
-$lang_user['move'] = 'Verschieben';
-$lang_user['cut'] = 'Ausschneiden';
-$lang_user['delete'] = 'L&ouml;schen';
-$lang_user['paste'] = 'Einf&uuml;gen';
-$lang_user['realdel'] = 'Eintrag wirklich unwiderruflich entfernen?';
-$lang_user['realempty'] = 'Ordner wirklich vollständig leeren?';
-$lang_user['sourcenex'] = 'Das Quellobjekt wurde nicht gefunden.';
-$lang_user['notraffic'] =
-    'F&uuml;r diese Aktion ist nicht gen&uuml;gend Traffic verf&uuml;gbar';
-$lang_user['traffic'] = 'Traffic';
-$lang_user['sharing'] = 'Freigabe';
-$lang_user['shared'] = 'Freigegeben';
-$lang_user['share'] = 'Freigeben';
-$lang_user['folder'] = 'Ordner';
-$lang_user['save'] = 'Speichern';
-$lang_user['saveas'] = 'Speichern unter';
-$lang_user['cancel'] = 'Abbrechen';
-$lang_user['modified'] = 'Ge&auml;ndert';
-$lang_user['sharednote'] =
-    'Dieser Ordner ist derzeit freigegeben und &ouml;ffentlich unter folgender Adresse erreichbar:';
-
 // organizer
 $lang_user['newgroup'] = 'Neue Gruppe';
 $lang_user['associatewith'] = 'Zuordnen zu';
@@ -551,7 +497,6 @@ $lang_user['complete'] = 'Selbst-Vervollst&auml;ndigung';
 $lang_user['importvcftext'] =
     'Bitte w&auml;hlen Sie die Visitenkarte (VCF-Datei) aus, die Sie importieren m&ouml;chten. Beachten Sie bitte, dass beim Import eventuell in die &quot;Kontakt hinzuf&uuml;gen&quot;-Maske eingetragenen Daten ersetzt werden.';
 $lang_user['localfile'] = 'Lokale Datei';
-$lang_user['webdiskfile'] = 'Webdisk-Datei';
 $lang_user['completetext'] =
     'Mit dieser Funktion kann Ihr Kontakt seine Kontaktdaten selbst vervollst&auml;ndigen. Dazu wird ihm eine E-Mail mit einem Link geschickt, den er klicken kann, um zu einer Seite zu gelangen, auf der er seine Kontaktdaten eingeben kann. Nach Absenden der Seite werden die Angaben in Ihr Adressbuch &uuml;bernommen.<br /><br />W&auml;hlen Sie bitte die E-Mail-Adresse, an die der Link geschickt werden soll.';
 $lang_user['complete_noemail'] =
@@ -640,7 +585,6 @@ $lang_user['bcc'] = 'Blindkopie';
 $lang_user['replyto'] = 'Antworten an';
 $lang_user['attachments'] = 'Anlagen';
 $lang_user['approx'] = 'ca.';
-$lang_user['savetowebdisk'] = 'Auf Webdisk speichern';
 $lang_user['view'] = 'Anzeigen';
 $lang_user['toaddr'] = 'Zum Adressbuch hinzuf&uuml;gen';
 $lang_user['read'] = 'Gelesen';
@@ -703,8 +647,6 @@ $lang_user['details_default'] = 'Sofort detaillierte Ergebnis-Ansicht anzeigen';
 $lang_user['autosend'] = 'Automatisch versenden';
 $lang_user['paused'] = 'Pausiert';
 $lang_user['defaults'] = 'Voreinstellungen';
-$lang_user['hiddenelements'] = 'Versteckte Elemente';
-$lang_user['hide'] = 'Ausblenden';
 $lang_user['atreply'] = 'Beim Antworten';
 $lang_user['insertquote'] = 'Original-Mail als Zitat einf&uuml;gen';
 $lang_user['options'] = 'Optionen';
@@ -1010,8 +952,6 @@ $lang_admin['acpiconsfrom'] = 'Adminbereich-Icons von';
 $lang_admin['acpbgfrom'] = 'Adminbereich-Hintergrundbild von';
 $lang_admin['addservices'] = 'Zusatzleistungen';
 $lang_admin['mailspace_add'] = 'Zus&auml;tzl. E-Mail-Speicher';
-$lang_admin['diskspace_add'] = 'Zus&auml;tzl. Webdisk-Speicher';
-$lang_admin['traffic_add'] = 'Zus&auml;tzl. Webdisk-Traffic';
 $lang_admin['notifications'] = 'Benachrichtigungen';
 $lang_admin['notifyinterval'] = 'Auf Benachrichtigungen pr&uuml;fen alle';
 $lang_admin['notifylifetime'] = 'Benachrichtigungen l&ouml;schen nach';
@@ -1027,7 +967,6 @@ $lang_admin['rebuildblobstor'] = 'Daten umspeichern';
 $lang_admin['rebuildblobstor_desc'] =
     'Wenn Sie die Speicher-Methode f&uuml;r einen Datentyp &auml;ndern, verbleiben bis dahin gespeicherte Objekte noch in der alten Speicher-Methode. Mit dieser Funktion k&ouml;nnen Sie die noch in der alten Methode gespeicherten Objekte auf Wunsch in die neue Methode umspeichern.';
 $lang_admin['rbbs_email'] = 'E-Mails umspeichern';
-$lang_admin['rbbs_webdisk'] = 'Webdisk-Dateien umspeichern';
 $lang_admin['separatefiles'] = 'eine Datei pro Objekt';
 $lang_admin['userdb'] = 'eine Datei pro Benutzer';
 $lang_admin['nliarea'] = 'Nicht-eingeloggter Bereich';
@@ -1065,7 +1004,6 @@ $lang_admin['onecolumn'] = 'Einspaltig';
 $lang_admin['twocolumns'] = 'Zweispaltig';
 $lang_admin['defaultemplate'] = 'Standard-Template';
 $lang_admin['complete'] = 'Vollst&auml;ndig';
-$lang_admin['icons'] = 'Icons';
 $lang_admin['showuseremail'] = 'Benutzer-E-Mail-Adresse anzeigen';
 $lang_admin['templates'] = 'Templates';
 $lang_admin['show_at'] = 'Anzeigen bei';
@@ -1129,8 +1067,6 @@ $lang_admin['notactivated'] = 'Nicht aktiviert';
 $lang_admin['locked'] = 'Gesperrt';
 $lang_admin['emails'] = 'E-Mails';
 $lang_admin['folders'] = 'Ordner';
-$lang_admin['disksize'] = 'Webdisk-Gr&ouml;&szlig;e';
-$lang_admin['files'] = 'Dateien';
 $lang_admin['phpversion'] = 'PHP-Version';
 $lang_admin['webserver'] = 'Webserver';
 $lang_admin['mysqlversion'] = 'MySQL-Version';
@@ -1263,7 +1199,6 @@ $lang_admin['edit'] = 'Bearbeiten';
 $lang_admin['loginwarning'] =
     'Wollen Sie sich wirklich in den gewählten Account einloggen? Beachten Sie bitte dringend eventuelle Datenschutzgesetze Ihres Landes und achten Sie die Privatsphäre Ihrer Nutzer!';
 $lang_admin['spaceusage'] = 'Speicher-Nutzung';
-$lang_admin['webdisk'] = 'Webdisk';
 $lang_admin['used'] = 'genutzt';
 $lang_admin['usage'] = 'Nutzung';
 $lang_admin['aliases'] = 'Aliase';
@@ -1303,8 +1238,6 @@ $lang_admin['credits'] = 'Credits';
 $lang_admin['alias'] = 'Alias';
 $lang_admin['realdel'] = 'Eintrag wirklich unwiderruflich entfernen?';
 $lang_admin['userrealdel'] = 'Benutzer wirklich unwiderruflich entfernen?';
-$lang_admin['wdtraffic'] = 'Webdisk-Traffic';
-$lang_admin['used2'] = 'verbraucht';
 $lang_admin['ok'] = 'OK';
 $lang_admin['sendmail'] = 'E-Mail senden';
 $lang_admin['emptytrash'] = 'Papierkorb leeren';
@@ -1379,18 +1312,13 @@ $lang_admin['brokenhtaccess'] =
     'Folgende .htaccess-Dateien existieren nicht oder sind beschädigt: <code>%s</code>. Bitte laden Sie die Dateien erneut hoch - ohne diese Dateien sind einige Datendateien nicht vor unberechtigten Zugriffen geschützt!';
 $lang_admin['orphansfound'] =
     'Es wurde(n) %d verwaiste(s) E-Mail(s) (%.02f KB) gefunden. Die L&ouml;schung der verwaisten Objekte wird empfohlen.';
-$lang_admin['diskorphansfound'] =
-    'Es wurde(n) %d verwaiste(s) Webdisk-Datei(en) (%.02f KB) gefunden. Die L&ouml;schung der verwaisten Objekte wird empfohlen.';
 $lang_admin['orphans_desc'] =
     'Diese Funktion l&ouml;scht alle verwaisten E-Mails unwiderruflich.<br /><br />Verwaiste E-Mails sind noch vorhandene E-Mails von nicht mehr existierenden Benutzern und entstehen z.B. wenn ein Benutzer-L&ouml;schvorgang abbricht.';
-$lang_admin['diskorphans_desc'] =
-    'Diese Funktion l&ouml;scht alle verwaisten Webdisk-Dateien unwiderruflich.<br /><br />Verwaiste Webdisk-Dateien sind noch vorhandene Dateien von nicht mehr existierenden Benutzern und entstehen z.B. wenn ein Benutzer-L&ouml;schvorgang abbricht.';
 $lang_admin['orphans_done'] =
     'Es wurde(n) %d verwaiste(s) Objekt(e) (%.02f KB) gefunden und gel&ouml;scht.';
 $lang_admin['maintenance'] = 'Wartung';
 $lang_admin['orphans'] = 'Waisen';
 $lang_admin['mailorphans'] = 'E-Mail-Waisen';
-$lang_admin['diskorphans'] = 'Webdisk-Waisen';
 $lang_admin['inactiveusers'] = 'Inaktive Benutzer';
 $lang_admin['trash'] = 'Papierkorb';
 $lang_admin['pop3gateway'] = 'POP3-Gateway';
@@ -1524,8 +1452,6 @@ $lang_admin['mobileaccess'] = 'Mobil-Zugriff';
 $lang_admin['issue_certificates'] = 'Zertifikat ausstellen';
 $lang_admin['upload_certificates'] = 'Zertifikat hochladbar';
 $lang_admin['wdshare'] = 'Webdisk-Freigabe';
-$lang_admin['wdspeed'] = 'Webdisk-Geschw.';
-$lang_admin['sharespeed'] = 'Freigabe-Geschw.';
 $lang_admin['htmlview'] = 'Std. HTML-Modus';
 $lang_admin['sendlimit'] = 'Versand-Limit';
 $lang_admin['emailsin'] = 'E-Mail(s) in';
@@ -1537,7 +1463,6 @@ $lang_admin['aliasdomains'] = 'Zus&auml;tzliche Alias-Domains';
 $lang_admin['mailsig'] = 'E-Mail-Signatur';
 $lang_admin['receivedmails'] = 'Empfangen';
 $lang_admin['sentmails'] = 'Gesendet';
-$lang_admin['wdtrafficshort'] = 'WD-Traffic';
 $lang_admin['datastorage'] = 'Datei-Speicherung';
 $lang_admin['structstorage'] = 'Strukturierte Speicherung';
 $lang_admin['dynnorecvrules'] =
@@ -1602,8 +1527,6 @@ $lang_admin['mode'] = 'Modus';
 $lang_admin['plaintext'] = 'Text';
 $lang_admin['htmltext'] = 'HTML';
 $lang_admin['team'] = 'Team';
-$lang_admin['limitedextensions'] = 'Verbotene Datei-Endungen';
-$lang_admin['limitedmimetypes'] = 'Verbotene MIME-Typen';
 $lang_admin['sendwelcomemail'] = 'Willkommens-E-Mail senden';
 $lang_admin['searchprovider'] = 'b1gMail Such-Dienst';
 $lang_admin['includeinsearch'] =
@@ -1620,7 +1543,6 @@ $lang_admin['addfaq'] = 'FAQ hinzuf&uuml;gen';
 $lang_admin['both'] = 'Beide';
 $lang_admin['certmaillife'] = 'Einschreiben-Speicherzeit';
 $lang_admin['days'] = 'Tage';
-$lang_admin['filename'] = 'Dateiname';
 $lang_admin['banners'] = 'Banner';
 $lang_admin['banner'] = 'Banner';
 $lang_admin['weight'] = 'Gewichtung';
