@@ -496,8 +496,6 @@ if ($_REQUEST['action'] == 'tos') {
         );
     } elseif ($_REQUEST['target'] == 'inbox') {
         header('Location: email.php?sid=' . $_REQUEST['sid']);
-    } elseif ($_REQUEST['target'] == 'webdisk') {
-        header('Location: webdisk.php?sid=' . $_REQUEST['sid']);
     } else {
         header('Location: start.php?sid=' . $_REQUEST['sid']);
     }
@@ -572,8 +570,6 @@ if ($_REQUEST['action'] == 'tos') {
                 header(
                     'Location: prefs.php?sid=' . $param . '&action=membership',
                 );
-            } elseif ($_REQUEST['target'] == 'webdisk') {
-                header('Location: webdisk.php?sid=' . $param);
             }
             exit();
         } else {

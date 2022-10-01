@@ -98,9 +98,6 @@ if ($bm_prefs['last_cron'] < time() - $bm_prefs['cron_interval']) {
     // clean up notifications
     CleanupNotifications();
 
-    // reset webdisk traffic
-    ResetWebdiskTraffic();
-
     // send birthday notifications
     ProcessBirthdayNotifications();
 

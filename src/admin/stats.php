@@ -102,7 +102,7 @@ if ($_REQUEST['action'] == 'common' || $_REQUEST['action'] == 'email') {
     // common stats
     if ($_REQUEST['action'] == 'common') {
         $mode = 'common';
-        $statTypes = ['login', 'signup', 'wd'];
+        $statTypes = ['login', 'signup'];
     }
 
     // email stats
@@ -120,7 +120,6 @@ if ($_REQUEST['action'] == 'common' || $_REQUEST['action'] == 'email') {
     $statsSpecial = [
         'login' => ['login', 'mobile_login'],
         'send' => ['send', 'send_intern', 'send_extern'],
-        'wd' => ['wd_down', 'wd_up'],
         'receive' => ['receive', 'infected', 'spam'],
     ];
     if (isset($statsSpecial[$statType])) {
@@ -204,10 +203,9 @@ if ($_REQUEST['action'] == 'common' || $_REQUEST['action'] == 'email') {
     if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'showSpaceByCategory') {
         $data = [];
         foreach ($byCategory as $key => $val) {
+            // There used to be more categories. Now, there is only email.
             if ($key === 'mails') {
                 $data[$lang_admin['mails']] = $val;
-            } elseif ($key === 'webdisk') {
-                $data[$lang_admin['webdisk']] = $val;
             } else {
                 exit('Unknown category');
             }

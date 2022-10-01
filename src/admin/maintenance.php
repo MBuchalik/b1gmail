@@ -737,43 +737,6 @@ if ($_REQUEST['action'] == 'inactive') {
         $tpl->assign('backLink', 'maintenance.php?action=orphans&');
         $tpl->assign('page', 'msg.tpl');
     }
-
-    //
-    // exec (disk)
-    //
-    elseif ($_REQUEST['do'] == 'diskExec') {
-        $deletedCount = $deletedSize = 0;
-
-        $res = $db->Query(
-            'SELECT `id`,`size`,`blobstorage`,`user` FROM {pre}diskfiles WHERE `user`!=-1 AND `user` NOT IN(SELECT `id` FROM {pre}users)',
-        );
-        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-            BMBlobStorage::createProvider(
-                $row['blobstorage'],
-                $row['user'],
-            )->deleteBlob(BMBLOB_TYPE_WEBDISK, $row['id']);
-
-            $db->Query('DELETE FROM {pre}diskfiles WHERE `id`=?', $row['id']);
-
-            $deletedCount++;
-            $deletedSize += $row['size'];
-        }
-        $res->Free();
-
-        // assign
-        $tpl->assign('msgTitle', $lang_admin['diskorphans']);
-        $tpl->assign(
-            'msgText',
-            sprintf(
-                $lang_admin['orphans_done'],
-                $deletedCount,
-                $deletedSize / 1024,
-            ),
-        );
-        $tpl->assign('msgIcon', 'info32');
-        $tpl->assign('backLink', 'maintenance.php?action=orphans&');
-        $tpl->assign('page', 'msg.tpl');
-    }
 } /**
  * pop3 gateway
  */ elseif ($_REQUEST['action'] == 'pop3gateway') {

@@ -110,24 +110,6 @@ $tabs = [
                 'WHERE {pre}mails.`userid`!=-1 AND {pre}mails.`blobstorage`!=? AND ({pre}blobstate.`defect` IS NULL OR {pre}blobstate.`defect`=0) ORDER BY {pre}mails.`userid` ASC, {pre}mails.`blobstorage` ASC LIMIT ' .
                 (int) $perPage;
             $queryUpdate = 'UPDATE {pre}mails SET `blobstorage`=? WHERE `id`=?';
-        } elseif ($_REQUEST['rebuild'] == 'webdisk') {
-            $destBlobStorage = $bm_prefs['blobstorage_provider_webdisk'];
-            $blobType = BMBLOB_TYPE_WEBDISK;
-            $queryAll =
-                'SELECT COUNT(*) FROM {pre}diskfiles ' .
-                'LEFT JOIN {pre}blobstate ON {pre}blobstate.`blobstorage`={pre}diskfiles.`blobstorage` AND {pre}blobstate.blobid={pre}diskfiles.`id` AND {pre}blobstate.`blobtype`=' .
-                BMBLOB_TYPE_WEBDISK .
-                ' ' .
-                'WHERE {pre}diskfiles.`user`!=-1 AND {pre}diskfiles.`blobstorage`!=? AND ({pre}blobstate.`defect` IS NULL OR {pre}blobstate.`defect`=0)';
-            $query =
-                'SELECT {pre}diskfiles.`id`,`user` AS `userid`,{pre}diskfiles.`blobstorage` FROM {pre}diskfiles ' .
-                'LEFT JOIN {pre}blobstate ON {pre}blobstate.`blobstorage`={pre}diskfiles.`blobstorage` AND {pre}blobstate.blobid={pre}diskfiles.`id` AND {pre}blobstate.`blobtype`=' .
-                BMBLOB_TYPE_WEBDISK .
-                ' ' .
-                'WHERE {pre}diskfiles.`user`!=-1 AND {pre}diskfiles.`blobstorage`!=? AND ({pre}blobstate.`defect` IS NULL OR {pre}blobstate.`defect`=0) ORDER BY {pre}diskfiles.`user` ASC, {pre}diskfiles.`blobstorage` ASC LIMIT ' .
-                (int) $perPage;
-            $queryUpdate =
-                'UPDATE {pre}diskfiles SET `blobstorage`=? WHERE `id`=?';
         } else {
             die('Invalid rebuild type');
         }
@@ -442,14 +424,13 @@ $tabs = [
                 die('DONE');
             } else {
                 $res = $db->Query(
-                    'SELECT id,email,mailspace_used,diskspace_used FROM {pre}users ORDER BY id DESC LIMIT ' .
+                    'SELECT id,email,mailspace_used FROM {pre}users ORDER BY id DESC LIMIT ' .
                         (int) $pos .
                         ',' .
                         (int) $perpage,
                 );
                 while ($row = $res->FetchArray()) {
                     $cachedMailSize = $row['mailspace_used'];
-                    $cachedDiskSize = $row['diskspace_used'];
 
                     $res2 = $db->Query(
                         'SELECT SUM(size) FROM {pre}mails WHERE userid=?',
@@ -458,21 +439,10 @@ $tabs = [
                     [$actualMailSize] = $res2->FetchArray(MYSQLI_NUM);
                     $res2->Free();
 
-                    $res2 = $db->Query(
-                        'SELECT SUM(size) FROM {pre}diskfiles WHERE user=?',
-                        $row['id'],
-                    );
-                    [$actualDiskSize] = $res2->FetchArray(MYSQLI_NUM);
-                    $res2->Free();
-
-                    if (
-                        $actualDiskSize != $cachedDiskSize ||
-                        $actualMailSize != $cachedMailSize
-                    ) {
+                    if ($actualMailSize != $cachedMailSize) {
                         $db->Query(
-                            'UPDATE {pre}users SET mailspace_used=?,diskspace_used=? WHERE id=?',
+                            'UPDATE {pre}users SET mailspace_used=? WHERE id=?',
                             $actualMailSize,
-                            $actualDiskSize,
                             $row['id'],
                         );
                     }

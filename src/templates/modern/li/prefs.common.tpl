@@ -239,18 +239,6 @@
 			</td>
 		</tr>
 		{/if}
-		
-		<tr>
-			<td class="listTableLeftDesc"><i class="fa fa-folder-open-o" aria-hidden="true"></i></td>
-			<td class="listTableRightDesc">{lng p="webdisk"}</td>
-		</tr>
-		<tr>
-			<td class="listTableLeft"><label for="webdisk_hidehidden">{lng p="hiddenelements"}:</label></td>
-			<td class="listTableRight">
-				<input type="checkbox" name="webdisk_hidehidden" id="webdisk_hidehidden"{if $webdisk_hidehidden} checked="checked"{/if} />
-					<label for="webdisk_hidehidden">{lng p="hide"}</label>
-			</td>
-		</tr>
 
 		{if $smimeAllowed}
 		<tr>

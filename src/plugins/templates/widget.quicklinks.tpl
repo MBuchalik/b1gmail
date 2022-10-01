@@ -13,13 +13,6 @@
 		<a href="organizer.addressbook.php?sid={$sid}"><i class="fa fa-address-book" aria-hidden="true"></i>
 										{lng p="addressbook"}</a><br />
 	</fieldset>
-	{if $pageTabs.webdisk}<fieldset>
-		<legend>{lng p="webdisk"}</legend>
-		<a href="webdisk.php?sid={$sid}"><i class="fa fa-cloud" aria-hidden="true"></i>
-										{lng p="webdisk"}</a><br />
-		<a href="webdisk.php?sid={$sid}&do=uploadFilesForm"><i class="fa fa-share-square-o" aria-hidden="true"></i>
-										{lng p="uploadfiles"}</a><br />
-	</fieldset>{/if}
 	<fieldset>
 		<legend>{lng p="misc"}</legend>
 		<a href="prefs.php?sid={$sid}"><i class="fa fa-cog" aria-hidden="true"></i>

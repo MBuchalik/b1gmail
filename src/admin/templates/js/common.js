@@ -488,7 +488,9 @@ function rebuildBlobStor() {
     fetched = 0,
     form = EBID('buildForm'),
     perpage = EBID('buildPerPage').value,
-    rebuild = EBID('rebuild_email').checked ? 'email' : 'webdisk';
+
+    // There used to be a feature to rebuild the Webdisk. This has been removed.
+    rebuild = 'email';
 
   var statusdiv = document.createElement('div');
   statusdiv.style.textAlign = 'center';

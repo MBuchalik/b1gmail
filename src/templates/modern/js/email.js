@@ -472,23 +472,6 @@ function moveMail(id) {
   );
 }
 
-function saveAttachmentToWebdisk(id, attachment, fileName, sid) {
-  openOverlay(
-    'webdisk.php?action=importFromMail&id=' +
-      id +
-      '&attachment=' +
-      attachment +
-      '&filename=' +
-      escape(fileName) +
-      '&sid=' +
-      sid,
-    lang['browse'],
-    650,
-    385,
-    true,
-  );
-}
-
 function updateGroupMode(c, fs, sid) {
   document.location.href =
     'email.php?sid=' +

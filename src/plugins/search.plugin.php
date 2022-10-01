@@ -127,26 +127,6 @@ class B1GMailSearchProvider extends BMPlugin {
                 );
                 exit();
             }
-        } elseif ($category == 'B1GMailSearchProvider_webdisk') {
-            if (!class_exists('BMWebdisk')) {
-                include B1GMAIL_DIR . 'serverlib/webdisk.class.php';
-            }
-            $webdisk = _new('BMWebdisk', [$userRow['id']]);
-
-            if ($action == 'delete') {
-                foreach ($items as $itemID) {
-                    if (strpos($itemID, '_') === false) {
-                        continue;
-                    }
-                    [$itemType, $id] = explode('_', $itemID);
-
-                    if ($itemType == 'file') {
-                        $webdisk->DeleteFile((int) $id);
-                    } elseif ($itemType == 'folder') {
-                        $webdisk->DeleteFolder((int) $id);
-                    }
-                }
-            }
         }
     }
 
@@ -182,12 +162,6 @@ class B1GMailSearchProvider extends BMPlugin {
             $result['B1GMailSearchProvider_addressbook'] = [
                 'title' => $lang_user['contacts'],
                 'icon' => 'fa-address-book-o',
-            ];
-        }
-        if (isset($searchIn['webdisk'])) {
-            $result['B1GMailSearchProvider_webdisk'] = [
-                'title' => $lang_user['webdisk'],
-                'icon' => 'fa-folder-open-o',
             ];
         }
         if ($bm_prefs['search_engine'] != '') {
@@ -483,65 +457,6 @@ class B1GMailSearchProvider extends BMPlugin {
                     'results' => $thisResults,
                     'massActions' => [
                         'compose' => $lang_user['sendmail'],
-                        'delete' => $lang_user['delete'],
-                    ],
-                ];
-            }
-        }
-
-        //
-        // webdisk
-        //
-        if (isset($searchIn['webdisk'])) {
-            // files
-            $thisResults = [];
-            $res = $db->Query(
-                'SELECT id,ordner,dateiname,modified,`size` FROM {pre}diskfiles WHERE modified>=? AND modified<=? AND user=? AND dateiname LIKE ' .
-                    $q .
-                    ' ORDER BY dateiname ASC',
-                $dateFrom,
-                $dateTo,
-                $thisUser->_id,
-            );
-            while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                $thisResults[] = [
-                    'icon' => 'fa-file-o',
-                    'title' => $row['dateiname'],
-                    'link' => sprintf('webdisk.php?folder=%d&', $row['ordner']),
-                    'date' => $row['modified'],
-                    'size' => $row['size'],
-                    'id' => 'file_' . $row['id'],
-                ];
-            }
-            $res->Free();
-
-            // folders
-            $res = $db->Query(
-                'SELECT id,titel,modified FROM {pre}diskfolders WHERE modified>=? AND modified<=? AND user=? AND titel LIKE ' .
-                    $q .
-                    ' ORDER BY titel ASC',
-                $dateFrom,
-                $dateTo,
-                $thisUser->_id,
-            );
-            while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                $thisResults[] = [
-                    'icon' => 'fa-folder-open-o',
-                    'title' => $row['titel'],
-                    'link' => sprintf('webdisk.php?folder=%d&', $row['id']),
-                    'date' => $row['modified'],
-                    'id' => 'folder_' . $row['id'],
-                ];
-            }
-            $res->Free();
-
-            if (count($thisResults) > 0) {
-                $results[] = [
-                    'icon' => 'fa-folder-open-o',
-                    'name' => 'B1GMailSearchProvider_webdisk',
-                    'title' => $lang_user['webdisk'],
-                    'results' => $thisResults,
-                    'massActions' => [
                         'delete' => $lang_user['delete'],
                     ],
                 ];

@@ -138,24 +138,16 @@ if ($_REQUEST['action'] == 'groups') {
 
             // prepare sizes
             $_REQUEST['storage'] *= 1024 * 1024;
-            $_REQUEST['webdisk'] *= 1024 * 1024;
             $_REQUEST['maxsize'] *= 1024;
             $_REQUEST['anlagen'] *= 1024;
-            if ($_REQUEST['traffic'] > 0) {
-                $_REQUEST['traffic'] *= 1024 * 1024;
-            }
 
             $db->Query(
-                'UPDATE {pre}gruppen SET titel=?, soforthtml=?, storage=?, webdisk=?, maxsize=?, anlagen=?, traffic=?, wd_member_kbs=?, wd_open_kbs=?, send_limit_count=?, send_limit_time=?, ownpop3=?, ownpop3_interval=?, selfpop3_check=?, aliase=?, wap=?, ads=?, share=?, pop3=?, smtp=?, responder=?, imap=?, forward=?, saliase=?, signatur=?, allow_newsletter_optout=?, smime=?, issue_certificates=?, upload_certificates=?, max_recps=?, sender_aliases=?, ftsearch=?, notifications=?, maildeliverystatus=?, auto_save_drafts=? WHERE id=?',
+                'UPDATE {pre}gruppen SET titel=?, soforthtml=?, storage=?, maxsize=?, anlagen=?, send_limit_count=?, send_limit_time=?, ownpop3=?, ownpop3_interval=?, selfpop3_check=?, aliase=?, wap=?, ads=?, pop3=?, smtp=?, responder=?, imap=?, forward=?, saliase=?, signatur=?, allow_newsletter_optout=?, smime=?, issue_certificates=?, upload_certificates=?, max_recps=?, sender_aliases=?, ftsearch=?, notifications=?, maildeliverystatus=?, auto_save_drafts=? WHERE id=?',
                 $_REQUEST['titel'],
                 isset($_REQUEST['soforthtml']) ? 'yes' : 'no',
                 $_REQUEST['storage'],
-                $_REQUEST['webdisk'],
                 $_REQUEST['maxsize'],
                 $_REQUEST['anlagen'],
-                $_REQUEST['traffic'],
-                $_REQUEST['wd_member_kbs'],
-                $_REQUEST['wd_open_kbs'],
                 $_REQUEST['send_limit_count'],
                 $_REQUEST['send_limit_time'],
                 $_REQUEST['ownpop3'],
@@ -164,7 +156,6 @@ if ($_REQUEST['action'] == 'groups') {
                 $_REQUEST['aliase'],
                 isset($_REQUEST['wap']) ? 'yes' : 'no',
                 isset($_REQUEST['ads']) ? 'yes' : 'no',
-                isset($_REQUEST['share']) ? 'yes' : 'no',
                 isset($_REQUEST['pop3']) ? 'yes' : 'no',
                 isset($_REQUEST['smtp']) ? 'yes' : 'no',
                 isset($_REQUEST['responder']) ? 'yes' : 'no',
@@ -300,25 +291,17 @@ if ($_REQUEST['action'] == 'groups') {
 
         // prepare sizes
         $_REQUEST['storage'] *= 1024 * 1024;
-        $_REQUEST['webdisk'] *= 1024 * 1024;
         $_REQUEST['maxsize'] *= 1024;
         $_REQUEST['anlagen'] *= 1024;
-        if ($_REQUEST['traffic'] > 0) {
-            $_REQUEST['traffic'] *= 1024 * 1024;
-        }
 
         $db->Query(
-            'INSERT INTO {pre}gruppen(titel,soforthtml,storage,webdisk,maxsize,anlagen,traffic,wd_member_kbs,wd_open_kbs,send_limit_count,send_limit_time,ownpop3,ownpop3_interval,selfpop3_check,aliase,wap,ads,share,pop3,smtp,responder,imap,forward,saliase,signatur,allow_newsletter_optout,smime,issue_certificates,upload_certificates,sender_aliases,ftsearch,notifications,maildeliverystatus,auto_save_drafts) VALUES ' .
-                '(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+            'INSERT INTO {pre}gruppen(titel,soforthtml,storage,maxsize,anlagen,send_limit_count,send_limit_time,ownpop3,ownpop3_interval,selfpop3_check,aliase,wap,ads,pop3,smtp,responder,imap,forward,saliase,signatur,allow_newsletter_optout,smime,issue_certificates,upload_certificates,sender_aliases,ftsearch,notifications,maildeliverystatus,auto_save_drafts) VALUES ' .
+                '(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
             $_REQUEST['titel'],
             isset($_REQUEST['soforthtml']) ? 'yes' : 'no',
             $_REQUEST['storage'],
-            $_REQUEST['webdisk'],
             $_REQUEST['maxsize'],
             $_REQUEST['anlagen'],
-            $_REQUEST['traffic'],
-            $_REQUEST['wd_member_kbs'],
-            $_REQUEST['wd_open_kbs'],
             $_REQUEST['send_limit_count'],
             $_REQUEST['send_limit_time'],
             $_REQUEST['ownpop3'],
@@ -327,7 +310,6 @@ if ($_REQUEST['action'] == 'groups') {
             $_REQUEST['aliase'],
             isset($_REQUEST['wap']) ? 'yes' : 'no',
             isset($_REQUEST['ads']) ? 'yes' : 'no',
-            isset($_REQUEST['share']) ? 'yes' : 'no',
             isset($_REQUEST['pop3']) ? 'yes' : 'no',
             isset($_REQUEST['smtp']) ? 'yes' : 'no',
             isset($_REQUEST['responder']) ? 'yes' : 'no',

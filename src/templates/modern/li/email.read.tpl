@@ -313,7 +313,6 @@
 				<td class="attDiv">&nbsp;</td>
 				<td colspan="3" class="attDiv">
 					<input type="button" value=" {lng p="download"} " onclick="document.location.href='email.read.php?id={$mailID}&action=downloadAttachment&attachment={$attID}&sid={$sid}';" />
-					<input type="button" value=" {lng p="savetowebdisk"} " onclick="saveAttachmentToWebdisk({$mailID}, '{$attID}', '{$attachment.filename}', '{$sid}')" />
 					{if $attachment.viewable}<input type="button" value=" {lng p="view"} " onclick="javascript:window.open('email.read.php?id={$mailID}&action=downloadAttachment&attachment={$attID}&view=true&sid={$sid}');" />{/if}
 					{if $attachment.mimetype=='message/rfc822'||$attachment.filetype=='.eml'}<input type="button" value=" {lng p="view"} " onclick="javascript:showAttachedMail({$mailID}, '{$attID}', '{text value=$attachment.filename cut=45 escape=true}');" />{/if}
 					{if $attachment.mimetype=='application/zip'||$attachment.filetype=='.zip'}<input type="button" value=" {lng p="view"} " onclick="javascript:showAttachedZIP({$mailID}, '{$attID}', '{text value=$attachment.filename cut=45 escape=true}');" />{/if}

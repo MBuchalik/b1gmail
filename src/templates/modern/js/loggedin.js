@@ -463,37 +463,6 @@ function toggleResultMassActions(form, id) {
   EBID('massActions_' + id).style.display = showMassActions ? '' : 'none';
 }
 
-/**************************************************************************
- * File selector widget
- *************************************************************************/
-function webdiskDialog(sid, type, field) {
-  openOverlay(
-    'webdisk.php?sid=' +
-      sid +
-      '&action=webdiskDialog&type=' +
-      type +
-      '&field=' +
-      field,
-    lang['browse'],
-    650,
-    type == 'save' ? 376 : 344,
-    true,
-  );
-}
-function changeFileSelectorSource(c, name) {
-  EBID('fileSelector_local_' + name).style.display =
-    c.value == 'local' ? '' : 'none';
-  EBID('fileSelector_webdisk_' + name).style.display =
-    c.value == 'local' ? 'none' : '';
-
-  if (c.value != 'local') {
-    EBID('localFile_' + name).value = '';
-  } else {
-    EBID('webdiskFile_' + name).value = '';
-    EBID('webdiskFile_' + name + '_id').value = '';
-  }
-}
-
 function composeMail(args) {
   if (typeof args == 'undefined' || !args) args = '';
 

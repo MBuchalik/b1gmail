@@ -140,8 +140,6 @@ if ($_REQUEST['action'] == 'welcome') {
         $diskSize = false;
     }
 
-    $diskFolderCount = $tables[$mysql['prefix'] . 'diskfolders']['rows'];
-
     // load avg
     $loadAvg = '<i>(' . $lang_admin['unknown'] . ')</i>';
     if (!SERVER_WINDOWS) {
@@ -187,7 +185,6 @@ if ($_REQUEST['action'] == 'welcome') {
     $tpl->assign('emailCount', $emailCount);
     $tpl->assign('folderCount', $folderCount);
     $tpl->assign('diskFileCount', $diskFileCount);
-    $tpl->assign('diskFolderCount', $diskFolderCount);
     $tpl->assign('diskSize', $diskSize);
     $tpl->assign('tableCount', $tableCount);
     $tpl->assign('webserver', explode(' ', $_SERVER['SERVER_SOFTWARE'])[0]);
@@ -353,44 +350,12 @@ if ($_REQUEST['action'] == 'welcome') {
         }
     }
 
-    // orphaned files?
-    $diskOrphansFound = false;
-    if ($diskFileCount < 20000) {
-        $res = $db->Query(
-            'SELECT COUNT(*),SUM(`size`) FROM {pre}diskfiles WHERE `user`!=-1 AND `user` NOT IN(SELECT `id` FROM {pre}users)',
-        );
-        [$diskOrphanCount, $diskOrphanSize] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-        if ($diskOrphanCount > 0) {
-            $notices[] = [
-                'type' => 'warning',
-                'text' => sprintf(
-                    $lang_admin['diskorphansfound'],
-                    $diskOrphanCount,
-                    $diskOrphanSize / 1024,
-                ),
-                'link' => 'maintenance.php?action=orphans&',
-            ];
-            $diskOrphansFound = true;
-        }
-    }
-
-    if (
-        !$orphansFound &&
-        !$diskOrphansFound &&
-        $emailSize !== false &&
-        $diskSize !== false
-    ) {
+    if (!$orphansFound && $emailSize !== false) {
         // caches out of sync?
-        $res = $db->Query(
-            'SELECT SUM(mailspace_used),SUM(diskspace_used) FROM {pre}users',
-        );
-        [$userMailSpace, $userDiskSpace] = $res->FetchArray(MYSQLI_NUM);
+        $res = $db->Query('SELECT SUM(mailspace_used) FROM {pre}users');
+        [$userMailSpace] = $res->FetchArray(MYSQLI_NUM);
         $res->Free();
-        if (
-            (int) $userMailSpace != (int) $emailSize ||
-            (int) $userDiskSpace != (int) $diskSize
-        ) {
+        if ((int) $userMailSpace != (int) $emailSize) {
             $notices[] = [
                 'type' => 'warning',
                 'text' => $lang_admin['cachesizesdiffer'],

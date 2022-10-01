@@ -169,10 +169,6 @@ if ($_REQUEST['action'] == 'start') {
                 isset($_REQUEST['smimeEncrypt']),
             );
         }
-        $thisUser->SetPref(
-            'webdisk_hideHidden',
-            isset($_REQUEST['webdisk_hidehidden']),
-        );
         $thisUser->SetPref('autosend_dn', isset($_REQUEST['autosend_dn']));
         $thisUser->SetPref('linesep', isset($_REQUEST['linesep']));
         $composeDefaults =
@@ -213,10 +209,6 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('smimeEncrypt', $thisUser->GetPref('smimeEncrypt'));
     $tpl->assign('reply_quote', $userRow['reply_quote']);
     $tpl->assign('hotkeys', $thisUser->GetPref('hotkeys'));
-    $tpl->assign(
-        'webdisk_hidehidden',
-        $thisUser->GetPref('webdisk_hidehidden'),
-    );
     $tpl->assign('attcheck', $userRow['attcheck']);
     $tpl->assign('autosend_dn', $thisUser->GetPref('autosend_dn'));
     $tpl->assign('linesep', $thisUser->GetPref('linesep'));
@@ -1501,7 +1493,6 @@ if ($_REQUEST['action'] == 'start') {
     );
     while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
         if (
-            ($row['required'] == 'webdisk' && $groupRow['webdisk'] > 0) ||
             !$row['required'] ||
             (isset($groupRow[$row['required']]) &&
                 $groupRow[$row['required']] == 'yes')

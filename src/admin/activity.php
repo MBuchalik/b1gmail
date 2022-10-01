@@ -167,9 +167,7 @@ if ($_REQUEST['action'] == 'activity') {
 
         // groups
         $groups = [];
-        $res = $db->Query(
-            'SELECT id,storage,webdisk,traffic,titel AS title FROM {pre}gruppen',
-        );
+        $res = $db->Query('SELECT id,storage,titel AS title FROM {pre}gruppen');
         while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
             $groups[$row['id']] = $row;
         }
@@ -188,7 +186,7 @@ if ($_REQUEST['action'] == 'activity') {
         // users
         $users = [];
         $res = $db->Query(
-            'SELECT id,gruppe,email,gesperrt,mailspace_used,diskspace_used,(traffic_down+traffic_up) AS traffic,mailspace_add,diskspace_add,traffic_add,received_mails,sent_mails,traffic_status FROM {pre}users ORDER BY ' .
+            'SELECT id,gruppe,email,gesperrt,mailspace_used,mailspace_add,received_mails,sent_mails FROM {pre}users ORDER BY ' .
                 $sortBy .
                 ' ' .
                 $sortOrder .
@@ -201,15 +199,7 @@ if ($_REQUEST['action'] == 'activity') {
         while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
             $row['mailspace_max'] =
                 $groups[$row['gruppe']]['storage'] + $row['mailspace_add'];
-            $row['diskspace_max'] =
-                $groups[$row['gruppe']]['webdisk'] + $row['diskspace_add'];
-            $row['traffic_max'] =
-                $groups[$row['gruppe']]['traffic'] + $row['traffic_add'];
             $row['statusImg'] = $statusImgTable[$row['gesperrt']];
-
-            if ($row['traffic_status'] != (int) date('m')) {
-                $row['traffic'] = 0;
-            }
 
             $users[$row['id']] = $row;
         }

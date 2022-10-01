@@ -24,7 +24,27 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
         if (
             !mysqli_query(
                 $dbConnection,
-                'ALTER TABLE bm60_prefs DROP COLUMN calendar_defaultviewmode',
+                'ALTER TABLE bm60_users
+                    DROP COLUMN traffic_down,
+                    DROP COLUMN traffic_up,
+                    DROP COLUMN traffic_status,
+                    DROP COLUMN traffic_add,
+                    DROP COLUMN diskspace_used,
+                    DROP COLUMN diskspace_add
+            ',
+            )
+        ) {
+            return false;
+        }
+
+        if (
+            !mysqli_query(
+                $dbConnection,
+                'ALTER TABLE bm60_prefs
+                    DROP COLUMN calendar_defaultviewmode,
+                    DROP COLUMN forbidden_extensions,
+                    DROP COLUMN forbidden_mimetypes
+            ',
             )
         ) {
             return false;
@@ -38,8 +58,31 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
                     DROP COLUMN tbx_webdisk,
                     DROP COLUMN organizerdav,
                     DROP COLUMN syncml,
-                    DROP COLUMN webdav
+                    DROP COLUMN webdav,
+                    DROP COLUMN traffic,
+                    DROP COLUMN share,
+                    DROP COLUMN webdisk,
+                    DROP COLUMN wd_member_kbs,
+                    DROP COLUMN wd_open_kbs
             ',
+            )
+        ) {
+            return false;
+        }
+
+        if (
+            !mysqli_query(
+                $dbConnection,
+                "DELETE FROM bm60_userprefs WHERE `key`='webdisk_hideHidden' OR `key`='webdiskViewMode'",
+            )
+        ) {
+            return false;
+        }
+
+        if (
+            !mysqli_query(
+                $dbConnection,
+                "DELETE FROM bm60_stats WHERE typ='wd_down' OR typ='wd_up'",
             )
         ) {
             return false;
@@ -74,6 +117,14 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
         }
 
         if (!mysqli_query($dbConnection, 'DROP TABLE bm60_dates_groups')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_diskprops')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_diskfolders')) {
             return false;
         }
 

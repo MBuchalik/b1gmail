@@ -437,7 +437,7 @@ if ($_REQUEST['action'] == 'users') {
 
             // update common stuff
             $db->Query(
-                'UPDATE {pre}users SET profilfelder=?, email=?, vorname=?, nachname=?, strasse=?, hnr=?, plz=?, ort=?, land=?, tel=?, fax=?, altmail=?, gruppe=?, gesperrt=?, notes=?, re=?, fwd=?, forward=?, forward_to=?, `newsletter_optin`=?, datumsformat=?, absendername=?, anrede=?, saliase=?, mailspace_add=?, diskspace_add=?, traffic_add=? WHERE id=?',
+                'UPDATE {pre}users SET profilfelder=?, email=?, vorname=?, nachname=?, strasse=?, hnr=?, plz=?, ort=?, land=?, tel=?, fax=?, altmail=?, gruppe=?, gesperrt=?, notes=?, re=?, fwd=?, forward=?, forward_to=?, `newsletter_optin`=?, datumsformat=?, absendername=?, anrede=?, saliase=?, mailspace_add=? WHERE id=?',
                 serialize($profileData),
                 EncodeEMail($_REQUEST['email']),
                 $_REQUEST['vorname'],
@@ -463,8 +463,6 @@ if ($_REQUEST['action'] == 'users') {
                 $_REQUEST['anrede'],
                 $saliase,
                 $_REQUEST['mailspace_add'] * 1024 * 1024,
-                $_REQUEST['diskspace_add'] * 1024 * 1024,
-                $_REQUEST['traffic_add'] * 1024 * 1024,
                 $_REQUEST['id'],
             );
 
@@ -529,11 +527,6 @@ if ($_REQUEST['action'] == 'users') {
         $groupObject = $userObject->GetGroup();
         $group = $groupObject->Fetch();
 
-        // traffic?
-        if ($user['traffic_status'] != (int) date('m')) {
-            $user['traffic_down'] = $user['traffic_up'] = 0;
-        }
-
         // get usage stuff
         $res = $db->Query(
             'SELECT COUNT(*) FROM {pre}mails WHERE userid=?',
@@ -546,19 +539,6 @@ if ($_REQUEST['action'] == 'users') {
             $user['id'],
         );
         [$emailFolders] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-        $res = $db->Query(
-            'SELECT COUNT(*) FROM {pre}diskfiles WHERE user=?',
-            $user['id'],
-        );
-        [$diskFiles] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-        $res = $db->Query(
-            'SELECT COUNT(*) FROM {pre}diskfolders WHERE user=?',
-            $user['id'],
-        );
-        [$diskFolders] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
 
         // profile fields
         $profileFields = [];
@@ -612,8 +592,6 @@ if ($_REQUEST['action'] == 'users') {
         $tpl->assign('emailMails', $emailMails);
         $tpl->assign('emailFolders', $emailFolders);
         $tpl->assign('profileFields', $profileFields);
-        $tpl->assign('diskFiles', $diskFiles);
-        $tpl->assign('diskFolders', $diskFolders);
         $tpl->assign('page', 'users.edit.tpl');
     }
 

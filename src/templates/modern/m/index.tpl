@@ -28,7 +28,6 @@
 			<li data-icon="delete"><a href="#" data-rel="close">{lng p="close"}</a></li>
 			<li data-icon="email"{if $activeTab=='email'} data-theme="b"{/if}><a href="email.php?sid={$sid}" data-transition="none">{lng p="email"}</a></li>
 			<li data-icon="contacts"{if $activeTab=='contacts'} data-theme="b"{/if}><a href="contacts.php?sid={$sid}" data-transition="none">{lng p="contacts"}</a></li>
-			{if $pageTabs.webdisk}<li data-icon="webdisk"{if $activeTab=='webdisk'} data-theme="b"{/if}><a href="webdisk.php?sid={$sid}" data-transition="none">{lng p="webdisk"}</a></li>{/if}
 			<li data-icon="delete"><a href="email.php?action=logout&sid={$sid}" data-transition="none">{lng p="logout"}</a></li>
 		</ul>
 	</div>

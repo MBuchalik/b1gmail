@@ -69,24 +69,6 @@
 			<td class="td1">{lng p="dbsize"}:</td>
 			<td class="td2">{size bytes=$dbSize}</td>
 		</tr>
-
-		<!-- webdisk stuff -->
-		<tr>
-			<td colspan="6">&nbsp;</td>
-		</tr>
-		<tr>
-			<td rowspan="3" width="40" align="center" valign="top"><img src="{$tpldir}images/ico_disk.png" border="0" alt="" width="32" heigh="32" /></td>
-			<td class="td1">{lng p="disksize"}:</td>
-			<td class="td2" colspan="3">{if $diskSize!==false}{size bytes=$diskSize}{else}-{/if}</td>
-		</tr>
-		<tr>
-			<td class="td1">{lng p="files"}:</td>
-			<td class="td2" colspan="3">{$diskFileCount}</td>
-		</tr>
-		<tr>
-			<td class="td1">{lng p="folders"}:</td>
-			<td class="td2" colspan="3">{$diskFolderCount}</td>
-		</tr>
 	</table>
 </fieldset>
 

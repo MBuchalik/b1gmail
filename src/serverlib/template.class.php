@@ -275,27 +275,6 @@ class Template extends Smarty {
                 ],
             ]);
 
-            if ($groupRow['webdisk'] + $userRow['diskspace_add'] > 0) {
-                $pageTabs = array_merge($pageTabs, [
-                    'webdisk' => [
-                        'icon' => 'webdisk',
-                        'faIcon' => 'fa-cloud',
-                        'link' => 'webdisk.php?sid=',
-                        'text' => $lang_user['webdisk'],
-                    ],
-                ]);
-
-                $newMenu[] = [
-                    'sep' => true,
-                ];
-                $newMenu[] = [
-                    'icon' => 'webdisk_file',
-                    'faIcon' => 'fa-file-o',
-                    'link' => 'webdisk.php?do=uploadFilesForm&sid=',
-                    'text' => $lang_user['file'],
-                ];
-            }
-
             $moduleResult = $plugins->callFunction(
                 'getUserPages',
                 false,
@@ -800,32 +779,20 @@ function TemplateFileSelector($params, $smarty) {
             '<tr>' .
             '<td width="10"><select onchange="changeFileSelectorSource(this, \'%s\')">' .
             '<option value="local">%s</option>' .
-            (isset($groupRow) && is_array($groupRow) && $groupRow['webdisk'] > 0
-                ? '<option value="webdisk">%s</option>'
-                : '<!-- %s -->') .
             '</select></td>' .
             '<td width="5">&nbsp;</td>' .
             '<td><div id="fileSelector_local_%s" style="display:;"><input type="file" id="localFile_%s" name="localFile_%s%s" size="%d" style="width: 100%%;"%s /></div>' .
-            '<div id="fileSelector_webdisk_%s" style="display:none;"><input type="hidden" name="webdiskFile_%s_id" id="webdiskFile_%s_id" value="" /><input type="text" id="webdiskFile_%s" name="webdiskFile_%s" size="%d" readonly="readonly" /> <input onclick="webdiskDialog(\'%s\', \'open\', \'webdiskFile_%s\')" type="button" value="..." /></div></td>' .
+            '</td>' .
             '</tr>' .
             '</table>',
         $name,
         $lang_user['localfile'],
-        $lang_user['webdiskfile'],
         $name,
         $name,
         $name,
         isset($params['multiple']) ? '[]' : '',
         $size,
         isset($params['multiple']) ? ' multiple="multiple"' : '',
-        $name,
-        $name,
-        $name,
-        $name,
-        $name,
-        $size,
-        session_id(),
-        $name,
     );
 }
 function TemplatePageNav($params, $smarty) {

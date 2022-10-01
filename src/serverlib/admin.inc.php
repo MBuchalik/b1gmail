@@ -93,7 +93,6 @@ $faqRequirementTable = [
     'pop3' => $lang_admin['pop3'],
     'imap' => $lang_admin['imap'],
     'wap' => $lang_admin['mobileaccess'],
-    'webdisk' => $lang_admin['webdisk'],
     'share' => $lang_admin['wdshare'],
     'ftsearch' => $lang_admin['ftsearch'],
 ];
@@ -138,11 +137,15 @@ $htaccessContent = "<IfModule mod_authz_core.c>
 // Files and folders that should not exist (they are most likely leftovers from previous versions/updates).
 $unnecessaryFilesAndFolders = [
     'files' => [
-        // These files existed in b1gmail 7.4.0.
+        // These files were removed in b1gmail 8.0.0.
         B1GMAIL_DIR . 'organizer.php',
         B1GMAIL_DIR . 'organizer.notes.php',
         B1GMAIL_DIR . 'organizer.todo.php',
         B1GMAIL_DIR . 'sms.php',
+
+        // These files were removed in b1gmail 9.0.0.
+        B1GMAIL_DIR . 'organizer.calendar.php',
+        B1GMAIL_DIR . 'webdisk.php',
     ],
     'folders' => [
         // The setup folder should always be deleted after running the setup.
@@ -156,7 +159,7 @@ $unnecessaryFilesAndFolders = [
         B1GMAIL_DIR . 'share-old/',
         B1GMAIL_DIR . 'templates-old/',
 
-        // These directories existed in b1gmail 7.4.0.
+        // These directories were removed in b1gmail 8.0.0.
         B1GMAIL_DIR . 'clientlib/',
         B1GMAIL_DIR . 'languages/',
         B1GMAIL_DIR . 'plz/',
@@ -265,15 +268,11 @@ function GetCategorizedSpaceUsage() {
 
     $sizes = [];
 
-    // data size for mails + webdisk
+    // data size for mails
     $res = $db->Query('SELECT SUM(size) FROM {pre}mails');
     [$emailSize] = $res->FetchArray(MYSQLI_NUM);
     $res->Free();
-    $res = $db->Query('SELECT SUM(size) FROM {pre}diskfiles');
-    [$diskSize] = $res->FetchArray(MYSQLI_NUM);
-    $res->Free();
     $sizes['mails'] = $emailSize;
-    $sizes['webdisk'] = $diskSize;
 
     // return
     return $sizes;
@@ -294,15 +293,15 @@ function GetGroupSpaceUsage() {
     while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
         // get sizes
         $res2 = $db->Query(
-            'SELECT SUM(mailspace_used),SUM(diskspace_used),COUNT(*) FROM {pre}users WHERE gruppe=?',
+            'SELECT SUM(mailspace_used),COUNT(*) FROM {pre}users WHERE gruppe=?',
             $row['id'],
         );
-        [$mailSpace, $diskSpace, $userCount] = $res2->FetchArray(MYSQLI_NUM);
+        [$mailSpace, $userCount] = $res2->FetchArray(MYSQLI_NUM);
         $res2->Free();
         $sizes[$row['id']] = [
             'title' => $row['titel'],
             'users' => $userCount,
-            'size' => $mailSpace + $diskSpace,
+            'size' => $mailSpace,
         ];
     }
     $res->Free();
@@ -389,15 +388,6 @@ function DeleteUser($userID, $qAddAND = '') {
 
     // delete autoresponder
     $db->Query('DELETE FROM {pre}autoresponder WHERE userid=?', $userID);
-
-    // delete disk props
-    $db->Query('DELETE FROM {pre}diskprops WHERE user=?', $userID);
-
-    // delete disk folders
-    $db->Query('DELETE FROM {pre}diskfolders WHERE user=?', $userID);
-
-    // delete disk files
-    $db->Query('DELETE FROM {pre}diskfiles WHERE user=?', $userID);
 
     // delete cert mails
     $db->Query('DELETE FROM {pre}certmails WHERE user=?', $userID);

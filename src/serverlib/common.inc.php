@@ -896,11 +896,6 @@ function SessionToken() {
     if ($bm_prefs['cookie_lock'] == 'yes') {
         if (isset($_COOKIE['sessionSecret_' . substr(session_id(), 0, 16)])) {
             $token .= $_COOKIE['sessionSecret_' . substr(session_id(), 0, 16)];
-        } elseif (
-            strpos(strtolower($_SERVER['PHP_SELF']), 'webdisk.php') !== false &&
-            isset($_POST['key'])
-        ) {
-            $token .= $_POST['key'];
         }
     }
     return md5($token);
@@ -2018,61 +2013,7 @@ function getFileContents($fileName) {
 }
 
 /**
- * get/copy file(s) selected using the webdisk upload widget
- *
- * @param string $webdiskFile Webdisk file ID
- * @param int $destinationFile Destination file name
- * @return array
- */
-function getUploadedWebdiskFile($webdiskFile, $destinationFile) {
-    global $userRow;
-
-    // user row available?
-    if (!isset($userRow) || !is_array($userRow)) {
-        return [];
-    }
-
-    $resultArray = false;
-
-    if (!class_exists('BMWebdisk')) {
-        include B1GMAIL_DIR . 'serverlib/webdisk.class.php';
-    }
-    $webdisk = _new('BMWebdisk', [$userRow['id']]);
-    $file = $webdisk->GetFileInfo($webdiskFile);
-
-    if ($file) {
-        $sourceFP = BMBlobStorage::createProvider(
-            $file['blobstorage'],
-            $userRow['id'],
-        )->loadBlob(BMBLOB_TYPE_WEBDISK, $webdiskFile);
-        if ($sourceFP) {
-            $destFP = fopen($destinationFile, 'wb');
-            if ($destFP) {
-                while (!feof($sourceFP)) {
-                    $chunk = fread($sourceFP, 4096);
-                    fwrite($destFP, $chunk);
-                }
-                fclose($destFP);
-
-                $resultArray = [
-                    'name' => $file['dateiname'],
-                    'type' => $file['contenttype'],
-                    'size' => $file['size'],
-                    'tmp_name' => '-none-',
-                    'error' => 0,
-                    'dest' => $destinationFile,
-                ];
-            }
-        }
-
-        fclose($sourceFP);
-    }
-
-    return $resultArray;
-}
-
-/**
- * get/copy file(s) uploaded using the local/webdisk upload widget
+ * get/copy file(s) uploaded using the local upload widget
  *
  * @param string $fieldName Field name
  * @param int $lifeTime Lifetime for temp files
@@ -2088,7 +2029,6 @@ function getUploadedFiles($fieldName, $lifeTime = 28800) {
 
     // get file vars
     $localFile = $_FILES['localFile_' . $fieldName];
-    $webdiskFile = (int) $_REQUEST['webdiskFile_' . $fieldName . '_id'];
 
     // file uploaded
     if (
@@ -2149,29 +2089,12 @@ function getUploadedFiles($fieldName, $lifeTime = 28800) {
         }
     }
 
-    // file from webdisk
-    elseif ($webdiskFile > 0) {
-        $destinationFileID = RequestTempFile(
-            $userRow['id'],
-            time() + $lifeTime,
-        );
-        $destinationFile = TempFileName($destinationFileID);
-
-        $resultItem = getUploadedWebdiskFile($webdiskFile, $destinationFile);
-        if ($resultItem) {
-            $resultItem['dest_id'] = $destinationFileID;
-            return [$resultItem];
-        } else {
-            ReleaseTempFile($userRow['id'], $destinationFileID);
-        }
-    }
-
     // no file
     return [];
 }
 
 /**
- * get/copy a file uploaded using the local/webdisk upload widget
+ * get/copy a file uploaded using the local upload widget
  *
  * @param string $fieldName Field name
  * @param string $destinationFile Destination path
@@ -2187,7 +2110,6 @@ function getUploadedFile($fieldName, $destinationFile) {
 
     // get file vars
     $localFile = $_FILES['localFile_' . $fieldName];
-    $webdiskFile = (int) $_REQUEST['webdiskFile_' . $fieldName . '_id'];
 
     // file uploaded
     if (
@@ -2200,11 +2122,6 @@ function getUploadedFile($fieldName, $destinationFile) {
         } else {
             return false;
         }
-    }
-
-    // file from webdisk
-    elseif ($webdiskFile > 0) {
-        return getUploadedWebdiskFile($webdiskFile, $destinationFile);
     }
 
     // no file

@@ -113,18 +113,7 @@ class BMPlugin_Widget_Webdiskspace extends BMPlugin {
     }
 
     function renderWidget() {
-        global $tpl, $thisUser;
-
-        if (!class_exists('BMWebdisk')) {
-            include B1GMAIL_DIR . 'serverlib/webdisk.class.php';
-        }
-
-        $webdisk = _new('BMWebdisk', [$thisUser->_id]);
-        $spaceLimit = $webdisk->GetSpaceLimit();
-        $usedSpace = $webdisk->GetUsedSpace();
-
-        $tpl->assign('bmwidget_webdiskspace_spaceUsed', $usedSpace);
-        $tpl->assign('bmwidget_webdiskspace_spaceLimit', $spaceLimit);
+        // Keep this as a dummy for now.
         return true;
     }
 }
@@ -240,17 +229,7 @@ class BMPlugin_Widget_WebdiskDND extends BMPlugin {
     }
 
     function renderWidget() {
-        global $tpl;
-        $tpl->assign(
-            'bmwidget_webdiskdnd_userAgent',
-            $_SERVER['HTTP_USER_AGENT'],
-        );
-        $tpl->assign(
-            'bmwidget_webdiskdnd_dndKey',
-            isset($_COOKIE['sessionSecret_' . substr(session_id(), 0, 16)])
-                ? $_COOKIE['sessionSecret_' . substr(session_id(), 0, 16)]
-                : '',
-        );
+        // Keep this as a dummy for now.
         return true;
     }
 }

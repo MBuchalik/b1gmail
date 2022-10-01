@@ -59,7 +59,6 @@
 							<li><a href="prefs.common.php?sid={$sid}"><img src="./templates/images/ico_prefs_common.png" />{lng p="common"}</a></li>
 							<li><a href="prefs.email.php?sid={$sid}"><img src="./templates/images/ico_prefs_email.png" />{lng p="email"}</a></li>
 							<li><a href="prefs.recvrules.php?sid={$sid}"><img src="./templates/images/rule32.png" />{lng p="recvrules"}</a></li>
-							<li><a href="prefs.webdisk.php?sid={$sid}"><img src="./templates/images/ico_disk.png" />{lng p="webdisk"}</a></li>
 							<li><a href="prefs.profilefields.php?sid={$sid}"><img src="./templates/images/field32.png" />{lng p="profilefields"}</a></li>
 							<li><a href="prefs.languages.php?sid={$sid}"><img src="./templates/images/lang32.png" />{lng p="languages"}</a></li>
 							<li><a href="prefs.templates.php?sid={$sid}"><img src="./templates/images/template.png" />{lng p="templates"}</a></li>

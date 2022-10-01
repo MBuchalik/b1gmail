@@ -182,20 +182,6 @@ function ProcessBirthdayNotifications() {
 }
 
 /**
- * reset webdisk traffic
- *
- */
-function ResetWebdiskTraffic() {
-    global $db;
-
-    $db->Query(
-        'UPDATE {pre}users SET traffic_down=0,traffic_up=0,traffic_status=? WHERE traffic_status!=?',
-        (int) date('m'),
-        (int) date('m'),
-    );
-}
-
-/**
  * clean up expired cert mails
  *
  */

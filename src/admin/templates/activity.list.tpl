@@ -18,10 +18,6 @@
 				{if $sortBy=='email'}<img src="{$tpldir}images/sort_{$sortOrder}.png" border="0" alt="" width="7" height="6" align="absmiddle" />{/if}</a></th>
 			<th width="80"><a href="javascript:updateSort('mailspace_used');">{lng p="email"}
 				{if $sortBy=='mailspace_used'}<img src="{$tpldir}images/sort_{$sortOrder}.png" border="0" alt="" width="7" height="6" align="absmiddle" />{/if}</a></th>
-			<th width="80"><a href="javascript:updateSort('diskspace_used');">{lng p="webdisk"}
-				{if $sortBy=='diskspace_used'}<img src="{$tpldir}images/sort_{$sortOrder}.png" border="0" alt="" width="7" height="6" align="absmiddle" />{/if}</a></th>
-			<th width="80"><a href="javascript:updateSort('traffic');">{lng p="wdtrafficshort"}
-				{if $sortBy=='traffic'}<img src="{$tpldir}images/sort_{$sortOrder}.png" border="0" alt="" width="7" height="6" align="absmiddle" />{/if}</a></th>
 			<th width="80"><a href="javascript:updateSort('received_mails');">{lng p="receivedmails"}
 				{if $sortBy=='received_mails'}<img src="{$tpldir}images/sort_{$sortOrder}.png" border="0" alt="" width="7" height="6" align="absmiddle" />{/if}</a></th>
 			<th width="80"><a href="javascript:updateSort('sent_mails');">{lng p="sentmails"}
@@ -37,15 +33,12 @@
 			<td>{$user.id}</td>
 			<td><a href="users.php?do=edit&id={$user.id}&sid={$sid}">{email value=$user.email cut=30}</a></td>
 			<td>{progressBar value=$user.mailspace_used max=$user.mailspace_max width=75}</td>
-			<td>{progressBar value=$user.diskspace_used max=$user.diskspace_max width=75}</td>
-			<td>{progressBar value=$user.traffic max=$user.traffic_max width=75}</td>
 			<td>{$user.received_mails}</td>
 			<td>{$user.sent_mails}</td>
 			<td>
 				<a href="users.php?do=edit&id={$user.id}&sid={$sid}"><img src="{$tpldir}images/edit.png" border="0" alt="{lng p="edit"}" width="16" height="16" /></a>
 				<a href="javascript:singleAction('{if $user.gesperrt=='no'}lock{elseif $user.gesperrt=='yes'}unlock{elseif $user.gesperrt=='locked'}activate{elseif $user.gesperrt=='delete'}recover{/if}', '{$user.id}');"><img src="{$tpldir}images/{if $user.gesperrt=='no'}lock{elseif $user.gesperrt=='yes'}unlock{elseif $user.gesperrt=='locked'}unlock{elseif $user.gesperrt=='delete'}recover{/if}.png" border="0" alt="{if $user.gesperrt=='no'}{lng p="lock"}{elseif $user.gesperrt=='yes'}{lng p="unlock"}{elseif $user.gesperrt=='locked'}{lng p="activate"}{elseif $user.gesperrt=='delete'}{lng p="recover"}{/if}" width="16" height="16" /></a>
 				<a href="javascript:singleAction('delete', '{$user.id}');"><img src="{$tpldir}images/{if $user.gesperrt=='delete'}delete{else}trash{/if}.png" border="0" alt="{lng p="delete"}" width="16" height="16" /></a>
-				<!--<a href="javascript:singleAction('mail', '{$user.id}');"><img src="{$tpldir}images/ico_sendmail.png" border="0" alt="{lng p="sendmail"}" width="16" height="16" /></a>-->
 				<a href="users.php?do=login&id={$user.id}&sid={$sid}" target="_blank" onclick="return confirm('{lng p="loginwarning"}');"><img src="{$tpldir}images/login.png" border="0" alt="{lng p="login"}" width="16" height="16" /></a>
 			</td>
 		</tr>

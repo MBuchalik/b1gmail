@@ -141,14 +141,6 @@
 						<td class="td1" width="160">{lng p="mailspace_add"}:</td>
 						<td class="td2"><input type="text" name="mailspace_add" value="{$user.mailspace_add/1024/1024}" size="8" /> MB</td>
 					</tr>
-					<tr>
-						<td class="td1">{lng p="diskspace_add"}:</td>
-						<td class="td2"><input type="text" name="diskspace_add" value="{$user.diskspace_add/1024/1024}" size="8" /> MB</td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="traffic_add"}:</td>
-						<td class="td2"><input type="text" name="traffic_add" value="{$user.traffic_add/1024/1024}" size="8" /> MB</td>
-					</tr>
 				</table>
 			</fieldset>
 		</td>
@@ -165,21 +157,6 @@
 							<small>{size bytes=$user.mailspace_used} / {size bytes=$group.storage} {lng p="used"}</small>
 						</td>
 					</tr>
-					<tr>
-						<td class="td1">{lng p="webdisk"}:</td>
-						<td class="td2">
-							{$diskFiles} {lng p="files"}, {$diskFolders} {lng p="folders"}
-							{progressBar value=$user.diskspace_used max=$group.webdisk width=200}
-							<small>{size bytes=$user.diskspace_used} / {size bytes=$group.webdisk} {lng p="used"}</small>
-						</td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="wdtraffic"}:</td>
-						<td class="td2">
-							{if $group.traffic>0}{progressBar value=$user.traffic_down+$user.traffic_up max=$group.traffic width=200}{/if}
-							<small>{size bytes=$user.traffic_down+$user.traffic_up}{if $group.traffic>0} / {size bytes=$group.traffic}{/if} {lng p="used2"}</small>
-						</td>
-					</tr>	
 				</table>
 			</fieldset>
 

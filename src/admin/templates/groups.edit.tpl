@@ -25,10 +25,6 @@
 						<td class="td1" width="160">{lng p="email"}:</td>
 						<td class="td2"><input type="text" name="storage" value="{$group.storage/1024/1024}" size="8" /> MB</td>
 					</tr>
-					<tr>
-						<td class="td1">{lng p="webdisk"}:</td>
-						<td class="td2"><input type="text" name="webdisk" value="{$group.webdisk/1024/1024}" size="8" /> MB</td>
-					</tr>
 				</table>
 			</fieldset>
 			
@@ -43,18 +39,6 @@
 					<tr>
 						<td class="td1">{lng p="emailout"}:</td>
 						<td class="td2"><input type="text" name="anlagen" value="{$group.anlagen/1024}" size="8" /> KB</td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="wdtraffic"}:</td>
-						<td class="td2"><input type="text" name="traffic" value="{if $group.traffic>0}{$group.traffic/1024/1024}{else}{$group.traffic}{/if}" size="8" /> MB</td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="wdspeed"}:</td>
-						<td class="td2"><input type="text" name="wd_member_kbs" value="{$group.wd_member_kbs}" size="8" /> KB/s</td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="sharespeed"}:</td>
-						<td class="td2"><input type="text" name="wd_open_kbs" value="{$group.wd_open_kbs}" size="8" /> KB/s</td>
 					</tr>
 					<tr>
 						<td class="td1" width="220">{lng p="maxrecps"}:</td>
@@ -109,10 +93,6 @@
 					<tr>
 						<td class="td1">{lng p="mobileaccess"}?</td>
 						<td class="td2"><input type="checkbox" name="wap"{if $group.wap=='yes'} checked="checked"{/if} /></td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="wdshare"}?</td>
-						<td class="td2"><input type="checkbox" name="share"{if $group.share=='yes'} checked="checked"{/if} /></td>
 					</tr>
 					<tr>
 						<td class="td1">{lng p="smtp"}?</td>

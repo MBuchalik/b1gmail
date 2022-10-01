@@ -36,10 +36,6 @@
 					<td width="20" valign="top"><input type="radio" id="rebuild_email" name="rebuild" value="email" checked="checked" /></td>
 					<td><label for="rebuild_email"><b>{lng p="rbbs_email"}</b></label></td>
 				</tr>
-				<tr>
-					<td valign="top"><input type="radio" id="rebuild_webdisk" name="rebuild" value="webdisk" /></td>
-					<td><label for="rebuild_webdisk"><b>{lng p="rbbs_webdisk"}</b></label></td>
-				</tr>
 			</table>
 		</blockquote>
 
