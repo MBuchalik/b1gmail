@@ -121,6 +121,7 @@ $htaccessFiles = [
     B1GMAIL_DIR . 'config/.htaccess',
     B1GMAIL_DIR . 'logs/.htaccess',
     B1GMAIL_DIR . 'temp/.htaccess',
+    B1GMAIL_DIR . 'interface/.htaccess',
 
     // This is probably not super important, but just to make sure that clients don't call a file we did not expect them to call, we want this .htaccess file to exist.
     B1GMAIL_DIR . 'serverlib/.htaccess',
