@@ -777,16 +777,10 @@ function TemplateFileSelector($params, $smarty) {
     return sprintf(
         '<table width="100%%" cellspacing="1" cellpadding="0">' .
             '<tr>' .
-            '<td width="10"><select onchange="changeFileSelectorSource(this, \'%s\')">' .
-            '<option value="local">%s</option>' .
-            '</select></td>' .
-            '<td width="5">&nbsp;</td>' .
             '<td><div id="fileSelector_local_%s" style="display:;"><input type="file" id="localFile_%s" name="localFile_%s%s" size="%d" style="width: 100%%;"%s /></div>' .
             '</td>' .
             '</tr>' .
             '</table>',
-        $name,
-        $lang_user['localfile'],
         $name,
         $name,
         $name,
