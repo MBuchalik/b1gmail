@@ -162,23 +162,6 @@
 			</fieldset>
 			
 			<fieldset>
-				<legend>{lng p="bmtoolbox"}</legend>
-				
-				<table width="100%">
-					<tr>
-						<td class="td1" width="150">{lng p="tbx_enable"}?</td>
-						<td class="td2"><input type="checkbox" name="checker"{if $group.checker=='yes'} checked="checked"{/if} /></td>
-						<td class="td2" width="150">&nbsp;</td>
-						<td class="td2">&nbsp;</td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="tbx_webdisk"}?</td>
-						<td class="td2"><input type="checkbox" name="tbx_webdisk"{if $group.tbx_webdisk=='yes'} checked="checked"{/if} /></td>
-					</tr>
-				</table>
-			</fieldset>
-			
-			<fieldset>
 				<legend>{lng p="aliasdomains"}</legend>
 				
 				<textarea style="width:100%;height:80px;" name="saliase">{text value=$group.saliase allowEmpty=true}</textarea>

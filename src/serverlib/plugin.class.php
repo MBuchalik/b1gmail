@@ -385,27 +385,6 @@ class BMPlugin {
     function renderWidgetPrefs() {
     }
 
-    /**
-     * tool interface CheckLogin extender
-     *
-     * @param BMUser $user BMUser object of logged in user
-     * @return array
-     */
-    function ToolInterfaceCheckLogin($user) {
-        return false;
-    }
-
-    /**
-     * tool interface unknown method handler
-     *
-     * @param string $method Method name
-     * @param array $params Method params
-     * @param array $result Result array
-     * @param BMToolInterface $ti BMToolInterface instance
-     */
-    function ToolInterfaceHandler($method, $params, &$result, &$ti) {
-    }
-
     //
     // internal functions
     //

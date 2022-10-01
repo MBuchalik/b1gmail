@@ -709,13 +709,6 @@ $lang_user['signatures'] = 'Signaturen';
 $lang_user['aliases'] = 'Aliase';
 $lang_user['autoresponder'] = 'Automatische Antwort';
 $lang_user['extpop3'] = 'POP3-Sammeldienst';
-$lang_user['software'] = 'Software';
-$lang_user['software_intro'] =
-    'Hier k&ouml;nnen Sie %s herunterladen &mdash; unsere Software f&uuml;r Ihren PC oder Mac. %s enth&auml;lt unter anderem einen E-Mail-Pr&uuml;fer und viele andere Tools zum einfachen Zugriff auf unsere Dienste.';
-$lang_user['software_win'] =
-    'Hier k&ouml;nnen Sie unsere Software f&uuml;r Windows-PCs herunterladen. Die Software erfordert einen PC mit Windows XP oder neuer. Nach dem Download starten Sie die Installation einfach durch Doppelklick auf die heruntergeladene Datei.';
-$lang_user['software_mac'] =
-    'Hier k&ouml;nnen Sie unsere Software f&uuml;r Mac OS X herunterladen. Die Software erfordert einen Mac mit OS X 10.7 oder neuer. Nach Download entpacken Sie einfach die heruntergeladene Datei und verschieben diese in Ihren Programme-Ordner.';
 $lang_user['membership'] = 'Mitgliedschaft';
 $lang_user['validity'] = 'G&uuml;ltigkeit';
 $lang_user['certificate'] = 'Zertifikat';
@@ -894,10 +887,8 @@ $lang_user['welcome'] = 'Herzlich Willkommen';
 $lang_user['welcometext'] = '<b>Herzlich Willkommen</b> bei %s, %s!';
 $lang_user['newmailtext'] = '<b>%d</b> ungelesene E-Mails';
 $lang_user['datetext'] = '<b>%d</b> Termine';
-$lang_user['tasktext'] = '<b>%d</b> unerledigte Aufgaben';
 $lang_user['newmailtext1'] = '<b>%d</b> ungelesene E-Mail';
 $lang_user['datetext1'] = '<b>%d</b> Termin';
-$lang_user['tasktext1'] = '<b>%d</b> unerledigte Aufgabe';
 $lang_user['websearch'] = 'Web-Suche';
 $lang_user['activewidgets'] = 'Anzuzeigende Elemente';
 $lang_user['quicklinks'] = 'Quick-Links';
@@ -1179,43 +1170,6 @@ $lang_admin['languages'] = 'Sprachen';
 $lang_admin['ads'] = 'Werbung';
 $lang_admin['faq'] = 'FAQ';
 $lang_admin['tools'] = 'Tools';
-$lang_admin['toolbox'] = 'Toolbox';
-$lang_admin['test'] = 'Testen';
-$lang_admin['release'] = 'Freigeben';
-$lang_admin['preparing'] = 'Vorbereiten';
-$lang_admin['releasedone'] =
-    'Die Version wurde erfolgreich freigegeben. Ihre Benutzer finden die Version nun unter &quot;Einstellungen&quot; &raquo; &quot;Software&quot; im Benutzer-Account. Benutzer, die bereits eine &auml;ltere Version einsetzen, erhalten in K&uuml;rze einen Update-Hinweis von der Toolbox-Anwendung.';
-$lang_admin['reallyrelease'] =
-    'Sind Sie sicher, dass Sie diese Version freigeben möchten?';
-$lang_admin['releaseversion'] = 'Version testen und freigeben';
-$lang_admin['toolboxrelease'] =
-    'Sie k&ouml;nnen die Toolbox-Version nun testen und freigeben. Klicken Sie auf &quot;Testen (Windows/Mac)&quot;, um eine Testkopie der Version herunterzuladen. Nach dem Test k&ouml;nnen Sie die Version per Klick auf &quot;Freigeben&quot; f&uuml;r Ihre Benutzer zur Verf&uuml;gung stellen.';
-$lang_admin['toolboxonlinenote'] =
-    'Beim Klick auf &quot;Testen&quot; bzw. &quot;Freigeben&quot; wird die Konfiguration dieser Toolbox-Version (Titel, Branding, Bilder usw.) zur Erstellung Ihrer individuellen Toolbox-Version an den b1gMail Projekt-Server &uuml;bertragen. Je nach Internetverbindung kann die Erstellung der Test-/Releasedateien einen Moment dauern.';
-$lang_admin['keepcurrentimg'] = 'Aktuelles Bild beibehalten';
-$lang_admin['toolboxfileerr'] =
-    'Die folgenden Bilder konnte nicht &uuml;bernommen werden. Bitte stellen Sie sicher, dass die Bildgr&ouml;&szlig;e den Vorgaben entspricht und dass es sich um eine Datei im PNG-Format handelt.';
-$lang_admin['versions'] = 'Versionen';
-$lang_admin['addversion'] = 'Version hinzuf&uuml;gen';
-$lang_admin['baseversion'] = 'Basis-Version';
-$lang_admin['created'] = 'Erstellt';
-$lang_admin['released'] = 'Freigegeben';
-$lang_admin['tbx_welcome1'] =
-    'Die Toolbox ist eine Anwendung, die Ihre Benutzer auf ihren Computern installieren k&ouml;nnen, um den E-Mail-Dienst in ihren Desktop zu integrieren. Die Toolbox enth&auml;lt z.B. eine Funktion zur Benachrichtigung &uuml;ber neue E-Mails, einen Faxdrucker und Webdisk-Synchronisierung.';
-$lang_admin['tbx_welcome2'] =
-    'Um Ihren Benutzern die Toolbox anbieten zu k&ouml;nnen, m&uuml;ssen Sie hier eine neue Version der Toolbox anlegen und freigeben. Klicken Sie dazu unten auf dieser Seite auf &quot;Hinzuf&uuml;gen&quot;, legen Sie die Einstellungen und das Branding der Toolbox fest und geben Sie die Version dann frei. Ihre Benutzer finden den Toolbox-Download dann im Benutzer-Account unter &quot;Einstellungen&quot; &raquo; &quot;Software&quot;.';
-$lang_admin['branding'] = 'Branding';
-$lang_admin['apptitle'] = 'Anwendungs-Titel';
-$lang_admin['serviceurl'] = 'Service-URL';
-$lang_admin['servicetitle'] = 'Service-Titel';
-$lang_admin['applogo'] = 'Anwendungs-Logo';
-$lang_admin['tbbranding'] = 'Toolbar-Branding';
-$lang_admin['wizardleft'] = 'Setup-Banner links';
-$lang_admin['wizardhead'] = 'Setup-Banner oben';
-$lang_admin['style'] = 'Stil';
-$lang_admin['native'] = 'Nativ';
-$lang_admin['stylesheet'] = 'Stylesheet';
-$lang_admin['names'] = 'Namen';
 $lang_admin['optimize'] = 'Optimierung';
 $lang_admin['stats'] = 'Statistiken';
 $lang_admin['logs'] = 'Logs';
@@ -1628,9 +1582,6 @@ $lang_admin['webdav'] = 'WebDAV';
 $lang_admin['autoresponder'] = 'Autoresponder';
 $lang_admin['mobileaccess'] = 'Mobil-Zugriff';
 $lang_admin['mailchecker'] = 'Mailchecker';
-$lang_admin['bmtoolbox'] = 'b1gMail-Toolbox';
-$lang_admin['tbx_enable'] = 'Toolbox anbieten';
-$lang_admin['tbx_webdisk'] = 'Webdisk-Sync';
 $lang_admin['issue_certificates'] = 'Zertifikat ausstellen';
 $lang_admin['upload_certificates'] = 'Zertifikat hochladbar';
 $lang_admin['wdshare'] = 'Webdisk-Freigabe';

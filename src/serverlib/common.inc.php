@@ -2735,11 +2735,6 @@ function RequestPrivileges($privileges, $return = false) {
         $ok = $groupRow['wap'] == 'yes';
     }
 
-    // client api access privileges?
-    if (($privileges & PRIVILEGES_CLIENTAPI) != 0 && $ok) {
-        $ok = true;
-    }
-
     // requested action not allowed
     if (!$ok && !$return) {
         if (ADMIN_MODE) {

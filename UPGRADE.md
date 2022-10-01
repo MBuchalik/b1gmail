@@ -1,5 +1,17 @@
 > This file describes important steps that need to be performed when upgrading from one major b1gmail version to another.
 
+## Version 8.0.0 to 9.0.0
+
+### After running the update
+
+You can safely delete files from the `data/` directory with the following names:
+
+- `backup_(3DigitNumber)_patchlevel_*`
+- `toolboxImage_*`
+- `toolboxRelease_*`
+
+Here, "3DigitNumber" is a number like "720", "730" or "740".
+
 ## Version 7.4.0 to 8.0.0
 
 ### Before running the update

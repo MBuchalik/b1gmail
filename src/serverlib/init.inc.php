@@ -72,7 +72,6 @@ if (!defined('INTERFACE_MODE')) {
 if (!defined('EXTENDED_WORKGROUPS')) {
     define('EXTENDED_WORKGROUPS', false);
 }
-define('TOOLBOX_SERVER', 'https://service.b1gmail.org/toolbox/');
 define('SERVER_WINDOWS', strtolower(substr(PHP_OS, 0, 3)) == 'win');
 define(
     'SERVER_IIS',
@@ -116,9 +115,8 @@ define('TIME_ONE_MONTH', 31 * TIME_ONE_DAY);
 define('TIME_ONE_YEAR', 365 * TIME_ONE_DAY);
 define('ACCOUNT_LOCK_TIME', 5 * TIME_ONE_MINUTE);
 define('PRIVILEGES_USER', 1); // privileges
-define('PRIVILEGES_CLIENTAPI', 2);
-define('PRIVILEGES_ADMIN', 4);
-define('PRIVILEGES_MOBILE', 8);
+define('PRIVILEGES_ADMIN', 2);
+define('PRIVILEGES_MOBILE', 4);
 define('FOLDER_INBOX', 0); // special folders
 define('FOLDER_OUTBOX', -2);
 define('FOLDER_DRAFTS', -3);

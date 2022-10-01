@@ -33,6 +33,22 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
             return false;
         }
 
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_tbx_versions')) {
+            return false;
+        }
+
+        if (
+            !mysqli_query(
+                $dbConnection,
+                'ALTER TABLE bm60_gruppen
+                    DROP COLUMN checker,
+                    DROP COLUMN tbx_webdisk
+            ',
+            )
+        ) {
+            return false;
+        }
+
         return true;
     }
 }

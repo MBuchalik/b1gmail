@@ -79,27 +79,6 @@ if ($groupRow['responder'] == 'yes') {
 if ($groupRow['ownpop3'] > 0) {
     $prefsItems['extpop3'] = true;
 }
-$tbxRelease = false;
-if ($groupRow['checker'] == 'yes') {
-    // check if toolbox is available
-    $res = $db->Query(
-        'SELECT `versionid`,`base_version`,`release_files`,`config` FROM {pre}tbx_versions WHERE `status`=? ORDER BY `versionid` DESC LIMIT 1',
-        'released',
-    );
-    while ($tbxRow = $res->FetchArray(MYSQLI_ASSOC)) {
-        $tbxRelease = @unserialize($tbxRow['release_files']);
-        if (!is_array($tbxRelease)) {
-            $tbxRelease = false;
-        }
-        $tbxConfig = @unserialize($tbxRow['config']);
-        break;
-    }
-    $res->Free();
-
-    if ($tbxRelease) {
-        $prefsItems['software'] = true;
-    }
-}
 $prefsItems['faq'] = true;
 $prefsItems['membership'] = true;
 
@@ -1508,62 +1487,6 @@ if ($_REQUEST['action'] == 'start') {
         $tpl->assign('pageContent', 'li/prefs.extpop3.tpl');
         $tpl->display('li/index.tpl');
     }
-} /**
- * software
- */ elseif ($_REQUEST['action'] == 'software' && $tbxRelease) {
-    // download?
-    if (
-        isset($_REQUEST['do']) &&
-        $_REQUEST['do'] == 'download' &&
-        isset($_REQUEST['os']) &&
-        isset($tbxRelease[$_REQUEST['os']])
-    ) {
-        $fileName = B1GMAIL_DATA_DIR . $tbxRelease[$_REQUEST['os']];
-        header('Pragma: public');
-        header('Content-Type: application/octet-stream');
-        header('Content-Length: ' . filesize($fileName));
-        header(
-            sprintf(
-                'Content-Disposition: attachment; filename="%s-Toolbox-%s.%d-%s.%s"',
-                preg_replace(
-                    '/[^a-zA-Z0-9]/',
-                    '',
-                    $tbxConfig['branding']['serviceTitle'],
-                ),
-                $tbxRow['base_version'],
-                $tbxRow['versionid'],
-                $_REQUEST['os'],
-                $_REQUEST['os'] == 'win' ? 'exe' : 'zip',
-            ),
-        );
-        readfile($fileName);
-        exit();
-    }
-
-    // get sizes
-    $fileSizes = [];
-    foreach ($tbxRelease as $os => $fileName) {
-        $fileName = B1GMAIL_DATA_DIR . $fileName;
-        $fileSizes[$os] = @filesize($fileName);
-    }
-
-    // page output
-    $tpl->assign(
-        'introText',
-        sprintf(
-            $lang_user['software_intro'],
-            HTMLFormat($tbxConfig['branding']['appTitle']),
-            HTMLFormat($tbxConfig['branding']['appTitle']),
-        ),
-    );
-    $tpl->assign('releaseFiles', $tbxRelease);
-    $tpl->assign('fileSizes', $fileSizes);
-    $tpl->assign(
-        'verNo',
-        sprintf('%s.%d', $tbxRow['base_version'], $tbxRow['versionid']),
-    );
-    $tpl->assign('pageContent', 'li/prefs.software.tpl');
-    $tpl->display('li/index.tpl');
 } /**
  * faq
  */ elseif ($_REQUEST['action'] == 'faq') {

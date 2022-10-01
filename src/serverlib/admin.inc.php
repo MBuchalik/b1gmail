@@ -316,33 +316,6 @@ function GetGroupSpaceUsage() {
 }
 
 /**
- * load toolbox config descriptors
- *
- * @return array
- */
-function LoadTbxConfigDescriptors() {
-    global $lang_admin, $lang_user, $lang_client, $bm_prefs;
-
-    $tbxConfig = [];
-    include B1GMAIL_DIR . 'serverlib/toolbox.config.php';
-
-    function cmpTbxConfig($a, $b) {
-        if ($a == $b) {
-            return 0;
-        }
-
-        [$aMajor, $aMinor] = explode('.', $a);
-        [$bMajor, $bMinor] = explode('.', $b);
-
-        return $aMajor * 1000 + $aMinor - ($bMajor * 1000 + $bMinor);
-    }
-
-    uksort($tbxConfig, 'cmpTbxConfig');
-
-    return $tbxConfig;
-}
-
-/**
  * delete an user and associated data
  *
  * @param int $userID

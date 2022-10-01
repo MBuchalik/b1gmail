@@ -725,12 +725,6 @@ $lang_user['movemailto'] = 'Move email to';
 
 // prefs
 $lang_user['autosend'] = 'Send automatically';
-$lang_user['software_intro'] =
-    'Here you can download %s &mdash; our software package for your PC or Mac. %s contains an email checker and several other tools to integrate our services into your desktop.';
-$lang_user['software_win'] =
-    'Here you can download our software for your Windows PC. Windows XP or higher is required. After downloading, you can start the installation by double-clicking the downloaded file.';
-$lang_user['software_mac'] =
-    'Here you can download our software for your Mac. OS X 10.7 or newer is required. After downloading, just extract the downloaded file and move the program to your Applications folder.';
 $lang_user['defaults'] = 'Defaults';
 $lang_user['options'] = 'Options';
 $lang_user['nospamoverride'] = 'Override spam filter';
@@ -744,7 +738,6 @@ $lang_user['signatures'] = 'Signatures';
 $lang_user['aliases'] = 'Aliases';
 $lang_user['autoresponder'] = 'Autoresponder';
 $lang_user['extpop3'] = 'POP3 accounts';
-$lang_user['software'] = 'Software';
 $lang_user['membership'] = 'Membership';
 $lang_user['validity'] = 'Validity';
 $lang_user['certificate'] = 'Certificate';
@@ -910,10 +903,8 @@ $lang_user['welcome'] = 'Welcome';
 $lang_user['welcometext'] = '<b>Welcome</b> to %s, %s!';
 $lang_user['newmailtext'] = '<b>%d</b> unread messages';
 $lang_user['datetext'] = '<b>%d</b> dates';
-$lang_user['tasktext'] = '<b>%d</b> undone tasks';
 $lang_user['newmailtext1'] = '<b>%d</b> unread message';
 $lang_user['datetext1'] = '<b>%d</b> date';
-$lang_user['tasktext1'] = '<b>%d</b> undone task';
 $lang_user['websearch'] = 'Web search';
 $lang_user['activewidgets'] = 'Active widgets';
 $lang_user['quicklinks'] = 'Quick links';
@@ -1120,45 +1111,6 @@ $lang_admin['enableolder'] = 'Enable for entries older than';
 $lang_admin['week'] = 'Week';
 $lang_admin['calendarviewmode'] = 'Calendar view';
 $lang_admin['month'] = 'Month';
-$lang_admin['toolbox'] = 'Toolbox';
-$lang_admin['test'] = 'Test';
-$lang_admin['release'] = 'Release';
-$lang_admin['preparing'] = 'Preparing';
-$lang_admin['releasedone'] =
-    'The version has been released. Your users can download it in their accounts at &quot;Preferences&quot; &raquo; &quot;Software&quot;. Users of older version will receive an update notification.';
-$lang_admin['reallyrelease'] = 'Are you sure you want to release this version?';
-$lang_admin['releaseversion'] = 'Test and release version';
-$lang_admin['toolboxrelease'] =
-    'You can now test and release the version. Click &quot;Test (Windows/Mac)&quot; to download a test copy of the version. After testing, you can release the version to your users by clicking &quot;Release&quot;.';
-$lang_admin['toolboxonlinenote'] =
-    'When clicking &quot;Test&quot; or &quot;Release&quot;, the configuration of this release will be transmitted to the b1gMail project server in order to create the release files. Creating the test or release versions may take a few minutes.';
-$lang_admin['keepcurrentimg'] = 'Keep current image';
-$lang_admin['toolboxfileerr'] =
-    'The following images could not be saved. Please ensure that the image matches the required size and is in PNG format.';
-$lang_admin['versions'] = 'Versions';
-$lang_admin['addversion'] = 'Add version';
-$lang_admin['baseversion'] = 'Base version';
-$lang_admin['created'] = 'Created';
-$lang_admin['released'] = 'Released';
-$lang_admin['tbx_welcome1'] =
-    'The Toolbox is an application that can be installed by your cutomers on their desktop PCs. It contains an email checker, a fax printer, Webdisk synchronization and more.';
-$lang_admin['tbx_welcome2'] =
-    'In order to offer the Toolbox download to your users, you must create a Toolbox version and release it. Just click at &quot;Add&quot; at the bottom of this page, configure your Toolbox version and test and release it. Your users can find the Toolbox downloads in their account at &quot;Preferences&quot; &raquo; &quot;Software&quot; afterwards.';
-$lang_admin['branding'] = 'Branding';
-$lang_admin['apptitle'] = 'Application title';
-$lang_admin['serviceurl'] = 'Service URL';
-$lang_admin['servicetitle'] = 'Service title';
-$lang_admin['applogo'] = 'Application logo';
-$lang_admin['tbbranding'] = 'Toolbar branding';
-$lang_admin['wizardleft'] = 'Setup banner left';
-$lang_admin['wizardhead'] = 'Setup banner top';
-$lang_admin['style'] = 'Style';
-$lang_admin['native'] = 'Native';
-$lang_admin['stylesheet'] = 'Stylesheet';
-$lang_admin['names'] = 'Names';
-$lang_admin['bmtoolbox'] = 'b1gMail Toolbox';
-$lang_admin['tbx_enable'] = 'Offer Toolbox';
-$lang_admin['tbx_webdisk'] = 'Webdisk sync';
 $lang_admin['prefslayout'] = 'Preferences overview';
 $lang_admin['onecolumn'] = 'One column';
 $lang_admin['twocolumns'] = 'Two columns';
