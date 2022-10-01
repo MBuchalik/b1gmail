@@ -1503,11 +1503,6 @@ if ($_REQUEST['action'] == 'start') {
                 $row['antwort'],
             );
             $row['antwort'] = str_replace(
-                '%%wddomain%%',
-                str_replace('@', '.', $userRow['email']),
-                $row['antwort'],
-            );
-            $row['antwort'] = str_replace(
                 '%%selfurl%%',
                 $bm_prefs['selfurl'],
                 $row['antwort'],

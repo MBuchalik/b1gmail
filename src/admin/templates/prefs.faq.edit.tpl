@@ -56,7 +56,6 @@
 					<select class="smallInput" onchange="editor.insertText(this.value);">
 						<option value="">-- {lng p="vars"} --</option>
 						<option value="%%user%%">%%user%% ({lng p="email"})</option>
-						<option value="%%wddomain%%">%%wddomain%% ({lng p="wddomain"})</option>
 						<option value="%%selfurl%%">%%selfurl%% ({lng p="selfurl"})</option>
 						<option value="%%hostname%%">%%hostname%% ({lng p="hostname"})</option>
 					</select>
