@@ -1079,7 +1079,6 @@ $lang_admin['buildindex_desc'] =
 $lang_admin['optimizeindex'] = 'Optimize index';
 $lang_admin['optimizeindex_desc'] =
     'This feature can be used to optimize the search index databases of your users. Optimization may release unused space, compact the databases and increase the search performance in case databases became fragmented over time.';
-$lang_admin['organizerdav'] = 'CalDAV/CardDAV';
 $lang_admin['ftsearch'] = 'Full text search';
 $lang_admin['ftsindex'] = 'Full text index';
 $lang_admin['showlist'] = 'Show list';

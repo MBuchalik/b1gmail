@@ -119,11 +119,6 @@
 						<td class="td2"><input type="checkbox" name="webdav"{if !$davSupport} disabled="disabled"{else}{if $group.webdav=='yes'} checked="checked"{/if}{/if} /></td>
 					</tr>
 					<tr>
-						<td class="td1">{lng p="organizerdav"}?</td>
-						<td class="td2"><input type="checkbox" name="organizerdav"{if !$davSupport} disabled="disabled"{else}{if $group.organizerdav=='yes'} checked="checked"{/if}{/if} /></td>
-						<td colspan="2">&nbsp;</td>
-					</tr>
-					<tr>
 						<td class="td1">{lng p="smtp"}?</td>
 						<td class="td2"><input type="checkbox" name="smtp"{if $group.smtp=='yes'} checked="checked"{/if} /></td>
 						<td class="td1">{lng p="pop3"}?</td>

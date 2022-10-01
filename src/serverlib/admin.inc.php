@@ -92,13 +92,10 @@ $faqRequirementTable = [
     'forward' => $lang_admin['forward'],
     'pop3' => $lang_admin['pop3'],
     'imap' => $lang_admin['imap'],
-    'webdav' => $lang_admin['webdav'],
     'wap' => $lang_admin['mobileaccess'],
-    'checker' => $lang_admin['mailchecker'],
     'webdisk' => $lang_admin['webdisk'],
     'share' => $lang_admin['wdshare'],
     'syncml' => $lang_admin['syncml'],
-    'organizerdav' => $lang_admin['organizerdav'],
     'ftsearch' => $lang_admin['ftsearch'],
 ];
 $lockedTypeTable = [
@@ -415,9 +412,6 @@ function DeleteUser($userID, $qAddAND = '') {
 
     // delete disk props
     $db->Query('DELETE FROM {pre}diskprops WHERE user=?', $userID);
-
-    // delete disk locks
-    $db->Query('DELETE FROM {pre}disklocks WHERE user=?', $userID);
 
     // delete disk folders
     $db->Query('DELETE FROM {pre}diskfolders WHERE user=?', $userID);

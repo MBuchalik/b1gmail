@@ -1090,7 +1090,6 @@ $lang_admin['buildindex_desc'] =
 $lang_admin['optimizeindex'] = 'Index optimieren';
 $lang_admin['optimizeindex_desc'] =
     'Mit dieser Funktion werden die Volltext-Such-Index-Datenbanken Ihrer Benutzer optimiert. Dabei wird ggf. ungenutzter Speicher freigegeben.';
-$lang_admin['organizerdav'] = 'CalDAV/CardDAV';
 $lang_admin['ftsearch'] = 'Volltext-Suche';
 $lang_admin['ftsindex'] = 'Volltext-Index';
 $lang_admin['showlist'] = 'Auflisten';

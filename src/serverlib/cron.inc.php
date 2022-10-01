@@ -196,20 +196,6 @@ function ResetWebdiskTraffic() {
 }
 
 /**
- * clean up webdisk locks
- *
- */
-function CleanupWebdiskLocks() {
-    global $db;
-
-    $db->Query(
-        'DELETE FROM {pre}disklocks WHERE (expires>0 AND expires<?) OR (expires=0 AND modified<?)',
-        time(),
-        time() - 7 * TIME_ONE_DAY,
-    );
-}
-
-/**
  * clean up expired cert mails
  *
  */
