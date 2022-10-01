@@ -52,9 +52,6 @@
 			<div id="menu-inline">
 				{foreach from=$pageTabs key=tabID item=tab}
 					{if $tabID=='organizer'}
-						<a href="organizer.calendar.php?sid={$sid}" title="{lng p="calendar"}"{if $activeTab==$tabID && $organizerSection=='calendar'} class="active"{/if}>
-							<i class="fa fa-calendar"></i>
-						</a>
 						<a href="organizer.addressbook.php?sid={$sid}" title="{lng p="addressbook"}"{if $activeTab==$tabID && $organizerSection=='addressbook'} class="active"{/if}>
 							<i class="fa fa-users"></i>
 						</a>

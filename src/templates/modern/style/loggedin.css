@@ -1899,97 +1899,6 @@ A:hover {
 }
 
 /* ******************************************************************* */
-.miniCalendarTable {
-  border: 1px solid #dddddd;
-  border-collapse: collapse;
-}
-.miniCalendarTable.inWidget {
-  width: 100%;
-  height: 180px;
-}
-.miniCalendarTable TH {
-  text-align: center;
-  background-color: #428bca;
-  font-size: 10px;
-  color: #fefefe;
-  font-weight: normal;
-}
-.miniCalendarTable TH.Caption {
-  background-color: #428bca;
-  font-weight: bold;
-  text-align: left;
-  font-size: 14px;
-  padding: 4px;
-  padding-left: 8px;
-}
-.miniCalendarTable TH.Caption A {
-  color: #fff;
-}
-.miniCalendarTable TD {
-  text-align: center;
-  border: 1px solid #dddddd;
-  padding: 2px;
-  font-size: 11px;
-  background-color: #fff;
-  padding: 5px;
-}
-.miniCalendarTable TD.Empty {
-  background-color: #efefef;
-}
-.miniCalendarTable TD.Date {
-  font-weight: bold;
-  background-color: rgba(68, 140, 202, 0.2);
-}
-.miniCalendarTable TD.Date A {
-  color: #888;
-}
-.miniCalendarTable TD.Today {
-  background-color: #428bca;
-  font-weight: bold;
-}
-.miniCalendarTable TD.Today A {
-  color: #fff;
-}
-
-.clndrWdgtDates {
-  margin-top: 0.5em;
-  padding-top: 0.5em;
-  border-top: 1px solid #ccc;
-}
-
-.clndrWdgtDates UL {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.clndrWdgtDates UL LI .date {
-  font-size: 10px;
-  color: #666;
-  line-height: 1.5em;
-  display: inline-block;
-  width: 60px;
-}
-
-.clndrWdgtDates UL LI A {
-  font-size: 12px;
-}
-
-.notePreview {
-  background-color: #fff394;
-}
-
-.innerWidget.notePreview {
-  height: 150px;
-  overflow-y: scroll;
-}
-
-#notePreview {
-  padding: 1em;
-  font-size: 14px;
-}
-
-/* ******************************************************************* */
 .abLink {
   border: 1px solid #dddddd;
   padding-left: 3px;
@@ -2396,79 +2305,6 @@ A:hover {
   cursor: pointer;
   padding: 4px;
   margin: 2px;
-}
-
-.calendarWeekBody {
-  overflow: auto;
-  position: absolute;
-  width: 100%;
-}
-.calendarWeekCell {
-  min-width: 100px;
-  border-right: 1px solid #b3b8bd;
-}
-.calendarWeekDayCaption {
-  min-width: 100px;
-  text-align: center;
-  height: 20px;
-  border-right: 1px solid #b3b8bd;
-}
-
-.calendarWholeDayBody {
-  width: 100%;
-  border-collapse: collapse;
-}
-.calendarWholeDayCell {
-  background-color: #e0e6ed;
-  height: 30px;
-}
-.calendarDayBody {
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 480px;
-  width: 100%;
-  border-collapse: collapse;
-}
-.calendarDayCell {
-  background-color: #e0e6ed;
-  height: 20px;
-  border-top: 1px solid #b3b8bd;
-}
-.calendarDayCell2 {
-  background-color: #e0e6ed;
-  height: 20px;
-  border-top: 1px solid #d4dae0;
-}
-.calendarDayCell_day {
-  background-color: #edf3fa;
-  height: 20px;
-  border-top: 1px solid #b3b8bd;
-}
-.calendarDayCell2_day {
-  background-color: #edf3fa;
-  height: 20px;
-  border-top: 1px solid #d4dae0;
-}
-.calendarDayTimeCell {
-  width: 40px;
-  vertical-align: top;
-}
-.calendarDayTimeCellText {
-  font-size: 10px;
-  text-align: right;
-  padding-right: 5px;
-}
-.calendarDaySepCell {
-  width: 2px;
-  border-left: 1px solid #b3b8bd;
-  border-right: 1px solid #b3b8bd;
-}
-.calendarDaySepCell2 {
-  width: 1px;
-  background-color: #e0e6ed;
-}
-.calendarWholeDayTD {
-  border-bottom: 1px solid #dddddd;
 }
 
 /* ******************************************************************* */
@@ -2959,49 +2795,9 @@ a.sidebar-btn:hover {
 #dc_startBoxesdragItem_BMPlugin_Widget_Mailspace {
   background: var(--bm-color-widget-3);
 }
-#dc_startBoxesdragItem_BMPlugin_Widget_Calendar {
-  background: var(--bm-color-widget-4);
-}
-#BMPlugin_Widget_Calendar .miniCalendarTable th.Caption {
-  background: transparent;
-  text-align: center;
-}
-#BMPlugin_Widget_Calendar .miniCalendarTable th {
-  background: transparent;
-}
-#BMPlugin_Widget_Calendar .miniCalendarTable td.Empty {
-  background: rgba(0, 0, 0, 0.1);
-}
-#BMPlugin_Widget_Calendar .miniCalendarTable td {
-  background: transparent;
-}
-#BMPlugin_Widget_Calendar .miniCalendarTable td.Today {
-  background: rgba(255, 255, 255, 0.3);
-}
-#BMPlugin_Widget_Calendar .miniCalendarTable td.Date {
-  background: #ffffff;
-}
-#BMPlugin_Widget_Calendar .miniCalendarTable td.Date a {
-  color: #616161;
-}
-.clndrWdgtDates ul li .date {
-  color: #ffffff;
-}
-.innerWidget.notePreview {
-  background: transparent;
-}
+
 #BMPlugin_Widget_EMail table td:nth-child(3) {
   width: 80px;
-}
-
-/* ===== Calendar ===== */
-.miniCalendarTable td.Date {
-  background: #e0e0e0;
-}
-.miniCalendarTable th,
-.miniCalendarTable th.Caption,
-.miniCalendarTable td.Today {
-  background: var(--bm-color-main);
 }
 
 /* ===== Email ===== */

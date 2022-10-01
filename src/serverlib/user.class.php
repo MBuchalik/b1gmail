@@ -227,13 +227,6 @@ class BMUser {
                         $row['icon'],
                     );
                     break;
-                case '%%tpldir%%images/li/notify_calendar.png':
-                    $row['faIcon'] = str_replace(
-                        '%%tpldir%%images/li/notify_calendar.png',
-                        'fa-calendar',
-                        $row['icon'],
-                    );
-                    break;
             }
             $row['icon'] = str_replace(
                 '%%tpldir%%',

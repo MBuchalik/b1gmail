@@ -213,14 +213,6 @@
 				</select></td>
 			</tr>
 			<tr>
-				<td class="td1">{lng p="calendarviewmode"}:</td>
-				<td class="td2"><select name="calendar_defaultviewmode">
-					<option value="day"{if $bm_prefs.calendar_defaultviewmode=='day'} selected="selected"{/if}>{lng p="day"}</option>
-					<option value="week"{if $bm_prefs.calendar_defaultviewmode=='week'} selected="selected"{/if}>{lng p="week"}</option>
-					<option value="month"{if $bm_prefs.calendar_defaultviewmode=='month'} selected="selected"{/if}>{lng p="month"}</option>
-				</select></td>
-			</tr>
-			<tr>
 				<td class="td1">{lng p="hotkeys"}?</td>
 				<td class="td2"><input name="hotkeys_default"{if $bm_prefs.hotkeys_default=='yes'} checked="checked"{/if} type="checkbox" /></td>
 			</tr>

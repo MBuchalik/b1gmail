@@ -10,10 +10,6 @@
 	</fieldset>
 	<fieldset>
 		<legend>{lng p="organizer"}</legend>
-		<a href="organizer.php?sid={$sid}"><i class="fa fa-tachometer" aria-hidden="true"></i>
-										{lng p="overview"}</a><br />
-		<a href="organizer.calendar.php?sid={$sid}"><i class="fa fa-calendar" aria-hidden="true"></i>
-										{lng p="calendar"}</a><br />
 		<a href="organizer.addressbook.php?sid={$sid}"><i class="fa fa-address-book" aria-hidden="true"></i>
 										{lng p="addressbook"}</a><br />
 	</fieldset>

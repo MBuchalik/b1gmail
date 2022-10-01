@@ -24,6 +24,15 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
         if (
             !mysqli_query(
                 $dbConnection,
+                'ALTER TABLE bm60_prefs DROP COLUMN calendar_defaultviewmode',
+            )
+        ) {
+            return false;
+        }
+
+        if (
+            !mysqli_query(
+                $dbConnection,
                 'ALTER TABLE bm60_gruppen
                     DROP COLUMN checker,
                     DROP COLUMN tbx_webdisk,
@@ -53,6 +62,18 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
         }
 
         if (!mysqli_query($dbConnection, 'DROP TABLE bm60_disklocks')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_dates')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_dates_attendees')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_dates_groups')) {
             return false;
         }
 

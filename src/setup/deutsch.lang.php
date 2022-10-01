@@ -153,7 +153,6 @@ $lang_setup['update_folders'] = 'Ordner aktualisieren';
 $lang_setup['update_filters'] = 'Filter aktualisieren';
 $lang_setup['update_autoresponders'] = 'Autoresponder aktualisieren';
 $lang_setup['update_config'] = 'Konfiguration aktualisieren';
-$lang_setup['update_calendar'] = 'Kalender aktualisieren';
 $lang_setup['update_optimize'] = 'Tabellen optimieren';
 $lang_setup['updatedone'] =
     'Das Update wurde abgeschlossen. Klicken Sie auf &quot;Weiter &raquo;&quot;, um fortzufahren.';

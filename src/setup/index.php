@@ -90,17 +90,6 @@ define('FILTER_ACTION_MARKSPAM', 5);
 define('FILTER_ACTION_MARK', 6);
 define('FILTER_ACTION_STOP', 7);
 
-// calendar stuff (needed while updating)
-define('CLNDR_WHOLE_DAY', 1);
-define('CLNDR_REMIND_EMAIL', 2);
-define('CLNDR_REPEATING_UNTIL_ENDLESS', 1);
-define('CLNDR_REPEATING_UNTIL_COUNT', 2);
-define('CLNDR_REPEATING_UNTIL_DATE', 4);
-define('CLNDR_REPEATING_DAILY', 8);
-define('CLNDR_REPEATING_WEEKLY', 16);
-define('CLNDR_REPEATING_MONTHLY_MDAY', 32);
-define('CLNDR_REPEATING_MONTHLY_WDAY', 64);
-
 // steps
 define('STEP_SELECT_LANGUAGE', 0);
 define('STEP_WELCOME', 1);

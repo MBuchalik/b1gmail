@@ -52,8 +52,6 @@ $lang_client['folderprompt'] =
     'Please give the name of the folder to be created:';
 $lang_client['newfolder'] = 'New folder';
 $lang_client['foldererror'] = 'Folder could not be created.';
-$lang_client['attendees'] = 'Attendees';
-$lang_client['addattendee'] = 'Add attendees';
 $lang_client['protectedfolder'] = 'Protected folder';
 $lang_client['source'] = 'Source';
 $lang_client['sendwosubject'] =
@@ -242,7 +240,6 @@ $lang_custom['notify_birthday'] =
 /**
  * User phrases
  */
-$lang_user['weekdays_long'] = ['So', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']; // sunday through saturday
 $lang_user['full_weekdays'] = [
     'Sunday',
     'Monday',
@@ -283,13 +280,11 @@ $lang_user['description'] = 'Description';
 $lang_user['sendnotify'] = 'Show notification';
 $lang_user['readonly'] = 'read only';
 $lang_user['sharedfolders'] = 'Shared folders';
-$lang_user['years'] = 'year(s)';
 $lang_user['loaddraft'] = 'Load draft';
 $lang_user['drafttext'] =
     'Do you want to load the auto-saved draft of your last email?';
 $lang_user['exceededsendlimit'] =
     'Sending this email would exceed your limit of %d email(s) in %d minute(s). Your email could not be sent.';
-$lang_user['bynotify'] = 'by notification';
 
 // phrases for new nli layout
 $lang_user['home'] = 'Home';
@@ -304,7 +299,6 @@ $lang_user['showmore'] = 'Show more';
 $lang_user['paused'] = 'Paused';
 $lang_user['langCode'] = 'EN';
 $lang_user['pop3server'] = 'Inbox server (POP3)';
-$lang_user['nodatesin31d'] = 'No appointments in the next 31 days.';
 $lang_user['desktopversion'] = 'Desktop version';
 $lang_user['new'] = 'New';
 $lang_user['right'] = 'Right';
@@ -380,11 +374,17 @@ $lang_user['keep'] = 'Retain';
 $lang_user['overwrite'] = 'Overwrite';
 $lang_user['extract'] = 'Extract';
 $lang_user['tasks'] = 'Tasks';
-$lang_user['begin'] = 'Begin';
 $lang_user['status'] = 'Status';
 $lang_user['done'] = 'Done';
 $lang_user['title'] = 'Title';
 $lang_user['comment'] = 'Comment';
+$lang_user['day'] = 'Day';
+$lang_user['close'] = 'Close';
+$lang_user['none'] = 'none';
+$lang_user['editgroups'] = 'Edit groups';
+$lang_user['color'] = 'Color';
+$lang_user['minutes'] = 'minute(s)';
+$lang_user['until'] = 'until';
 
 // webdisk share
 $lang_user['badshare'] = 'Share path not found.';
@@ -902,9 +902,7 @@ $lang_user['issuecert_err'] =
 $lang_user['welcome'] = 'Welcome';
 $lang_user['welcometext'] = '<b>Welcome</b> to %s, %s!';
 $lang_user['newmailtext'] = '<b>%d</b> unread messages';
-$lang_user['datetext'] = '<b>%d</b> dates';
 $lang_user['newmailtext1'] = '<b>%d</b> unread message';
-$lang_user['datetext1'] = '<b>%d</b> date';
 $lang_user['websearch'] = 'Web search';
 $lang_user['activewidgets'] = 'Active widgets';
 $lang_user['quicklinks'] = 'Quick links';
@@ -973,53 +971,6 @@ $lang_user['smimeerr2'] =
     "\n\n" .
     'Please add public certificates of the following recipients to your keyring and try again:';
 
-// calendar
-$lang_user['nodatesin6m'] = 'No appointments in the next 6 months.';
-$lang_user['day'] = 'Day';
-$lang_user['week'] = 'Week';
-$lang_user['month'] = 'Month';
-$lang_user['adddate'] = 'Add date';
-$lang_user['nocalcat'] = '(no group)';
-$lang_user['date2'] = 'Date';
-$lang_user['close'] = 'Close';
-$lang_user['attendees'] = 'Attendees';
-$lang_user['none'] = 'none';
-$lang_user['end'] = 'End';
-$lang_user['location'] = 'Location';
-$lang_user['repeating'] = 'Repeating';
-$lang_user['reminder'] = 'Reminder';
-$lang_user['editgroups'] = 'Edit groups';
-$lang_user['mailattendees'] = 'Email to attendees';
-$lang_user['btr'] = 'Concerning';
-$lang_user['wholeday'] = 'whole day';
-$lang_user['thisevent'] = 'original';
-$lang_user['color'] = 'Color';
-$lang_user['addgroup'] = 'Add group';
-$lang_user['dates'] = 'Date(s)';
-$lang_user['dates2'] = 'Dates';
-$lang_user['duration'] = 'Duration';
-$lang_user['hours'] = 'hour(s)';
-$lang_user['minutes'] = 'minute(s)';
-$lang_user['byemail'] = 'by email';
-$lang_user['timeframe'] = 'Timeframe';
-$lang_user['timebefore'] = 'before';
-$lang_user['repeatoptions'] = 'Repeating options';
-$lang_user['until'] = 'until';
-$lang_user['times'] = 'times';
-$lang_user['endless'] = 'endless';
-$lang_user['repeatcount'] = 'Repeat';
-$lang_user['interval'] = 'Interval';
-$lang_user['besides'] = 'except for';
-$lang_user['at'] = 'on';
-$lang_user['ofthemonth'] = 'of the month';
-$lang_user['first'] = 'first day';
-$lang_user['second'] = 'second day';
-$lang_user['third'] = 'third day';
-$lang_user['fourth'] = 'fourth day';
-$lang_user['last'] = 'last day';
-$lang_user['editdate'] = 'edit day';
-$lang_user['cw'] = 'calendar week';
-
 /**
  * Admin phrases
  */
@@ -1040,7 +991,6 @@ $lang_admin['attachment'] = 'Attachment';
 $lang_admin['color'] = 'Color';
 $lang_admin['min_draft_save'] = 'Min. draft save interval';
 $lang_admin['auto_save_drafts'] = 'Automaticaly save drafts';
-$lang_admin['timeframe'] = 'Timeframe';
 $lang_admin['pfrulenote'] =
     '(only for text fields (regular expressions) or date fields (e.g. &quot;&gt;= 18y&quot;))';
 $lang_admin['registered'] = 'Registered';
@@ -1084,7 +1034,6 @@ $lang_admin['ftsindex'] = 'Full text index';
 $lang_admin['showlist'] = 'Show list';
 $lang_admin['lastactivity'] = 'Last activity';
 $lang_admin['never'] = 'never';
-$lang_admin['hours'] = 'Hour(s)';
 $lang_admin['workgroup'] = 'Workgroup';
 $lang_admin['noaccess'] = 'No access';
 $lang_admin['readonly'] = 'Read only';
@@ -1105,9 +1054,6 @@ $lang_admin['reallyresetstats'] = 'Do you really want to reset the statistics?';
 $lang_admin['hotkeys'] = 'Hotkeys';
 $lang_admin['log_autodelete'] = 'Auto archiving';
 $lang_admin['enableolder'] = 'Enable for entries older than';
-$lang_admin['week'] = 'Week';
-$lang_admin['calendarviewmode'] = 'Calendar view';
-$lang_admin['month'] = 'Month';
 $lang_admin['prefslayout'] = 'Preferences overview';
 $lang_admin['onecolumn'] = 'One column';
 $lang_admin['twocolumns'] = 'Two columns';
@@ -1275,7 +1221,6 @@ $lang_admin['antispam'] = 'Anti spam';
 $lang_admin['antivirus'] = 'Anti virus';
 $lang_admin['recvmethod'] = 'Receiving method';
 $lang_admin['miscprefs'] = 'Miscellaneous preferences';
-$lang_admin['calendar'] = 'Calendar';
 $lang_admin['signup'] = 'Sign-up';
 $lang_admin['tempfiles'] = 'Temporary files';
 $lang_admin['count'] = 'Count';
@@ -1403,7 +1348,6 @@ $lang_admin['addresstaken'] =
     'The email address you have entered is no longer available. Please try again.';
 $lang_admin['accountcreated'] =
     'The account has been created successfuly.<br /><br /><a href="users.php?do=edit&id=%d&sid=%s">&raquo; Edit user</a>';
-$lang_admin['byemail'] = 'by email';
 $lang_admin['stdgroup'] = 'Default group';
 $lang_admin['domain_combobox'] = 'Login domain combo box';
 $lang_admin['fields'] = 'Fields';
@@ -1603,12 +1547,6 @@ $lang_admin['deletegroup'] = 'Delete group';
 $lang_admin['groupdeletedesc'] =
     'Please select the group(s) to which the members of those groups are to be assigned that you want to delete.';
 $lang_admin['workgroups'] = 'Workgroup';
-$lang_admin['collaboration'] = 'Collaboration';
-$lang_admin['share_addr'] = 'Shared addresses';
-$lang_admin['share_calendar'] = 'Shared calendar';
-$lang_admin['share_todo'] = 'Shared todo';
-$lang_admin['share_notes'] = 'Shared notes';
-$lang_admin['share_webdisk'] = 'Shared webdisc';
 $lang_admin['bayesdb'] = 'Filter database';
 $lang_admin['reset'] = 'Reset';
 $lang_admin['bayesresetq'] =

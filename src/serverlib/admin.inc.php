@@ -205,11 +205,6 @@ function AdminRequirePrivilege($priv) {
 function GetStatData($types, $time) {
     global $db;
 
-    // load class, if needed
-    if (!class_exists('BMCalendar')) {
-        include B1GMAIL_DIR . 'serverlib/calendar.class.php';
-    }
-
     // types?
     if (!is_array($types)) {
         $types = [$types];
@@ -226,7 +221,7 @@ function GetStatData($types, $time) {
     }
     for (
         $i = 1;
-        $i <= BMCalendar::GetDaysInMonth(date('m', $time), date('Y', $time));
+        $i <= GetDaysInMonth(date('m', $time), date('Y', $time));
         $i++
     ) {
         $result[(int) $i] =
@@ -254,6 +249,10 @@ function GetStatData($types, $time) {
     $res->Free();
 
     return $result;
+}
+
+function GetDaysInMonth($month, $year) {
+    return date('t', mktime(1, 1, 1, $month, 1, $year));
 }
 
 /**
@@ -390,25 +389,6 @@ function DeleteUser($userID, $qAddAND = '') {
 
     // delete autoresponder
     $db->Query('DELETE FROM {pre}autoresponder WHERE userid=?', $userID);
-
-    // delete calendar dates
-    $dateIDs = [];
-    $res = $db->Query('SELECT id FROM {pre}dates WHERE user=?', $userID);
-    while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-        $dateIDs[] = $row['id'];
-    }
-    $res->Free();
-    if (count($dateIDs) > 0) {
-        $db->Query(
-            'DELETE FROM {pre}dates_attendees WHERE date IN(' .
-                implode(',', $dateIDs) .
-                ')',
-        );
-        $db->Query('DELETE FROM {pre}dates WHERE user=?', $userID);
-    }
-
-    // delete calendar groups
-    $db->Query('DELETE FROM {pre}dates_groups WHERE user=?', $userID);
 
     // delete disk props
     $db->Query('DELETE FROM {pre}diskprops WHERE user=?', $userID);

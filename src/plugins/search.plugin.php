@@ -85,17 +85,6 @@ class B1GMailSearchProvider extends BMPlugin {
                 $destFolderID = (int) substr($action, 7);
                 $mailbox->MoveMail($items, $destFolderID);
             }
-        } elseif ($category == 'B1GMailSearchProvider_calendar') {
-            if (!class_exists('BMCalendar')) {
-                include B1GMAIL_DIR . 'serverlib/calendar.class.php';
-            }
-            $calendar = _new('BMCalendar', [$userRow['id']]);
-
-            if ($action == 'delete') {
-                foreach ($items as $itemID) {
-                    $calendar->DeleteDate((int) $itemID);
-                }
-            }
         } elseif ($category == 'B1GMailSearchProvider_addressbook') {
             if (!class_exists('BMAddressbook')) {
                 include B1GMAIL_DIR . 'serverlib/addressbook.class.php';
@@ -187,12 +176,6 @@ class B1GMailSearchProvider extends BMPlugin {
             $result['B1GMailSearchProvider_attachments'] = [
                 'title' => $lang_user['attachments'],
                 'icon' => 'fa-paperclip',
-            ];
-        }
-        if (isset($searchIn['calendar'])) {
-            $result['B1GMailSearchProvider_calendar'] = [
-                'title' => $lang_user['dates2'],
-                'icon' => 'fa-calendar',
             ];
         }
         if (isset($searchIn['addressbook'])) {
@@ -455,47 +438,6 @@ class B1GMailSearchProvider extends BMPlugin {
                     'name' => 'B1GMailSearchProvider_attachments',
                     'title' => $lang_user['attachments'],
                     'results' => $thisResults,
-                ];
-            }
-        }
-
-        //
-        // calendar
-        //
-        if (isset($searchIn['calendar'])) {
-            $thisResults = [];
-            $res = $db->Query(
-                'SELECT id,title,`startdate` FROM {pre}dates WHERE `startdate`>=? AND `startdate`<=? AND user=? AND (title LIKE ' .
-                    $q .
-                    ' OR text LIKE ' .
-                    $q .
-                    ') ORDER BY title ASC',
-                $dateFrom,
-                $dateTo,
-                $thisUser->_id,
-            );
-            while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                $thisResults[] = [
-                    'title' => $row['title'],
-                    'link' => sprintf(
-                        'organizer.calendar.php?action=editDate&id=%d&',
-                        $row['id'],
-                    ),
-                    'date' => $row['startdate'],
-                    'id' => $row['id'],
-                ];
-            }
-            $res->Free();
-
-            if (count($thisResults) > 0) {
-                $results[] = [
-                    'icon' => 'fa-calendar',
-                    'name' => 'B1GMailSearchProvider_calendar',
-                    'title' => $lang_user['dates2'],
-                    'results' => $thisResults,
-                    'massActions' => [
-                        'delete' => $lang_user['delete'],
-                    ],
                 ];
             }
         }

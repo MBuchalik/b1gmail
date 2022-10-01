@@ -27,7 +27,6 @@ if (!file_exists('./serverlib/init.inc.php')) {
 include './serverlib/init.inc.php';
 include './serverlib/pop3gateway.class.php';
 include './serverlib/userpop3gateway.class.php';
-include './serverlib/calendar.class.php';
 
 // try to prevent abortion
 header('Connection: close');
@@ -110,9 +109,6 @@ if ($bm_prefs['last_cron'] < time() - $bm_prefs['cron_interval']) {
 
     // delete old mail delivery status entries
     CleanupMailDeliveryStatus();
-
-    // send calendar notifications
-    BMCalendar::ProcessNotifications();
 
     // fetch POP3 mails
     if ($bm_prefs['receive_method'] == 'pop3') {

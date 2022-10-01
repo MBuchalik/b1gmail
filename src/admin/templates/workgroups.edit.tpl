@@ -16,35 +16,6 @@
 					</tr>
 				</table>
 			</fieldset>
-
-			{*
-			<fieldset>
-				<legend>{lng p="collaboration"}</legend>
-
-				<table width="100%">
-					<tr>
-						<td class="td1" width="160">{lng p="share_addr"}?</td>
-						<td class="td2"><input type="checkbox" name="addressbook"{if $group.addressbook=='yes'} checked="checked"{/if} /></td>
-					</tr>
-					<tr>
-						<td class="td1" width="160">{lng p="share_calendar"}?</td>
-						<td class="td2"><input type="checkbox" name="calendar"{if $group.calendar=='yes'} checked="checked"{/if} /></td>
-					</tr>
-					<tr>
-						<td class="td1" width="160">{lng p="share_todo"}?</td>
-						<td class="td2"><input type="checkbox" name="todo"{if $group.todo=='yes'} checked="checked"{/if} /></td>
-					</tr>
-					<tr>
-						<td class="td1" width="160">{lng p="share_notes"}?</td>
-						<td class="td2"><input type="checkbox" name="notes"{if $group.notes=='yes'} checked="checked"{/if} /></td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="share_webdisk"}:</td>
-						<td class="td2"><input type="text" name="webdisk" value="{$group.webdisk/1024/1024}" size="8" /> MB</td>
-					</tr>
-				</table>
-			</fieldset>
-			*}
 		</td>
 		{if !$create}
 		<td valign="top">

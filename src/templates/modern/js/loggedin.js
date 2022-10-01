@@ -724,39 +724,3 @@ function showAppropriateFolderCondLayer(obj, id) {
   else if (field == 14) EBID('colorComparison_' + id).style.display = '';
   else EBID('defaultComparison_' + id).style.display = '';
 }
-
-function showCalendarDate(id, start, end, inFrame) {
-  //start += getTZOffset();
-  //end += getTZOffset();
-
-  if (inFrame)
-    parent.openOverlay(
-      'organizer.calendar.php?sid=' +
-        currentSID +
-        '&action=showDate&start=' +
-        start +
-        '&end=' +
-        end +
-        '&id=' +
-        id,
-      lang['date'],
-      550,
-      465,
-      true,
-    );
-  else
-    openOverlay(
-      'organizer.calendar.php?sid=' +
-        currentSID +
-        '&action=showDate&start=' +
-        start +
-        '&end=' +
-        end +
-        '&id=' +
-        id,
-      lang['date'],
-      550,
-      465,
-      true,
-    );
-}

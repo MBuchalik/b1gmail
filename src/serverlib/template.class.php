@@ -106,11 +106,6 @@ class Template extends Smarty {
         $this->registerPlugin('function', 'progressBar', 'TemplateProgressBar');
         $this->registerPlugin(
             'function',
-            'miniCalendar',
-            'TemplateMiniCalendar',
-        );
-        $this->registerPlugin(
-            'function',
             'fileSelector',
             'TemplateFileSelector',
         );
@@ -246,12 +241,6 @@ class Template extends Smarty {
                 ],
                 [
                     'sep' => true,
-                ],
-                [
-                    'icon' => 'ico_calendar',
-                    'faIcon' => 'fa-calendar',
-                    'link' => 'organizer.calendar.php?action=addDate&sid=',
-                    'text' => $lang_user['date2'],
                 ],
                 [
                     'icon' => 'ico_addressbook',
@@ -799,17 +788,6 @@ function TemplateProgressBar($params, $smarty) {
         $name,
         min($width - 2, $valueWidth),
     );
-}
-function TemplateMiniCalendar($params, $smarty) {
-    global $userRow;
-    if (!isset($userRow)) {
-        return 'Not logged in';
-    }
-    if (!class_exists('BMCalendar')) {
-        include B1GMAIL_DIR . 'serverlib/calendar.class.php';
-    }
-    $calendar = _new('BMCalendar', [$userRow['id']]);
-    return $calendar->GenerateMiniCalendar(-1, -1);
 }
 function TemplateFileSelector($params, $smarty) {
     global $lang_user, $groupRow;

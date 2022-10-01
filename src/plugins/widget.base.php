@@ -185,9 +185,6 @@ class BMPlugin_Widget_Welcome extends BMPlugin {
         if (!class_exists('BMMailbox')) {
             include B1GMAIL_DIR . 'serverlib/mailbox.class.php';
         }
-        if (!class_exists('BMCalendar')) {
-            include B1GMAIL_DIR . 'serverlib/calendar.class.php';
-        }
 
         // count mails
         $mailbox = _new('BMMailbox', [
@@ -196,16 +193,6 @@ class BMPlugin_Widget_Welcome extends BMPlugin {
             $thisUser,
         ]);
         $mailCount = $mailbox->GetMailCount(-1, true);
-
-        // count dates
-        $calendar = _new('BMCalendar', [$thisUser->_id]);
-        $dateCount = count(
-            $calendar->GetDatesForDay(
-                (int) date('d'),
-                (int) date('m'),
-                (int) date('Y'),
-            ),
-        );
 
         $tpl->assign(
             'bmwidget_welcome_welcomeText',
@@ -222,15 +209,6 @@ class BMPlugin_Widget_Welcome extends BMPlugin {
                     ? $lang_user['newmailtext1']
                     : $lang_user['newmailtext'],
                 $mailCount,
-            ),
-        );
-        $tpl->assign(
-            'bmwidget_welcome_dates',
-            sprintf(
-                $dateCount == 1
-                    ? $lang_user['datetext1']
-                    : $lang_user['datetext'],
-                $dateCount,
             ),
         );
 
@@ -300,40 +278,7 @@ class BMPlugin_Widget_Calendar extends BMPlugin {
     }
 
     function renderWidget() {
-        global $tpl, $thisUser;
-
-        if (!class_exists('BMCalendar')) {
-            include B1GMAIL_DIR . 'serverlib/calendar.class.php';
-        }
-
-        $calendar = _new('BMCalendar', [$thisUser->_id]);
-
-        $nextDatesFrom = time();
-        $nextDatesTo = time() + TIME_ONE_MONTH;
-        $nextDatesMax = 5;
-
-        $nextDatesMore = 0;
-        $nextDates = $calendar->GetDatesForTimeframe(
-            $nextDatesFrom,
-            $nextDatesTo,
-        );
-        if (count($nextDates) > $nextDatesMax + 1) {
-            $nextDatesMore = count($nextDates) - $nextDatesMax;
-            $nextDates = array_slice($nextDates, 0, $nextDatesMax);
-        }
-
-        $tpl->assign(
-            'bmwidget_calendar_html',
-            $calendar->GenerateMiniCalendar(
-                -1,
-                -1,
-                -1,
-                'miniCalendarTable inWidget',
-            ),
-        );
-        $tpl->assign('bmwidget_calendar_nextDates', $nextDates);
-        $tpl->assign('bmwidget_calendar_nextDatesMore', $nextDatesMore);
-
+        // Keep this as a dummy for now.
         return true;
     }
 }

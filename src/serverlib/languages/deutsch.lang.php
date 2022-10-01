@@ -58,8 +58,6 @@ $lang_client['folderprompt'] =
     'Bitte geben Sie den Namen des zu erstellenden Ordners an:';
 $lang_client['newfolder'] = 'Neuer Ordner';
 $lang_client['foldererror'] = 'Der Ordner konnte nicht erstellt werden.';
-$lang_client['attendees'] = 'Teilnehmer';
-$lang_client['addattendee'] = 'Teilnehmer hinzuf&uuml;gen';
 $lang_client['protectedfolder'] = 'Geschütztes Verzeichnis';
 $lang_client['source'] = 'Quelltext';
 $lang_client['sendwosubject'] =
@@ -240,7 +238,6 @@ $lang_custom['notify_birthday'] =
  * User phrases
  */
 
-$lang_user['weekdays_long'] = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.']; // sunday through saturday
 $lang_user['full_weekdays'] = [
     'Sonntag',
     'Montag',
@@ -289,11 +286,24 @@ $lang_user['sess_expired'] = 'Sitzung abgelaufen';
 $lang_user['sess_expired_desc'] =
     'Ihre Sitzung wurde aus Sicherheitsgr&uuml;nden wegen Inaktivit&auml;t beendet. Bitte loggen Sie sich erneut ein.';
 $lang_user['tasks'] = 'Aufgaben';
-$lang_user['begin'] = 'Beginn';
 $lang_user['status'] = 'Status';
 $lang_user['done'] = 'Erledigt';
 $lang_user['title'] = 'Titel';
 $lang_user['comment'] = 'Kommentar';
+$lang_user['day'] = 'Tag';
+$lang_user['close'] = 'Schlie&szlig;en';
+$lang_user['none'] = 'keine';
+$lang_user['editgroups'] = 'Gruppen bearbeiten';
+$lang_user['color'] = 'Farbe';
+$lang_user['minutes'] = 'Minute(n)';
+$lang_user['until'] = 'bis';
+$lang_user['color_0'] = 'Keine';
+$lang_user['color_1'] = 'Blau';
+$lang_user['color_2'] = 'Gr&uuml;n';
+$lang_user['color_3'] = 'Rot';
+$lang_user['color_4'] = 'Orange';
+$lang_user['color_5'] = 'Lila';
+$lang_user['color_6'] = 'Violett';
 
 // webdisk share
 $lang_user['badshare'] = 'Die angegebene Freigabe wurde nicht gefunden.';
@@ -886,9 +896,7 @@ $lang_user['issuecert_err'] =
 $lang_user['welcome'] = 'Herzlich Willkommen';
 $lang_user['welcometext'] = '<b>Herzlich Willkommen</b> bei %s, %s!';
 $lang_user['newmailtext'] = '<b>%d</b> ungelesene E-Mails';
-$lang_user['datetext'] = '<b>%d</b> Termine';
 $lang_user['newmailtext1'] = '<b>%d</b> ungelesene E-Mail';
-$lang_user['datetext1'] = '<b>%d</b> Termin';
 $lang_user['websearch'] = 'Web-Suche';
 $lang_user['activewidgets'] = 'Anzuzeigende Elemente';
 $lang_user['quicklinks'] = 'Quick-Links';
@@ -912,7 +920,6 @@ $lang_user['editfolder'] = 'Ordner bearbeiten';
 $lang_user['days'] = 'Tag(e)';
 $lang_user['weeks'] = 'Woche(n)';
 $lang_user['months'] = 'Monat(e)';
-$lang_user['years'] = 'Jahr(e)';
 $lang_user['conditions'] = 'Bedingung(en)';
 $lang_user['requiredis'] = 'Mail anzeigen bei Erf&uuml;llung';
 $lang_user['ofatleastone'] = 'mindestens einer';
@@ -974,62 +981,6 @@ $lang_user['smimeerr2'] =
     "\n\n" .
     'Bitte fügen Sie die öffentlichen Zertifikate folgender Empfänger Ihrem Schlüsselbund hinzu und versuchen Sie es erneut:';
 
-// calendar
-$lang_user['nodatesin31d'] = 'Keine Termine in den n&auml;chsten 31 Tagen.';
-$lang_user['nodatesin6m'] = 'Keine Termine in den n&auml;chsten 6 Monaten.';
-$lang_user['day'] = 'Tag';
-$lang_user['week'] = 'Woche';
-$lang_user['month'] = 'Monat';
-$lang_user['adddate'] = 'Termin hinzuf&uuml;gen';
-$lang_user['nocalcat'] = '(keine Gruppe)';
-$lang_user['date2'] = 'Termin';
-$lang_user['close'] = 'Schlie&szlig;en';
-$lang_user['attendees'] = 'Teilnehmer';
-$lang_user['none'] = 'keine';
-$lang_user['end'] = 'Ende';
-$lang_user['location'] = 'Ort';
-$lang_user['repeating'] = 'Wiederholend';
-$lang_user['reminder'] = 'Erinnerung';
-$lang_user['editgroups'] = 'Gruppen bearbeiten';
-$lang_user['mailattendees'] = 'E-Mail an Teilnehmer';
-$lang_user['btr'] = 'Btr.';
-$lang_user['wholeday'] = 'Ganzt&auml;gig';
-$lang_user['thisevent'] = 'urspr.';
-$lang_user['color'] = 'Farbe';
-$lang_user['addgroup'] = 'Gruppe hinzuf&uuml;gen';
-$lang_user['dates'] = 'Termin(e)';
-$lang_user['dates2'] = 'Termine';
-$lang_user['duration'] = 'Dauer';
-$lang_user['hours'] = 'Stunde(n)';
-$lang_user['minutes'] = 'Minute(n)';
-$lang_user['byemail'] = 'per E-Mail';
-$lang_user['bynotify'] = 'per Benachrichtigung';
-$lang_user['timeframe'] = 'Zeitraum';
-$lang_user['timebefore'] = 'vor Beginn';
-$lang_user['repeatoptions'] = 'Wiederholungs-Optionen';
-$lang_user['until'] = 'bis';
-$lang_user['times'] = 'mal';
-$lang_user['endless'] = 'endlos';
-$lang_user['repeatcount'] = 'Wiederholen';
-$lang_user['interval'] = 'Intervall';
-$lang_user['besides'] = 'au&szlig;er';
-$lang_user['at'] = 'am';
-$lang_user['ofthemonth'] = 'des Monats';
-$lang_user['first'] = 'ersten';
-$lang_user['second'] = 'zweiten';
-$lang_user['third'] = 'dritten';
-$lang_user['fourth'] = 'vierten';
-$lang_user['last'] = 'letzten';
-$lang_user['editdate'] = 'Termin bearbeiten';
-$lang_user['cw'] = 'KW';
-$lang_user['color_0'] = 'Keine';
-$lang_user['color_1'] = 'Blau';
-$lang_user['color_2'] = 'Gr&uuml;n';
-$lang_user['color_3'] = 'Rot';
-$lang_user['color_4'] = 'Orange';
-$lang_user['color_5'] = 'Lila';
-$lang_user['color_6'] = 'Violett';
-
 /**
  * Admin phrases
  */
@@ -1050,7 +1001,6 @@ $lang_admin['attachment'] = 'Anhang';
 $lang_admin['color'] = 'Farbe';
 $lang_admin['min_draft_save'] = 'Min. Entwurf-Speicher-Intervall';
 $lang_admin['auto_save_drafts'] = 'Auto-Entwurf-Speich.';
-$lang_admin['timeframe'] = 'Zeitraum';
 $lang_admin['pfrulenote'] =
     '(nur f&uuml;r Text-Felder (regul&auml;rer Ausdruck) oder Datums-Felder (z.B. &quot;&gt;= 18y&quot;))';
 $lang_admin['registered'] = 'Registriert';
@@ -1095,7 +1045,6 @@ $lang_admin['ftsindex'] = 'Volltext-Index';
 $lang_admin['showlist'] = 'Auflisten';
 $lang_admin['lastactivity'] = 'Letzte Aktivit&auml;t';
 $lang_admin['never'] = 'niemals';
-$lang_admin['hours'] = 'Stunde(n)';
 $lang_admin['workgroup'] = 'Arbeitsgruppe';
 $lang_admin['noaccess'] = 'Kein Zugriff';
 $lang_admin['readonly'] = 'Nur lesen';
@@ -1111,9 +1060,6 @@ $lang_admin['reallyresetstats'] =
 $lang_admin['hotkeys'] = 'Hotkeys';
 $lang_admin['log_autodelete'] = 'Auto-Archivierung';
 $lang_admin['enableolder'] = 'Aktivieren f&uuml;r Eintr&auml;ge &auml;lter als';
-$lang_admin['calendarviewmode'] = 'Kalender-Ansicht';
-$lang_admin['week'] = 'Woche';
-$lang_admin['month'] = 'Monat';
 $lang_admin['prefslayout'] = 'Einstellungs-&Uuml;bersicht';
 $lang_admin['onecolumn'] = 'Einspaltig';
 $lang_admin['twocolumns'] = 'Zweispaltig';
@@ -1237,7 +1183,6 @@ $lang_admin['antispam'] = 'Anti-Spam';
 $lang_admin['antivirus'] = 'Anti-Virus';
 $lang_admin['recvmethod'] = 'Empfangsmethode';
 $lang_admin['miscprefs'] = 'Sonstige Einstellungen';
-$lang_admin['calendar'] = 'Kalender';
 $lang_admin['signup'] = 'Registrierung';
 $lang_admin['tempfiles'] = 'Tempor&auml;re Dateien';
 $lang_admin['count'] = 'Anzahl';
@@ -1376,7 +1321,6 @@ $lang_admin['addresstaken'] =
     'Die angegebene E-Mail-Adresse ist bereits vergeben. Bitte versuchen Sie es erneut.';
 $lang_admin['accountcreated'] =
     'Der Benutzer wurde erfolgreich angelegt.<br /><br /><a href="users.php?do=edit&id=%d&sid=%s">&raquo; Benutzer bearbeiten</a>';
-$lang_admin['byemail'] = 'per E-Mail';
 $lang_admin['stdgroup'] = 'Standard-Gruppe';
 $lang_admin['auto_tz'] = 'Zeitzonen-Automatik';
 $lang_admin['domain_combobox'] = 'Login-Domain-Auswahl';
@@ -1609,12 +1553,6 @@ $lang_admin['deletegroup'] = 'Gruppe l&ouml;schen';
 $lang_admin['groupdeletedesc'] =
     'Bitte w&auml;hlen Sie die Gruppe(n) aus, in welche die Mitglieder der Gruppe(n), die gel&ouml;scht werden soll(en), verschoben werden sollen.';
 $lang_admin['workgroups'] = 'Arbeitsgruppen';
-$lang_admin['collaboration'] = 'Zusammenarbeit';
-$lang_admin['share_addr'] = 'Gemeinsame Adressen';
-$lang_admin['share_calendar'] = 'Gemeinsamer Kalender';
-$lang_admin['share_todo'] = 'Gemeinsame Aufgaben';
-$lang_admin['share_notes'] = 'Gemeinsame Notizen';
-$lang_admin['share_webdisk'] = 'Gemeinsame Webdisk';
 $lang_admin['bayesdb'] = 'Filter-Datenbank';
 $lang_admin['reset'] = 'Zur&uuml;cksetzen';
 $lang_admin['bayesresetq'] =

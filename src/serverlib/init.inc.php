@@ -191,17 +191,6 @@ define('ITEMPRIO_HIGH', 1);
 define('ALIAS_SENDER', 1); // alias types
 define('ALIAS_RECIPIENT', 2);
 define('ALIAS_PENDING', 4);
-define('CLNDR_WHOLE_DAY', 1); // calendar flags
-define('CLNDR_REMIND_EMAIL', 2);
-define('CLNDR_REMIND_NOTIFY', 8);
-define('CLNDR_REPEATING_UNTIL_ENDLESS', 1); // calendar repeat flags
-define('CLNDR_REPEATING_UNTIL_COUNT', 2);
-define('CLNDR_REPEATING_UNTIL_DATE', 4);
-define('CLNDR_REPEATING_DAILY', 8);
-define('CLNDR_REPEATING_WEEKLY', 16);
-define('CLNDR_REPEATING_MONTHLY_MDAY', 32);
-define('CLNDR_REPEATING_MONTHLY_WDAY', 64);
-define('CLNDR_REPEATING_YEARLY', 128);
 define('STORE_RESULT_OK', 0); // store results
 define('STORE_RESULT_INTERNALERROR', 1);
 define('STORE_RESULT_NOTENOUGHSPACE', 2);
@@ -262,7 +251,6 @@ define(
 );
 define('FALLBACK_CHARSET', 'ISO-8859-15');
 define('BMCL_TYPE_CONTACT', 0); // changelog/sync item types
-define('BMCL_TYPE_CALENDAR', 1);
 define('BMCL_TYPE_CONTACTGROUP', 3);
 define('FTS_BGINDEX_COUNT', 10); // no of mails to index in each fts bg index step
 define('NOTIFICATION_LIMIT', 25);
