@@ -84,16 +84,6 @@ function toggleDropdownNavMenu() {
   }
 }
 
-function autoSetPreviewPos() {
-  MakeXMLRequest(
-    'email.php?action=setPreviewPosition&pos=' +
-      (window.innerWidth >= 1150 ? 'right' : 'bottom') +
-      '&sid=' +
-      currentSID,
-    false,
-  );
-}
-
 function ajaxFormData(f) {
   var data = '';
 
@@ -468,28 +458,6 @@ function showAddressMenu(e, readItem) {
   mailMenu.style.display = '';
   EBID('addressMenuReadItem').style.display = readItem ? '' : 'none';
   EBID('addressMenuReadItemSep').style.display = readItem ? '' : 'none';
-}
-
-/**************************************************************************
- * Dashboard ajax code
- *************************************************************************/
-function startBoardOrderChanged() {
-  MakeXMLRequest(
-    'start.php?action=saveWidgetOrder&order=' +
-      escape(this.order) +
-      '&sid=' +
-      currentSID,
-    false,
-  );
-}
-function organizerBoardOrderChanged() {
-  MakeXMLRequest(
-    'organizer.php?action=saveWidgetOrder&order=' +
-      escape(this.order) +
-      '&sid=' +
-      currentSID,
-    false,
-  );
 }
 
 function askReset() {

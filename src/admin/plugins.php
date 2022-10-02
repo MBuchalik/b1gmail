@@ -34,18 +34,12 @@ $tabs = [
         'link' => 'plugins.php?',
         'active' => $_REQUEST['action'] == 'plugins',
     ],
-    1 => [
-        'title' => $lang_admin['widgets'],
-        'relIcon' => 'wlayout_add32.png',
-        'link' => 'plugins.php?action=widgets&',
-        'active' => $_REQUEST['action'] == 'widgets',
-    ],
 ];
 
 /**
- * plugins/widgets
+ * plugins
  */
-if ($_REQUEST['action'] == 'plugins' || $_REQUEST['action'] == 'widgets') {
+if ($_REQUEST['action'] == 'plugins') {
     if (
         isset($_REQUEST['do']) &&
         $_REQUEST['do'] == 'activatePlugin' &&
@@ -84,44 +78,26 @@ if ($_REQUEST['action'] == 'plugins' || $_REQUEST['action'] == 'widgets') {
 
     // build plugin list
     foreach ($plugins->_plugins as $className => $pluginInfo) {
-        if (
-            ($_REQUEST['action'] == 'plugins' &&
-                ($plugins->getParam('type', $className) == BMPLUGIN_DEFAULT ||
-                    $plugins->getParam('type', $className) ==
-                        BMPLUGIN_FILTER)) ||
-            ($_REQUEST['action'] == 'widgets' &&
-                $plugins->getParam('type', $className) == BMPLUGIN_WIDGET)
-        ) {
-            $pluginList[] = [
-                'name' => $className,
-                'title' => $plugins->getParam('name', $className),
-                'version' => $plugins->getParam('version', $className),
-                'author' => $plugins->getParam('author', $className),
-                'type' =>
-                    $pluginTypeTable[$plugins->getParam('type', $className)],
-                'installed' => $plugins->getParam('installed', $className),
-                'paused' => $plugins->getParam('paused', $className),
-            ];
-        }
+        $pluginList[] = [
+            'name' => $className,
+            'title' => $plugins->getParam('name', $className),
+            'version' => $plugins->getParam('version', $className),
+            'author' => $plugins->getParam('author', $className),
+            'type' => $pluginTypeTable[$plugins->getParam('type', $className)],
+            'installed' => $plugins->getParam('installed', $className),
+            'paused' => $plugins->getParam('paused', $className),
+        ];
     }
     foreach ($plugins->_inactivePlugins as $className => $pluginInfo) {
-        if (
-            ($_REQUEST['action'] == 'plugins' &&
-                ($pluginInfo['type'] == BMPLUGIN_DEFAULT ||
-                    $pluginInfo['type'] == BMPLUGIN_FILTER)) ||
-            ($_REQUEST['action'] == 'widgets' &&
-                $pluginInfo['type'] == BMPLUGIN_WIDGET)
-        ) {
-            $pluginList[] = [
-                'name' => $className,
-                'title' => $pluginInfo['name'],
-                'version' => $pluginInfo['version'],
-                'author' => $pluginInfo['author'],
-                'type' => $pluginTypeTable[$pluginInfo['type']],
-                'installed' => $pluginInfo['installed'],
-                'paused' => $pluginInfo['paused'],
-            ];
-        }
+        $pluginList[] = [
+            'name' => $className,
+            'title' => $pluginInfo['name'],
+            'version' => $pluginInfo['version'],
+            'author' => $pluginInfo['author'],
+            'type' => $pluginTypeTable[$pluginInfo['type']],
+            'installed' => $pluginInfo['installed'],
+            'paused' => $pluginInfo['paused'],
+        ];
     }
 
     function __PluginSort($a, $b) {

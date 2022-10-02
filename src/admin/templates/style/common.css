@@ -468,38 +468,6 @@ CODE {
 }
 
 /**
- * Dashboard
- */
-.dragTable {
-  width: 100%;
-}
-.dragTableColumn {
-  vertical-align: top;
-}
-.dragItem {
-  border-spacing: 0px;
-  border-collapse: collapse;
-  border: 1px solid #dddddd;
-  background-color: #ffffff;
-  border-radius: 5px;
-}
-.dragBar {
-  background-image: url(../../../templates/modern/images/li/dragbar_bg.png);
-  font-weight: normal;
-  padding: 4px 5px;
-  vertical-align: middle;
-  border-bottom: 1px solid #dddddd;
-  cursor: default;
-}
-.dragBar A {
-  cursor: hand;
-  cursor: pointer;
-}
-.dragTargetActive {
-  border: 2px dashed #999999;
-}
-
-/**
  * Stats
  */
 .statsTable {

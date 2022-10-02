@@ -67,7 +67,7 @@
 
 				<a href="prefs.php?action=faq&sid={$sid}" title="{lng p="faq"}"><i class="fa fa-question fa-lg"></i></a>
 
-				<a href="start.php?sid={$sid}&action=logout" onclick="return confirm('{lng p="logoutquestion"}');" title="{lng p="logout"}"><i class="fa fa-sign-out fa-lg"></i></a>
+				<a href="prefs.php?sid={$sid}&action=logout" onclick="return confirm('{lng p="logoutquestion"}');" title="{lng p="logout"}"><i class="fa fa-sign-out fa-lg"></i></a>
 			</div>
 
 			<div class="toolbar">

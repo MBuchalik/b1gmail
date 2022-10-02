@@ -590,7 +590,7 @@ example.org</textarea>
                 str_replace('\\', '/', $_SERVER['SCRIPT_FILENAME']),
             );
             $prefsQuery = sprintf(
-                'INSERT INTO bm60_prefs(migration_level,template,language,selfurl,mobile_url,send_method,smtp_host,sendmail_path,receive_method,pop3_host,pop3_user,pop3_pass,passmail_abs,titel,datafolder,selffolder,b1gmta_host,dnsbl,widget_order_start,widget_order_organizer,structstorage,search_in,db_is_utf8,blobstorage_provider,blobstorage_provider_webdisk,blobstorage_compress,blobstorage_webdisk_compress) ' .
+                'INSERT INTO bm60_prefs(migration_level,template,language,selfurl,mobile_url,send_method,smtp_host,sendmail_path,receive_method,pop3_host,pop3_user,pop3_pass,passmail_abs,titel,datafolder,selffolder,b1gmta_host,dnsbl,structstorage,search_in,db_is_utf8,blobstorage_provider,blobstorage_provider_webdisk,blobstorage_compress,blobstorage_webdisk_compress) ' .
                     'VALUES(
                         \'%s\', /* migration_level */
                         \'%s\', /* template */
@@ -610,8 +610,6 @@ example.org</textarea>
                         \'%s\', /* selffolder */
                         \'%s\', /* b1gmta_host */
                         \'%s\', /* dnsbl */
-                        \'%s\', /* widget_order_start */
-                        \'%s\', /* widget_order_organizer */
                         \'%s\', /* structstorage */
                         \'%s\', /* search_in_db */
                         %d, /* db_is_utf8 */
@@ -645,8 +643,6 @@ example.org</textarea>
                 SQLEscape($selfFolder, $connection), // selffolder
                 $hostName, // b1gmta_host
                 'ix.dnsbl.manitu.net:zen.spamhaus.org', // dnsbl
-                'BMPlugin_Widget_Welcome,BMPlugin_Widget_EMail,BMPlugin_Widget_Websearch;BMPlugin_Widget_Mailspace,,BMPlugin_Widget_Quicklinks;BMPlugin_Widget_Webdiskspace,,', // widget_order_start
-                'BMPlugin_Widget_Websearch,BMPlugin_Widget_Calendar,BMPlugin_Widget_Notes;,BMPlugin_Widget_Tasks,', // widget_order_organizer
                 !ini_get('safe_mode') ? 'yes' : 'no', // structstorage
                 SQLEscape(
                     'a:8:{s:5:"mails";s:2:"on";s:11:"attachments";s:2:"on";s:3:"sms";s:2:"on";s:8:"calendar";s:2:"on";s:5:"tasks";s:2:"on";s:11:"addressbook";s:2:"on";s:5:"notes";s:2:"on";s:7:"webdisk";s:2:"on";}',

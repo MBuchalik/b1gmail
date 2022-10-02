@@ -34,23 +34,3 @@ $exampleData[] =
 
 $exampleData[] =
     'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'B1GMailSearchProvider\',\'1\',\'0\')';
-$exampleData[] =
-    'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'BMPlugin_Widget_Notes\',\'1\',\'0\')';
-$exampleData[] =
-    'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'BMPlugin_Widget_WebdiskDND\',\'1\',\'0\')';
-$exampleData[] =
-    'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'BMPlugin_Widget_Mailspace\',\'1\',\'0\')';
-$exampleData[] =
-    'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'BMPlugin_Widget_Quicklinks\',\'1\',\'0\')';
-$exampleData[] =
-    'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'BMPlugin_Widget_Calendar\',\'1\',\'0\')';
-$exampleData[] =
-    'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'BMPlugin_Widget_Tasks\',\'1\',\'0\')';
-$exampleData[] =
-    'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'BMPlugin_Widget_Welcome\',\'1\',\'0\')';
-$exampleData[] =
-    'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'BMPlugin_Widget_EMail\',\'1\',\'0\')';
-$exampleData[] =
-    'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'BMPlugin_Widget_Webdiskspace\',\'1\',\'0\')';
-$exampleData[] =
-    'INSERT INTO bm60_mods(`modname`,`installed`,`pos`) VALUES(\'BMPlugin_Widget_Websearch\',\'1\',\'0\')';

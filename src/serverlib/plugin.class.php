@@ -24,11 +24,7 @@ if (!defined('B1GMAIL_INIT')) {
 }
 
 define('BMPLUGIN_DEFAULT', 1);
-define('BMPLUGIN_WIDGET', 2);
-define('BMPLUGIN_FILTER', 3);
-
-define('BMWIDGET_START', 1);
-define('BMWIDGET_ORGANIZER', 2);
+define('BMPLUGIN_FILTER', 2);
 
 define('PLUGIN_USERID', -1);
 
@@ -339,43 +335,6 @@ class BMPlugin {
     }
 
     //
-    // widget handlers
-    //
-
-    var $widgetTemplate = false;
-    var $widgetTitle = 'Default title';
-    var $widgetIcon = false;
-    var $widgetPrefs = false;
-    var $widgetPrefsWidth = 320;
-    var $widgetPrefsHeight = 240;
-
-    /**
-     * return if widget is suitable for this page
-     *
-     * @param int $for Page (BMWIDGET_-constant)
-     * @return bool
-     */
-    function isWidgetSuitable($for) {
-        return false;
-    }
-
-    /**
-     * render widget for user to template
-     *
-     * @return bool
-     */
-    function renderWidget() {
-        return false;
-    }
-
-    /**
-     * render widget preferences page
-     *
-     */
-    function renderWidgetPrefs() {
-    }
-
-    //
     // internal functions
     //
 
@@ -454,23 +413,6 @@ class BMPlugin {
      */
     function _templatePath($template) {
         return $this->_resourcePath($template, 'template');
-    }
-
-    /**
-     * close widget prefs
-     *
-     * @param $reload Reload dashboard?
-     */
-    function _closeWidgetPrefs($reload = true) {
-        echo '<script>' . "\n";
-        if ($reload) {
-            echo '	parent.document.location.reload();' . "\n";
-        } else {
-            echo '	parent.hideOverlay();' . "\n";
-        }
-        echo '</script>' . "\n";
-
-        exit();
     }
 
     /**
@@ -783,27 +725,6 @@ class BMPluginInterface {
         } else {
             $this->_inactivePlugins[$pluginClass] = $pluginInfo;
         }
-    }
-
-    /**
-     * return widget plugins suitable for certain dashboard type
-     *
-     * @param int $for Dashboard type (BMWIDGET_-constant)
-     * @return array
-     */
-    function getWidgetsSuitableFor($for) {
-        $result = [];
-
-        foreach ($this->_plugins as $key => $val) {
-            if (
-                $this->_plugins[$key]['type'] == BMPLUGIN_WIDGET &&
-                $this->_plugins[$key]['instance']->isWidgetSuitable($for)
-            ) {
-                $result[] = $key;
-            }
-        }
-
-        return $result;
     }
 
     /**

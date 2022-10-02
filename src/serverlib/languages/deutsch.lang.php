@@ -272,7 +272,6 @@ $lang_user['groups'] = 'Gruppen';
 $lang_user['sess_expired'] = 'Sitzung abgelaufen';
 $lang_user['sess_expired_desc'] =
     'Ihre Sitzung wurde aus Sicherheitsgr&uuml;nden wegen Inaktivit&auml;t beendet. Bitte loggen Sie sich erneut ein.';
-$lang_user['tasks'] = 'Aufgaben';
 $lang_user['status'] = 'Status';
 $lang_user['done'] = 'Erledigt';
 $lang_user['title'] = 'Titel';
@@ -292,7 +291,6 @@ $lang_user['color_4'] = 'Orange';
 $lang_user['color_5'] = 'Lila';
 $lang_user['color_6'] = 'Violett';
 $lang_user['targetfolder'] = 'Ziel-Ordner';
-$lang_user['dnd_upload'] = 'Drag&amp;Drop';
 $lang_user['foldererror'] =
     'Der Ordner konnte nicht angelegt werden. Entweder existiert schon ein Ordner mit diesem Namen oder der Name ist ung&uuml;ltig (er muss mindestens 1 Zeichen lang sein).';
 $lang_user['actions'] = 'Aktionen';
@@ -310,6 +308,9 @@ $lang_user['realempty'] = 'Ordner wirklich vollständig leeren?';
 $lang_user['folder'] = 'Ordner';
 $lang_user['save'] = 'Speichern';
 $lang_user['cancel'] = 'Abbrechen';
+$lang_user['welcome'] = 'Herzlich Willkommen';
+$lang_user['logout'] = 'Logout';
+$lang_user['logoutquestion'] = 'Möchten Sie sich wirklich ausloggen?';
 
 // faq
 $lang_user['faq'] = 'FAQ';
@@ -393,7 +394,6 @@ $lang_user['trash'] = 'Papierkorb';
 // modes
 $lang_user['email'] = 'E-Mail';
 $lang_user['organizer'] = 'Organizer';
-$lang_user['webdisk'] = 'Webdisk';
 $lang_user['prefs'] = 'Einstellungen';
 $lang_user['start'] = 'Startseite';
 
@@ -407,7 +407,6 @@ $lang_user['size'] = 'Gr&ouml;&szlig;e';
 
 $lang_user['unknown'] = 'Unbekannt';
 $lang_user['back'] = 'Zur&uuml;ck';
-$lang_user['customize'] = 'Anpassen';
 $lang_user['today'] = 'Heute';
 $lang_user['yesterday'] = 'Gestern';
 $lang_user['lastweek'] = 'Letzte Woche';
@@ -419,7 +418,6 @@ $lang_user['fetching'] = 'Wird abgerufen';
 // organizer
 $lang_user['newgroup'] = 'Neue Gruppe';
 $lang_user['associatewith'] = 'Zuordnen zu';
-$lang_user['calendar'] = 'Kalender';
 $lang_user['overview'] = '&Uuml;bersicht';
 $lang_user['addressbook'] = 'Adressbuch';
 $lang_user['notes'] = 'Notizen';
@@ -806,20 +804,6 @@ $lang_user['issuecert_wrongpw'] =
 $lang_user['issuecert_err'] =
     'Das Zertifikat konnte aus unbekannten Gr&uuml;nden nicht ausgestellt werden. Bitte versuchen Sie es erneut und kontaktieren Sie uns, falls das Problem weiterhin besteht.';
 
-// start
-$lang_user['welcome'] = 'Herzlich Willkommen';
-$lang_user['welcometext'] = '<b>Herzlich Willkommen</b> bei %s, %s!';
-$lang_user['newmailtext'] = '<b>%d</b> ungelesene E-Mails';
-$lang_user['newmailtext1'] = '<b>%d</b> ungelesene E-Mail';
-$lang_user['websearch'] = 'Web-Suche';
-$lang_user['activewidgets'] = 'Anzuzeigende Elemente';
-$lang_user['quicklinks'] = 'Quick-Links';
-$lang_user['logout'] = 'Logout';
-$lang_user['logoutquestion'] = 'Möchten Sie sich wirklich ausloggen?';
-$lang_user['hidecustomfolders'] = 'Benutzerdefinierte Ordner ausblenden';
-$lang_user['hideintellifolders'] = 'Intelligente Ordner ausblenden';
-$lang_user['hidesystemfolders'] = 'System-Ordner ausblenden';
-
 // folders
 $lang_user['sysfolders'] = 'System-Ordner';
 $lang_user['ownfolders'] = 'Eigene Ordner';
@@ -978,15 +962,8 @@ $lang_admin['attachments'] = 'Anlagen';
 $lang_admin['redirectmobile'] = 'Autom. Mobil-Weiterleitung';
 $lang_admin['returnpathcheck'] = 'Return-Path-Pr&uuml;fung';
 $lang_admin['pleasewait'] = 'Bitte warten...';
-$lang_admin['startwidgets'] = 'Start-Dashboard';
-$lang_admin['defaultlayout'] = 'Standard-Layout';
 $lang_admin['default'] = 'Standard';
-$lang_admin['layout_addremove'] = 'Widgets hinzuf&uuml;gen/entfernen';
-$lang_admin['layout_resetdesc'] =
-    'Das Widget-Layout aller Benutzer, die einer der folgenden Gruppen angeh&ouml;ren, auf das aktuell gespeicherte Standard-Layout zur&uuml;cksetzen:';
-$lang_admin['organizerwidgets'] = 'Organizer-Dashboard';
 $lang_admin['pos'] = 'Position';
-$lang_admin['widgetlayouts'] = 'Widget-Layouts';
 $lang_admin['acp'] = 'Administrationsbereich (ACP)';
 $lang_admin['password'] = 'Passwort';
 $lang_admin['login'] = 'Login';
@@ -1104,8 +1081,6 @@ $lang_admin['status'] = 'Status';
 $lang_admin['installed'] = 'Installiert';
 $lang_admin['notinstalled'] = 'Nicht installiert';
 $lang_admin['module'] = 'Modul';
-$lang_admin['widget'] = 'Widget';
-$lang_admin['widgets'] = 'Widgets';
 $lang_admin['acdeactivate'] = 'Aktivieren / Deaktivieren';
 $lang_admin['reallyplugin'] =
     'Soll das Plugin wirklich aktiviert bzw. deaktiviert werden? Das Aktivieren fehlerhafter Plugins kann die Systemintegrität gefährden; das Deaktivieren von Plugins kann die mit dem Plugin verbundenen Daten unwiderruflich löschen!';
@@ -1446,7 +1421,6 @@ $lang_admin['movetogroup'] = 'In Gruppe verschieben';
 $lang_admin['approx'] = 'ca.';
 $lang_admin['usagebycategory'] = 'Speicher-Nutzung nach Kategorie';
 $lang_admin['category'] = 'Kategorie';
-$lang_admin['organizer'] = 'Organizer';
 $lang_admin['mails'] = 'E-Mails';
 $lang_admin['overall'] = 'Gesamt';
 $lang_admin['usagebygroup'] = 'Speicher-Nutzung nach Gruppe';

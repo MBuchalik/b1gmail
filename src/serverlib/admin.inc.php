@@ -47,7 +47,6 @@ $fieldTypeTable = [
 $pluginTypeTable = [
     BMPLUGIN_DEFAULT => $lang_admin['module'],
     BMPLUGIN_FILTER => $lang_admin['filter'],
-    BMPLUGIN_WIDGET => $lang_admin['widget'],
 ];
 $statusTable = [
     'yes' => $lang_admin['locked'],
@@ -144,6 +143,8 @@ $unnecessaryFilesAndFolders = [
 
         // These files were removed in b1gmail 9.0.0.
         B1GMAIL_DIR . 'organizer.calendar.php',
+        B1GMAIL_DIR . 'organizer.notes.php',
+        B1GMAIL_DIR . 'start.php',
         B1GMAIL_DIR . 'webdisk.php',
     ],
     'folders' => [

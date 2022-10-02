@@ -1880,42 +1880,6 @@ A:hover {
 }
 
 /* ******************************************************************* */
-.dragTable {
-  width: 100%;
-}
-.dragTableColumn {
-  vertical-align: top;
-}
-.dragItem {
-  border-spacing: 0px;
-  border-collapse: collapse;
-  border: 1px solid #ddd;
-  background-color: #ffffff;
-}
-.dragBar {
-  background-color: #eee;
-  font-weight: normal;
-  padding: 0.5em;
-  vertical-align: middle;
-  border-bottom: 1px solid #ddd;
-  cursor: default;
-}
-.dragBar IMG {
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-}
-.dragBar A {
-  cursor: hand;
-  cursor: pointer;
-}
-.dragTargetActive {
-  border: 2px dashed #999999;
-}
-.innerWidget {
-  padding: 6px;
-}
-
 .activeFolder {
   font-weight: bold;
 }
@@ -2395,11 +2359,6 @@ INPUT.primary:disabled {
 :root {
   --bm-color-main: #1976d2;
   --bm-color-main-shade: #1565c0;
-
-  --bm-color-widget-1: #0288d1;
-  --bm-color-widget-2: #0097a7;
-  --bm-color-widget-3: #e91e63;
-  --bm-color-widget-4: #9c27b0;
 }
 html,
 body {
@@ -2647,53 +2606,6 @@ a.sidebar-btn {
 }
 a.sidebar-btn:hover {
   background: var(--bm-color-main-shade);
-}
-
-/* ===== Widgets ===== */
-.dragBar {
-  background: transparent;
-  border: none;
-  text-align: center;
-  font-size: 1.15rem;
-}
-.dragBar img {
-  display: none;
-}
-.dragBar div a::before {
-  font-family: FontAwesome;
-  content: '\f013';
-}
-.dragItem {
-  background: var(--bm-color-widget-1);
-  color: #ffffff;
-  padding: 0.5rem;
-  margin: 0.5rem;
-  border: none;
-}
-.dragItem a {
-  color: #ffffff;
-}
-.dragItem input[type='submit'] {
-  color: #ffffff;
-  border: 1px solid #ffffff;
-  padding: 4px 9px;
-}
-.dragItem img {
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-}
-#dc_startBoxesdragItem_BMPlugin_Widget_Welcome,
-#dc_startBoxesdragItem_BMPlugin_Widget_Quicklinks {
-  background: var(--bm-color-widget-2);
-}
-#dc_startBoxesdragItem_BMPlugin_Widget_Tasks,
-#dc_startBoxesdragItem_BMPlugin_Widget_WebdiskDND,
-#dc_startBoxesdragItem_BMPlugin_Widget_Mailspace {
-  background: var(--bm-color-widget-3);
-}
-
-#BMPlugin_Widget_EMail table td:nth-child(3) {
-  width: 80px;
 }
 
 /* ===== Email ===== */

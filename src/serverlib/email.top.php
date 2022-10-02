@@ -43,7 +43,10 @@ if (!$avoidFrameTasks) {
         'dropdownFolderList',
         $mailbox->GetDropdownFolderList(-1, $null),
     );
-    $tpl->assign('narrow', $thisUser->GetPref('previewPosition') == 'right');
+    $previewPositionPref = $thisUser->GetPref('previewPosition');
+    if (!$previewPositionPref || $previewPositionPref === 'right') {
+        $tpl->assign('narrow', true);
+    }
 }
 $tpl->assign('pageToolbarFile', 'li/email.toolbar.tpl');
 $tpl->assign('pageTitle', $lang_user['email']);

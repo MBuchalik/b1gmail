@@ -49,7 +49,9 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
                     DROP COLUMN forbidden_mimetypes,
                     DROP COLUMN search_engine,
                     DROP COLUMN notify_interval,
-                    DROP COLUMN notify_lifetime
+                    DROP COLUMN notify_lifetime,
+                    DROP COLUMN widget_order_start,
+                    DROP COLUMN widget_order_organizer
             ',
             )
         ) {
@@ -90,7 +92,15 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
         if (
             !mysqli_query(
                 $dbConnection,
-                "DELETE FROM bm60_userprefs WHERE `key`='webdisk_hideHidden' OR `key`='webdiskViewMode'",
+                "DELETE FROM bm60_userprefs
+                WHERE `key` IN
+                    (
+                        'webdisk_hideHidden',
+                        'webdiskViewMode',
+                        'widgetOrderStart',
+                        'widgetOrderOrganizer'
+                    )
+            ",
             )
         ) {
             return false;

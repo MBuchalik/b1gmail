@@ -2,6 +2,10 @@
 
 ## Version 8.0.0 to 9.0.0
 
+### Before running the update
+
+You should uninstall all Plugins that provide Widgets. Widgets are not supported in version 9.0.0 anymore.
+
 ### After running the update
 
 You can safely delete files from the `data/` directory with the following names:

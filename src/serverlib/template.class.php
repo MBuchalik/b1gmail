@@ -233,12 +233,6 @@ class Template extends Smarty {
         // tabs
         if (isset($userRow) && isset($groupRow)) {
             $pageTabs = [
-                'start' => [
-                    'icon' => 'start',
-                    'faIcon' => 'fa-home',
-                    'link' => 'start.php?sid=',
-                    'text' => $lang_user['start'],
-                ],
                 'email' => [
                     'icon' => 'email',
                     'faIcon' => 'fa-envelope-o',

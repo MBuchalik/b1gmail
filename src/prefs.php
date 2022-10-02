@@ -236,6 +236,10 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('pageContent', 'li/prefs.common.tpl');
     $tpl->assign('activeItem', 'common');
     $tpl->display('li/index.tpl');
+} elseif ($_REQUEST['action'] == 'logout') {
+    BMUser::Logout();
+    header('Location: ' . $bm_prefs['logouturl']);
+    exit();
 } /**
  * contact
  */ elseif ($_REQUEST['action'] == 'contact') {

@@ -321,9 +321,6 @@ $lang_user['to3'] = 'to';
 $lang_user['with'] = 'with';
 $lang_user['selectdraft'] = 'Select draft';
 $lang_user['pop3ownerror'] = 'You cannot fetch the mailbox into itself.';
-$lang_user['hidecustomfolders'] = 'Hide user defined folders';
-$lang_user['hideintellifolders'] = 'Hide intelligent folders';
-$lang_user['hidesystemfolders'] = 'Hide system folders';
 $lang_user['sendmail2'] = 'Send email';
 $lang_user['color_0'] = 'None';
 $lang_user['color_1'] = 'Blue';
@@ -333,7 +330,6 @@ $lang_user['color_4'] = 'Orange';
 $lang_user['color_5'] = 'Purple';
 $lang_user['color_6'] = 'Violet';
 $lang_user['targetfolder'] = 'Destination folder';
-$lang_user['tasks'] = 'Tasks';
 $lang_user['status'] = 'Status';
 $lang_user['done'] = 'Done';
 $lang_user['title'] = 'Title';
@@ -345,7 +341,6 @@ $lang_user['editgroups'] = 'Edit groups';
 $lang_user['color'] = 'Color';
 $lang_user['minutes'] = 'minute(s)';
 $lang_user['until'] = 'until';
-$lang_user['dnd_upload'] = 'Drag&amp;Drop';
 $lang_user['foldererror'] =
     'The folder could not be created. Either a folder by this name already exists or the name is invalid (minimum of 1 character).';
 $lang_user['actions'] = 'Action';
@@ -363,6 +358,9 @@ $lang_user['realempty'] = 'Are you sure you want to empty the folder?';
 $lang_user['folder'] = 'Folder';
 $lang_user['save'] = 'Save';
 $lang_user['cancel'] = 'Cancel';
+$lang_user['welcome'] = 'Welcome';
+$lang_user['logout'] = 'Logout';
+$lang_user['logoutquestion'] = 'Are you sure you want to log out?';
 
 // faq
 $lang_user['faq'] = 'FAQ';
@@ -443,7 +441,6 @@ $lang_user['trash'] = 'Trash';
 // modes
 $lang_user['email'] = 'Email';
 $lang_user['organizer'] = 'Organizer';
-$lang_user['webdisk'] = 'Webdisc';
 $lang_user['prefs'] = 'Settings';
 $lang_user['start'] = 'Start page';
 
@@ -456,7 +453,6 @@ $lang_user['size'] = 'Size';
 
 $lang_user['unknown'] = 'Unknown';
 $lang_user['back'] = 'Back';
-$lang_user['customize'] = 'Customize';
 $lang_user['today'] = 'Today';
 $lang_user['yesterday'] = 'Yesterday';
 $lang_user['lastweek'] = 'Last week';
@@ -465,7 +461,6 @@ $lang_user['ok'] = 'OK';
 $lang_user['error'] = 'Error';
 
 // organizer
-$lang_user['calendar'] = 'Calendar';
 $lang_user['overview'] = 'Overview';
 $lang_user['addressbook'] = 'Addressbook';
 $lang_user['notes'] = 'Notes';
@@ -816,17 +811,6 @@ $lang_user['issuecert_wrongpw'] =
 $lang_user['issuecert_err'] =
     'Sorry, we cannot issue a certificate for you at this time for unknown reasons. Please try again later and contact us in case the problem persists.';
 
-// start
-$lang_user['welcome'] = 'Welcome';
-$lang_user['welcometext'] = '<b>Welcome</b> to %s, %s!';
-$lang_user['newmailtext'] = '<b>%d</b> unread messages';
-$lang_user['newmailtext1'] = '<b>%d</b> unread message';
-$lang_user['websearch'] = 'Web search';
-$lang_user['activewidgets'] = 'Active widgets';
-$lang_user['quicklinks'] = 'Quick links';
-$lang_user['logout'] = 'Logout';
-$lang_user['logoutquestion'] = 'Are you sure you want to log out?';
-
 // folders
 $lang_user['sysfolders'] = 'System folders';
 $lang_user['ownfolders'] = 'Own folders';
@@ -993,15 +977,8 @@ $lang_admin['sender_aliases'] = 'Sender aliases';
 $lang_admin['attachments'] = 'Attachments';
 $lang_admin['returnpathcheck'] = 'Return path check';
 $lang_admin['pleasewait'] = 'Please wait...';
-$lang_admin['startwidgets'] = 'Start dashboard';
-$lang_admin['defaultlayout'] = 'Default layout';
 $lang_admin['default'] = 'Default';
-$lang_admin['layout_addremove'] = 'Add/remove widgets';
-$lang_admin['layout_resetdesc'] =
-    'Reset the widget layout of all users belonging to one of the following groups to the default layout:';
-$lang_admin['organizerwidgets'] = 'Organizer dashboard';
 $lang_admin['pos'] = 'Position';
-$lang_admin['widgetlayouts'] = 'Widget layouts';
 $lang_admin['invalidselffolder'] =
     'The configured absolute path to b1gMail (<code>%s</code>) does not exist. Please correct the path!';
 $lang_admin['auto_tz'] = 'Timezone auto detect';
@@ -1143,8 +1120,6 @@ $lang_admin['status'] = 'Status';
 $lang_admin['installed'] = 'Installed';
 $lang_admin['notinstalled'] = 'Not installed';
 $lang_admin['module'] = 'Module';
-$lang_admin['widget'] = 'Widget';
-$lang_admin['widgets'] = 'Widgets';
 $lang_admin['acdeactivate'] = 'Activate / deactivate';
 $lang_admin['reallyplugin'] =
     'Are you sure you want to activate / deactivate the plugin? Activating faulty plugins may compromise system integrity; deactivating plugins may permanently erase the data associated with the plugin!';
@@ -1446,7 +1421,6 @@ $lang_admin['movetogroup'] = 'Move to group';
 $lang_admin['approx'] = 'approx.';
 $lang_admin['usagebycategory'] = 'Space use by category';
 $lang_admin['category'] = 'Category';
-$lang_admin['organizer'] = 'Organizer';
 $lang_admin['mails'] = 'Emails';
 $lang_admin['overall'] = 'Overall';
 $lang_admin['usagebygroup'] = 'Memory usage by group';

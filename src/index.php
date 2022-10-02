@@ -471,37 +471,6 @@ if ($_REQUEST['action'] == 'tos') {
     );
     exit();
 } /**
- * initiate web session from tool interface
- */ elseif (
-    $_REQUEST['action'] == 'initiateSession' &&
-    isset($_REQUEST['target']) &&
-    isset($_REQUEST['sid'])
-) {
-    if (isset($_REQUEST['secret'])) {
-        setcookie(
-            'sessionSecret_' . substr($_REQUEST['sid'], 0, 16),
-            $_REQUEST['secret'],
-            0,
-            '/',
-        );
-    }
-
-    if ($_REQUEST['target'] == 'compose') {
-        header('Location: email.compose.php?sid=' . $_REQUEST['sid']);
-    } elseif ($_REQUEST['target'] == 'membership') {
-        header(
-            'Location: prefs.php?sid=' .
-                $_REQUEST['sid'] .
-                '&action=membership',
-        );
-    } elseif ($_REQUEST['target'] == 'inbox') {
-        header('Location: email.php?sid=' . $_REQUEST['sid']);
-    } else {
-        header('Location: start.php?sid=' . $_REQUEST['sid']);
-    }
-
-    exit();
-} /**
  * login
  */ else {
     if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'login') {
@@ -538,13 +507,14 @@ if ($_REQUEST['action'] == 'tos') {
                 header('Access-Control-Allow-Origin: *');
                 header('Content-Type: application/json');
                 printf(
-                    '{ "action": "redirect", "url" : "start.php?sid=%s" }',
+                    '{ "action": "redirect", "url" : "email.php?sid=%s" }',
                     $param,
                 );
-            } elseif (!isset($_REQUEST['target'])) {
-                header('Location: start.php?sid=' . $param);
-            } elseif ($_REQUEST['target'] == 'inbox') {
-                header('Location: email.php?folder=0&sid=' . $param);
+            } elseif (
+                !isset($_REQUEST['target']) ||
+                $_REQUEST['target'] == 'inbox'
+            ) {
+                header('Location: email.php?sid=' . $param);
             } elseif ($_REQUEST['target'] == 'compose') {
                 header(
                     'Location: email.compose.php?sid=' .

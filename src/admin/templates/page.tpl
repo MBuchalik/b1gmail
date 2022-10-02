@@ -64,7 +64,6 @@
 							<li><a href="prefs.templates.php?sid={$sid}"><img src="./templates/images/template.png" />{lng p="templates"}</a></li>
 							<li><a href="prefs.ads.php?sid={$sid}"><img src="./templates/images/ad32.png" />{lng p="ads"}</a></li>
 							<li><a href="prefs.faq.php?sid={$sid}"><img src="./templates/images/faq32.png" />{lng p="faq"}</a></li>
-							<li><a href="prefs.widgetlayouts.php?sid={$sid}"><img src="./templates/images/wlayout_add.png" />{lng p="widgetlayouts"}</a></li>
 						</ul>
 					</li>
 					{/if}
