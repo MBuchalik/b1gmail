@@ -104,20 +104,6 @@ function ProcessNoSignupAutoDel() {
 }
 
 /**
- * Delete old mail delivery status entries
- *
- */
-function CleanupMailDeliveryStatus() {
-    global $db;
-
-    $db->Query(
-        'DELETE FROM {pre}maildeliverystatus WHERE (`status`=? OR `outboxid`=0) AND `created`<?',
-        MDSTATUS_INVALID,
-        time() - TIME_ONE_HOUR,
-    );
-}
-
-/**
  * clean up expired cert mails
  *
  */

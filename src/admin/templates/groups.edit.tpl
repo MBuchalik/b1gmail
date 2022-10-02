@@ -122,8 +122,6 @@
 						<td class="td2"><input type="checkbox" name="ftsearch"{if !$ftsSupport} disabled="disabled"{else}{if $group.ftsearch=='yes'} checked="checked"{/if}{/if} /></td>
 					</tr>
 					<tr>
-						<td class="td1">{lng p="deliverystatus"}?</td>
-						<td class="td2"><input type="checkbox" name="maildeliverystatus"{if $group.maildeliverystatus=='yes'} checked="checked"{/if} /></td>
 						<td class="td1">{lng p="auto_save_drafts"}?</td>
 						<td class="td2"><input type="checkbox" name="auto_save_drafts"{if $group.auto_save_drafts=='yes'} checked="checked"{/if} /></td>
 					</tr>

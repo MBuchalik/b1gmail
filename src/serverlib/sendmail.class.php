@@ -312,14 +312,4 @@ class BMSendMail {
         // return
         return false;
     }
-
-    /**
-     * associate sent mail with an outbox mail ID
-     *
-     */
-    function SetDeliveryStatusOutboxID($outboxID) {
-        if ($this->_smtp !== false) {
-            $this->_smtp->SetDeliveryStatusOutboxID($outboxID);
-        }
-    }
 }

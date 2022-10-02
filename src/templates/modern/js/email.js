@@ -422,16 +422,6 @@ function showMailSource(id) {
   );
 }
 
-function showDeliveryStatus(mailID) {
-  openOverlay(
-    'email.read.php?action=deliveryStatus&id=' + mailID + '&sid=' + currentSID,
-    lang['deliverystatus'],
-    500,
-    300,
-    false,
-  );
-}
-
 function showAttachedMail(mailID, attID, title) {
   openOverlay(
     'email.read.php?action=attachedMail&id=' +

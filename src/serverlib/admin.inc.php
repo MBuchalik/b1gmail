@@ -360,9 +360,6 @@ function DeleteUser($userID, $qAddAND = '') {
         BMBlobStorage::createProvider($blobStorageID, $userID)->deleteUser();
     }
 
-    // delivery status entries
-    $db->Query('DELETE FROM {pre}maildeliverystatus WHERE userid=?', $userID);
-
     // delete group<->member associations + groups
     $groupIDs = [];
     $res = $db->Query(

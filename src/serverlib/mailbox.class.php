@@ -2223,11 +2223,6 @@ class BMMailbox {
             $db->Query('DELETE FROM {pre}mailnotes WHERE mailid=?', (int) $id);
 
             $db->Query(
-                'DELETE FROM {pre}maildeliverystatus WHERE outboxid=?',
-                (int) $id,
-            );
-
-            $db->Query(
                 'DELETE FROM {pre}attachments WHERE mailid=?',
                 (int) $id,
             );

@@ -381,16 +381,6 @@ class BMMailBuilder {
     }
 
     /**
-     * associate sent mail with an outbox mail ID
-     *
-     */
-    function SetDeliveryStatusOutboxID($outboxID) {
-        if ($this->_sendMail !== false) {
-            $this->_sendMail->SetDeliveryStatusOutboxID($outboxID);
-        }
-    }
-
-    /**
      * write part header
      *
      * @param array $headerFields Header fields

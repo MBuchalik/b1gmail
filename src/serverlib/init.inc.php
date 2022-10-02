@@ -249,12 +249,6 @@ define('FALLBACK_CHARSET', 'ISO-8859-15');
 define('BMCL_TYPE_CONTACT', 0); // changelog/sync item types
 define('BMCL_TYPE_CONTACTGROUP', 3);
 define('FTS_BGINDEX_COUNT', 10); // no of mails to index in each fts bg index step
-define('MDSTATUS_INVALID', 0);
-define('MDSTATUS_SUBMITTED_TO_MTA', 1);
-define('MDSTATUS_RECEIVED_BY_MTA', 2);
-define('MDSTATUS_DELIVERED_BY_MTA', 3);
-define('MDSTATUS_DELIVERY_DEFERRED', 4);
-define('MDSTATUS_DELIVERY_FAILED', 5);
 define('ATACTION_SENDMAIL', 1); // action token action IDs
 define('TRANSACTION_CREATED', 0); // transaction status values
 define('TRANSACTION_BOOKED', 1);

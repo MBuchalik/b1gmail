@@ -125,16 +125,7 @@
 				</tr>
 				{/if}
 
-				{if $deliveryStatus}
-				<tr>
-					<th>{lng p="deliverystatus"}:</th>
-					<td>
-						{if $deliveryStatus.exception}<i class="fa fa-exclamation-triangle" style="color:orange;"></i>
-						{elseif $deliveryStatus.allDelivered}<i class="fa fa-check" style="color:green;"></i>
-						{else}<i class="fa fa-refresh"></i>{/if}
-						<a href="javascript:showDeliveryStatus({$mailID});">{$deliveryStatus.statusText}</a>
-					</td>
-				{/if}
+			
 			</table>
 		</div>
 	</div>

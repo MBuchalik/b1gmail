@@ -1251,14 +1251,6 @@ if ($_REQUEST['action'] == 'compose') {
                 if ($saveTo != -128) {
                     $mailbox->StoreMail($mailObj, $saveTo);
                     $mailID = $mailbox->_lastInsertId;
-
-                    if (
-                        $_REQUEST['do'] != 'saveDraft' &&
-                        !isset($_REQUEST['certMail']) &&
-                        is_object($mail)
-                    ) {
-                        $mail->SetDeliveryStatusOutboxID($mailID);
-                    }
                 }
 
                 //

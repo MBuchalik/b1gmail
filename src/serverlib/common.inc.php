@@ -291,67 +291,6 @@ function ParsePHPSize($size) {
 }
 
 /**
- * Create a new mail delivery status entry
- *
- * @param int $userID User ID of owner
- * @return int Delivery status ID
- */
-function CreateMailDeliveryStatusEntry($userID, $recipient) {
-    global $db;
-
-    $db->Query(
-        'INSERT INTO {pre}maildeliverystatus(`userid`,`recipient`,`created`,`updated`,`status`) VALUES(?,?,?,?,?)',
-        $userID,
-        $recipient,
-        time(),
-        time(),
-        MDSTATUS_INVALID,
-    );
-    return $db->InsertId();
-}
-
-/**
- * Associate delivery status entry with an outbox email
- *
- * @param int $dsIDs Delivery status ID(s)
- * @param int $outboxID ID of outbox email
- */
-function SetDeliveryStatusOutboxID($dsIDs, $outboxID) {
-    global $db;
-
-    if (!is_array($dsIDs)) {
-        $dsIDs = [$dsIDs];
-    }
-
-    $db->Query(
-        'UPDATE {pre}maildeliverystatus SET `outboxid`=? WHERE `deliverystatusid` IN ?',
-        $outboxID,
-        $dsIDs,
-    );
-}
-
-/**
- * Update delivery status
- *
- * @param int $dsIDs Delivery status ID(s)
- * @param int $status Status code
- */
-function UpdateDeliveryStatus($dsIDs, $status) {
-    global $db;
-
-    if (!is_array($dsIDs)) {
-        $dsIDs = [$dsIDs];
-    }
-
-    $db->Query(
-        'UPDATE {pre}maildeliverystatus SET `status`=?,`updated`=? WHERE `deliverystatusid` IN ?',
-        $status,
-        time(),
-        $dsIDs,
-    );
-}
-
-/**
  * Check if timestamp fullfills validity rule expression
  *
  * @param int $date Timestamp

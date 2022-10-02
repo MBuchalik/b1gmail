@@ -98,9 +98,6 @@ if ($bm_prefs['last_cron'] < time() - $bm_prefs['cron_interval']) {
     // auto-delete users who never logged in
     ProcessNoSignupAutoDel();
 
-    // delete old mail delivery status entries
-    CleanupMailDeliveryStatus();
-
     // fetch POP3 mails
     if ($bm_prefs['receive_method'] == 'pop3') {
         $pop3Gateway = _new('BMPOP3Gateway');

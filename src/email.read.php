@@ -354,10 +354,6 @@ if ($_REQUEST['action'] == 'read' && isset($_REQUEST['id'])) {
             $userRow['conversation_view'] == 'yes',
         );
 
-        if ($groupRow['maildeliverystatus'] == 'yes') {
-            $tpl->assign('deliveryStatus', $mail->GetDeliveryStatus());
-        }
-
         if (isset($_REQUEST['preview'])) {
             $tpl->assign('preview', true);
             $tpl->assign('narrow', isset($_REQUEST['narrow']));
@@ -384,19 +380,6 @@ if ($_REQUEST['action'] == 'read' && isset($_REQUEST['id'])) {
             $tpl->assign('pageContent', 'li/email.read.tpl');
             $tpl->display('li/index.tpl');
         }
-    }
-} /**
- * delivery status
- */ elseif (
-    $_REQUEST['action'] == 'deliveryStatus' &&
-    isset($_REQUEST['id']) &&
-    $groupRow['maildeliverystatus'] == 'yes'
-) {
-    $mail = $mailbox->GetMail((int) $_REQUEST['id']);
-
-    if ($mail !== false) {
-        $tpl->assign('deliveryStatus', $mail->GetDeliveryStatus());
-        $tpl->display('li/dialog.deliverystatus.tpl');
     }
 } /**
  * attached ZIP

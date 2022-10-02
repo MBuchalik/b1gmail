@@ -74,7 +74,6 @@ $lang_client['nwslttrtplwarn'] =
     'Bei Wechsel des Templates gehen alle Eingaben, die bisher gemacht wurden, verloren. Sind Sie sicher, dass Sie das Template wechseln möchten?';
 $lang_client['cancel'] = 'Abbrechen';
 $lang_client['pleasewait'] = 'Bitte warten...';
-$lang_client['deliverystatus'] = 'Zustell-Status';
 $lang_client['decsep'] = ',';
 $lang_client['lastsavedat'] = 'Zuletzt gespeichert um %1:%2 Uhr.';
 
@@ -416,20 +415,6 @@ $lang_user['later'] = 'Sp&auml;ter';
 $lang_user['ok'] = 'OK';
 $lang_user['error'] = 'Fehler';
 $lang_user['fetching'] = 'Wird abgerufen';
-
-$lang_user['deliverystatus'] = 'Zustell-Status';
-$lang_user['mds_delivered'] =
-    'Zugestellt an <strong>%d</strong> Empf&auml;nger.';
-$lang_user['mds_deferred'] =
-    'Zustellung an <strong>%d</strong> Empf&auml;nger verz&ouml;gert.';
-$lang_user['mds_failed'] =
-    'Zustellung an <strong>%d</strong> Empf&auml;nger fehlgeschlagen.';
-$lang_user['mds_processing'] = 'In Zustellung';
-$lang_user['mds_recp_processing'] = 'In Zustellung';
-$lang_user['mds_recp_delivered'] = 'Zugestellt';
-$lang_user['mds_recp_deferred'] = 'In Zustellung (verz&ouml;gert)';
-$lang_user['mds_recp_failed'] = 'Zustellung fehlgeschlagen';
-$lang_user['recipient'] = 'Empf&auml;nger';
 
 // organizer
 $lang_user['newgroup'] = 'Neue Gruppe';
@@ -932,7 +917,6 @@ $lang_admin['pfrulenote'] =
     '(nur f&uuml;r Text-Felder (regul&auml;rer Ausdruck) oder Datums-Felder (z.B. &quot;&gt;= 18y&quot;))';
 $lang_admin['registered'] = 'Registriert';
 $lang_admin['onlyfor'] = 'gilt nur f&uuml;r';
-$lang_admin['deliverystatus'] = 'Zustell-Status';
 $lang_admin['acpiconsfrom'] = 'Adminbereich-Icons von';
 $lang_admin['acpbgfrom'] = 'Adminbereich-Hintergrundbild von';
 $lang_admin['addservices'] = 'Zusatzleistungen';

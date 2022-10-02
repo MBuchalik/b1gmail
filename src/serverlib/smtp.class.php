@@ -35,7 +35,6 @@ class BMSMTP {
     var $_my_host;
     var $_isb1gMailServer;
     var $_userID;
-    var $_dsIDs;
 
     /**
      * constructor
@@ -51,7 +50,6 @@ class BMSMTP {
         $this->_my_host = $my_host;
         $this->_isb1gMailServer = false;
         $this->_userID = USERID_UNKNOWN;
-        $this->_dsIDs = [];
     }
 
     /**
@@ -212,8 +210,6 @@ class BMSMTP {
      * @return bool
      */
     function StartMail($from, $to) {
-        $this->_dsIDs = [];
-
         // send helo, if not sent yet (e.g. at login)
         if (!$this->_helo) {
             fwrite($this->_sock, 'HELO ' . $this->_my_host . "\r\n") &&
@@ -238,15 +234,6 @@ class BMSMTP {
             // send RCPT TO
             foreach ($to as $address) {
                 $rcptAdd = '';
-
-                if ($this->_isb1gMailServer && $this->_userID > 0) {
-                    $dsID = CreateMailDeliveryStatusEntry(
-                        $this->_userID,
-                        $address,
-                    );
-                    $rcptAdd = ' X-B1GMAIL-DSID=' . $dsID;
-                    $this->_dsIDs[$dsID] = $address;
-                }
 
                 fwrite(
                     $this->_sock,
@@ -301,13 +288,6 @@ class BMSMTP {
                 }
             }
 
-            if (count($this->_dsIDs) > 0) {
-                UpdateDeliveryStatus(
-                    array_keys($this->_dsIDs),
-                    MDSTATUS_SUBMITTED_TO_MTA,
-                );
-            }
-
             // finish
             $success =
                 fwrite($this->_sock, "\r\n" . '.' . "\r\n") &&
@@ -326,16 +306,6 @@ class BMSMTP {
     function Reset() {
         return fwrite($this->_sock, 'RSET' . "\r\n") &&
             substr($this->_getResponse(), 0, 3) == '250';
-    }
-
-    /**
-     * associate sent mail with an outbox mail ID
-     *
-     */
-    function SetDeliveryStatusOutboxID($outboxID) {
-        if (count($this->_dsIDs) > 0) {
-            SetDeliveryStatusOutboxID(array_keys($this->_dsIDs), $outboxID);
-        }
     }
 
     /**

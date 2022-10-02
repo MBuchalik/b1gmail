@@ -70,7 +70,8 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
                     DROP COLUMN webdisk,
                     DROP COLUMN wd_member_kbs,
                     DROP COLUMN wd_open_kbs,
-                    DROP COLUMN notifications
+                    DROP COLUMN notifications,
+                    DROP COLUMN maildeliverystatus
             ',
             )
         ) {
@@ -166,6 +167,12 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
         }
 
         if (!mysqli_query($dbConnection, 'DROP TABLE bm60_notifications')) {
+            return false;
+        }
+
+        if (
+            !mysqli_query($dbConnection, 'DROP TABLE bm60_maildeliverystatus')
+        ) {
             return false;
         }
 

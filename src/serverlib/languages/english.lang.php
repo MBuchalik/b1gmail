@@ -78,7 +78,6 @@ $lang_client['cancel'] = 'Cancel';
 $lang_client['nocontactselected'] = 'No contact selected';
 $lang_client['contactsselected'] = 'contacts selected';
 $lang_client['pleasewait'] = 'Please wait...';
-$lang_client['deliverystatus'] = 'Delivery status';
 $lang_client['decsep'] = ',';
 $lang_client['lastsavedat'] = 'Last saved at %1:%2.';
 
@@ -245,18 +244,6 @@ $lang_user['full_weekdays'] = [
 
 $lang_user['nothanks'] = 'No thanks';
 $lang_user['relevance'] = 'Relevance';
-$lang_user['deliverystatus'] = 'Delivery status';
-$lang_user['mds_delivered'] = 'Delivered to <strong>%d</strong> recipient(s).';
-$lang_user['mds_deferred'] =
-    'Delivery to <strong>%d</strong> recipient(s) delayed.';
-$lang_user['mds_failed'] =
-    'Delivery to <strong>%d</strong> recipient(s) failed.';
-$lang_user['mds_processing'] = 'Delivering';
-$lang_user['mds_recp_processing'] = 'Delivering';
-$lang_user['mds_recp_delivered'] = 'Delivered';
-$lang_user['mds_recp_deferred'] = 'Delivering (delayed)';
-$lang_user['mds_recp_failed'] = 'Delivery failed';
-$lang_user['recipient'] = 'Recipient';
 $lang_user['newgroup'] = 'New group';
 $lang_user['associatewith'] = 'Associate with';
 $lang_user['mails_del'] = 'Delete emails';
@@ -926,7 +913,6 @@ $lang_admin['pfrulenote'] =
     '(only for text fields (regular expressions) or date fields (e.g. &quot;&gt;= 18y&quot;))';
 $lang_admin['registered'] = 'Registered';
 $lang_admin['onlyfor'] = 'only for';
-$lang_admin['deliverystatus'] = 'Delivery status';
 $lang_admin['acpiconsfrom'] = 'ACP icons by';
 $lang_admin['acpbgfrom'] = 'ACP background by';
 $lang_admin['addservices'] = 'Additional services';
