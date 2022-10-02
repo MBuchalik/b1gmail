@@ -205,14 +205,6 @@ if ($_REQUEST['action'] == 'compose') {
             } else {
                 $mail['to'] = DecodeEMail($sourceMail->GetHeaderValue('from'));
             }
-            if (
-                ($origTo = ExtractMailAddress(
-                    $sourceMail->GetHeaderValue('to'),
-                )) != '' &&
-                BMWorkgroup::GetIDbyMail($origTo) != 0
-            ) {
-                $mail['replyto'] = DecodeEMail($origTo);
-            }
 
             if (isset($_REQUEST['all'])) {
                 $recpList = array_merge(

@@ -27,13 +27,10 @@ if (!defined('B1GMAIL_INIT')) {
  * open mailbox
  */
 $mailbox = _new('BMMailbox', [$userRow['id'], $userRow['email'], $thisUser]);
-if (EXTENDED_WORKGROUPS) {
-    $avoidFrameTasks = false;
-} else {
-    $avoidFrameTasks =
-        strpos($_SERVER['PHP_SELF'], 'email.read.php') !== false &&
-        isset($_REQUEST['preview']);
-}
+
+$avoidFrameTasks =
+    strpos($_SERVER['PHP_SELF'], 'email.read.php') !== false &&
+    isset($_REQUEST['preview']);
 
 /**
  * template stuff

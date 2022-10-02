@@ -41,37 +41,6 @@
 </table>
 </form>
 
-{if $workgroups}
-<h2>{lng p="wgmembership"}</h2>
-<table class="listTable">
-	<tr>
-		<th class="listTableHead" width="65%">
-			{lng p="workgroup"}
-			<i class="fa fa-arrow-up" aria-hidden="true"></i>
-		</th>
-		<th class="listTableHead">{lng p="email"}</th>
-	</tr>
-	
-	{foreach from=$workgroups item=workgroup}
-	{cycle values="listTableTD,listTableTD2" assign="class"}
-	<tr>
-		<td class="listTableTDActive">&nbsp;<a href="javascript:toggleGroup({$workgroup.id});"><img id="groupImage_{$workgroup.id}" src="{$tpldir}images/expand.png" width="11" height="11" border="0" alt="" align="absmiddle" /></a>&nbsp;<i class="fa fa-users" aria-hidden="true"></i> {text value=$workgroup.title} ({$workgroup.memberCount})</td>
-		<td class="{$class}">&nbsp;<a href="email.compose.php?to={$workgroup.email}&sid={$sid}">{text value=$workgroup.email}</a></td>
-	</tr>
-	
-	<!-- members -->
-	<tbody id="group_{$workgroup.id}" class="wgTableTB" style="display:none;">
-	{foreach from=$workgroup.members item=member}
-		<tr>
-			<td class="wgTableMemberTD"><i class="fa fa-user-o" aria-hidden="true"></i> {text value=$member.nachname}, {text value=$member.vorname}</td>
-			<td class="wgTableTD">&nbsp;<a href="email.compose.php?to={$member.email}&sid={$sid}">{$member.email}</a></td>
-		</tr>
-	{/foreach}
-	</tbody>
-	{/foreach}
-</table>
-{/if}
-
 {if $regDate||$allowCancel}
 <h2>{lng p="membership"}</h2>
 <table class="listTable">

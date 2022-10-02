@@ -1566,9 +1566,6 @@ if ($_REQUEST['action'] == 'start') {
             }
         }
 
-        // workgroup membership
-        $tpl->assign('workgroups', $thisUser->GetWorkgroups(true));
-
         // membership
         $tpl->assign('allowCancel', $bm_prefs['autocancel'] == 'yes');
         $tpl->assign('regDate', $thisUser->_row['reg_date']);

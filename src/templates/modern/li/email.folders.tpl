@@ -109,45 +109,6 @@
 	{/foreach}
 	</tbody>
 	{/if}
-
-	{if $sharedFolderList}
-	<tr>
-		<td colspan="7" class="folderGroup">
-			<a style="display:block;" href="javascript:toggleGroup('shared');">&nbsp;<img id="groupImage_shared" src="{$tpldir}images/contract.png" width="11" height="11" border="0" align="absmiddle" alt="" />
-			&nbsp;{lng p="sharedfolders"}</a>
-		</td>
-	</tr>
-	<tbody id="group_shared" style="display:;">
-	{foreach from=$sharedFolderList key=folderID item=folder}
-	{cycle values="listTableTD,listTableTD2" assign="class"}
-	<tr>
-		<td class="{$class}" nowrap="nowrap"><input type="checkbox" id="folder_{$folderID}" name="folder_{$folderID}" /></td>
-		<td class="{if $sortColumn=='titel'}listTableTDActive{else}{$class}{/if}" nowrap="nowrap">&nbsp;<a href="email.php?sid={$sid}&folder={$folderID}"><i class="fa fa-share-square-o" aria-hidden="true"></i> {text value=$folder.titel cut=25}</a>
-			{if $folder.readonly}<small>({lng p="readonly"})</small>{/if}</td>
-		<td class="{if $sortColumn=='parent'}listTableTDActive{else}{$class}{/if}" nowrap="nowrap">&nbsp;{text value=$folder.parent cut=15}</td>
-		<td class="{$class}" nowrap="nowrap" style="text-align:center;">
-			{size bytes=$folder.size}
-		</td>
-		<td class="{$class}" nowrap="nowrap" style="text-align:center;">
-			<table>
-				<tr>
-					<td width="45" align="left"><i class="fa fa-envelope-o"></i>
-						{$folder.allMails}</td>
-					<td width="45" align="left"><i class="fa fa-envelope"></i>
-						{$folder.unreadMails}</td>
-					<td width="45" align="left"><i class="fa fa-flag-o"></i>
-						{$folder.flaggedMails}</td>
-				</tr>
-			</table>
-		</td>
-		<td class="{if $sortColumn=='subscribed'}listTableTDActive{else}{$class}{/if}" nowrap="nowrap"><center><input type="checkbox" {if $folder.subscribed==1}checked="checked" {/if} disabled="disabled" /></center></td>
-		<td class="{$class}" nowrap="nowrap">
-			&nbsp;
-		</td>
-	</tr>
-	{/foreach}
-	</tbody>
-	{/if}
 </table>
 
 </div>

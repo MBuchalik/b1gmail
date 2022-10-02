@@ -129,6 +129,18 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
             return false;
         }
 
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_workgroups')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_workgroups_member')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_workgroups_shares')) {
+            return false;
+        }
+
         return true;
     }
 }

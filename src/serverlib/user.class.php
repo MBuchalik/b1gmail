@@ -464,19 +464,6 @@ class BMUser {
         }
         $res->Free();
 
-        if (!$locked) {
-            $res = $db->Query(
-                'SELECT COUNT(*) FROM {pre}workgroups WHERE email=?',
-                $userm,
-            );
-            [$wgCount] = $res->FetchArray(MYSQLI_NUM);
-            $res->Free();
-
-            if ($wgCount > 0) {
-                $locked = true;
-            }
-        }
-
         return $locked;
     }
 
@@ -487,20 +474,10 @@ class BMUser {
      * @return bool
      */
     static function AddressAvailable($address) {
-        global $db;
-
         if (BMUser::GetID($address) != 0) {
             return false;
         }
-
-        $res = $db->Query(
-            'SELECT COUNT(*) FROM {pre}workgroups WHERE `email`=?',
-            $address,
-        );
-        [$wgCount] = $res->FetchArray(MYSQLI_NUM);
-        $res->Free();
-
-        return $wgCount == 0;
+        return true;
     }
 
     /**
@@ -1613,7 +1590,6 @@ class BMUser {
     function GetPossibleSenders() {
         $senders = [];
         $aliases = $this->GetAliases();
-        $worgroups = $this->GetWorkgroups(false);
 
         $senders[] = sprintf('<%s>', $this->_row['email']);
         foreach ($aliases as $alias) {
@@ -1623,10 +1599,6 @@ class BMUser {
             ) {
                 $senders[] = sprintf('<%s>', $alias['email']);
             }
-        }
-
-        foreach ($worgroups as $workgroup) {
-            $senders[] = sprintf('<%s>', $workgroup['email']);
         }
 
         if (trim($this->_row['absendername']) != '') {
@@ -1664,14 +1636,6 @@ class BMUser {
                     );
                 }
             }
-        }
-
-        foreach ($worgroups as $workgroup) {
-            $senders[] = sprintf(
-                '"%s" <%s>',
-                $workgroup['title'],
-                $workgroup['email'],
-            );
         }
 
         return $senders;
@@ -1950,16 +1914,6 @@ class BMUser {
         $res->Free();
 
         return $userCount;
-    }
-
-    /**
-     * get user's workgroups
-     *
-     * @param bool $withMembers Include members?
-     * @return array
-     */
-    function GetWorkgroups($withMembers = false) {
-        return BMWorkgroup::GetSimpleWorkgroupList($this->_id, $withMembers);
     }
 
     /**

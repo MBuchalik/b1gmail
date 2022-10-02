@@ -83,12 +83,6 @@ if ($_REQUEST['action'] == 'folders') {
         true,
         true,
     );
-    $sharedFolderList = $mailbox->GetSharedFolderList(
-        $sortColumn,
-        $sortOrder,
-        true,
-        true,
-    );
 
     // page output
     $tpl->assign('pageTitle', $lang_user['folderadmin']);
@@ -97,7 +91,6 @@ if ($_REQUEST['action'] == 'folders') {
     $tpl->assign('sortColumn', $sortColumn);
     $tpl->assign('sortOrder', $sortOrderFA);
     $tpl->assign('sortOrderInv', $sortOrder == 'asc' ? 'desc' : 'asc');
-    $tpl->assign('sharedFolderList', $sharedFolderList);
     $tpl->assign('pageContent', 'li/email.folders.tpl');
     $tpl->display('li/index.tpl');
 } /**
@@ -148,7 +141,7 @@ if ($_REQUEST['action'] == 'folders') {
             $tpl->assign('folder', $folder);
             $tpl->assign(
                 'dropdownFolderList',
-                $mailbox->GetDropdownFolderList(-1, $null, 0, 0, false),
+                $mailbox->GetDropdownFolderList(-1, $null, 0, 0),
             );
             $tpl->assign('pageContent', 'li/email.folders.edit.tpl');
             $tpl->display('li/index.tpl');
@@ -267,7 +260,7 @@ if ($_REQUEST['action'] == 'folders') {
     );
     $tpl->assign(
         'dropdownFolderList',
-        $mailbox->GetDropdownFolderList(-1, $null, 0, 0, false),
+        $mailbox->GetDropdownFolderList(-1, $null, 0, 0),
     );
     $tpl->assign('pageContent', 'li/email.folders.edit.tpl');
     $tpl->display('li/index.tpl');

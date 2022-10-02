@@ -686,9 +686,6 @@ class BMMailProcessor {
                             if (
                                 BMUser::GetID(
                                     ExtractMailAddress($resultValues[0]),
-                                ) != 0 ||
-                                BMWorkgroup::GetIDbyMail(
-                                    ExtractMailAddress($resultValues[0]),
                                 ) != 0
                             ) {
                                 $recipients = [
@@ -744,22 +741,6 @@ class BMMailProcessor {
                     $recipients[$address] = $userID;
                     if ($isAlias) {
                         $this->_aliasTable[$userID] = $address;
-                    }
-                }
-
-                // workgroup?
-                elseif (
-                    ($workgroupID = BMWorkgroup::GetIDbyMail($address)) != 0
-                ) {
-                    $workgroupMembers = BMWorkgroup::GetMembers(
-                        $workgroupID,
-                        true,
-                    );
-                    foreach ($workgroupMembers as $workgroupMember) {
-                        $recipients[$workgroupMember['email']] =
-                            $workgroupMember['id'];
-                        $this->_aliasTable[$workgroupMember['id']] =
-                            $workgroupMember['email'];
                     }
                 }
             }

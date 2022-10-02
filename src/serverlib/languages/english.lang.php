@@ -271,8 +271,6 @@ $lang_user['auto'] = 'Automatic';
 $lang_user['details_default'] = 'Directly show detailed results';
 $lang_user['description'] = 'Description';
 $lang_user['sendnotify'] = 'Show notification';
-$lang_user['readonly'] = 'read only';
-$lang_user['sharedfolders'] = 'Shared folders';
 $lang_user['loaddraft'] = 'Load draft';
 $lang_user['drafttext'] =
     'Do you want to load the auto-saved draft of your last email?';
@@ -324,8 +322,6 @@ $lang_user['privacy'] = 'Privacy';
 $lang_user['privacy_policy'] = 'Privacy Policy';
 $lang_user['mobiledenied'] =
     'You are not authorized to use the mobile interface.';
-$lang_user['workgroup'] = 'Workgroup';
-$lang_user['workgroups'] = 'Workgroups';
 $lang_user['groups'] = 'Groups';
 $lang_user['search2'] = 'Search';
 $lang_user['searchfor'] = 'Search for';
@@ -744,7 +740,6 @@ $lang_user['confirmaliasok'] =
     'The alias has been confirmed successfully and can now be used.';
 $lang_user['confirmaliaserr'] =
     'The alias has already been confirmed, could not be found, or is invalid.';
-$lang_user['wgmembership'] = 'Memberships of workgroups';
 $lang_user['membersince'] = 'Member since';
 $lang_user['cancelmembership'] = 'Cancel membership';
 $lang_user['canceltext'] =
@@ -975,11 +970,6 @@ $lang_admin['ftsindex'] = 'Full text index';
 $lang_admin['showlist'] = 'Show list';
 $lang_admin['lastactivity'] = 'Last activity';
 $lang_admin['never'] = 'never';
-$lang_admin['workgroup'] = 'Workgroup';
-$lang_admin['noaccess'] = 'No access';
-$lang_admin['readonly'] = 'Read only';
-$lang_admin['readwrite'] = 'Read / Write';
-$lang_admin['sharedfolders'] = 'Email folders';
 $lang_admin['recover'] = 'Recover';
 $lang_admin['minpasslength'] = 'Minimum password length';
 $lang_admin['text_notify_date'] = 'Appointment notification';
@@ -1437,7 +1427,6 @@ $lang_admin['maintmode'] = 'Maintenance mode';
 $lang_admin['maintmodenote'] =
     'Maintenance mode is enabled. The b1gMail installation is not accessible for users.';
 $lang_admin['members'] = 'Members';
-$lang_admin['addmember'] = 'Add member';
 $lang_admin['storage'] = 'Storage';
 $lang_admin['limits'] = 'Limits';
 $lang_admin['emailin'] = 'Email (incoming)';
@@ -1473,7 +1462,6 @@ $lang_admin['logouturl'] = 'Logout URL';
 $lang_admin['deletegroup'] = 'Delete group';
 $lang_admin['groupdeletedesc'] =
     'Please select the group(s) to which the members of those groups are to be assigned that you want to delete.';
-$lang_admin['workgroups'] = 'Workgroup';
 $lang_admin['bayesdb'] = 'Filter database';
 $lang_admin['reset'] = 'Reset';
 $lang_admin['bayesresetq'] =

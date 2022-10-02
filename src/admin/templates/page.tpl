@@ -68,12 +68,11 @@
 						</ul>
 					</li>
 					{/if}
-					{if $adminRow.type==0||$adminRow.privileges.users||$adminRow.privileges.groups||$adminRow.privileges.workgroups||$adminRow.privileges.activity||$adminRow.privileges.newsletter}
+					{if $adminRow.type==0||$adminRow.privileges.users||$adminRow.privileges.groups||$adminRow.privileges.activity||$adminRow.privileges.newsletter}
 					<li id="users-menu"><a href="#users-menu"><img src="./templates/images/ico_users.png" />{lng p="usersgroups"}</a>
 						<ul>
 							{if $adminRow.type==0||$adminRow.privileges.users}<li><a href="users.php?sid={$sid}"><img src="./templates/images/user_action.png" />{lng p="users"}</a></li>{/if}
 							{if $adminRow.type==0||$adminRow.privileges.groups}<li><a href="groups.php?sid={$sid}"><img src="./templates/images/ico_group.png" />{lng p="groups"}</a></li>{/if}
-							{if $adminRow.type==0||$adminRow.privileges.workgroups}<li><a href="workgroups.php?sid={$sid}"><img src="./templates/images/ico_workgroup.png" />{lng p="workgroups"}</a>{/if}
 							{if $adminRow.type==0||$adminRow.privileges.activity}<li><a href="activity.php?sid={$sid}"><img src="./templates/images/activity.png" />{lng p="activity"}</a></li>{/if}
 							{if $adminRow.type==0||$adminRow.privileges.newsletter}<li><a href="newsletter.php?sid={$sid}"><img src="./templates/images/newsletter.png" />{lng p="newsletter"}</a></li>{/if}
 						</ul>

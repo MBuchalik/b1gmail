@@ -30,7 +30,6 @@ $permsTable = [
     'overview' => $lang_admin['overview'],
     'users' => $lang_admin['users'],
     'groups' => $lang_admin['groups'],
-    'workgroups' => $lang_admin['workgroups'],
     'activity' => $lang_admin['activity'],
     'newsletter' => $lang_admin['newsletter'],
     'optimize' => $lang_admin['optimize'],
@@ -461,9 +460,6 @@ function DeleteUser($userID, $qAddAND = '') {
 
     // spam index
     $db->Query('DELETE FROM {pre}spamindex WHERE userid=?', $userID);
-
-    // workgroup memberships
-    $db->Query('DELETE FROM {pre}workgroups_member WHERE user=?', $userID);
 
     // certificates
     $db->Query('DELETE FROM {pre}certificates WHERE userid=?', $userID);

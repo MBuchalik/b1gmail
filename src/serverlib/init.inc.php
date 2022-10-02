@@ -69,9 +69,6 @@ if (!defined('ADMIN_MODE')) {
 if (!defined('INTERFACE_MODE')) {
     define('INTERFACE_MODE', false);
 }
-if (!defined('EXTENDED_WORKGROUPS')) {
-    define('EXTENDED_WORKGROUPS', false);
-}
 define('SERVER_WINDOWS', strtolower(substr(PHP_OS, 0, 3)) == 'win');
 define(
     'SERVER_IIS',
@@ -306,7 +303,6 @@ include B1GMAIL_DIR . 'serverlib/blobstorage.class.php';
 include B1GMAIL_DIR . 'serverlib/template.class.php';
 include B1GMAIL_DIR . 'serverlib/user.class.php';
 include B1GMAIL_DIR . 'serverlib/group.class.php';
-include B1GMAIL_DIR . 'serverlib/workgroup.class.php';
 include B1GMAIL_DIR . 'serverlib/plugin.class.php';
 if (
     !class_exists('SQLite3') &&

@@ -272,8 +272,6 @@ $lang_user['privacy'] = 'Datenschutz';
 $lang_user['privacy_policy'] = 'Datenschutz-Erkl&auml;rung';
 $lang_user['mobiledenied'] =
     'Sie verf&uuml;gen nicht &uuml;ber die zum Zugriff auf das Mobil-Interface ben&ouml;tigen Zugriffsrechte.';
-$lang_user['workgroup'] = 'Arbeitsgruppe';
-$lang_user['workgroups'] = 'Arbeitsgruppen';
 $lang_user['groups'] = 'Gruppen';
 $lang_user['sess_expired'] = 'Sitzung abgelaufen';
 $lang_user['sess_expired_desc'] =
@@ -724,7 +722,6 @@ $lang_user['confirmaliaserr'] =
     'Der Alias wurde bereits best&auml;tigt, nicht gefunden oder der Link ist ung&uuml;ltig.';
 $lang_user['description'] = 'Beschreibung';
 $lang_user['langCode'] = 'DE';
-$lang_user['wgmembership'] = 'Arbeitsgruppen-Mitgliedschaften';
 $lang_user['membersince'] = 'Mitglied seit';
 $lang_user['cancelmembership'] = 'Mitgliedschaft beenden';
 $lang_user['canceltext'] =
@@ -847,8 +844,6 @@ $lang_user['hideintellifolders'] = 'Intelligente Ordner ausblenden';
 $lang_user['hidesystemfolders'] = 'System-Ordner ausblenden';
 
 // folders
-$lang_user['readonly'] = 'nur lesen';
-$lang_user['sharedfolders'] = 'Geteilte Ordner';
 $lang_user['sysfolders'] = 'System-Ordner';
 $lang_user['ownfolders'] = 'Eigene Ordner';
 $lang_user['parentfolder'] = '&Uuml;bergeordnet';
@@ -982,11 +977,6 @@ $lang_admin['ftsindex'] = 'Volltext-Index';
 $lang_admin['showlist'] = 'Auflisten';
 $lang_admin['lastactivity'] = 'Letzte Aktivit&auml;t';
 $lang_admin['never'] = 'niemals';
-$lang_admin['workgroup'] = 'Arbeitsgruppe';
-$lang_admin['noaccess'] = 'Kein Zugriff';
-$lang_admin['readonly'] = 'Nur lesen';
-$lang_admin['readwrite'] = 'Lesen / Schreiben';
-$lang_admin['sharedfolders'] = 'E-Mail-Ordner';
 $lang_admin['showcheckboxes'] = 'Mehrfachauswahl mit Checkbox';
 $lang_admin['details'] = 'Details';
 $lang_admin['compresspages'] = 'Seiten-Ausgabe komprimieren';
@@ -1437,7 +1427,6 @@ $lang_admin['maintmode'] = 'Wartungsmodus';
 $lang_admin['maintmodenote'] =
     'Der Wartungsmodus ist aktiv. Die b1gMail-Installation ist für Benutzer nicht erreichbar.';
 $lang_admin['members'] = 'Mitglieder';
-$lang_admin['addmember'] = 'Mitglied hinzuf&uuml;gen';
 $lang_admin['storage'] = 'Speicher';
 $lang_admin['limits'] = 'Beschr&auml;nkungen';
 $lang_admin['emailin'] = 'E-Mail (eingehend)';
@@ -1475,7 +1464,6 @@ $lang_admin['logouturl'] = 'Logout-URL';
 $lang_admin['deletegroup'] = 'Gruppe l&ouml;schen';
 $lang_admin['groupdeletedesc'] =
     'Bitte w&auml;hlen Sie die Gruppe(n) aus, in welche die Mitglieder der Gruppe(n), die gel&ouml;scht werden soll(en), verschoben werden sollen.';
-$lang_admin['workgroups'] = 'Arbeitsgruppen';
 $lang_admin['bayesdb'] = 'Filter-Datenbank';
 $lang_admin['reset'] = 'Zur&uuml;cksetzen';
 $lang_admin['bayesresetq'] =

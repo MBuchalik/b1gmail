@@ -238,25 +238,11 @@ class BMMailbox {
                 return (int) $bm_prefs['ordner_proseite'];
             }
         } else {
-            if (
-                BMWorkgroup::AccessAllowed(
-                    $this->_userID,
-                    WORKGROUP_TYPE_MAILFOLDER,
-                    $id,
-                    false,
-                )
-            ) {
-                $res = $db->Query(
-                    'SELECT perpage FROM {pre}folders WHERE id=?',
-                    $id,
-                );
-            } else {
-                $res = $db->Query(
-                    'SELECT perpage FROM {pre}folders WHERE userid=? AND id=?',
-                    $this->_userID,
-                    $id,
-                );
-            }
+            $res = $db->Query(
+                'SELECT perpage FROM {pre}folders WHERE userid=? AND id=?',
+                $this->_userID,
+                $id,
+            );
             $row = $res->FetchArray(MYSQLI_NUM);
             $res->Free();
             return isset($row[0])
@@ -281,27 +267,12 @@ class BMMailbox {
             $prefKey = 'perpage_' . $id;
             return $this->_userObject->SetPref($prefKey, $num);
         } else {
-            if (
-                BMWorkgroup::AccessAllowed(
-                    $this->_userID,
-                    WORKGROUP_TYPE_MAILFOLDER,
-                    $id,
-                    true,
-                )
-            ) {
-                $db->Query(
-                    'UPDATE {pre}folders SET perpage=? WHERE id=?',
-                    $num,
-                    $id,
-                );
-            } else {
-                $db->Query(
-                    'UPDATE {pre}folders SET perpage=? WHERE userid=? AND id=?',
-                    $num,
-                    $this->_userID,
-                    $id,
-                );
-            }
+            $db->Query(
+                'UPDATE {pre}folders SET perpage=? WHERE userid=? AND id=?',
+                $num,
+                $this->_userID,
+                $id,
+            );
             return $db->AffectedRows() == 1;
         }
     }
@@ -323,25 +294,11 @@ class BMMailbox {
                 return $bm_prefs['mail_groupmode'];
             }
         } else {
-            if (
-                BMWorkgroup::AccessAllowed(
-                    $this->_userID,
-                    WORKGROUP_TYPE_MAILFOLDER,
-                    $id,
-                    false,
-                )
-            ) {
-                $res = $db->Query(
-                    'SELECT group_mode FROM {pre}folders WHERE id=?',
-                    $id,
-                );
-            } else {
-                $res = $db->Query(
-                    'SELECT group_mode FROM {pre}folders WHERE userid=? AND id=?',
-                    $this->_userID,
-                    $id,
-                );
-            }
+            $res = $db->Query(
+                'SELECT group_mode FROM {pre}folders WHERE userid=? AND id=?',
+                $this->_userID,
+                $id,
+            );
             $row = $res->FetchArray(MYSQLI_NUM);
             $res->Free();
             return isset($row[0]) ? $row[0] : $bm_prefs['mail_groupmode'];
@@ -362,27 +319,12 @@ class BMMailbox {
             $prefKey = 'groupmode_' . $id;
             return $this->_userObject->SetPref($prefKey, $mode);
         } else {
-            if (
-                BMWorkgroup::AccessAllowed(
-                    $this->_userID,
-                    WORKGROUP_TYPE_MAILFOLDER,
-                    $id,
-                    true,
-                )
-            ) {
-                $db->Query(
-                    'UPDATE {pre}folders SET group_mode=? WHERE id=?',
-                    $mode,
-                    $id,
-                );
-            } else {
-                $db->Query(
-                    'UPDATE {pre}folders SET group_mode=? WHERE userid=? AND id=?',
-                    $mode,
-                    $this->_userID,
-                    $id,
-                );
-            }
+            $db->Query(
+                'UPDATE {pre}folders SET group_mode=? WHERE userid=? AND id=?',
+                $mode,
+                $this->_userID,
+                $id,
+            );
             return $db->AffectedRows() == 1;
         }
     }
@@ -400,25 +342,11 @@ class BMMailbox {
             return '';
         }
 
-        if (
-            BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folderID,
-                false,
-            )
-        ) {
-            $res = $db->Query(
-                'SELECT titel FROM {pre}folders WHERE id=?',
-                (int) $folderID,
-            );
-        } else {
-            $res = $db->Query(
-                'SELECT titel FROM {pre}folders WHERE id=? AND userid=?',
-                (int) $folderID,
-                $this->_userID,
-            );
-        }
+        $res = $db->Query(
+            'SELECT titel FROM {pre}folders WHERE id=? AND userid=?',
+            (int) $folderID,
+            $this->_userID,
+        );
         if ($res->RowCount() == 0) {
             return '';
         }
@@ -436,18 +364,6 @@ class BMMailbox {
      */
     function DeleteFolder($id) {
         global $db, $cacheManager;
-
-        // do not allow removal of shared folders (must be done in ACP or un-shared first)
-        if (
-            BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $id,
-                false,
-            )
-        ) {
-            return false;
-        }
 
         $cacheManager->Delete(
             'folderList:0:' .
@@ -592,18 +508,6 @@ class BMMailbox {
     ) {
         global $db, $cacheManager;
 
-        // shared folders must be updated from ACP
-        if (
-            BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folderID,
-                false,
-            )
-        ) {
-            return false;
-        }
-
         $db->Query(
             'UPDATE {pre}folders SET titel=?, parent=?, subscribed=?, storetime=?, intelligent_link=? WHERE id=? AND userid=?',
             $title,
@@ -653,7 +557,7 @@ class BMMailbox {
         global $db;
 
         $res = $db->Query(
-            'SELECT id,titel,parent,subscribed,perpage,storetime,group_mode,intelligent,intelligent_link,userid FROM {pre}folders WHERE id=?',
+            'SELECT id,titel,parent,subscribed,perpage,storetime,group_mode,intelligent,intelligent_link,userid FROM {pre}folders WHERE id=? AND userid=?',
             (int) $folderID,
             $this->_userID,
         );
@@ -662,18 +566,6 @@ class BMMailbox {
         }
         $result = $res->FetchArray(MYSQLI_ASSOC);
         $res->Free();
-
-        if (
-            $result['userid'] != $this->_userID &&
-            !BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folderID,
-                false,
-            )
-        ) {
-            return false;
-        }
 
         return $result;
     }
@@ -807,54 +699,6 @@ class BMMailbox {
         return $result;
     }
 
-    function GetSharedFolderList(
-        $sortColumn = 'titel',
-        $sortOrder = 'ASC',
-        $withParentTitle = false,
-        $withStats = false
-    ) {
-        global $db;
-
-        if (!EXTENDED_WORKGROUPS) {
-            return [];
-        }
-
-        $result = [];
-        $res = $db->Query(
-            'SELECT id,titel,parent,subscribed,perpage,storetime,group_mode,intelligent,intelligent_link,writeaccess FROM {pre}folders ' .
-                'INNER JOIN {pre}workgroups_shares ON {pre}folders.id={pre}workgroups_shares.shareid ' .
-                'INNER JOIN {pre}workgroups_member ON {pre}workgroups_shares.workgroupid={pre}workgroups_member.workgroup ' .
-                'WHERE {pre}workgroups_shares.sharetype=' .
-                WORKGROUP_TYPE_MAILFOLDER .
-                ' AND {pre}workgroups_member.user=? ' .
-                'ORDER BY ' .
-                $sortColumn .
-                ' ' .
-                $sortOrder,
-            $this->_userID,
-        );
-        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-            if ($withParentTitle) {
-                $row['parent'] = $this->GetFolderTitle($row['parent']);
-            }
-            if ($withStats) {
-                $row['allMails'] = $this->GetMailCount($row['id']);
-                $row['unreadMails'] = $this->GetMailCount($row['id'], true);
-                $row['flaggedMails'] = $this->GetMailCount(
-                    $row['id'],
-                    false,
-                    true,
-                );
-                $row['size'] = $this->GetFolderSize($row['id']);
-            }
-            $row['readonly'] = $row['writeaccess'] == 0;
-            $result[$row['id']] = $row;
-        }
-        $res->Free();
-
-        return $result;
-    }
-
     /**
      * get system folder list
      *
@@ -919,25 +763,11 @@ class BMMailbox {
     function GetFolderSize($folderID) {
         global $db;
 
-        if (
-            BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folderID,
-                false,
-            )
-        ) {
-            $res = $db->Query(
-                'SELECT SUM(size) FROM {pre}mails WHERE folder=?',
-                $folderID,
-            );
-        } else {
-            $res = $db->Query(
-                'SELECT SUM(size) FROM {pre}mails WHERE folder=? AND userid=?',
-                $folderID,
-                $this->_userID,
-            );
-        }
+        $res = $db->Query(
+            'SELECT SUM(size) FROM {pre}mails WHERE folder=? AND userid=?',
+            $folderID,
+            $this->_userID,
+        );
         [$folderSize] = $res->FetchArray(MYSQLI_NUM);
         $res->Free();
 
@@ -999,8 +829,7 @@ class BMMailbox {
         $parent = -1,
         &$result = null,
         $level = 0,
-        $more = 0,
-        $includeShared = true
+        $more = 0
     ) {
         global $db, $lang_user;
 
@@ -1058,24 +887,6 @@ class BMMailbox {
             }
         }
         $res->Free();
-
-        // workgroup folders
-        if (EXTENDED_WORKGROUPS && $parent == -1 && $includeShared) {
-            $res = $db->Query(
-                'SELECT id,titel FROM {pre}folders ' .
-                    'INNER JOIN {pre}workgroups_shares ON {pre}folders.id={pre}workgroups_shares.shareid ' .
-                    'INNER JOIN {pre}workgroups_member ON {pre}workgroups_shares.workgroupid={pre}workgroups_member.workgroup ' .
-                    'WHERE {pre}workgroups_shares.sharetype=' .
-                    WORKGROUP_TYPE_MAILFOLDER .
-                    ' AND {pre}workgroups_member.user=? ' .
-                    'AND {pre}workgroups_shares.writeaccess=1',
-                $this->_userID,
-            );
-            while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                $result[$row['id']] = HTMLFormat($row['titel']);
-            }
-            $res->Free();
-        }
 
         if ($returnArray) {
             return $result;
@@ -1180,44 +991,6 @@ class BMMailbox {
             $result[FOLDER_TRASH]['title'] = $lang_user['trash'];
         }
 
-        // workgroup folders
-        if (EXTENDED_WORKGROUPS) {
-            $res = $db->Query(
-                'SELECT titel,id,writeaccess FROM {pre}folders ' .
-                    'INNER JOIN {pre}workgroups_shares ON {pre}folders.id={pre}workgroups_shares.shareid ' .
-                    'INNER JOIN {pre}workgroups_member ON {pre}workgroups_shares.workgroupid={pre}workgroups_member.workgroup ' .
-                    'WHERE {pre}workgroups_shares.sharetype=' .
-                    WORKGROUP_TYPE_MAILFOLDER .
-                    ' AND {pre}workgroups_member.user=?',
-                $this->_userID,
-            );
-            while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                $result[$row['id']] = [
-                    'parent' => FOLDER_ROOT,
-                    'title' => $row['titel'],
-                    'type' => 'sharedfolder',
-                    'intelligent' => false,
-                    'readonly' => $row['writeaccess'] == 0,
-                ];
-
-                if ($withUnreadCount) {
-                    $result[$row['id']]['unread'] = $this->GetMailCount(
-                        $row['id'],
-                        true,
-                        false,
-                    );
-                }
-                if ($withAllCount) {
-                    $result[$row['id']]['all'] = $this->GetMailCount(
-                        $row['id'],
-                        false,
-                        false,
-                    );
-                }
-            }
-            $res->Free();
-        }
-
         // encode?
         if ($encode) {
             foreach ($result as $key => $val) {
@@ -1239,18 +1012,6 @@ class BMMailbox {
      */
     function RenameFolder($folderID, $newName) {
         global $db, $cacheManager;
-
-        // not supported for shared folders
-        if (
-            BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folderID,
-                false,
-            )
-        ) {
-            return 0;
-        }
 
         // long enough?
         $newName = trim($newName);
@@ -1340,35 +1101,11 @@ class BMMailbox {
             $cond .= ' AND (flags&' . FLAG_FLAGGED . ')!=0';
         }
 
-        if (
-            BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folderID,
-                false,
-            )
-        ) {
+        if ($this->IsIntelligentFolder($folderID)) {
             $res = $db->Query(
-                'SELECT COUNT(*) FROM {pre}mails WHERE folder=? AND ' . $cond,
-                $folderID,
+                'SELECT COUNT(*) FROM {pre}mails WHERE userid=? AND ' . $cond,
+                $this->_userID,
             );
-        } elseif ($this->IsIntelligentFolder($folderID)) {
-            $sharedFolders = $this->GetSharedFolderList();
-
-            if (count($sharedFolders) > 0) {
-                $res = $db->Query(
-                    'SELECT COUNT(*) FROM {pre}mails WHERE (userid=? OR folder IN ?) AND ' .
-                        $cond,
-                    $this->_userID,
-                    array_keys($sharedFolders),
-                );
-            } else {
-                $res = $db->Query(
-                    'SELECT COUNT(*) FROM {pre}mails WHERE userid=? AND ' .
-                        $cond,
-                    $this->_userID,
-                );
-            }
         } else {
             $res = $db->Query(
                 'SELECT COUNT(*) FROM {pre}mails WHERE userid=? AND ' . $cond,
@@ -1423,24 +1160,10 @@ class BMMailbox {
 
         $condition = $this->FolderCondition($folderID);
 
-        if (
-            BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folderID,
-                false,
-            )
-        ) {
-            $res = $db->Query(
-                'SELECT id FROM {pre}mails WHERE folder=? AND ' . $condition,
-                $folderID,
-            );
-        } else {
-            $res = $db->Query(
-                'SELECT id FROM {pre}mails WHERE userid=? AND ' . $condition,
-                $this->_userID,
-            );
-        }
+        $res = $db->Query(
+            'SELECT id FROM {pre}mails WHERE userid=? AND ' . $condition,
+            $this->_userID,
+        );
         while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
             $result[] = $row['id'];
         }
@@ -1531,16 +1254,9 @@ class BMMailbox {
 
         $condition = $this->FolderCondition($folderID);
 
-        if (
-            BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folderID,
-                false,
-            )
-        ) {
+        if ($this->IsIntelligentFolder((int) $folderID)) {
             $res = $db->Query(
-                'SELECT id,von,an,betreff,datum,flags,priority,size,color FROM {pre}mails WHERE folder=? AND ' .
+                'SELECT id,von,an,betreff,datum,flags,priority,size,color FROM {pre}mails WHERE userid=? AND ' .
                     $condition .
                     ' ' .
                     'ORDER BY ' .
@@ -1556,53 +1272,8 @@ class BMMailbox {
                             ',' .
                             (int) $mailsPerPage
                         : ''),
-                $folderID,
+                $this->_userID,
             );
-        } elseif ($this->IsIntelligentFolder((int) $folderID)) {
-            $sharedFolders = array_keys($this->GetSharedFolderList());
-
-            if (count($sharedFolders) > 0) {
-                $res = $db->Query(
-                    'SELECT id,von,an,betreff,datum,flags,priority,size,color FROM {pre}mails WHERE (userid=? OR folder IN ?) AND ' .
-                        $condition .
-                        ' ' .
-                        'ORDER BY ' .
-                        ($groupMode != '-'
-                            ? $this->GetGroupOrderBy($groupMode) . ', '
-                            : '') .
-                        $sortField .
-                        '  ' .
-                        $sortBy .
-                        ($mailsPerPage != -1
-                            ? ' LIMIT ' .
-                                ($page - 1) * $mailsPerPage .
-                                ',' .
-                                (int) $mailsPerPage
-                            : ''),
-                    $this->_userID,
-                    $sharedFolders,
-                );
-            } else {
-                $res = $db->Query(
-                    'SELECT id,von,an,betreff,datum,flags,priority,size,color FROM {pre}mails WHERE userid=? AND ' .
-                        $condition .
-                        ' ' .
-                        'ORDER BY ' .
-                        ($groupMode != '-'
-                            ? $this->GetGroupOrderBy($groupMode) . ', '
-                            : '') .
-                        $sortField .
-                        '  ' .
-                        $sortBy .
-                        ($mailsPerPage != -1
-                            ? ' LIMIT ' .
-                                ($page - 1) * $mailsPerPage .
-                                ',' .
-                                (int) $mailsPerPage
-                            : ''),
-                    $this->_userID,
-                );
-            }
         } else {
             $res = $db->Query(
                 'SELECT id,von,an,betreff,datum,flags,priority,size,color FROM {pre}mails WHERE userid=? AND ' .
@@ -1679,48 +1350,26 @@ class BMMailbox {
     function GetPrevNextMail($folderID, $mailID) {
         global $db;
 
-        $isShared = BMWorkgroup::AccessAllowed(
-            $this->_userID,
-            WORKGROUP_TYPE_MAILFOLDER,
-            $folderID,
-            false,
-        );
-
         // prev
-        if ($isShared) {
-            $res = $db->Query(
-                'SELECT id FROM {pre}mails WHERE id<? AND folder=? ORDER BY id DESC LIMIT 1',
-                $mailID,
-                $folderID,
-            );
-        } else {
-            $res = $db->Query(
-                'SELECT id FROM {pre}mails WHERE id<? AND userid=? AND folder=? ORDER BY id DESC LIMIT 1',
-                $mailID,
-                $this->_userID,
-                $folderID,
-            );
-        }
+        $res = $db->Query(
+            'SELECT id FROM {pre}mails WHERE id<? AND userid=? AND folder=? ORDER BY id DESC LIMIT 1',
+            $mailID,
+            $this->_userID,
+            $folderID,
+        );
         if ($res->RowCount() == 1) {
             [$prevID] = $res->FetchArray(MYSQLI_NUM);
         }
         $res->Free();
 
         // next
-        if ($isShared) {
-            $res = $db->Query(
-                'SELECT id FROM {pre}mails WHERE id>? AND folder=? ORDER BY id ASC LIMIT 1',
-                $mailID,
-                $folderID,
-            );
-        } else {
-            $res = $db->Query(
-                'SELECT id FROM {pre}mails WHERE id>? AND userid=? AND folder=? ORDER BY id ASC LIMIT 1',
-                $mailID,
-                $this->_userID,
-                $folderID,
-            );
-        }
+
+        $res = $db->Query(
+            'SELECT id FROM {pre}mails WHERE id>? AND userid=? AND folder=? ORDER BY id ASC LIMIT 1',
+            $mailID,
+            $this->_userID,
+            $folderID,
+        );
         if ($res->RowCount() == 1) {
             [$nextID] = $res->FetchArray(MYSQLI_NUM);
         }
@@ -1968,18 +1617,6 @@ class BMMailbox {
         [$count] = $res->FetchArray(MYSQLI_NUM);
         $res->Free();
 
-        if (
-            $count == 0 &&
-            BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folderID,
-                false,
-            )
-        ) {
-            $count = 1;
-        }
-
         return $count == 1;
     }
 
@@ -1996,7 +1633,8 @@ class BMMailbox {
 
         // get current flags
         $res = $db->Query(
-            'SELECT folder,flags,userid FROM {pre}mails WHERE id=? LIMIT 1',
+            'SELECT folder,flags FROM {pre}mails WHERE userid=? AND id=? LIMIT 1',
+            $this->_userID,
             $mail,
         );
         if ($res->RowCount() == 0) {
@@ -2004,18 +1642,6 @@ class BMMailbox {
         }
         $row = $res->FetchArray(MYSQLI_ASSOC);
         $res->Free();
-
-        if (
-            $row['userid'] != $this->_userID &&
-            !BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $row['folder'],
-                true,
-            )
-        ) {
-            return false;
-        }
 
         $currentFlags = $newFlags = $row['flags'];
 
@@ -2187,27 +1813,6 @@ class BMMailbox {
             return 0;
         }
 
-        // then check if dest folder is shared
-        $destIsShared = BMWorkgroup::AccessAllowed(
-            $this->_userID,
-            WORKGROUP_TYPE_MAILFOLDER,
-            $destFolder,
-            false,
-        );
-
-        // if it is shared, we need write access to it
-        if (
-            $destIsShared &&
-            !BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $destFolder,
-                true,
-            )
-        ) {
-            return 0;
-        }
-
         // query part
         $queryPart = $this->FolderCondition((int) $destFolder, true);
 
@@ -2223,43 +1828,9 @@ class BMMailbox {
         while ($row = $res->FetchArray(MYSQLI_NUM)) {
             [$mailID, $srcFolderID, $srcMailSize] = $row;
 
-            // source folder shared?
-            $sourceIsShared = BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $srcFolderID,
-                false,
-            );
-
-            // write access?
-            if (
-                $sourceIsShared &&
-                !BMWorkgroup::AccessAllowed(
-                    $this->_userID,
-                    WORKGROUP_TYPE_MAILFOLDER,
-                    $srcFolderID,
-                    true,
-                )
-            ) {
-                continue;
-            }
-
-            // source shared, dest local => add to space
-            if ($sourceIsShared && !$destIsShared) {
-                $spaceChange += $srcMailSize;
-            }
-            // source local, dest shared => subtract from space
-            elseif (!$sourceIsShared && $destIsShared) {
-                $spaceChange -= $srcMailSize;
-            }
-            // shared => shared is space-neutral
-
             // move
             $db->Query(
-                'UPDATE {pre}mails SET `userid`=?,' .
-                    $queryPart .
-                    ' WHERE `id`=?',
-                $destIsShared ? -1 : $this->_userID,
+                'UPDATE {pre}mails SET ' . $queryPart . ' WHERE `id`=?',
                 $mailID,
             );
             $result += $db->AffectedRows();
@@ -2409,8 +1980,6 @@ class BMMailbox {
      */
     function GetRecentMailCount($folder = FOLDER_ROOT) {
         global $db;
-
-        // TODO: shared folders
 
         $userInfo = BMUser::Fetch($this->_userID);
 
@@ -2627,7 +2196,8 @@ class BMMailbox {
 
         // get msg state
         $res = $db->Query(
-            'SELECT folder,size,blobstorage,userid FROM {pre}mails WHERE id=?',
+            'SELECT folder,size,blobstorage FROM {pre}mails WHERE userid=? AND id=?',
+            $this->_userID,
             (int) $id,
         );
         if ($res->RowCount() != 1) {
@@ -2637,18 +2207,6 @@ class BMMailbox {
             MYSQLI_NUM,
         );
         $res->Free();
-
-        if (
-            $userID != $this->_userID &&
-            !BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folder,
-                true,
-            )
-        ) {
-            return false;
-        }
 
         // trashed?
         if ($folder == FOLDER_TRASH || $hard) {
@@ -2771,31 +2329,6 @@ class BMMailbox {
             $mail->flags |= FLAG_INDEXED;
         }
 
-        // check if folder is shared and if write access is available
-        $folderIsShared = false;
-        if (
-            BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folder,
-                false,
-            )
-        ) {
-            $folderIsShared = true;
-        }
-        if (
-            $folderIsShared &&
-            !BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folder,
-                true,
-            )
-        ) {
-            $folderIsShared = false;
-            $folder = FOLDER_INBOX;
-        }
-
         // get mail size
         $oldOffset = ftell($mail->_fp);
         fseek($mail->_fp, 0, SEEK_END);
@@ -2835,7 +2368,7 @@ class BMMailbox {
         $db->Query(
             'INSERT INTO {pre}mails(userid,betreff,von,an,cc,blobstorage,folder,datum,trashstamp,priority,fetched,msg_id,virnam,trained,refs,flags,size,color) VALUES ' .
                 '(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-            $folderIsShared ? -1 : $this->_userID,
+            $this->_userID,
             Strip4ByteChars($mail->GetHeaderValue('subject')),
             Strip4ByteChars($mail->GetHeaderValue('from')),
             Strip4ByteChars($mail->GetHeaderValue('to')),
@@ -2914,10 +2447,7 @@ class BMMailbox {
         $mail->blobStorage = $bsProvider->providerID;
         unset($bsProvider);
 
-        // update space (only if destination is not shared)
-        if (!$folderIsShared) {
-            $this->UpdateSpace($mailSize);
-        }
+        $this->UpdateSpace($mailSize);
 
         // add attachments to attachment index
         $attachments = $mail->GetAttachments();
@@ -4045,7 +3575,7 @@ class BMMailbox {
     /**
      * check if user is allowed to access an email.
      *
-     * @param int $mailID Mail ID
+     * @param $mailID Mail ID (either a single integer, or an array of integers)
      * @param bool $writeAccess Also check for write access?
      * @return bool
      */
@@ -4060,51 +3590,26 @@ class BMMailbox {
             $okCount = 0;
 
             $res = $db->Query(
-                'SELECT id,folder,userid FROM {pre}mails WHERE `id` IN ?',
+                'SELECT id,folder,userid FROM {pre}mails WHERE userid=? AND `id` IN ?',
+                $this->_userID,
                 $mailID,
             );
             while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-                if ($row['userid'] == $this->_userID) {
-                    $okCount++;
-                } else {
-                    if (
-                        BMWorkgroup::AccessAllowed(
-                            $this->_userID,
-                            WORKGROUP_TYPE_MAILFOLDER,
-                            $row['folder'],
-                            $writeAccess,
-                        )
-                    ) {
-                        $okCount++;
-                    } else {
-                        break;
-                    }
-                }
+                $okCount++;
             }
             $res->Free();
 
-            return $okCount == count($mailID);
-        } else {
-            $res = $db->Query(
-                'SELECT folder,userid FROM {pre}mails WHERE `id`=?',
-                $mailID,
-            );
-            if ($res->RowCount() != 1) {
-                return false;
-            }
-            [$folderID, $userID] = $res->FetchArray(MYSQLI_NUM);
-            $res->Free();
-
-            if ($userID == $this->_userID) {
-                return true;
-            }
-
-            return BMWorkgroup::AccessAllowed(
-                $this->_userID,
-                WORKGROUP_TYPE_MAILFOLDER,
-                $folderID,
-                $writeAccess,
-            );
+            return $okCount === count($mailID);
         }
+
+        $res = $db->Query(
+            'SELECT folder,userid FROM {pre}mails WHERE userid=? AND `id`=?',
+            $this->_userID,
+            $mailID,
+        );
+        if ($res->RowCount() !== 1) {
+            return false;
+        }
+        return true;
     }
 }
