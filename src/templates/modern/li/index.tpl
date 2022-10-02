@@ -87,11 +87,18 @@
 			<div class="menu fade" id="dropdownNavMenu" style="display:none;">
 				<div class="arrow"></div>
 				{foreach from=$pageTabs key=tabID item=tab}
-				{comment text="tab $tabID"}
-				<a href="{$tab.link}{$sid}" title="{$tab.text}"{if $activeTab==$tabID} class="active"{/if}>
-					<i class="fa {$tab.faIcon}"></i>
-					{$tab.text}
-				</a>
+					{if $tabID=='organizer'}
+						<a href="organizer.addressbook.php?sid={$sid}" {if $activeTab==$tabID && $organizerSection=='addressbook'} class="active"{/if}>
+							<i class="fa fa-users"></i>
+							{lng p="addressbook"}
+						</a>
+					{else}
+						{comment text="tab $tabID"}
+						<a href="{$tab.link}{$sid}" title="{$tab.text}"{if $activeTab==$tabID} class="active"{/if}>
+							<i class="fa {$tab.faIcon}"></i>
+							{$tab.text}
+						</a>
+					{/if}
 				{/foreach}
 			</div>
 		</div>
