@@ -115,7 +115,7 @@
 				{foreach from=$tabs item=tab}
 				<li{if $tab.active} class="active"{/if}>
 					<a href="{$tab.link}sid={$sid}">
-						<img src="{if $tab.relIcon}./templates/images/{$tab.relIcon}{elseif $tab.icon}{$tab.icon}{else}./templates/images/ico_prefs_misc.png{/if}" border="0" alt="" />
+						<img src="{if isset($tab.relIcon) && $tab.relIcon}./templates/images/{$tab.relIcon}{elseif $tab.icon}{$tab.icon}{else}./templates/images/ico_prefs_misc.png{/if}" border="0" alt="" />
 						{$tab.title}
 					</a>
 				</li>
