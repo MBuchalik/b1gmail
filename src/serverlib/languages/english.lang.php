@@ -291,7 +291,6 @@ $lang_user['paused'] = 'Paused';
 $lang_user['langCode'] = 'EN';
 $lang_user['pop3server'] = 'Inbox server (POP3)';
 $lang_user['desktopversion'] = 'Desktop version';
-$lang_user['new'] = 'New';
 $lang_user['right'] = 'Right';
 $lang_user['bottom'] = 'Bottom';
 $lang_user['notice'] = 'Notice';

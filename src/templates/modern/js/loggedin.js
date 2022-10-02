@@ -395,7 +395,6 @@ function changeSearchSort(sort, order) {
   document.forms['searchSideBarForm'].submit();
 }
 function _performSearch(e) {
-  hideNewMenu();
   if (e.readyState == 4) {
     EBID('searchResults').innerHTML = e.responseText;
     EBID('searchResultBody').style.display = '';
@@ -510,14 +509,6 @@ function toggleGroup(id, groupID) {
 
     if (groupID) setCookie('toggleGroup[' + groupID + ']', 'open');
   }
-}
-function hideNewMenu(e) {
-  var folderMenu = EBID('newMenu');
-  folderMenu.style.display = 'none';
-}
-function showNewMenu(elem) {
-  document.onmouseup = hideNewMenu;
-  showHeaderPopup('newMenu', elem);
 }
 function hideAddressMenu(e) {
   var mailMenu = EBID('addressMenu');

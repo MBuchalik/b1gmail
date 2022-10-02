@@ -66,10 +66,11 @@
 
 			<div class="toolbar right">
 				{if $bmNotifyInterval>0}<a href="#" onclick="showNotifications(this)" title="{lng p="notifications"}" style="position:relative;"><i id="notifyIcon" class="fa fa-bell faa-ring"></i><div class="noBadge" id="notifyCount"{if $bmUnreadNotifications==0} style="display:none;"{/if}>{number value=$bmUnreadNotifications min=0 max=99}</div></a>{/if}
-				<a href="#" onclick="showNewMenu(this)" title="{lng p="new"}"><i class="fa fa-plus-square fa-lg"></i> {lng p="new"}
-							| <i class="fa fa-angle-down"></i></a>
+				
 				<a href="#" onclick="showSearchPopup(this)" title="{lng p="search"}"><i class="fa fa-search"></i></a>
+
 				<a href="prefs.php?action=faq&sid={$sid}" title="{lng p="faq"}"><i class="fa fa-question fa-lg"></i></a>
+
 				<a href="start.php?sid={$sid}&action=logout" onclick="return confirm('{lng p="logoutquestion"}');" title="{lng p="logout"}"><i class="fa fa-sign-out fa-lg"></i></a>
 			</div>
 
@@ -159,20 +160,6 @@
 					</tr>
 					</tbody>
 				</table>
-			</div>
-		</div>
-
-	  {comment text="new menu"}
-		<div class="headerBox" id="newMenu" style="display:none;">
-			<div class="arrow"></div>
-			<div class="inner">
-			{foreach from=$newMenu item=item}
-				{if isset($item.sep) && $item.sep}
-				<div class="mailMenuSep"></div>
-				{else}
-				<a class="mailMenuItem" href="{$item.link}{$sid}"><i class="fa {$item.faIcon}" aria-hidden="true"></i> {$item.text}...</a>
-				{/if}
-			{/foreach}
 			</div>
 		</div>
 

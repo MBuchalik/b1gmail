@@ -329,16 +329,6 @@ class BMPlugin {
     }
 
     /**
-     * get items for 'new' menu
-     * (added in b1gMail 7.3)
-     *
-     * @reurn array
-     */
-    function getNewMenu() {
-        return [];
-    }
-
-    /**
      * filter factory
      *
      * @param BMMail $mail

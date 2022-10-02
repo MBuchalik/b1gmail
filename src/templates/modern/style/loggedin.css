@@ -88,10 +88,6 @@
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.4);
 }
 
-#newMenu {
-  width: 180px;
-}
-
 #notifyBox .inner {
   min-height: 200px;
   max-height: 320px;

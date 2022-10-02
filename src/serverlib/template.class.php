@@ -232,25 +232,6 @@ class Template extends Smarty {
 
         // tabs
         if (isset($userRow) && isset($groupRow)) {
-            $newMenu = [
-                [
-                    'icon' => 'send_mail',
-                    'faIcon' => 'fa-envelope-o',
-                    'link' => 'email.compose.php?sid=',
-                    'text' => $lang_user['email'],
-                ],
-                [
-                    'sep' => true,
-                ],
-                [
-                    'icon' => 'ico_addressbook',
-                    'faIcon' => 'fa-address-book-o',
-                    'link' =>
-                        'organizer.addressbook.php?action=addContact&sid=',
-                    'text' => $lang_user['contact'],
-                ],
-            ];
-
             $pageTabs = [
                 'start' => [
                     'icon' => 'start',
@@ -285,13 +266,6 @@ class Template extends Smarty {
                 $pageTabs = array_merge($pageTabs, $userPages);
             }
 
-            $moduleResult = $plugins->callFunction('getNewMenu', false, true, [
-                true,
-            ]);
-            foreach ($moduleResult as $newEntries) {
-                $newMenu = array_merge($newMenu, $newEntries);
-            }
-
             $pageTabs = array_merge($pageTabs, [
                 'prefs' => [
                     'icon' => 'prefs',
@@ -305,7 +279,6 @@ class Template extends Smarty {
 
             $this->assign('pageTabs', $pageTabs);
             $this->assign('pageTabsCount', count($pageTabs));
-            $this->assign('newMenu', $newMenu);
             $this->assign('_userEmail', $userRow['email']);
             $this->assign(
                 'searchDetailsDefault',

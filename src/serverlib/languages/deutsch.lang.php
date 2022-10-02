@@ -253,7 +253,6 @@ $lang_user['notifications'] = 'Benachrichtigungen';
 $lang_user['relevance'] = 'Relevanz';
 $lang_user['menu'] = 'Men&uuml;';
 $lang_user['desktopversion'] = 'Desktop-Version';
-$lang_user['new'] = 'Neu';
 $lang_user['right'] = 'Rechts';
 $lang_user['bottom'] = 'Unten';
 $lang_user['notice'] = 'Hinweis';
