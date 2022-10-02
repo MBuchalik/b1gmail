@@ -117,12 +117,6 @@ if ($_REQUEST['action'] == 'start') {
     header('Location: start.php?sid=' . session_id());
     exit();
 } /**
- * search
- */ elseif ($_REQUEST['action'] == 'search' && isset($_REQUEST['q'])) {
-    $url = sprintf($bm_prefs['search_engine'], urlencode($_REQUEST['q']));
-    header('Location: ' . $url);
-    exit();
-} /**
  * widget preferences
  */ elseif (
     $_REQUEST['action'] == 'showWidgetPrefs' &&

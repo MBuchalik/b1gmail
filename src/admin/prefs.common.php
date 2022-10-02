@@ -98,13 +98,12 @@ if ($_REQUEST['action'] == 'common') {
         }
 
         $db->Query(
-            'UPDATE {pre}prefs SET titel=?, b1gmta_host=?, selffolder=?, selfurl=?, mobile_url=?, search_engine=?, datafolder=?, language=?, std_land=?, datumsformat=?, ordner_proseite=?,  autocancel=?, wartung=?, structstorage=?, cron_interval=?, logouturl=?, contact_history=?, ip_lock=?, cookie_lock=?, domain_combobox=?, ssl_url=?, ssl_login_enable=?, auto_tz=?, compress_pages=?, redirect_mobile=?, logs_autodelete=?, logs_autodelete_days=?, logs_autodelete_archive=?, hotkeys_default=?, notify_interval=?, notify_lifetime=?, mail_groupmode=?',
+            'UPDATE {pre}prefs SET titel=?, b1gmta_host=?, selffolder=?, selfurl=?, mobile_url=?, datafolder=?, language=?, std_land=?, datumsformat=?, ordner_proseite=?,  autocancel=?, wartung=?, structstorage=?, cron_interval=?, logouturl=?, contact_history=?, ip_lock=?, cookie_lock=?, domain_combobox=?, ssl_url=?, ssl_login_enable=?, auto_tz=?, compress_pages=?, redirect_mobile=?, logs_autodelete=?, logs_autodelete_days=?, logs_autodelete_archive=?, hotkeys_default=?, notify_interval=?, notify_lifetime=?, mail_groupmode=?',
             $_POST['titel'],
             $_POST['b1gmta_host'],
             $_POST['selffolder'],
             $_POST['selfurl'],
             $_POST['mobile_url'],
-            $_POST['search_engine'],
             $_POST['datafolder'],
             $_POST['language'],
             $_POST['std_land'],

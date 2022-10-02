@@ -38,7 +38,6 @@ $lang_client['addravailable'] = 'Die Adresse ist noch frei!';
 $lang_client['addrtaken'] = 'Die Adresse ist belegt!';
 $lang_client['addrinvalid'] = 'Ungültige Adresse!';
 $lang_client['fillin'] = 'Bitte füllen Sie alle benötigten Felder aus!';
-$lang_client['selecttext'] = 'Bitte wählen Sie zuerst eine Textstelle aus!';
 $lang_client['fillinname'] =
     'Bitte geben Sie mindestens den Vor- und Zunamen des Kontaktes ein!';
 $lang_client['reallyreset'] =
@@ -496,7 +495,6 @@ $lang_user['convfolder'] = 'Konvers.-Ordner erstellen';
 $lang_user['complete'] = 'Selbst-Vervollst&auml;ndigung';
 $lang_user['importvcftext'] =
     'Bitte w&auml;hlen Sie die Visitenkarte (VCF-Datei) aus, die Sie importieren m&ouml;chten. Beachten Sie bitte, dass beim Import eventuell in die &quot;Kontakt hinzuf&uuml;gen&quot;-Maske eingetragenen Daten ersetzt werden.';
-$lang_user['localfile'] = 'Lokale Datei';
 $lang_user['completetext'] =
     'Mit dieser Funktion kann Ihr Kontakt seine Kontaktdaten selbst vervollst&auml;ndigen. Dazu wird ihm eine E-Mail mit einem Link geschickt, den er klicken kann, um zu einer Seite zu gelangen, auf der er seine Kontaktdaten eingeben kann. Nach Absenden der Seite werden die Angaben in Ihr Adressbuch &uuml;bernommen.<br /><br />W&auml;hlen Sie bitte die E-Mail-Adresse, an die der Link geschickt werden soll.';
 $lang_user['complete_noemail'] =
@@ -1587,7 +1585,6 @@ $lang_admin['isequal'] = 'ist gleich';
 $lang_admin['recpdetection'] = 'Empf&auml;nger-Bestimmung';
 $lang_admin['rd_static'] = 'Automatisch';
 $lang_admin['rd_dynamic'] = 'Empfangs-Regeln verwenden';
-$lang_admin['searchengine'] = 'Suchmaschine';
 $lang_admin['activate'] = 'Aktivieren';
 $lang_admin['features'] = 'Features';
 $lang_admin['smime'] = 'S/MIME';

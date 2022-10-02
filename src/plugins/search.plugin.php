@@ -164,14 +164,7 @@ class B1GMailSearchProvider extends BMPlugin {
                 'icon' => 'fa-address-book-o',
             ];
         }
-        if ($bm_prefs['search_engine'] != '') {
-            $result['B1GMailSearchProvider_websearch'] = [
-                'title' => $lang_user['websearch'],
-                'icon' => 'fa-globe',
-            ];
-        }
 
-        // return result
         return $result;
     }
 
@@ -463,27 +456,6 @@ class B1GMailSearchProvider extends BMPlugin {
             }
         }
 
-        //
-        // web
-        //
-        if ($bm_prefs['search_engine'] != '') {
-            $results[] = [
-                'icon' => 'fa-globe',
-                'name' => 'B1GMailSearchProvider_websearch',
-                'title' => $lang_user['websearch'],
-                'results' => [
-                    [
-                        'title' => $query,
-                        'extLink' => sprintf(
-                            $bm_prefs['search_engine'],
-                            urlencode($query),
-                        ),
-                    ],
-                ],
-            ];
-        }
-
-        // return
         return $results;
     }
 

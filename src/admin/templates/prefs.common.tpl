@@ -25,10 +25,6 @@
 				<td class="td2"><input type="text" name="mobile_url" value="{text allowEmpty=true value=$bm_prefs.mobile_url}" size="36" /></td>
 			</tr>
 			<tr>
-				<td class="td1" width="220">{lng p="searchengine"}:</td>
-				<td class="td2"><input type="text" name="search_engine" value="{text allowEmpty=true value=$bm_prefs.search_engine}" size="36" /></td>
-			</tr>
-			<tr>
 				<td class="td1" width="220">{lng p="croninterval"}:</td>
 				<td class="td2"><input type="number" min="1" step="1" name="cron_interval" value="{text allowEmpty=true value=$bm_prefs.cron_interval}" size="6" /> {lng p="seconds"}</td>
 			</tr>

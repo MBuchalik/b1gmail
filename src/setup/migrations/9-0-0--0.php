@@ -43,7 +43,8 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
                 'ALTER TABLE bm60_prefs
                     DROP COLUMN calendar_defaultviewmode,
                     DROP COLUMN forbidden_extensions,
-                    DROP COLUMN forbidden_mimetypes
+                    DROP COLUMN forbidden_mimetypes,
+                    DROP COLUMN search_engine
             ',
             )
         ) {

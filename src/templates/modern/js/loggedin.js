@@ -519,40 +519,6 @@ function showNewMenu(elem) {
   document.onmouseup = hideNewMenu;
   showHeaderPopup('newMenu', elem);
 }
-function objBigger(name) {
-  EBID(name).style.height = parseInt(EBID(name).style.height) + 25 + 'px';
-}
-function objSmaller(name) {
-  EBID(name).style.height =
-    max(parseInt(EBID(name).style.height) - 25, 100) + 'px';
-}
-function quoteSelectedText() {
-  var tArea = EBID('textArea');
-  var sText = '';
-
-  if (tArea.contentDocument && tArea.contentDocument.getSelection)
-    sText = tArea.contentDocument.getSelection();
-  else if (tArea.selection) sText = tArea.selection.createRange().text;
-  else if (parent.frames.textArea.document)
-    sText = parent.frames.textArea.document.selection.createRange().text;
-
-  document.getElementById('quoteText').value = sText;
-  document.getElementById('quoteForm').submit();
-}
-function searchSelectedText(sid) {
-  var tArea = EBID('textArea');
-  var sText = '';
-
-  if (tArea.contentDocument && tArea.contentDocument.getSelection)
-    sText = tArea.contentDocument.getSelection();
-  else if (tArea.selection) sText = tArea.selection.createRange().text;
-  else if (parent.frames.textArea.document)
-    sText = parent.frames.textArea.document.selection.createRange().text;
-
-  if (sText.replace(/\s/g, '').length > 0)
-    window.open('start.php?sid=' + sid + '&action=search&q=' + escape(sText));
-  else alert(lang['selecttext']);
-}
 function hideAddressMenu(e) {
   var mailMenu = EBID('addressMenu');
   mailMenu.style.display = 'none';

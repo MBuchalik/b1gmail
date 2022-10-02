@@ -33,7 +33,6 @@ $lang_client['addravailable'] = 'Address available!';
 $lang_client['addrtaken'] = 'Address unavailable!';
 $lang_client['addrinvalid'] = 'Address invalid!';
 $lang_client['fillin'] = 'Please fill in all required fields!';
-$lang_client['selecttext'] = 'Please select a text first!';
 $lang_client['fillinname'] =
     'Please fill in at least first name and family name of the contact!';
 $lang_client['reallyreset'] =
@@ -543,7 +542,6 @@ $lang_user['exportvcf'] = 'Export VCF';
 $lang_user['complete'] = 'Autocomplete';
 $lang_user['importvcftext'] =
     'Please select the vCard (VCF-file) you want to import. Please note that by importing the file any data that you may have entered into the &quot;Kontakt hinzuf&uuml;gen&quot;-Mask will be replaced.';
-$lang_user['localfile'] = 'Local file';
 $lang_user['completetext'] =
     'Using this feature, your contact can complete his contact details himself/herself. He/She will receive a message containing a link that will lead him/her to a website where he/she can enter his/her contact details. The information will be copied into your addressbook.<br /><br /> Please select the email address you want to send the link to.';
 $lang_user['complete_noemail'] =
@@ -1580,7 +1578,6 @@ $lang_admin['isequal'] = 'Is equal to';
 $lang_admin['recpdetection'] = 'Recipient detection';
 $lang_admin['rd_static'] = 'Conventional (statically)';
 $lang_admin['rd_dynamic'] = 'Use receive rules (dynamically)';
-$lang_admin['searchengine'] = 'Search engine';
 $lang_admin['activate'] = 'Enable';
 $lang_admin['features'] = 'Features';
 $lang_admin['smime'] = 'S/MIME';
