@@ -8,14 +8,14 @@
 			<i class="fa {if $folderInfo.type == 'inbox'}fa-inbox{elseif $folderInfo.type == 'outbox'}fa-inbox{elseif $folderInfo.type == 'drafts'}fa-envelope{elseif $folderInfo.type == 'spam'}fa-ban{elseif $folderInfo.type == 'trash'}fa-trash-o{elseif $folderInfo.type == 'intellifolder'}fa-folder{else}fa-folder-o{/if}" aria-hidden="true"></i>
 			{$folderInfo.title}
 		</button>
-		{if !$folderInfo.readonly}<button type="button" onclick="moveMail('{$mailID}');">
+		{if !isset($folderInfo.readonly) || !$folderInfo.readonly}<button type="button" onclick="moveMail('{$mailID}');">
 			<i class="fa fa-arrows" aria-hidden="true"></i>
 			{lng p="move"}
 		</button>{/if}
 	</div>
 </div>
 
-<div class="scrollContainer withBottomBar{if $smarty.get.openConversationView||$attachments||$notes}AndLayer{/if}" id="mailReadScrollContainer">
+<div class="scrollContainer withBottomBar{if isset($smarty.get.openConversationView) && $smarty.get.openConversationView || $attachments || $notes}AndLayer{/if}" id="mailReadScrollContainer">
 	{hook id="email.read.tpl:head"}
 
 	<div class="previewMailHeader" id="mailHeader">
@@ -97,7 +97,7 @@
 
 	<div id="bigFormToolbar">
 
-		{if $prevID}<button type="button" onclick="document.location.href='email.read.php?id={$prevID}&sid={$sid}';">
+		{if isset($prevID)&&$prevID}<button type="button" onclick="document.location.href='email.read.php?id={$prevID}&sid={$sid}';">
 			&laquo;
 		</button>{/if}
 
@@ -131,12 +131,12 @@
 			{lng p="print"}
 		</button>
 
-		{if !$folderInfo.readonly}<button type="button" onclick="{if $folderID==-5}if(confirm('{lng p="realdel"}')) {/if} document.location.href='email.php?sid={$sid}&do=deleteMail&id={$mailID}&folder={$folderID}';">
+		{if !isset($folderInfo.readonly) || !$folderInfo.readonly}<button type="button" onclick="{if $folderID==-5}if(confirm('{lng p="realdel"}')) {/if} document.location.href='email.php?sid={$sid}&do=deleteMail&id={$mailID}&folder={$folderID}';">
 			<i class="fa fa-remove"></i>
 			{lng p="delete"}
 		</button>{/if}
 
-		{if $nextID}<button type="button" onclick="document.location.href='email.read.php?id={$nextID}&sid={$sid}';">
+		{if isset($nextId) && $nextID}<button type="button" onclick="document.location.href='email.read.php?id={$nextID}&sid={$sid}';">
 			&raquo;
 		</button>{/if}
 
@@ -227,7 +227,7 @@
 {hook id="email.read.tpl:afterText"}
 
 <div id="afterText">
-{if $vcards}
+{if isset($vcards)}
 <p>
 {foreach from=$vcards item=card key=key}
 	<div class="mailBox"><table width="100%">
@@ -267,7 +267,7 @@
 
 </div></div>
 
-<div class="contentBottomLayer" id="bottomLayer_attachments" style="display:{if $smarty.get.openConversationView||$notes||!$attachments}none{/if};">
+<div class="contentBottomLayer" id="bottomLayer_attachments" style="display:{if isset($smarty.get.openConversationView) && $smarty.get.openConversationView || $notes || !$attachments}none{/if};">
 	<div class="contentHeader">
 		<div class="left">
 			<input type="checkbox" style="margin-left:-0.5em;" id="allChecker" onclick="checkAll(this.checked, document.forms.attachmentsForm, 'att');" />
@@ -401,7 +401,7 @@
 				</td>
 				<td width="150" class="listTableTDActive" style="padding:5px;padding-left:10px;">
 					<i class="fa fa-envelope"></i>
-					<input type="checkbox" name="flags[1]" id="flags1"{if $smarty.post.do=='saveMeta'&&($flags&1)} checked="checked"{/if} />
+					<input type="checkbox" name="flags[1]" id="flags1"{if isset($smarty.post.do) && $smarty.post.do=='saveMeta' && ($flags&1)} checked="checked"{/if} />
 					<label for="flags1">{lng p="unread"}</label><br />
 
 					<i class="fa fa-flag"></i>
@@ -421,7 +421,7 @@
 
 	<div class="contentFooter">
 	 	<div class="right">
-			<button class="primary" type="submit"{if $folderInfo.readonly} disabled="disabled" style="color:grey;"{/if}>
+			<button class="primary" type="submit"{if isset($folderInfo.readonly) && $folderInfo.readonly} disabled="disabled" style="color:grey;"{/if}>
 				<i class="fa fa-check"></i>
 				{lng p="save"}
 			</button>
