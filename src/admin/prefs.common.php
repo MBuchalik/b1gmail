@@ -98,7 +98,7 @@ if ($_REQUEST['action'] == 'common') {
         }
 
         $db->Query(
-            'UPDATE {pre}prefs SET titel=?, b1gmta_host=?, selffolder=?, selfurl=?, mobile_url=?, datafolder=?, language=?, std_land=?, datumsformat=?, ordner_proseite=?,  autocancel=?, wartung=?, structstorage=?, cron_interval=?, logouturl=?, contact_history=?, ip_lock=?, cookie_lock=?, domain_combobox=?, ssl_url=?, ssl_login_enable=?, auto_tz=?, compress_pages=?, redirect_mobile=?, logs_autodelete=?, logs_autodelete_days=?, logs_autodelete_archive=?, hotkeys_default=?, notify_interval=?, notify_lifetime=?, mail_groupmode=?',
+            'UPDATE {pre}prefs SET titel=?, b1gmta_host=?, selffolder=?, selfurl=?, mobile_url=?, datafolder=?, language=?, std_land=?, datumsformat=?, ordner_proseite=?,  autocancel=?, wartung=?, structstorage=?, cron_interval=?, logouturl=?, contact_history=?, ip_lock=?, cookie_lock=?, domain_combobox=?, ssl_url=?, ssl_login_enable=?, auto_tz=?, compress_pages=?, redirect_mobile=?, logs_autodelete=?, logs_autodelete_days=?, logs_autodelete_archive=?, hotkeys_default=?, mail_groupmode=?',
             $_POST['titel'],
             $_POST['b1gmta_host'],
             $_POST['selffolder'],
@@ -127,8 +127,6 @@ if ($_REQUEST['action'] == 'common') {
             max(1, (int) $_POST['logs_autodelete_days']),
             isset($_POST['logs_autodelete_archive']) ? 'yes' : 'no',
             isset($_POST['hotkeys_default']) ? 'yes' : 'no',
-            max(1, $_REQUEST['notify_interval']),
-            max(1, $_REQUEST['notify_lifetime']),
             $_POST['mail_groupmode'],
         );
         ReadConfig();

@@ -290,18 +290,6 @@ class Template extends Smarty {
                     $groupRow['ftsearch'] == 'yes' &&
                     FTS_SUPPORT,
             );
-
-            if ($groupRow['notifications'] == 'yes') {
-                $this->assign(
-                    'bmUnreadNotifications',
-                    $thisUser->GetUnreadNotifications(),
-                );
-                $this->assign('bmNotifyInterval', $bm_prefs['notify_interval']);
-                $this->assign(
-                    'bmNotifySound',
-                    $userRow['notify_sound'] == 'yes',
-                );
-            }
         }
 
         // pugin pages (not logged in)

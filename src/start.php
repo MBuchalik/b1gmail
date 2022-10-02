@@ -124,16 +124,6 @@ if ($_REQUEST['action'] == 'start') {
 ) {
     $dashboard->showWidgetPrefs($_REQUEST['name']);
 } /**
- * notifications
- */ elseif ($_REQUEST['action'] == 'getNotifications') {
-    $tpl->assign('bmNotifications', $thisUser->GetNotifications());
-    $tpl->display('li/notifications.tpl');
-} /**
- * notification count
- */ elseif ($_REQUEST['action'] == 'getNotificationCount') {
-    echo $thisUser->GetUnreadNotifications();
-    exit();
-} /**
  * logout
  */ elseif ($_REQUEST['action'] == 'logout') {
     BMUser::Logout();

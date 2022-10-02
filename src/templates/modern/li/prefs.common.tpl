@@ -61,27 +61,7 @@
 			</td>
 		</tr>
 
-		<tr>
-			<td class="listTableLeftDesc"><i class="fa fa-bell-o" aria-hidden="true"></i></td>
-			<td class="listTableRightDesc">{lng p="notifications"}</td>
-		</tr>
-		<tr>
-			<td class="listTableLeft"><label for="notify_sound">{lng p="notify_sound"}?</label></td>
-			<td class="listTableRight">
-				<input type="checkbox" name="notify_sound" id="notify_sound"{if $notifySound} checked="checked"{/if} />
-					<label for="notify_sound">{lng p="enable"}</label>
-			</td>
-		</tr>
-		<tr>
-			<td class="listTableLeft"><label for="notify_types">{lng p="notify_types"}:</label></td>
-			<td class="listTableRight">
-				<input type="checkbox" name="notify_email" id="notify_email"{if $notifyEMail} checked="checked"{/if} />
-					<label for="notify_email">{lng p="notify_email"}</label>
-				<input type="checkbox" name="notify_birthday" id="notify_birthday"{if $notifyBirthday} checked="checked"{/if} />
-					<label for="notify_birthday">{lng p="notify_birthday"}</label>
-			</td>
-		</tr>
-
+	
 		<tr>
 			<td class="listTableLeftDesc"><i class="fa fa-inbox" aria-hidden="true"></i></td>
 			<td class="listTableRightDesc">{lng p="email"}</td>

@@ -120,8 +120,6 @@
 					<tr>
 						<td class="td1">{lng p="ftsearch"}?</td>
 						<td class="td2"><input type="checkbox" name="ftsearch"{if !$ftsSupport} disabled="disabled"{else}{if $group.ftsearch=='yes'} checked="checked"{/if}{/if} /></td>
-						<td class="td1">{lng p="notifications"}?</td>
-						<td class="td2"><input type="checkbox" name="notifications"{if $group.notifications=='yes'} checked="checked"{/if} /></td>
 					</tr>
 					<tr>
 						<td class="td1">{lng p="deliverystatus"}?</td>

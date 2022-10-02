@@ -3145,52 +3145,6 @@ class BMMailbox {
         if ($storeResult == STORE_RESULT_OK) {
             $mail->id = $this->_lastInsertId;
 
-            // notification
-            if (($filterActionFlags & FILTER_ACTIONFLAG_NOTIFY) != 0) {
-                $this->_userObject->PostNotification(
-                    'notify_email',
-                    [
-                        HTMLFormat(
-                            DecodeSingleEMail(
-                                ExtractMailAddress(
-                                    $mail->GetHeaderValue('from'),
-                                ),
-                            ),
-                        ),
-                        HTMLFormat($mail->GetHeaderValue('subject')),
-                    ],
-                    'email.read.php?id=' . $mail->id . '&',
-                    '%%tpldir%%images/li/notify_email.png',
-                    0,
-                    0,
-                    NOTIFICATION_FLAG_USELANG,
-                    '::notifyEMail',
-                );
-            } elseif (
-                $this->_userObject->_row['notify_email'] == 'yes' &&
-                ($mail->flags & FLAG_SPAM) == 0
-            ) {
-                $unreadCount = $this->GetMailCount(-1, true);
-
-                if ($unreadCount) {
-                    $this->_userObject->PostNotification(
-                        'notify_newemail',
-                        [
-                            $unreadCount,
-                            HTMLFormat($mail->GetHeaderValue('subject')) .
-                            ($unreadCount > 1 ? ', ...' : ''),
-                        ],
-                        'email.php?folder=' . $folder . '&',
-                        '%%tpldir%%images/li/notify_newemail.png',
-                        0,
-                        0,
-                        NOTIFICATION_FLAG_USELANG,
-                        '::newEMail',
-                        true,
-                    );
-                }
-            }
-
             // receive stats
             $oldOffset = ftell($mail->_fp);
             fseek($mail->_fp, 0, SEEK_END);

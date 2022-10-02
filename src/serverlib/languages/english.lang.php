@@ -244,8 +244,6 @@ $lang_user['full_weekdays'] = [
 ];
 
 $lang_user['nothanks'] = 'No thanks';
-$lang_user['nonotifications'] = 'no current notifications';
-$lang_user['notifications'] = 'Notifications';
 $lang_user['relevance'] = 'Relevance';
 $lang_user['deliverystatus'] = 'Delivery status';
 $lang_user['mds_delivered'] = 'Delivered to <strong>%d</strong> recipient(s).';
@@ -263,14 +261,9 @@ $lang_user['newgroup'] = 'New group';
 $lang_user['associatewith'] = 'Associate with';
 $lang_user['mails_del'] = 'Delete emails';
 $lang_user['auto_save_drafts'] = 'Automatically save drafts';
-$lang_user['notify_sound'] = 'Play sound';
-$lang_user['notify_types'] = 'Notify me about';
-$lang_user['notify_email'] = 'new emails';
-$lang_user['notify_birthday'] = 'birthdays of my contacts';
 $lang_user['auto'] = 'Automatic';
 $lang_user['details_default'] = 'Directly show detailed results';
 $lang_user['description'] = 'Description';
-$lang_user['sendnotify'] = 'Show notification';
 $lang_user['loaddraft'] = 'Load draft';
 $lang_user['drafttext'] =
     'Do you want to load the auto-saved draft of your last email?';
@@ -938,9 +931,6 @@ $lang_admin['acpiconsfrom'] = 'ACP icons by';
 $lang_admin['acpbgfrom'] = 'ACP background by';
 $lang_admin['addservices'] = 'Additional services';
 $lang_admin['mailspace_add'] = 'Add. email space';
-$lang_admin['notifications'] = 'Notifications';
-$lang_admin['notifyinterval'] = 'Check for notifications every';
-$lang_admin['notifylifetime'] = 'Delete notifications after';
 $lang_admin['days2'] = 'day(s)';
 $lang_admin['after'] = 'after';
 $lang_admin['nosignupautodel'] = 'Automatic deletion when never logged in';

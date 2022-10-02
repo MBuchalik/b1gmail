@@ -152,7 +152,6 @@ define('FILTER_ACTION_RESPOND', 9);
 define('FILTER_ACTION_FORWARD', 10);
 define('FILTER_ACTION_SETCOLOR', 11);
 define('FILTER_ACTION_MARKDONE', 12);
-define('FILTER_ACTION_NOTIFY', 13);
 define('FILTER_ACTIONFLAG_DO_NOT_OVERRIDE_SPAMFILTER', 2); // filter action flags
 define('FILTER_ACTIONFLAG_RESPOND', 4);
 define('FILTER_ACTIONFLAG_FORWARD', 8);
@@ -250,9 +249,6 @@ define('FALLBACK_CHARSET', 'ISO-8859-15');
 define('BMCL_TYPE_CONTACT', 0); // changelog/sync item types
 define('BMCL_TYPE_CONTACTGROUP', 3);
 define('FTS_BGINDEX_COUNT', 10); // no of mails to index in each fts bg index step
-define('NOTIFICATION_LIMIT', 25);
-define('NOTIFICATION_FLAG_USELANG', 1);
-define('NOTIFICATION_FLAG_JSLINK', 2);
 define('MDSTATUS_INVALID', 0);
 define('MDSTATUS_SUBMITTED_TO_MTA', 1);
 define('MDSTATUS_RECEIVED_BY_MTA', 2);

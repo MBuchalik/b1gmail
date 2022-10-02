@@ -95,12 +95,6 @@ if ($bm_prefs['last_cron'] < time() - $bm_prefs['cron_interval']) {
     // clean up cert mails
     CleanupCertMails();
 
-    // clean up notifications
-    CleanupNotifications();
-
-    // send birthday notifications
-    ProcessBirthdayNotifications();
-
     // auto-delete users who never logged in
     ProcessNoSignupAutoDel();
 

@@ -163,169 +163,6 @@ class BMUser {
     }
 
     /**
-     * get unread notifications count
-     *
-     * @return int
-     */
-    function GetUnreadNotifications() {
-        global $db;
-
-        $result = 0;
-
-        $res = $db->Query(
-            'SELECT COUNT(*) FROM {pre}notifications WHERE `userid`=? AND `read`=0 AND (`expires`=0 OR `expires`<?)',
-            $this->_id,
-            time(),
-            time(),
-        );
-        while ($row = $res->FetchArray(MYSQLI_NUM)) {
-            $result = (int) $row[0];
-        }
-        $res->Free();
-
-        return $result;
-    }
-
-    /**
-     * get latest notifications
-     *
-     * @param bool $markRead Whether to mark all notifications as read after fetching them
-     * @return array
-     */
-    function GetNotifications($markRead = true) {
-        global $db, $tpl, $lang_custom;
-
-        $result = [];
-
-        $res = $db->Query(
-            'SELECT `notificationid`,`date`,`read`,`flags`,`text_phrase`,`text_params`,`link`,`icon` FROM {pre}notifications WHERE `userid`=? AND (`expires`=0 OR `expires`<?) ORDER BY `notificationid` DESC LIMIT ' .
-                NOTIFICATION_LIMIT,
-            $this->_id,
-            time(),
-            time(),
-        );
-        while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-            switch ($row['icon']) {
-                case '%%tpldir%%images/li/notify_newemail.png':
-                    $row['faIcon'] = str_replace(
-                        '%%tpldir%%images/li/notify_newemail.png',
-                        'fa-envelope-square',
-                        $row['icon'],
-                    );
-                    break;
-                case '%%tpldir%%images/li/notify_email.png':
-                    $row['faIcon'] = str_replace(
-                        '%%tpldir%%images/li/notify_email.png',
-                        'fa-envelope-o',
-                        $row['icon'],
-                    );
-                    break;
-                case '%%tpldir%%images/li/notify_birthday.png':
-                    $row['faIcon'] = str_replace(
-                        '%%tpldir%%images/li/notify_birthday.png',
-                        'fa-birthday-cake',
-                        $row['icon'],
-                    );
-                    break;
-            }
-            $row['icon'] = str_replace(
-                '%%tpldir%%',
-                $tpl->tplDir,
-                $row['icon'],
-            );
-
-            if (($row['flags'] & NOTIFICATION_FLAG_USELANG) != 0) {
-                $row['text_phrase'] = $lang_custom[$row['text_phrase']];
-            }
-
-            $row['text'] = vsprintf(
-                $row['text_phrase'],
-                ExplodeOutsideOfQuotation($row['text_params'], ','),
-            );
-
-            $row['old'] = $row['read'] && $row['date'] < mktime(0, 0, 0);
-
-            $result[] = $row;
-        }
-        $res->Free();
-
-        if ($markRead) {
-            $db->Query(
-                'UPDATE {pre}notifications SET `read`=1 WHERE `userid`=? AND (`expires`=0 OR `expires`<?)',
-                $this->_id,
-                time(),
-                time(),
-            );
-        }
-
-        return $result;
-    }
-
-    /**
-     * post a new notification
-     *
-     * @param string $textPhrase Text phrase or key in $lang_custom array when used with NOTIFICATION_FLAG_USELANG
-     * @param array $textParams Parameters array for format string
-     * @param string $link Notification link
-     * @param string $icon Icon path (can use %%tpldir%% variable)
-     * @param int $date Notification date (0 = now)
-     * @param int $expires Expiration date (0 = never)
-     * @param int $flags Flags
-     * @param string $class Unique name of notification class (optional)
-     * @param bool $uniqueClass Set to true to remove all previous notifications of the same class
-     * @return int Notification ID
-     */
-    function PostNotification(
-        $textPhrase,
-        $textParams = [],
-        $link = '',
-        $icon = '',
-        $date = 0,
-        $expires = 0,
-        $flags = 0,
-        $class = '',
-        $uniqueClass = false
-    ) {
-        global $db;
-
-        if ($date == 0) {
-            $date = time();
-        }
-
-        if (count($textParams)) {
-            $textParams =
-                '"' .
-                implode('","', array_map('addslashes', $textParams)) .
-                '"';
-        } else {
-            $textParams = '';
-        }
-
-        if ($uniqueClass && !empty($class)) {
-            $db->Query(
-                'DELETE FROM {pre}notifications WHERE `userid`=? AND `class`=?',
-                $this->_id,
-                $class,
-            );
-        }
-
-        $db->Query(
-            'INSERT INTO {pre}notifications(`userid`,`date`,`expires`,`flags`,`text_phrase`,`text_params`,`link`,`icon`,`class`) ' .
-                'VALUES(?,?,?,?,?,?,?,?,?)',
-            $this->_id,
-            $date,
-            $expires,
-            $flags,
-            $textPhrase,
-            $textParams,
-            $link,
-            $icon,
-            $class,
-        );
-        return $db->InsertId();
-    }
-
-    /**
      * update bayes training values for user
      *
      * @param int $nonSpam Count of NON spam mails
@@ -2507,9 +2344,6 @@ class BMUser {
         $attCheck,
         $searchDetailsDefault,
         $preferredLanguage,
-        $notifySound,
-        $notifyEMail,
-        $notifyBirthday,
         $autoSaveDrafts,
         $autoSaveDraftsInterval
     ) {
@@ -2518,7 +2352,7 @@ class BMUser {
         $this->SetPref('hotkeys', $hotkeys);
 
         $db->Query(
-            'UPDATE {pre}users SET in_refresh=?, soforthtml=?, c_firstday=?, datumsformat=?, absendername=?, defaultSender=?, re=?, fwd=?, forward=?, forward_to=?, forward_delete=?, preview=?, conversation_view=?, newsletter_optin=?, plaintext_courier=?, reply_quote=?, attcheck=?, search_details_default=?, preferred_language=?, notify_sound=?, notify_email=?, notify_birthday=?, auto_save_drafts=?, auto_save_drafts_interval=? WHERE id=?',
+            'UPDATE {pre}users SET in_refresh=?, soforthtml=?, c_firstday=?, datumsformat=?, absendername=?, defaultSender=?, re=?, fwd=?, forward=?, forward_to=?, forward_delete=?, preview=?, conversation_view=?, newsletter_optin=?, plaintext_courier=?, reply_quote=?, attcheck=?, search_details_default=?, preferred_language=?, auto_save_drafts=?, auto_save_drafts_interval=? WHERE id=?',
             $inboxRefresh,
             $instantHTML ? 'yes' : 'no',
             $firstDayOfWeek,
@@ -2538,9 +2372,6 @@ class BMUser {
             $attCheck ? 'yes' : 'no',
             $searchDetailsDefault ? 'yes' : 'no',
             $preferredLanguage,
-            $notifySound ? 'yes' : 'no',
-            $notifyEMail ? 'yes' : 'no',
-            $notifyBirthday ? 'yes' : 'no',
             $autoSaveDrafts ? 'yes' : 'no',
             max($bm_prefs['min_draft_save_interval'], $autoSaveDraftsInterval),
             $this->_id,

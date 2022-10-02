@@ -88,11 +88,6 @@
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.4);
 }
 
-#notifyBox .inner {
-  min-height: 200px;
-  max-height: 320px;
-}
-
 .headerBox .inner {
   width: 100%;
   background-color: #fff;
@@ -109,42 +104,6 @@
   position: absolute;
   top: -10px;
   right: 4%;
-}
-
-#notifyBox UL {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-#notifyBox UL LI A {
-  display: block;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
-  position: relative;
-}
-#notifyBox UL LI A:hover {
-  background-color: #fafafa;
-}
-#notifyBox UL LI A.unread {
-  background-color: #eee;
-}
-#notifyBox UL LI A.unread:hover {
-  background-color: #e8e8e8;
-}
-#notifyBox UL LI A IMG {
-  width: 32px;
-}
-#notifyBox UL LI TABLE {
-  border-collapse: collapse;
-  width: 100%;
-}
-#notifyBox UL LI TABLE TD {
-  vertical-align: top;
-}
-#notifyBox .date {
-  color: #aaa;
-  margin-top: 2px;
 }
 
 INPUT {

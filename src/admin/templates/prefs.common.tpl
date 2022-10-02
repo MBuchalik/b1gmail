@@ -144,21 +144,6 @@
 	</fieldset>
 
 	<fieldset>
-		<legend>{lng p="notifications"}</legend>
-		<table>
-			<tr>
-				<td width="40" valign="top" rowspan="2"><img src="{$tpldir}images/ico_notify.png" border="0" alt="" width="32" height="32" /></td>
-				<td class="td1" width="220">{lng p="notifyinterval"}:</td>
-				<td class="td2"><input type="number" name="notify_interval" value="{$bm_prefs.notify_interval}" size="6" min="1" step="1" /> {lng p="seconds"}</td>
-			</tr>
-			<tr>
-				<td class="td1" width="220">{lng p="notifylifetime"}:</td>
-				<td class="td2"><input type="number" name="notify_lifetime" value="{$bm_prefs.notify_lifetime}" size="6" min="1" step="1" /> {lng p="days2"}</td>
-			</tr>
-		</table>
-	</fieldset>
-
-	<fieldset>
 		<legend>{lng p="defaults"}</legend>
 
 		<table>

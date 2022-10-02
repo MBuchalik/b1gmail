@@ -151,9 +151,6 @@ if ($_REQUEST['action'] == 'start') {
             isset($_REQUEST['attcheck']),
             isset($_REQUEST['search_details_default']),
             $_REQUEST['preferred_language'],
-            isset($_REQUEST['notify_sound']),
-            isset($_REQUEST['notify_email']),
-            isset($_REQUEST['notify_birthday']),
             isset($_REQUEST['auto_save_drafts']),
             $_REQUEST['auto_save_drafts_interval'],
         );
@@ -212,9 +209,6 @@ if ($_REQUEST['action'] == 'start') {
     $tpl->assign('attcheck', $userRow['attcheck']);
     $tpl->assign('autosend_dn', $thisUser->GetPref('autosend_dn'));
     $tpl->assign('linesep', $thisUser->GetPref('linesep'));
-    $tpl->assign('notifySound', $userRow['notify_sound'] == 'yes');
-    $tpl->assign('notifyEMail', $userRow['notify_email'] == 'yes');
-    $tpl->assign('notifyBirthday', $userRow['notify_birthday'] == 'yes');
     $tpl->assign('autoSaveDrafts', $userRow['auto_save_drafts'] == 'yes');
     $tpl->assign(
         'autoSaveDraftsInterval',

@@ -106,7 +106,6 @@ function documentLoader() {
   }
 
   ftsBGIndex();
-  notifyPollInstall();
 }
 
 function ftsBGIndex() {
@@ -125,28 +124,6 @@ function ftsBGIndex() {
       },
     );
   }
-}
-
-function notifyPollInstall() {
-  if (
-    typeof notifyInterval != 'undefined' &&
-    typeof currentSID != 'undefined' &&
-    notifyInterval > 0
-  )
-    window.setTimeout(notifyPoll, notifyInterval * 1000);
-}
-
-function notifyPoll() {
-  MakeXMLRequest(
-    'start.php?action=getNotificationCount&sid=' + currentSID,
-    function (e) {
-      if (e.readyState == 4) {
-        var count = parseInt(e.responseText);
-        setNotificationCount(count);
-        notifyPollInstall();
-      }
-    },
-  );
 }
 
 function getElementMetrics(elem, m) {

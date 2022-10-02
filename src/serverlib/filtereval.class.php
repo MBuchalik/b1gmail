@@ -287,8 +287,6 @@ class BMFilterEval {
                 ) {
                     $this->_flags |= FILTER_ACTIONFLAG_DO_NOT_OVERRIDE_SPAMFILTER;
                 }
-            } elseif ($op == FILTER_ACTION_NOTIFY) {
-                $this->_flags |= FILTER_ACTIONFLAG_NOTIFY;
             } elseif ($op == FILTER_ACTION_RESPOND) {
                 $this->_flags |= FILTER_ACTIONFLAG_RESPOND;
                 $this->_respondWith[] = $val;

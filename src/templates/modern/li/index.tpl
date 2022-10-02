@@ -19,10 +19,6 @@
 		const tplDir = '{$tpldir}';
 		const serverTZ = {$serverTZ};
 		const ftsBGIndexing = {if $ftsBGIndexing}true{else}false{/if};
-		{if $bmNotifyInterval}
-			const	notifyInterval = {$bmNotifyInterval}; 
-			const notifySound = {if $bmNotifySound}true{else}false{/if};
-		{/if}
 	</script>
 	<script src="clientlang.php?sid={$sid}"></script>
 	<script src="{$tpldir}js/common.js?{fileDateSig file="js/common.js"}"></script>
@@ -65,7 +61,7 @@
 			</div>
 
 			<div class="toolbar right">
-				{if $bmNotifyInterval>0}<a href="#" onclick="showNotifications(this)" title="{lng p="notifications"}" style="position:relative;"><i id="notifyIcon" class="fa fa-bell faa-ring"></i><div class="noBadge" id="notifyCount"{if $bmUnreadNotifications==0} style="display:none;"{/if}>{number value=$bmUnreadNotifications min=0 max=99}</div></a>{/if}
+				
 				
 				<a href="#" onclick="showSearchPopup(this)" title="{lng p="search"}"><i class="fa fa-search"></i></a>
 
@@ -162,13 +158,6 @@
 				</table>
 			</div>
 		</div>
-
-		{comment text="notifications"}
-		<div class="headerBox" id="notifyBox" style="display:none;">
-			<div class="arrow"></div>
-			<div class="inner" id="notifyInner"></div>
-		</div>
-
 	</div>
 
 	{hook id="li:index.tpl:afterContent"}

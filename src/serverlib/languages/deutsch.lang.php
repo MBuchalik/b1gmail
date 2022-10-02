@@ -248,8 +248,6 @@ $lang_user['readcertmail'] = 'Einschreiben lesen';
 $lang_user['nothanks'] = 'Nein Danke';
 
 // misc
-$lang_user['nonotifications'] = 'keine aktuellen Benachrichtigungen';
-$lang_user['notifications'] = 'Benachrichtigungen';
 $lang_user['relevance'] = 'Relevanz';
 $lang_user['menu'] = 'Men&uuml;';
 $lang_user['desktopversion'] = 'Desktop-Version';
@@ -633,10 +631,6 @@ $lang_user['movemailto'] = 'E-Mail verschieben nach';
 
 // prefs
 $lang_user['auto_save_drafts'] = 'Automatische Entwurf-Speicherung';
-$lang_user['notify_sound'] = 'Sound abspielen';
-$lang_user['notify_types'] = 'Mich benachrichtigen bei';
-$lang_user['notify_email'] = 'neuen E-Mails';
-$lang_user['notify_birthday'] = 'Geburtstagen meiner Kontakte';
 $lang_user['auto'] = 'Automatisch';
 $lang_user['details_default'] = 'Sofort detaillierte Ergebnis-Ansicht anzeigen';
 $lang_user['autosend'] = 'Automatisch versenden';
@@ -747,7 +741,6 @@ $lang_user['addfilter'] = 'Filter hinzuf&uuml;gen';
 $lang_user['active'] = 'Aktiv';
 $lang_user['filterrequiredis'] = 'Filter anwenden bei Erf&uuml;llung';
 $lang_user['editfilter'] = 'Filter bearbeiten';
-$lang_user['sendnotify'] = 'Benachrichtigung anzeigen';
 $lang_user['setmailcolor'] = 'Farb-Markierung setzen';
 $lang_user['stoprules'] = 'Weitere Filter &uuml;berspringen';
 $lang_user['attachmentlist'] = 'Anhang-Dateinamen';
@@ -944,9 +937,6 @@ $lang_admin['acpiconsfrom'] = 'Adminbereich-Icons von';
 $lang_admin['acpbgfrom'] = 'Adminbereich-Hintergrundbild von';
 $lang_admin['addservices'] = 'Zusatzleistungen';
 $lang_admin['mailspace_add'] = 'Zus&auml;tzl. E-Mail-Speicher';
-$lang_admin['notifications'] = 'Benachrichtigungen';
-$lang_admin['notifyinterval'] = 'Auf Benachrichtigungen pr&uuml;fen alle';
-$lang_admin['notifylifetime'] = 'Benachrichtigungen l&ouml;schen nach';
 $lang_admin['days2'] = 'Tag(en)';
 $lang_admin['after'] = 'nach';
 $lang_admin['nosignupautodel'] =

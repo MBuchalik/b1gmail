@@ -49,7 +49,6 @@ var _nextFolderID = 0;
 var _lastSelectedMailID = 0;
 
 var narrowMode = false;
-var notificationCount = 0;
 var windowTitle = '';
 
 function prefsAbort() {
@@ -63,61 +62,6 @@ function setWindowTitle(title) {
 
 function refreshWindowTitle() {
   if (windowTitle.length == 0) windowTitle = top.document.title;
-  top.document.title =
-    (notificationCount > 0 ? '(' + notificationCount + ') ' : '') + windowTitle;
-}
-
-function hideNotifications(really) {
-  if (!disableHide || really == true) EBID('notifyBox').style.display = 'none';
-}
-function showNotifications(elem) {
-  document.onmousedown = hideNotifications;
-  showHeaderPopup('notifyBox', elem);
-  refreshNotifications();
-}
-function setNotificationCount(count) {
-  if (count > 0) {
-    var newNotifications = count > parseInt(EBID('notifyCount').innerHTML);
-    EBID('notifyCount').innerHTML = count > 99 ? '99' : count;
-    EBID('notifyCount').style.display = '';
-    notificationCount = count;
-
-    if (newNotifications) {
-      EBID('notifyIcon').className =
-        EBID('notifyIcon').className.replace(' animated', '') + ' animated';
-
-      if (typeof notifySound != 'undefined' && notifySound) {
-        new Audio(tplDir + 'res/notify.mp3').play();
-      }
-    }
-  } else {
-    notificationCount = 0;
-
-    EBID('notifyCount').style.display = 'none';
-    EBID('notifyIcon').className = EBID('notifyIcon').className.replace(
-      ' animated',
-      '',
-    );
-  }
-
-  refreshWindowTitle();
-}
-function refreshNotifications() {
-  var container = EBID('notifyInner');
-  if (container.innerHTML == '') {
-    container.innerHTML =
-      '<center><br /><i class="fa fa-spinner fa-pulse fa-fw fa-3x"></i></center>';
-  }
-
-  MakeXMLRequest(
-    'start.php?action=getNotifications&sid=' + currentSID,
-    function (e) {
-      if (e.readyState == 4) {
-        container.innerHTML = e.responseText;
-        setNotificationCount(0);
-      }
-    },
-  );
 }
 
 function toggleDropdownNavMenu() {
