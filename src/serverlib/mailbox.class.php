@@ -3235,7 +3235,7 @@ class BMMailbox {
      * @param string $key
      * @return BMMail
      */
-    function GetCertMail($id, $key) {
+    static function GetCertMail($id, $key) {
         global $db, $bm_prefs;
 
         $id = (int) $id;
