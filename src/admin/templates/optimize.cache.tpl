@@ -38,11 +38,6 @@
 						{lng p="usersizes_desc"}<br /><br /></td>
 				</tr>
 				<tr>
-					<td width="20" valign="top"><input type="radio" id="rebuild_disksizes" name="rebuild" value="disksizes" /></td>
-					<td><label for="rebuild_disksizes"><b>{lng p="disksizes_cache"}</b></label><br />
-						{lng p="disksizes_desc"}<br /><br /></td>
-				</tr>
-				<tr>
 					<td width="20" valign="top"><input type="radio" id="rebuild_mailsizes" name="rebuild" value="mailsizes" /></td>
 					<td><label for="rebuild_mailsizes"><b>{lng p="emailsizes_cache"}</b></label><br />
 						{lng p="emailsizes_desc"}<br /><br /></td>

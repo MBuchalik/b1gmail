@@ -331,11 +331,7 @@ function _rebuildCaches(e) {
 
 function rebuildCaches() {
   var form = EBID('form');
-  rc_rebuild = EBID('rebuild_usersizes').checked
-    ? 'usersizes'
-    : EBID('rebuild_disksizes').checked
-    ? 'disksizes'
-    : 'mailsizes';
+  rc_rebuild = EBID('rebuild_usersizes').checked ? 'usersizes' : 'mailsizes';
   rc_perpage = EBID('perpage').value;
 
   rc_statusdiv = document.createElement('div');
@@ -488,7 +484,6 @@ function rebuildBlobStor() {
     fetched = 0,
     form = EBID('buildForm'),
     perpage = EBID('buildPerPage').value,
-
     // There used to be a feature to rebuild the Webdisk. This has been removed.
     rebuild = 'email';
 
