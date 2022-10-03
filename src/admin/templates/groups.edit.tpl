@@ -52,18 +52,6 @@
 										{lng p="minutes"}</td>
 					</tr>
 					<tr>
-						<td class="td1">{lng p="ownpop3"}:</td>
-						<td class="td2"><input type="text" name="ownpop3" value="{$group.ownpop3}" size="8" /></td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="ownpop3interval"}:</td>
-						<td class="td2"><input type="text" name="ownpop3_interval" value="{$group.ownpop3_interval}" size="8" /> {lng p="seconds"}</td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="selfpop3_check"}?</td>
-						<td class="td2"><input type="checkbox" name="selfpop3_check"{if $group.selfpop3_check=='yes'} checked="checked"{/if} /></td>
-					</tr>
-					<tr>
 						<td class="td1">{lng p="aliases"}:</td>
 						<td class="td2"><input type="text" name="aliase" value="{$group.aliase}" size="8" /></td>
 					</tr>					

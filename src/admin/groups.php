@@ -142,7 +142,7 @@ if ($_REQUEST['action'] == 'groups') {
             $_REQUEST['anlagen'] *= 1024;
 
             $db->Query(
-                'UPDATE {pre}gruppen SET titel=?, soforthtml=?, storage=?, maxsize=?, anlagen=?, send_limit_count=?, send_limit_time=?, ownpop3=?, ownpop3_interval=?, selfpop3_check=?, aliase=?, wap=?, ads=?, pop3=?, smtp=?, responder=?, imap=?, forward=?, saliase=?, signatur=?, allow_newsletter_optout=?, smime=?, issue_certificates=?, upload_certificates=?, max_recps=?, sender_aliases=?, ftsearch=?, auto_save_drafts=? WHERE id=?',
+                'UPDATE {pre}gruppen SET titel=?, soforthtml=?, storage=?, maxsize=?, anlagen=?, send_limit_count=?, send_limit_time=?, aliase=?, wap=?, ads=?, pop3=?, smtp=?, responder=?, imap=?, forward=?, saliase=?, signatur=?, allow_newsletter_optout=?, smime=?, issue_certificates=?, upload_certificates=?, max_recps=?, sender_aliases=?, ftsearch=?, auto_save_drafts=? WHERE id=?',
                 $_REQUEST['titel'],
                 isset($_REQUEST['soforthtml']) ? 'yes' : 'no',
                 $_REQUEST['storage'],
@@ -150,9 +150,6 @@ if ($_REQUEST['action'] == 'groups') {
                 $_REQUEST['anlagen'],
                 $_REQUEST['send_limit_count'],
                 $_REQUEST['send_limit_time'],
-                $_REQUEST['ownpop3'],
-                $_REQUEST['ownpop3_interval'],
-                isset($_REQUEST['selfpop3_check']) ? 'yes' : 'no',
                 $_REQUEST['aliase'],
                 isset($_REQUEST['wap']) ? 'yes' : 'no',
                 isset($_REQUEST['ads']) ? 'yes' : 'no',
@@ -293,8 +290,8 @@ if ($_REQUEST['action'] == 'groups') {
         $_REQUEST['anlagen'] *= 1024;
 
         $db->Query(
-            'INSERT INTO {pre}gruppen(titel,soforthtml,storage,maxsize,anlagen,send_limit_count,send_limit_time,ownpop3,ownpop3_interval,selfpop3_check,aliase,wap,ads,pop3,smtp,responder,imap,forward,saliase,signatur,allow_newsletter_optout,smime,issue_certificates,upload_certificates,sender_aliases,ftsearch,auto_save_drafts) VALUES ' .
-                '(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+            'INSERT INTO {pre}gruppen(titel,soforthtml,storage,maxsize,anlagen,send_limit_count,send_limit_time,aliase,wap,ads,pop3,smtp,responder,imap,forward,saliase,signatur,allow_newsletter_optout,smime,issue_certificates,upload_certificates,sender_aliases,ftsearch,auto_save_drafts) VALUES ' .
+                '(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
             $_REQUEST['titel'],
             isset($_REQUEST['soforthtml']) ? 'yes' : 'no',
             $_REQUEST['storage'],
@@ -302,9 +299,6 @@ if ($_REQUEST['action'] == 'groups') {
             $_REQUEST['anlagen'],
             $_REQUEST['send_limit_count'],
             $_REQUEST['send_limit_time'],
-            $_REQUEST['ownpop3'],
-            $_REQUEST['ownpop3_interval'],
-            isset($_REQUEST['selfpop3_check']) ? 'yes' : 'no',
             $_REQUEST['aliase'],
             isset($_REQUEST['wap']) ? 'yes' : 'no',
             isset($_REQUEST['ads']) ? 'yes' : 'no',

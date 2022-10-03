@@ -76,18 +76,6 @@ function updateAliasForm() {
   EBID('tbody_1').style.display = typ == 1 ? '' : 'none';
   EBID('tbody_3').style.display = typ == 3 ? '' : 'none';
 }
-function checkPOP3AccountForm(form) {
-  if (
-    form.elements['p_host'].value.length < 2 ||
-    form.elements['p_user'].value.length < 2 ||
-    form.elements['p_pass'].value.length < 2 ||
-    form.elements['p_port'].value.length < 1
-  ) {
-    alert(lang['fillin']);
-    return false;
-  }
-  return true;
-}
 function checkFilterForm(form) {
   if (form.elements['title'].value.length < 2) {
     alert(lang['fillin']);

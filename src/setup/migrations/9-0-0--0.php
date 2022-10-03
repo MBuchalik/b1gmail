@@ -51,7 +51,8 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
                     DROP COLUMN notify_interval,
                     DROP COLUMN notify_lifetime,
                     DROP COLUMN widget_order_start,
-                    DROP COLUMN widget_order_organizer
+                    DROP COLUMN widget_order_organizer,
+                    DROP COLUMN last_userpop3_cron
             ',
             )
         ) {
@@ -73,7 +74,10 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
                     DROP COLUMN wd_member_kbs,
                     DROP COLUMN wd_open_kbs,
                     DROP COLUMN notifications,
-                    DROP COLUMN maildeliverystatus
+                    DROP COLUMN maildeliverystatus,
+                    DROP COLUMN ownpop3_interval,
+                    DROP COLUMN ownpop3,
+                    DROP COLUMN selfpop3_check
             ',
             )
         ) {
@@ -183,6 +187,14 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
         if (
             !mysqli_query($dbConnection, 'DROP TABLE bm60_maildeliverystatus')
         ) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_pop3')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_uidindex')) {
             return false;
         }
 

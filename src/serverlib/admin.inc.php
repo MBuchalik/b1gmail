@@ -142,10 +142,13 @@ $unnecessaryFilesAndFolders = [
         B1GMAIL_DIR . 'sms.php',
 
         // These files were removed in b1gmail 9.0.0.
+        B1GMAIL_DIR . 'cron.userpop3.php',
         B1GMAIL_DIR . 'organizer.calendar.php',
         B1GMAIL_DIR . 'organizer.notes.php',
         B1GMAIL_DIR . 'start.php',
         B1GMAIL_DIR . 'webdisk.php',
+        // This file was automatically created when running cron.userpop3.php
+        B1GMAIL_DIR . 'temp/cron.userpop3.lock',
     ],
     'folders' => [
         // The setup folder should always be deleted after running the setup.
@@ -436,22 +439,6 @@ function DeleteUser($userID, $qAddAND = '') {
     );
     $db->Query('DELETE FROM {pre}mails WHERE userid=?', $userID);
     $db->Query('DELETE FROM {pre}attachments WHERE userid=?', $userID);
-
-    // uid index + ext. pop3s
-    $pop3IDs = [];
-    $res = $db->Query('SELECT id FROM {pre}pop3 WHERE user=?', $userID);
-    while ($row = $res->FetchArray(MYSQLI_ASSOC)) {
-        $pop3IDs[] = $row['id'];
-    }
-    $res->Free();
-    if (count($pop3IDs) > 0) {
-        $db->Query(
-            'DELETE FROM {pre}uidindex WHERE pop3 IN(' .
-                implode(',', $pop3IDs) .
-                ')',
-        );
-        $db->Query('DELETE FROM {pre}pop3 WHERE user=?', $userID);
-    }
 
     // sigs
     $db->Query('DELETE FROM {pre}signaturen WHERE user=?', $userID);
