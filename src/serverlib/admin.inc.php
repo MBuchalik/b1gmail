@@ -91,7 +91,6 @@ $faqRequirementTable = [
     'pop3' => $lang_admin['pop3'],
     'imap' => $lang_admin['imap'],
     'wap' => $lang_admin['mobileaccess'],
-    'share' => $lang_admin['wdshare'],
     'ftsearch' => $lang_admin['ftsearch'],
 ];
 $lockedTypeTable = [
