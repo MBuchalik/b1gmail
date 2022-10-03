@@ -482,8 +482,6 @@ example.org</textarea>
  * install!
  */ elseif ($step == STEP_INSTALL) {
 
-    include './data/rootcerts.data.php';
-
     // sanitize input
     if (substr($_REQUEST['url'], -1) != '/') {
         $_REQUEST['url'] .= '/';
@@ -758,23 +756,6 @@ example.org</textarea>
                     $exampleDataResult = 'warning';
                 }
             }
-
-            // install default root certs
-            foreach ($rootCertsData as $query) {
-                if (!mysqli_query($connection, $query)) {
-                    echo 'Failed to execute root cert insert query: ' .
-                        mysqli_error($connection) .
-                        "\n";
-                    $exampleDataResult = 'warning';
-                }
-            }
-
-            // remove outdated root certificates
-            mysqli_query(
-                $connection,
-                'DELETE FROM bm60_certificates WHERE `type`=0 AND `userid`=0 AND `validto`<' .
-                    time(),
-            );
 
             // install template prefs
             mysqli_query(

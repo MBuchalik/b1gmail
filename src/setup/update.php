@@ -260,33 +260,7 @@ if ($step == STEP_WELCOME) {
     // config
     //
     elseif ($do == 'config') {
-        // add new root certificates
-        if (!isset($rootCertsData)) {
-            include './data/rootcerts.data.php';
-        }
-        foreach ($rootCertsData as $hash => $query) {
-            $res = mysqli_query(
-                $connection,
-                sprintf(
-                    'SELECT COUNT(*) FROM bm60_certificates WHERE `type`=0 AND `userid`=0 AND `hash`=\'%s\'',
-                    SQLEscape($hash, $connection),
-                ),
-            );
-            [$hashCount] = mysqli_fetch_array($res, MYSQLI_NUM);
-            mysqli_free_result($res);
-
-            if ((int) $hashCount == 0) {
-                mysqli_query($connection, $query);
-            }
-        }
-
-        // remove outdated root certificates
-        mysqli_query(
-            $connection,
-            'DELETE FROM bm60_certificates WHERE `type`=0 AND `userid`=0 AND `validto`<' .
-                time(),
-        );
-
+        // Currently a NOOP.
         echo 'OK:DONE';
     }
 
