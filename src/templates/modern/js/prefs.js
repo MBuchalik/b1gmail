@@ -90,37 +90,3 @@ function checkSignatureForm(form) {
   }
   return true;
 }
-function addPublicCert() {
-  openOverlay(
-    'prefs.php?sid=' +
-      currentSID +
-      '&action=keyring&do=importPublicCertificate',
-    lang['addcert'],
-    520,
-    140,
-    true,
-  );
-}
-function addPrivateCert(pkcs12Support) {
-  openOverlay(
-    'prefs.php?sid=' +
-      currentSID +
-      '&action=keyring&do=importPrivateCertificate',
-    lang['addcert'],
-    520,
-    pkcs12Support ? 170 : 230,
-    true,
-  );
-}
-function exportPrivateCert(hash) {
-  openOverlay(
-    'prefs.php?sid=' +
-      currentSID +
-      '&action=keyring&do=exportPrivateCertificate&hash=' +
-      hash,
-    lang['exportcert'],
-    520,
-    140,
-    true,
-  );
-}

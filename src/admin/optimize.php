@@ -368,51 +368,6 @@ $tabs = [
         }
 
         //
-        // rebuild disk sizes
-        //
-        elseif ($_REQUEST['rebuild'] == 'disksizes') {
-            $res = $db->Query('SELECT COUNT(*) FROM {pre}diskfiles');
-            [$count] = $res->FetchArray(MYSQLI_NUM);
-            $res->Free();
-
-            if ($pos >= $count) {
-                die('DONE');
-            } else {
-                $res = $db->Query(
-                    'SELECT `id`,`size`,`blobstorage`,`user` FROM {pre}diskfiles ORDER BY id DESC LIMIT ' .
-                        (int) $pos .
-                        ',' .
-                        (int) $perpage,
-                );
-                while ($row = $res->FetchArray()) {
-                    $cachedSize = $row['size'];
-
-                    $actualSize = BMBlobStorage::createProvider(
-                        $row['blobstorage'],
-                        $row['user'],
-                    )->getBlobSize(BMBLOB_TYPE_WEBDISK, $row['id']);
-
-                    if ($actualSize != $cachedSize) {
-                        $db->Query(
-                            'UPDATE {pre}diskfiles SET size=? WHERE id=?',
-                            $actualSize,
-                            $row['id'],
-                        );
-                    }
-
-                    $pos++;
-                }
-                $res->Free();
-
-                if ($pos >= $count) {
-                    die('DONE');
-                } else {
-                    die($pos . '/' . $count);
-                }
-            }
-        }
-
-        //
         // rebuild user sizes
         //
         elseif ($_REQUEST['rebuild'] == 'usersizes') {

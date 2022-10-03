@@ -32,32 +32,12 @@ if (!class_exists('BMSendMail')) {
  *
  */
 class BMMailBuilder {
-    var $_smimeSkipHeaders = [
-        'from',
-        'to',
-        'cc',
-        'bcc',
-        'date',
-        'message-id',
-        'x-mailer',
-        'reply-to',
-        'subject',
-        'x-priority',
-        'in-reply-to',
-        'x-sender-ip',
-        'disposition-notification-to',
-        'references',
-    ];
     var $_tempID;
     var $_fp;
     var $_headerFields;
     var $_parts;
     var $_trustedMail;
     var $_mailFrom = false;
-    var $_smimeUser = false;
-    var $_smimeSign = false;
-    var $_smimeEncrypt = false;
-    var $_smimeHeaders = [];
     var $_userID;
     var $_sendMail;
 
@@ -246,53 +226,6 @@ class BMMailBuilder {
             $this->_writePartBody($this->_parts[0]);
         }
 
-        // s/mime?
-        if (
-            $this->_smimeUser !== false &&
-            ($this->_smimeSign || $this->_smimeEncrypt)
-        ) {
-            if (!class_exists('BMSMIME')) {
-                include B1GMAIL_DIR . 'serverlib/smime.class.php';
-            }
-
-            $smime = _new('BMSMIME', [
-                $this->_smimeUser->_id,
-                &$this->_smimeUser,
-            ]);
-
-            if ($this->_smimeSign) {
-                if (!$smime->SignMail($this)) {
-                    PutLog(
-                        sprintf(
-                            'Failed to sign S/MIME message for user <%s> (#%d)',
-                            $this->_smimeUser->_row['email'],
-                            $this->_smimeUser->_id,
-                        ),
-                        PRIO_NOTE,
-                        __FILE__,
-                        __LINE__,
-                    );
-                    return false;
-                }
-            }
-
-            if ($this->_smimeEncrypt) {
-                if (!$smime->EncryptMail($this, $recipients)) {
-                    PutLog(
-                        sprintf(
-                            'Failed to encrypt S/MIME message for user <%s> (#%d)',
-                            $this->_smimeUser->_row['email'],
-                            $this->_smimeUser->_id,
-                        ),
-                        PRIO_NOTE,
-                        __FILE__,
-                        __LINE__,
-                    );
-                    return false;
-                }
-            }
-        }
-
         // return file pointer
         fseek($this->_fp, 0, SEEK_SET);
 
@@ -396,21 +329,14 @@ class BMMailBuilder {
                 $value = EncodeMailHeaderField($value);
             }
 
-            if (
-                (!$this->_smimeEncrypt && !$this->_smimeSign) ||
-                !in_array(strtolower($key), $this->_smimeSkipHeaders)
-            ) {
-                fwrite(
-                    $this->_fp,
-                    sprintf(
-                        '%s: %s' . "\r\n",
-                        $key,
-                        wordwrap($value, 72, "\r\n\t"),
-                    ),
-                );
-            } else {
-                $this->_smimeHeaders[$key] = $value;
-            }
+            fwrite(
+                $this->_fp,
+                sprintf(
+                    '%s: %s' . "\r\n",
+                    $key,
+                    wordwrap($value, 72, "\r\n\t"),
+                ),
+            );
         }
         fwrite($this->_fp, "\r\n");
     }

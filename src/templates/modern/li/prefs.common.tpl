@@ -219,27 +219,6 @@
 			</td>
 		</tr>
 		{/if}
-
-		{if $smimeAllowed}
-		<tr>
-			<td class="listTableLeftDesc"><i class="fa fa-key" aria-hidden="true"></i></td>
-			<td class="listTableRightDesc">{lng p="security"}</td>
-		</tr>
-		<tr>
-			<td class="listTableLeft"><label for="smimeSign">{lng p="sign"}:</label></td>
-			<td class="listTableRight">
-				<input type="checkbox" name="smimeSign" id="smimeSign"{if $smimeSign} checked="checked"{/if} />
-					<label for="smimeSign">{lng p="enablebydefault"}</label>
-			</td>
-		</tr>
-		<tr>
-			<td class="listTableLeft"><label for="smimeEncrypt">{lng p="encrypt"}:</label></td>
-			<td class="listTableRight">
-				<input type="checkbox" name="smimeEncrypt" id="smimeEncrypt"{if $smimeEncrypt} checked="checked"{/if} />
-					<label for="smimeEncrypt">{lng p="enablebydefault"}</label>
-			</td>
-		</tr>
-		{/if}
 		
 		{if $forwardingAllowed}
 			<tr>

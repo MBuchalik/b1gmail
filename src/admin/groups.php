@@ -142,7 +142,7 @@ if ($_REQUEST['action'] == 'groups') {
             $_REQUEST['anlagen'] *= 1024;
 
             $db->Query(
-                'UPDATE {pre}gruppen SET titel=?, soforthtml=?, storage=?, maxsize=?, anlagen=?, send_limit_count=?, send_limit_time=?, aliase=?, wap=?, ads=?, pop3=?, smtp=?, responder=?, imap=?, forward=?, saliase=?, signatur=?, allow_newsletter_optout=?, smime=?, issue_certificates=?, upload_certificates=?, max_recps=?, sender_aliases=?, ftsearch=?, auto_save_drafts=? WHERE id=?',
+                'UPDATE {pre}gruppen SET titel=?, soforthtml=?, storage=?, maxsize=?, anlagen=?, send_limit_count=?, send_limit_time=?, aliase=?, wap=?, ads=?, pop3=?, smtp=?, responder=?, imap=?, forward=?, saliase=?, signatur=?, allow_newsletter_optout=?, max_recps=?, sender_aliases=?, ftsearch=?, auto_save_drafts=? WHERE id=?',
                 $_REQUEST['titel'],
                 isset($_REQUEST['soforthtml']) ? 'yes' : 'no',
                 $_REQUEST['storage'],
@@ -161,9 +161,6 @@ if ($_REQUEST['action'] == 'groups') {
                 $saliase,
                 $_REQUEST['signatur'],
                 isset($_REQUEST['allow_newsletter_optout']) ? 'yes' : 'no',
-                isset($_REQUEST['smime']) ? 'yes' : 'no',
-                isset($_REQUEST['issue_certificates']) ? 'yes' : 'no',
-                isset($_REQUEST['upload_certificates']) ? 'yes' : 'no',
                 (int) $_REQUEST['max_recps'],
                 isset($_REQUEST['sender_aliases']) ? 'yes' : 'no',
                 isset($_REQUEST['ftsearch']) ? 'yes' : 'no',
@@ -290,8 +287,8 @@ if ($_REQUEST['action'] == 'groups') {
         $_REQUEST['anlagen'] *= 1024;
 
         $db->Query(
-            'INSERT INTO {pre}gruppen(titel,soforthtml,storage,maxsize,anlagen,send_limit_count,send_limit_time,aliase,wap,ads,pop3,smtp,responder,imap,forward,saliase,signatur,allow_newsletter_optout,smime,issue_certificates,upload_certificates,sender_aliases,ftsearch,auto_save_drafts) VALUES ' .
-                '(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+            'INSERT INTO {pre}gruppen(titel,soforthtml,storage,maxsize,anlagen,send_limit_count,send_limit_time,aliase,wap,ads,pop3,smtp,responder,imap,forward,saliase,signatur,allow_newsletter_optout,sender_aliases,ftsearch,auto_save_drafts) VALUES ' .
+                '(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
             $_REQUEST['titel'],
             isset($_REQUEST['soforthtml']) ? 'yes' : 'no',
             $_REQUEST['storage'],
@@ -310,9 +307,6 @@ if ($_REQUEST['action'] == 'groups') {
             $saliase,
             $_REQUEST['signatur'],
             isset($_REQUEST['allow_newsletter_optout']) ? 'yes' : 'no',
-            isset($_REQUEST['smime']) ? 'yes' : 'no',
-            isset($_REQUEST['issue_certificates']) ? 'yes' : 'no',
-            isset($_REQUEST['upload_certificates']) ? 'yes' : 'no',
             isset($_REQUEST['sender_aliases']) ? 'yes' : 'no',
             isset($_REQUEST['ftsearch']) ? 'yes' : 'no',
             isset($_REQUEST['auto_save_drafts']) ? 'yes' : 'no',
@@ -363,7 +357,6 @@ if ($_REQUEST['action'] == 'groups') {
 }
 
 $tpl->assign('ftsSupport', FTS_SUPPORT);
-$tpl->assign('smimeSupport', SMIME_SUPPORT);
 $tpl->assign('tabs', $tabs);
 $tpl->assign(
     'title',

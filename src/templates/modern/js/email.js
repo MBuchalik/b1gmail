@@ -1340,69 +1340,7 @@ function checkComposeForm(form, attCheck, attKeywords) {
     if (showWarning && !confirm(lang['attwarning'])) return false;
   }
 
-  if (
-    EBID('certMail').checked &&
-    (EBID('mailConfirmation').checked ||
-      (EBID('smimeSign') && EBID('smimeSign').checked) ||
-      (EBID('smimeEncryprt') && EBID('smimeEncrypt').checked))
-  ) {
-    var msg = lang['certmailwarn'];
-    if (EBID('mailConfirmation').checked)
-      msg += ' - ' + lang['certmailconfirm'] + '\n';
-    if (EBID('smimeSign').checked) msg += ' - ' + lang['certmailsign'] + '\n';
-    if (EBID('smimeEncrypt').checked)
-      msg += ' - ' + lang['certmailencrypt'] + '\n';
-
-    if (confirm(msg)) {
-      EBID('mailConfirmation').checked = false;
-      EBID('smimeSign').checked = false;
-      EBID('smimeEncrypt').checked = false;
-    } else {
-      return;
-    }
-  }
-
   return true;
-}
-function _checkSMIME(obj) {
-  if (obj.readyState == 4) {
-    if (obj.responseText == '1') {
-      eval(_checkSMIMEAction);
-    } else {
-      // handle error
-      alert(obj.responseText);
-    }
-  }
-}
-function checkSMIME(action) {
-  var sign = EBID('smimeSign') && EBID('smimeSign').checked,
-    encrypt = EBID('smimeEncrypt') && EBID('smimeEncrypt').checked;
-
-  if (sign || encrypt) {
-    // check
-    _checkSMIMEAction = action;
-    MakeXMLRequest(
-      'email.compose.php?action=checkSMIMEParams' +
-        '&sign=' +
-        (sign ? '1' : '0') +
-        '&encrypt=' +
-        (encrypt ? '1' : '0') +
-        '&from=' +
-        escape(EBID('from').value) +
-        '&to=' +
-        escape(EBID('to').value) +
-        '&cc=' +
-        escape(EBID('cc').value) +
-        '&bcc=' +
-        escape(EBID('bcc').value) +
-        '&sid=' +
-        currentSID,
-      _checkSMIME,
-    );
-  } else {
-    // go on
-    eval(action);
-  }
 }
 
 function submitComposeForm() {

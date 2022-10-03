@@ -1899,67 +1899,6 @@ class BMMailbox {
 
         $group = $this->_userObject->GetGroup();
 
-        if ($group->_row['smime'] == 'yes' && $result !== false) {
-            $smimeStatus = SMIME_UNKNOWN;
-
-            $i = 0;
-            while (
-                is_object($result) &&
-                ($result->IsSigned() || $result->IsEncrypted())
-            ) {
-                if ($result->IsSigned()) {
-                    if (!class_exists('BMSMIME')) {
-                        include B1GMAIL_DIR . 'serverlib/smime.class.php';
-                    }
-                    $smime = _new('BMSMIME', [
-                        $this->_userID,
-                        &$this->_userObject,
-                    ]);
-                    $res = $smime->CheckMailSignature($result);
-                    $smimeStatus |= $res[0];
-                    if (isset($res[1]) && $res[1] && is_object($res[1])) {
-                        $result = $res[1];
-                    }
-                    if (isset($res[2])) {
-                        $result->smimeCertificateHash = $res[2];
-                    }
-                }
-
-                if ($result->IsEncrypted()) {
-                    if (!class_exists('BMSMIME')) {
-                        include B1GMAIL_DIR . 'serverlib/smime.class.php';
-                    }
-                    $smime = _new('BMSMIME', [
-                        $this->_userID,
-                        &$this->_userObject,
-                    ]);
-                    $res = $smime->DecryptMail($result);
-                    $smimeStatus |= $res[0];
-                    if ($res[0] == SMIME_DECRYPTION_FAILED) {
-                        break;
-                    }
-                    if (isset($res[1]) && $res[1] && is_object($res[1])) {
-                        $result = $res[1];
-                    }
-                }
-
-                if (++$i == 5) {
-                    PutLog(
-                        sprintf(
-                            'Breaking S/MIME processing loop for message %d (this should not happen)',
-                            $id,
-                        ),
-                        PRIO_WARNING,
-                        __FILE__,
-                        __LINE__,
-                    );
-                    break;
-                }
-            }
-
-            $result->smimeStatus = $smimeStatus;
-        }
-
         return $result;
     }
 

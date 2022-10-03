@@ -92,10 +92,6 @@ if ($_REQUEST['action'] == 'compose') {
         }
     }
 
-    // set S/MIME settings
-    $mail['smimeSign'] = $thisUser->GetPref('smimeSign');
-    $mail['smimeEncrypt'] = $thisUser->GetPref('smimeEncrypt');
-
     // reply, forward or redirect?
     if (
         isset($_REQUEST['reply']) || // all?
@@ -171,11 +167,6 @@ if ($_REQUEST['action'] == 'compose') {
                     ? ''
                     : trim($userRow['fwd']) . ' ')) .
             $sourceMail->GetHeaderValue('subject');
-
-        // suggest encryption if source mail is encrypted
-        $mail['smimeEncrypt'] =
-            $mail['smimeEncrypt'] ||
-            ($sourceMail->smimeStatus & SMIME_DECRYPTED) != 0;
 
         // recipients
         if ($action == 'redirect') {
@@ -467,7 +458,6 @@ if ($_REQUEST['action'] == 'compose') {
     $tpl->assign('reference', $reference);
     $tpl->assign('mail', $mail);
     $tpl->assign('possibleSenders', $possibleSenders);
-    $tpl->assign('smime', $groupRow['smime'] == 'yes');
     $tpl->assign('attKeywords', $lang_user['att_keywords']);
     $tpl->assign('attCheck', $userRow['attcheck'] == 'yes');
     $tpl->assign('lineSep', $thisUser->GetPref('linesep'));
@@ -851,27 +841,6 @@ if ($_REQUEST['action'] == 'compose') {
             // build the mail
             $mail = _new('BMMailBuilder');
             $mail->SetUserID($userRow['id']);
-
-            // s/mime?
-            if ($groupRow['smime'] == 'yes') {
-                $mail->_smimeUser = &$thisUser;
-
-                // sign?
-                if (
-                    isset($_REQUEST['smimeSign']) &&
-                    !isset($_REQUEST['certMail'])
-                ) {
-                    $mail->_smimeSign = true;
-                }
-
-                // encrypt?
-                if (
-                    isset($_REQUEST['smimeEncrypt']) &&
-                    !isset($_REQUEST['certMail'])
-                ) {
-                    $mail->_smimeEncrypt = true;
-                }
-            }
 
             // mandatory headers
             if ($bm_prefs['write_xsenderip'] == 'yes') {
@@ -1349,61 +1318,5 @@ if ($_REQUEST['action'] == 'compose') {
             }
         }
     }
-    exit();
-} /**
- * check S/MIME params RPC
- */ elseif (
-    $_REQUEST['action'] == 'checkSMIMEParams' &&
-    isset($_REQUEST['sign']) &&
-    isset($_REQUEST['encrypt']) &&
-    isset($_REQUEST['from']) &&
-    isset($_REQUEST['to']) &&
-    isset($_REQUEST['cc']) &&
-    isset($_REQUEST['bcc'])
-) {
-    $senderAddresses = $thisUser->GetPossibleSenders();
-    $sign = $_REQUEST['sign'] == '1';
-    $encrypt = $_REQUEST['encrypt'] == '1';
-    $recipients = ExtractMailAddresses(
-        _unescape(
-            $_REQUEST['to'] . ' ' . $_REQUEST['cc'] . ' ' . $_REQUEST['bcc'],
-        ),
-    );
-    $sender = isset($senderAddresses[$_REQUEST['from']])
-        ? ExtractMailAddress($senderAddresses[$_REQUEST['from']])
-        : ExtractMailAddress($senderAddresses[0]);
-
-    // check recicpient count
-    if (count($recipients) < 1) {
-        echo $lang_user['smimeerr0'];
-        exit();
-    }
-
-    // check PK
-    if ($sign) {
-        $missing = $thisUser->GetRecipientsWithMissingCertificate(
-            [$sender],
-            CERTIFICATE_TYPE_PRIVATE,
-        );
-
-        if (count($missing) > 0) {
-            echo $lang_user['smimeerr1'];
-            exit();
-        }
-    }
-
-    // check if certs for recipients exist
-    if ($encrypt) {
-        $missing = $thisUser->GetRecipientsWithMissingCertificate($recipients);
-
-        if (count($missing) > 0) {
-            echo $lang_user['smimeerr2'] . "\n\n  - ";
-            echo implode("\n  - ", $missing);
-            exit();
-        }
-    }
-
-    // OK
-    echo '1';
     exit();
 }

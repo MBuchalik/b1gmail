@@ -217,19 +217,6 @@ define('MAX_SEARCH_RESULTS', 20); // max no of search results
 define('SIGNATURE_LINE_LENGTH', 54);
 define('SIGNATURE_LINE_CHAR', '_');
 define('MAIL_DB_MAX', 200000);
-define('CERTIFICATE_TYPE_ROOT', 0);
-define('CERTIFICATE_TYPE_PUBLIC', 1);
-define('CERTIFICATE_TYPE_PRIVATE', 2);
-define('CERTIFICATE_ISSUE_DAYS', 365);
-define('SMIME_UNKNOWN', 0);
-define('SMIME_SIGNATURE_NOT_SIGNED', 1);
-define('SMIME_SIGNATURE_BAD', 2);
-define('SMIME_SIGNATURE_OK', 4);
-define('SMIME_SIGNATURE_OK_NOVERIFY', 8);
-define('SMIME_NOT_ENCRYPTED', 16);
-define('SMIME_ENCRYPTED', 32);
-define('SMIME_DECRYPTION_FAILED', 64);
-define('SMIME_DECRYPTED', 128);
 define('ATT_FLAG_VIEWABLE', 1);
 define('ORDER_STATUS_CREATED', 0);
 define('ORDER_STATUS_ACTIVATED', 1);
@@ -239,8 +226,6 @@ define(
     class_exists('SQLite3') ||
         (class_exists('PDO') && in_array('sqlite', PDO::getAvailableDrivers())),
 );
-define('SMIME_SUPPORT', function_exists('openssl_pkcs7_verify'));
-define('PKCS12_SUPPORT', function_exists('openssl_pkcs12_read'));
 define(
     'IDN_SUPPORT',
     function_exists('idn_to_ascii') && function_exists('idn_to_utf8'),

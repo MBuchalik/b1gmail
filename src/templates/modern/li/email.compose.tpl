@@ -111,15 +111,11 @@
 				<td class="mailSendOptions" colspan="2">
 					<div><i class="fa fa-id-card-o" aria-hidden="true"></i><input type="checkbox" name="attachVCard" id="attachVCard"{if $mail.attachVCard} checked="checked"{/if} /><label for="attachVCard">{lng p="attachvc"}</label></div>
 					
-					<div><i class="fa fa-certificate" aria-hidden="true"></i><input type="checkbox" name="certMail" id="certMail"{if $mail.certMail} checked="checked"{/if} onchange="EBID('smimeEncrypt').disabled=this.checked;if(this.checked)EBID('smimeEncrypt').checked=false;" /><label for="certMail">{lng p="certmail"}</label></div>
+					<div><i class="fa fa-certificate" aria-hidden="true"></i><input type="checkbox" name="certMail" id="certMail"{if $mail.certMail} checked="checked"{/if} /><label for="certMail">{lng p="certmail"}</label></div>
 					
 					<div><i class="fa fa-bullhorn" aria-hidden="true"></i><input type="checkbox" name="mailConfirmation" id="mailConfirmation"{if $mail.mailConfirmation} checked="checked"{/if} /><label for="mailConfirmation">{lng p="mailconfirmation"}</label></div>
 					
-					{if $smime}
-					<div><i class="fa fa-map-signs" aria-hidden="true"></i><input type="checkbox" name="smimeSign" id="smimeSign"{if $mail.smimeSign} checked="checked"{/if} /><label for="smimeSign">{lng p="sign"}</label></div>
-					
-					<div><i class="fa fa-key" aria-hidden="true"></i><input type="checkbox" name="smimeEncrypt" id="smimeEncrypt"{if $mail.smimeEncrypt} checked="checked"{/if} onchange="EBID('certMail').disabled=this.checked;if(this.checked)EBID('certMail').checked=false;" /><label for="smimeEncrypt">{lng p="encrypt"}</label></div>
-					{/if}
+				
 				</td>
 			</tr>
 		</table>
@@ -179,7 +175,7 @@
 			<i class="fa fa-save"></i>
 			{lng p="savedraft"}
 		</button>
-		<button class="primary" type="button" id="sendButton" onclick="if(!checkComposeForm(document.forms.f1, {if $attCheck}true{else}false{/if}, '{lng p="att_keywords"}')) return(false); EBID('do').value='sendMail';editor.submit();checkSMIME('submitComposeForm();');">
+		<button class="primary" type="button" id="sendButton" onclick="if(!checkComposeForm(document.forms.f1, {if $attCheck}true{else}false{/if}, '{lng p="att_keywords"}')) return(false); EBID('do').value='sendMail';editor.submit();submitComposeForm();">
 			<i class="fa fa-send"></i>
 			{lng p="sendmail2"}
 		</button>

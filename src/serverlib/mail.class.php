@@ -47,8 +47,6 @@ class BMMail {
     var $trained;
     var $blobStorage;
     var $color;
-    var $smimeStatus = SMIME_UNKNOWN;
-    var $smimeCertificateHash = false;
 
     /**
      * constructor

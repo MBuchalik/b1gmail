@@ -298,8 +298,6 @@ if ($_REQUEST['action'] == 'read' && isset($_REQUEST['id'])) {
         $tpl->assign('notes', $mailbox->GetMailNotes((int) $_REQUEST['id']));
         $tpl->assign('color', $mail->color);
         $tpl->assign('pageTitle', $mail->GetHeaderValue('subject'));
-        $tpl->assign('smimeCertificateHash', $mail->smimeCertificateHash);
-        $tpl->assign('smimeStatus', $mail->smimeStatus);
         $tpl->assign('folderID', $mail->_row['folder']);
         if (isset($folderList[$mail->_row['folder']])) {
             $tpl->assign('folderInfo', $folderList[$mail->_row['folder']]);

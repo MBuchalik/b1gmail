@@ -52,45 +52,6 @@
 				</td>
 			</tr>{/if}
 
-			{if $smimeStatus!=0&&!($smimeStatus&1)}
-			<tr>
-				<th>{lng p="security"}:</th>
-				<td>
-					{if $smimeStatus&2}
-					<font color="#FF0000">
-						<img src="{$tpldir}images/li/mailico_signed_bad.png" width="16" height="16" border="0" alt="" align="absmiddle" />
-						{lng p="badsigned"}
-					</font>
-					&nbsp;&nbsp;
-					{/if}
-					{if $smimeStatus&4}
-					<img src="{$tpldir}images/li/mailico_signed_ok.png" width="16" height="16" border="0" alt="" align="absmiddle" />
-					<a href="javascript:void(0);" onclick="showCertificate('{$smimeCertificateHash}');">{lng p="signed"}</a>
-					&nbsp;&nbsp;
-					{/if}
-					{if $smimeStatus&8}
-					<img src="{$tpldir}images/li/mailico_signed_noverify.png" width="16" height="16" border="0" alt="" align="absmiddle" />
-					<a href="javascript:void(0);" onclick="showCertificate('{$smimeCertificateHash}');" style="color:#FF8C00;">{lng p="noverifysigned"}</a>
-					&nbsp;&nbsp;
-					{/if}
-					{if $smimeStatus&64}
-					<img src="{$tpldir}images/li/mailico_encrypted_error.png" width="16" height="16" border="0" alt="" align="absmiddle" />
-
-					<font color="#FF0000">
-						{lng p="decryptionfailed"}
-					</font>
-					&nbsp;&nbsp;
-					{/if}
-					{if $smimeStatus&128}
-					<img src="{$tpldir}images/li/mailico_encrypted.png" width="16" height="16" border="0" alt="" align="absmiddle" /> {lng p="encrypted"}
-					&nbsp;&nbsp;
-					{/if}
-				</td>
-			</tr>
-			{/if}
-
-			
-
 			{hook id="email.read.tpl:metaTable"}
 		</table>
 	</div>

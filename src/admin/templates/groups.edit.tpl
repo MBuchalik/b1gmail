@@ -92,16 +92,8 @@
 						<td class="td1">{lng p="imap"}?</td>
 						<td class="td2"><input type="checkbox" name="imap"{if $group.imap=='yes'} checked="checked"{/if} /></td>
 						<td colspan="2">&nbsp;</td>
-					</tr>
+					</tr>					
 					<tr>
-						<td class="td1">{lng p="smime"}?</td>
-						<td class="td2"><input type="checkbox" name="smime"{if !$smimeSupport} disabled="disabled"{else}{if $group.smime=='yes'} checked="checked"{/if}{/if} /></td>
-						<td class="td1">{lng p="issue_certificates"}?</td>
-						<td class="td2"><input type="checkbox" name="issue_certificates"{if !$smimeSupport} disabled="disabled"{else}{if $group.issue_certificates=='yes'} checked="checked"{/if}{/if} /></td>
-					</tr>
-					<tr>
-						<td class="td1">{lng p="upload_certificates"}?</td>
-						<td class="td2"><input type="checkbox" name="upload_certificates"{if !$smimeSupport} disabled="disabled"{else}{if $group.upload_certificates=='yes'} checked="checked"{/if}{/if} /></td>
 						<td class="td1">{lng p="sender_aliases"}?</td>
 						<td class="td2"><input type="checkbox" name="sender_aliases"{if $group.sender_aliases=='yes'} checked="checked"{/if} /></td>
 					</tr>

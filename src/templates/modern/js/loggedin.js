@@ -35,7 +35,6 @@ var refreshFolder = 0;
 var refreshTimer = null;
 var formSubmitOK = false;
 var disableHide = false;
-var _checkSMIMEAction = '';
 var diffScreenClientX = 0,
   diffScreenClientY = 0;
 

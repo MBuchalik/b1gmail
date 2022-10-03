@@ -77,7 +77,10 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
                     DROP COLUMN maildeliverystatus,
                     DROP COLUMN ownpop3_interval,
                     DROP COLUMN ownpop3,
-                    DROP COLUMN selfpop3_check
+                    DROP COLUMN selfpop3_check,
+                    DROP COLUMN smime,
+                    DROP COLUMN issue_certificates,
+                    DROP COLUMN upload_certificates
             ',
             )
         ) {
@@ -102,7 +105,9 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
                         'webdisk_hideHidden',
                         'webdiskViewMode',
                         'widgetOrderStart',
-                        'widgetOrderOrganizer'
+                        'widgetOrderOrganizer',
+                        'smimeSign',
+                        'smimeEncrypt'
                     )
             ",
             )
@@ -195,6 +200,10 @@ class Migration_9_0_0__0 extends SingleMigrationStep {
         }
 
         if (!mysqli_query($dbConnection, 'DROP TABLE bm60_uidindex')) {
+            return false;
+        }
+
+        if (!mysqli_query($dbConnection, 'DROP TABLE bm60_certificates')) {
             return false;
         }
 

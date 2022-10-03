@@ -446,9 +446,6 @@ function DeleteUser($userID, $qAddAND = '') {
     // spam index
     $db->Query('DELETE FROM {pre}spamindex WHERE userid=?', $userID);
 
-    // certificates
-    $db->Query('DELETE FROM {pre}certificates WHERE userid=?', $userID);
-
     // user prefs
     $db->Query('DELETE FROM {pre}userprefs WHERE userid=?', $userID);
 
