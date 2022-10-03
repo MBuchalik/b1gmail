@@ -84,6 +84,7 @@ if ($_REQUEST['action'] == 'folder') {
         );
     } elseif (isset($_REQUEST['do']) && $_REQUEST['do'] == 'emptyFolder') {
         $mailbox->EmptyFolder($folderID);
+        $tpl->reassignFolderList = true;
     } elseif (isset($_REQUEST['do']) && $_REQUEST['do'] == 'markAllAsRead') {
         $mails = $mailbox->GetMailIDList($folderID);
 
@@ -96,6 +97,8 @@ if ($_REQUEST['action'] == 'folder') {
                 )
             );
         }
+
+        $tpl->reassignFolderList = true;
     } elseif (isset($_REQUEST['do']) && $_REQUEST['do'] == 'downloadAll') {
         $mails = $mailbox->GetMailIDList($folderID);
 
@@ -529,6 +532,7 @@ if ($_REQUEST['action'] == 'folder') {
     echo implode(',', $results);
 
     if (isset($_REQUEST['getFolderList'])) {
+        $tpl->reassignFolderList = true;
         echo ',';
         $tpl->display('li/email.folderlist.tpl');
     }
