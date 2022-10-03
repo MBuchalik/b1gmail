@@ -24,11 +24,6 @@
 /**
  * Client phrases
  */
-$lang_client['certmailwarn'] =
-    "You're trying to send a certified email.\n\nCertified emails do not support the following options\nyou chose.\n\nThese options will be disabled if you decide to continue.\n\n";
-$lang_client['certmailsign'] = 'Sign';
-$lang_client['certmailencrypt'] = 'Encrypt';
-$lang_client['certmailconfirm'] = 'Request receipt';
 $lang_client['addravailable'] = 'Address available!';
 $lang_client['addrtaken'] = 'Address unavailable!';
 $lang_client['addrinvalid'] = 'Address invalid!';
@@ -52,8 +47,6 @@ $lang_client['sendwosubject'] =
     'You did not enter a subject for your email. Click "Cancel", to enter a subject or click "OK" to send the email without a subject.';
 $lang_client['movemail'] = 'Move email';
 $lang_client['certificate'] = 'Certificate';
-$lang_client['addcert'] = 'Import certificate';
-$lang_client['exportcert'] = 'Export certificate';
 $lang_client['unknown'] = 'Unknown';
 $lang_client['version'] = 'Version';
 $lang_client['prefs'] = 'Preferences';
@@ -156,17 +149,6 @@ $lang_custom['cs_text'] =
     'the certified message you sent to %%an%% with the subject %%subject%% has just been read (%%date%%).' .
     "\n\n" .
     '(This message has been generated automatically)';
-$lang_custom['clndr_subject'] = 'Calendar reminder: %%title%%';
-$lang_custom['clndr_date_msg'] =
-    'Dear Sir or Madam,' .
-    "\n\n" .
-    'we would like to remind you of the following event: "%%title%%".' .
-    "\n" .
-    'It is scheduled for %%date%% at %%time%% o\'clock.' .
-    "\n" .
-    'Notification: %%message%%' .
-    "\n\n" .
-    '(This message has been generated automatically)';
 $lang_custom['receipt_text'] =
     'Dear Sir or Madam,' .
     "\n\n" .
@@ -211,18 +193,6 @@ $lang_custom['snotify_text'] =
     'Alternative email: %%altmail%%' .
     "\n\n" .
     'Details: %%link%%';
-$lang_custom['share_sub'] = 'Webdisk share';
-$lang_custom['share_text'] =
-    'Hi,' .
-    "\n\n" .
-    'you can find my Webdisk share under the following address:' .
-    "\n" .
-    "\t" .
-    '%%url%%' .
-    "\n\n" .
-    'Best Regards,' .
-    "\n\n" .
-    '%%firstname%% %%lastname%%';
 $lang_custom['notify_date'] = 'Appointment: <strong>%s</strong>';
 $lang_custom['notify_newemail'] = '<strong>%d</strong> new email(s): %s';
 $lang_custom['notify_email'] = 'Email received from <strong>%s</strong>: %s';
@@ -264,12 +234,10 @@ $lang_user['readcertmail'] = 'Read certified email';
 
 // misc
 $lang_user['menu'] = 'Menu';
-$lang_user['fetching'] = 'Fetching';
 $lang_user['nocontactselected'] = 'No contacts selected';
 $lang_user['showmore'] = 'Show more';
 $lang_user['paused'] = 'Paused';
 $lang_user['langCode'] = 'EN';
-$lang_user['pop3server'] = 'Inbox server (POP3)';
 $lang_user['desktopversion'] = 'Desktop version';
 $lang_user['right'] = 'Right';
 $lang_user['bottom'] = 'Bottom';
@@ -320,7 +288,6 @@ $lang_user['hotkeys'] = 'Hotkeys';
 $lang_user['to3'] = 'to';
 $lang_user['with'] = 'with';
 $lang_user['selectdraft'] = 'Select draft';
-$lang_user['pop3ownerror'] = 'You cannot fetch the mailbox into itself.';
 $lang_user['sendmail2'] = 'Send email';
 $lang_user['color_0'] = 'None';
 $lang_user['color_1'] = 'Blue';
@@ -340,13 +307,11 @@ $lang_user['none'] = 'none';
 $lang_user['editgroups'] = 'Edit groups';
 $lang_user['color'] = 'Color';
 $lang_user['minutes'] = 'minute(s)';
-$lang_user['until'] = 'until';
 $lang_user['foldererror'] =
     'The folder could not be created. Either a folder by this name already exists or the name is invalid (minimum of 1 character).';
 $lang_user['actions'] = 'Action';
 $lang_user['count'] = 'Number';
 $lang_user['size'] = 'Size';
-$lang_user['success'] = 'Successful';
 $lang_user['space'] = 'Space';
 $lang_user['used'] = 'used';
 $lang_user['unlimited'] = 'unlimited';
@@ -392,7 +357,6 @@ $lang_user['fax'] = 'Fax';
 $lang_user['altmail'] = 'Email';
 $lang_user['altmail2'] = 'Alternative email';
 $lang_user['repeat'] = 'Repeat';
-$lang_user['security'] = 'Security';
 $lang_user['submit'] = 'Submit';
 $lang_user['iprecord'] =
     'Your IP address will be recorded to prevent fraudulent requests.';
@@ -630,11 +594,6 @@ $lang_user['senderconfirmto'] =
 $lang_user['mailsent'] = 'The messages has been sent successfully.';
 $lang_user['certmailinfo'] =
     'This is a certified message. If you delete it, the certified message will no longer be legible!';
-$lang_user['signed'] = 'Digitally signed';
-$lang_user['badsigned'] = 'Invalid digital signature';
-$lang_user['noverifysigned'] = 'Not trustworthy signed';
-$lang_user['encrypted'] = 'Encrypted';
-$lang_user['decryptionfailed'] = 'Decryption failed';
 $lang_user['movemailto'] = 'Move email to';
 
 // prefs
@@ -643,7 +602,6 @@ $lang_user['defaults'] = 'Defaults';
 $lang_user['options'] = 'Options';
 $lang_user['nospamoverride'] = 'Override spam filter';
 $lang_user['name'] = 'Name';
-$lang_user['validto'] = 'Valid until';
 $lang_user['contact'] = 'Contact';
 $lang_user['antivirus'] = 'Anti-Virus';
 $lang_user['antispam'] = 'Anti-Spam';
@@ -651,23 +609,9 @@ $lang_user['filters'] = 'Filters';
 $lang_user['signatures'] = 'Signatures';
 $lang_user['aliases'] = 'Aliases';
 $lang_user['autoresponder'] = 'Autoresponder';
-$lang_user['extpop3'] = 'POP3 accounts';
 $lang_user['membership'] = 'Membership';
-$lang_user['validity'] = 'Validity';
 $lang_user['certificate'] = 'Certificate';
-$lang_user['chaincerts'] = 'Chain cert.';
-$lang_user['cert_subject'] = 'Owner';
-$lang_user['cert_issuer'] = 'Issuer';
-$lang_user['organization'] = 'Organization';
-$lang_user['organizationunit'] = 'Org. unit';
-$lang_user['commonname'] = 'Common name';
-$lang_user['state'] = 'State/Province';
 $lang_user['version'] = 'Version';
-$lang_user['serial'] = 'Serial number';
-$lang_user['publickey'] = 'Public key';
-$lang_user['bits'] = 'Bits';
-$lang_user['prefs_d_keyring'] =
-    'Manage your keys and certificates for email signing and crypting.';
 $lang_user['prefs_d_faq'] =
     'Here you find answers to frequently asked questions.';
 $lang_user['prefs_d_common'] =
@@ -685,10 +629,6 @@ $lang_user['prefs_d_antispam'] =
 $lang_user['prefs_d_aliases'] = 'Get more email addresses for this account.';
 $lang_user['prefs_d_autoresponder'] =
     'Have your email responded to automatically, e.g. when you are not available.';
-$lang_user['prefs_d_extpop3'] =
-    'You can have external POP3-accounts collect your messages into your email-account.';
-$lang_user['prefs_d_software'] =
-    'Download client-software for your computer, e.g. a mail checker.';
 $lang_user['prefs_d_membership'] =
     'View information on your membership or terminate it if desired.';
 $lang_user['alias'] = 'Alias';
@@ -721,7 +661,6 @@ $lang_user['canceltext'] =
 $lang_user['cancelledtext'] =
     'You have cancelled your membership. Your account has been deactivated. Thank you for your interest in our service. We would be happy to welcome you again soon.';
 $lang_user['enable'] = 'Enable';
-$lang_user['enablebydefault'] = 'Enable by default';
 $lang_user['spamfilter'] = 'Spam filter';
 $lang_user['defensive'] = 'Defensive';
 $lang_user['aggressive'] = 'Aggressive';
@@ -762,54 +701,14 @@ $lang_user['changepw'] = 'Change password';
 $lang_user['addsignature'] = 'Add signature';
 $lang_user['editsignature'] = 'Edit signature';
 $lang_user['question'] = 'Question';
-$lang_user['addpop3'] = 'Add POP3 account';
-$lang_user['editpop3'] = 'Edit POP3 account';
-$lang_user['pop3usage'] = '<b>%d</b> of <b>%d</b> account(s) created.';
 $lang_user['username'] = 'Username';
 $lang_user['host'] = 'Hostname';
-$lang_user['lastfetch'] = 'Last fetch';
 $lang_user['port'] = 'Port';
-$lang_user['pop3target'] = 'POP3 target';
 $lang_user['never'] = 'never';
-$lang_user['keepmails'] = 'Keep messages on server';
-$lang_user['pop3loginerror'] =
-    'With the given login, no connection to the POP3 server could be established.';
 $lang_user['plaintextcourier'] = 'Plaintext mails';
 $lang_user['usecourier'] = 'Use font with fixed-width';
 $lang_user['subscribe'] = 'Subscribe';
 $lang_user['newsletter'] = 'Newsletter';
-$lang_user['addcert'] = 'Import certificate';
-$lang_user['publiccerts'] = 'Public certificates';
-$lang_user['owncerts'] = 'Own certificates';
-$lang_user['addcerttext'] =
-    'Please chose the public certificate (PEM format) that you would like to import. You can either upload a file from your local computer or chose a file from your webdisk (if available).';
-$lang_user['certstoreerr'] =
-    'The certificate cannot be imported. It is either invalid, not in PEM/PKCS12 format, not suitable for email purposes or is already existing in your keyring.';
-$lang_user['requestcert'] = 'Request certificate';
-$lang_user['addprivcerttext'] =
-    'Please chose the private certificate (PEM format) you would like to import and the appropriate private key and enter the private key password in case the key is encrypted (recommended).';
-$lang_user['addprivcert12text'] =
-    'Please chose the private certificate / private key bundle (PKCS12 format; *.p12 / *.pfx) and enter the import password of the file.';
-$lang_user['exportprivcerttext'] =
-    'Please enter a password you would like to encrypt the exported data with.';
-$lang_user['pkcs12file'] = 'PKCS12 file';
-$lang_user['certexportpwerror'] =
-    'The password is too short (< 4 characters) or the repitition does not match the password.';
-$lang_user['certexporterror'] =
-    'The certificate cannot be exported. Please try again later.';
-$lang_user['key'] = 'Key';
-$lang_user['privcertstoreerr'] =
-    'The certificate cannot be imported. Either the password is wrong or ther certificate/key is invalid, do not fit, are not in PEM format or ar not suitable for email purposes or are already existing in your keyring.';
-$lang_user['issuecert_noaddr'] =
-    'Certificates for all of your email addresses / aliases are already available. We can only issue certificates for addresses you do not already have a certificate for.';
-$lang_user['issuecert_addrdesc'] =
-    'Please chose the email address the certificate should be issued for. The certificate is only usable with the chosen email address. You cannot chose email addresses for which you already have a certificate.';
-$lang_user['issuecert_passdesc'] =
-    'Please review your certificate request and enter your password to proceed.';
-$lang_user['issuecert_wrongpw'] =
-    'The password you entered is incorrect. Please use the same password you also use to log-in.';
-$lang_user['issuecert_err'] =
-    'Sorry, we cannot issue a certificate for you at this time for unknown reasons. Please try again later and contact us in case the problem persists.';
 
 // folders
 $lang_user['sysfolders'] = 'System folders';
@@ -861,17 +760,6 @@ $lang_user['toomanyrecipients'] =
     'There is a maximum number of <b>%d</b> recipients per email. Selecting <b>%d</b> recipients for your email, you exceeded the limit. Please correct the number of recipients and try again.';
 $lang_user['sendfailed'] =
     'email could not be sent. An unknown error occurred. Please try again later.';
-$lang_user['sign'] = 'Sign';
-$lang_user['encrypt'] = 'Encrypt';
-$lang_user['smimeerr0'] = 'You did not enter a valid recipient.';
-$lang_user['smimeerr1'] =
-    'You have chosen to sign this message but you do not have a private certificate for the chosen sender address in your keyring.' .
-    "\n\n" .
-    'Please add a suitable certificate to your keyring (at "Preferences") and try again.';
-$lang_user['smimeerr2'] =
-    'You have chosen to encrypt this message but you do not have public certificates of one or more recipients in your keyring.' .
-    "\n\n" .
-    'Please add public certificates of the following recipients to your keyring and try again:';
 
 /**
  * Admin phrases
@@ -915,7 +803,6 @@ $lang_admin['rbbs_email'] = 'Convert emails';
 $lang_admin['separatefiles'] = 'one file per object';
 $lang_admin['userdb'] = 'one file per user';
 $lang_admin['nliarea'] = 'Not logged-in area';
-$lang_admin['publickey'] = 'Public key';
 $lang_admin['write_xsenderip'] = 'Write X-Sender-IP header';
 $lang_admin['fts_bg_indexing'] = 'Automatic background indexing';
 $lang_admin['buildindex'] = 'Build index';
@@ -994,8 +881,6 @@ $lang_admin['orphans'] = 'Orphans';
 $lang_admin['mailorphans'] = 'Orphaned emails';
 $lang_admin['text_orderconfirm_sub'] = 'Order confirmation subject';
 $lang_admin['text_orderconfirm_text'] = 'Order confirmation text';
-$lang_admin['text_share_sub'] = 'Webdisk share mail subject';
-$lang_admin['text_share_text'] = 'Webdisk share mail text';
 $lang_admin['selffolder'] = 'Abs. path to b1gMail';
 $lang_admin['dynnorecvrules'] =
     'Recipient detemination is set to &quot;Use receive rules&quot; but no receive rule exists. This way, receiving emails is impossible. Please set the recipient determination method to &quot;Automatic&quot; or add receive rules.';
@@ -1058,7 +943,6 @@ $lang_admin['tables'] = 'Tables';
 $lang_admin['action'] = 'Action';
 $lang_admin['execute'] = 'Execute';
 $lang_admin['back'] = 'Back';
-$lang_admin['success'] = 'Success';
 $lang_admin['error'] = 'Error';
 $lang_admin['couldfree'] =
     'An optimization of the database can improve the database performance and free up %.02f MB of space.';
@@ -1076,9 +960,6 @@ $lang_admin['emailsizes_desc'] =
 $lang_admin['usersizes_cache'] = 'Recalculate user space usage';
 $lang_admin['usersizes_desc'] =
     'Will recalculate the space usage of the your users.';
-$lang_admin['disksizes_cache'] = 'Recalculate the sizes of webdisc files';
-$lang_admin['disksizes_desc'] =
-    'Will recalculate the size of every webdisc file saved in the system (in practice, this operation is very rarely necessary).';
 $lang_admin['opsperpage'] = 'Operations per instance';
 $lang_admin['nopostmaster'] =
     'The postmaster user (<code>%s</code>) does not exist. You are strongly recommended to create that user to avoid problems with email processing.';
@@ -1352,8 +1233,6 @@ $lang_admin['text_passmail_text'] = 'Password mail text';
 $lang_admin['text_certmail'] = 'Certified mail text';
 $lang_admin['text_cs_subject'] = 'Cert. mail receipt subject';
 $lang_admin['text_cs_text'] = 'Cert. mail receipt text';
-$lang_admin['text_clndr_subject'] = 'Date nofiy subject';
-$lang_admin['text_clndr_date_msg'] = 'Date notify text';
 $lang_admin['text_receipt_text'] = 'Receipt mail text';
 $lang_admin['text_alias_sub'] = 'Alias mail subject';
 $lang_admin['text_alias_text'] = 'Alias mail text';
@@ -1386,16 +1265,10 @@ $lang_admin['pop3'] = 'POP3';
 $lang_admin['imap'] = 'IMAP';
 $lang_admin['autoresponder'] = 'Autoresponder';
 $lang_admin['mobileaccess'] = 'Mobile access';
-$lang_admin['issue_certificates'] = 'Issue certificates';
-$lang_admin['upload_certificates'] = 'Upload certificates';
-$lang_admin['wdshare'] = 'Webdisc share';
 $lang_admin['htmlview'] = 'HTML mode by default';
 $lang_admin['sendlimit'] = 'Send limit';
 $lang_admin['emailsin'] = 'email(s) in';
 $lang_admin['minutes'] = 'minute(s)';
-$lang_admin['ownpop3'] = 'External POP3 accounts';
-$lang_admin['ownpop3interval'] = 'POP3 poll interval';
-$lang_admin['selfpop3_check'] = 'Protect against fetching own account';
 $lang_admin['aliasdomains'] = 'Additional alias domains';
 $lang_admin['mailsig'] = 'Email signature';
 $lang_admin['receivedmails'] = 'Received';
@@ -1517,34 +1390,6 @@ $lang_admin['rd_static'] = 'Conventional (statically)';
 $lang_admin['rd_dynamic'] = 'Use receive rules (dynamically)';
 $lang_admin['activate'] = 'Enable';
 $lang_admin['features'] = 'Features';
-$lang_admin['smime'] = 'S/MIME';
-$lang_admin['openssl_err'] =
-    'The PHP extension <code>openssl</code> is not available. S/MIME support required the PHP <code>openssl</code> extension to be installed. Please install the extension in order to use S/MIME in b1gMail.';
-$lang_admin['validity'] = 'Validity';
-$lang_admin['rootcerts'] = 'Root certificates';
-$lang_admin['addrootcert'] = 'Add root certificate';
-$lang_admin['certfile'] = 'Certificate (.pem file)';
-$lang_admin['cert_err_noca'] =
-    'This certificate cannot be imported because it is not a root certificate for S/MIME purposes.';
-$lang_admin['cert_err_format'] = 'The file is not a valid PEM certificate.';
-$lang_admin['cert_err_exists'] = 'The certificate already exists.';
-$lang_admin['cert_ca'] = 'Certificate authority';
-$lang_admin['setedit'] = 'Add / edit';
-$lang_admin['cert_ca_info'] =
-    'This certificate authority will be used to issue certificates for your users.<br /><br /><b>NOTICE:</b> Both certificate and private key will be stored unencrypted in the database!';
-$lang_admin['cert_ca_current'] = 'Current certificate authority';
-$lang_admin['cert_noca'] = 'You did not add a certificate authority yet.';
-$lang_admin['cert_ca_import'] = 'Import certificate authority';
-$lang_admin['cert_ca_file_pem'] = 'CA certificate (.pem file)';
-$lang_admin['cert_ca_file_key'] = '<i>and</i> private key (.key file)';
-$lang_admin['cert_ca_cert'] = 'CA certificate / private key';
-$lang_admin['cert_ca_pass'] = 'Private key password (if necessary)';
-$lang_admin['cert_caerr_format'] =
-    'Certificate or key file are in an invalid format.';
-$lang_admin['cert_caerr_purpose'] =
-    'The certificate is not suitable for issuing S/MIME certificates.';
-$lang_admin['cert_caerr_pkcheck'] =
-    'The private key does not fit to the certificate or the password is wrong.';
 $lang_admin['ufaf_notice'] =
     'Found unnecessary files or folders that are probably leftovers from a previous update.';
 $lang_admin['ufaf_title'] = 'Unnecessary files and folders';

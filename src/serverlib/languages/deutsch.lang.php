@@ -24,11 +24,6 @@
 /**
  * Client phrases
  */
-$lang_client['certmailwarn'] =
-    "Sie versuchen, eine E-Mail als Einschreiben zu versenden.\n\nEinschreiben unterstützen die folgenden Optionen,\ndie Sie ebenfalls gewählt haben, nicht.\n\nDiese Optionen werden deaktiviert.\n\n";
-$lang_client['certmailsign'] = 'Digital signieren';
-$lang_client['certmailencrypt'] = 'Verschlüsseln';
-$lang_client['certmailconfirm'] = 'Lesebestätigung';
 $lang_client['prefs'] = 'Einstellungen';
 $lang_client['nomailsselected'] = 'Keine E-Mail ausgew&auml;hlt';
 $lang_client['mailsselected'] = 'E-Mails ausgew&auml;hlt';
@@ -57,8 +52,6 @@ $lang_client['sendwosubject'] =
     'Sie haben keinen Betreff für die E-Mail angegeben. Klicken Sie auf "Abbrechen", um einen Betreff anzugeben oder auf "OK", um die E-Mail ohne Betreff zu senden.';
 $lang_client['movemail'] = 'E-Mail verschieben';
 $lang_client['certificate'] = 'Zertifikat';
-$lang_client['addcert'] = 'Zertifikat importieren';
-$lang_client['exportcert'] = 'Zertifikat exportieren';
 $lang_client['unknown'] = 'Unbekannt';
 $lang_client['version'] = 'Version';
 $lang_client['prefs'] = 'Einstellungen';
@@ -152,17 +145,6 @@ $lang_custom['cs_text'] =
     'Ihr Einschreiben an %%an%% mit dem Betreff %%subject%% wurde soeben (%%date%%) gelesen.' .
     "\n\n" .
     '(Diese E-Mail wurde automatisch erstellt)';
-$lang_custom['clndr_subject'] = 'Termin-Erinnerung: %%title%%';
-$lang_custom['clndr_date_msg'] =
-    'Sehr geehrte Damen und Herren,' .
-    "\n\n" .
-    'wir möchten Sie hiermit an folgenden Termin erinnern: "%%title%%".' .
-    "\n" .
-    'Er findet am %%date%% um %%time%% Uhr statt.' .
-    "\n" .
-    'Anmerkung: %%message%%' .
-    "\n\n" .
-    '(Diese E-Mail wurde automatisch erstellt)';
 $lang_custom['receipt_text'] =
     'Sehr geehrte Damen und Herren,' .
     "\n\n" .
@@ -207,18 +189,6 @@ $lang_custom['snotify_text'] =
     'Alternativ-E-Mail: %%altmail%%' .
     "\n\n" .
     'Details: %%link%%';
-$lang_custom['share_sub'] = 'Webdisk-Freigabe';
-$lang_custom['share_text'] =
-    'Hallo,' .
-    "\n\n" .
-    'unter folgender Adresse ist meine Webdisk-Freigabe zu finden:' .
-    "\n" .
-    "\t" .
-    '%%url%%' .
-    "\n\n" .
-    'Viele Grüße,' .
-    "\n\n" .
-    '%%firstname%% %%lastname%%';
 $lang_custom['notify_date'] = 'Termin: <strong>%s</strong>';
 $lang_custom['notify_newemail'] = '<strong>%d</strong> neue E-Mail(s): %s';
 $lang_custom['notify_email'] =
@@ -282,7 +252,6 @@ $lang_user['none'] = 'keine';
 $lang_user['editgroups'] = 'Gruppen bearbeiten';
 $lang_user['color'] = 'Farbe';
 $lang_user['minutes'] = 'Minute(n)';
-$lang_user['until'] = 'bis';
 $lang_user['color_0'] = 'Keine';
 $lang_user['color_1'] = 'Blau';
 $lang_user['color_2'] = 'Gr&uuml;n';
@@ -296,7 +265,6 @@ $lang_user['foldererror'] =
 $lang_user['actions'] = 'Aktionen';
 $lang_user['count'] = 'Anzahl';
 $lang_user['size'] = 'Gr&ouml;&szlig;e';
-$lang_user['success'] = 'Erfolgreich';
 $lang_user['space'] = 'Speicherplatz';
 $lang_user['used'] = 'genutzt';
 $lang_user['unlimited'] = 'unbegrenzt';
@@ -342,7 +310,6 @@ $lang_user['fax'] = 'Fax';
 $lang_user['altmail'] = 'E-Mail';
 $lang_user['altmail2'] = 'Alternativ-E-Mail';
 $lang_user['repeat'] = 'Wiederholen';
-$lang_user['security'] = 'Sicherheit';
 $lang_user['submit'] = 'Abschicken';
 $lang_user['iprecord'] =
     'Ihre IP-Adresse wird zur Betrugspr&auml;vention gespeichert.';
@@ -413,7 +380,6 @@ $lang_user['lastweek'] = 'Letzte Woche';
 $lang_user['later'] = 'Sp&auml;ter';
 $lang_user['ok'] = 'OK';
 $lang_user['error'] = 'Fehler';
-$lang_user['fetching'] = 'Wird abgerufen';
 
 // organizer
 $lang_user['newgroup'] = 'Neue Gruppe';
@@ -605,11 +571,6 @@ $lang_user['senderconfirmto'] =
 $lang_user['mailsent'] = 'Die E-Mail wurde erfolgreich verschickt.';
 $lang_user['certmailinfo'] =
     'Diese E-Mail ist ein Einschreiben. Wenn Sie die E-Mail l&ouml;schen, ist das Einschreiben nicht mehr lesbar!';
-$lang_user['signed'] = 'Digital signiert';
-$lang_user['badsigned'] = 'Ung&uuml;ltige digitale Signatur';
-$lang_user['noverifysigned'] = 'Nicht vertrauensw&uuml;rdig signiert';
-$lang_user['encrypted'] = 'Verschl&uuml;sselt';
-$lang_user['decryptionfailed'] = 'Entschl&uuml;sselung fehlgeschlagen';
 $lang_user['movemailto'] = 'E-Mail verschieben nach';
 
 // prefs
@@ -624,7 +585,6 @@ $lang_user['insertquote'] = 'Original-Mail als Zitat einf&uuml;gen';
 $lang_user['options'] = 'Optionen';
 $lang_user['nospamoverride'] = 'Spam-Filter nachrangig behandeln';
 $lang_user['name'] = 'Name';
-$lang_user['validto'] = 'G&uuml;ltig bis';
 $lang_user['contact'] = 'Kontakt';
 $lang_user['antivirus'] = 'Anti-Virus';
 $lang_user['antispam'] = 'Anti-Spam';
@@ -632,23 +592,9 @@ $lang_user['filters'] = 'Filter-Regeln';
 $lang_user['signatures'] = 'Signaturen';
 $lang_user['aliases'] = 'Aliase';
 $lang_user['autoresponder'] = 'Automatische Antwort';
-$lang_user['extpop3'] = 'POP3-Sammeldienst';
 $lang_user['membership'] = 'Mitgliedschaft';
-$lang_user['validity'] = 'G&uuml;ltigkeit';
 $lang_user['certificate'] = 'Zertifikat';
-$lang_user['chaincerts'] = 'Zwischen-Zert.';
-$lang_user['cert_subject'] = 'Inhaber';
-$lang_user['cert_issuer'] = 'Aussteller';
-$lang_user['organization'] = 'Organisation';
-$lang_user['organizationunit'] = 'Org.-Einheit';
-$lang_user['commonname'] = 'Allg. Name';
-$lang_user['state'] = 'Bundesland';
 $lang_user['version'] = 'Version';
-$lang_user['serial'] = 'Seriennummer';
-$lang_user['publickey'] = '&Ouml;ffentlicher Schl&uuml;ssel';
-$lang_user['bits'] = 'Bits';
-$lang_user['prefs_d_keyring'] =
-    'Verwalten Sie Ihre Schl&uuml;ssel und Zertifikate zum Signieren und Ver-/Entschl&uuml;sseln von E-Mails.';
 $lang_user['prefs_d_faq'] =
     'Hier finden Sie wertvolle Antworten auf h&auml;ufig gestellte Fragen.';
 $lang_user['prefs_d_common'] =
@@ -667,10 +613,6 @@ $lang_user['prefs_d_aliases'] =
     'Sichern Sie sich weitere E-Mail-Adressen f&uuml;r diesen Account.';
 $lang_user['prefs_d_autoresponder'] =
     'Lassen Sie eingehende E-Mails automatisch beantworten, z.B. bei Abwesenheit.';
-$lang_user['prefs_d_extpop3'] =
-    'Sie k&ouml;nnen E-Mails von externen POP3-Accounts in Ihren E-Mail-Account einsammeln lassen.';
-$lang_user['prefs_d_software'] =
-    'Laden Sie Client-Software f&uuml;r Ihren Computer herunter, z.B. einen Mailpr&uuml;fer.';
 $lang_user['prefs_d_membership'] =
     'Sehen Sie Infos zu Ihrer Mitgliedschaft ein oder beenden Sie diese auf Wunsch.';
 $lang_user['alias'] = 'Alias';
@@ -705,7 +647,6 @@ $lang_user['canceltext'] =
 $lang_user['cancelledtext'] =
     'Sie haben Ihre Mitgliedschaft beendet. Ihr Account wurde deaktiviert. Wir danken Ihnen f&uuml;r Ihr Interesse an unserem Dienst und w&uuml;rden uns freuen, Sie bald wieder als Mitglied begr&uuml;&szlig;en zu d&uuml;rfen.';
 $lang_user['enable'] = 'Aktivieren';
-$lang_user['enablebydefault'] = 'Standardm&auml;&szlig;ig aktivieren';
 $lang_user['spamfilter'] = 'Spam-Filter';
 $lang_user['spamaction'] = 'Spam-Behandlung';
 $lang_user['defensive'] = 'Defensiv';
@@ -756,53 +697,10 @@ $lang_user['changepw'] = 'Passwort &auml;ndern';
 $lang_user['addsignature'] = 'Signatur hinzuf&uuml;gen';
 $lang_user['editsignature'] = 'Signatur bearbeiten';
 $lang_user['question'] = 'Frage';
-$lang_user['addpop3'] = 'POP3-Account hinzuf&uuml;gen';
-$lang_user['editpop3'] = 'POP3-Account bearbeiten';
-$lang_user['pop3usage'] = '<b>%d</b> von <b>%d</b> Account(s) eingerichtet.';
 $lang_user['username'] = 'Benutzername';
 $lang_user['host'] = 'Hostname';
-$lang_user['pop3server'] = 'Posteingangsserver (POP3)';
-$lang_user['lastfetch'] = 'Letzter Abruf';
 $lang_user['port'] = 'Port';
-$lang_user['pop3target'] = 'Abholen nach';
 $lang_user['never'] = 'niemals';
-$lang_user['keepmails'] = 'Mails auf Server belassen';
-$lang_user['pop3loginerror'] =
-    'Mit den angegebenen Zugangsdaten konnte keine Verbindung zu einem POP3-Server aufgebaut werden.';
-$lang_user['pop3ownerror'] =
-    'Sie k&ouml;nnen nicht das Postfach in sich selbst abrufen lassen.';
-$lang_user['addcert'] = 'Zertifikat importieren';
-$lang_user['publiccerts'] = '&Ouml;ffentliche Zertifikate';
-$lang_user['owncerts'] = 'Eigene Zertifikate';
-$lang_user['addcerttext'] =
-    'Bitte w&auml;hlen Sie das &ouml;ffentliche Zertifikat (PEM-Format), das Sie importieren m&ouml;chten, aus. Sie k&ouml;nnen entweder eine Datei von Ihrem Computer hochladen oder eine Datei von Ihrer Webdisk verwenden (falls vorhanden).';
-$lang_user['certstoreerr'] =
-    'Das Zertifikat konnte nicht importiert werden. Es ist entweder ungültig, nicht im PEM-/PKCS12-Format, nicht für E-Mail-Signierung/-Verschlüsselung geeignet oder schon im Schlüsselbund vorhanden.';
-$lang_user['requestcert'] = 'Zertifikat beantragen';
-$lang_user['addprivcerttext'] =
-    'Bitte w&auml;hlen Sie das private Zertifikat (PEM-Format), das Sie importieren m&ouml;chten, mit dem zugeh&ouml;rigen privaten Schl&uuml;ssel aus und geben Sie das Passwort f&uuml;r den privaten Schl&uuml;ssel an, falls er verschl&uuml;sselt ist (empfohlen).';
-$lang_user['addprivcert12text'] =
-    'Bitte w&auml;hlen Sie das private Zertifikat, das Sie importieren m&ouml;chten, mit dem zugeh&ouml;rigen privaten Schl&uuml;ssel aus (PKCS12-Format; *.p12 / *.pfx) und geben Sie das Import-Passwort f&uuml;r die Datei an.';
-$lang_user['exportprivcerttext'] =
-    'Bitte geben Sie ein Passwort ein, mit dem die exportierten Daten verschl&uuml;sselt werden sollen.';
-$lang_user['pkcs12file'] = 'PKCS12-Datei';
-$lang_user['certexportpwerror'] =
-    'Ihr Passwort ist zu kurz (< 4 Zeichen) oder stimmt nicht mit der Wiederholung überein.';
-$lang_user['certexporterror'] =
-    'Das Zertifikat konnte nicht exportiert werden. Bitte versuchen Sie es später erneut.';
-$lang_user['key'] = 'Schl&uuml;ssel';
-$lang_user['privcertstoreerr'] =
-    'Das Zertifikat konnte nicht importiert werden. Das Passwort ist falsch oder das Zertifikat/Schlüssel sind entweder ungültig, passen nicht zueinander, sind nicht im PEM-Format, nicht für E-Mail-Signierung/-Verschlüsselung geeignet oder schon im Schlüsselbund vorhanden.';
-$lang_user['issuecert_noaddr'] =
-    'F&uuml;r alle Ihre E-Mail-Adressen / Aliase ist bereits ein g&uuml;ltiges Zertifikat vorhanden. Wir k&ouml;nnen nur Zertifikate f&uuml;r Adressen ausstellen, zu denen noch kein Zertifikat existiert.';
-$lang_user['issuecert_addrdesc'] =
-    'Bitte geben Sie die E-Mail-Adresse an, auf die das Zertifikat ausgestellt werden soll. Das Zertifikat ist dann nur mit dieser E-Mail-Adresse nutzbar. E-Mail-Adressen, f&uuml;r die bereits ein Zertifikat hinterlegt wurde, sind nicht ausw&auml;hlbar.';
-$lang_user['issuecert_passdesc'] =
-    'Ihr Zertifikat wird folgenderma&szlig;en ausgestellt. Wenn Sie einverstanden sind, authentifizieren Sie sich hier aus Sicherheitsgr&uuml;nden noch einmal mit Ihrem Account-Passwort und klicken Sie auf &quot;OK&quot;. mit diesem Passwort wird auch Ihr privater Schl&uuml;ssel verschl&uuml;sselt.';
-$lang_user['issuecert_wrongpw'] =
-    'Das angegeben Passwort ist inkorrekt. Bitte geben Sie das gleiche Passwort an, dass Sie auch zum Login verwenden.';
-$lang_user['issuecert_err'] =
-    'Das Zertifikat konnte aus unbekannten Gr&uuml;nden nicht ausgestellt werden. Bitte versuchen Sie es erneut und kontaktieren Sie uns, falls das Problem weiterhin besteht.';
 
 // folders
 $lang_user['sysfolders'] = 'System-Ordner';
@@ -865,17 +763,6 @@ $lang_user['exceededsendlimit'] =
     'Der Versand dieser E-Mail w&uuml;rde Ihr Limit von %d E-Mail(s) pro %d Minute(n) &uuml;berschreiten. Die E-Mail konnte nicht gesendet werden.';
 $lang_user['sendfailed'] =
     'Die E-Mail konnte aus unbekannten Gr&uuml;nden nicht gesendet werden. Bitte versuchen Sie es sp&auml;ter erneut.';
-$lang_user['sign'] = 'Digital signieren';
-$lang_user['encrypt'] = 'Verschl&uuml;sseln';
-$lang_user['smimeerr0'] = 'Sie haben keine gültigen Empfänger angegeben.';
-$lang_user['smimeerr1'] =
-    'Sie möchten diese Nachricht signieren, haben aber für die angegebenen Absender-E-Mail-Adresse kein eigenes Zertifikat mit privatem Schlüssel hinterlegt.' .
-    "\n\n" .
-    'Bitte hinterlegen Sie ein eigenes Zertifikat in Ihrem Schlüsselbund (unter "Einstellungen") und versuchen Sie es erneut.';
-$lang_user['smimeerr2'] =
-    'Sie möchten diese Nachricht verschlüsselt versenden, Ihr Schlüsselbund enthält aber nicht die nötigen öffentlichen Zertifikate eines oder mehrerer E-Mail-Empfänger.' .
-    "\n\n" .
-    'Bitte fügen Sie die öffentlichen Zertifikate folgender Empfänger Ihrem Schlüsselbund hinzu und versuchen Sie es erneut:';
 
 /**
  * Admin phrases
@@ -920,7 +807,6 @@ $lang_admin['rbbs_email'] = 'E-Mails umspeichern';
 $lang_admin['separatefiles'] = 'eine Datei pro Objekt';
 $lang_admin['userdb'] = 'eine Datei pro Benutzer';
 $lang_admin['nliarea'] = 'Nicht-eingeloggter Bereich';
-$lang_admin['publickey'] = 'Public Key';
 $lang_admin['write_xsenderip'] = 'X-Sender-IP-Header schreiben';
 $lang_admin['fts_bg_indexing'] = 'Automatische Hintergrund-Indizierung';
 $lang_admin['buildindex'] = 'Index aufbauen';
@@ -1016,7 +902,6 @@ $lang_admin['tables'] = 'Tabellen';
 $lang_admin['action'] = 'Aktion';
 $lang_admin['execute'] = 'Ausf&uuml;hren';
 $lang_admin['back'] = 'Zur&uuml;ck';
-$lang_admin['success'] = 'Erfolgreich';
 $lang_admin['error'] = 'Fehler';
 $lang_admin['couldfree'] =
     'Durch eine Datenbank-Optimierung kann sich die Datenbank im aktuellen Zustand beschleunigen und es kann bis zu %.02f MB Speicher freigegeben werden.';
@@ -1034,10 +919,6 @@ $lang_admin['emailsizes_desc'] =
 $lang_admin['usersizes_cache'] = 'Benutzer-Speichernutzung neu berechnen';
 $lang_admin['usersizes_desc'] =
     'Berechnet die Speichernutzung der E-Mail-Benutzer neu.';
-$lang_admin['disksizes_cache'] =
-    'Webdisk-Datei-Gr&ouml;&szlig;en neu berechnen';
-$lang_admin['disksizes_desc'] =
-    'Berechnet die Gr&ouml;&szlig;e jeder im System gespeicherten Webdisk-Datei neu (diese Operation ist in der Praxis nur sehr selten n&ouml;tig).';
 $lang_admin['opsperpage'] = 'Operationen pro Instanz';
 $lang_admin['nopostmaster'] =
     'Der Postmaster-Benutzer (<code>%s</code>) existiert nicht. Sie sollten diesen Benutzer unbedingt anlegen, da es sonst zu Problemen bei der E-Mail-Verarbeitung kommen kann!';
@@ -1345,8 +1226,6 @@ $lang_admin['text_passmail_text'] = 'Passwort-Mail-Text';
 $lang_admin['text_certmail'] = 'Einschreiben-Mail-Text';
 $lang_admin['text_cs_subject'] = 'Einschreiben-Gelesen-Mail-Betreff';
 $lang_admin['text_cs_text'] = 'Einschreiben-Gelesen-Mail-Text';
-$lang_admin['text_clndr_subject'] = 'Kalender-Erinnerungs-Mail-Betreff';
-$lang_admin['text_clndr_date_msg'] = 'Kalender-Erinnerungs-Mail-Text';
 $lang_admin['text_receipt_text'] = 'Lesebest&auml;tigungs-Mail-Text';
 $lang_admin['text_alias_sub'] = 'Alias-Mail-Betreff';
 $lang_admin['text_alias_text'] = 'Alias-Mail-Text';
@@ -1354,8 +1233,6 @@ $lang_admin['text_activationmail_sub'] = 'Aktivierungs-Mail-Betreff';
 $lang_admin['text_activationmail_text'] = 'Aktivierungs-Mail-Text';
 $lang_admin['text_orderconfirm_sub'] = 'Bestellbestätigungs-Betreff';
 $lang_admin['text_orderconfirm_text'] = 'Bestellbestätigungs-Text';
-$lang_admin['text_share_sub'] = 'Webdisk-Freigabe-Mail-Betreff';
-$lang_admin['text_share_text'] = 'Webdisk-Freigabe-Mail-Text';
 $lang_admin['projecttitle'] = 'Projekt-Titel';
 $lang_admin['selfurl'] = 'URL zu b1gMail';
 $lang_admin['mobile_url'] = 'Mobil-URL zu b1gMail';
@@ -1384,16 +1261,10 @@ $lang_admin['pop3'] = 'POP3';
 $lang_admin['imap'] = 'IMAP';
 $lang_admin['autoresponder'] = 'Autoresponder';
 $lang_admin['mobileaccess'] = 'Mobil-Zugriff';
-$lang_admin['issue_certificates'] = 'Zertifikat ausstellen';
-$lang_admin['upload_certificates'] = 'Zertifikat hochladbar';
-$lang_admin['wdshare'] = 'Webdisk-Freigabe';
 $lang_admin['htmlview'] = 'Std. HTML-Modus';
 $lang_admin['sendlimit'] = 'Versand-Limit';
 $lang_admin['emailsin'] = 'E-Mail(s) in';
 $lang_admin['minutes'] = 'Minute(n)';
-$lang_admin['ownpop3'] = 'Externe POP3-Accounts';
-$lang_admin['ownpop3interval'] = 'POP3-Abruf-Intervall';
-$lang_admin['selfpop3_check'] = 'Schutz v. Abruf d. eig. Accounts';
 $lang_admin['aliasdomains'] = 'Zus&auml;tzliche Alias-Domains';
 $lang_admin['mailsig'] = 'E-Mail-Signatur';
 $lang_admin['receivedmails'] = 'Empfangen';
@@ -1522,36 +1393,6 @@ $lang_admin['rd_static'] = 'Automatisch';
 $lang_admin['rd_dynamic'] = 'Empfangs-Regeln verwenden';
 $lang_admin['activate'] = 'Aktivieren';
 $lang_admin['features'] = 'Features';
-$lang_admin['smime'] = 'S/MIME';
-$lang_admin['openssl_err'] =
-    'Die PHP-Erweiterung <code>openssl</code> ist nicht installiert. S/MIME-Unterst&uuml;tzung setzt voraus, dass die <code>openssl</code>-Erweiterung installiert ist. Bitte installieren Sie die Erweiterung nach, um S/MIME-Support zum Verschl&uuml;sseln und Signieren von E-Mails in b1gMail nutzen zu k&ouml;nnen.';
-$lang_admin['validity'] = 'G&uuml;ltigkeit';
-$lang_admin['rootcerts'] = 'Stamm-Zertifikate';
-$lang_admin['addrootcert'] = 'Stamm-Zertifikat hinzuf&uuml;gen';
-$lang_admin['certfile'] = 'Zertifikat (.pem-Datei)';
-$lang_admin['cert_err_noca'] =
-    'Dieses Zertifikat ist kein Stamm-Zertifikat f&uuml;r S/MIME-Zwecke und kann daher nicht importiert werden.';
-$lang_admin['cert_err_format'] =
-    'Diese Datei ist kein g&uuml;ltiges Zertifikat im PEM-Format.';
-$lang_admin['cert_err_exists'] = 'Das Zertifikat existiert bereits.';
-$lang_admin['cert_ca'] = 'Zertifizierungs-Instanz';
-$lang_admin['setedit'] = 'Hinterlegen / Bearbeiten';
-$lang_admin['cert_ca_info'] =
-    'Das hier angegebene CA-Zertifikat wird zur Ausstellung der Zertifikate f&uuml;r Ihre Benutzer verwendet, wenn diese aus ihrem Account heraus ein Zertifikat anfordern.<br /><br /><b>ACHTUNG:</b> Sowohl Zertifikat als auch Private Key werden unverschl&uuml;sselt in der Datenbank gespeichert!';
-$lang_admin['cert_ca_current'] = 'Aktuelle Zertifizierungs-Instanz';
-$lang_admin['cert_noca'] =
-    'Derzeit ist keine Zertifizierungs-Instanz eingerichtet.';
-$lang_admin['cert_ca_import'] = 'Zertifizierungs-Instanz importieren';
-$lang_admin['cert_ca_file_pem'] = 'CA-Zertifikat (.pem-Datei)';
-$lang_admin['cert_ca_file_key'] = '<i>und</i> Private Key (.key-Datei)';
-$lang_admin['cert_ca_cert'] = 'CA-Zertifikat/-Private-Key';
-$lang_admin['cert_ca_pass'] = 'Private-Key-Passphrase (falls n&ouml;tig)';
-$lang_admin['cert_caerr_format'] =
-    'Zertifikat oder Private Key haben ein ung&uuml;ltiges Format.';
-$lang_admin['cert_caerr_purpose'] =
-    'Das Zertifikat ist nicht geeignet, um S/MIME-Zertifikate zu signieren.';
-$lang_admin['cert_caerr_pkcheck'] =
-    'Der Private Key passt nicht zum Zertifikat oder die Passphrase ist falsch.';
 $lang_admin['greeting'] = 'Gru&szlig;formel';
 $lang_admin['greeting_mr'] = 'Sehr geehrter Herr %s';
 $lang_admin['greeting_mrs'] = 'Sehr geehrte Frau %s';
