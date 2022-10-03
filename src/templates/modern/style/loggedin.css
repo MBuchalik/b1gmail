@@ -1848,9 +1848,6 @@ A:hover {
   -moz-border-radius: 8px;
   padding: 0.4em;
   margin-bottom: 0.5em;
-
-  text-indent: -25px;
-  padding-left: 25px;
 }
 .mailNote a {
   color: #666666;
