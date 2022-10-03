@@ -19,7 +19,7 @@
  *
  */
 
-$b1gmail_version_major = 8;
+$b1gmail_version_major = 9;
 $b1gmail_version_minor = 0;
 $b1gmail_version_patch = 0;
 
