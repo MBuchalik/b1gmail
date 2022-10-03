@@ -2203,18 +2203,16 @@ class BMMailbox {
         if ($res->RowCount() != 1) {
             return false;
         }
-        [$folder, $messageSize, $blobStorage, $userID] = $res->FetchArray(
-            MYSQLI_NUM,
-        );
+        [$folder, $messageSize, $blobStorage] = $res->FetchArray(MYSQLI_NUM);
         $res->Free();
 
         // trashed?
         if ($folder == FOLDER_TRASH || $hard) {
             // delete mail
-            BMBlobStorage::createProvider($blobStorage, $userID)->deleteBlob(
-                BMBLOB_TYPE_MAIL,
-                $id,
-            );
+            BMBlobStorage::createProvider(
+                $blobStorage,
+                $this->_userID,
+            )->deleteBlob(BMBLOB_TYPE_MAIL, $id);
 
             $db->Query('DELETE FROM {pre}certmails WHERE mail=?', (int) $id);
 
