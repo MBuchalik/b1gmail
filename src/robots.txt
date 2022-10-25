@@ -3,5 +3,4 @@ Disallow: /admin/
 Disallow: /templates/
 Disallow: /plugins/
 Disallow: /setup/
-Disallow: /share/
 Disallow: /m/
