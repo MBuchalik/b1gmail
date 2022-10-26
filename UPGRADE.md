@@ -4,7 +4,37 @@
 
 ### Before running the update
 
+#### Step 1
+
 You should uninstall all Plugins that provide Widgets. Widgets are not supported in version 9.0.0 anymore.
+
+#### Step 2
+
+Now, rename some folders:
+
+| Old Folder Name | New Folder Name  |
+| --------------- | ---------------- |
+| `admin/`        | `admin-old/`     |
+| `interface/`    | `interface-old/` |
+| `m/`            | `m-old/`         |
+| `serverlib/`    | `serverlib-old/` |
+| `templates/`    | `templates-old/` |
+
+So, rename folder `admin/` to `admin-old/`, `interface/` to `interface-old/`, and so on.
+
+#### Step 3
+
+Fetch the latest 9.x.x release and open the `src/` folder. In the following, we only need the content of this folder and thus don't mention "src" anymore.
+
+Upload the new versions of the folders that you have renamed in step 2, i.e. upload the new `admin/`, `interface/`, ... folders from the 9.x.x release.
+
+And, override the entrypoint files like `email.php`.
+
+Finally, upload the `setup/` folder.
+
+### Run the update
+
+Now, simply open `yourdomain.tld/setup/update.php`. The UI will guide you through the update process.
 
 ### After running the update
 
