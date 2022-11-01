@@ -807,7 +807,9 @@ class BMUser {
 
                 // update profile
                 if (isset($pluginAuth['profile']) && $row['gesperrt'] == 'no') {
-                    $theOldUserRow = $theUserRow = BMUser::Fetch($row['id']);
+                    $theOldUserRow = $theUserRow = BMUser::FetchUserById(
+                        $row['id'],
+                    );
 
                     $theUserRow['passwort'] = md5(
                         $password . $row['passwort_salt'],
@@ -1068,6 +1070,15 @@ class BMUser {
                 return $this->_row;
             }
         }
+
+        return BMUser::FetchUserById($id);
+    }
+
+    /**
+     * This method is similar to `Fetch()`, but with the difference that it is static.
+     */
+    static function FetchUserById($id) {
+        global $db;
 
         $res = $db->Query('SELECT * FROM {pre}users WHERE id=?', $id);
         if ($res->RowCount() == 0) {

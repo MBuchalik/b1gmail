@@ -1920,7 +1920,7 @@ class BMMailbox {
     function GetRecentMailCount($folder = FOLDER_ROOT) {
         global $db;
 
-        $userInfo = BMUser::Fetch($this->_userID);
+        $userInfo = BMUser::FetchUserById($this->_userID);
 
         // select new mails
         $res = $db->Query(

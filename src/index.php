@@ -415,7 +415,7 @@ if ($_REQUEST['action'] == 'tos') {
             $book->InvalidateSelfCompleteInvitation($contactID, $key);
 
             // send mail
-            $userData = BMUser::Fetch($contactData['user']);
+            $userData = BMUser::FetchUserById($contactData['user']);
             $vars = [
                 'vorname' => $contactData['vorname'],
                 'nachname' => $contactData['nachname'],
