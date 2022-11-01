@@ -781,6 +781,11 @@ function HTMLFormat(
         strlen($res) == 0 &&
         function_exists('mb_detect_encoding')
     ) {
+        $detectedEncoding = mb_detect_encoding($in);
+        if (!$detectedEncoding) {
+            return $res;
+        }
+
         $in = @mb_convert_encoding(
             $in,
             $currentCharset,
