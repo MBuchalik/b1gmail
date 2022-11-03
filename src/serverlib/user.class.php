@@ -389,7 +389,7 @@ class BMUser {
      * @param int $userID User ID
      * @param string $resetKey Reset key
      */
-    function ResetPassword($userID, $resetKey) {
+    static function ResetPassword($userID, $resetKey) {
         global $db;
 
         $result = false;
