@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Check if package-lock.json is up to date
         run: npx --yes package-lock-utd@1.x.x
@@ -22,7 +22,7 @@ jobs:
 
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.1'
           coverage: none
 
       - name: Install php dependencies using Composer
