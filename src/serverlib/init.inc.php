@@ -58,6 +58,9 @@ if (!defined('DEV_MOCK_MAIL_SENDING')) {
 @ini_set('session.use_cookies', '0');
 @ini_set('session.use_only_cookies', '0');
 @ini_set('session.use_trans_sid', '0');
+@ini_set('session.gc_probability', '1');
+@ini_set('session.gc_divisor', '100');
+@ini_set('session.gc_maxlifetime', '86400');
 session_name('sid');
 
 /**
