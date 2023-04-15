@@ -309,11 +309,9 @@ function CharsetDecode($text, $charset = false, $destCharset = false) {
     }
 
     if (function_exists('mb_convert_encoding')) {
-        if ($newText = @mb_convert_encoding($text, $_myCharset, $_charset)) {
+        if ($newText = convertOrFalse($text, $_myCharset, $_charset)) {
             $text = $newText;
-        } elseif (
-            $newText = @mb_convert_encoding($text, $myCharset, $charset)
-        ) {
+        } elseif ($newText = convertOrFalse($text, $myCharset, $charset)) {
             $text = $newText;
         }
     } elseif (function_exists('iconv')) {
@@ -340,4 +338,17 @@ function CharsetDecode($text, $charset = false, $destCharset = false) {
     }
 
     return $text;
+}
+
+/**
+ * This function is a wrapper around `mb_convert_encoding`:
+ * It tries to return the result from a call to `mb_convert_encoding`.
+ * If a `ValueError` occurs, this function returns `false`.
+ */
+function convertOrFalse($string, $to_encoding, $from_encoding) {
+    try {
+        return @mb_convert_encoding($string, $to_encoding, $from_encoding);
+    } catch (ValueError $e) {
+        return false;
+    }
 }
