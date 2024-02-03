@@ -491,7 +491,7 @@ if ($_REQUEST['action'] == 'inbox') {
             // add text
             //
             $mailText = $_REQUEST['text'] . GetsigStr('text');
-            ModuleFunction('OnSendMail', [&$mailText, false]);
+            ModuleFunction('OnSendMail', [&$mail, &$mailText, false]);
             $mail->AddText($mailText, 'plain', $currentCharset);
 
             //

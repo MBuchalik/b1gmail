@@ -946,7 +946,7 @@ if ($_REQUEST['action'] == 'compose') {
             if ($_REQUEST['newTextMode'] == 'html') {
                 if ($_REQUEST['do'] != 'saveDraft') {
                     $mailText .= GetSigStr('html');
-                    ModuleFunction('OnSendMail', [&$mailText, true]);
+                    ModuleFunction('OnSendMail', [&$mail, &$mailText, true]);
                 }
 
                 // html mail
@@ -958,7 +958,7 @@ if ($_REQUEST['action'] == 'compose') {
             } else {
                 if ($_REQUEST['do'] != 'saveDraft') {
                     $mailText .= GetSigStr('text');
-                    ModuleFunction('OnSendMail', [&$mailText, false]);
+                    ModuleFunction('OnSendMail', [&$mail, &$mailText, false]);
                 }
 
                 // text mail

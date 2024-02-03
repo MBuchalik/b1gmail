@@ -214,7 +214,7 @@ class BMPlugin {
     ) {
     }
 
-    function OnSendMail(&$mail, $html) {
+    function OnSendMail(&$mail, &$mailText, $html) {
     }
 
     function OnCron() {
