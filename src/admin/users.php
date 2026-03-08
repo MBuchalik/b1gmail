@@ -574,10 +574,12 @@ if ($_REQUEST['action'] == 'users') {
             }
         }
 
-        $user['saliase'] = implode(
-            "\n",
-            array_map('DecodeDomain', explode(':', $user['saliase'])),
-        );
+        if (trim($user['saliase']) !== '') {
+            $user['saliase'] = implode(
+                "\n",
+                array_map('DecodeDomain', explode(':', $user['saliase'])),
+            );
+        }
 
         $countryList = CountryList();
         asort($countryList);
