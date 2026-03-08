@@ -473,14 +473,19 @@ function updateGroupMode(c, fs, sid) {
 }
 
 function initEMailTextArea(code) {
-  var iframe = EBID('textArea'),
-    lastSize = 0;
+  const iframe = EBID('textArea');
+  let lastSize = 0;
 
-  var resCB = function () {
-    var iframeDoc;
+  initializeIFrame();
 
-    if (iframe.document) iframeDoc = iframe.document;
-    else iframeDoc = iframe.contentDocument;
+  function resizeCallback() {
+    let iframeDoc;
+
+    if (iframe.document) {
+      iframeDoc = iframe.document;
+    } else {
+      iframeDoc = iframe.contentDocument;
+    }
 
     if (iframeDoc && iframeDoc.getElementById('__bmMailText')) {
       var h = iframeDoc.getElementById('__bmMailText').clientHeight;
@@ -496,29 +501,27 @@ function initEMailTextArea(code) {
       }
     }
 
-    window.setTimeout(resCB, 500);
-  };
+    window.setTimeout(resizeCallback, 500);
+  }
 
-  var cb = function () {
-    var iframeDoc;
-    if (iframe.document) iframeDoc = iframe.document;
-    else iframeDoc = iframe.contentDocument;
+  function initializeIFrame() {
+    const iframeDoc = iframe.contentDocument;
 
     if (iframeDoc.location.href == 'about:blank') {
-      removeEvent(iframe, 'load', cb);
+      removeEvent(iframe, 'load', initializeIFrame);
 
-      var html = iframeDoc.getElementsByTagName('html');
+      const html = iframeDoc.getElementsByTagName('html');
       html.item(0).innerHTML = code;
     } else if (iframeDoc.location.href == document.location.href) {
-      removeEvent(iframe, 'load', cb);
+      removeEvent(iframe, 'load', initializeIFrame);
 
-      var doc = iframe.contentWindow.document;
+      const doc = iframe.contentWindow.document;
       doc.open();
       doc.write(code);
       doc.close();
     }
 
-    var mm = function (event) {
+    function handleMouseMove(event) {
       if (typeof parent._hSepDragging == 'undefined') return;
 
       if (!parent._hSepDragging && !parent._vSepDragging) return;
@@ -544,9 +547,9 @@ function initEMailTextArea(code) {
         );
         parent.document.dispatchEvent(ev);
       }
-    };
+    }
 
-    var mc = function (event) {
+    function handleMouseClick(event) {
       if (parent.document.createEvent) {
         var ev = parent.document.createEvent('MouseEvents');
         ev.initMouseEvent(
@@ -568,26 +571,12 @@ function initEMailTextArea(code) {
         );
         parent.document.dispatchEvent(ev);
       }
-    };
+    }
 
-    addEvent(iframeDoc, 'mousemove', mm);
-    addEvent(iframeDoc, 'click', mc);
-    resCB();
-  };
-
-  // webkit seems not to support addEvent(load), so emulate it
-  if (
-    /WebKit/i.test(navigator.userAgent) ||
-    /Opera/i.test(navigator.userAgent)
-  ) {
-    var _isLoaded = false;
-    var _timer = setInterval(function () {
-      if (/loaded|complete/.test(document.readyState)) {
-        if (!_isLoaded) cb();
-        _isLoaded = true;
-      } else _isLoaded = false;
-    }, 50);
-  } else addEvent(iframe, 'load', cb);
+    addEvent(iframeDoc, 'mousemove', handleMouseMove);
+    addEvent(iframeDoc, 'click', handleMouseClick);
+    resizeCallback();
+  }
 }
 
 function _togglePreviewPane(e) {
